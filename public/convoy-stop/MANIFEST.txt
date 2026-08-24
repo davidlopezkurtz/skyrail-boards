@@ -1,0 +1,8 @@
+Convoy page-as-ship export 2026-08-24
+Live GET https://convoy-stop.determined-ocean.workers.dev FAILED (curl 7, connect)
+Source: last local ship /workspace/delivery/convoy-stop (Wall + stop 1/2, 2026-08-24 01:05 UTC index.html)
+Did not republish.
+
+index.html  24478  sha256:f453b78964aaf9072c47f311036b8309a2a93b302c173a8552f2ea7638916137
+sim.js      10585  sha256:5ad814e6eb9f8263be5dd224ae42497de932ec87b767a96399aaa4348a4a146f
+  sim.js was local only; wrangler deploys listed index.html as the shipped asset.

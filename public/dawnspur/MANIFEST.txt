@@ -1,0 +1,8 @@
+Dawnspur CFD-166 page-as-ship export 2026-08-24
+Live host mortal: last known https://dawnspur-spend.island-decade.workers.dev
+Source: last local ship /workspace/delivery/dawnspur-spend (GDB job-light invariant, 2026-08-24)
+Did not republish. Did not recut.
+
+index.html  11311  sha256:78efc96eddc34698b1c9a1a73a9189fba8ccb393860e053a88bfd9ba0150320f
+sim.js      5848  sha256:f9395d38dfceae0fbf1a5b9b4fe1160fd3a067ee5c582277c8f22909144a3f95
+  sim.js extracted from inline <script> in index.html for vault shape; wrangler deploys listed index.html as the shipped asset.

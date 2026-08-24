@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Convoy Defense</title>
+<style>
+  :root {
+    --bg: #1a1b1e;
+    --strip: #24262b;
+    --box: #8b8e96;
+    --box-dim: #5c5f68;
+    --box-hot: #c4c6cc;
+    --hole: #121316;
+    --ink: #ececec;
+    --pad: #3a3d45;
+    --pad-on: #d8d8d8;
+    --pad-ink: #111;
+    --sel: #f2f2f2;
+    --smoke: #6a5348;
+    --threat: #2a2c31;
+    --hot: #16171a;
+    --dirt: #3d3530;
+    --dirt-tap: #4a423c;
+    --hash: #2c2a28;
+    --hash-line: #1a1816;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+  html { touch-action: manipulation; }
+  input, button, a { touch-action: manipulation; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink);
+    font-family: ui-sans-serif, system-ui, sans-serif; user-select: none; overflow: hidden; }
+  body { display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+    min-height: 100dvh; padding: env(safe-area-inset-top) 10px env(safe-area-inset-bottom); }
+  #note {
+    width: min(440px, 100%); font-size: 15px; font-weight: 700; letter-spacing: .04em;
+    line-height: 1.35; color: #ececec;
+    padding: 10px 2px 2px; flex-shrink: 0;
+  }
+  #app { width: min(440px, 100%); flex: 1; display: flex; flex-direction: column; gap: 8px; padding: 4px 0 10px; min-height: 0; }
+  #strip {
+    position: relative; flex: 1; min-height: 0; background: var(--strip);
+    border-radius: 10px; overflow: hidden;
+    display: flex; flex-direction: row; align-items: stretch;
+  }
+  #hot {
+    position: relative; z-index: 1;
+    width: 9%; min-width: 22px;
+    margin: 6px 0 6px 6px;
+    background: var(--hot); border-radius: 6px;
+    pointer-events: none; flex-shrink: 0;
+    display: flex; flex-direction: column; gap: 4px;
+    padding: 0;
+  }
+  .tmark {
+    flex: 1; display: flex; align-items: center; justify-content: center;
+    min-height: 0;
+  }
+  .tmark i {
+    display: block; width: 8px; height: 42%; max-height: 22px;
+    border-radius: 2px; background: transparent;
+  }
+  .tmark.on i { background: #d8d8d8; }
+  .drow.threat .cell { background: #454039; }
+  #dirt {
+    position: relative; z-index: 2;
+    margin: 6px 4px;
+    flex: 1; min-width: 0;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .drow {
+    flex: 1; display: flex; gap: 4px; align-items: stretch; min-height: 0;
+  }
+  .cell {
+    flex: 1; background: var(--dirt); border-radius: 6px;
+    min-width: 0; min-height: 0;
+    position: relative;
+  }
+  .cell.armed { outline: 3px solid var(--sel); outline-offset: 1px; background: var(--dirt-tap); }
+  .piece {
+    position: absolute; left: 14%; right: 14%; top: 16%; bottom: 16%;
+    border-radius: 6px; pointer-events: none;
+  }
+  .piece.spike {
+    left: 22%; right: 22%; top: 28%; bottom: 28%;
+    background:
+      repeating-linear-gradient(-45deg, var(--hash) 0 5px, var(--hash-line) 5px 8px);
+    border-radius: 3px; opacity: .92;
+  }
+  .piece.gun {
+    left: 28%; right: 18%; top: 28%; bottom: 28%;
+    background: var(--box-hot);
+    border-radius: 3px;
+  }
+  .piece.mortar {
+    left: 18%; right: 18%; top: 4%; bottom: 8%;
+    background: var(--box);
+    border-radius: 18px 18px 8px 8px;
+  }
+  .piece.wall {
+    left: 0; right: 0; top: 40%; bottom: 40%;
+    background: var(--box);
+    border-radius: 2px;
+  }
+  #line {
+    position: relative; z-index: 2;
+    margin: 6px 6px 6px 0;
+    width: 16%; min-width: 44px;
+    display: flex; flex-direction: column; gap: 4px; align-items: stretch;
+    flex-shrink: 0;
+  }
+  .car {
+    flex: 1; background: var(--box); border-radius: 6px; position: relative;
+    min-width: 40px; min-height: 0;
+    transition: transform .18s, background .2s, opacity .25s;
+    pointer-events: none;
+  }
+  .car.leak {
+    outline: 3px solid #d8d8d8;
+    outline-offset: 2px;
+    background: #6e675e;
+  }
+  .car.hit { background: var(--smoke); }
+  .car.shrink { transform: scale(.78); opacity: .55; }
+  .car.dead { background: transparent; outline: none; }
+  .car.dead::after {
+    content: ""; position: absolute; inset: 18% 8%; background: var(--hole); border-radius: 4px;
+  }
+  .hunter {
+    position: absolute; width: 16px; height: 20px; background: var(--threat);
+    border-radius: 3px; margin-left: -8px; margin-top: -10px; pointer-events: none; z-index: 4;
+  }
+  .hunter.linger {
+    width: 15px; height: 30px; background: #9aa0ab;
+    margin-left: -7px; margin-top: -16px; border-radius: 4px;
+  }
+  .hunter.linger.sit {
+    animation: lingerPulse .72s ease-in-out infinite;
+  }
+  @keyframes lingerPulse {
+    0%, 100% { opacity: .62; box-shadow: 0 0 0 0 rgba(236,236,236,.0); }
+    50% { opacity: 1; box-shadow: 0 0 0 3px rgba(236,236,236,.35); }
+  }
+  .pulse {
+    position: absolute; width: 10px; height: 6px; background: #ddd; border-radius: 1px;
+    pointer-events: none; z-index: 5; margin-left: -5px; margin-top: -3px;
+  }
+  .arc {
+    position: absolute; width: 14px; height: 14px; background: #e8e8e8;
+    border-radius: 50%; pointer-events: none; z-index: 5; margin-left: -7px; margin-top: -7px;
+  }
+  #pads { display: flex; gap: 8px; min-height: 76px; flex-wrap: nowrap; flex-shrink: 0; }
+  button.pad {
+    flex: 1; border: 0; border-radius: 12px; background: var(--pad); color: var(--ink);
+    font-size: 16px; font-weight: 700; letter-spacing: .04em;
+    min-height: 76px; min-width: 0;
+    touch-action: manipulation;
+  }
+  button.pad.primary { background: var(--pad-on); color: var(--pad-ink); }
+  button.pad:disabled { opacity: .28; }
+  button.pad:active { filter: brightness(1.12); }
+  button.pad.on { outline: 3px solid var(--sel); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div id="note">Convoy Defense</div>
+<div id="app">
+  <div id="strip">
+    <div id="hot"></div>
+    <div id="dirt"></div>
+    <div id="line">
+      <div class="car" data-i="0"></div>
+      <div class="car" data-i="1"></div>
+      <div class="car" data-i="2"></div>
+      <div class="car" data-i="3"></div>
+      <div class="car" data-i="4"></div>
+    </div>
+  </div>
+  <div id="pads"></div>
+</div>
+<script>
+(function () {
+  const ROWS = 5;
+  const COLS = 4;
+  const SLOTS = ROWS * COLS;
+  const GUN_CD = 280;
+  const GUN_ACROSS = 1.28;
+  const MORTAR_CD = 760;
+  const MORTAR_ACROSS = 0.72;
+  const HUNT_SPEED = 0.00038;
+  const FAR_SLOW = 0.78;
+  const SPIKE_SLOW = 0.15;
+  const GUN_FLIGHT = 88;
+  const MORTAR_FLIGHT = 520;
+  const HOLD_AFTER = 220;
+
+  /* Fixed every run. No RNG. One lock per wave. Restock each lock (no leftover killers).
+     Two stops on pads. Wall is dirt (narrow rows), restock 1 each lock, does not persist.
+     Wave 1: two marked rows, close only. Holdable Gun+Spike (stagger). Earn mortar.
+     Wave 2: three marked rows. Stock Gun+Mortar+Spike+Wall. Close + far. Soft = SPIKE not empty.
+     Wave 3: same rows, two killers, more count. Stock still Gun+Mortar+1 Spike+1 Wall. Clean w2 pays no piece. */
+  const WAVE_ROWS = [
+    [[1, 2], [1, 2, 3], [1, 2, 3]],
+    [[0, 4], [0, 2, 4], [0, 2, 4]]
+  ];
+  /* [ms, row, "c"|"l"]  c=close rush  l=far linger */
+  const WAVE_SPAWNS = [
+    [
+      [[500, 1, "c"], [1600, 2, "c"], [2700, 1, "c"], [3800, 2, "c"]],
+      [[350, 1, "c"], [480, 3, "l"], [1200, 2, "c"], [1700, 3, "l"], [2100, 1, "c"], [3000, 2, "c"]],
+      [[220, 1, "c"], [320, 3, "l"], [700, 2, "c"], [1200, 3, "l"], [1400, 1, "c"], [1900, 2, "c"], [2300, 3, "l"], [2600, 1, "c"], [3100, 2, "c"], [3600, 3, "l"], [3900, 1, "c"]]
+    ],
+    [
+      [[500, 0, "c"], [1600, 4, "c"], [2700, 0, "c"], [3800, 4, "c"]],
+      [[350, 0, "c"], [480, 2, "l"], [1200, 4, "c"], [1700, 2, "l"], [2100, 0, "c"], [3000, 4, "c"]],
+      [[220, 0, "c"], [320, 2, "l"], [700, 4, "c"], [1200, 2, "l"], [1400, 0, "c"], [1900, 4, "c"], [2300, 2, "l"], [2600, 0, "c"], [3100, 4, "c"], [3600, 2, "l"], [3900, 0, "c"]]
+    ]
+  ];
+
+  const strip = document.getElementById("strip");
+  const dirt = document.getElementById("dirt");
+  const pads = document.getElementById("pads");
+  const carsEl = [...document.querySelectorAll(".car")];
+
+  const hot = document.getElementById("hot");
+  let cells = [];
+  let drows = [];
+  let tmarks = [];
+  for (let r = 0; r < ROWS; r++) {
+    const tm = document.createElement("div");
+    tm.className = "tmark";
+    tm.innerHTML = "<i></i>";
+    hot.appendChild(tm);
+    tmarks.push(tm);
+    const row = document.createElement("div");
+    row.className = "drow";
+    dirt.appendChild(row);
+    drows.push(row);
+    for (let c = 0; c < COLS; c++) {
+      const el = document.createElement("div");
+      el.className = "cell";
+      const i = r * COLS + c;
+      el.dataset.i = String(i);
+      el.dataset.r = String(r);
+      el.dataset.c = String(c);
+      row.appendChild(el);
+      cells.push(el);
+    }
+  }
+
+  let phase = "read";
+  let stop = 0;
+  let wave = 0;
+  let stockG = 1, stockS = 1, stockM = 0, stockW = 1;
+  let tool = null;
+  let locked = false;
+  let cars, slots, hunters, pulses, arcs;
+  let wrecked = false;
+  let anyPeel = false;
+  let t0 = 0, last = 0, spawned = 0, raf = 0;
+
+  function tap(el, fn) {
+    el.addEventListener("pointerdown", (ev) => {
+      ev.preventDefault();
+      fn(ev);
+    });
+  }
+
+  function resetBoard() {
+    if (raf) cancelAnimationFrame(raf);
+    raf = 0;
+    wave = 0;
+    stockG = 1;
+    stockS = 1;
+    stockM = 0;
+    stockW = 1;
+    tool = null;
+    locked = false;
+    wrecked = false;
+    anyPeel = false;
+    hunters = [];
+    pulses = [];
+    arcs = [];
+    spawned = 0;
+    cars = [0, 1, 2, 3, 4].map(() => ({ live: true, smoke: 0, leaked: false }));
+    slots = [];
+    for (let r = 0; r < ROWS; r++) {
+      for (let c = 0; c < COLS; c++) {
+        slots.push({ kind: null, cd: 0, r: r, c: c });
+      }
+    }
+  }
+
+  function resetRun(nextStop) {
+    if (nextStop !== undefined) stop = nextStop;
+    resetBoard();
+    phase = "quiet";
+    paintPads();
+    paint();
+  }
+
+  function showStops() {
+    resetBoard();
+    phase = "read";
+    paintPads();
+    paint();
+  }
+
+  function slotXY(i) {
+    const r = cells[i].getBoundingClientRect();
+    const s = strip.getBoundingClientRect();
+    return {
+      x: ((r.left + r.width / 2) - s.left) / s.width,
+      y: ((r.top + r.height / 2) - s.top) / s.height,
+      w: r.width / s.width,
+      h: r.height / s.height
+    };
+  }
+
+  function carX() {
+    const r = carsEl[0].getBoundingClientRect();
+    const s = strip.getBoundingClientRect();
+    return ((r.left + r.width * 0.28) - s.left) / s.width;
+  }
+
+  function carY(i) {
+    const r = carsEl[i].getBoundingClientRect();
+    const s = strip.getBoundingClientRect();
+    return ((r.top + r.height / 2) - s.top) / s.height;
+  }
+
+  function spawnX() {
+    const hot = document.getElementById("hot").getBoundingClientRect();
+    const s = strip.getBoundingClientRect();
+    return ((hot.left + hot.width * 0.55) - s.left) / s.width;
+  }
+
+  function colLeft(row, c) {
+    const p = slotXY(row * COLS + c);
+    return p.x - p.w * 0.5;
+  }
+
+  function hunterCol(h) {
+    const row0 = h.row * COLS;
+    const first = slotXY(row0);
+    const last = slotXY(row0 + COLS - 1);
+    const left0 = first.x - first.w * 0.5;
+    const right4 = last.x + last.w * 0.5;
+    if (h.x < left0) return 0;
+    if (h.x >= right4) return 5;
+    for (let c = 0; c < COLS; c++) {
+      const p = slotXY(row0 + c);
+      const L = p.x - p.w * 0.5;
+      const R = p.x + p.w * 0.5;
+      if (h.x >= L && h.x < R) return c + 1;
+    }
+    return 5;
+  }
+
+  function place(i) {
+    if (phase !== "quiet" || locked) return;
+    if (slots[i].kind) return;
+    const c = i % COLS;
+    if (tool === "spike") {
+      if (stockS <= 0) return;
+      slots[i].kind = "spike";
+      stockS -= 1;
+    } else if (tool === "wall") {
+      if (stockW <= 0) return;
+      slots[i].kind = "wall";
+      stockW -= 1;
+    } else if (tool === "gun") {
+      if (stockG <= 0) return;
+      if (c < 2) return; /* cols 3–4 only (1-based) */
+      slots[i].kind = "gun";
+      stockG -= 1;
+    } else if (tool === "mortar") {
+      if (stockM <= 0) return;
+      if (c > 2) return; /* cols 1–3 only, no col 4 */
+      slots[i].kind = "mortar";
+      stockM -= 1;
+    } else return;
+    paintPads();
+    paint();
+  }
+
+  function onLock() {
+    if (phase !== "quiet" || locked) return;
+    locked = true;
+    tool = null;
+    paintPads();
+    paint();
+  }
+
+  function onGo() {
+    if (phase !== "quiet" || !locked) return;
+    phase = "line";
+    wrecked = false;
+    hunters = [];
+    pulses = [];
+    arcs = [];
+    spawned = 0;
+    t0 = performance.now();
+    last = t0;
+    paintPads();
+    raf = requestAnimationFrame(tick);
+  }
+
+  function wreck(i) {
+    const c = cars[i];
+    if (!c.live) return;
+    c.live = false;
+    c.smoke = 1;
+    wrecked = true;
+  }
+
+  function inSpike(h) {
+    for (let i = 0; i < SLOTS; i++) {
+      const sl = slots[i];
+      if (sl.kind !== "spike") continue;
+      if (sl.r !== h.row) continue;
+      const p = slotXY(i);
+      if (h.x >= p.x - p.w * 0.5 && h.x < p.x + p.w * 0.5) return true;
+    }
+    return false;
+  }
+
+  function sameLane(h, g) {
+    return Math.abs(h.y - g.y) <= GUN_ACROSS * g.h;
+  }
+
+  function gunTick(dt) {
+    for (let i = 0; i < SLOTS; i++) {
+      const sl = slots[i];
+      if (sl.kind !== "gun") continue;
+      sl.cd = Math.max(0, sl.cd - dt);
+      if (sl.cd > 0) continue;
+      const g = slotXY(i);
+      let best = null, bestD = 99;
+      hunters.forEach((h) => {
+        if (!h.live || h.peeling || h.linger) return;
+        if (!sameLane(h, g)) return;
+        const col = hunterCol(h);
+        if (col < 3 || col > 4) return;
+        const d = Math.abs(h.y - g.y) + Math.abs(g.x - h.x) * 0.25;
+        if (d < bestD) { bestD = d; best = h; }
+      });
+      if (best) {
+        sl.cd = GUN_CD;
+        const stop = colLeft(sl.r, 2);
+        const tx = Math.max(best.x, stop);
+        pulses.push({ x: g.x, y: g.y, sx: g.x, sy: g.y, tx: tx, ty: best.y, t: 0, h: best });
+      }
+    }
+  }
+
+  function mortarTick(dt) {
+    for (let i = 0; i < SLOTS; i++) {
+      const sl = slots[i];
+      if (sl.kind !== "mortar") continue;
+      sl.cd = Math.max(0, sl.cd - dt);
+      if (sl.cd > 0) continue;
+      const g = slotXY(i);
+      let best = null, bestD = 99;
+      hunters.forEach((h) => {
+        if (!h.live || h.peeling) return;
+        if (Math.abs(h.y - g.y) > MORTAR_ACROSS * g.h) return;
+        const col = hunterCol(h);
+        if (col < 1 || col > 3) return;
+        const far = col <= 2 ? 0 : 2.2;
+        const d = far + Math.abs(h.y - g.y);
+        if (d < bestD) { bestD = d; best = h; }
+      });
+      if (best) {
+        sl.cd = MORTAR_CD;
+        arcs.push({ x: g.x, y: g.y - 0.10, sx: g.x, sy: g.y - 0.10, tx: best.x, ty: best.y, t: 0, h: best });
+      }
+    }
+  }
+
+  function spawnOne(row, kind) {
+    hunters.push({
+      row: row,
+      x: spawnX(),
+      y: carY(row),
+      live: true,
+      peeling: false,
+      peelT: 0,
+      target: row,
+      linger: kind === "l",
+      wallHit: {}
+    });
+  }
+
+  function clearSlots() {
+    slots = [];
+    for (let r = 0; r < ROWS; r++) {
+      for (let c = 0; c < COLS; c++) {
+        slots.push({ kind: null, cd: 0, r: r, c: c });
+      }
+    }
+  }
+
+  function restockForWave() {
+    stockG = 1;
+    stockM = wave === 0 ? 0 : 1;
+    stockS = 1;
+    stockW = 1;
+  }
+
+  function wallAt(row, c) {
+    const sl = slots[row * COLS + c];
+    return sl && sl.kind === "wall";
+  }
+
+  function divertRow(h, wallCol) {
+    if (h.row !== 2) {
+      return h.row < 2 ? h.row + 1 : h.row - 1;
+    }
+    const marked = WAVE_ROWS[stop][wave] || [];
+    let best = null, bestD = 99;
+    marked.forEach((r) => {
+      if (r === h.row) return;
+      if (wallAt(r, wallCol)) return;
+      const d = Math.abs(r - 2);
+      if (d < bestD) { bestD = d; best = r; }
+    });
+    return best == null ? 1 : best;
+  }
+
+  function applyWalls(h) {
+    if (!h.live || h.peeling) return;
+    for (let i = 0; i < SLOTS; i++) {
+      const sl = slots[i];
+      if (sl.kind !== "wall") continue;
+      if (sl.r !== h.row) continue;
+      if (h.wallHit[i]) continue;
+      const p = slotXY(i);
+      if (h.x < p.x - p.w * 0.5 || h.x >= p.x + p.w * 0.5) continue;
+      const nr = divertRow(h, sl.c);
+      if (nr === h.row) continue;
+      h.wallHit[i] = true;
+      h.row = nr;
+      h.y = carY(nr);
+      return;
+    }
+  }
+
+  function endWave() {
+    if (raf) cancelAnimationFrame(raf);
+    raf = 0;
+    hunters = [];
+    pulses = [];
+    arcs = [];
+    if (wrecked) {
+      phase = "read";
+      paintPads();
+      paint();
+      return;
+    }
+    if (wave >= 2) {
+      phase = "hold";
+      paintPads();
+      paint();
+      return;
+    }
+    wave += 1;
+    clearSlots();
+    restockForWave();
+    locked = false;
+    tool = null;
+    phase = "quiet";
+    paintPads();
+    paint();
+  }
+
+  function tick(now) {
+    const dt = Math.min(40, now - last);
+    last = now;
+    const elapsed = now - t0;
+    const plan = WAVE_SPAWNS[stop][wave];
+
+    if (spawned < plan.length && elapsed >= plan[spawned][0]) {
+      spawnOne(plan[spawned][1], plan[spawned][2] || "c");
+      spawned += 1;
+    }
+
+    hunters.forEach((h) => {
+      if (!h.live) return;
+      if (h.peeling) {
+        h.peelT += dt;
+        const tgt = h.target;
+        if (tgt >= 0) {
+          const tx = carX();
+          const ty = carY(tgt);
+          h.x += (tx - h.x) * Math.min(1, dt * 0.014);
+          h.y += (ty - h.y) * Math.min(1, dt * 0.014);
+        }
+        if (h.peelT > 260) {
+          if (h.target >= 0 && cars[h.target].live) wreck(h.target);
+          h.live = false;
+        }
+        return;
+      }
+
+      applyWalls(h);
+      const col = hunterCol(h);
+      let slow = 1;
+      if (h.linger) {
+        if (col <= 2) slow *= FAR_SLOW;
+        if (inSpike(h)) slow *= SPIKE_SLOW;
+        h.x += dt * HUNT_SPEED * 1.05 * slow;
+        h.y = carY(h.row);
+        /* Far job: sit 1–2, peel before gun can own them. Mortar only. */
+        if (col >= 3 || h.x >= colLeft(h.row, 2) - 0.002) {
+          h.peeling = true;
+          anyPeel = true;
+          if (h.row >= 0 && cars[h.row]) cars[h.row].leaked = true;
+          h.target = h.row;
+          h.peelT = 0;
+          paintPads();
+        }
+      } else {
+        if (inSpike(h)) slow *= SPIKE_SLOW;
+        h.x += dt * HUNT_SPEED * 1.18 * slow;
+        h.y = carY(h.row);
+        if (h.x >= carX() - 0.02) {
+          h.peeling = true;
+          anyPeel = true;
+          if (h.row >= 0 && cars[h.row]) cars[h.row].leaked = true;
+          h.target = h.row;
+          h.peelT = 0;
+          paintPads();
+        }
+      }
+      if (h.x > 0.98) h.live = false;
+    });
+
+    gunTick(dt);
+    mortarTick(dt);
+
+    pulses.forEach((pu) => {
+      pu.t += dt;
+      const k = Math.min(1, pu.t / GUN_FLIGHT);
+      pu.x = pu.sx + (pu.tx - pu.sx) * k;
+      pu.y = pu.sy + (pu.ty - pu.sy) * k;
+      if (k >= 1 && pu.h && pu.h.live && !pu.h.peeling) pu.h.live = false;
+    });
+    pulses = pulses.filter((pu) => pu.t < GUN_FLIGHT + 30);
+
+    arcs.forEach((a) => {
+      a.t += dt;
+      const k = Math.min(1, a.t / MORTAR_FLIGHT);
+      a.x = a.sx + (a.tx - a.sx) * k;
+      a.y = a.sy + (a.ty - a.sy) * k - 0.34 * Math.sin(Math.PI * k);
+      if (k >= 1 && a.h && a.h.live) a.h.live = false;
+    });
+    arcs = arcs.filter((a) => a.t < MORTAR_FLIGHT + 40);
+
+    cars.forEach((c) => {
+      if (c.smoke > 0 && c.live) c.smoke = Math.max(0, c.smoke - dt / 700);
+    });
+
+    if (wrecked) {
+      endWave();
+      paint();
+      return;
+    }
+    const allOut = spawned >= plan.length && hunters.every((h) => !h.live);
+    if (allOut) {
+      endWave();
+      paint();
+      return;
+    }
+
+    paint();
+    if (phase === "line") raf = requestAnimationFrame(tick);
+  }
+
+  function addPad(label, cls, disabled, fn) {
+    const b = document.createElement("button");
+    b.className = "pad" + (cls || "");
+    b.type = "button";
+    b.textContent = label;
+    b.disabled = !!disabled;
+    tap(b, fn);
+    pads.appendChild(b);
+    return b;
+  }
+
+  function paintPads() {
+    pads.innerHTML = "";
+    if (phase === "hold") {
+      const clean = !anyPeel && cars.every((c) => c.live && c.smoke <= 0);
+      addPad(clean ? "CLEAN" : "HOLD", " primary", false, () => {
+        phase = "read";
+        paintPads();
+        paint();
+      });
+      return;
+    }
+    if (phase === "read") {
+      addPad("STOP 1", " primary", false, () => resetRun(0));
+      addPad("STOP 2", " primary", false, () => resetRun(1));
+      return;
+    }
+    if (phase === "line") {
+      if (anyPeel) addPad("AGAIN", " primary", false, () => resetRun());
+      return;
+    }
+
+    addPad("SPIKE " + stockS, tool === "spike" ? " on" : "", locked || stockS <= 0, () => {
+      if (locked || stockS <= 0) return;
+      tool = tool === "spike" ? null : "spike";
+      paintPads();
+      paint();
+    });
+    addPad("WALL " + stockW, tool === "wall" ? " on" : "", locked || stockW <= 0, () => {
+      if (locked || stockW <= 0) return;
+      tool = tool === "wall" ? null : "wall";
+      paintPads();
+      paint();
+    });
+    addPad("GUN " + stockG, tool === "gun" ? " on" : "", locked || stockG <= 0, () => {
+      if (locked || stockG <= 0) return;
+      tool = tool === "gun" ? null : "gun";
+      paintPads();
+      paint();
+    });
+    addPad("MORTAR " + stockM, tool === "mortar" ? " on" : "", locked || stockM <= 0, () => {
+      if (locked || stockM <= 0) return;
+      tool = tool === "mortar" ? null : "mortar";
+      paintPads();
+      paint();
+    });
+
+    if (!locked) addPad("LOCK", " primary", false, onLock);
+    else addPad("GO", " primary", false, onGo);
+  }
+
+  function paint() {
+    const note = document.getElementById("note");
+    if (phase === "quiet" || phase === "line") {
+      note.textContent = "Convoy Defense · stop " + (stop + 1) + " · " + (wave + 1) + " of 3";
+    } else {
+      note.textContent = "Convoy Defense";
+    }
+    carsEl.forEach((el, i) => {
+      const c = cars[i];
+      el.className = "car";
+      if (!c.live) {
+        el.classList.add("dead", "shrink");
+      } else if (c.smoke > 0.15) {
+        el.classList.add("hit");
+        if (c.smoke > 0.55) el.classList.add("shrink");
+      } else if (c.leaked) {
+        el.classList.add("leak");
+      }
+    });
+    const marked = new Set((WAVE_ROWS[stop] && WAVE_ROWS[stop][wave]) || []);
+    tmarks.forEach((el, r) => {
+      el.className = "tmark" + (marked.has(r) ? " on" : "");
+    });
+    drows.forEach((el, r) => {
+      el.className = "drow" + (marked.has(r) ? " threat" : "");
+    });
+    cells.forEach((el, i) => {
+      const sl = slots[i];
+      el.className = "cell";
+      const legal = tool === "spike" || tool === "wall" || (tool === "gun" && sl.c >= 2) || (tool === "mortar" && sl.c <= 2);
+      if (phase === "quiet" && !locked && tool && !sl.kind && legal) el.classList.add("armed");
+      el.innerHTML = "";
+      if (sl.kind) {
+        const p = document.createElement("div");
+        p.className = "piece " + sl.kind;
+        el.appendChild(p);
+      }
+    });
+
+    [...strip.querySelectorAll(".hunter, .pulse, .arc")].forEach((n) => n.remove());
+    hunters.forEach((h) => {
+      if (!h.live) return;
+      const d = document.createElement("div");
+      d.className = "hunter";
+      if (h.linger) d.classList.add("linger");
+      const col = hunterCol(h);
+      if (h.linger && !h.peeling && col >= 1 && col <= 2) d.classList.add("sit");
+      d.style.left = (h.x * 100) + "%";
+      d.style.top = (h.y * 100) + "%";
+      strip.appendChild(d);
+    });
+    pulses.forEach((pu) => {
+      const d = document.createElement("div");
+      d.className = "pulse";
+      d.style.left = (pu.x * 100) + "%";
+      d.style.top = (pu.y * 100) + "%";
+      strip.appendChild(d);
+    });
+    arcs.forEach((a) => {
+      const d = document.createElement("div");
+      d.className = "arc";
+      d.style.left = (a.x * 100) + "%";
+      d.style.top = (a.y * 100) + "%";
+      strip.appendChild(d);
+    });
+  }
+
+  cells.forEach((el) => {
+    tap(el, () => place(+el.dataset.i));
+  });
+
+  showStops();
+  addEventListener("resize", () => paint());
+  document.addEventListener("touchstart", function (e) {
+    if (e.touches.length > 1) e.preventDefault();
+  }, { passive: false });
+  let lastTouch = 0;
+  document.addEventListener("touchend", function (e) {
+    const now = Date.now();
+    if (now - lastTouch <= 350) e.preventDefault();
+    lastTouch = now;
+  }, { passive: false });
+})();
+</script>
+</body>
+</html>
