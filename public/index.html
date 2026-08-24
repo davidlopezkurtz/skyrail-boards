@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skyrail Boards</title>
+<style>
+  :root { color-scheme: dark; }
+  body { margin: 0; padding: 2rem 1.25rem; background: #1c1c22; color: #e8e4da; font: 16px/1.5 system-ui, sans-serif; max-width: 40rem; margin-inline: auto; }
+  h1 { font-size: 1.4rem; margin: 0 0 .25rem; }
+  .sub { color: #9a958a; font-size: .85rem; margin-bottom: 2rem; }
+  .board { display: block; padding: 1rem 1.25rem; margin-bottom: 1rem; border: 1px solid #3a3a44; border-radius: .75rem; text-decoration: none; color: inherit; }
+  a.board:active { background: #2a2a32; }
+  .board h2 { margin: 0 0 .25rem; font-size: 1.05rem; }
+  .board p { margin: 0; color: #9a958a; font-size: .85rem; }
+  .live { border-color: #4a7a5a; }
+  .pending { opacity: .6; }
+  .tag { font-size: .7rem; letter-spacing: .05em; text-transform: uppercase; color: #7aa88a; }
+  .pending .tag { color: #a89a7a; }
+  footer { margin-top: 2.5rem; font-size: .75rem; color: #6a665e; }
+  footer a { color: inherit; }
+</style>
+</head>
+<body>
+<h1>Skyrail Boards</h1>
+<p class="sub">The durable host. Fixed name, sha-stamped builds, kills tied to builds. Hosts stop dying overnight.</p>
+
+<div class="board pending">
+  <span class="tag">awaiting verified bytes</span>
+  <h2>Convoy Stop</h2>
+  <p>Last ship exists (index.html 24478 B, sim.js 10585 B, hashed). Slots in on delivery + hash match.</p>
+</div>
+
+<div class="board pending">
+  <span class="tag">export requested</span>
+  <h2>Dawnspur (CFD-166)</h2>
+  <p>First playable. Board bytes not yet exported from the workspace that ran the 08-24 sit.</p>
+</div>
+
+<footer>
+  <a href="/build-info.json">build-info</a> · kills ledger rides the repo (KILLS.md) · a board is not delivered until its bytes hash-match on this host
+</footer>
+</body>
+</html>
