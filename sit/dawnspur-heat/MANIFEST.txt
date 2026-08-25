@@ -1,11 +1,14 @@
 Dawnspur CFD-176 heat sitting (keel-fire + outward step) 2026-08-25
-Branch-only. Draft PR. Do not merge. Do not deploy. Do not workflow_dispatch.
-Does not replace live /dawnspur/. Live kill remains:
+Landed through the queue with David's word after the sent-back fixes (marks
+gate dropped from canWarm; guards read git blobs). CI deploys the byte-copy at
+public/dawnspur-heat/ for David's sit. Does not replace live /dawnspur/ — the
+preserved kill remains:
 
   host /dawnspur/        sha256 bdde9b50331ac89d92b25d788e491d8ab24da710d9b598e392c1f686a697ac59
   host /dawnspur/sim.js  sha256 395c18f28d5e04b524b6e70fd9c8445802a0d038bf9f8d2694e28c8ccc2d320c
-  host /build-info.json  commit 395c18f28d5e04b524b6e70fd9c8445802a0d038bf9f8d2694e28c8ccc2d320c dirty true
-                         builtAt 2026-08-24T22:09:00.134Z
+  host /build-info.json  at kill time: commit 395c18f2… dirty true, builtAt
+                         2026-08-24T22:09:00.134Z (content-hash stamp; since
+                         44e4d03 the host stamps honest git shas)
 
 This sitting lives at sit/dawnspur-heat/ so public/dawnspur and public/convoy-stop stay untouched.
 
