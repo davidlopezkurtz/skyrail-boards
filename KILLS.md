@@ -18,3 +18,20 @@ Supersession is an edit with a forward pointer, never a deletion.
 - Persisted-key rule: never delete a persisted key on a rename — leave a mirror the old build refuses.
 - Schema rule: a change must never turn a refused action into an accepted one.
 - The pass is a cold player describing strip-to-warm in any words. David plays first (design check).
+
+## Hosted era (boards.skyrailreclamation.com — hashes are content sha256s; see kills/README.md)
+- 2026-08-24 · Dawnspur · recut-4 end · index `35e6f1cd` / sim `1c6655fc` (Pages
+  deployment 89417f1e; the build-info `commit` field carries sha256(sim.js)).
+  David's sit, night: GOODS → B → HOLD → WARM, then leftover GOODS was the lit job
+  (1 mark, dest A glowing, WARM dead, LEAVE still there) — "The same place as
+  before." Not a spoken pass. Recut: the starve-or-feed beat — WARM charges
+  something that can starve (feed / strip / wait).
+  Bytes: kills/2026-08-24-dawnspur-recut4-end/. Record: Linear CFD-176.
+- 2026-08-24 · Dawnspur · starve-or-feed first cut · index `bdde9b50` / sim
+  `395c18f2` (Pages deployment 3b96c0ef, builtAt 22:09Z; STILL LIVE as the
+  preserved kill — CFD-176 forbids overwriting it until the PM quotes a new sha
+  and David sits). David's sit, 22:20Z: "Works mechanically. Feels pointless.
+  Eventually nothing runs and there are no options. Kill." Starve-or-feed not
+  visible. Recut: the signed CFD-176 beat (skyrail-boards#3,
+  docs/cfd-176-beat.md) — heat banks in the stone at dest A; the outward step is
+  what can die. Bytes: kills/2026-08-24-dawnspur-starve-or-feed/. Record: Linear CFD-176.
