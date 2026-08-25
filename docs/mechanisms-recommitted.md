@@ -144,9 +144,74 @@ this document.
 5. **The end-sentence rule stands regardless**: every terminal state says what
    happened, in the board's words.
 
-## 5. Open question for David (one)
+## 5. The question, and the PM's evidence-based proposal (awaiting David)
 
 Which canon stake does the scale sitting carry first — the run (a), the
-in-progress purchase (b), the reserve-and-storm (c), or none this sitting
-(stakes wait for the storm/venture sitting; the scale sitting is pure build)?
-Everything else above follows from the sources and needs no new ruling.
+in-progress purchase (b), the reserve-and-storm (c), or none this sitting?
+
+**Proposed answer: (d) now, (c) next — and (a) and (b) arrive INSIDE the storm
+sitting as what a storm does, never as standalone mechanics.** The evidence:
+
+1. **The scale recut ships pure build, plus the tending leg in its non-lethal
+   canon form: the visible reserve.** "Each region carries a visible reserve
+   health that over-extraction lowers and that tending runs … raise. The felt
+   choice is output now against holding the line." (MDB) On the board: repeated
+   carries draw the reserve down, visibly; a tending run — earns nothing,
+   restores reserve — is the counterplay. Nothing dies, because canonically
+   nothing does in clear weather: "A drawn-down island rides fine for years on
+   a falling reserve, in clear weather, and gives no sign." (Geology) The
+   sitting gets a real felt choice with deferred consequence — canon's exact
+   shape — and David's deepest collapse row (the triangle) starts uncollapsing:
+   profit (carry), buildout (UP), tending (the reserve run) become three claims
+   on the same train.
+2. **The storm is the NEXT sitting: the reckoning.** "The reckoning comes only
+   when a cold stretch arrives and there is nothing banked to meet it."
+   (Geology) A storm "steals its sun and chills its keel at once" (Geology) and
+   "can foul a line, threaten the cargo on it" (Core Loop) — so when the storm
+   lands, the haul in transit is at risk (that is (a)) and the in-progress
+   purchase can suffer (that is (b), "a project left mid-advance can suffer,
+   though never the holdings already secured" — Two-Games). Loss stays
+   fail-forward by rule: "costs the haul committed to it and never the home."
+3. **The storm is fair by canon — it is telegraphed.** "To see a stormbird
+   inland is to know a storm is coming in behind it" (Bestiary; "creatures as
+   instruments" is a world-wide principle) and the signal-relay beat:
+   "Light it and we can see the weather coming before it hits the convoys.
+   That's the difference between a hard run and a lost one." (Cinderbelt
+   build — and Signal Tower is one of the twelve canon buildings in the stakes
+   pack, so the board's storm-tell has a building waiting to own it.) The tell
+   precedes the event; the counterplay (tend the reserve beforehand, hold the
+   train home during) always exists.
+4. **Why not (a) alone, first:** "Raiding and loss are a soft sink, and it
+   earns its place as drama and texture rather than as the economy's regulator.
+   The regulator is the cold." (Economy) Haul-loss without the weather system
+   is drama with no canonical agent — an RNG tax on a one-train board.
+5. **Why not (b) alone, first:** the in-progress needs a pressor, and canon's
+   pressor is the cold and its weather ("The cold presses … the in-progress
+   project" while a player plays — Two-Games). Without the storm, (b) has no
+   agent either.
+6. **The sequencing instrument is the sitting discipline itself** — one system
+   per sitting has produced three passed sits; and stakes default gentle by
+   rule: "the whole intensity rides the stakes dial … defaulting gentle and
+   turned up only by a player who reaches for it." (Core Loop)
+
+David's standing sentence — able to die while something is at stake — is then
+satisfied one sitting later, by the canonical agent, announced in advance,
+with tending as the counterplay. That is cozy-with-teeth as the sources wrote
+it.
+
+## 6. How this stays read (the process fix)
+
+The failure this document corrects was not a missing source — the corpus sat in
+`docs/lore/` the whole time. It was a pipeline that never consulted it, caught
+only by David pushing back. The fix is structural, effective immediately:
+
+1. **Every beat carries a Canon check section.** Each mechanism the beat turns
+   ON or REFUSES cites the rule above (R1–R10) or the source line it rests on.
+   A beat with an uncited mechanism is refused at PM review — before David
+   ever sees it.
+2. **The PM's landing protocol gains a step**: spot-verify the beat's citations
+   against the sources themselves, the same way worker hashes are re-measured.
+3. **This document is first-read for every beat author and implementer brief**,
+   listed explicitly in the brief, alongside the exemplar beat.
+4. Supersession stays by edit: when a rule here is refined, this file changes
+   in place with the date and the reason, never a second file.
