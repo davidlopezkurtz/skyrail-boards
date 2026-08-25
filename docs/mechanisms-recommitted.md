@@ -144,7 +144,13 @@ this document.
 5. **The end-sentence rule stands regardless**: every terminal state says what
    happened, in the board's words.
 
-## 5. The question, and the PM's evidence-based proposal (awaiting David)
+## 5. The question, and the PM's evidence-based proposal — **SIGNED**
+
+**SIGNED — David, 2026-08-25: "section 5 is signed."** The staged answer below
+is the ruling: the scale recut ships pure build plus the visible reserve and
+the tending run, no deaths; the storm is the next sitting's reckoning; haul
+and in-progress stakes arrive inside the storm. The recut beat drafts from
+this section under §6's canon-check discipline.
 
 Which canon stake does the scale sitting carry first — the run (a), the
 in-progress purchase (b), the reserve-and-storm (c), or none this sitting?
