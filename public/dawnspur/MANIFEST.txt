@@ -1,8 +1,9 @@
-Dawnspur CFD-166 page-as-ship export 2026-08-24
-Live host mortal: last known https://dawnspur-spend.island-decade.workers.dev
-Source: last local ship /workspace/delivery/dawnspur-spend (GDB job-light invariant, 2026-08-24)
-Did not republish. Did not recut.
+Dawnspur CFD-176 sitting — branch only. Do not deploy.
+Live kill stays https://boards.skyrailreclamation.com/dawnspur/
+index bdde9b50… · sim 395c18f2… until PM quotes a new sha and David sits.
 
-index.html  11311  sha256:78efc96eddc34698b1c9a1a73a9189fba8ccb393860e053a88bfd9ba0150320f
-sim.js      5848  sha256:f9395d38dfceae0fbf1a5b9b4fe1160fd3a067ee5c582277c8f22909144a3f95
-  sim.js extracted from inline <script> in index.html for vault shape; wrangler deploys listed index.html as the shipped asset.
+173 lights kept: GOODS → B → HOLD → WARM.
+WARM banks heat in the stone and one step on open ground.
+Marks do not pay WARM. After return, wait. The step can go. The bank stays.
+
+Do not merge skyrail-boards#2 or #3. Do not workflow_dispatch.

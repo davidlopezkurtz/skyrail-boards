@@ -44,10 +44,15 @@
     position: absolute; left: 5%; bottom: 8%; width: 20%; height: 24%;
     background: var(--home); border-radius: 8px; pointer-events: none;
   }
+  #home.held { box-shadow: inset 0 0 0 3px var(--warm-deep); }
   #glass {
     position: absolute; left: 7%; bottom: 34%; width: 16%; height: 18%;
     background: var(--glass); border: 2px solid var(--glass-edge);
     border-radius: 4px; pointer-events: none;
+  }
+  #glass.held {
+    background: rgba(180, 168, 110, 0.3);
+    border-color: rgba(200, 180, 120, 0.55);
   }
   .dest {
     position: absolute; border: 0; padding: 0; cursor: pointer;
@@ -59,19 +64,29 @@
     left: 30%; bottom: 12%; width: 42%; height: 48%;
     background: var(--green-deep);
     box-shadow: inset 0 0 0 3px var(--green-deep);
+    z-index: 2;
   }
   #destA .fill {
     position: absolute; left: 0; right: 0; bottom: 0; height: 100%;
     background: var(--green); border-radius: 10px; pointer-events: none;
   }
   #destA.thin .fill { height: 38%; }
-  #destA.warmed { background: var(--warm-deep); box-shadow: inset 0 0 0 3px var(--warm-deep); }
-  #destA.warmed .fill { background: var(--warm); }
-  #band {
-    display: none; position: absolute; left: 8%; right: 8%; top: 18%; height: 14%;
-    background: var(--warm); border-radius: 6px; pointer-events: none; opacity: .85;
+  #bank {
+    display: none; position: absolute; left: 16%; top: 46%; width: 58%; height: 24%;
+    background: #8a7a3a;
+    border-radius: 14% 22% 12% 18%;
+    box-shadow: inset 0 -8px 0 #5c4e22, inset 10px 0 0 #6f6030;
+    pointer-events: none;
   }
-  #destA.warmed #band { display: block; }
+  #destA.banked #bank { display: block; }
+  #step {
+    position: absolute; left: 16%; bottom: 40%; width: 11%; height: 9%;
+    background: #8a7a3a; border-radius: 3px 5px 4px 3px;
+    box-shadow: inset 0 -3px 0 #5c4e22;
+    opacity: 0; pointer-events: none; z-index: 1;
+  }
+  #step.out { opacity: .92; }
+  #step.gone { opacity: 0; }
   #destB {
     left: 78%; bottom: 20%; width: 16%; height: 22%;
     background: var(--slate);
@@ -111,6 +126,10 @@
     flex: 1.05; background: var(--warm); color: #1a1608;
     box-shadow: inset 0 0 0 3px var(--warm-deep);
   }
+  button.pad.hold {
+    background: var(--pad-on); color: var(--pad-ink);
+    box-shadow: inset 0 0 0 3px #6e727a;
+  }
   button.pad.sendB {
     flex: 0.7; background: var(--slate); color: #d6d8de;
     box-shadow: inset 0 0 0 2px var(--slate-d);
@@ -126,18 +145,20 @@
   <div id="strip">
     <div id="home"></div>
     <div id="glass"></div>
-    <button type="button" class="dest" id="destA" aria-label="A"><span class="fill"></span><span id="band"></span></button>
+    <div id="step"></div>
+    <button type="button" class="dest" id="destA" aria-label="A"><span class="fill"></span><span id="bank"></span></button>
     <button type="button" class="dest" id="destB" aria-label="B"><span id="haul"></span></button>
     <div id="train"></div>
   </div>
   <div id="pads">
     <button type="button" class="pad sendA" id="goodsA">GOODS A</button>
-    <button type="button" class="pad" id="holdA">HOLD 1</button>
+    <button type="button" class="pad hold" id="holdA">HOLD 1</button>
     <button type="button" class="pad warm" id="warmA">WARM 1</button>
     <button type="button" class="pad sendB" id="sendB" disabled>B +3</button>
     <button type="button" class="pad primary" id="go" disabled>LEAVE</button>
   </div>
 </div>
+<script src="./sim.js"></script>
 <script>
 (function () {
   const destA = document.getElementById("destA");
@@ -149,26 +170,19 @@
   const train = document.getElementById("train");
   const go = document.getElementById("go");
   const hud = document.getElementById("hud");
+  const homeEl = document.getElementById("home");
+  const glassEl = document.getElementById("glass");
+  const stepEl = document.getElementById("step");
   const homeSpot = { left: 8, bottom: 11 };
+  const board = Dawnspur.createBoard({ fresh: true });
   let pick = null;
   let at = "home";
   let moving = false;
-  let marks = 0;
-  let heldA = true;
-  let warmed = false;
-  let phase = "goods";
-  let pendingPay = 0;
-  let heldAtLeave = true;
-  let pendingWarm = false;
-  let bLockedUntilWarm = false;
+  let waitT = 0;
 
   function tap(el, fn) {
-    el.addEventListener("pointerdown", (ev) => {
-      ev.preventDefault();
-      fn(ev);
-    });
+    el.addEventListener("pointerdown", (ev) => { ev.preventDefault(); fn(ev); });
   }
-
   function destSpot(el) {
     const b = document.getElementById("strip").getBoundingClientRect();
     const r = el.getBoundingClientRect();
@@ -177,35 +191,42 @@
       bottom: (b.bottom - (r.top + r.height * 0.42)) / b.height * 100
     };
   }
-
-  function canHold() { return !heldA && marks >= 1; }
-  function canGoods() { return heldA && !(heldA && marks >= 1 && !warmed); }
-  function canWarm() { return heldA && marks >= 1 && !warmed; }
-  function canB() { return marks >= 1 && !bLockedUntilWarm; }
-
-  function pickOk() {
-    return (pick === "hold" && canHold()) || (pick === "goods" && canGoods()) || (pick === "warm" && canWarm()) || (pick === "B" && canB());
+  function can(which) {
+    if (which === "goods") return board.canGoods();
+    if (which === "B") return board.canB();
+    if (which === "hold") return board.canHold();
+    if (which === "warm") return board.canWarm();
+    return false;
   }
   function paint() {
-    if (pick && !pickOk()) pick = null;
-    hud.textContent = String(marks);
-    destA.classList.toggle("thin", !heldA);
-    destA.classList.toggle("warmed", warmed);
+    if (pick && !can(pick)) pick = null;
+    hud.textContent = String(board.marks);
+    destA.classList.toggle("thin", !board.heldA);
+    destA.classList.toggle("banked", board.banked);
     destA.classList.toggle("on", !moving && at === "home" && (pick === "hold" || pick === "warm" || pick === "goods"));
     destB.classList.toggle("on", !moving && at === "home" && pick === "B");
-    destB.classList.toggle("locked", !canB());
+    destB.classList.toggle("locked", !board.canB());
+    destB.classList.toggle("has-haul", board.haul);
+    homeEl.classList.toggle("held", board.hearth === "held");
+    glassEl.classList.toggle("held", board.hearth === "held");
+    stepEl.className = board.step === "out" ? "out" : board.step === "gone" ? "gone" : "";
     goodsA.classList.toggle("on", !moving && at === "home" && pick === "goods");
     holdA.classList.toggle("on", !moving && at === "home" && pick === "hold");
     warmA.classList.toggle("on", !moving && at === "home" && pick === "warm");
     sendB.classList.toggle("on", !moving && at === "home" && pick === "B");
-    goodsA.disabled = moving || at !== "home" || !canGoods();
-    holdA.disabled = moving || at !== "home" || !canHold();
-    warmA.disabled = moving || at !== "home" || !canWarm();
-    sendB.disabled = moving || at !== "home" || !canB();
-    go.disabled = moving || (at === "home" && !pickOk());
+    goodsA.disabled = moving || at !== "home" || !board.canGoods();
+    holdA.disabled = moving || at !== "home" || !board.canHold();
+    warmA.disabled = moving || at !== "home" || !board.canWarm();
+    sendB.disabled = moving || at !== "home" || !board.canB();
+    go.disabled = moving || (at === "home" && !pick);
     go.textContent = at === "home" ? "LEAVE" : "GO";
+    if (!moving && at === "home" && board.banked && board.step === "out") {
+      if (!waitT) waitT = performance.now();
+      else if (performance.now() - waitT > 1500) { board.wait(); waitT = 0; }
+    } else {
+      waitT = 0;
+    }
   }
-
   function lerpTo(spot, done) {
     moving = true;
     paint();
@@ -223,88 +244,43 @@
     }
     requestAnimationFrame(step);
   }
-
   function setPick(which) {
     if (moving || at !== "home") return;
-    if (which === "B" && !canB()) return;
-    if (which === "hold" && !canHold()) return;
-    if (which === "goods" && !canGoods()) return;
-    if (which === "warm" && !canWarm()) return;
+    if (!can(which)) return;
     pick = which;
     paint();
   }
-
   tap(destA, () => {
-    if (canWarm()) setPick("warm");
-    else if (canHold()) setPick("hold");
-    else if (canGoods()) setPick("goods");
+    if (board.canWarm()) setPick("warm");
+    else if (board.canHold()) setPick("hold");
+    else if (board.canGoods()) setPick("goods");
   });
   tap(destB, () => setPick("B"));
   tap(goodsA, () => setPick("goods"));
   tap(holdA, () => setPick("hold"));
   tap(warmA, () => setPick("warm"));
   tap(sendB, () => setPick("B"));
-
   tap(go, () => {
     if (moving) return;
     if (at === "home") {
-      if (!pick) return;
-      if (pick === "B" && !canB()) return;
-      if (pick === "hold" && !canHold()) return;
-      if (pick === "goods" && !canGoods()) return;
-      if (pick === "warm" && !canWarm()) return;
-      heldAtLeave = heldA;
-      pendingWarm = (pick === "warm");
+      if (!pick || !can(pick)) return;
       const dest = pick === "B" ? destB : destA;
-      let jobPay = 0;
-      if (pick === "hold") {
-        marks -= 1;
-        heldA = true;
-        jobPay = 0;
-        phase = "warm";
-      } else if (pick === "goods") {
-        heldA = false;
-        jobPay = 1;
-        phase = "b";
-      } else if (pick === "warm") {
-        marks -= 1;
-        heldA = true;
-        warmed = true;
-        bLockedUntilWarm = false;
-        jobPay = 0;
-        phase = "done";
-      } else if (pick === "B") {
-        marks -= 1;
-        if (heldA) heldA = false;
-        destB.classList.add("has-haul");
-        bLockedUntilWarm = true;
-        jobPay = 3;
-        phase = "hold";
-      }
       const leaving = pick;
-      lerpTo(destSpot(dest), () => {
-        at = leaving === "B" ? "B" : "A";
-        pendingPay = jobPay;
-        pick = null;
-        paint();
-      });
+      if (leaving === "goods") board.commitGoods();
+      else if (leaving === "B") board.commitB();
+      else if (leaving === "hold") board.commitHold();
+      else if (leaving === "warm") board.commitWarm();
+      pick = null;
+      lerpTo(destSpot(dest), () => { at = leaving === "B" ? "B" : "A"; paint(); });
       return;
     }
-    lerpTo(homeSpot, () => {
-      marks += pendingPay;
-      pendingPay = 0;
-      if (pendingWarm && heldAtLeave && heldA) marks += 1;
-      pendingWarm = false;
-      at = "home";
-      pick = null;
-      paint();
-    });
+    lerpTo(homeSpot, () => { at = "home"; pick = null; paint(); });
   });
-
   train.style.left = homeSpot.left + "%";
   train.style.bottom = homeSpot.bottom + "%";
   paint();
-
+  function loop() { paint(); requestAnimationFrame(loop); }
+  requestAnimationFrame(loop);
   document.addEventListener("touchstart", function (e) {
     if (e.touches.length > 1) e.preventDefault();
   }, { passive: false });
