@@ -1,8 +1,12 @@
-Dawnspur CFD-166 page-as-ship export 2026-08-24
-Live host mortal: last known https://dawnspur-spend.island-decade.workers.dev
-Source: last local ship /workspace/delivery/dawnspur-spend (GDB job-light invariant, 2026-08-24)
-Did not republish. Did not recut.
+Dawnspur CFD-176 preserved kill, absorbed into git 2026-08-25 with David's word.
+These are the byte-exact files of the starve-or-feed first cut David killed
+2026-08-24 22:20Z ("Works mechanically. Feels pointless."), live on the host
+since 22:09Z. Absorbed so a public/** deploy is a no-op for the preserved kill
+instead of overwriting it with the older slotted board. Provenance and the
+kill record: KILLS.md and kills/2026-08-24-dawnspur-starve-or-feed/.
 
-index.html  11311  sha256:78efc96eddc34698b1c9a1a73a9189fba8ccb393860e053a88bfd9ba0150320f
-sim.js      5848  sha256:f9395d38dfceae0fbf1a5b9b4fe1160fd3a067ee5c582277c8f22909144a3f95
-  sim.js extracted from inline <script> in index.html for vault shape; wrangler deploys listed index.html as the shipped asset.
+index.html  11665  sha256:bdde9b50331ac89d92b25d788e491d8ab24da710d9b598e392c1f686a697ac59
+sim.js      3673   sha256:395c18f28d5e04b524b6e70fd9c8445802a0d038bf9f8d2694e28c8ccc2d320c
+
+Do not recut these files. The next sitting ships at a sibling path, never here,
+until David rules /dawnspur/ replaced (CFD-176).

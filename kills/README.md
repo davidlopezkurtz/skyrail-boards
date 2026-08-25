@@ -9,9 +9,12 @@ why kill evidence lives HERE and never under `public/`.
 Provenance note on the `commit` field of the archived build-info.json files:
 the CloudflareBot deploys of 2026-08-24 stamped `commit` with the sha256 of the
 build's own `sim.js`, not a git sha — measured, not assumed: in both archives
-sha256(sim.js) equals the build-info `commit` byte-for-byte. Neither build's
-bytes exist at any commit on any branch of this repository; these captures are
-the only durable copy (storage doctrine, 2026-08-25).
+sha256(sim.js) equals the build-info `commit` byte-for-byte. At capture time
+neither build's bytes existed at any commit on any branch; these captures were
+the only durable copy (storage doctrine, 2026-08-25). Later the same day, with
+David's word, the starve-or-feed files were absorbed byte-exact into
+`public/dawnspur/` so a `public/**` deploy is a no-op for the preserved kill —
+this archive remains the provenance record.
 
 ## 2026-08-24-dawnspur-recut4-end — Pages deployment 89417f1e
 

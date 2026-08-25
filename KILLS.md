@@ -35,3 +35,6 @@ Supersession is an edit with a forward pointer, never a deletion.
   visible. Recut: the signed CFD-176 beat (skyrail-boards#3,
   docs/cfd-176-beat.md) — heat banks in the stone at dest A; the outward step is
   what can die. Bytes: kills/2026-08-24-dawnspur-starve-or-feed/. Record: Linear CFD-176.
+  2026-08-25, David's word: the kill bytes were absorbed byte-exact into
+  public/dawnspur/, so deploys no longer threaten the preserved kill; the next
+  sitting ships at a sibling path until David rules /dawnspur/ replaced.
