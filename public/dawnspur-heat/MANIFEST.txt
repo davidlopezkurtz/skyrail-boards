@@ -1,5 +1,5 @@
 Dawnspur CFD-176 heat sitting, staged for David's sit. /dawnspur/ remains the preserved kill.
 
-index.html      sha256:cedf765c822e93fda61796bce14905bda7f1adbd2fd97ee4ae2051ea9e902228
+index.html      sha256:f78697a2dba3444f1038cd42c76bd53bc42bd32beb31be5fd2258bf83f6bddc6
 sim.js          sha256:292d66454d826cb22e36570b242f00bd0a0315e4391a764cfbc13d54ed6de06b
 greenhouse.png  sha256:7fdf746844ec7efa6e7f4c515845362188268392f934e1453a3e82197af1e74f

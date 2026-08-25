@@ -1,12 +1,12 @@
 Dawnspur CFD-176 heat sitting (keel-fire + outward step) 2026-08-25
 Landed through the queue with David's word after the sent-back fixes (marks
 gate dropped from canWarm; guards read git blobs). CI deploys the byte-copy at
-public/dawnspur-heat/ for David's sit. Does not replace live /dawnspur/ — the
+public/dawnspur-heat/ for David's sit. Does not replace live /dawnspur/ ??? the
 preserved kill remains:
 
   host /dawnspur/        sha256 bdde9b50331ac89d92b25d788e491d8ab24da710d9b598e392c1f686a697ac59
   host /dawnspur/sim.js  sha256 395c18f28d5e04b524b6e70fd9c8445802a0d038bf9f8d2694e28c8ccc2d320c
-  host /build-info.json  at kill time: commit 395c18f2… dirty true, builtAt
+  host /build-info.json  at kill time: commit 395c18f2??? dirty true, builtAt
                          2026-08-24T22:09:00.134Z (content-hash stamp; since
                          44e4d03 the host stamps honest git shas)
 
@@ -16,6 +16,6 @@ CFD-175 first board rung: WARM's visible step is the greenhouse sprite. The
 asset is MATTED/greenhouse.png from skyrail-r2-masters @ 1c844c2 (512px RGBA,
 alpha-bled), byte-verified against the masters hash before shipping.
 
-index.html      sha256:cedf765c822e93fda61796bce14905bda7f1adbd2fd97ee4ae2051ea9e902228
+index.html      sha256:f78697a2dba3444f1038cd42c76bd53bc42bd32beb31be5fd2258bf83f6bddc6
 sim.js          sha256:292d66454d826cb22e36570b242f00bd0a0315e4391a764cfbc13d54ed6de06b
 greenhouse.png  sha256:7fdf746844ec7efa6e7f4c515845362188268392f934e1453a3e82197af1e74f
