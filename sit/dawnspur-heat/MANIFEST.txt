@@ -12,5 +12,5 @@ preserved kill remains:
 
 This sitting lives at sit/dawnspur-heat/ so public/dawnspur and public/convoy-stop stay untouched.
 
-index.html  sha256:b6e815c0b6aefc8d36331a6c9c81a61348f1d1959980a81e4ba0e17f479b9aa8
+index.html  sha256:86d3c93845a830b8e4cf6b6f912abca0a069aa0f9fb660241c6f5d3182a30490
 sim.js      sha256:292d66454d826cb22e36570b242f00bd0a0315e4391a764cfbc13d54ed6de06b

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no">
-<title>Dawnspur</title>
+<title>Dawnspur Halt</title>
 <style>
   :root {
     --bg: #1a1b1e;
@@ -144,17 +144,17 @@
     <div id="home"></div>
     <div id="glass"></div>
     <div id="step"></div>
-    <button type="button" class="dest" id="destA" aria-label="A"><span class="fill"></span><span id="bank"></span></button>
-    <button type="button" class="dest" id="destB" aria-label="B"><span id="haul"></span></button>
+    <button type="button" class="dest" id="destA" aria-label="Greenhouse District"><span class="fill"></span><span id="bank"></span></button>
+    <button type="button" class="dest" id="destB" aria-label="Mosswake Loop"><span id="haul"></span></button>
     <div id="train"></div>
   </div>
   <div id="heat-row">
-    <button type="button" class="pad warm" id="warmA">WARM</button>
+    <button type="button" class="pad warm" id="warmA">WARM THE TERRACE</button>
   </div>
   <div id="pads">
-    <button type="button" class="pad sendA" id="goodsA">GOODS A</button>
-    <button type="button" class="pad sendB" id="sendB" disabled>B +3</button>
-    <button type="button" class="pad hold" id="holdA">HOLD 1</button>
+    <button type="button" class="pad sendA" id="goodsA">CARRY FOOD</button>
+    <button type="button" class="pad sendB" id="sendB" disabled>MOSSWAKE +3</button>
+    <button type="button" class="pad hold" id="holdA">REPAIR 1</button>
     <button type="button" class="pad primary" id="go" disabled>LEAVE</button>
   </div>
 </div>
@@ -198,7 +198,7 @@
   }
   function paint() {
     if (pick && !can(pick)) pick = null;
-    hud.textContent = String(board.marks);
+    hud.textContent = String(board.marks) + " marks";
     destA.classList.toggle("thin", !board.heldA);
     destA.classList.toggle("banked", board.banked);
     destA.classList.toggle("on", !moving && at === "home" && (pick === "hold" || pick === "warm" || pick === "goods"));

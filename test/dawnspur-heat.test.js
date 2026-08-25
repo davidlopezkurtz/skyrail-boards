@@ -252,3 +252,29 @@ test("keel-fire is a banked mass in dest A; step sits off A", () => {
   assert.doesNotMatch(SIT_HTML, /id="core"/);
   assert.doesNotMatch(SIT_HTML, /dest-quad/);
 });
+
+test("CFD-174 stakes dressing: canon nouns on the board, placeholders gone", () => {
+  // Every noun below is from the stakes pack (skyrail-stakes-pack-2026-08-24,
+  // data/skyrail-stakes.json): routes[dawnspur-halt].name, routes[mosswake-loop].name,
+  // buildings[greenhouse].name; "CARRY" from contracts[first-run].title
+  // ("Carry Herbs from Mosswake Loop"), "food" from resources / greenhouse unlocks,
+  // "terrace" from the greenhouse description ("restored sunlit terraces") and
+  // routes[dawnspur-halt].island ("Verdant terrace"), "marks" from resources /
+  // economyConfig.currencyType. The played numbers (+3, 1) stay exactly — no
+  // economyConfig number may replace them without a new play.
+  assert.match(SIT_HTML, /<title>Dawnspur Halt<\/title>/);
+  assert.match(SIT_HTML, /aria-label="Greenhouse District"/);
+  assert.match(SIT_HTML, /aria-label="Mosswake Loop"/);
+  assert.match(SIT_HTML, />CARRY FOOD</);
+  assert.match(SIT_HTML, />MOSSWAKE \+3</);
+  assert.match(SIT_HTML, />REPAIR 1</);
+  assert.match(SIT_HTML, />WARM THE TERRACE</);
+  assert.match(SIT_HTML, /String\(board\.marks\) \+ " marks"/);
+  // The placeholder strings are gone.
+  assert.doesNotMatch(SIT_HTML, /GOODS A/);
+  assert.doesNotMatch(SIT_HTML, /B \+3/);
+  assert.doesNotMatch(SIT_HTML, /HOLD 1/);
+  assert.doesNotMatch(SIT_HTML, /aria-label="A"/);
+  assert.doesNotMatch(SIT_HTML, /aria-label="B"/);
+  assert.doesNotMatch(SIT_HTML, />WARM</);
+});
