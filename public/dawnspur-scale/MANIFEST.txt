@@ -1,0 +1,28 @@
+Dawnspur CFD-183 scale sitting (the rooted greenhouse climbs) 2026-08-25
+Spec: docs/cfd-183-beat.md — the signed beat (David, 2026-08-25; marks price
+UP is ruled legal). The heat sitting's step has rooted: greenhouse at level 1
+of 4 on the terrace off A. One new verb, SCALE, in the HUD: UP at 3/4/5 marks,
+spent on the spot, never refunded. DOWN is the world's hand at the wait — on
+wrecked ground the greenhouse steps down one level; from level 1, down is
+dead; fallen or topped, the sitting stops. The civic loop runs as played
+(CARRY FOOD pays the level, MOSSWAKE +3 once per wreck, REPAIR 1). The
+keel-fire bank and hearth stand from the heat sitting as scenery only.
+
+Lives at sit/dawnspur-scale/ with byte-copies at public/dawnspur-scale/ so
+public/dawnspur (preserved kill), public/dawnspur-heat (live heat sitting) and
+public/convoy-stop stay untouched:
+
+  live /dawnspur-heat/ build c887359 / index cedf765c / sim 292d6645 / greenhouse 7fdf7468
+  kill /dawnspur/      index bdde9b50 / sim 395c18f2
+
+greenhouse.png is byte-copied from sit/dawnspur-heat/ — MATTED/greenhouse.png
+from skyrail-r2-masters @ 1c844c2 (512px RGBA, alpha-bled), same masters hash.
+Per-level sprite cuts are CFD-175's later business; the v1 read is a CSS width
+step per level, and dying removes the sprite.
+
+These hashes are graded by test/dawnspur-scale.test.js against the bytes on
+disk (.gitattributes `* -text` makes the checkout the shipped bytes):
+
+index.html      sha256:d6d5e262717395477dff30bd6168d2bfcf29b078b778bbf520bcd23a058de75c
+sim.js          sha256:8f13c6838fc1edd3802acbae9338a270d77375e2a09f5a3578d9308dcfb7dac2
+greenhouse.png  sha256:7fdf746844ec7efa6e7f4c515845362188268392f934e1453a3e82197af1e74f
