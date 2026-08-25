@@ -53,6 +53,34 @@ test("deploy copy public/dawnspur-heat is byte-identical to sit/dawnspur-heat", 
   const norm = (p) => fs.readFileSync(path.join(ROOT, p), "utf8").replace(/\r\n/g, "\n");
   assert.equal(sha256(norm("public/dawnspur-heat/index.html")), sha256(norm("sit/dawnspur-heat/index.html")));
   assert.equal(sha256(norm("public/dawnspur-heat/sim.js")), sha256(norm("sit/dawnspur-heat/sim.js")));
+  // The asset is binary: raw bytes, no normalization — git does not touch PNGs.
+  const raw = (p) => fs.readFileSync(path.join(ROOT, p));
+  assert.equal(sha256(raw("public/dawnspur-heat/greenhouse.png")), sha256(raw("sit/dawnspur-heat/greenhouse.png")));
+});
+
+test("CFD-175: greenhouse asset ships in both copies, pinned to the masters hash", () => {
+  // MATTED/greenhouse.png from skyrail-r2-masters @ 1c844c2 (512px RGBA,
+  // alpha-bled). The pin is the download-side verification made permanent:
+  // a re-export or re-copy that changes a byte goes red here, not on David's phone.
+  const MASTERS_GREENHOUSE = "7fdf746844ec7efa6e7f4c515845362188268392f934e1453a3e82197af1e74f";
+  const sit = fs.readFileSync(path.join(ROOT, "sit/dawnspur-heat/greenhouse.png"));
+  const pub = fs.readFileSync(path.join(ROOT, "public/dawnspur-heat/greenhouse.png"));
+  assert.equal(sha256(sit), MASTERS_GREENHOUSE);
+  assert.equal(sha256(pub), MASTERS_GREENHOUSE);
+});
+
+test("CFD-175: WARM's visible step is the greenhouse sprite, not a bare rectangle", () => {
+  // Source-shape: the #step rule carries the sprite and no longer the flat
+  // gold fill David read as "grey". The state machine around it is untouched —
+  // hidden until WARM, .out shows it, .gone resolves it.
+  const rule = SIT_HTML.match(/#step \{[^}]*\}/);
+  assert.ok(rule, "#step rule exists");
+  assert.match(rule[0], /url\(\.\/greenhouse\.png\)/, "#step renders the greenhouse sprite");
+  assert.doesNotMatch(rule[0], /#8a7a3a/, "#step no longer carries the bare gold fill");
+  assert.match(SIT_HTML, /#step\.out \{ opacity: \.92; \}/, ".out still shows the step");
+  assert.match(SIT_HTML, /#step\.gone \{ opacity: 0; \}/, ".gone still resolves the step");
+  assert.match(SIT_HTML, /board\.step === "out" \? "out" : board\.step === "gone" \? "gone" : ""/,
+    "paint() still drives #step from board.step");
 });
 
 test("pin live sit (host kill; do not overwrite)", () => {
