@@ -17,7 +17,10 @@ Supersession is an edit with a forward pointer, never a deletion.
 - First unpause commits, before any new verb: assert marks ≥ 1 lights a job; assert one B per wreck.
 - Persisted-key rule: never delete a persisted key on a rename — leave a mirror the old build refuses.
 - Schema rule: a change must never turn a refused action into an accepted one.
-- The pass is a cold player describing strip-to-warm in any words. David plays first (design check).
+- ~~The pass is a cold player describing strip-to-warm in any words. David plays first (design check).~~
+  **RETIRED 2026-08-25, David's word** ("the cold player pass is pointless at this point"):
+  David's sit is the gate. The stranger prohibition lifts with it; no gate in front of the
+  boards for now. Recorded on CFD-176; PLAN §4a carries the same edit.
 
 ## Hosted era (boards.skyrailreclamation.com — hashes are content sha256s; see kills/README.md)
 - 2026-08-24 · Dawnspur · recut-4 end · index `35e6f1cd` / sim `1c6655fc` (Pages
