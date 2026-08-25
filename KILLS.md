@@ -23,6 +23,15 @@ Supersession is an edit with a forward pointer, never a deletion.
   boards for now. Recorded on CFD-176; PLAN §4a carries the same edit.
 
 ## Hosted era (boards.skyrailreclamation.com — hashes are content sha256s; see kills/README.md)
+- 2026-08-25 · Dawnspur scale sitting · build `5fabe7c` / index `d6d5e262` / sim
+  `8f13c683` (bytes durable in git and deployment `c2e92c0a` — no byte archive
+  needed, unlike the pre-git kills above). David's sit, verbatim: "it broke
+  needs ta review." Reproduced: CARRY → idle 1.5s → the greenhouse died and the
+  board went dark — decay-on-idle at the home, the treadmill canon refuses.
+  Recut: the canon recommitment (`docs/mechanisms-recommitted.md`, David's
+  collapse table verified 8/8, §5 signed) and the canon-checked recut beat
+  (`docs/cfd-183-beat.md`, signed) — pure build + visible reserve + tending
+  run, no deaths; the storm is the next sitting's reckoning.
 - 2026-08-24 · Dawnspur · recut-4 end · index `35e6f1cd` / sim `1c6655fc` (Pages
   deployment 89417f1e; the build-info `commit` field carries sha256(sim.js)).
   David's sit, night: GOODS → B → HOLD → WARM, then leftover GOODS was the lit job

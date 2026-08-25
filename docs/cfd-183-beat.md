@@ -5,7 +5,12 @@ Recut of the superseded beat below, drafted from `docs/mechanisms-recommitted.md
 beat's convictions stand: no world's-hand DOWN, no level-1 death, no session
 meter. Its survivors carry forward: marks-priced UP 3/4/5, the ladder 1..4,
 yield +1..+4, the HUD as the build surface, the DOWN-button refusal, the CFD-145
-no-refund rule. Card: CFD-183. Awaiting David's signature.
+no-refund rule. Card: CFD-183.
+
+**SIGNED — David, 2026-08-25: "signed - proceed with the implementer."** The
+implementer builds from this text; the kill list is the red-first test spec;
+the recut ships at `/dawnspur-scale/`, replacing the convicted board (whose
+bytes stay durable in git at `5fabe7c` and in its immutable deployment).
 
 ## Named reading — "gives no sign" against the visible reserve
 
