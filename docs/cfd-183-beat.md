@@ -1,5 +1,15 @@
 # The scale sitting — first-cut beat
 
+> **SUPERSEDED IN PLACE, 2026-08-25, same day it was signed.** David's sit broke
+> on the sitting this beat specified, and his direction to recommit to the
+> source docs produced `docs/mechanisms-recommitted.md`, which convicts this
+> beat's core: DOWN-as-the-world's-hand on held ground is the upkeep treadmill
+> the economy doc refuses by name ("tended ground does not decay"), applied to
+> the home the teeth never reach, on the session meter the geology doc says a
+> quiet stone is not. What survives: marks-priced UP, the level ladder, the
+> yield-per-level read, the HUD line. The recut beat follows David's answer to
+> the recommitment doc's one open question. This text stays as the record.
+
 **SIGNED — David, 2026-08-25: "the beat is approved, marks pricing UP is fine."**
 Card: CFD-183. The open question below is RULED by that signature: "WARM spends
 a mark" means heat is not money; a building level is a purchase, and marks
