@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Dawnspur</title>
+<style>
+  :root {
+    --bg: #1a1b1e;
+    --strip: #24262b;
+    --ink: #ececec;
+    --pad: #3a3d45;
+    --pad-on: #d8d8d8;
+    --pad-ink: #111;
+    --sel: #f2f2f2;
+    --green: #4f7a4a;
+    --green-deep: #355533;
+    --warm: #8a7a3a;
+    --warm-deep: #5c4e22;
+    --slate: #6a6e78;
+    --slate-d: #4c5058;
+    --train: #9a9da4;
+    --train-d: #6e7178;
+    --glass: rgba(170, 210, 200, 0.26);
+    --glass-edge: rgba(210, 230, 220, 0.5);
+    --home: #3d3a36;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+  html { touch-action: manipulation; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink);
+    font-family: ui-sans-serif, system-ui, sans-serif; user-select: none; overflow: hidden; }
+  body { display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+    min-height: 100dvh; padding: env(safe-area-inset-top) 10px env(safe-area-inset-bottom); }
+  #app { width: min(440px, 100%); flex: 1; display: flex; flex-direction: column; gap: 8px; padding: 4px 0 10px; min-height: 0; }
+  #hud {
+    flex-shrink: 0; min-height: 22px; text-align: right; font-size: 18px; font-weight: 700;
+    letter-spacing: .06em; color: var(--ink); padding: 0 4px;
+  }
+  #strip {
+    position: relative; flex: 1; min-height: 0; background: var(--strip);
+    border-radius: 10px; overflow: hidden;
+  }
+  #home {
+    position: absolute; left: 5%; bottom: 8%; width: 20%; height: 24%;
+    background: var(--home); border-radius: 8px; pointer-events: none;
+  }
+  #glass {
+    position: absolute; left: 7%; bottom: 34%; width: 16%; height: 18%;
+    background: var(--glass); border: 2px solid var(--glass-edge);
+    border-radius: 4px; pointer-events: none;
+  }
+  .dest {
+    position: absolute; border: 0; padding: 0; cursor: pointer;
+    border-radius: 10px; outline: none;
+    touch-action: manipulation;
+  }
+  .dest.on { outline: 3px solid var(--sel); outline-offset: 3px; }
+  #destA {
+    left: 30%; bottom: 12%; width: 42%; height: 48%;
+    background: var(--green-deep);
+    box-shadow: inset 0 0 0 3px var(--green-deep);
+    z-index: 2;
+  }
+  #destA .fill {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 100%;
+    background: var(--green); border-radius: 10px; pointer-events: none;
+  }
+  #destA.thin .fill { height: 38%; }
+  #bank {
+    display: none; position: absolute; left: 20%; top: 40%; width: 48%; height: 36%;
+    background: #8a7a3a;
+    border-radius: 44% 36% 50% 40%;
+    box-shadow: inset 0 -12px 0 #5c4e22, inset 6px 4px 0 rgba(92, 78, 34, 0.45);
+    pointer-events: none;
+  }
+  #destA.banked #bank { display: block; }
+  #step {
+    position: absolute; left: 17%; bottom: 36%; width: 11%; height: 9%;
+    background: #8a7a3a; border-radius: 4px 6px 3px 5px;
+    box-shadow: inset 0 -3px 0 #5c4e22;
+    opacity: 0; pointer-events: none; z-index: 1;
+    transition: opacity .7s ease;
+  }
+  #step.out { opacity: .92; }
+  #step.gone { opacity: 0; }
+  #destB {
+    left: 78%; bottom: 20%; width: 16%; height: 22%;
+    background: var(--slate);
+    box-shadow: inset 0 0 0 2px var(--slate-d);
+  }
+  #destB.locked {
+    opacity: .34;
+    cursor: default;
+    box-shadow: inset 0 0 0 3px #2a2c31;
+  }
+  #haul {
+    position: absolute; left: 28%; top: 18%; width: 44%; height: 28%;
+    background: #c4a15a; border-radius: 3px;
+    box-shadow: inset 0 -3px 0 #8a7038;
+    display: none; pointer-events: none;
+  }
+  #destB.has-haul #haul { display: block; }
+  #train {
+    position: absolute; left: 8%; bottom: 11%; width: 14%; height: 10%;
+    background: var(--train); border-radius: 5px;
+    box-shadow: inset 0 -4px 0 var(--train-d);
+    pointer-events: none; z-index: 3;
+  }
+  #heat-row { display: flex; gap: 6px; min-height: 64px; flex-shrink: 0; align-items: stretch; }
+  #pads { display: flex; gap: 6px; min-height: 76px; flex-wrap: nowrap; flex-shrink: 0; align-items: stretch; }
+  button.pad {
+    border: 0; border-radius: 12px; background: var(--pad); color: var(--ink);
+    font-size: 13px; font-weight: 700; letter-spacing: .03em;
+    min-height: 64px; min-width: 0; flex: 1;
+    touch-action: manipulation;
+  }
+  #pads button.pad { min-height: 76px; }
+  button.pad.primary { background: var(--pad-on); color: var(--pad-ink); flex: 1.1; }
+  button.pad.sendA {
+    flex: 1.15; background: var(--green); color: #e8f0e6;
+    box-shadow: inset 0 0 0 3px var(--green-deep);
+  }
+  button.pad.warm {
+    flex: 1; background: var(--warm); color: #1a1608;
+    box-shadow: inset 0 0 0 3px var(--warm-deep);
+  }
+  button.pad.hold {
+    background: var(--pad-on); color: var(--pad-ink);
+    box-shadow: inset 0 0 0 3px #6e727a;
+  }
+  button.pad.sendB {
+    flex: 0.7; background: var(--slate); color: #d6d8de;
+    box-shadow: inset 0 0 0 2px var(--slate-d);
+  }
+  button.pad.on { outline: 3px solid var(--sel); outline-offset: 3px; }
+  button.pad:disabled { opacity: .28; }
+  button.pad:active:not(:disabled) { filter: brightness(1.12); }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="hud">0</div>
+  <div id="strip">
+    <div id="home"></div>
+    <div id="glass"></div>
+    <div id="step"></div>
+    <button type="button" class="dest" id="destA" aria-label="A"><span class="fill"></span><span id="bank"></span></button>
+    <button type="button" class="dest" id="destB" aria-label="B"><span id="haul"></span></button>
+    <div id="train"></div>
+  </div>
+  <div id="heat-row">
+    <button type="button" class="pad warm" id="warmA">WARM</button>
+  </div>
+  <div id="pads">
+    <button type="button" class="pad sendA" id="goodsA">GOODS A</button>
+    <button type="button" class="pad sendB" id="sendB" disabled>B +3</button>
+    <button type="button" class="pad hold" id="holdA">HOLD 1</button>
+    <button type="button" class="pad primary" id="go" disabled>LEAVE</button>
+  </div>
+</div>
+<script src="./sim.js"></script>
+<script>
+(function () {
+  const destA = document.getElementById("destA");
+  const destB = document.getElementById("destB");
+  const goodsA = document.getElementById("goodsA");
+  const holdA = document.getElementById("holdA");
+  const warmA = document.getElementById("warmA");
+  const sendB = document.getElementById("sendB");
+  const train = document.getElementById("train");
+  const go = document.getElementById("go");
+  const hud = document.getElementById("hud");
+  const stepEl = document.getElementById("step");
+  const homeSpot = { left: 8, bottom: 11 };
+  const board = Dawnspur.createBoard({ fresh: true });
+  let pick = null;
+  let at = "home";
+  let moving = false;
+  let waitT = 0;
+
+  function tap(el, fn) {
+    el.addEventListener("pointerdown", (ev) => { ev.preventDefault(); fn(ev); });
+  }
+  function destSpot(el) {
+    const b = document.getElementById("strip").getBoundingClientRect();
+    const r = el.getBoundingClientRect();
+    return {
+      left: ((r.left + r.width * 0.5) - b.left) / b.width * 100 - 7,
+      bottom: (b.bottom - (r.top + r.height * 0.42)) / b.height * 100
+    };
+  }
+  function can(which) {
+    if (which === "goods") return board.canGoods();
+    if (which === "B") return board.canB();
+    if (which === "hold") return board.canHold();
+    if (which === "warm") return board.canWarm();
+    return false;
+  }
+  function paint() {
+    if (pick && !can(pick)) pick = null;
+    hud.textContent = String(board.marks);
+    destA.classList.toggle("thin", !board.heldA);
+    destA.classList.toggle("banked", board.banked);
+    destA.classList.toggle("on", !moving && at === "home" && (pick === "hold" || pick === "warm" || pick === "goods"));
+    destB.classList.toggle("on", !moving && at === "home" && pick === "B");
+    destB.classList.toggle("locked", !board.canB());
+    destB.classList.toggle("has-haul", board.haul);
+    stepEl.className = board.step === "out" ? "out" : board.step === "gone" ? "gone" : "";
+    goodsA.classList.toggle("on", !moving && at === "home" && pick === "goods");
+    holdA.classList.toggle("on", !moving && at === "home" && pick === "hold");
+    warmA.classList.toggle("on", !moving && at === "home" && pick === "warm");
+    sendB.classList.toggle("on", !moving && at === "home" && pick === "B");
+    goodsA.disabled = moving || at !== "home" || !board.canGoods();
+    holdA.disabled = moving || at !== "home" || !board.canHold();
+    warmA.disabled = moving || at !== "home" || !board.canWarm();
+    sendB.disabled = moving || at !== "home" || !board.canB();
+    go.disabled = moving || (at === "home" && !pick);
+    go.textContent = at === "home" ? "LEAVE" : "GO";
+    if (!moving && at === "home" && board.banked && board.step === "out") {
+      if (!waitT) waitT = performance.now();
+      else if (performance.now() - waitT > 1500) { board.wait(); waitT = 0; }
+    } else {
+      waitT = 0;
+    }
+  }
+  function lerpTo(spot, done) {
+    moving = true;
+    paint();
+    const x0 = parseFloat(train.style.left) || homeSpot.left;
+    const y0 = parseFloat(train.style.bottom) || homeSpot.bottom;
+    const t0 = performance.now();
+    const dur = 1100;
+    function step(now) {
+      const k = Math.min(1, (now - t0) / dur);
+      const e = k * k * (3 - 2 * k);
+      train.style.left = (x0 + (spot.left - x0) * e) + "%";
+      train.style.bottom = (y0 + (spot.bottom - y0) * e) + "%";
+      if (k < 1) requestAnimationFrame(step);
+      else { moving = false; done(); }
+    }
+    requestAnimationFrame(step);
+  }
+  function setPick(which) {
+    if (moving || at !== "home") return;
+    if (!can(which)) return;
+    pick = which;
+    paint();
+  }
+  tap(destA, () => {
+    if (board.canWarm()) setPick("warm");
+    else if (board.canHold()) setPick("hold");
+    else if (board.canGoods()) setPick("goods");
+  });
+  tap(destB, () => setPick("B"));
+  tap(goodsA, () => setPick("goods"));
+  tap(holdA, () => setPick("hold"));
+  tap(warmA, () => setPick("warm"));
+  tap(sendB, () => setPick("B"));
+  tap(go, () => {
+    if (moving) return;
+    if (at === "home") {
+      if (!pick || !can(pick)) return;
+      const dest = pick === "B" ? destB : destA;
+      const leaving = pick;
+      if (leaving === "goods") board.commitGoods();
+      else if (leaving === "B") board.commitB();
+      else if (leaving === "hold") board.commitHold();
+      else if (leaving === "warm") board.commitWarm();
+      pick = null;
+      lerpTo(destSpot(dest), () => { at = leaving === "B" ? "B" : "A"; paint(); });
+      return;
+    }
+    lerpTo(homeSpot, () => { at = "home"; pick = null; paint(); });
+  });
+  train.style.left = homeSpot.left + "%";
+  train.style.bottom = homeSpot.bottom + "%";
+  paint();
+  function loop() { paint(); requestAnimationFrame(loop); }
+  requestAnimationFrame(loop);
+  document.addEventListener("touchstart", function (e) {
+    if (e.touches.length > 1) e.preventDefault();
+  }, { passive: false });
+  let lastTouch = 0;
+  document.addEventListener("touchend", function (e) {
+    const now = Date.now();
+    if (now - lastTouch <= 350) e.preventDefault();
+    lastTouch = now;
+  }, { passive: false });
+})();
+</script>
+</body>
+</html>
