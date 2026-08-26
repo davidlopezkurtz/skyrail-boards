@@ -457,3 +457,251 @@ Cloud Basin's pay so the summit out-earns the spine. The JSON's ladder pays
 risk in goods-mix and unlocks, not marks expectation; dressing the summit as
 the best business would be a deviation taken for feel and disguised as
 tuning. The summit is the stop, and that is enough reason to run it.
+
+---
+
+# Amendment 1 — the opening float, the charter condition, and the muster ladder
+
+**RULED — David, 2026-08-26.** All five open questions answered; his answers are
+recorded verbatim in "The rulings" below and are folded into every section.
+Design measured by a seven-agent pass (three lenses, three refuters, one
+synthesis) at `ed7f49d`; sixteen published claims were discarded on
+re-measurement, five of them the PM's own.
+
+**Origin.** David's two sittings of the shipped board, 2026-08-26, and his
+direction after the second: *"I think that we hsould have resources above 0
+marks 0 wardens and then the task maybe has a slider which can slide up to the
+max number of wardens you can afford to recruit and then clicking on it is
+confirming that you recruit that many."*
+
+## The measured cause this amendment answers
+
+Sitting 1 reconstructs exactly on the shipped sim — halt / Mosswake / Cloud,
+all won, ending at 36 marks — and at David's second and third decisions the
+desk held **10** and **22** marks with `canMuster()` **true**: a full-contrast,
+maximally affordable control, walked past twice. The
+`#muster:disabled { opacity: .3 }` rule covers only the first of three misses.
+What is common to all three is size: `#muster` is `min-height: 34px` against
+`button.card` 52px and `button.pad` 76px — the only control on the board under
+the 44px touch floor.
+
+**The affordability change is David's ask; the size change is the measured fix,
+and they are not the same change.** Both ship here, and the amendment says so
+rather than letting the float take credit for the control.
+
+## Does — what changes
+
+- **The desk opens with 3 marks.** Lit at the opening: `dawnspur-halt` and
+  `mosswake-loop`. Cloud Basin is dark — its stake is 4. `canMuster()` is true,
+  reach 1. The cards quote **68 / 64 / 51**, the beat's published bare row,
+  unchanged.
+- **The Chartered Line carries a charter condition.** Cloud Basin takes a send
+  only once the desk has banked a cargo. It stays on the map, keeps its card,
+  keeps its percent, and names its condition in the board's words. This is the
+  shipped board's own law promoted from a price to a rule: at 0 and at 3 marks
+  it never binds and the arithmetic is bit-identical to today's.
+- **MUSTER becomes a ladder of four berths and takes a count.** Berth *k* means
+  *roster = k*. Filled berths are the record; reachable berths are what the
+  marks can reach; the rest are dark. One press-and-release recruits up to the
+  berth chosen, at 3 marks each, with the total stated on the control's face
+  before the commit. Price per Warden, cap, permanence and the crew's law are
+  unchanged.
+- **The route cards re-quote live while a berth is armed** (ruled). See Sees for
+  the constraint that keeps this from becoming a second instrument.
+- **The roster still never leaves. Nothing refunds. Nothing un-recruits.** The
+  ladder's left edge is the past.
+
+## Sees
+
+The ladder is a 68px block on the desk's own furniture ground (`--strip` with a
+`--card-edge` ring, deliberately not the card ground) between the marks line and
+the routes, because it is what converts one into the other. Row 1 carries
+`MUSTER` and the roster on the left and the price on the right, **always at full
+contrast, whether or not it can be paid** — a control that fades when it cannot
+be used reads as chrome; a control that shows you the price you cannot yet pay
+reads as an instruction. Row 2 carries four 44px berths: held berths in the
+board's held-green, reachable berths in the pad's resting ground, the rest in
+the unlit card's treatment. While a finger is down, the berths under it take the
+pad's bright primary fill and the price figure is **replaced** by the total —
+never joined by it. That fill exists only while the finger is down.
+
+**The armed re-quote, and the rule that makes it safe.** While a berth is armed
+the route cards show the chance for the armed roster, so David's signed sentence
+— "every card's quote moves while you watch" — is literally true during the
+drag. Two constraints, both testable, because a conditional percent sits one
+step from the Kill line about stated-versus-rolled:
+
+1. **The armed percent dies with the gesture that showed it.** Release
+   elsewhere, `pointercancel`, or any path that does not commit returns every
+   card to the committed roster's percent in the same frame. No armed percent
+   survives the finger lifting.
+2. **It is typed differently from a committed percent** — the board must make it
+   visibly provisional, so a player can never read a conditional number as the
+   number the die will be thrown against. At rest and while away, every card
+   shows only `chanceFor(baseRisk, roster)`.
+
+While the roster rides and at the stop, the whole block dims to the unlit
+treatment with the held berths still green underneath, so the away state reads
+*these four rode*. The HUD keeps its one line: marks.
+
+## The numbers, and where each one comes from
+
+- **Opening float 3 — new-play, flagged, not dressed as a citation**, in the
+  same class as provisions 0/2/3 and the roster cap 4. Argued: 3 is the largest
+  opening at which the first frame is a fork rather than a list — a Warden (3)
+  *or* a Mosswake send (2), never both. At 6 the player affords 5 of 6 and buys
+  both.
+- **The float is a named constant and the suite drives every level.** David:
+  "we can test it at each different level if wanted so we can see what it is
+  like to play when at zero or later when there is a baseline amount of assets
+  floating around, but if we pick one 3 works." `createBoard({ marks: n })`
+  takes an opening balance for the suite, 3 is the shipped default, and the
+  P(stop) table below is asserted at 0, 3, 6 and 12 so a future change of mind
+  costs one number and no re-analysis. **No player-facing surface sets it.**
+- **Measured effect of the float, exact DP over this board's own transition
+  rules, optimal play, musters free:** P(stop within *k* runs) moves from
+  0.00 / 39.58 / 64.34 / 77.83 / 86.17 (shipped) to
+  **0.00 / 44.25 / 69.41 / 82.21 / 89.25**. The whole cost is +4.67 points on
+  the two-run stop.
+- **The charter condition costs nothing here and everything where it is
+  needed.** With it in force the rows above are unchanged at 0 and 3 marks; a
+  one-run stop is 0.00% at 3, 6, 12, 16 and 24 marks, by construction. Without
+  it, an opening of 4 gives a **51.0%** one-click sitting, and an opening of 16
+  under a full ladder gives **65.4%** — muster x4 costs 12 and leaves exactly
+  the Chartered stake.
+- **The float is minted, and 3 / 0 is not reachable by play.** Every delta on
+  this board but the muster is even (pays 10 / 14 / 18, stakes 0 / 2 / 4), so
+  marks and roster share parity from a 0/0 opening. **This amendment therefore
+  retires the signed line "Every state in this beat's arithmetic is reached from
+  that opening by play."** No sentence, lit-set or percent becomes unreachable —
+  thresholds do not read parity — but the claim as written is no longer true and
+  is not quietly kept.
+- **The ladder's range comes from the float, never from the price.**
+  3 / 2 / 3+1 / 10 / 14 / 18 / 0.036 do not move.
+- **`musterReach = min(rosterCap - roster, floor(marks / musterPrice))`, and 0
+  while away or stopped.** It lives on the sim; the markup never computes
+  affordability. The pinned API key list moves **21 -> 22**.
+- **The PM's two withdrawn figures, recorded because they were published.**
+  "The stop is reachable in two runs with no muster, 34.7%" was the best
+  *no-muster* line, not the best line: halt win -> muster x2 -> Cloud at 58%
+  gives **39.58%**, so mustering shortens the sitting rather than lengthening
+  it. And "3 marks is the only value that lights muster while keeping Cloud
+  Basin unaffordable" is true arithmetic and a bad safety argument, because 3
+  also lights Mosswake — the signed opening sentence "Only the halt is lit" is
+  already false at 2 marks. The charter condition, not the float's size, is what
+  makes the opening safe.
+
+## The rulings
+
+David, 2026-08-26, verbatim, in the order asked:
+
+1. *"we can test it at each different level if wanted so we can see what it is
+   like to play when at zxero or later when there is a baseline amount of assets
+   floating around, but if we pick one 3 works"* — **float 3**, with the suite
+   driving every level.
+2. *"I do not care if we read the town I kind of think that rule is stupid"* —
+   see the split below.
+3. *"in"* — **the charter condition ships.**
+4. *"while on the berth I think makes the most sense when thinking about a drag
+   with your thumb"* — **live re-quote while armed**, under the two constraints
+   in Sees.
+5. *"no"* — **no opening Warden.**
+
+### Ruling 2, split — and the half the PM is keeping until told otherwise
+
+The question asked was about the float's *fiction*: whether the board may say
+where 3 marks came from. David's answer removes that restriction, and the signed
+sentence it came from is retired for copy:
+
+> ~~"The town behind the desk — greenhouse, bank, hearth — stands as scenery
+> from the sittings that built it. This board neither reads nor writes any of
+> it."~~ — retired as a **copy** rule, David 2026-08-26.
+
+**The board may now name the town in its words.** The float can be the bank's
+advance, the hearth's float, the desk's own till — that is a sentence, and
+sentences are cheap.
+
+**The PM is NOT retiring the other half, and flags it rather than assuming.**
+That sentence was doing two jobs, and only one of them was about fiction. The
+other is cross-board **state**: this board reading or writing the heat or scale
+boards' persisted state. That is what the Kill line "this board reads or writes
+heat or scale state" protects, and what stops a live board that has passed a sit
+from being disturbed by a sibling — the standing lineage lock. Until David says
+otherwise in those words, **the state isolation stands and only the fiction is
+freed.** If he meant both, it is one sentence to say so and this paragraph is
+what he is overruling.
+
+## Canon check
+
+Per `docs/mechanisms-recommitted.md` section 6.1: every mechanism this amendment
+turns ON or REFUSES, and the rule or source line it rests on.
+
+| Row | ON / REFUSED | Rests on |
+| --- | --- | --- |
+| The opening float, 3 marks | ON | Tutorial Script, Beat 4 — "only the three resources the player has touched are active", Marks among the three with its own tooltip ("Coin. Pays tolls, fees, and wages"), two beats before the first dispatch. **Weakness named:** "touched" does not prove a nonzero balance, so the float is **new-play, flagged**. R1 untouched — a float is an initial condition, not a faucet, and no sink is shared with heat. |
+| Naming the town as the float's source | **ON** | David 2026-08-26, ruling 2: "I do not care if we read the town I kind of think that rule is stupid." The beat's scenery sentence is retired for copy. |
+| Reading or writing another board's persisted state | **REFUSED, unchanged** | This beat's Kill list, verbatim: "this board reads or writes heat or scale state"; and the standing lineage lock — never overwrite a passed or killed board. Ruling 2 frees the fiction, not the state. Flagged for David in "Ruling 2, split". |
+| Opening Wardens (roster >= 1) | **REFUSED** | David 2026-08-26, ruling 5: "no". Corroborated: Tutorial Script Beat 8 defers its one warden by name — "that's a conversation for when your line's a little longer", designer note "seeds hero recruitment as post-tutorial content". Measured: `s.roster += 1` is the only write to the roster, so a granted Warden deletes this beat's published bare odds row (68.0 / 64.0 / 51.0) from play permanently, and turns 24 of 63 tests red. |
+| The charter condition on the Chartered Line | ON | David 2026-08-26, ruling 3: "in". R1 — marks' sinks are civic and labeled, and the list names "the charter filing fee" verbatim; the Chartered Line is the one line here already carrying the civic toll. A charter's own precondition is a **service record**, not a survey. And it is the shipped board's own law promoted: `test/dawnspur-dispatch.test.js`, "the stop is never one run: reaching Cloud Basin home paid always takes a banked cargo first." |
+| Signal tower / route discovery | REFUSED, unchanged | `routes[cloud-basin-span].discoveredAtSignalLevel` 1 — the near map stays pre-surveyed, the deviation stays flagged. The route is on the map from frame one, quotes its percent throughout, and names its condition; nothing here is discovered. |
+| Quantity confirmed before the commit | ON | David 2026-08-26 direction, verbatim: "select the mission, **confirm the number and type of troops**, and off they go" — the shipped +1 tap has no quantity-confirm step at all. And this amendment's origin: "clicking on it is confirming that you recruit that many." **Not cited to R10**: R10 is "Every load is one of three claims" — profit, tending, buildout — and governs what a train carries, not a spending menu. |
+| The ladder as a bar — the convicted gauge? | ON, argued | The scale board's ban (`docs/cfd-183-beat.md`) is scoped by its own citation — Economy: the planting "tells a keeper the state of their ground **without a gauge**", a sentence about how the *world* reports hidden state. The ladder reports the player's own pending intent and the roster, which this beat's Sees already puts on the control's face ("price 3 on its face, roster on its face"). No world state is metered, and no hand but the player's moves it. *Claimed player-slider precedent in locked docs is withdrawn — the two citations are a difficulty setting and a session preference, neither a board control.* |
+| Live re-quote while a berth is armed | ON | David 2026-08-26, ruling 4: "while on the berth I think makes the most sense when thinking about a drag with your thumb." Held to this beat's Does — "Muster a Warden and every card's quote moves while you watch" — and fenced by the two Sees constraints, because a conditional percent sits one step from the Kill line "The stated percent and the sim's rolled threshold disagree anywhere." |
+| Refund / un-recruit / sell-back | REFUSED | This beat's Kill list, verbatim: "A stake, toll, or muster refunds — any branch, any direction." The ladder is absolute; filled berths are the record, not positions on a track; no leftward commit exists and `roster -=` stays absent from the file. |
+| The 34px control | REFUSED | Presentation is delegated by this beat ("map or cards is the implementer's business under this spec"), and the measured cause of the sit-1 miss lives there: 34px against a 52px card and a 76px pad, the only control under the 44px touch floor. |
+| Re-pricing MUSTER or the Cloud Basin stake to widen the ladder | REFUSED | This beat's Kill list, verbatim: "3 / 2 / 3+1 / 10 / 14 / 18 / 0.036 move without this beat moving." An amendment moves the *opening*, never the prices. |
+| The HUD | ON, unchanged | One line, marks. The ladder's price, roster and armed total live on the ladder's own face, which this beat's Sees already sanctions. |
+| Wall time, motion, animation | REFUSED, unchanged | R4 and R8; the board carries no `transition`, `animation`, `@keyframes`, `setTimeout` or `setInterval`, and the ladder adds none. |
+| Everything else in the signed **On this sitting** table | unchanged | No row above touches insurance, postures, heroes, events, missions, goods nouns, Rustfall, the instance, the storm, or another board's state. |
+
+## Kill — the new behaviour
+
+Every line testable, red-first.
+
+- `canSend("cloud-basin-span")` returns true while `record.cargoesBanked === 0`,
+  in any state, at any capital.
+- The sitting stops in one run: `stopped === true` with `record.runsOut === 1`.
+- The opening mints anything but marks 3 / roster 0 / train home, or the
+  opening's lit set is anything but `["dawnspur-halt", "mosswake-loop"]`.
+- The opening's cards quote anything but 68 / 64 / 51.
+- The opening balance is settable from anything a player can reach — a query
+  string, a control, storage. The suite may set it; the board may not.
+- `commitMuster(n)` commits a partial count, or commits at all when
+  `n > musterReach`; marks go negative; the roster passes 4 or moves anywhere
+  but at a muster.
+- `musterReach` is nonzero while a run is out or after the stop; the ladder is
+  interactive in either state.
+- A `roster -=` or `roster--` appears anywhere in the sim; a sell-back, disband,
+  refund or rebate path appears.
+- Any berth beyond the roster renders as filled, or a filled berth renders as
+  un-filled at any point in the gesture.
+- A muster commits without its total having been stated on the control's face
+  first.
+- Any figure on the ladder is typed into the markup rather than read from
+  `board.musterPrice`, `board.roster`, `board.rosterCap` or `board.musterReach`.
+- An armed percent survives the gesture that showed it — after any
+  non-committing release or `pointercancel`, any card still quotes a roster that
+  was never committed.
+- An armed percent is typed the same as a committed one, so a provisional number
+  can be read as the number the die is thrown against.
+- At rest or while away, any card's stated percent is anything but
+  `chanceFor(baseRisk, roster)`.
+- A reachable home state has no lit send.
+- The HUD grows past the one marks line.
+- This board reads or writes heat or scale state. (Naming the town in copy is
+  now permitted; touching another board's state is not.)
+- The ladder animates, eases, or changes on any schedule but a player's own
+  input.
+- `3 / 2 / 3+1 / 10 / 14 / 18 / 0.036` move.
+- Live shas are overwritten; any Dawnspur board or `/convoy-stop/` is touched.
+
+## What goes stale in the signed body above
+
+- **"Opening state: marks 0, roster 0, train home. Only the halt is lit — the
+  ramp is the ladder."** The float makes it marks 3, and both Core Line routes
+  lit. The ramp survives as the charter condition, which is a rule rather than a
+  price.
+- **"Every state in this beat's arithmetic is reached from that opening by
+  play."** Retired — see the parity note above.
+- **The scenery sentence's copy half** — retired by ruling 2; the state half
+  stands.
