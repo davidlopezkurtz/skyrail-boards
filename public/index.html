@@ -15,8 +15,10 @@
   .board p { margin: 0; color: #9a958a; font-size: .85rem; }
   .live { border-color: #4a7a5a; }
   .pending { opacity: .6; }
+  .kill { border-color: #6a4a4a; }
   .tag { font-size: .7rem; letter-spacing: .05em; text-transform: uppercase; color: #7aa88a; }
   .pending .tag { color: #a89a7a; }
+  .kill .tag { color: #b08a8a; }
   footer { margin-top: 2.5rem; font-size: .75rem; color: #6a665e; }
   footer a { color: inherit; }
 </style>
@@ -25,16 +27,28 @@
 <h1>Skyrail Boards</h1>
 <p class="sub">The durable host. Fixed name, sha-stamped builds, kills tied to builds. Hosts stop dying overnight.</p>
 
+<a class="board live" href="/dawnspur-scale/">
+  <span class="tag">live — passed its sit 2026-08-25</span>
+  <h2>Dawnspur — the scale sitting (CFD-183)</h2>
+  <p>index.html 5d2f452f… · sim.js 953368a1… · the greenhouse climbs to 4 and the ground is the ledger. Recut after the first cut was killed; nothing moves with wall time.</p>
+</a>
+
+<a class="board live" href="/dawnspur-heat/">
+  <span class="tag">live — passed its sit</span>
+  <h2>Dawnspur — the heat sitting (CFD-176)</h2>
+  <p>index.html b5f7e14f… · sim.js 292d6645… · the first sitting to survive a sit. Heat banks in the stone at dest A; WARM's visible step is the greenhouse.</p>
+</a>
+
+<a class="board kill" href="/dawnspur/">
+  <span class="tag">preserved kill — 2026-08-24, standing on purpose</span>
+  <h2>Dawnspur — starve-or-feed (CFD-176)</h2>
+  <p>index.html bdde9b50… · sim.js 395c18f2… · killed at the sit: “Works mechanically. Feels pointless.” Kept live and unaltered as the record; recuts ship at sibling paths.</p>
+</a>
+
 <a class="board live" href="/convoy-stop/">
   <span class="tag">live — last ship, hash-verified</span>
   <h2>Convoy Stop</h2>
   <p>index.html f453b789… · sim.js 5ad814e6… · no recut since the rotating host died.</p>
-</a>
-
-<a class="board live" href="/dawnspur/">
-  <span class="tag">live — hash-verified, dual-attested</span>
-  <h2>Dawnspur (CFD-166)</h2>
-  <p>index.html 78efc96e… · sim.js f9395d38… · the 08-24 LEAVE-only build; recuts wait for unpause.</p>
 </a>
 
 <footer>
