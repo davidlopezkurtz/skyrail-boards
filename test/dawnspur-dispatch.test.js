@@ -118,6 +118,18 @@ function reach(routeId, wardens) {
   assert.ok(h.b.marks >= STAKE[routeId], "reach() left the stake unaffordable");
   return h;
 }
+// The board's stylesheet, and one rule out of it by selector. Shared, because
+// Amendment 2 grades layout in several places and a CSS rule is the only
+// instrument this file has for geometry it cannot measure in node.
+function cssOf() {
+  return SIT_HTML.slice(0, SIT_HTML.indexOf("</style>"));
+}
+function rule(sel) {
+  const esc = sel.split("").map((ch) => (ch === "." || ch === "#" ? "\\" + ch : ch)).join("");
+  const m = cssOf().match(new RegExp(esc + "\\s*\\{([^}]*)\\}"));
+  assert.ok(m, "CSS rule not found: " + sel);
+  return m[1];
+}
 function cardFor(b, id) {
   return b.cards().find(function (c) { return c.id === id; });
 }
@@ -986,7 +998,7 @@ test("kill: one currency — marks, and nothing else is counted anywhere on the 
 // "The HUD grows past the one marks line."
 
 test("kill: the HUD keeps its one line — marks, and nothing joins it", () => {
-  const hud = SIT_HTML.slice(SIT_HTML.indexOf('<div id="hud">'), SIT_HTML.indexOf('<div id="desk">'));
+  const hud = SIT_HTML.slice(SIT_HTML.indexOf('<div id="hud">'), SIT_HTML.indexOf('<div id="strip">'));
   const children = hud.match(/\n {4}<(?:div|span|button|p|section|ul|table)/g) || [];
   assert.equal(children.length, 1, "the HUD holds exactly one line, found " + children.length);
   assert.match(hud, /id="marks-line"/, "and that line is marks");
@@ -995,7 +1007,7 @@ test("kill: the HUD keeps its one line — marks, and nothing joins it", () => {
 });
 
 test("the MUSTER ladder wears its own numbers: the word, the roster, the price, the total", () => {
-  const hud = SIT_HTML.slice(SIT_HTML.indexOf('<div id="hud">'), SIT_HTML.indexOf('<div id="desk">'));
+  const hud = SIT_HTML.slice(SIT_HTML.indexOf('<div id="hud">'), SIT_HTML.indexOf('<div id="strip">'));
   assert.doesNotMatch(hud, /Warden|roster|MUSTER/i, "none of it joins the HUD's one line");
   assert.match(SIT_HTML, /<span id="muster-word">MUSTER<\/span>/, "the word is the only authored text on the face");
   assert.match(SIT_HTML, /rosterRead\.textContent = "Wardens " \+ board\.roster \+ " of " \+ board\.rosterCap;/);
@@ -1103,7 +1115,7 @@ test("kill: the armed percent dies with the gesture, on every path out, in the s
   // listeners live on window, so a finger that leaves the ladder is still
   // followed and the gesture always terminates. A gesture that could hang open
   // would leave provisional percents standing with no finger down.
-  assert.match(SIT_HTML, /try \{ berthsEl\.setPointerCapture\(ev\.pointerId\); \} catch \(e\) \{/,
+  assert.match(SIT_HTML, /try \{ trackEl\.setPointerCapture\(ev\.pointerId\); \} catch \(e\) \{/,
     "capture is asked for and nothing depends on it");
   for (const kind of ["pointermove", "pointerup", "pointercancel"]) {
     assert.ok(SIT_HTML.includes('window.addEventListener("' + kind + '", on'),
@@ -1134,70 +1146,132 @@ test("kill: a provisional percent is typed apart from a committed one, and only 
 
 // ------------------------------------------------- KILL: the ladder's face
 
-test("kill: every figure on the ladder is read from the sim, and the berths are built from the cap", () => {
-  assert.match(SIT_HTML, /for \(let i = 1; i <= board\.rosterCap; i\+\+\)/,
-    "the berth count is the cap, not a number typed into the markup");
+test("kill: every figure on the bar is read from the sim, and every length is a fraction of the cap", () => {
   assert.match(SIT_HTML, /rosterRead\.textContent = "Wardens " \+ board\.roster \+ " of " \+ board\.rosterCap;/);
   assert.match(SIT_HTML, /board\.musterPrice \+ " each"/, "the price is the sim's");
   assert.match(SIT_HTML, /board\.musterPrice \* \(armed - board\.roster\) \+ " marks"/, "so is the armed total");
-  assert.match(SIT_HTML, /berth <= board\.roster \+ board\.musterReach/, "and so is the reach");
+  assert.match(SIT_HTML, /board\.roster \+ board\.musterReach/, "and so is the reachable length");
+  // Every position on the track is a fraction of the cap; the only pixel in
+  // the script is the thumb's own token, so no figure is typed here either.
+  assert.match(SIT_HTML, /\(p \/ board\.rosterCap\)/, "a position is a fraction of the cap");
+  assert.match(SIT_HTML, /\(atPos \/ board\.rosterCap\)/, "and so is the thumb's");
+  assert.match(SIT_HTML, /calc\(\(100% - var\(--thumb\)\) \* /, "the thumb's width is a token, not a number");
+  const script = SIT_HTML.slice(SIT_HTML.lastIndexOf("<script>"));
+  assert.doesNotMatch(script, /\b(?:22|44|68)px\b/, "no pixel figure is typed into the script");
   assert.doesNotMatch(SIT_HTML, /MUSTER WARDEN 3|Wardens 0 of 4|3 each|>3<|>4</,
-    "no ladder figure is typed into the markup");
-  // The berths ship empty; nothing about them is authored in HTML.
-  assert.match(SIT_HTML, /<div id="berths"><\/div>/, "the berth row ships empty and is built from the cap");
+    "no bar figure is typed into the markup");
+  assert.match(SIT_HTML, /<span id="muster-word">MUSTER<\/span>/, "the word is the only authored text on the face");
 });
 
-test("kill: a berth is filled by the roster and by nothing else, at every point in the gesture", () => {
-  assert.match(SIT_HTML, /const held = berth <= board\.roster;/,
-    "filled reads the committed roster alone — never the armed berth");
-  assert.match(SIT_HTML, /el\.classList\.toggle\("held", held\);/);
-  assert.match(SIT_HTML, /el\.classList\.toggle\("armed", armed !== null && berth > board\.roster && berth <= armed\);/,
-    "armed paints only ABOVE the roster, so a filled berth can never read un-filled");
-  // Behavioural: for every roster and every armed berth, the filled set is
-  // exactly the roster and the armed set never overlaps it.
-  const b = makeBoard().b;
-  for (let roster = 0; roster <= 4; roster++) {
-    for (let armed = roster + 1; armed <= 4; armed++) {
-      for (let berth = 1; berth <= 4; berth++) {
-        const held = berth <= roster;
-        const isArmed = berth > roster && berth <= armed;
-        assert.ok(!(held && isArmed), "berth " + berth + " both filled and armed at roster " + roster);
-      }
-    }
+test("kill: the filled length is the roster and nothing else, at every point in the gesture", () => {
+  // The filled length reads board.roster with no reference to armed anywhere
+  // in its three statements, so a drag cannot lengthen or shorten the record.
+  assert.match(SIT_HTML, /fillEl\.style\.right = "calc\(100% - \(" \+ at\(board\.roster\) \+ "\)\)";/,
+    "the filled length ends at the roster");
+  assert.match(SIT_HTML, /fillEl\.style\.left = "0";/, "and starts at the beginning");
+  assert.match(SIT_HTML, /fillEl\.style\.display = board\.roster > 0 \? "block" : "none";/);
+  const fillLines = SIT_HTML.split("\n").filter((l) => l.includes("fillEl."));
+  assert.equal(fillLines.length, 3, "the filled length is stated in exactly three places");
+  for (const l of fillLines) {
+    assert.doesNotMatch(l, /\barmed\b/, "the filled length must not read the armed count: " + l.trim());
   }
-  void b;
+  // The pending length STARTS where the filled one ends, so the two can never
+  // overlap and the record can never be overdrawn.
+  assert.match(SIT_HTML, /span\(armedEl, board\.roster, armed === null \? board\.roster : armed\);/,
+    "the armed length runs from the roster to the armed count");
+  assert.match(SIT_HTML, /span\(reachEl, board\.roster, board\.roster \+ board\.musterReach\);/,
+    "and the reachable length runs from the roster to the reach");
+  // A zero-length span is not drawn at all, so nothing renders at width 0.
+  assert.match(SIT_HTML, /el\.style\.display = to > from \? "block" : "none";/);
+});
+
+test("kill: the thumb never rests between two integers, and no non-integer count can commit", () => {
+  // Snapping is Math.round, clamped into [roster, roster + musterReach], so
+  // every position the board can hold is an integer in reach.
+  assert.match(SIT_HTML, /const snapped = Math\.round\(raw\);/, "the position snaps to an integer");
+  assert.match(SIT_HTML,
+    /return Math\.max\(board\.roster, Math\.min\(board\.roster \+ board\.musterReach, snapped\)\);/,
+    "and is clamped to what the marks can reach");
+  // The only two commit paths both hand the sim an integer difference.
+  const commits = SIT_HTML.split("\n").filter((l) => l.includes("board.commitMuster("));
+  assert.equal(commits.length, 2, "exactly two commit paths: the drag and the keyboard");
+  for (const l of commits) {
+    assert.match(l, /board\.commitMuster\(want\)/, "both commit the same integer: " + l.trim());
+  }
+  assert.match(SIT_HTML, /const want = p === null \? null : p - board\.roster;/, "the drag's count");
+  assert.match(SIT_HTML, /const want = here - board\.roster;/, "the keyboard's count");
+  // And the sim refuses a non-integer outright, so the two agree.
+  const b = makeBoard().b;
+  for (const bad of [1.5, 0.5, "2", NaN]) assert.equal(b.commitMuster(bad), false, String(bad));
+});
+
+test("kill: a drag back to the roster's own position, or off the bar, commits nothing", () => {
+  // want >= 1 is the only gate to a commit, on BOTH paths: dragging back to
+  // the roster gives want 0, and off the bar gives null.
+  assert.match(SIT_HTML, /if \(want !== null && want >= 1\) board\.commitMuster\(want\);/, "the drag path");
+  assert.match(SIT_HTML, /if \(want >= 1\) board\.commitMuster\(want\);/, "the keyboard path");
+  assert.match(SIT_HTML, /if \(y < r\.top - r\.height \|\| y > r\.bottom \+ r\.height\) return null;/,
+    "off the bar is null, which is the cancel");
+  // Armed AT the roster is not an armed face either: "0 marks" would read as a
+  // price rather than as nothing pending.
+  assert.match(SIT_HTML, /priceEl\.textContent = armed === null \|\| armed === board\.roster/,
+    "a thumb dragged home shows the instruction again, not a zero total");
+  // The sim refuses a zero or negative count regardless.
+  const b = makeBoard().b;
+  for (const n of [0, -1, -4]) assert.equal(b.commitMuster(n), false, "commitMuster(" + n + ")");
 });
 
 test("kill: no muster commits without its total having been stated on the face first", () => {
   // Both commit paths arm first — the pointer path on pointerdown, the
   // keyboard path on focus — and paint() writes the total before either can
   // reach commitMuster.
-  assert.match(SIT_HTML, /armed = berth;\s*\n[\s\S]{0,400}?paint\(\);\s*\n\s*\}\);/,
+  assert.match(SIT_HTML, /armed = p;\s*\n[\s\S]{0,400}?paint\(\);\s*\n\s*\}\);/,
     "arming paints before anything else can happen");
-  assert.match(SIT_HTML, /berthsEl\.addEventListener\("focusin"/, "the keyboard path states the total on focus");
-  assert.match(SIT_HTML, /berthsEl\.addEventListener\("keydown"/, "and commits on Enter or Space");
+  assert.match(SIT_HTML, /trackEl\.addEventListener\("keydown"/, "the keyboard path arms with the arrows");
+  assert.match(SIT_HTML, /armed = Math\.min\(top, here \+ 1\);\s*\n\s*paint\(\);/,
+    "and states the total before Enter can reach the commit");
   // The total is a replacement, never an addition: one figure on that face.
-  assert.match(SIT_HTML, /priceEl\.textContent = armed === null\s*\n\s*\? board\.musterPrice \+ " each"\s*\n\s*: board\.musterPrice \* \(armed - board\.roster\) \+ " marks";/,
+  assert.match(SIT_HTML, /priceEl\.textContent = armed === null \|\| armed === board\.roster\s*\n\s*\? board\.musterPrice \+ " each"\s*\n\s*: board\.musterPrice \* \(armed - board\.roster\) \+ " marks";/,
     "the price is REPLACED by the total, never joined by it");
 });
 
-test("kill: row 1 never dims, and the ladder is inert but readable while the roster rides", () => {
-  const css = SIT_HTML.slice(0, SIT_HTML.indexOf("</style>"));
-  const esc = (sel) => sel.split("").map((ch) => (ch === "." || ch === "#" ? "\\" + ch : ch)).join("");
-  const rule = (sel) => {
-    const m = css.match(new RegExp(esc(sel) + "\\s*\\{([^}]*)\\}"));
-    assert.ok(m, "CSS rule not found: " + sel);
-    return m[1];
-  };
-  assert.doesNotMatch(rule("#lrow1"), /opacity/, "row 1 never fades: the price it cannot pay is the instruction");
-  assert.match(css, /#ladder\.dim button\.berth:not\(\.held\)\s*\{\s*opacity:/,
-    "the dim state spares the held berths, so the away state reads 'these four rode'");
-  assert.match(rule("button.berth"), /min-height:\s*44px/,
-    "44px is the touch floor the 34px control missed");
-  assert.match(rule("#berths"), /touch-action:\s*none/, "the drag is the ladder's, not the scroller's");
-  assert.match(rule("#ladder"), /min-height:\s*68px/);
-  // And the ladder is furniture, not a card.
-  assert.match(rule("#ladder"), /background:\s*var\(--strip\)/, "the desk's own ground, not the card ground");
+test("kill: the bar lives in the card stack, on the cards' own ground, and never scrolls away", () => {
+  // AMENDMENT 2. David, sitting 3: "the slider action should have been part o
+  // the grey bars not a green one at the top". The control was a green block
+  // on the strip's furniture ground in a header slot above the scenery; it is
+  // now a bar in the stack wearing the route bars' own grammar, because the
+  // turn's question is buy odds or send now and the control belongs among the
+  // things it competes with.
+  const css = cssOf();
+  assert.match(rule("#ladder"), /background:\s*var\(--card\)/, "the cards' ground, not the strip's furniture");
+  assert.match(rule("#ladder"), /box-shadow:\s*inset 0 0 0 2px var\(--card-edge\)/, "and the route bar's ring");
+  assert.doesNotMatch(rule("#ladder"), /var\(--strip\)/, "the furniture ground is retired");
+  assert.doesNotMatch(rule("#ladder"), /var\(--green\)\s*;/, "the bar itself is not a green block");
+  // It is a sibling of the card list inside one padded stack, so it sits in
+  // the same column and cannot scroll with the routes.
+  assert.match(SIT_HTML, /<div id="stack">\s*\n\s*<div id="ladder">/, "the bar opens the stack");
+  assert.match(SIT_HTML, /<\/div>\s*\n\s*<div id="cards">/, "and the routes follow it inside the same stack");
+  assert.match(rule("#ladder"), /flex:\s*0 0 auto/, "the bar never scrolls and never shrinks");
+  assert.match(rule("#stack"), /min-height:\s*0/);
+  assert.doesNotMatch(SIT_HTML, /id="desk"/, "the header slot above the scenery is retired");
+  assert.doesNotMatch(SIT_HTML, /id="berths"|class="berth"/, "and so are the four cells");
+  // Row 1 still never dims: the price you cannot pay is the instruction.
+  assert.doesNotMatch(rule("#lrow1"), /opacity/, "row 1 never fades");
+  assert.match(css, /#ladder\.dim #treach, #ladder\.dim #tarmed\s*\{\s*opacity:/,
+    "the dim state spares the FILLED length, so the away state still reads 'these rode'");
+  assert.doesNotMatch(css, /#ladder\.dim #tfill/, "the filled length is never dimmed away");
+});
+
+test("kill: the thumb's shortest axis is never under 44px, and the track is the drag's", () => {
+  // MEASURED in a browser, 2026-08-26: 44x44 at every viewport from 280x480 to
+  // 412x732, in the opening, away and terminal states. Asserted here as the
+  // mechanism, because a token cannot drift where a measurement cannot reach.
+  assert.match(cssOf(), /--thumb:\s*44px/, "the thumb's size is a named token");
+  assert.match(rule("#thumb"), /width:\s*var\(--thumb\)/);
+  assert.match(rule("#thumb"), /height:\s*var\(--thumb\)/, "square, so the shortest axis IS the token");
+  assert.match(rule("#track"), /height:\s*var\(--thumb\)/, "the track cannot be shorter than its own thumb");
+  assert.match(rule("#track"), /touch-action:\s*none/, "the drag is the bar's, not the scroller's");
+  assert.match(SIT_HTML, /<div id="track" tabindex="0" role="slider">/, "and it is a slider to assistive tech");
 });
 
 // ------------------------------------------------------- KILL: the sentences
@@ -1594,11 +1668,18 @@ test("kill: a card's content can never escape its box — the cards yield last, 
   };
   const card = rule("button.card");
   assert.match(card, /overflow:\s*hidden/, "a card's content must not be able to paint outside the card");
-  assert.match(card, /flex:\s*0 0 auto/, "a card must not shrink");
+  // AMENDMENT 2 moves this from "must not shrink AND must not grow" to "must
+  // not shrink, MUST grow". Grow closes the void the card list used to hold;
+  // shrink-0 is what keeps the D2 escape closed, and it is not optional:
+  // measured, a card allowed to shrink puts Rustfall's line 7.8px past its own
+  // box at 280x480, where overflow:hidden turns the escape into a clip.
+  assert.match(card, /flex:\s*1 0 auto/, "a card grows into the slack and never shrinks under its content");
   assert.match(card, /min-height:\s*52px/, "and it keeps a floor even so");
   const cards = rule("#cards");
   assert.match(cards, /overflow-y:\s*auto/, "the card region scrolls rather than crushing its cards");
   assert.match(cards, /min-height:\s*0/);
+  assert.match(cards, /flex:\s*1 1 auto/, "the list takes the slack and hands every pixel of it to the cards");
+  assert.doesNotMatch(cards, /padding/, "the padding belongs to the stack now, so the bar and the routes align");
   const told = rule("#told");
   assert.match(told, /flex:\s*0 1 auto/, "the sentence panels yield before the cards do");
   assert.match(told, /max-height:\s*46%/, "and can never take more than their share");

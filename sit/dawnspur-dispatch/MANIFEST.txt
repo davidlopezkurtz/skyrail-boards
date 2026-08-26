@@ -117,6 +117,42 @@ per state, so an away card announces its manifest rather than a pay it no
 longer offers, and Rustfall's one line reaches assistive tech instead of being
 overridden by its own label.
 
+AMENDMENT 2 (RULED - David, 2026-08-26, on sitting 3): "an actual slider
+would be better than 4 squares, but this worked ok. I also think that the
+slider action should have been part o the grey bars not a green one at the
+top". PRESENTATION ONLY - sim.js is BYTE-IDENTICAL across this amendment
+(576ce2b6 before and after), which is the strongest statement available that
+no mechanic moved. Price 3, cap 4, permanence, all-or-nothing commit,
+musterReach, the armed re-quote and both its fences, commit-on-release and
+slide-off-to-cancel all stand from Amendment 1 unchanged.
+
+The four berths become one track, and the control moves out of its header
+slot above the scenery and into the card stack on the cards' own ground
+(--card with the route bar's --card-edge ring), pinned above the routes so it
+never scrolls away. It reads as a peer of the routes because it is one: the
+turn's question is buy odds or send now. The thumb snaps to integers 0..cap -
+a position between two Wardens means nothing - and is 44x44 at every viewport
+measured. The filled length is the roster and reads nothing else at any point
+in the gesture; the reachable length is musterReach beyond it; the pending
+length starts where the filled one ends, so the record can never be
+overdrawn. Green survives as the filled length inside the grey bar, which is
+this board's existing vocabulary for "this is held" - the PM's judgment,
+flagged in the amendment as reversible in one token.
+
+Verified in a browser at 375x812 under mobile emulation with real
+PointerEvents: press at 4, drag to a point 3px off an integer (snaps), drag
+back to the roster's own position (no commit, and the face returns to the
+price rather than stating a zero total), drag off the bar vertically (no
+commit), press-and-release at 3 (commits exactly 3).
+
+The card list no longer holds vertical space it does not fill. Measured over
+nine viewports from 280x480 to 412x732 in the opening, away and terminal
+states: worst unfilled space 0px, worst content spill -6px, thumb 44px
+throughout. The cards GROW into the slack and never shrink (flex 1 0 auto):
+growing closes the void, and refusing to shrink is not optional - a card
+allowed to shrink puts Rustfall's line 7.8px past its own box at 280x480,
+where overflow:hidden turns D2's escape into a clip.
+
 NEW-PLAY, flagged rather than dressed as citations: provisions 0 / 2 / 3, the
 roster cap of 4, and the civic scale factor 6.5. Everything else is the
 pack's own — baseRisks, the formula, resourceValues, routeTolls.chartered
@@ -134,5 +170,5 @@ These hashes are graded by test/dawnspur-dispatch.test.js against the bytes on
 disk, measured LF (.gitattributes `* -text` makes the blob the shipped bytes;
 the working tree is never the artefact):
 
-index.html      sha256:a207f57fd6ee5f414d63c17966f9019bc63dc227dfa1a4297a2647ef5daf519c
+index.html      sha256:31aead60598efe322dd4e1d5fa9b120eb3c167988fddf1e2ba755719c3028362
 sim.js          sha256:576ce2b6de31dd70653d90d45d203c15067e41aaa0624bba2f09245b31bfa74d

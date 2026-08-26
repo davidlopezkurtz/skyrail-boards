@@ -28,6 +28,9 @@
     --glass-edge: rgba(210, 230, 220, 0.5);
     --hearth: #c08a4a;
     --home: #3d3a36;
+    /* The thumb's own geometry, named once so no pixel figure has to live in
+       the script that positions it. 44px is the touch floor. */
+    --thumb: 44px;
   }
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
   html { touch-action: manipulation; }
@@ -43,17 +46,26 @@
     letter-spacing: .06em; color: var(--ink);
   }
 
-  /* The muster ladder. It sits on the desk's own furniture ground — the strip
-     with a card-edge ring, deliberately NOT the card ground — between the marks
-     line and the routes, because it is what turns one into the other.
-     The control it replaces was 34px against a 52px card and a 76px pad: the
-     only control on this board under the 44px touch floor, and the measured
-     cause of a maximally affordable muster being walked past twice. */
-  #desk { flex-shrink: 0; display: flex; }
+  /* The muster bar. AMENDMENT 2 puts it in the card stack on the cards' own
+     ground, pinned above the routes, because the turn's real question is buy
+     odds or send now and the control belongs among the things it competes
+     with. It is no longer a separate green block above the scenery. The
+     control this lineage started from was 34px against a 52px card and a 76px
+     pad — the only one under the 44px touch floor, and the measured cause of a
+     maximally affordable muster being walked past twice. */
+  /* AMENDMENT 2. The control is a bar in the card stack, on the cards' own
+     ground, pinned above the routes so it never scrolls away. It reads as a
+     peer of the routes because it is one: the turn's question is buy odds or
+     send now, and both halves of it now sit in one stack in one grammar. The
+     --strip furniture ground and the header slot above the scenery are gone. */
+  #stack {
+    flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column;
+    gap: 6px; padding: 6px;
+  }
   #ladder {
-    flex: 1; min-height: 68px; display: flex; flex-direction: column; gap: 4px;
-    background: var(--strip); box-shadow: inset 0 0 0 2px var(--card-edge);
-    padding: 4px 6px 6px;
+    flex: 0 0 auto; display: flex; flex-direction: column; gap: 4px;
+    background: var(--card); box-shadow: inset 0 0 0 2px var(--card-edge);
+    padding: 6px 10px 8px;
   }
   #lrow1 {
     display: flex; align-items: center; gap: 8px; min-height: 18px;
@@ -65,22 +77,28 @@
   #muster-word { letter-spacing: .08em; }
   #roster-read { color: var(--dim); font-weight: 700; }
   #muster-price { margin-left: auto; text-align: right; }
-  #berths {
-    display: flex; gap: 4px; touch-action: none;
+  /* One track, four lengths. The dark ground is the whole range; the reachable
+     length is what the marks can reach; the armed length is the pending intent
+     while a finger is down; the filled length is the roster and NOTHING else,
+     which is why it is painted last and can never be overdrawn. */
+  #track {
+    position: relative; height: var(--thumb); touch-action: none; cursor: pointer;
+    background: #26282e; box-shadow: inset 0 0 0 2px var(--card-edge);
+    outline-offset: 2px;
   }
-  button.berth {
-    flex: 1; min-width: 0; min-height: 44px; border: 0; padding: 0;
-    font-family: inherit; font-size: 13px; font-weight: 700; color: var(--dim);
-    background: var(--card); box-shadow: inset 0 0 0 2px var(--card-edge);
-    opacity: .38; cursor: default; touch-action: none;
+  #treach, #tarmed, #tfill {
+    position: absolute; top: 0; bottom: 0; left: 0; pointer-events: none;
   }
-  button.berth.reach { opacity: 1; background: var(--pad); color: var(--ink); cursor: pointer; }
-  button.berth.held {
-    opacity: 1; background: var(--green); color: #e8f0e6;
-    box-shadow: inset 0 0 0 2px var(--green-deep); cursor: default;
+  #treach { background: var(--pad); }
+  #tarmed { background: var(--pad-on); }
+  #tfill { background: var(--green); box-shadow: inset 0 0 0 2px var(--green-deep); }
+  #thumb {
+    position: absolute; top: 0; width: var(--thumb); height: var(--thumb);
+    background: var(--pad-on); box-shadow: inset 0 0 0 3px var(--pad-ink);
+    pointer-events: none;
   }
-  button.berth.armed { opacity: 1; background: var(--pad-on); color: var(--pad-ink); }
-  #ladder.dim button.berth:not(.held) { opacity: .2; }
+  #ladder.dim #treach, #ladder.dim #tarmed { opacity: .2; }
+  #ladder.dim #thumb { opacity: .35; }
 
   #strip {
     position: relative; flex: 1; min-height: 0; background: var(--strip);
@@ -113,12 +131,20 @@
   }
   #train.gone { display: none; }
 
+  /* AMENDMENT 2. The card list used to claim every spare pixel while its
+     children stayed content-sized, so a tall viewport put the stack against a
+     large void. The cards themselves now take the slack — #cards is exactly as
+     tall as what is in it, at every height. GROW 1, SHRINK 0: measured, a card
+     allowed to shrink puts Rustfall's line 7.8px past its own box on a narrow
+     screen, where overflow:hidden turns the D2 escape into a D2 clip. Growing
+     closes the void; refusing to shrink keeps the text inside the card; the
+     list scrolls when even the content will not fit. */
   #cards {
     flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain;
-    display: flex; flex-direction: column; gap: 6px; padding: 6px;
+    display: flex; flex-direction: column; gap: 6px;
   }
   button.card {
-    flex: 0 0 auto; min-height: 52px; overflow: hidden; border: 0; padding: 6px 10px;
+    flex: 1 0 auto; min-height: 52px; overflow: hidden; border: 0; padding: 6px 10px;
     background: var(--card); box-shadow: inset 0 0 0 2px var(--card-edge);
     color: var(--ink); font-family: inherit; text-align: left; cursor: pointer;
     display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto auto;
@@ -172,14 +198,6 @@
   <div id="hud">
     <div id="marks-line">0 marks</div>
   </div>
-  <div id="desk">
-    <div id="ladder">
-      <div id="lrow1">
-        <span id="muster-word">MUSTER</span><span id="roster-read"></span><span id="muster-price"></span>
-      </div>
-      <div id="berths"></div>
-    </div>
-  </div>
   <div id="strip">
     <div id="town" aria-hidden="true">
       <div id="glass"></div>
@@ -188,11 +206,19 @@
       <div id="platform"></div>
       <div id="train"></div>
     </div>
-    <div id="cards">
+    <div id="stack">
+      <div id="ladder">
+        <div id="lrow1">
+          <span id="muster-word">MUSTER</span><span id="roster-read"></span><span id="muster-price"></span>
+        </div>
+        <div id="track" tabindex="0" role="slider"><span id="treach"></span><span id="tarmed"></span><span id="tfill"></span><span id="thumb"></span></div>
+      </div>
+      <div id="cards">
       <button type="button" class="card" data-route="dawnspur-halt"><span class="cn"></span><span class="cp"></span><span class="cs"></span><span class="co"></span></button>
       <button type="button" class="card" data-route="mosswake-loop"><span class="cn"></span><span class="cp"></span><span class="cs"></span><span class="co"></span></button>
       <button type="button" class="card" data-route="cloud-basin-span"><span class="cn"></span><span class="cp"></span><span class="cs"></span><span class="co"></span></button>
       <button type="button" class="card" data-route="rustfall-yard"><span class="cn"></span><span class="cp"></span><span class="cs"></span><span class="co"></span></button>
+      </div>
     </div>
     <div id="told">
       <div id="say" hidden></div>
@@ -210,7 +236,11 @@
   const board = DawnspurDispatch.createBoard({ fresh: true });
   const marksLine = document.getElementById("marks-line");
   const ladderEl = document.getElementById("ladder");
-  const berthsEl = document.getElementById("berths");
+  const trackEl = document.getElementById("track");
+  const fillEl = document.getElementById("tfill");
+  const reachEl = document.getElementById("treach");
+  const armedEl = document.getElementById("tarmed");
+  const thumbEl = document.getElementById("thumb");
   const rosterRead = document.getElementById("roster-read");
   const priceEl = document.getElementById("muster-price");
   const cardEls = Array.prototype.slice.call(document.querySelectorAll("button.card"));
@@ -221,21 +251,23 @@
   const sendBtn = document.getElementById("send");
   const meetBtn = document.getElementById("meet");
   let pick = null;
-  // The berth under the finger, ABSOLUTE (armed === k means roster would be k).
-  // Null whenever no finger is down: it is created by a press and it dies with
-  // the gesture that created it, in the same frame, on every path out.
+  // The position under the finger, ABSOLUTE (armed === k means roster would be
+  // k) and always an INTEGER, because a position between two Wardens means
+  // nothing. Null whenever no finger is down: it is created by a press and it
+  // dies with the gesture that created it, in the same frame, on every path out.
   let armed = null;
   let gesture = null;
 
-  // Built from board.rosterCap, so no berth count and no figure is typed here.
-  const berthEls = [];
-  for (let i = 1; i <= board.rosterCap; i++) {
-    const el = document.createElement("button");
-    el.type = "button";
-    el.className = "berth";
-    el.setAttribute("data-berth", String(i));
-    berthEls.push(el);
-    berthsEl.appendChild(el);
+  // Every length on the track is a fraction of the roster cap, read from the
+  // sim. The thumb's own width is the only pixel here and it comes from the
+  // --thumb token, so no figure is typed into this script either.
+  function at(p) {
+    return "calc((100% - var(--thumb)) * " + (p / board.rosterCap) + " + (var(--thumb) / 2))";
+  }
+  function span(el, from, to) {
+    el.style.left = at(from);
+    el.style.right = "calc(100% - (" + at(to) + "))";
+    el.style.display = to > from ? "block" : "none";
   }
 
   function tap(el, fn) {
@@ -250,31 +282,34 @@
     if (pick !== null && !board.canSend(pick)) pick = null;
     marksLine.textContent = String(board.marks) + " marks";
     rosterRead.textContent = "Wardens " + board.roster + " of " + board.rosterCap;
-    // The price is REPLACED by the total while a berth is armed, never joined
+    // The price is REPLACED by the total while a count is armed, never joined
     // by it, and the total is on the face before any commit can happen.
-    priceEl.textContent = armed === null
+    // Armed AT the roster is not an armed state on the face: a thumb dragged
+    // back to where it started is a cancel in progress, and "0 marks" would
+    // read as a price rather than as nothing pending. The face goes back to
+    // the instruction, which is what the aria text already said here.
+    priceEl.textContent = armed === null || armed === board.roster
       ? board.musterPrice + " each"
       : board.musterPrice * (armed - board.roster) + " marks";
     ladderEl.classList.toggle("dim", board.musterReach === 0);
-    for (let i = 0; i < berthEls.length; i++) {
-      const berth = i + 1;
-      const el = berthEls[i];
-      const held = berth <= board.roster;
-      const reachable = !held && berth <= board.roster + board.musterReach;
-      // "held" reads the roster and NOTHING else, at every point in the
-      // gesture: a berth beyond the roster can never render as filled, and a
-      // filled berth can never render as un-filled.
-      el.classList.toggle("held", held);
-      el.classList.toggle("reach", reachable);
-      el.classList.toggle("armed", armed !== null && berth > board.roster && berth <= armed);
-      el.textContent = held ? "\u25CF" : String(berth);
-      el.disabled = !reachable;
-      el.setAttribute("aria-label", held
-        ? "Berth " + berth + ", filled"
-        : reachable
-          ? "Recruit to " + berth + " Wardens for " + board.musterPrice * (berth - board.roster) + " marks"
-          : "Berth " + berth + ", out of reach");
-    }
+    // The filled length reads board.roster and NOTHING else, at every point in
+    // the gesture: the pending intent is a separate length that starts where
+    // the filled one ends, so a drag can never lengthen or shorten the record.
+    fillEl.style.left = "0";
+    fillEl.style.right = "calc(100% - (" + at(board.roster) + "))";
+    fillEl.style.display = board.roster > 0 ? "block" : "none";
+    span(reachEl, board.roster, board.roster + board.musterReach);
+    span(armedEl, board.roster, armed === null ? board.roster : armed);
+    const atPos = armed === null ? board.roster : armed;
+    thumbEl.style.left = "calc((100% - var(--thumb)) * " + (atPos / board.rosterCap) + ")";
+    trackEl.setAttribute("aria-valuemin", "0");
+    trackEl.setAttribute("aria-valuemax", String(board.rosterCap));
+    trackEl.setAttribute("aria-valuenow", String(atPos));
+    trackEl.setAttribute("aria-valuetext", atPos === board.roster
+      ? board.roster + " of " + board.rosterCap + " Wardens"
+      : "Recruit to " + atPos + " Wardens for " + board.musterPrice * (atPos - board.roster) + " marks");
+    trackEl.setAttribute("aria-label", "Muster Wardens at " + board.musterPrice + " marks each");
+    trackEl.setAttribute("aria-disabled", board.musterReach === 0 ? "true" : "false");
     // At rest and while away every card quotes chanceFor(baseRisk, roster).
     // Only a finger on the ladder asks for anything else, and it asks the sim.
     const cards = armed === null ? board.cards() : board.cards(armed);
@@ -329,23 +364,27 @@
       paint();
     });
   });
-  // The ladder's gesture. One press-and-release: the berth under the finger is
-  // armed and its total shown, the finger can slide to any other berth or off
-  // the ladder entirely, and the commit happens on RELEASE over a berth. That
-  // release-to-commit shape is the whole reason to prefer it to a tap: nothing
-  // on this board refunds, so a mis-aimed tap would be unrecoverable, and the
-  // slide is the confirm step David asked for ("clicking on it is confirming
-  // that you recruit that many") with an escape still attached.
-  function berthAt(x, y) {
-    for (let i = 0; i < berthEls.length; i++) {
-      const r = berthEls[i].getBoundingClientRect();
-      if (x >= r.left && x <= r.right && y >= r.top && y <= r.bottom) {
-        const berth = i + 1;
-        if (berth > board.roster && berth <= board.roster + board.musterReach) return berth;
-        return null;
-      }
-    }
-    return null;
+  // The bar's gesture. One press-and-release: the count under the finger is
+  // armed and its total shown, the finger can slide to any other count or off
+  // the bar entirely, and the commit happens on RELEASE. That release-to-commit
+  // shape is the whole reason to prefer it to a tap: nothing on this board
+  // refunds, so a mis-aimed tap would be unrecoverable, and the slide is the
+  // confirm step David asked for ("clicking on it is confirming that you
+  // recruit that many") with an escape still attached.
+  // Where on the track the finger is, SNAPPED to an integer and clamped to
+  // what the marks can reach. Null means off the bar: dragging away from it
+  // vertically is the cancel, exactly as sliding off the ladder used to be.
+  // Horizontally the ends clamp, because dragging past the end of a slider
+  // means "all of it", not "none of it".
+  function posAt(x, y) {
+    const r = trackEl.getBoundingClientRect();
+    const t = thumbEl.getBoundingClientRect().width;
+    if (y < r.top - r.height || y > r.bottom + r.height) return null;
+    const travel = r.width - t;
+    if (travel <= 0) return board.roster;
+    const raw = (x - r.left - t / 2) / travel * board.rosterCap;
+    const snapped = Math.round(raw);
+    return Math.max(board.roster, Math.min(board.roster + board.musterReach, snapped));
   }
   function disarm() {
     if (armed === null && gesture === null) return;
@@ -371,16 +410,16 @@
   }
   function onMove(ev) {
     if (gesture === null || ev.pointerId !== gesture) return;
-    const berth = berthAt(ev.clientX, ev.clientY);
-    if (berth !== armed) { armed = berth; paint(); }
+    const p = posAt(ev.clientX, ev.clientY);
+    if (p !== armed) { armed = p; paint(); }
   }
   function onUp(ev) {
     if (gesture === null || ev.pointerId !== gesture) return;
-    const berth = berthAt(ev.clientX, ev.clientY);
-    const want = berth === null ? null : berth - board.roster;
+    const p = posAt(ev.clientX, ev.clientY);
+    const want = p === null ? null : p - board.roster;
     armed = null;
     endGesture();
-    // All or nothing, and only over a berth. Any other release commits nothing
+    // All or nothing, and only over the bar. Any other release commits nothing
     // and returns every card to the committed roster's percent in this frame.
     if (want !== null && want >= 1) board.commitMuster(want);
     paint();
@@ -390,36 +429,45 @@
     endGesture();
     paint();
   }
-  berthsEl.addEventListener("pointerdown", function (ev) {
+  trackEl.addEventListener("pointerdown", function (ev) {
     if (gesture !== null) return;
     if (board.musterReach === 0) return;
-    const berth = berthAt(ev.clientX, ev.clientY);
-    if (berth === null) return;
+    const p = posAt(ev.clientX, ev.clientY);
+    if (p === null) return;
     ev.preventDefault();
     gesture = ev.pointerId;
-    armed = berth;
-    try { berthsEl.setPointerCapture(ev.pointerId); } catch (e) { /* not required */ }
+    armed = p;
+    try { trackEl.setPointerCapture(ev.pointerId); } catch (e) { /* not required */ }
     window.addEventListener("pointermove", onMove);
     window.addEventListener("pointerup", onUp);
     window.addEventListener("pointercancel", onCancel);
     window.addEventListener("blur", onCancel);
     paint();
   });
-  // The keyboard path: focusing a berth states its total, Enter or Space
-  // commits it. Same all-or-nothing call, same total-before-commit rule.
-  berthsEl.addEventListener("focusin", function (ev) {
-    const berth = Number(ev.target.getAttribute("data-berth"));
-    if (!berth || berth <= board.roster || berth > board.roster + board.musterReach) return;
-    armed = berth;
-    paint();
-  });
-  berthsEl.addEventListener("focusout", disarm);
-  berthsEl.addEventListener("keydown", function (ev) {
+  // The keyboard path: the arrows arm a count and state its total, Enter or
+  // Space commits it, Escape stands it down. Same all-or-nothing call, same
+  // total-before-commit rule.
+  trackEl.addEventListener("blur", disarm);
+  trackEl.addEventListener("keydown", function (ev) {
+    if (board.musterReach === 0) return;
+    const top = board.roster + board.musterReach;
+    const here = armed === null ? board.roster : armed;
+    if (ev.key === "ArrowRight" || ev.key === "ArrowUp") {
+      ev.preventDefault();
+      armed = Math.min(top, here + 1);
+      paint();
+      return;
+    }
+    if (ev.key === "ArrowLeft" || ev.key === "ArrowDown") {
+      ev.preventDefault();
+      armed = Math.max(board.roster, here - 1);
+      paint();
+      return;
+    }
+    if (ev.key === "Escape") { ev.preventDefault(); disarm(); return; }
     if (ev.key !== "Enter" && ev.key !== " ") return;
-    const berth = Number(ev.target.getAttribute("data-berth"));
-    if (!berth) return;
     ev.preventDefault();
-    const want = berth - board.roster;
+    const want = here - board.roster;
     armed = null;
     gesture = null;
     if (want >= 1) board.commitMuster(want);
