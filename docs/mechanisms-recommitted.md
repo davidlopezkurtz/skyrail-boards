@@ -221,3 +221,138 @@ only by David pushing back. The fix is structural, effective immediately:
    listed explicitly in the brief, alongside the exemplar beat.
 4. Supersession stays by edit: when a rule here is refined, this file changes
    in place with the date and the reason, never a second file.
+
+---
+
+## 7. The sitting discipline, amended — one NEW system, on a board that keeps what passed
+
+**RULED — David, 2026-08-26.** His observation, verbatim:
+
+> "I thiunk we are running into the one mechanism per sitting limitation when a
+> lot of these things become more interesting when there are multiple levers
+> beign pulled at once"
+
+And his ruling, the same day: *"yes draft the amendment, and make the next board
+cumulative."*
+
+### The rule was never literally true, and the measurement says so
+
+Counted 2026-08-26 across the three boards that have passed a sit:
+
+| board | player verbs | state fields |
+| --- | --- | --- |
+| `/dawnspur-heat/` | 4 — GOODS / B / HOLD / WARM | 4 |
+| `/dawnspur-scale/` | 4 — CARRY / MOSSWAKE / TEND / UP | 7 |
+| `/dawnspur-dispatch/` | 3 — SEND / MUSTER / MEET | 8 |
+
+Every passed board carries three or four levers. **"One mechanism per sitting"
+has always meant one NEW NAMED system, and the boards have quietly been
+multi-lever from the first one that survived.** Writing the rule as if it meant
+one lever was a description that never matched the practice, and it has now
+started constraining the design rather than the risk.
+
+### David's own sittings are the evidence for the change
+
+On the dispatch board, 2026-08-26:
+
+- **Sitting 1**, one lever engaged (SEND only — the muster was never found):
+  three runs, all won, and the sitting was thin.
+- **Sitting 2**, two levers engaged: *"got more of a fleshed out experience with
+  this."*
+- **Sitting 4**, all levers, real losses: *"I think this worked well overall"* —
+  the pass.
+
+Same board, same day, same player. The only variable was **how many levers were
+in play**. That is the clearest measurement this project has that lever-count is
+the thing, and it argues against the rule as written.
+
+### What was actually constraining, which is not lever-count
+
+**Isolation.** Each board starts from nothing and carries only its own systems.
+The heat board's chain does not exist on the scale board; the scale board's
+reserve does not exist on the dispatch board. Four boards, four disjoint
+experiments, and **nothing accumulates.**
+
+That is why the storm's lineage question (CFD-201) was awkward to answer: it
+asked which single board weather lands on, when weather is interesting precisely
+because it touches the reserve *and* the run *and* what was mustered. And it is
+why a weather-capable unit is boring on a board with one route and no ground,
+and interesting on a board with three routes, a drawn ground, and a haul out.
+
+It also pulls against David's own multi-loop direction of 2026-08-26: *"a set of
+loops that for purposes of building should each be separate and when taken
+together end up greater than the sum of their parts."* **A sitting that contains
+exactly one part cannot demonstrate greater-than-the-sum.**
+
+### The amended rule
+
+The old rule did two jobs. One still earns its keep; one does not.
+
+**KEPT — one NEW system per sitting.** This is the attribution discipline: when
+a sit goes badly, the newest lever is the suspect. It is cheap, and it is why
+three designs died within two days in August rather than slowly. A sitting that
+introduces two new systems and fails tells you nothing about either.
+
+**DROPPED — one system TOTAL on the board.** A new sitting **inherits what has
+already passed** and adds one thing. Levers compound; the board grows; a bad sit
+still points at the new lever because it is the only new thing on it.
+
+A system is "inherited" only if it **passed a sit**. A killed system does not
+travel — the preserved kill at `/dawnspur/` stays exactly where it is, and its
+mechanics stay dead.
+
+### What it costs, recorded rather than discovered
+
+1. **Sits get longer**, and a board stops being something shippable in an
+   afternoon. That is the price of the thing being a game rather than a probe.
+2. **The fiction has to join.** The desk and the terrace are currently different
+   places. A cumulative board makes Dawnspur one town with a desk *and* a
+   terrace — which is what the game is, but it is a decision that has been
+   deferred until now and cannot be deferred any further.
+3. **The economies have to reconcile.** The scale board spends marks on UP and
+   TEND; the dispatch board spends marks on MUSTER and stakes. One wallet, more
+   claims on it. R1 still binds: heat is the master resource, marks are money,
+   never the same sink.
+4. **Attribution weakens at the margin.** Only one lever is new, but it now sits
+   among several, and an interaction defect is harder to place than an isolated
+   one. The mitigation is the one already in use: the Kill list is written as
+   tests, so an interaction that breaks a standing rule goes red by name.
+
+### What does NOT change
+
+- **The lineage lock.** Never overwrite a passed or killed board. Every
+  cumulative sitting ships at a new sibling path, and the boards it inherits
+  from stay live and untouched at their own paths.
+- **Nothing moves with wall time.** R4 and R8, unchanged.
+- **The canon check.** §6.1 binds every beat, cumulative or not: every mechanism
+  turned ON or REFUSED cites its rule or source line. An inherited system is
+  cited to the beat that passed it.
+- **Kill-list-as-tests, red-first.** Unchanged, and more important than before,
+  because it is what keeps attribution honest as boards grow.
+- **David's sit is the gate.** Unchanged.
+
+### The first cumulative board
+
+**CFD-201, the storm sitting**, reframed by this ruling: `/dawnspur-dispatch/`'s
+loop and `/dawnspur-scale/`'s ground on one town, with **weather as the single
+new system**.
+
+This dissolves CFD-201's open lineage question rather than answering it — the
+storm does not have to choose a board, because the board now has both. It is
+also the case that most needs the amendment: weather's whole interest is that it
+lowers the odds on a run, draws against a ground that can be tended in advance,
+and creates a reason to muster something that was not worth mustering in clear
+weather. David's own direction, 2026-08-26: *"weather will push success
+potential down obviously but maybe the counterparty will be more deperate so
+better rewards. Maybe a kind of unit that is good at navigating weatehr will be
+something the player can invest in."*
+
+Two traps carried forward into that beat, both recorded on CFD-201: **risk-up
+plus reward-up can cancel to nothing** (measured: at a full roster a storm
+costing 10 points of success on Cloud Basin holds expected marks flat if the pay
+rises 18 → 21.2, and the sitting becomes a wash dressed as drama), and **a
+weather unit can make weather stop mattering** if investment buys effective
+immunity rather than changing how weather is met.
+
+CFD-200, the convoy defense instance, follows rather than leads — by then the
+town has weather, and a contested run has more to work with.
