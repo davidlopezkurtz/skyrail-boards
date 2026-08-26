@@ -1,0 +1,45 @@
+# Is the durable host still serving the boards this repository holds?
+#
+# Runs on a SCHEDULE, not on push. Drift is the normal state between a merge and
+# a deploy, and a gate that is permanently red stops being read — the same
+# reasoning the PWA's deploy-drift job carries. Docs-only drift passes; a
+# changed shipped path, a byte mismatch, or an unmeasurable answer fails.
+#
+# Filed against CFD-199: on 2026-08-26 Cloudflare created production
+# deployments that completed successfully and were never aliased, so the host
+# served a ~30-minute-stale build. Nothing was watching. This watches.
+name: Drift
+
+on:
+  schedule:
+    # 13:30 UTC daily, half an hour after the PWA's own drift job.
+    - cron: "30 13 * * *"
+  workflow_dispatch:
+
+# Never cancel a drift check in favour of a newer one: a skipped check reads as
+# a pass in the Actions list, and this project's rule is that an unavailable
+# measurement is never a pass.
+concurrency:
+  group: drift
+  cancel-in-progress: false
+
+jobs:
+  drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # check-current.js classifies drift with `git diff live..expected`, so
+          # it needs the live commit present. A shallow clone would report
+          # "UNAVAILABLE: this checkout does not contain the live commit" and
+          # fail — correctly, but uselessly.
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: The checker's own tests
+        # A gate that can regress silently is CFD-148's complaint. Grade the
+        # instrument before trusting its reading.
+        run: node --test "test/deploy-current.test.js"
+      - name: Is production current?
+        run: node check-current.js
