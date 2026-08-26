@@ -9,7 +9,16 @@ const VERIFY_ORIGIN = "https://boards.skyrailreclamation.com";
 const DEFAULT_ACCOUNT_ID = "95aea3d30c8926aafa5296b257fe6386";
 const VERIFY_ATTEMPTS = 6;
 const VERIFY_DELAY_MS = 8_000;
-const BOARD_PATHS = ["/dawnspur/", "/convoy-stop/"];
+// Every board the host serves, so a board that 404s after a deploy cannot pass.
+// This listed 2 of 4 until CFD-197: heat and scale had both passed a sit and
+// neither was checked.
+const BOARD_PATHS = [
+  "/dawnspur-dispatch/",
+  "/dawnspur-scale/",
+  "/dawnspur-heat/",
+  "/dawnspur/",
+  "/convoy-stop/",
+];
 
 const token = process.env.CLOUDFLARE_API_TOKEN;
 if (!token) {

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Dawnspur Switchyard</title>
+<style>
+  :root {
+    --bg: #1a1b1e;
+    --strip: #24262b;
+    --ink: #ececec;
+    --dim: #9a9ea6;
+    --card: #2f323a;
+    --card-edge: #3d414b;
+    --pad: #3a3d45;
+    --pad-on: #d8d8d8;
+    --pad-ink: #111;
+    --sel: #f2f2f2;
+    --green: #4f7a4a;
+    --green-deep: #355533;
+    --rust: #4a2f2a;
+    --rust-edge: #3a2622;
+    --rust-ink: #b09088;
+    --slate: #6a6e78;
+    --train: #9a9da4;
+    --train-d: #6e7178;
+    --glass: rgba(170, 210, 200, 0.26);
+    --glass-edge: rgba(210, 230, 220, 0.5);
+    --hearth: #c08a4a;
+    --home: #3d3a36;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+  html { touch-action: manipulation; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink);
+    font-family: ui-sans-serif, system-ui, sans-serif; user-select: none; overflow: hidden; }
+  body { display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+    min-height: 100dvh; padding: env(safe-area-inset-top) 10px env(safe-area-inset-bottom); }
+  #app { width: min(440px, 100%); flex: 1; display: flex; flex-direction: column; gap: 8px; padding: 4px 0 10px; min-height: 0; }
+
+  #hud { flex-shrink: 0; padding: 0 4px; }
+  #marks-line {
+    min-height: 22px; text-align: right; font-size: 18px; font-weight: 700;
+    letter-spacing: .06em; color: var(--ink);
+  }
+
+  #desk { flex-shrink: 0; display: flex; }
+  #muster {
+    flex: 1; display: flex; align-items: center; justify-content: space-between;
+    border: 0; background: var(--green); color: #e8f0e6;
+    box-shadow: inset 0 0 0 2px var(--green-deep);
+    font-family: inherit; font-size: 13px; font-weight: 700; letter-spacing: .03em;
+    min-height: 34px; padding: 0 12px; cursor: pointer;
+  }
+  #muster:disabled { opacity: .3; cursor: default; }
+  #muster:active:not(:disabled) { filter: brightness(1.12); }
+  #roster-read { font-weight: 700; letter-spacing: .08em; }
+
+  #strip {
+    position: relative; flex: 1; min-height: 0; background: var(--strip);
+    overflow: hidden; display: flex; flex-direction: column;
+  }
+  #town {
+    position: relative; height: 54px; flex: 0 1 auto; min-height: 26px;
+    overflow: hidden; background: #1f2126;
+    box-shadow: inset 0 -2px 0 #14161a;
+  }
+  #glass {
+    position: absolute; left: 6%; bottom: 16px; width: 46px; height: 22px;
+    background: var(--glass); border: 2px solid var(--glass-edge);
+  }
+  #bank {
+    position: absolute; left: 26%; bottom: 16px; width: 34px; height: 18px;
+    background: #8a7a3a; box-shadow: inset 0 -5px 0 #5c4e22;
+  }
+  #hearth {
+    position: absolute; left: 40%; bottom: 18px; width: 12px; height: 12px;
+    background: var(--hearth); box-shadow: 0 0 10px 3px rgba(192, 138, 74, 0.45);
+  }
+  #platform {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 14px;
+    background: var(--home);
+  }
+  #train {
+    position: absolute; right: 8%; bottom: 14px; width: 44px; height: 14px;
+    background: var(--train); box-shadow: inset 0 -4px 0 var(--train-d);
+  }
+  #train.gone { display: none; }
+
+  #cards {
+    flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain;
+    display: flex; flex-direction: column; gap: 6px; padding: 6px;
+  }
+  button.card {
+    flex: 0 0 auto; min-height: 52px; overflow: hidden; border: 0; padding: 6px 10px;
+    background: var(--card); box-shadow: inset 0 0 0 2px var(--card-edge);
+    color: var(--ink); font-family: inherit; text-align: left; cursor: pointer;
+    display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto auto;
+    align-content: center; gap: 2px 8px;
+  }
+  button.card:disabled { cursor: default; }
+  button.card.unlit { opacity: .38; }
+  button.card.on { box-shadow: inset 0 0 0 3px var(--sel); }
+  button.card.out { box-shadow: inset 0 0 0 3px var(--green-deep); background: #2b3330; opacity: 1; }
+  button.card.dark {
+    background: var(--rust); box-shadow: inset 0 0 0 2px var(--rust-edge);
+    color: var(--rust-ink); opacity: 1;
+  }
+  .cn { grid-column: 1; grid-row: 1; font-size: 14px; font-weight: 700; letter-spacing: .05em; }
+  .cp { grid-column: 2; grid-row: 1; font-size: 13px; font-weight: 700; color: var(--dim); text-align: right; }
+  .cs { grid-column: 1; grid-row: 2; font-size: 11.5px; color: var(--dim); line-height: 1.35; }
+  .co { grid-column: 2; grid-row: 2; font-size: 17px; font-weight: 700; text-align: right; }
+  .card.dark .cs { color: var(--rust-ink); }
+
+  #told {
+    flex: 0 1 auto; min-height: 0; max-height: 46%; overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 0 6px 6px; display: flex; flex-direction: column; gap: 6px;
+  }
+  #say, #end {
+    background: rgba(19, 22, 19, 0.9); box-shadow: inset 0 0 0 1px rgba(210, 230, 220, 0.24);
+    padding: 9px 11px; font-size: 13px; line-height: 1.45; color: var(--ink);
+  }
+  #end { box-shadow: inset 0 0 0 2px var(--green-deep); }
+  #say[hidden], #end[hidden], #told[hidden] { display: none; }
+
+  #pads { display: flex; gap: 6px; min-height: 76px; flex-shrink: 0; align-items: stretch; }
+  button.pad {
+    border: 0; background: var(--pad); color: var(--ink); font-family: inherit;
+    font-size: 13px; font-weight: 700; letter-spacing: .03em;
+    min-height: 76px; min-width: 0; flex: 1; padding: 0 8px;
+  }
+  button.pad.primary { background: var(--pad-on); color: var(--pad-ink); }
+  button.pad.meet { background: var(--slate); color: #101215; }
+  button.pad:disabled { opacity: .28; }
+  button.pad:active:not(:disabled) { filter: brightness(1.12); }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="hud">
+    <div id="marks-line">0 marks</div>
+  </div>
+  <div id="desk">
+    <button type="button" id="muster" disabled><span id="muster-label">MUSTER WARDEN</span><span id="roster-read"></span></button>
+  </div>
+  <div id="strip">
+    <div id="town" aria-hidden="true">
+      <div id="glass"></div>
+      <div id="bank"></div>
+      <div id="hearth"></div>
+      <div id="platform"></div>
+      <div id="train"></div>
+    </div>
+    <div id="cards">
+      <button type="button" class="card" data-route="dawnspur-halt"><span class="cn"></span><span class="cp"></span><span class="cs"></span><span class="co"></span></button>
+      <button type="button" class="card" data-route="mosswake-loop"><span class="cn"></span><span class="cp"></span><span class="cs"></span><span class="co"></span></button>
+      <button type="button" class="card" data-route="cloud-basin-span"><span class="cn"></span><span class="cp"></span><span class="cs"></span><span class="co"></span></button>
+      <button type="button" class="card" data-route="rustfall-yard"><span class="cn"></span><span class="cp"></span><span class="cs"></span><span class="co"></span></button>
+    </div>
+    <div id="told">
+      <div id="say" hidden></div>
+      <div id="end" hidden></div>
+    </div>
+  </div>
+  <div id="pads">
+    <button type="button" class="pad primary" id="send" disabled>SEND</button>
+    <button type="button" class="pad meet" id="meet" disabled>MEET THE TRAIN</button>
+  </div>
+</div>
+<script src="./sim.js"></script>
+<script>
+(function () {
+  const board = DawnspurDispatch.createBoard({ fresh: true });
+  const marksLine = document.getElementById("marks-line");
+  const musterBtn = document.getElementById("muster");
+  const musterLabel = document.getElementById("muster-label");
+  const rosterRead = document.getElementById("roster-read");
+  const cardEls = Array.prototype.slice.call(document.querySelectorAll("button.card"));
+  const trainEl = document.getElementById("train");
+  const sayEl = document.getElementById("say");
+  const endEl = document.getElementById("end");
+  const toldEl = document.getElementById("told");
+  const sendBtn = document.getElementById("send");
+  const meetBtn = document.getElementById("meet");
+  let pick = null;
+
+  function tap(el, fn) {
+    el.addEventListener("pointerdown", function (ev) { ev.preventDefault(); fn(ev); });
+  }
+  function stakeText(c) {
+    if (c.stake === 0) return "no stake";
+    if (c.toll === 0) return c.provisions + " provisions";
+    return c.provisions + " provisions · " + c.toll + " Chartered line toll";
+  }
+  function paint() {
+    if (pick !== null && !board.canSend(pick)) pick = null;
+    marksLine.textContent = String(board.marks) + " marks";
+    musterLabel.textContent = "MUSTER WARDEN " + board.musterPrice;
+    rosterRead.textContent = "Wardens " + board.roster + " of " + board.rosterCap;
+    musterBtn.disabled = !board.canMuster();
+    musterBtn.setAttribute("aria-label",
+      "Muster a Rail Warden for " + board.musterPrice + " marks. Roster " + board.roster + " of " + board.rosterCap + ".");
+    const cards = board.cards();
+    for (let i = 0; i < cardEls.length; i++) {
+      const el = cardEls[i];
+      const c = cards[i];
+      el.querySelector(".cn").textContent = c.name;
+      if (!c.sendable) {
+        el.querySelector(".cp").textContent = "";
+        el.querySelector(".cs").textContent = c.note;
+        el.querySelector(".co").textContent = "";
+      } else if (c.out) {
+        el.querySelector(".cp").textContent = "OUT";
+        el.querySelector(".cs").textContent = c.manifestLine;
+        el.querySelector(".co").textContent = c.percent + "%";
+      } else {
+        el.querySelector(".cp").textContent = "pays " + c.pays;
+        el.querySelector(".cs").textContent = stakeText(c);
+        el.querySelector(".co").textContent = c.percent + "%";
+      }
+      el.classList.toggle("dark", !c.sendable);
+      el.classList.toggle("out", c.out);
+      el.classList.toggle("unlit", c.sendable && !c.lit && !c.out);
+      el.classList.toggle("on", pick === c.id);
+      el.disabled = !c.lit;
+      if (!c.sendable) {
+        el.setAttribute("aria-label", c.name + ". No send, no odds. " + c.note);
+      } else if (c.out) {
+        el.setAttribute("aria-label", c.name + ", out. " + c.manifestLine + " " + c.percent + " percent home.");
+      } else {
+        el.setAttribute("aria-label",
+          c.name + ", pays " + c.pays + ", stake " + c.stake + ", " + c.percent + " percent home");
+      }
+    }
+    trainEl.classList.toggle("gone", board.away);
+    const picked = pick === null ? null : cards.find(function (c) { return c.id === pick; });
+    sendBtn.textContent = picked === null || picked === undefined ? "SEND" : "SEND — " + picked.name;
+    sendBtn.disabled = pick === null || !board.canSend(pick);
+    meetBtn.disabled = !board.canMeet();
+    sayEl.hidden = board.runSentence === null;
+    sayEl.textContent = board.runSentence === null ? "" : board.runSentence;
+    endEl.hidden = board.endSentence === null;
+    endEl.textContent = board.endSentence === null ? "" : board.endSentence;
+    toldEl.hidden = sayEl.hidden && endEl.hidden;
+  }
+  cardEls.forEach(function (el) {
+    tap(el, function () {
+      const id = el.getAttribute("data-route");
+      if (!board.canSend(id)) return;
+      pick = id;
+      paint();
+    });
+  });
+  tap(musterBtn, function () { if (board.commitMuster()) paint(); });
+  tap(sendBtn, function () {
+    if (pick === null) return;
+    if (board.commitSend(pick)) { pick = null; paint(); }
+  });
+  tap(meetBtn, function () { if (board.commitMeet()) paint(); });
+  paint();
+  document.addEventListener("touchstart", function (e) {
+    if (e.touches.length > 1) e.preventDefault();
+  }, { passive: false });
+  let lastTouch = 0;
+  document.addEventListener("touchend", function (e) {
+    const now = Date.now();
+    if (now - lastTouch <= 350) e.preventDefault();
+    lastTouch = now;
+  }, { passive: false });
+})();
+</script>
+</body>
+</html>

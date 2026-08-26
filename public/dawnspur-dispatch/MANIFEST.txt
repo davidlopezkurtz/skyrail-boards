@@ -1,0 +1,95 @@
+Dawnspur CFD-196 dispatch sitting (the switchyard desk; pick a route, muster
+the crew, send, and meet the train) 2026-08-26
+Spec: docs/cfd-196-beat.md — SIGNED, David 2026-08-26: "signed — go, and rule
+the seam my way". Written under docs/mechanisms-recommitted.md §6's
+canon-check discipline; §5 is RULED in the beat not to bind this loop.
+
+The multi-loop architecture's second loop, in Skyrail's nouns. Three routes
+take a send and one refuses it. DAWNSPUR HALT (baseRisk 0.08, pays 10, stakes
+nothing) is the floor and is always lit, which is why no reachable state
+deadlocks. MOSSWAKE LOOP (0.12, pays 14, 2 provisions) is the spine. CLOUD
+BASIN SPAN (0.25, pays 18, 3 provisions plus the Chartered line toll of 1) is
+the reach, and the first Chartered cargo banked is the stop. RUSTFALL YARD is
+on the map, dark, and quotes NO odds: by David's 2026-08-26 ruling contested
+territory is not a dice question, so the desk refuses to state a number it
+cannot honestly roll, and the card waits for the convoy defense instance.
+
+MUSTER WARDEN costs 3 marks, adds one Rail Warden, caps at 4, and is never
+spent: the engine returns the crew home on BOTH branches of resolveDispatch,
+and this board keeps that law — no outcome anywhere touches the roster. The
+stake is the haul committed to the run: provisions and toll, spent at the
+click, refunded in no direction, on either branch. A turned-back run pays
+ZERO (CFD-145); the engine's x0.25 consolation leg is refused, not copied.
+
+Honest dice with stated odds, RULED by David 2026-08-26. ONE instrument: the
+percent a card states and the threshold the meet rolls against are the same
+number, chanceFor() — the engine's calculateDispatchPreview (skyrail ea22c43)
+with every refused term at zero:
+
+  success = clamp(0.76 - baseRisk + 0.036 x Wardens, 0.12, 0.96)
+
+  route              bare    +1     +2     +3     +4 Wardens
+  Dawnspur Halt      68.0   71.6   75.2   78.8   82.4
+  Mosswake Loop      64.0   67.6   71.2   74.8   78.4
+  Cloud Basin Span   51.0   54.6   58.2   61.8   65.4
+
+Display rounds to whole percent; the sim rolls the exact value. The roll
+happens at the MEET, once, never at the SEND, and the sim takes an injectable
+roll so the turned-back sentences are test-reachable. No outcome is scripted.
+
+REFUSED by name, each zero in the formula by its refusal: insurance, postures
+(balanced carries success 0), heroes, route events (the engine's fifteen
+biases), route safety accrual, train damage and its repair loop, missions
+beyond convoy, contract mechanics, goods as nouns (marks stand in, flagged,
+converted at economyConfig.resourceValues over the one authored number, the
+civic scale factor 6.5), signal-tower discovery, the defense instance and any
+stub of it, a second currency, the storm at the town, and any clock at all.
+Nothing on this board moves with wall time: wait() stands, takes nothing, and
+returns false so calm can never read as a handled event, and an away run met
+in a week is the run met in a breath.
+
+Every run ends in a sentence and so does the sitting. A turned-back run says
+all four of the beat's clauses — zero pay, stake spent and returned in no
+direction, everyone who rode is home, the desk stands — and it names whoever
+actually rode, so a run with no Wardens aboard promises no crew home. The
+terminal reads the record in the beat's two registers, keyed on whether every
+run the player sent came home (runsTurnedBack), NOT on what the turn-backs
+cost. Keying it on cost made "Clean record" reachable over a sitting with any
+number of turned-back FREE halt runs — thirteen out, four banked, nine turned
+back, called clean. The paid register names the turned-back count and then the
+cost, naming a zero cost rather than omitting it. NEITHER register names the
+weather: the board prints three failure agents and only Cloud Basin's is
+weather, so a terminal that blamed weather would misread its own record on the
+two Core Line routes. The ledger spells its counts at any magnitude, because
+the free floor send is unlimited and a table that stopped at twenty would drop
+a bare numeral into a clause of spelled words; marks stay figures.
+
+Layout: nothing may escape its box, at any viewport. The priority under
+pressure is scenery first, then the sentence panels (which yield and scroll
+inside a 46% cap), and the cards last — cards never shrink below their own
+content and clip regardless. Measured in a browser 2026-08-26: spill -6px and
+clipping 0 from 280x480 through 412x732, against a measured 34.7px card and
++8.7px of escaping text at 375x556 before the change. Card labels are spoken
+per state, so an away card announces its manifest rather than a pay it no
+longer offers, and Rustfall's one line reaches assistive tech instead of being
+overridden by its own label.
+
+NEW-PLAY, flagged rather than dressed as citations: provisions 0 / 2 / 3, the
+roster cap of 4, and the civic scale factor 6.5. Everything else is the
+pack's own — baseRisks, the formula, resourceValues, routeTolls.chartered
+.flatFee = 1, and the Wardens' baseCost over that same 6.5 giving MUSTER 3.
+
+Lives at sit/dawnspur-dispatch/ with byte-copies at public/dawnspur-dispatch/
+so the boards that already stand are untouched:
+
+  live /dawnspur-scale/ index 5d2f452f / sim 953368a1
+  live /dawnspur-heat/  index b5f7e14f / sim 292d6645
+  kill /dawnspur/       index bdde9b50 / sim 395c18f2
+  live /convoy-stop/    index f453b789 / sim 5ad814e6
+
+These hashes are graded by test/dawnspur-dispatch.test.js against the bytes on
+disk, measured LF (.gitattributes `* -text` makes the blob the shipped bytes;
+the working tree is never the artefact):
+
+index.html      sha256:51d43079c52ec809230c3f88a262dea76a0f8200b25405606b77192d6690c5fb
+sim.js          sha256:c001a273826e7cd81bbc570096331a05e529c2551c75125b31ff70ce2a0efb95

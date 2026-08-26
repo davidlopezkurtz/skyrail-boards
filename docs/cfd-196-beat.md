@@ -12,6 +12,40 @@ empty. Card: CFD-196.
 seam below is ruled with that signature. Implementation proceeds from this
 document; the Kill list is the red-first test spec.
 
+## At landing — what shipped, and where it departs from this document
+
+Recorded by the PM at landing, so the differences are read rather than
+discovered. Two are deviations from signed example sentences and are DAVID'S
+to accept or reverse at the sit; the third is this document going stale.
+
+1. **Neither terminal register names the weather.** The signed example reads
+   "lost to the weather on the way"; the board ships "lost on the way", and
+   the clean register ships "the stake was never once called" in place of
+   "the weather never once called the stake". Cause: the seam ruling below
+   makes the Core Line's failure agent the line, not weather, and the board
+   prints three per-run agents of which only Cloud Basin's is weather. A
+   terminal blaming weather would misread its own record, which this beat
+   kills. Per-run sentences still name weather, and only on Cloud Basin.
+
+2. **The paid register carries a fourth figure — the turned-back count.**
+   The Ends section requires three (runs out, cargoes banked, stakes lost).
+   The fourth exists because keying the registers on COST let the register
+   this beat calls "Clean record" fire over thirteen runs out against four
+   banked with nine turned back — reproduced at review, and pinned as
+   intended by the implementer's own first test. The registers now key on
+   `runsTurnedBack === 0`, and the count is what reconciles the gap in words
+   instead of leaving the reader to subtract. A zero-cost sitting reads
+   "nine turned back and cost nothing but the trip" — the paid register
+   reading a zero, the same move the turned-back sentence already makes on
+   the free hop. Still two registers.
+
+3. **The Seat's pin "boards main at 1aea540" is stale and was not gradeable
+   as written.** Two commits landed after signature — `b39714c` (this
+   signature) and `e46fd7a` (CFD-197). What that Kill line protects is the
+   live boards, and those were graded directly instead: scale `953368a1`,
+   heat `292d6645`, the preserved kill `395c18f2`, convoy-stop `5ad814e6`,
+   all standing, verified live after deploy.
+
 ## Named ruling — dice for standard runs, the instance for contested ones
 
 The beat's biggest question — how failure resolves — was RULED by David,
