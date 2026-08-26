@@ -829,3 +829,36 @@ These replace them; everything else in that list is unchanged and still binds.
 - **"Row 2 carries four 44px berths."** Retired — one track, integer-snapped.
 - Amendment 1's berth-rendering Kill line is replaced by the filled-length line
   above.
+
+---
+
+# The sit — PASSED, David, 2026-08-26
+
+**"I think this worked well overall."** Fourth sitting, on the durable host at
+`663d4fa`.
+
+The record it ended on, verbatim from the board:
+
+> The first Chartered cargo is home. **Ten runs out, seven cargoes banked,
+> three turned back, 4 marks staked and lost on the way.** The record keeps
+> what came home; the line past the basin is the next sitting's.
+
+Ten runs, three of them lost, 67 marks, the roster full. That sentence is the
+one this board was sent back for: the register keyed on `runsTurnedBack`
+reconciles the gap between ten out and seven banked **in words**, and the paid
+register names the loss without apology. The first cut would have called this
+sitting *clean*.
+
+What the sitting demonstrates, in the order it was found:
+
+- **The muster is noticed.** Three sittings failed to find a 34px control in
+  the header slot; the fourth used it to a full roster. The fix was the
+  container, not the affordability — Amendment 2's placement, which the
+  original ballot had recommended and Amendment 1 overrode.
+- **The charter condition held.** Cloud Basin was earned, not bought — the
+  one-run sitting stayed impossible.
+- **Failure is legible and survivable.** Three turned back, 4 marks gone, the
+  desk still standing, the sitting still worth finishing.
+
+The lineage: `/dawnspur-dispatch/` is now a **passed** board. It does not get
+overwritten. The next sitting on this loop ships at a sibling path.

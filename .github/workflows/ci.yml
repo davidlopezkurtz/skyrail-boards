@@ -1,0 +1,31 @@
+# The test suite, on every push and every pull request.
+#
+# WHY THIS DID NOT EXIST UNTIL NOW, which is the interesting part: every board
+# in this repository was authored, reviewed and landed with its suite verified
+# on ONE machine. `deploy.yml` shipped bytes without ever running a test, and
+# `drift.yml` runs thirteen of them once a day. Until this file, 148 of the 161
+# tests ran nowhere but a maintainer's laptop — including every kill line that
+# stands between a board and a bad sitting.
+#
+# Node 22 to match deploy.yml. The bare-directory form `node --test test/` is
+# broken on some Node 24 builds; the glob is the form that works everywhere.
+name: CI
+
+on:
+  push:
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: node --test
+        run: node --test "test/*.test.js"
