@@ -64,6 +64,49 @@ two Core Line routes. The ledger spells its counts at any magnitude, because
 the free floor send is unlimited and a table that stopped at twenty would drop
 a bare numeral into a clause of spelled words; marks stay figures.
 
+AMENDMENT 1 (RULED - David, 2026-08-26), after two sittings of the shipped
+board. The desk opens with a float of 3 marks: the halt and Mosswake are lit,
+Cloud Basin is dark, the ladder reaches one berth, and the cards still quote
+68 / 64 / 51. The float is MINTED and 3 / 0 is not reachable by play - every
+other delta here is even, so marks and roster share parity from a 0 / 0
+opening - and the beat's line "Every state in this beat's arithmetic is
+reached from that opening by play" is RETIRED rather than quietly kept.
+createBoard takes an opening balance FOR THE SUITE, driven at 0 / 3 / 6 / 12;
+no player-reachable surface sets it, and neither file reads a query string,
+storage or a cookie.
+
+The Chartered Line now carries a charter condition: Cloud Basin takes a send
+only once a cargo is banked. It costs nothing at 0 or 3 marks - P(stop) is
+bit-identical there - and makes a one-run stop impossible at ANY capital,
+which a price cannot: without it an opening of 4 is a 51.0% one-click sitting
+and 16 under a full ladder is 65.4%. Measured effect of the float, exact DP
+over the sim's own numbers, optimal play, musters free: P(stop within 1..5
+runs) moves 0.00 / 39.58 / 64.34 / 77.83 / 86.17 to 0.00 / 44.25 / 69.41 /
+82.21 / 89.25. All ten figures the amendment published reproduced exactly.
+
+MUSTER is a ladder of four ABSOLUTE berths - berth k means roster = k - on the
+desk's own furniture ground. Row 1 never dims: a control that fades when it
+cannot be paid reads as chrome, and one that shows the price you cannot yet
+pay reads as an instruction. Berths are 44px, because the control they replace
+was 34px against a 52px card and a 76px pad - the only control on the board
+under the touch floor, and the measured cause of a maximally affordable muster
+being walked past twice at 10 and 22 marks. One press-and-release recruits up
+to the berth chosen, ALL OR NOTHING, with the total REPLACING the price on the
+face before any commit. Release-to-commit is deliberate: nothing here refunds,
+so sliding off the ladder is an escape a tap would not have had. Tracking
+lives on window and setPointerCapture is optional, so the gesture always
+terminates and no provisional number can be left standing with no finger down.
+Verified in a browser at 375x812 under mobile emulation with real
+PointerEvents: press, slide, release off (no commit), release on (commits
+exactly), pointercancel, window blur, and a second finger correctly ignored.
+
+While a berth is armed every card re-quotes at that roster through the sim's
+one chanceFor(), asked for as cards(atRoster) and never computed on the board.
+The provisional number is typed apart on three axes at once - its own colour,
+italic, and a leading arrow a committed number never carries - and it dies
+with the gesture on every path out, in the same frame. At rest and while away
+every card shows chanceFor(baseRisk, roster) and nothing else.
+
 Layout: nothing may escape its box, at any viewport. The priority under
 pressure is scenery first, then the sentence panels (which yield and scroll
 inside a 46% cap), and the cards last — cards never shrink below their own
@@ -91,5 +134,5 @@ These hashes are graded by test/dawnspur-dispatch.test.js against the bytes on
 disk, measured LF (.gitattributes `* -text` makes the blob the shipped bytes;
 the working tree is never the artefact):
 
-index.html      sha256:51d43079c52ec809230c3f88a262dea76a0f8200b25405606b77192d6690c5fb
-sim.js          sha256:c001a273826e7cd81bbc570096331a05e529c2551c75125b31ff70ce2a0efb95
+index.html      sha256:a207f57fd6ee5f414d63c17966f9019bc63dc227dfa1a4297a2647ef5daf519c
+sim.js          sha256:576ce2b6de31dd70653d90d45d203c15067e41aaa0624bba2f09245b31bfa74d

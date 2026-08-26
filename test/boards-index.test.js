@@ -52,9 +52,28 @@ function inHead(rel) {
   catch { return false; }
 }
 const blob = (rel) => git(["cat-file", "blob", "HEAD:" + rel]);
-// The bytes a fresh checkout would deploy. Uncommitted work reads from disk;
-// the ratchet below is what makes that safe.
-const shipped = (rel) => (inHead(rel) ? blob(rel) : fs.readFileSync(path.join(ROOT, rel)));
+
+// Paths git reports as changed — staged, unstaged, or untracked.
+const dirtyPaths = () =>
+  new Set(
+    git(["status", "--porcelain"]).toString("utf8").split(NL).filter(Boolean).map((l) => l.slice(3).trim()),
+  );
+const DIRTY = dirtyPaths();
+
+// The bytes a fresh checkout would deploy.
+//
+// For a CLEAN tracked file that is the blob, and the ratchet below is what
+// makes reading disk unnecessary. For a file git reports as CHANGED it is the
+// working copy, because that is what the next commit will carry.
+//
+// Reading the blob unconditionally was this test's own blind spot, found by
+// the implementer 2026-08-26: with the dispatch board edited but uncommitted,
+// public/index.html published sim.js c001a273 while disk held 576ce2b6, and
+// this file reported 0 failures — blind to precisely the case it exists for,
+// a board changing and its card going stale. The guard only bit after the
+// commit it was supposed to gate.
+const shipped = (rel) =>
+  inHead(rel) && !DIRTY.has(rel) ? blob(rel) : fs.readFileSync(path.join(ROOT, rel));
 
 const boardDirs = () =>
   fs.readdirSync(PUBLIC, { withFileTypes: true })
@@ -100,9 +119,7 @@ test("every board shipped under public/ has a card — a board cannot go live un
 test("RATCHET: no tracked file silently differs from the bytes it ships", () => {
   const tracked = git(["ls-files"]).toString("utf8").split(NL).filter(Boolean);
   // Anything git reports as modified is a legitimate uncommitted edit.
-  const dirty = new Set(
-    git(["status", "--porcelain"]).toString("utf8").split(NL).filter(Boolean).map((l) => l.slice(3).trim()),
-  );
+  const dirty = dirtyPaths();
   const silent = [];
   for (const rel of tracked) {
     if (dirty.has(rel)) continue;

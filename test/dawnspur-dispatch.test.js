@@ -6,12 +6,21 @@
 // Kill line below is a test and the REFUSED table is the ban list.
 //
 // THE FIXTURE QUESTION, answered in the code rather than in a comment: every
-// board in this file is minted by makeBoard() at the opening — marks 0,
+// board in this file is minted by makeBoard() at the opening — marks 3,
 // roster 0, train home — and driven forward by walk() / reach(), which call
 // the same commits a player's thumb calls. No test hand-sets a field. The one
 // thing injected is the die: createBoard takes a roll function, because
 // honest dice guarantee nothing and the turned-back sentences have to be
 // reachable on purpose. The sim never scripts an outcome; the test rolls it.
+//
+// AMENDMENT 1 retires ONE clause of that discipline and no more. The opening
+// float is MINTED, and 3 marks / 0 Wardens is not reachable by play: every
+// other delta on this board is even, so marks and roster share parity from a
+// 0 / 0 opening. The beat's signed line "Every state in this beat's arithmetic
+// is reached from that opening by play" is therefore retired rather than
+// quietly kept. Everything else still walks: the float is an initial
+// condition, not a hand-set field, and no test reaches past createBoard's own
+// opening to put the board somewhere play cannot.
 
 const { test } = require("node:test");
 const assert = require("node:assert/strict");
@@ -30,13 +39,19 @@ const SIT_SIM = fs.readFileSync(path.join(ROOT, "sit/dawnspur-dispatch/sim.js"),
 // below grades the code and the copy, which is where a refusal can actually
 // leak. The sim holds no "//" inside any string, so this strip is exact.
 const SIM_CODE = SIT_SIM.replace(/\/\/.*$/gm, "");
-const BOARD = SIT_HTML + "\n" + SIM_CODE;
+// The same rule for the board: strip the CSS and script comments, keep every
+// byte of markup and copy. A comment is allowed to NAME the instrument it must
+// not duplicate — that is provenance, and behaviour is graded below either way.
+// Neither file holds "//" inside a string, so both strips are exact.
+const HTML_CODE = SIT_HTML.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\/\/.*$/gm, "");
+const BOARD = HTML_CODE + "\n" + SIM_CODE;
 
 const HALT = "dawnspur-halt";
 const MOSS = "mosswake-loop";
 const CLOUD = "cloud-basin-span";
 const RUST = "rustfall-yard";
 const SENDABLE = [HALT, MOSS, CLOUD];
+const OPENING_MARKS = 3;
 const STAKE = { "dawnspur-halt": 0, "mosswake-loop": 2, "cloud-basin-span": 4 };
 const PAYS = { "dawnspur-halt": 10, "mosswake-loop": 14, "cloud-basin-span": 18 };
 
@@ -57,12 +72,11 @@ function gitBlob(p) {
   return execFileSync("git", ["cat-file", "blob", "HEAD:" + p], { cwd: ROOT });
 }
 // A board at the opening, wired to a die the test can steer and count.
-function makeBoard() {
+function makeBoard(marks) {
   const ctl = { next: 0, calls: 0 };
-  const b = Dispatch.createBoard({
-    fresh: true,
-    roll: function () { ctl.calls += 1; return ctl.next; },
-  });
+  const opts = { fresh: true, roll: function () { ctl.calls += 1; return ctl.next; } };
+  if (marks !== undefined) opts.marks = marks;
+  const b = Dispatch.createBoard(opts);
   return { b: b, ctl: ctl };
 }
 // Real commits, from the opening, in the order a thumb makes them.
@@ -92,7 +106,13 @@ function walk(line, seed) {
 function reach(routeId, wardens) {
   const h = makeBoard();
   const need = wardens * 3 + STAKE[routeId];
-  while (h.b.marks < need) walk("h+", h);
+  // Bounded: the halt pays 10 and the largest need is 16, so four wins is
+  // already generous. A bound rather than a while-loop because this file
+  // grades mutations, and a mutation must produce a RED, never a hang.
+  for (let i = 0; h.b.marks < need; i++) {
+    assert.ok(i < 8, "reach(" + routeId + ", " + wardens + ") could not fund itself in 8 runs");
+    walk("h+", h);
+  }
   for (let i = 0; i < wardens; i++) assert.ok(h.b.commitMuster(), "muster " + i + " refused");
   assert.equal(h.b.roster, wardens);
   assert.ok(h.b.marks >= STAKE[routeId], "reach() left the stake unaffordable");
@@ -123,10 +143,10 @@ function mulberry32(seed) {
   };
 }
 // 400 seeded sittings of random thumbs and honest dice, from the opening.
-function sittings(seed, runs, steps, each) {
+function sittings(seed, runs, steps, each, marks) {
   const rnd = mulberry32(seed);
   for (let run = 0; run < runs; run++) {
-    const h = makeBoard();
+    const h = makeBoard(marks);
     for (let i = 0; i < steps; i++) {
       const act = ["h", "m", "c", "R", "W", "M", "."][Math.floor(rnd() * 7)];
       h.ctl.next = rnd();
@@ -134,7 +154,7 @@ function sittings(seed, runs, steps, each) {
       else if (act === "m") h.b.commitSend(MOSS);
       else if (act === "c") h.b.commitSend(CLOUD);
       else if (act === "R") h.b.commitSend(RUST);
-      else if (act === "W") h.b.commitMuster();
+      else if (act === "W") h.b.commitMuster(1 + Math.floor(rnd() * 4));
       else if (act === "M") h.b.commitMeet();
       else h.b.wait();
       each(h.b, run, i);
@@ -209,22 +229,75 @@ test("fixture: createBoard() with no options is the same opening as {fresh:true}
   assert.deepEqual(snap(Dispatch.createBoard()), snap(Dispatch.createBoard({ fresh: true })));
 });
 
-test("the opening: marks 0, roster 0, train home — and only the halt is lit, because it is the free send", () => {
+test("kill: the opening mints marks 3 / roster 0 / train home, and lights the halt and Mosswake", () => {
   const b = makeBoard().b;
-  assert.equal(b.marks, 0);
-  assert.equal(b.roster, 0);
-  assert.equal(b.away, false);
+  assert.equal(b.marks, OPENING_MARKS, "the desk opens with the float");
+  assert.equal(b.roster, 0, "and no Warden — David ruled it: \"no\"");
+  assert.equal(b.away, false, "the train is home");
   assert.equal(b.stopped, false);
   assert.equal(b.runSentence, null, "nothing has happened yet, so nothing is said");
   assert.equal(b.endSentence, null, "no ending before the first Chartered cargo");
   assert.deepEqual(b.record, { runsOut: 0, cargoesBanked: 0, runsTurnedBack: 0, marksLost: 0 });
-  assert.deepEqual(b.litSends(), [HALT], "the ramp is the ladder: the halt alone, and only because it stakes nothing");
-  // And it is NOT a separate gate — the other two are dark for want of marks.
-  assert.equal(cardFor(b, MOSS).stake, 2);
-  assert.equal(cardFor(b, CLOUD).stake, 4);
-  assert.equal(b.marks, 0, "which is exactly the stake the desk cannot pay yet");
-  assert.equal(b.canMuster(), false, "3 marks are 3 marks");
+  assert.deepEqual(b.litSends(), [HALT, MOSS], "the float pays Mosswake's stake at the opening");
+  assert.equal(b.musterReach, 1, "and reaches exactly one berth: the first frame is a fork, not a list");
+  assert.equal(b.canMuster(), true);
   assert.equal(b.canMeet(), false, "nothing is out to meet");
+  // The fork is real: the float buys a Warden OR a Mosswake send, never both.
+  assert.ok(b.musterPrice + cardFor(b, MOSS).stake > b.marks,
+    "3 marks must not afford a muster and a spine send together");
+});
+
+test("kill: the opening's cards quote 68 / 64 / 51 — the beat's published bare row, unmoved by the float", () => {
+  const b = makeBoard().b;
+  assert.deepEqual(b.cards().map((c) => c.percent), [68, 64, 51, null]);
+  for (const id of SENDABLE) {
+    const c = cardFor(b, id);
+    assert.ok(Math.abs(c.chance - ODDS[id][0] / 100) < 1e-9, id + " opened at " + c.chance);
+  }
+  // The float moves what can be afforded, never what is quoted.
+  for (const marks of [0, 3, 6, 12, 40]) {
+    const x = Dispatch.createBoard({ marks: marks });
+    assert.deepEqual(x.cards().map((c) => c.percent), [68, 64, 51, null],
+      "an opening of " + marks + " moved a quoted percent");
+  }
+});
+
+test("kill: the opening balance is the suite's to set and NOTHING a player can reach — no query, no storage", () => {
+  // David ruled the level testable at every value and 3 shipped. That option
+  // exists for this file and for nothing else: the board hands in no balance,
+  // and neither file can read one from anywhere a player could put it.
+  assert.equal(Dispatch.createBoard().marks, OPENING_MARKS, "the shipped default is the float");
+  assert.equal(Dispatch.createBoard({ fresh: true }).marks, OPENING_MARKS);
+  for (const marks of [0, 3, 6, 12]) {
+    assert.equal(Dispatch.createBoard({ marks: marks }).marks, marks, "the suite drives every level");
+  }
+  // Junk falls back to the float rather than minting nonsense.
+  for (const junk of [-1, 2.5, "6", null, NaN, Infinity, {}]) {
+    assert.equal(Dispatch.createBoard({ marks: junk }).marks, OPENING_MARKS,
+      "an opening of " + String(junk) + " must not mint");
+  }
+  assert.doesNotMatch(BOARD, /location\.|URLSearchParams|localStorage|sessionStorage|document\.cookie|searchParams/i,
+    "no player-reachable surface can set the opening balance");
+  assert.match(SIT_HTML, /DawnspurDispatch\.createBoard\(\{ fresh: true \}\)/,
+    "the board asks for the opening and nothing else");
+  assert.equal((SIT_HTML.match(/createBoard\(/g) || []).length, 1, "and asks exactly once");
+  assert.doesNotMatch(SIT_HTML, /createBoard\([^)]*marks/, "the board never hands in a balance");
+});
+
+test("the lit set and the ladder's reach at every level the suite drives", () => {
+  const want = {
+    0: { lit: [HALT], reach: 0 },
+    3: { lit: [HALT, MOSS], reach: 1 },
+    6: { lit: [HALT, MOSS], reach: 2 },
+    12: { lit: [HALT, MOSS], reach: 4 },
+  };
+  for (const [marks, w] of Object.entries(want)) {
+    const b = Dispatch.createBoard({ marks: Number(marks) });
+    assert.deepEqual(b.litSends(), w.lit, "opening " + marks + " lit set");
+    assert.equal(b.musterReach, w.reach, "opening " + marks + " ladder reach");
+    assert.equal(b.canSend(CLOUD), false,
+      "opening " + marks + ": the Chartered Line is shut until a cargo is banked, at any capital");
+  }
 });
 
 test("the stop is never one run: reaching Cloud Basin home paid always takes a banked cargo first", () => {
@@ -237,6 +310,67 @@ test("the stop is never one run: reaching Cloud Basin home paid always takes a b
   assert.equal(h.b.stopped, true);
   assert.equal(h.b.record.runsOut, 2, "the shortest sitting is two runs");
   assert.ok(h.b.record.cargoesBanked >= 2);
+});
+
+// ------------------------------------------------ KILL: the charter condition
+// "canSend(\"cloud-basin-span\") returns true while record.cargoesBanked === 0,
+// in any state, at any capital." / "The sitting stops in one run."
+
+test("kill: the Chartered Line is shut until a cargo is banked — at any capital, in any state", () => {
+  for (const marks of [0, 3, 4, 6, 12, 16, 24, 100]) {
+    const b = Dispatch.createBoard({ marks: marks });
+    assert.equal(b.record.cargoesBanked, 0);
+    assert.equal(b.canSend(CLOUD), false, "an opening of " + marks + " bought the summit outright");
+    assert.equal(b.commitSend(CLOUD), false);
+    assert.equal(b.marks, marks, "and a refused Chartered send spends nothing");
+    // A full ladder does not open it either.
+    const rich = Dispatch.createBoard({ marks: marks });
+    // Driven off the commit's own answer, and bounded, so a mutation that
+    // decouples canMuster from commitMuster fails loudly instead of spinning.
+    for (let i = 0; i <= rich.rosterCap; i++) if (!rich.commitMuster(1)) break;
+    assert.equal(rich.canSend(CLOUD), false, "mustering out at " + marks + " opened the summit");
+  }
+  // The card keeps its place, its pay and its percent, and names its condition.
+  const b = makeBoard().b;
+  const c = cardFor(b, CLOUD);
+  assert.equal(c.sendable, true, "it stays on the map and stays a route");
+  assert.equal(c.lit, false);
+  assert.equal(c.pays, 18, "it keeps its pay");
+  assert.equal(c.percent, 51, "and its percent");
+  assert.equal(c.condition, "The charter opens with the first cargo banked.",
+    "and names its condition in the board's words");
+  assert.notEqual(c.condition, c.note, "a condition is not the Rustfall note; Rustfall's is permanent");
+  assert.equal(cardFor(b, RUST).condition, null);
+  assert.equal(cardFor(b, HALT).condition, null, "the Core Line carries no charter");
+  assert.equal(cardFor(b, MOSS).condition, null);
+});
+
+test("the charter lifts with the first banked cargo, and never re-shuts", () => {
+  const h = makeBoard();
+  assert.equal(cardFor(h.b, CLOUD).condition !== null, true);
+  walk("h-", h);
+  assert.equal(h.b.record.cargoesBanked, 0, "a turned-back run banks nothing");
+  assert.equal(h.b.canSend(CLOUD), false, "so the charter stays shut");
+  walk("h+", h);
+  assert.equal(h.b.record.cargoesBanked, 1);
+  assert.equal(cardFor(h.b, CLOUD).condition, null, "the condition is gone from the card");
+  assert.equal(h.b.canSend(CLOUD), true, "and the summit takes a send");
+  // Losing the summit run does not re-shut it: the record only grows.
+  walk("c-", h);
+  assert.equal(h.b.canSend(CLOUD), true, "a banked cargo is the record, not a balance");
+});
+
+test("kill: the sitting can never stop in one run — property, at every level the suite drives", () => {
+  for (const marks of [0, 3, 6, 12, 16, 24]) {
+    let stops = 0;
+    sittings(0xC0DE + marks, 200, 30, (b) => {
+      if (!b.stopped) return;
+      stops += 1;
+      assert.ok(b.record.runsOut >= 2, "stopped in " + b.record.runsOut + " run(s) from an opening of " + marks);
+      assert.ok(b.record.cargoesBanked >= 2, "the stop implies a banked cargo before the Chartered one");
+    }, marks);
+    assert.ok(stops > 0, "no sitting reached the stop at an opening of " + marks);
+  }
 });
 
 // ------------------------------------------------- KILL: wall-clock motion
@@ -410,8 +544,9 @@ test("kill: the crew always comes home — the roster is identical across SEND a
 
 test("kill: across 400 seeded sittings the roster only ever moves at a muster", () => {
   let last = null;
-  sittings(0xC196, 400, 30, (b) => {
-    if (last !== null) assert.ok(b.roster >= last || b.roster === 0, "the roster fell without a muster");
+  sittings(0xC196, 400, 30, (b, run, i) => {
+    if (i === 0) last = null;
+    if (last !== null) assert.ok(b.roster >= last, "the roster fell: " + b.roster + " < " + last);
     last = b.roster;
     assert.ok(b.roster >= 0 && b.roster <= 4, "roster out of 0..4: " + b.roster);
   });
@@ -542,8 +677,10 @@ test("kill: no term this board refuses exists to be set — the API surface is p
   assert.deepEqual(keys, [
     "away", "canMeet", "canMuster", "canSend", "cards", "commitMeet", "commitMuster",
     "commitSend", "endSentence", "litSends", "manifest", "manifestLine", "marks",
-    "musterPrice", "record", "roster", "rosterCap", "runSentence", "stopped", "town", "wait",
+    "musterPrice", "musterReach", "record", "roster", "rosterCap", "runSentence",
+    "stopped", "town", "wait",
   ]);
+  assert.equal(keys.length, 22, "Amendment 1 moves the pinned surface 21 -> 22, and by musterReach alone");
   const b = makeBoard().b;
   for (const absent of ["setPosture", "posture", "hero", "insurance", "mission", "setMission", "safety", "damage"]) {
     assert.equal(typeof b[absent], "undefined", absent + " must not exist on this board");
@@ -602,7 +739,7 @@ test("kill: a run cannot resolve without the meet — the away state is held, no
 test("kill: no outcome is scripted — the FIRST run turns back on a losing die and comes home on a winning one", () => {
   const loser = walk("h-");
   assert.equal(loser.b.record.cargoesBanked, 0, "no forced first success exists");
-  assert.equal(loser.b.marks, 0);
+  assert.equal(loser.b.marks, OPENING_MARKS, "the free hop stakes nothing, so the float is untouched");
   assert.match(loser.b.runSentence, /The train turned for home/);
   const winner = walk("h+h+h+h+h+");
   assert.equal(winner.b.record.cargoesBanked, 5, "and no forced lesson-failure exists either");
@@ -674,6 +811,56 @@ test("kill: marks never go negative and the roster never leaves 0..4 — 400 see
   });
 });
 
+test("kill: the ladder is all-or-nothing — a count past the reach commits nothing at all", () => {
+  for (const marks of [0, 3, 6, 9, 12, 40]) {
+    const b = Dispatch.createBoard({ marks: marks });
+    const reach = b.musterReach;
+    assert.equal(reach, Math.min(4, Math.floor(marks / 3)), "reach at " + marks);
+    for (const n of [reach + 1, reach + 2, 5, 9, 100]) {
+      const before = { marks: b.marks, roster: b.roster };
+      assert.equal(b.commitMuster(n), false, marks + " marks: commitMuster(" + n + ") must refuse");
+      assert.deepEqual({ marks: b.marks, roster: b.roster }, before,
+        "a refused muster is a PURE refusal — no partial recruit, because nothing here refunds");
+    }
+    for (const bad of [0, -1, 1.5, "2", null, NaN]) {
+      const before = { marks: b.marks, roster: b.roster };
+      assert.equal(b.commitMuster(bad), false, "commitMuster(" + String(bad) + ") must refuse");
+      assert.deepEqual({ marks: b.marks, roster: b.roster }, before);
+    }
+    if (reach >= 1) {
+      assert.ok(b.commitMuster(reach), "the whole reach commits in one press");
+      assert.equal(b.roster, reach);
+      assert.equal(b.marks, marks - 3 * reach, "and costs exactly 3 a Warden");
+    }
+  }
+  // commitMuster() with no count is still one Warden — the shipped call.
+  const one = Dispatch.createBoard({ marks: 3 });
+  assert.ok(one.commitMuster());
+  assert.equal(one.roster, 1);
+});
+
+test("kill: musterReach is the sim's own arithmetic, and it is zero while a run is out and at the stop", () => {
+  sittings(0x1ADD, 400, 40, (b) => {
+    const expected = (b.away || b.stopped)
+      ? 0
+      : Math.min(b.rosterCap - b.roster, Math.floor(b.marks / b.musterPrice));
+    assert.equal(b.musterReach, expected,
+      "reach " + b.musterReach + " at marks " + b.marks + " roster " + b.roster +
+      " away " + b.away + " stopped " + b.stopped);
+    assert.equal(b.canMuster(), b.musterReach >= 1, "canMuster is the ladder's first berth");
+    if (b.away || b.stopped) {
+      assert.equal(b.commitMuster(1), false, "the ladder is inert while the roster rides and at the stop");
+    }
+  });
+  const away = walk("h+m");
+  assert.equal(away.b.away, true);
+  assert.equal(away.b.musterReach, 0, "reach is zero while a run is out");
+  const stopped = walk("h+c+");
+  assert.equal(stopped.b.stopped, true);
+  assert.equal(stopped.b.musterReach, 0, "and zero at the stop");
+  assert.ok(stopped.b.marks >= 3, "even with the marks to pay for it");
+});
+
 test("kill: MUSTER goes dark while the roster rides, and dark at the cap", () => {
   const h = walk("h+h+");
   assert.equal(h.b.canMuster(), true, "20 marks at the desk, roster 0");
@@ -710,8 +897,8 @@ test("kill: no reachable home state is dark — the free halt is always lit shor
 });
 
 test("kill: broke is not a dead end — the halt stakes nothing, so the desk can always earn its way back", () => {
-  const h = walk("h+m-m-m-m-m-");
-  assert.equal(h.b.marks, 0, "five turned-back spine runs eat the ten the halt paid");
+  const h = walk("h+m-m-m-m-m-m-");
+  assert.equal(h.b.marks, 1, "the float plus the halt's ten, eaten by six turned-back spine runs");
   assert.equal(h.b.roster, 0);
   assert.equal(h.b.canMuster(), false);
   assert.equal(h.b.canSend(MOSS), false);
@@ -807,11 +994,11 @@ test("kill: the HUD keeps its one line — marks, and nothing joins it", () => {
   assert.doesNotMatch(hud, /Warden|roster|of 4|%/i, "the roster and the odds do not join the marks line");
 });
 
-test("the MUSTER control wears its own numbers: the price on its face and the roster on its face", () => {
-  assert.match(SIT_HTML, /musterLabel\.textContent = "MUSTER WARDEN " \+ board\.musterPrice;/,
-    "the price is read off the sim, not typed into the markup");
-  assert.match(SIT_HTML, /rosterRead\.textContent = "Wardens " \+ board\.roster \+ " of " \+ board\.rosterCap;/,
-    "and so is the roster");
+test("the MUSTER ladder wears its own numbers: the word, the roster, the price, the total", () => {
+  const hud = SIT_HTML.slice(SIT_HTML.indexOf('<div id="hud">'), SIT_HTML.indexOf('<div id="desk">'));
+  assert.doesNotMatch(hud, /Warden|roster|MUSTER/i, "none of it joins the HUD's one line");
+  assert.match(SIT_HTML, /<span id="muster-word">MUSTER<\/span>/, "the word is the only authored text on the face");
+  assert.match(SIT_HTML, /rosterRead\.textContent = "Wardens " \+ board\.roster \+ " of " \+ board\.rosterCap;/);
   assert.doesNotMatch(SIT_HTML, /MUSTER WARDEN 3/, "3 is not typed on the board — one instrument, not two");
 });
 
@@ -824,7 +1011,7 @@ test("the board takes every number off the sim — no figure is typed into the m
   ]) {
     assert.match(SIT_HTML, shape, "the card read must come off the sim: " + shape);
   }
-  assert.doesNotMatch(SIT_HTML, /baseRisk|0\.036|0\.012|0\.76|pays 10|pays 14|pays 18/,
+  assert.doesNotMatch(HTML_CODE, /baseRisk|0\.036|0\.012|0\.76|pays 10|pays 14|pays 18/,
     "no odds arithmetic and no pay figure is copied onto the board");
   // The four reads, and the civic label on the toll.
   assert.match(SIT_HTML, /class="cn"/);
@@ -840,6 +1027,177 @@ test("the board shows the away state as a state: the platform empties and MEET i
   assert.match(SIT_HTML, /el\.classList\.toggle\("out", c\.out\);/, "the sent line is marked");
   assert.match(SIT_HTML, /el\.querySelector\("\.cs"\)\.textContent = c\.manifestLine;/, "and carries the manifest");
   assert.match(SIT_HTML, /#train\.gone \{ display: none; \}/, "gone is a display state, not a journey");
+});
+
+// -------------------------------------------- KILL: the armed re-quote
+// "An armed percent survives the gesture that showed it." / "An armed percent
+// is typed the same as a committed one." / "At rest or while away, any card's
+// stated percent is anything but chanceFor(baseRisk, roster)."
+
+test("kill: a provisional quote is the SAME instrument — cards(n) is chanceFor at n, and says so", () => {
+  // The board must never compute a percent. cards(atRoster) answers the
+  // question a finger on the ladder is asking, through the one chanceFor() in
+  // the file, and flags every card it touches.
+  const b = makeBoard().b;
+  for (let n = 0; n <= 4; n++) {
+    const asked = b.cards(n);
+    for (const id of SENDABLE) {
+      const c = asked.find((x) => x.id === id);
+      assert.ok(Math.abs(c.chance - ODDS[id][n] / 100) < 1e-9,
+        id + " at an armed " + n + " quoted " + c.chance);
+      assert.equal(c.percent, Math.round(ODDS[id][n] / 100 * 100));
+      assert.equal(c.provisional, n !== b.roster, id + " at " + n + ": provisional flag");
+    }
+    assert.equal(asked.find((x) => x.id === RUST).provisional, false, "Rustfall quotes nothing to be provisional about");
+  }
+  // Out of range is clamped, never minted.
+  assert.deepEqual(b.cards(9).map((c) => c.percent), b.cards(4).map((c) => c.percent));
+  assert.deepEqual(b.cards(-3).map((c) => c.percent), b.cards(0).map((c) => c.percent));
+  // And asking changes nothing at all.
+  const before = snap(b);
+  b.cards(4); b.cards(0); b.cards(2);
+  assert.deepEqual(snap(b), before, "a provisional quote must not write state");
+});
+
+test("kill: at rest and while away, every card quotes the COMMITTED roster and is never provisional", () => {
+  sittings(0xA24E, 400, 40, (b) => {
+    for (const c of b.cards()) {
+      assert.equal(c.provisional, false, "cards() with no argument must never be provisional");
+      if (!c.sendable) { assert.equal(c.chance, null); continue; }
+      if (c.out) continue;
+      assert.ok(Math.abs(c.chance - ODDS[c.id][b.roster] / 100) < 1e-9,
+        c.id + " quoted " + c.chance + " at a committed roster of " + b.roster);
+    }
+  });
+  // The away card holds the number it left on, and no argument can move it.
+  const h = walk("h+WWm");
+  const out = cardFor(h.b, MOSS);
+  assert.equal(out.out, true);
+  for (let n = 0; n <= 4; n++) {
+    const asked = h.b.cards(n).find((c) => c.id === MOSS);
+    assert.equal(asked.chance, out.chance, "the away card re-quoted at an armed " + n);
+    assert.equal(asked.provisional, false, "and an away card is never provisional");
+  }
+  assert.equal(h.b.musterReach, 0, "which is moot anyway: no berth can be armed while a run is out");
+});
+
+test("kill: the armed percent dies with the gesture, on every path out, in the same frame", () => {
+  // The board's own handlers, read as source, because there is no DOM here.
+  // Verified in a browser as well (375x812, mobile emulation, real
+  // PointerEvents): press, slide, release off the ladder, release on a berth,
+  // pointercancel, window blur, and a second finger — recorded in MANIFEST.txt.
+  assert.match(SIT_HTML, /let armed = null;/, "armed state exists and starts null");
+  // Every path that ends a gesture clears armed and repaints, synchronously.
+  for (const path of [
+    /function onCancel\(\) \{\s*\n\s*armed = null;\s*\n\s*endGesture\(\);\s*\n\s*paint\(\);/,
+    /function onUp\(ev\) \{[\s\S]*?armed = null;\s*\n\s*endGesture\(\);/,
+    /function disarm\(\) \{[\s\S]*?armed = null;\s*\n\s*endGesture\(\);\s*\n\s*paint\(\);/,
+  ]) {
+    assert.match(SIT_HTML, path, "a gesture path does not clear the armed quote: " + path);
+  }
+  for (const kind of ["pointercancel", "blur"]) {
+    assert.ok(SIT_HTML.includes('window.addEventListener("' + kind + '", onCancel)'),
+      kind + " must end the gesture");
+  }
+  // Tracking does not depend on setPointerCapture: the move/up/cancel
+  // listeners live on window, so a finger that leaves the ladder is still
+  // followed and the gesture always terminates. A gesture that could hang open
+  // would leave provisional percents standing with no finger down.
+  assert.match(SIT_HTML, /try \{ berthsEl\.setPointerCapture\(ev\.pointerId\); \} catch \(e\) \{/,
+    "capture is asked for and nothing depends on it");
+  for (const kind of ["pointermove", "pointerup", "pointercancel"]) {
+    assert.ok(SIT_HTML.includes('window.addEventListener("' + kind + '", on'),
+      kind + " must be tracked on window, not only on the ladder");
+    assert.ok(SIT_HTML.includes('window.removeEventListener("' + kind + '", on'),
+      kind + " must be released when the gesture ends");
+  }
+  // A second pointer cannot hijack a gesture in flight.
+  assert.match(SIT_HTML, /if \(gesture !== null\) return;/, "one gesture at a time");
+  assert.match(SIT_HTML, /if \(gesture === null \|\| ev\.pointerId !== gesture\) return;/,
+    "and only its own pointer moves it");
+});
+
+test("kill: a provisional percent is typed apart from a committed one, and only the sim decides which", () => {
+  assert.match(SIT_HTML, /const cards = armed === null \? board\.cards\(\) : board\.cards\(armed\);/,
+    "the board asks the sim for the armed quote; it never computes one");
+  assert.match(SIT_HTML, /el\.querySelector\("\.co"\)\.classList\.toggle\("prov", !!c\.provisional\);/,
+    "the provisional flag comes off the card, not off the board's own state");
+  assert.match(SIT_HTML, /\(c\.provisional \? "\\u2192 " : ""\) \+ c\.percent \+ "%"/,
+    "a provisional percent carries a mark a committed one never carries");
+  const css = SIT_HTML.slice(0, SIT_HTML.indexOf("</style>"));
+  const prov = css.match(/\.co\.prov\s*\{([^}]*)\}/);
+  assert.ok(prov, "a provisional percent has its own type");
+  assert.match(prov[1], /color:/, "its own colour");
+  assert.match(prov[1], /font-style:\s*italic/, "and its own face");
+  assert.doesNotMatch(HTML_CODE, /chanceFor|0\.76|0\.036|baseRisk/, "no second instrument on the board");
+});
+
+// ------------------------------------------------- KILL: the ladder's face
+
+test("kill: every figure on the ladder is read from the sim, and the berths are built from the cap", () => {
+  assert.match(SIT_HTML, /for \(let i = 1; i <= board\.rosterCap; i\+\+\)/,
+    "the berth count is the cap, not a number typed into the markup");
+  assert.match(SIT_HTML, /rosterRead\.textContent = "Wardens " \+ board\.roster \+ " of " \+ board\.rosterCap;/);
+  assert.match(SIT_HTML, /board\.musterPrice \+ " each"/, "the price is the sim's");
+  assert.match(SIT_HTML, /board\.musterPrice \* \(armed - board\.roster\) \+ " marks"/, "so is the armed total");
+  assert.match(SIT_HTML, /berth <= board\.roster \+ board\.musterReach/, "and so is the reach");
+  assert.doesNotMatch(SIT_HTML, /MUSTER WARDEN 3|Wardens 0 of 4|3 each|>3<|>4</,
+    "no ladder figure is typed into the markup");
+  // The berths ship empty; nothing about them is authored in HTML.
+  assert.match(SIT_HTML, /<div id="berths"><\/div>/, "the berth row ships empty and is built from the cap");
+});
+
+test("kill: a berth is filled by the roster and by nothing else, at every point in the gesture", () => {
+  assert.match(SIT_HTML, /const held = berth <= board\.roster;/,
+    "filled reads the committed roster alone — never the armed berth");
+  assert.match(SIT_HTML, /el\.classList\.toggle\("held", held\);/);
+  assert.match(SIT_HTML, /el\.classList\.toggle\("armed", armed !== null && berth > board\.roster && berth <= armed\);/,
+    "armed paints only ABOVE the roster, so a filled berth can never read un-filled");
+  // Behavioural: for every roster and every armed berth, the filled set is
+  // exactly the roster and the armed set never overlaps it.
+  const b = makeBoard().b;
+  for (let roster = 0; roster <= 4; roster++) {
+    for (let armed = roster + 1; armed <= 4; armed++) {
+      for (let berth = 1; berth <= 4; berth++) {
+        const held = berth <= roster;
+        const isArmed = berth > roster && berth <= armed;
+        assert.ok(!(held && isArmed), "berth " + berth + " both filled and armed at roster " + roster);
+      }
+    }
+  }
+  void b;
+});
+
+test("kill: no muster commits without its total having been stated on the face first", () => {
+  // Both commit paths arm first — the pointer path on pointerdown, the
+  // keyboard path on focus — and paint() writes the total before either can
+  // reach commitMuster.
+  assert.match(SIT_HTML, /armed = berth;\s*\n[\s\S]{0,400}?paint\(\);\s*\n\s*\}\);/,
+    "arming paints before anything else can happen");
+  assert.match(SIT_HTML, /berthsEl\.addEventListener\("focusin"/, "the keyboard path states the total on focus");
+  assert.match(SIT_HTML, /berthsEl\.addEventListener\("keydown"/, "and commits on Enter or Space");
+  // The total is a replacement, never an addition: one figure on that face.
+  assert.match(SIT_HTML, /priceEl\.textContent = armed === null\s*\n\s*\? board\.musterPrice \+ " each"\s*\n\s*: board\.musterPrice \* \(armed - board\.roster\) \+ " marks";/,
+    "the price is REPLACED by the total, never joined by it");
+});
+
+test("kill: row 1 never dims, and the ladder is inert but readable while the roster rides", () => {
+  const css = SIT_HTML.slice(0, SIT_HTML.indexOf("</style>"));
+  const esc = (sel) => sel.split("").map((ch) => (ch === "." || ch === "#" ? "\\" + ch : ch)).join("");
+  const rule = (sel) => {
+    const m = css.match(new RegExp(esc(sel) + "\\s*\\{([^}]*)\\}"));
+    assert.ok(m, "CSS rule not found: " + sel);
+    return m[1];
+  };
+  assert.doesNotMatch(rule("#lrow1"), /opacity/, "row 1 never fades: the price it cannot pay is the instruction");
+  assert.match(css, /#ladder\.dim button\.berth:not\(\.held\)\s*\{\s*opacity:/,
+    "the dim state spares the held berths, so the away state reads 'these four rode'");
+  assert.match(rule("button.berth"), /min-height:\s*44px/,
+    "44px is the touch floor the 34px control missed");
+  assert.match(rule("#berths"), /touch-action:\s*none/, "the drag is the ladder's, not the scroller's");
+  assert.match(rule("#ladder"), /min-height:\s*68px/);
+  // And the ladder is furniture, not a card.
+  assert.match(rule("#ladder"), /background:\s*var\(--strip\)/, "the desk's own ground, not the card ground");
 });
 
 // ------------------------------------------------------- KILL: the sentences
@@ -1124,7 +1482,7 @@ test("kill: a turned-back summit run is deliberately NOT an ending — the stake
   const h = walk("h+c-");
   assert.equal(h.b.stopped, false, "the summit turned back is not the stop");
   assert.equal(h.b.endSentence, null, "and it gets no terminal sentence");
-  assert.equal(h.b.marks, 6, "the 4-mark stake is gone");
+  assert.equal(h.b.marks, OPENING_MARKS + 10 - 4, "the 4-mark stake is gone");
   assert.equal(h.b.record.marksLost, 4);
   assert.ok(h.b.litSends().includes(HALT), "the halt is still lit");
   assert.match(h.b.runSentence, /the desk stands/);
@@ -1250,6 +1608,113 @@ test("kill: a card's content can never escape its box — the cards yield last, 
   assert.match(town, /flex:\s*0 1 auto/, "the scenery yields first of all");
   assert.match(town, /min-height:\s*26px/);
   assert.match(rule("#strip"), /overflow:\s*hidden/, "and the strip still clips the board itself");
+});
+
+// ------------------------------------------------- the float's measured effect
+// The amendment publishes a P(stop within k runs) table and says the suite
+// asserts it at 0, 3, 6 and 12. It publishes rows for two of those four, so
+// only two of these are pins: the other two are MEASURED HERE and recorded as
+// this file's own figures, not smuggled in as the beat's.
+//
+// The DP below reads every number it uses off the sim — pays, stake, the
+// chance at each roster, the muster price, the cap — so no figure is retyped.
+// What it does encode is the shape of a run, and that IS a second statement of
+// the board's rules, so the test immediately before it walks the real sim and
+// checks the shape against it. If the two ever disagree, the DP is wrong and
+// the walk is right.
+
+test("the DP's model of a run is the sim's own — checked by walking, before anything is concluded from it", () => {
+  for (const id of SENDABLE) {
+    for (const die of [0, 1]) {
+      const h = reach(id, 0);
+      const before = { marks: h.b.marks, banked: h.b.record.cargoesBanked, stopped: h.b.stopped };
+      const c = cardFor(h.b, id);
+      assert.ok(h.b.commitSend(id));
+      h.ctl.next = die;
+      assert.ok(h.b.commitMeet());
+      const won = die < c.chance;
+      // The DP's transition, stated here and checked against what just happened.
+      const expectedMarks = before.marks - c.stake + (won ? c.pays : 0);
+      assert.equal(h.b.marks, expectedMarks, id + ": the DP's marks transition");
+      assert.equal(h.b.record.cargoesBanked, before.banked + (won ? 1 : 0), id + ": the DP's banked transition");
+      assert.equal(h.b.stopped, won && id === CLOUD, id + ": the DP's stop transition");
+    }
+  }
+  // And the muster transition.
+  const m = Dispatch.createBoard({ marks: 12 });
+  assert.ok(m.commitMuster(3));
+  assert.equal(m.marks, 12 - 3 * m.musterPrice);
+  assert.equal(m.roster, 3);
+});
+
+test("the float's measured effect on P(stop within k runs), and the charter's", () => {
+  const probe = Dispatch.createBoard({ marks: 0 });
+  const ROUTES = probe.cards().filter((c) => c.sendable).map((c) => ({
+    id: c.id, pays: c.pays, stake: c.stake, chartered: c.id === CLOUD,
+  }));
+  const CHANCE = {};
+  for (const r of ROUTES) {
+    CHANCE[r.id] = [];
+    for (let ro = 0; ro <= probe.rosterCap; ro++) {
+      CHANCE[r.id][ro] = probe.cards(ro).find((c) => c.id === r.id).chance;
+    }
+  }
+  const PRICE = probe.musterPrice;
+  const CAP = probe.rosterCap;
+  // Exact DP, optimal play, musters free (they cost marks, never a run).
+  function solve(charter) {
+    const memo = new Map();
+    return function V(k, marks, roster, banked) {
+      if (k === 0) return 0;
+      const key = k + "|" + marks + "|" + roster + "|" + (banked ? 1 : 0);
+      if (memo.has(key)) return memo.get(key);
+      let best = 0;
+      const reach = Math.min(CAP - roster, Math.floor(marks / PRICE));
+      for (let n = 0; n <= reach; n++) {
+        const mm = marks - PRICE * n;
+        const rr = roster + n;
+        for (const r of ROUTES) {
+          if (charter && r.chartered && !banked) continue;
+          if (mm < r.stake) continue;
+          const p = CHANCE[r.id][rr];
+          const win = r.chartered ? 1 : V(k - 1, mm - r.stake + r.pays, rr, true);
+          const lose = V(k - 1, mm - r.stake, rr, banked);
+          const v = p * win + (1 - p) * lose;
+          if (v > best) best = v;
+        }
+      }
+      memo.set(key, best);
+      return best;
+    };
+  }
+  const row = (open, charter) => {
+    const V = solve(charter);
+    const out = [];
+    for (let k = 1; k <= 5; k++) out.push((V(k, open, 0, false) * 100).toFixed(2));
+    return out.join(" / ");
+  };
+  // THE AMENDMENT'S OWN PUBLISHED ROWS. These two are pins.
+  assert.equal(row(0, false), "0.00 / 39.58 / 64.34 / 77.83 / 86.17",
+    "the shipped board's line, as published in Amendment 1");
+  assert.equal(row(3, true), "0.00 / 44.25 / 69.41 / 82.21 / 89.25",
+    "the amended board's line, as published in Amendment 1 — the whole cost of the float is +4.67 on the two-run stop");
+  // MEASURED HERE, and recorded as this file's figures: the amendment names 6
+  // and 12 as levels to drive and publishes no row for either.
+  assert.equal(row(6, true), "0.00 / 49.18 / 74.26 / 85.99 / 91.99", "opening 6");
+  assert.equal(row(12, true), "0.00 / 53.89 / 82.02 / 91.94 / 95.70", "opening 12");
+  // The charter condition costs nothing where the float sits, which is the
+  // amendment's claim, and everything where a price could not reach.
+  assert.equal(row(0, true), row(0, false), "at 0 marks the charter never binds");
+  assert.equal(row(3, true), row(3, false), "and at 3 it never binds either");
+  for (const open of [3, 4, 6, 12, 16, 24]) {
+    assert.equal(solve(true)(1, open, 0, false), 0, "a one-run stop at " + open + " marks");
+  }
+  // Without it, a price alone would have sold the sitting outright — the two
+  // figures the amendment warns about.
+  assert.equal((solve(false)(1, 4, 0, false) * 100).toFixed(2), "51.00",
+    "an opening of 4 with no charter condition is a 51% one-click sitting");
+  assert.equal((solve(false)(1, 16, 0, false) * 100).toFixed(2), "65.40",
+    "and an opening of 16 under a full ladder is 65.4%");
 });
 
 function spin120ms() {

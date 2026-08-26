@@ -68,6 +68,26 @@ const CLAMP_HI = 0.96;
 const MUSTER_PRICE = 3;
 const ROSTER_CAP = 4;
 
+// AMENDMENT 1 (RULED — David, 2026-08-26). The desk opens with a float. Three
+// marks is the shipped opening: the largest at which the first frame is a fork
+// rather than a list — a Warden (3) OR a Mosswake send (2), never both. It is
+// new-play, flagged, in the same class as provisions 0 / 2 / 3 and the cap.
+//
+// The float is MINTED, and 3 / 0 is not reachable by play: every other delta on
+// this board is even (pays 10 / 14 / 18, stakes 0 / 2 / 4), so marks and roster
+// share parity from a 0 / 0 opening and minting an odd float shifts the whole
+// reachable lattice one parity step. Nothing becomes unreachable — no threshold
+// on this board reads parity — but the beat's signed line "Every state in this
+// beat's arithmetic is reached from that opening by play" is RETIRED rather
+// than quietly kept.
+const OPENING_MARKS = 3;
+
+// The charter condition. The Chartered Line takes a send only once the desk has
+// banked a cargo. It is the shipped board's own law promoted from a price to a
+// rule: at 0 and at 3 marks it never binds and the arithmetic is bit-identical,
+// but it makes a one-run stop impossible at ANY capital, which a price cannot.
+const CHARTER_CONDITION = "The charter opens with the first cargo banked.";
+
 const TOWN = Object.freeze({ hearth: "held", bank: "in the stone", greenhouse: "stands" });
 
 // The near lines. Rustfall carries NO risk figure at all: there is nothing
@@ -261,13 +281,24 @@ function ledgerSentence(rec) {
 }
 
 function make(s) {
+  // How far up the ladder the desk can reach right now. Zero while a run is
+  // out and zero at the stop, so the ladder is inert in both. It lives HERE so
+  // the markup never computes affordability — one instrument, not two.
+  function musterReach() {
+    if (s.stopped || s.away !== null) return 0;
+    return Math.min(ROSTER_CAP - s.roster, Math.floor(s.marks / MUSTER_PRICE));
+  }
   function canMuster() {
-    return !s.stopped && s.away === null && s.roster < ROSTER_CAP && s.marks >= MUSTER_PRICE;
+    return musterReach() >= 1;
+  }
+  function chartered() {
+    return s.cargoesBanked > 0;
   }
   function canSend(routeId) {
     const r = BY_ID[routeId];
     if (!r || !r.sendable) return false;
     if (s.stopped || s.away !== null) return false;
+    if (r.chartered && !chartered()) return false;
     return s.marks >= r.provisions + r.toll;
   }
   function canMeet() {
@@ -276,30 +307,53 @@ function make(s) {
   function litSends() {
     return ROUTES.filter((r) => canSend(r.id)).map((r) => r.id);
   }
-  function cards() {
+  // cards() with no argument is the desk as it stands: every percent is
+  // chanceFor(baseRisk, roster), which is the number the die will be thrown
+  // against. cards(atRoster) answers the question a finger on the ladder is
+  // asking — what would these quote at THAT roster — and marks every card it
+  // touches provisional:true so the board can type it as the conditional
+  // number it is. It is the SAME instrument either way: there is one
+  // chanceFor() in this file and the board never computes a percent itself.
+  // Nothing here writes state, and the away card never re-quotes at all: it
+  // holds the number it left on.
+  function cards(atRoster) {
+    const asked = Number.isInteger(atRoster)
+      ? Math.min(ROSTER_CAP, Math.max(0, atRoster))
+      : null;
+    const provisional = asked !== null && asked !== s.roster;
+    const quoteRoster = provisional ? asked : s.roster;
     return ROUTES.map((r) => {
       if (!r.sendable) {
         return {
           id: r.id, name: r.name, line: r.line, sendable: false, lit: false, out: false,
           pays: null, provisions: null, toll: null, stake: null, chance: null, percent: null,
-          note: r.note, manifestLine: null,
+          note: r.note, condition: null, provisional: false, manifestLine: null,
         };
       }
       const riding = s.away !== null && s.away.routeId === r.id;
-      const chance = riding ? s.away.chance : chanceFor(r.baseRisk, s.roster);
+      const chance = riding ? s.away.chance : chanceFor(r.baseRisk, quoteRoster);
       return {
         id: r.id, name: r.name, line: r.line, sendable: true, lit: canSend(r.id), out: riding,
         pays: r.pays, provisions: r.provisions, toll: r.toll, stake: r.provisions + r.toll,
         chance: chance, percent: percentOf(chance),
         note: null,
+        condition: r.chartered && !chartered() ? CHARTER_CONDITION : null,
+        provisional: provisional && !riding,
         manifestLine: riding ? manifestSentence(r, s.away.wardens) : null,
       };
     });
   }
-  function commitMuster() {
-    if (!canMuster()) return false;
-    s.marks -= MUSTER_PRICE;
-    s.roster += 1;
+  // ALL OR NOTHING. A count beyond the reach commits nothing at all — there is
+  // no partial recruit, because nothing on this board refunds and a half-filled
+  // order would be unrecoverable state the player never asked for. Berth k is
+  // ABSOLUTE (roster = k), so the caller hands in the COUNT to add, and the
+  // board turns a berth into a count before it calls.
+  function commitMuster(count) {
+    const n = count === undefined ? 1 : count;
+    if (!Number.isInteger(n) || n < 1) return false;
+    if (n > musterReach()) return false;
+    s.marks -= MUSTER_PRICE * n;
+    s.roster += n;
     return true;
   }
   function commitSend(routeId) {
@@ -359,6 +413,7 @@ function make(s) {
     get roster() { return s.roster; },
     get rosterCap() { return ROSTER_CAP; },
     get musterPrice() { return MUSTER_PRICE; },
+    get musterReach() { return musterReach(); },
     get away() { return s.away !== null; },
     get stopped() { return s.stopped; },
     get town() { return TOWN; },
@@ -397,11 +452,18 @@ function make(s) {
 
 function createBoard(opts) {
   const o = opts || {};
-  // The opening, and the only state this file ever mints: marks 0, roster 0,
-  // train home, nothing out, nothing banked. Only the halt is lit, and only
-  // because it is the one free send — no gate stands in front of the others.
+  // The opening, and the only state this file ever mints: the float, roster 0,
+  // train home, nothing out, nothing banked. The halt and Mosswake are lit —
+  // the float pays Mosswake's stake — and Cloud Basin is dark twice over, for
+  // want of a mark and for want of a charter.
+  //
+  // opts.marks is FOR THE SUITE. David ruled the level testable at every value
+  // and 3 shipped, so the float is one number and a change of mind costs one
+  // number. Nothing a player can reach sets it: this file reads no query
+  // string, no storage and no control, and the board hands in nothing.
+  const opening = Number.isInteger(o.marks) && o.marks >= 0 ? o.marks : OPENING_MARKS;
   return make({
-    marks: 0,
+    marks: opening,
     roster: 0,
     away: null,
     stopped: false,
