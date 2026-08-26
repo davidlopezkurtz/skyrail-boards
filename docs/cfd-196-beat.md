@@ -705,3 +705,127 @@ Every line testable, red-first.
   play."** Retired — see the parity note above.
 - **The scenery sentence's copy half** — retired by ruling 2; the state half
   stands.
+
+---
+
+# Amendment 2 — the ladder becomes a slider, and moves in with the grey bars
+
+**RULED — David, 2026-08-26**, on sitting 3 of the amended board (`2a3e9dd`,
+sat via the immutable deployment while CFD-199 blocks promotion):
+
+> *"an actual slider would be better than 4 squares, but this worked ok. I also
+> think that the slider action should have been part o the grey bars not a
+> green one at the top"*
+
+Presentation only. **Not one mechanic moves.** Price 3, cap 4, permanence,
+all-or-nothing commit, `musterReach`, the armed re-quote and its two fences,
+commit-on-release and slide-off-to-cancel all survive Amendment 1 unchanged.
+
+## The PM's miss, recorded because it was avoidable
+
+This is the third time the control's placement has been decided, and the first
+two agreed with the third. The rendered ballot of 2026-08-26 offered four
+treatments and recommended **B — card grammar, pinned above the route list,
+sharing the routes' visual family** — on the argument that the turn's real
+question is *buy odds or send now*, so the control belongs among the things it
+competes with. Amendment 1 then specified the opposite in terms: *"a 68px block
+on the desk's own furniture ground (`--strip` with a `--card-edge` ring,
+**deliberately not the card ground**) between the marks line and the routes."*
+
+**The PM approved that without noticing it overrode the ballot's own
+recommendation, and never put placement to David as one of the five questions**
+— even after naming placement as the whole finding. David then arrived at B
+unprompted, from play. The design was right in the ballot and was lost in the
+amendment; that is a review failure, not a design failure.
+
+## Does — what changes
+
+- **The control moves into the card stack and takes the cards' ground.**
+  `--card` with a `--card-edge` inset ring, the same grammar as a route bar,
+  pinned directly above the routes so it never scrolls away. It stops being a
+  separate green block above the scenery. The `--strip` furniture ground and the
+  header slot are retired.
+- **The four berths become one slider.** A single track with a thumb, snapping
+  to integers 0..`rosterCap`, because the roster is an integer and a position
+  between two Wardens means nothing. Drag the thumb to the count you want; the
+  total states itself on the bar's face; release commits. Slide back to the
+  roster's own position, or off the bar, to commit nothing.
+- **The track's filled length is the roster; the reachable length is what the
+  marks can reach; the rest is dark.** The same three readings Amendment 1's
+  berths carried, expressed as lengths rather than as cells.
+- **The dead space below the cards closes.** `#cards` takes the slack while its
+  children do not grow, so on a tall viewport the stack sits against a large
+  void — visible in every one of David's three sittings. The card list stops
+  claiming space it does not fill; the sentence panels take it.
+
+## The one judgment the PM is making, flagged for reversal
+
+**Green survives as the filled length inside the grey bar.** David's objection
+was to "a green one at the top" — a separate green block in the header slot —
+and green is already this board's *held* colour (the away card's ring, the end
+panel's ring). So the bar's ground becomes grey and the filled portion stays
+green, which is the board's existing vocabulary for *this is held*.
+
+**If he meant green should go entirely, it is one token and this paragraph is
+what he is overruling.**
+
+## Sees
+
+One bar in the stack, above the routes, on the card ground. Its face carries
+`MUSTER`, the roster, and the price at rest — at full contrast whether or not
+it can be paid, unchanged from Amendment 1, because the price is the
+instruction. While a finger is down the price figure is **replaced** by the
+total, never joined by it, and the route cards below re-quote provisionally in
+their own typing. The thumb is at least 44px on its shortest axis.
+
+The bar reads as a peer of the routes because it is one: the turn's question is
+*buy odds, or send now*, and both halves of it now sit in one stack, in one
+grammar, with the price on the same line as the payouts it competes against.
+
+## Canon check
+
+Only rows this amendment moves. Every other row of Amendment 1's table stands.
+
+| Row | ON / REFUSED | Rests on |
+| --- | --- | --- |
+| The control on the card ground, in the stack | ON | David 2026-08-26, verbatim: "the slider action should have been part o the grey bars not a green one at the top". Corroborated by the PM's own ballot recommendation of the same placement, and by the signed beat delegating presentation: "map or cards is the implementer's business under this spec". |
+| A continuous track in place of four cells | ON | David 2026-08-26, verbatim: "an actual slider would be better than 4 squares". Snapping to integers rests on the roster being an integer — Amendment 1's Kill line "the roster never leaves 0..4" and "commits a partial count" both stand. |
+| The slider as the convicted gauge | ON, argued, unchanged from Amendment 1 | The scale board's ban is scoped by its own citation — Economy: the planting "tells a keeper the state of their ground **without a gauge**", a sentence about how the *world* reports hidden state. A track the player drags reports the player's own pending intent, and no hand but theirs moves it. A slider is not less defensible than the berths were; it is the same argument with a different shape. |
+| Green as the filled length | ON, PM judgment, flagged | Green is the board's existing *held* colour. David objected to a green block in the header slot, not demonstrably to green. Reversible in one token. |
+| The `--strip` furniture ground and the header slot | REFUSED | Retired by this ruling. |
+| Every mechanic | unchanged | Amendment 1 stands in full. This amendment moves no number and no rule. |
+
+## Kill — what changes, and what is re-expressed
+
+Amendment 1's Kill list stands, with the berth lines re-expressed for a track.
+These replace them; everything else in that list is unchanged and still binds.
+
+- The control renders anywhere but in the card stack, or on any ground but the
+  cards' — a header slot, the strip's furniture ground, or its own block above
+  the scenery.
+- The filled length shows anything but the committed roster, at any point in
+  the gesture, including mid-drag.
+- The thumb comes to rest between two integers, or a commit lands a non-integer
+  count.
+- The reachable length shows anything but `musterReach` beyond the roster.
+- The thumb's shortest axis is under 44px.
+- A drag back to the roster's own position, or off the bar, commits anything.
+- The total is not stated on the bar's face before the commit, or joins the
+  price rather than replacing it.
+- Any figure on the bar is typed into the markup rather than read from
+  `board.musterPrice`, `board.roster`, `board.rosterCap` or
+  `board.musterReach`.
+- The card list holds vertical space it does not fill, at any viewport from
+  280x480 to 412x732, in any state.
+- The slider animates, eases, or moves on any schedule but a player's own
+  input.
+
+## What goes stale in Amendment 1
+
+- **"The ladder is a 68px block on the desk's own furniture ground (`--strip`
+  with a `--card-edge` ring, deliberately not the card ground) between the marks
+  line and the routes."** Retired — the card ground, in the stack, is the
+  ruling.
+- **"Row 2 carries four 44px berths."** Retired — one track, integer-snapped.
+- Amendment 1's berth-rendering Kill line is replaced by the filled-length line
+  above.
