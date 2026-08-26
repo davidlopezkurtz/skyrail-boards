@@ -6,7 +6,11 @@ available … select the mission, confirm the number and type of troops, and off
 they go, to either success or failure") under `docs/mechanisms-recommitted.md`
 §6's canon-check discipline. The board is that loop in Skyrail's nouns: pick a
 route, muster the crew, send — and the train comes home paid, or it comes home
-empty. Card: CFD-196. Awaiting David's signature.
+empty. Card: CFD-196.
+
+**SIGNED — David, 2026-08-26: "signed — go, and rule the seam my way."** The
+seam below is ruled with that signature. Implementation proceeds from this
+document; the Kill list is the red-first test spec.
 
 ## Named ruling — dice for standard runs, the instance for contested ones
 
@@ -50,8 +54,23 @@ direction and ruling post-date §5 and ask for success-or-failure dispatch now
 — and its dice routes name their own agents from the JSON's tags: weather and
 the line itself (`routes[cloud-basin-span].tags`: "weather"), never a storm at
 the town and never raiders-by-dice. The storm sitting keeps its seat on the
-scale lineage untouched. If David reads §5 as binding this loop too, the
-stake shrinks, not the loop; he rules at signature.
+scale lineage untouched.
+
+**RULED — David, 2026-08-26: §5 does not bind this loop; the stake stands
+whole.** The ground is §5's own test rather than its conclusion. §5 refused
+haul-loss-first because it would be "drama with no canonical agent" (§5.4),
+and refused the in-progress stake because "the in-progress needs a pressor"
+(§5.5): storm-first was the answer for a board that had no agent to hand, and
+§5's question sentence scopes itself to "the scale sitting". This board's
+routes carry their agents in the pack's own tags, so it passes §5's test
+rather than dodging it.
+
+Recorded with its soft spot named, because a ruling that hides its weak half
+is the welding §6 forbids: the tag argument is strongest at Cloud Basin
+(`tags`: "weather") and weakest on the two Core Line routes, whose agent —
+the line's own condition — is read from their descriptions and `ROUTE_EVENTS`
+rather than named by a tag. The ruling takes the safe routes' 0.08 / 0.12 as
+the line itself, and the stake on them stands.
 
 ## Seat
 
@@ -221,6 +240,7 @@ and the paid register names the losses without apology and without warning.
 | The engine's ×0.25 failure consolation | **REFUSED** — the un-implemented remnant CFD-145 already overruled |
 | Insurance | **REFUSED** — recovered stakes are not payouts; the naked stake teaches first; the tiers wait, named |
 | Postures | **REFUSED** — balanced locked, its term 0 by the content's own table |
+| Route events | **REFUSED** — the engine's fifteen event biases stay out; one quoted number is the whole truth |
 | Heroes | **REFUSED** — the direction's "accompanying heroes" wait for the Hero Lodge sitting |
 | Missions beyond convoy | **REFUSED** — patrol waits with safety, survey with the signal tower, repair with damage, raid with the instance |
 | Route safety accrual | **REFUSED** — patrol's business; safety = 0 in the formula, stated |
@@ -355,6 +375,7 @@ sitting**, in order.
 | The ×0.25 consolation leg | REFUSED | CFD-145 overrules it; PLAN.md §4 records it as the un-implemented remnant |
 | Insurance | REFUSED | CFD-145 — recovery is not a payout; Core Loop — stakes "defaulting gentle and turned up only by a player who reaches for it": the dial arrives as a choice, later, not as a default layer now |
 | Postures | REFUSED | `DISPATCH_POSTURES` — balanced carries success 0; a locked dial with no term is honestly absent, not silently zero |
+| Route events | REFUSED | `ROUTE_EVENTS` (`src/content.js`) — fifteen entries carrying successBias −0.10..+0.08; an unasked-for bias would make the card's stated percent a second instrument, against the ruling's "fair transparent" and Economy's legibility rule. Named here because it is the sixth zeroed term in the formula and the only one that had no row |
 | Heroes | REFUSED | The direction names them; the Hero Lodge (`buildings[hero-lodge]`) is off this board; its sitting owns them |
 | Missions beyond convoy | REFUSED | `missions[convoy].rewardMultiplier` = 1 — the one mission leaving `route.rewards` untouched; each other mission is named to the instrument it waits for |
 | Safety accrual | REFUSED | `routeRisk = baseRisk − routeState.safety` — safety is patrol's earned state; unearned, it is 0, stated |
