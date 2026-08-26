@@ -55,6 +55,14 @@ execSync(
   { stdio: "inherit", env: wranglerEnv },
 );
 
+// CFD-199. A deploy that uploads, completes, and never reaches production used
+// to fail with nothing but "live != expected" — six identical lines and no
+// cause, which cost a round-trip to the account owner. The token is already in
+// hand here, so ask it the question instead of guessing: is this deployment
+// production or preview, and is the project's production branch the one we
+// pushed? Prints non-secret facts only.
+await reportDeploymentState();
+
 const live = await fetchVerifyBuildInfo(sha);
 if (live.commit !== sha) {
   fail(
@@ -75,6 +83,51 @@ for (const path of BOARD_PATHS) {
 }
 
 console.log("deploy verified on boards.skyrailreclamation.com");
+
+async function cfApi(pathname) {
+  const res = await fetch("https://api.cloudflare.com/client/v4" + pathname, {
+    headers: { Authorization: "Bearer " + token },
+  }).catch(() => null);
+  if (!res || !res.ok) return null;
+  const body = await res.json().catch(() => null);
+  return body && body.success ? body.result : null;
+}
+
+// Never throws and never fails the run: this is an instrument, not a gate.
+// The gate is fetchVerifyBuildInfo below.
+async function reportDeploymentState() {
+  const project = await cfApi(`/accounts/${accountId}/pages/projects/${PROJECT}`);
+  const deployments = await cfApi(
+    `/accounts/${accountId}/pages/projects/${PROJECT}/deployments?per_page=3`,
+  );
+  if (!project && !deployments) {
+    console.log("deployment-state: UNAVAILABLE (Pages API unreachable or token lacks Pages:Read)");
+    return;
+  }
+  if (project) {
+    console.log(`project production_branch: ${project.production_branch ?? "unknown"} (deploying --branch=main)`);
+    if (project.production_branch && project.production_branch !== "main") {
+      console.log(
+        `  ^ MISMATCH: deployments to main are PREVIEWS while production_branch is ${project.production_branch}. ` +
+          `That is why production does not move. Fix the project's production branch, or deploy that branch.`,
+      );
+    }
+  }
+  for (const d of (deployments ?? []).slice(0, 3)) {
+    const stage = d.latest_stage ? `${d.latest_stage.name}/${d.latest_stage.status}` : "unknown";
+    console.log(
+      `deployment ${(d.id ?? "").slice(0, 8)} env=${d.environment} branch=${d.deployment_trigger?.metadata?.branch ?? "?"} ` +
+        `stage=${stage} aliases=${JSON.stringify(d.aliases ?? [])}`,
+    );
+  }
+  const newest = (deployments ?? [])[0];
+  if (newest && newest.environment !== "production") {
+    console.log(
+      `  ^ the deployment just created is env=${newest.environment}, NOT production — ` +
+        `the durable host will not move until a production deployment exists.`,
+    );
+  }
+}
 
 async function assertExistingPagesProject() {
   const res = await fetch(
