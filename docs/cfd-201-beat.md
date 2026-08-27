@@ -960,7 +960,56 @@ world's to draw** — that is what a reserve is.
 
 ---
 
-## Open questions for David
+## ANSWERED — David, 2026-08-27
+
+All six were ruled. **Do not re-open them when this sitting comes back up.**
+Recorded here because the file carried them unanswered and a deferred beat is
+exactly where decided questions get re-litigated.
+
+**Weather is deferred, not cancelled.** Canon §7.1: the join board (CFD-203,
+`/dawnspur-line/`) ships first, because *"if the sitting's purpose is to test
+whether the two loops combine, shipping without the thing that combines them
+tests the wrong question."* This beat's own rejected alternative 1 became that
+board. §5 stays signed; "the next sitting's reckoning" now means the sitting
+after the join.
+
+1. **MOSSWAKE +3 — CUT.** *"Cutting redundant is cheaper than renaming
+   colliding."* Conditioned on the terrace having work while the train is out,
+   which the two-vehicle claim supplies — and CFD-203 verified rather than
+   assumed it, and states that if the reading is refused the cut fails with it.
+2. **The Chartered storm pay is 24** — and the recorded reason is **the ladder
+   inversion**, not noticeability: it retires for free the oddity CFD-196
+   shipped, that the spine out-earns the summit even fully crewed. *"The
+   formulaic-storm-play worry is small and testable: if 'always run the summit
+   in a storm' turns out to be correct every time, that's a tuning fix later,
+   not a reason to ship a difference nobody can feel."*
+3. **Provisions off the terrace — SHIPPED, and it took this beat's place.**
+   See CFD-203 and canon §7.1.
+4. **The Ranger's job is the TRIM.** *"Lead time is a buy-once power-up that
+   erodes the thing it's attached to. Trim costs every time and is wrong at the
+   summit, so it can't buy you out of the ending."* And a note that travels:
+   the Ranger **could be given lead time later as a separate unit rather than
+   bending this one**.
+5. **The stop: topping the terrace ARMS the ending, the qualifying cargo
+   TRIGGERS it.** *"That kills the accidental-ending risk and makes the terrace
+   pay off on its own terms without the builder skipping the point."* Recorded
+   in canon §7.2 as the shape that makes sitting length opt-in. On the join
+   board the trigger is a Chartered cargo home; here it is a Chartered cargo
+   home **out of a storm**.
+6. **Sitting length — ruled and now canon §7.2.** *"There can be a diversity of
+   sits. Standard loops are quick but more challenging ones that are opted into
+   can be longer."* "Sits get longer" is retired from §7's cost list.
+
+**One thing this beat must re-examine when it comes back up**, flagged by
+CFD-203's author: with weather deferred, TEND's only payoff on the join board
+is the closing sentence — so **the storm sitting inherits a much larger bill
+than CFD-183 handed it**, because the join board draws the ground far harder.
+Re-measure the reserve's arithmetic against the board that actually passes
+before this beat is signed.
+
+---
+
+## Open questions for David — ANSWERED ABOVE, kept for the record
 
 Each answerable in a sentence.
 

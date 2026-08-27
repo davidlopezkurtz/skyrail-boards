@@ -118,6 +118,23 @@ CFD-201's `/dawnspur-storm/`, not `/dawnspur-dispatch/`. Concretely:
   pass. The parent is the last passed board, always, and it is named at
   signature rather than assumed at drafting.
 
+**The queue is THREE boards, not two — updated 2026-08-27.** Canon §7.1 put the
+join board in front of the storm, so the order is:
+
+    CFD-203  /dawnspur-line/     the join      the ground feeds the runs
+    CFD-201  /dawnspur-storm/    the storm     weather, deferred not cancelled
+    CFD-200  /dawnspur-rustfall/ the yard      THIS BEAT
+
+**This beat's parent is still `/dawnspur-storm/`, and that is not a leftover.**
+CFD-203's author recommended re-basing onto `/dawnspur-line/`; the PM checked
+and refused it. The line board *inserts before* the storm rather than
+displacing it, and **every word of this beat's Engineer answer runs on inherited
+weather** — the storm covering a raider, the storm drawing a tier, the
+stormbird arriving mid-run with PULL OUT lit. On a board with no weather the
+Engineer has no job at all and the downside David asked for does not exist. So
+the yard waits two sittings, which is the honest cost of the §7.1 ruling and is
+recorded there.
+
 **The new board lands at `/dawnspur-rustfall/`.** Argued, because three other
 names were available and all three are worse:
 
