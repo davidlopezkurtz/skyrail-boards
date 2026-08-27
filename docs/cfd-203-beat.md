@@ -1505,3 +1505,47 @@ it has to be re-derived.
 | (i) ship dominated | a trap | out-earns the halt | none | **REFUSED** — teaches a wrong lesson |
 | **(ii) cut TEND** | absent, returns with the storm | out-earns the halt | none | **RULED IN** |
 | (iii) arm on a full ground | required | **loses to the halt** | a tail of 8–9 tends | **REFUSED** — the two costs above |
+
+---
+
+## The sit — PLAYED TO CONCLUSION, David, 2026-08-27. VERDICT OUTSTANDING.
+
+**No verdict was given and none is inferred.** His words were *"board played to
+its conclusion"* — a statement of fact, not a pass. This board is **not** a
+passed board, does not carry a passed board's protections, and must not be
+recorded as one. When the verdict comes it goes here.
+
+Sat on the durable host at **`3588bb4`**, `/dawnspur-line/` sim `18b1324f`.
+
+The record it ended on, verbatim from the board:
+
+> "The Chartered cargo is home and the terrace is topped. **Five runs out, four
+> cargoes banked, one turned back and cost nothing but the trip. Three from the
+> terrace went out on the line. The ground is drawn and standing. Nothing on
+> this desk puts it back — that is the next sitting's business.** The record
+> keeps what came home; the line past the basin is the next sitting's."
+
+**Every mechanism this beat was revised four times to get right is visible in
+that one sentence**, which is the only claim being made about it here:
+
+- **Both loss counters, with a zero named rather than omitted** — *"one turned
+  back and cost nothing but the trip"* is the free halt turning back, the
+  zero-cost register firing correctly. The single-scalar version would have said
+  the same words over dead food; this one has earned them.
+- **The food that went out is reported** — *"Three from the terrace went out on
+  the line."* On the first draft it was reported nowhere.
+- **The one-way ground carries its cause** — *"The ground is drawn and standing.
+  Nothing on this desk puts it back — that is the next sitting's business."*
+  The fact and the reason in one breath, so the storm board cannot inherit a
+  false premise.
+- **The arm-and-trigger stop** — *"The Chartered cargo is home **and** the
+  terrace is topped."* Topping armed it; the cargo fired it.
+- **A drawn ground at the stop, not a bare one**, which the reachability check
+  said was the common case and the dead `full` register said was impossible.
+
+At the end of the sitting the terrace's two verbs are both dark and say why —
+CARRY *"The stores are full."*, UP *"The terrace is topped."* — and the desk
+still quotes 82 / 78 / 65 at a full roster.
+
+**What the sit does not yet tell us** is anything the PM may report as a
+finding. That waits on David's own words.
