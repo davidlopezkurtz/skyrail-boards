@@ -118,212 +118,288 @@ CFD-201's `/dawnspur-storm/`, not `/dawnspur-dispatch/`. Concretely:
   pass. The parent is the last passed board, always, and it is named at
   signature rather than assumed at drafting.
 
-**The new board lands at `/dawnspur-rustfall/`.** Argued, because two other
-names were available and both are worse:
+**The new board lands at `/dawnspur-rustfall/`.** Argued, because three other
+names were available and all three are worse:
 
-- It is still Dawnspur's board. The desk is the same Switchyard desk, the
-  multi-loop architecture is loops on one town, and the sibling that this
-  board's whole existence answers is `/dawnspur-dispatch/`. Keeping the town's
-  name keeps the lineage readable in the index.
-- **Not `/convoy-defense/`.** The Convoy Stop lineage contributes its
-  *grammar* here, exactly as CFD-196 promised, and its grammar is not its
-  name. Taking the name would imply this is a recut of `/convoy-stop/`, which
-  it is not: that board is preserved, real, and untouched.
-- **Not `/dawnspur-dispatch-2/`.** The sitting is not a second dispatch
-  sitting. The dispatch loop is carried unchanged; the system being sat is the
-  yard.
+- It is still Dawnspur's board. One town, one sky, one desk, one terrace — that
+  is CFD-201's fiction join and this board inherits it whole. Keeping the
+  town's name keeps the lineage readable in the index.
+- **Not `/convoy-defense/`.** The Convoy Stop lineage contributes its *grammar*
+  here, exactly as CFD-196 promised, and its grammar is not its name. Taking
+  the name would imply this is a recut of `/convoy-stop/`, which it is not:
+  that board is preserved, real, and untouched.
+- **Not `/dawnspur-storm-2/`.** The sitting is not a second weather sitting.
+  Weather is inherited entire; the system being sat is the yard.
+- **Not `/dawnspur-dispatch-2/`.** The desk is now two boards back.
 
-**The board carries the whole dispatch desk, and that is not a second system.**
-David's seam requires it: assets assigned to a send become the assets in the
-instance, so the send and the instance must be on one board. And the tier only
-means anything against its alternative — "roll the dice at Cloud Basin, or go
-and play Rustfall" is the ruling's EXCEPT clause rendered, and with the dice
-routes removed the exception has nothing to be an exception to. Everything
-carried from `/dawnspur-dispatch/` is carried **unchanged and Kill-listed as
-unchanged**. One system is added: the yard.
+**The board carries the whole storm board, and that is not a second system.**
+§7's dropped half is what licenses it, and David's seam requires the desk
+specifically: assets assigned to a send become the assets in the instance, so
+the send and the instance must be on one board. The tier also only means
+anything against its alternative — "roll the dice at Cloud Basin, or go and
+play Rustfall" is the ruling's EXCEPT clause rendered, and with the dice routes
+removed the exception has nothing to be an exception to. Everything inherited
+is carried **unchanged and Kill-listed as unchanged**. One system is added: the
+yard.
 
 David sits first. Ask: What happened.
 
 ---
 
+## What the panel measured, and what moved
+
+A nine-agent adversarial panel with an exhaustive solver read the first draft.
+The design stood; four numbers and one rule did not. Recorded here rather than
+silently corrected, because three of the five were the author's own and the
+project's standing failure is confident unmeasured claims.
+
+**Every figure in this section was re-derived by this author** with an
+independent solver over the revised rules — optimal placement enumerated at
+every node, PULL OUT live at every node, all 55 legal rosters, both skies.
+
+1. **The stated defence of heaviest-first was false; the ordering was right.**
+   The draft claimed the push-or-retreat call was "a real one at every step."
+   Measured, at push 3 it is live at one step of three. **The ordering survives
+   for a different and better reason** — see The numbers.
+2. **The Marksman was dead at any price**, because reach only pays under
+   uncertainty and every wave was forecast. **RULED by David, 2026-08-27: "fix
+   the marksman with the adjacent wave."** Shipped, measured, and the inverse
+   checked so the Rail Warden did not die in its place.
+3. **The gradient paid a zero-crew run.** With David's damage tiers a wrecked
+   car stayed aboard and soaked the next wave, so *being hit made you safer* and
+   the muster became optional. Fixed, and the fix is one clause.
+4. **Wave 3's shape was self-contradictory** once a car was lost. Closed.
+5. **The beat contradicted itself on what the Rustfall card publishes.**
+   Resolved, with the reason stated.
+
+Two further things moved that the panel did not raise and the re-base did:
+**the Ranger is no longer refused** — CFD-201 lands it, so it arrives inherited
+— and **the Engineer stopped being a placer of walls and became a repairer**,
+because David's own damage ruling created the job its pack entry already
+described.
+
+---
+
 ## Does
 
-The desk opens exactly as `/dawnspur-dispatch/` closed. Three routes take a
-send and roll honest dice at stated odds. The fourth now takes a send and
-rolls nothing.
+The board opens exactly as `/dawnspur-storm/` closed: one town, one sky, the
+terrace above and the switchyard desk below. Three routes take a send and roll
+honest dice at a stated percent that carries the weather. The fourth now takes
+a send and rolls nothing.
 
-### At the desk — carried, unchanged
+### Inherited whole, and not re-argued
 
-- **DAWNSPUR HALT** (0.08, pays 10, stakes 0), **MOSSWAKE LOOP** (0.12, pays
-  14, stakes 2), **CLOUD BASIN SPAN** (0.25, pays 18, stakes 3+1). Odds
-  through `chanceFor(baseRisk, guard)`, one instrument, the percent stated
-  before the click. The charter condition holds: a Chartered Line send needs a
-  cargo banked first. The halt is free and always lit, so no reachable state
-  deadlocks.
-- **The opening float is 3 marks**, roster 0, train home. Unchanged.
-- **SEND commits, MEET resolves.** The stake is spent at the click and
-  refunds in no direction. Nothing sours: a run met in a week is the run met
-  in a breath.
-- **Nothing moves with wall time, anywhere, in any state.** `wait()` stands,
-  takes nothing, and returns false.
+From **CFD-196** (passed): the three sendable routes at 0.08 / 0.12 / 0.25
+paying 10 / 14 / 18 against stakes of 0 / 2 / 3+1; the charter condition; the
+opening float of 3; SEND commits and MEET resolves; the muster slider on the
+card ground; a failed run pays zero; nothing refunds in any direction; the crew
+always comes home on both branches; the whole roster rides every send; the
+roster caps at 4 and never leaves.
+
+From **CFD-201**: the sky — **five clear, two bird, two storm, period nine**,
+advancing one step per committed player action and by nothing else; the storm's
+−10 points on every route that rolls and the Chartered Line's desperation pay
+of 24; the terrace, its reserve, `min(level, reserve)` under a storm and the
+one-step draw per stormy turn; **the Ranger at 2 marks, cap 1, the weather
+unit**, and TRIM, its storm send.
+
+**Nothing in either list moves.** Every figure above is Kill-listed as
+unchanged.
 
 ### The muster grows by exactly two crew types
 
-The passed board ships Wardens only and refuses the other three **by name**,
-"each named to the instrument it waits for." This is that instrument, and it
-takes the two David's seam names and leaves the third.
+CFD-201 reserves both by name and prices both: *"Marksman | `gunners` | fire 4 |
+REFUSED — CFD-200's, priced 5"* and *"Engineer | `sappers` | repair 4 | REFUSED
+— CFD-200's, priced 6."* This is that sitting, and the prices are the ones
+already published.
 
-| Crew | Marks | From the pack | What it is on the yard |
+The board speaks David's names; the numbers section cites the pack's ids.
+
+| Ships as | pack id | Marks | What it does on the yard road |
 | --- | --- | --- | --- |
-| **Rail Warden** | 3 | `power.guard` 3 · "Durable guards … Protect cargo and absorb danger on convoy runs." | **Stands on a car. Turns every raider that comes at that car.** |
-| **Gunner** | 5 | `power.fire` 4 · "Ranged support … Defend railcars and punish exposed raiders." | **Stands on a car. Turns one raider per push, at that car or either neighbour.** |
-| **Sapper** | 6 | `power.repair` 4 · "Combat engineers … Repair tracks, disarm traps, and stabilize damaged spans." | **Stands on no car. Throws a switch and lays a siding — one reroute, one hold, per push.** |
-| Ranger | *(2)* | `power.scout` 3 · "Reveal ambushes …" | **REFUSED this sitting.** Nothing on this board is hidden, so there is nothing to reveal. Its price is recorded so the sitting that hides something does not re-derive it. |
+| **Rail Warden** | `wardens` | 3 | Stands on a car. **Turns three raiders a push, at that car only.** |
+| **Ranger** | `rangers` | 2, cap 1 | Stands on a car. **Turns one raider a push, at that car only** — and in a storm, sees what the weather is covering. |
+| **Marksman** | `gunners` | 5 | Stands on a car. **Turns two raiders a push, at that car or either neighbour.** |
+| **Engineer** | `sappers` | 6 | Stands on no car. **Repairs one tier of damage a push**, anywhere on the train. |
 
-The roster still caps at **4 total**, still never leaves, still refunds
-nothing, and **the whole roster still rides every send**. That last law is
-what makes the seam real rather than declared: the crew you paid for at the
-desk is the crew standing on the cars.
+**Rail Wardens beat concentration. Marksmen beat spread and reach across a
+coupling. The Ranger reads weather. The Engineer undoes what could not be
+prevented.** Four crew, four jobs, no two interchangeable — and the arithmetic
+that says so is in The numbers, not asserted here.
 
 ### RUSTFALL YARD takes a send, and quotes no odds
 
-It stakes **3 provisions and the Chartered toll of 1** — 4 marks, spent at
-the click like any other. It needs the charter, like any other Chartered Line
-route. And where the other three cards carry a percentage, this one carries
-its manifest and its waves, because there is no percentage to state: **by
-David's ruling this route's outcome is not a dice question, and this board
-throws no die on it, ever.**
+It stakes **3 provisions and the Chartered toll of 1** — 4 marks, spent at the
+click like any other, refunded in no direction. It needs the charter, like any
+other Chartered Line route. Where the other three cards carry a percentage that
+moves with the sky, this one carries its stake and its manifest and one
+sentence about why it carries no number: **by David's ruling this route's
+outcome is not a dice question, and this board throws no die on it, ever.**
+
+**Rustfall's pay does not rise in a storm**, and that is a deliberate departure
+from its sibling Chartered route — argued in The numbers, because it is the one
+place this board declines to apply an inherited rule.
 
 ### The yard — the one new system
 
 MEET on Rustfall does not roll. It opens the yard.
 
-**The Sunlark is standing in the yard under the ore cranes, loading salvage,
-and the Tollmen are working their way in along the yard road.** Every push
-loads one more car and brings one more wave. Nothing else moves anything.
+**The Sunlark stands in the yard under the ore cranes, loading salvage, and the
+Tollmen work their way in along the yard road.** Every push loads one more car
+and brings one more wave. Nothing else moves anything.
 
 **The load is three cars, and they load heaviest first:**
 
-| Push | Car loads | Worth |
-| --- | --- | --- |
-| 1 | the ore car | **14** |
-| 2 | the parts car | **7** |
-| 3 | the strongbox | **2** |
+| Push | Car | Intact | Slightly | Very | Completely |
+| --- | --- | --- | --- | --- | --- |
+| 1 | the ore car | **14** | 9 | 4 | 0 |
+| 2 | the parts car | **7** | 4 | 2 | 0 |
+| 3 | the strongbox | **2** | 1 | 0 | 0 |
 
-**The waves are fixed, named, and stated before you place.** No RNG touches
-the yard.
+**A car is damaged, not taken** — David's ruling, 2026-08-27: *"A damaged car
+should be able to be slightly, very, or completely damaged, with its resources
+reducing in parallel."* Three tiers below intact, worth scaling with damage,
+and a car stays on the train at every tier. A completely damaged car is worth
+nothing and is still coupled.
 
-| Push | Who | Shape |
-| --- | --- | --- |
-| 1 | **Raider Scouts** | one, at the ore car |
-| 2 | **Boarders** | two, both at the richest car aboard — *concentration* |
-| 3 | **Scrap Gunners** | three, one at each car aboard — *dispersion* |
+**The waves are fixed, named, and stated before you place.** No die is thrown
+in the yard, in any branch, ever.
 
-**A push is three beats, in this order, and the middle one is the whole
-game:**
+| Push | Who | Raiders | Shape |
+| --- | --- | --- | --- |
+| 1 | **Raider Scouts** | 3 | all on the richest car — *concentration* |
+| 2 | **Boarders** | 2 | one each across an adjacent pair — *the coupling* |
+| 3 | **Scrap Gunners** | 4 | one to each car, the surplus onto the richest — *spread* |
+
+**Targeting is one rule for all three pushes, and it has no holes.** Raiders are
+assigned one at a time to the car of **greatest current worth**; a raider is
+never assigned to a car worth nothing; ties break toward the car nearest the
+engine. Push 2's pair is the adjacent pair of live cars worth most between
+them; if no two live cars are adjacent, its two raiders concentrate like push
+1's. Push 3 assigns to distinct live cars while distinct live cars exist and
+spills the remainder onto the richest.
+
+**A push is three beats, in this order, and the middle one is the whole game:**
 
 1. **The board says where the wave will land**, before a finger moves. Which
-   car, and how many. No hidden state, no fog, no surprise.
-2. **You place.** Every crew member is re-assigned freely: a Warden or a
-   Gunner onto any car, the Sapper's switch and siding onto any car. Nothing
-   persists from the last push.
-3. **You press PUSH.** The car loads, the wave arrives, and it resolves
-   against what you placed. Then the board says what happened, in words.
+   cars, and how many on each. No hidden state, no fog, no surprise — except
+   what a storm covers, below.
+2. **You place.** Every crew member is re-assigned freely; nothing persists
+   from the last push.
+3. **You press PUSH.** The car loads, the wave arrives, and it resolves against
+   what you placed. Then the board says what happened, in words.
 
 **Resolution, in full — there is no other rule:**
 
-- A raider at a car with a **Warden** on it is turned. A Warden turns every
-  raider at its own car and no raider anywhere else.
-- A raider at a car within a **Gunner's** reach — its own car or either
-  neighbour — is turned, **one per push per Gunner**.
-- The **Sapper's switch** moves one raider from the car it is on to an
-  adjacent car, before anything resolves. The **Sapper's siding** holds one
-  raider where it stands for one push; it arrives on the next push instead,
-  and a raider held through the last push never arrives at all.
-- **A raider nobody turned takes its car.** The car and its worth are gone
-  from the train. That car only.
+- A raider at a car within a crew member's reach is **turned**, while that crew
+  member has a turn left this push: a Rail Warden has three and reaches its own
+  car; a Marksman has two and reaches its own car or either neighbour; a Ranger
+  has one and reaches its own car.
+- **A raider nobody turned damages its car by one tier.** That car only. Three
+  unanswered raiders on the same car in the same push take it from intact to
+  nothing.
+- **The Engineer then repairs one tier**, on whichever car the repair is worth
+  most. It turns no raider and stands on no car.
+- Under a **storm**, one raider a push cannot be turned at all — the weather
+  covers it — and the storm damages the richest car aboard by one tier at the
+  end of the push. **A Ranger aboard cancels the cover**, because reading what
+  the weather hides is the Ranger's own job. It does not stop the damage.
 
-That is the whole instrument. **Wardens beat concentration, Gunners beat
-dispersion, and the Sapper changes which one you are facing.** No health, no
-damage, no hit points, no rolls, no timers, no reflex. Placement decides it,
-which is what David ruled it would be.
+No health, no hit points, no rolls, no timers, no reflex. **Placement decides
+it**, which is what David ruled it would be.
 
 ### PULL OUT, and why it is the point
 
 After every push, two verbs are lit: **PUSH** and **PULL OUT**.
 
 PULL OUT ends the run immediately and brings home whatever is still on the
-train. It is always lit, it always works, it never costs anything beyond the
-stake already spent, and it is never the wrong answer — it is a *price*, not
-a penalty.
+train, at whatever condition it is in. It is always lit, it always works, and
+it is never a penalty — it is a price.
 
-The curve it prices, at a clean run:
+Measured — what the desk banks if you pull out after push *k*, in clear
+weather, at three frontier rosters:
 
-| You pull out after | You bank | Against a wave of |
-| --- | --- | --- |
-| push 1 | **14** | 1 raider survived |
-| push 2 | **21** | 2 more |
-| push 3 (the run ends there) | **23** | 3 more |
+| You pull out after | Rail Warden (3) | Ranger + Warden (5) | Ranger + 2 Wardens (8) |
+| --- | --- | --- | --- |
+| push 1 | 14 | 14 | 14 |
+| push 2 | **18** | **21** | 21 |
+| push 3 (the run ends there) | 16 | 21 | **23** |
 
-Rising risk against shrinking gain: the ore is most of the yard and the
-strongbox is a rounding error. **The push-or-retreat call is the sitting's
-core decision, and it is a real one at every step**, which is why the cars
-load heaviest first — see The numbers.
+**Read the bottom row.** A lone Rail Warden that pushes for the strongbox comes
+home with *less* than one that stopped — 16 against 18, because the third wave
+is four raiders and one Warden holds one car. A Ranger and a Warden are
+indifferent. Only eight marks of crew turn the third push into a gain. **That is
+the push-or-retreat call: the same button is correct, neutral and wrong across
+three rosters, and which one you are is something you decided at the desk.**
+
+**PULL OUT is the strictly correct verb for 10 of the 55 legal rosters.** Rising
+raider counts against shrinking marginal cargo: the ore is most of the yard and
+the strongbox is a rounding error.
 
 ### What comes home
 
-- **Full run.** All three pushed, nothing taken: the desk banks 23.
-- **Partial.** Pulled out loaded, or ran through and lost cars: the desk
-  banks what survived.
-- **Empty.** Everything taken, or pulled out before anything survived: the
-  route pays zero, the stake is spent and comes back in no direction, **the
-  crew and the train are home**, and the desk stands.
+- **Full run.** All three pushed, nothing damaged: the desk banks 23.
+- **Partial.** Pulled out, or ran through with damage: the desk banks what the
+  cars are worth.
+- **Empty.** Every car completely damaged: the route pays zero, the stake is
+  spent and comes back in no direction, **the crew and the train are home**,
+  and the desk stands.
 
 **The crew and the train always come home. Every branch, every sitting.** No
 crew is ever hurt, lost or spent, and the Sunlark is never lost. The home is
-never touched.
+never touched. Neither is the terrace: nothing that happens in the yard reaches
+the ground, the level, or the reserve.
 
 ---
 
 ## Sees
 
-The desk exactly as it stands today: the marks line, the muster bar in the
-grey card stack above the routes, the route cards. The muster bar now takes a
-**type as well as a count** — its arrangement is the implementer's business
-under this spec, but Amendment 2's law holds: it is a peer of the routes, on
-the card ground, in the stack, and it wears its own price at full contrast
-whether or not it can be paid. The HUD keeps its one line: marks.
+The town as `/dawnspur-storm/` left it: the sky's own line, the terrace and its
+five graded looks, the marks line, the muster bar in the grey card stack, the
+route cards. The muster bar now takes **a type as well as a count** — its
+arrangement is the implementer's business, but Amendment 2's law holds: it is a
+peer of the routes, on the card ground, in the stack, wearing its price at full
+contrast whether or not it can be paid. The HUD keeps its one line: marks.
+
+**No gauge, anywhere.** CFD-201 quotes the prohibition and it binds here too: a
+trained instrument-bird "is how a player knows the weather is turning **with no
+readout on the screen**." The ground keeps its graded looks. **A car's condition
+is drawn the same way — as a look and a word, intact or slightly or very or
+completely damaged — and never as a bar that empties.**
 
 The Rustfall card is no longer dark and no longer alone. It is a route card
-like the others with **one difference the player can see**: where the other
-three carry a percentage, it carries its own sentence about why it does not.
-No odds are quoted on it in any state. It states its stake and its manifest,
-like any card.
+like the others with one difference the player can see: where the other three
+carry a percentage, it carries its own sentence about why it does not. **It
+publishes its stake and its manifest and nothing else.** The wave forecast lives
+in the yard, not on the card — the desk cannot see the yard road, the forecast
+is only useful where it is used, and a card carrying three wave rows would be
+structurally unlike its three siblings for no gain.
 
 **The yard fits one screen and does not scroll.** Three cars in a column, the
 crew standing on them, the yard road running in. The wave to come is drawn on
-the cars it will hit — a count on a car, before you place — and that mark is
-the entire threat forecast, the same job `/convoy-stop/`'s lit tick marks do
-today. Size and count carry the information; nothing is a bar and nothing
-fills.
+the cars it will hit — a count on a car, before you place — which is the same
+job `/convoy-stop/`'s lit tick marks already do. Size, count and condition
+carry the information.
 
-The crew read by where they stand, not by a stat block. A Gunner's reach is
-drawn as reach. The Sapper's switch and siding sit on the cars they act on.
-A car that has been taken is a gap in the train and stays a gap.
+The crew read by where they stand. A Marksman's reach is drawn as reach. The
+Engineer stands with the train rather than on a car, because it works on the
+cars rather than the road.
 
-**Two verbs are lit under the yard: PUSH and PULL OUT.** Both always, until
-the run ends. Nothing else is a control.
+**Under a storm the yard says so**, and it says which raider the weather is
+covering only if a Ranger is aboard. Without one, the forecast shows the wave's
+count and the board tells the player plainly that one of them cannot be
+answered — the uncertainty is *stated*, never concealed.
+
+**Two verbs are lit under the yard: PUSH and PULL OUT.** Both always, until the
+run ends. Nothing else is a control.
 
 **Nothing on this board animates, eases, transitions, or changes on any
 schedule but a player's own press.** No `setTimeout`, no `setInterval`, no
 `requestAnimationFrame`, no `performance.now`, no `transition`, no
-`@keyframes`. `/convoy-stop/` carries a `requestAnimationFrame` loop, a
-`.car` transition and a `lingerPulse` keyframe animation. **This board
-inherits that lineage's grammar and refuses its clock**, which is a deliberate
-break and is recorded as one.
-
-The town behind the desk stands as scenery and the board may name it in
-words, per Amendment 1's ruling 2. It reads and writes no other board's state.
+`@keyframes`. `/convoy-stop/` carries a `requestAnimationFrame` loop, a `.car`
+transition and a `lingerPulse` keyframe animation. **This board inherits that
+lineage's grammar and refuses its clock**, which is a deliberate break and is
+recorded as one.
 
 ---
 
@@ -332,87 +408,98 @@ words, per Amendment 1's ruling 2. It reads and writes no other board's state.
 Every push ends in a sentence and so does the run and so does the sitting, in
 the board's words.
 
-**A push held, the shape of it:**
-> *"The Scouts came at the ore car and the Warden turned them. The parts car
-> is on. Two cars aboard, worth 21."*
+**A push held:**
+> *"Three Scouts came at the ore car and the Warden turned all three. The parts
+> car is on. Two cars aboard, worth 21."*
 
-**A push that cost a car, the shape of it:**
-> *"The Boarders came at the ore car two abreast and only one was answered.
-> The ore is off the train and on the yard road. One car aboard, worth 7."*
+**A push that cost condition:**
+> *"The Boarders came across the coupling and only the ore was answered. The
+> parts car is slightly damaged. Two cars aboard, worth 18."*
 
-**Pulled out loaded, the shape of it:**
-> *"The crew pulled the Sunlark off the yard road with the ore aboard. The
-> desk banks 14. What is still on the cranes stays on the cranes; the
-> Wardens and the train are home, and the desk stands."*
+**The storm working:**
+> *"The weather covered one of them and nobody saw it come. The ore car is
+> slightly damaged, and the rain has been at it besides. Two cars aboard, worth
+> 16."*
 
-**Home empty, the shape of it** — carrying all four clauses CFD-196 requires
-of a run that paid nothing:
-> *"Rustfall kept everything it had. The provisions and the Chartered toll
-> are spent — 4 marks — and nothing comes back; the route paid nothing; the
-> Wardens, the Sapper and the train are home, and the desk stands."*
+**The Engineer working:**
+> *"The Engineer got the parts car's coupling back under it. Two cars aboard,
+> worth 21."*
+
+**Pulled out loaded:**
+> *"The crew pulled the Sunlark off the yard road with the ore and the parts
+> aboard. The desk banks 21. What is still on the cranes stays on the cranes;
+> the Wardens and the train are home, and the desk stands."*
+
+**Home empty** — carrying all four clauses CFD-196 requires of a run that paid
+nothing:
+> *"Rustfall kept everything it had. The provisions and the Chartered toll are
+> spent — 4 marks — and nothing comes back; the route paid nothing; the
+> Wardens, the Engineer and the train are home, and the desk stands."*
 
 The empty sentence names whoever actually rode, exactly as the passed board
 learned to: a run with no crew aboard promises no crew home.
 
-**The stop is the first Rustfall run off the yard road**, loaded or empty.
-The system this sitting exists to sit has then been played once, end to end,
-and David has an answer to *what happened* either way. A turned-back dice run
-is not an ending, a banked Cloud Basin cargo is not an ending, and bare marks
-is not an ending — for the same reason as before: the floor send is free and
-always lit.
+**The stop is the first Rustfall run off the yard road**, loaded or empty. The
+system this sitting exists to sit has then been played once, end to end, and
+David has an answer to *what happened* either way.
 
-At the stop the board reads its own ledger, in two registers keyed the way
-the passed board learned to key them — on whether anything was lost, not on
-what it cost:
+At the stop the board reads its own ledger, in two registers keyed on whether
+anything was lost:
 
-- **Clean:** *"The Sunlark is off Rustfall with the whole yard aboard. Four
-  runs out, four cargoes banked, three cars off the cranes and not one taken.
-  The dormant crane at the far end is the next sitting's."*
-- **Paid:** *"The Sunlark is off Rustfall. Six runs out, four cargoes banked,
-  two turned back, one car taken on the yard road and 8 marks staked and lost
-  along the way. The record keeps what came home; the dormant crane at the
-  far end is the next sitting's."*
+- **Clean:** *"The Sunlark is off Rustfall with the whole yard aboard. Five runs
+  out, five cargoes banked, three cars off the cranes and not a scratch on
+  them. The dormant crane at the far end is the next sitting's."*
+- **Paid:** *"The Sunlark is off Rustfall. Seven runs out, four cargoes banked,
+  two turned back, the ore car very damaged and the strongbox gone, and 8 marks
+  staked and lost along the way. The record keeps what came home; the dormant
+  crane at the far end is the next sitting's."*
 
-The terminal must read the record — runs out, cargoes banked, runs turned
-back, cars off the cranes, cars taken, marks lost — and the paid register
-names the losses without apology and without warning.
+The terminal must read the record — runs out, cargoes banked, runs turned back,
+cars off the cranes, their condition, marks lost — and the paid register names
+the losses without apology and without warning.
 
 ---
 
 ## On this sitting
 
-| System | This sitting |
-| --- | --- |
-| The dispatch desk, the three dice routes, honest dice at stated odds | **ON, carried unchanged** — no number moves, no rule moves |
-| The opening float 3, the charter condition, the muster bar, the roster's laws | **ON, carried unchanged** |
-| Rustfall takes a send | **ON** — the ruling's EXCEPT clause, delivered; the promise on the live card, kept |
-| Rustfall quotes odds | **REFUSED** — its outcome is not a dice question; the desk states no number it cannot honestly roll |
-| Any die thrown inside the yard | **REFUSED** — placement decides it; `roll()` is never called on the yard road |
-| The yard: place, push, resolve | **ON** — the one new system; the turn is a player's press and nothing else |
-| PULL OUT at any push | **ON** — the push-or-retreat call, and the conflict layer's clean concede |
-| The load as three cars, 14 / 7 / 2 | **ON** — derived leg by leg from the route's own basket |
-| Cars taken individually, never the train | **ON** — the gradient; a bad push costs a car, not the run |
-| Gunners (5) and Sappers (6) join the muster | **ON** — David's seam by name: the marksman and the engineer |
-| Rangers | **REFUSED** — nothing on this board is hidden; a reveal with nothing to reveal is a dead control |
-| Health, hit points, damage, any bar that fills or empties | **REFUSED** — a raider is turned or it is not; canon refuses health bars beside the building game |
-| Wall time, in any form, anywhere | **REFUSED** — no clock, no rAF, no transition, no animation; the yard holds its position across any gap |
-| The engine's `tacticalTimeMs` budget and its 9-press ceiling | **REFUSED** — a budget the player runs out is a clock with the units filed off; the run ends when the player ends it |
-| `standDownCombatIncident`'s **scoring** | **ON, in substance** — it scores through the same result builder and invents no outcome; that is what PULL OUT does |
-| `standDownCombatIncident`'s **trigger** | **REFUSED** — 180 seconds of real idle is a decay clock; the player's hand replaces it |
-| The `cargoIntegrity` gradient (what survived comes home) | **ON** — a distinct leg from the consolation, see The numbers |
-| The engine's `rewardMultiplier × 0.25` failure leg | **REFUSED** — CFD-145; a run that comes home empty pays zero |
-| Insurance | **REFUSED** — recovered stakes are not payouts; the naked stake teaches first |
-| Heroes and `HERO_COMBAT_ABILITIES` | **REFUSED** — the Hero Lodge sitting owns them |
-| Missions beyond convoy, including `raid` | **REFUSED** — the mission is getting the load home, not striking a camp |
-| Postures, route events, safety accrual, train damage | **REFUSED, unchanged** — every one of them zero by its refusal |
-| The Tollmen's toll, paid in cargo (jettison / cut a car loose) | **REFUSED, named** — canon-backed and deliberately held back; see Author's argued alternatives |
-| The dormant Standfast crane at Rustfall | **REFUSED, named** — the yard's other half; its own sitting |
-| Goods as nouns | **ON at the manifest only, flagged** — cars are named for what they carry and priced in marks; there is one currency |
-| Crew hurt, lost, spent, or left behind | **REFUSED** — the crew always comes home, both branches, the engine's own law |
-| The train lost (canon's fourth rung) | **REFUSED, named** — the stakes dial defaults gentle; the rung is real and this is not its sitting |
-| Signal tower / discovery, contract mechanics, a second currency, the storm at the town | **REFUSED, unchanged** |
-| Reading or writing another board's state | **REFUSED, unchanged** — the standing lineage lock |
-| End-sentences, per push, per run, and terminal | **ON** — `/convoy-stop/` prints no sentence at all; this board departs from that deliberately |
+**INHERITED** rows cite the beat that passed the system; they are carried and
+not re-argued, per §7.
+
+| System | INHERITED / NEW | This sitting |
+| --- | --- | --- |
+| The dispatch desk, three dice routes, honest dice at stated odds | INHERITED — CFD-196 (passed) | **ON, unchanged** — no number moves |
+| Opening float 3, charter condition, muster bar, the roster's laws | INHERITED — CFD-196 (passed) | **ON, unchanged** |
+| The sky: five clear, two bird, two storm, one step per committed action | INHERITED — CFD-201 | **ON, unchanged** — and a PUSH is a committed action |
+| The storm's −10 on routes that roll; the Chartered desperation pay of 24 | INHERITED — CFD-201 | **ON, unchanged** on the three rolling routes |
+| The terrace, its reserve, `min(level, reserve)`, the stormy draw | INHERITED — CFD-201 | **ON, unchanged** — the yard neither reads nor writes it |
+| Rail Warden at 3, cap 4 total, permanent, never spent | INHERITED — CFD-196 (passed) | **ON, unchanged** |
+| Ranger at 2, cap 1, the weather unit; TRIM on the rolling routes | INHERITED — CFD-201 | **ON, unchanged** — and it gains a yard job |
+| Rustfall takes a send | NEW | **ON** — the ruling's EXCEPT clause, delivered |
+| Rustfall quotes odds; any die in the yard | NEW | **REFUSED** — placement decides it |
+| Rustfall's pay rises in a storm | NEW | **REFUSED, argued** — the one inherited rule this board declines, and the reason is measured |
+| The yard: place, push, resolve | NEW | **ON** — the one new system |
+| PULL OUT at any push | NEW | **ON** — the push-or-retreat call; correct for 10 of 55 rosters, measured |
+| Three cars at 14 / 7 / 2, heaviest first | NEW | **ON** — derived leg by leg from the route's own basket |
+| Damage in three tiers, worth scaling, the car stays coupled | NEW | **ON** — RULED, David 2026-08-27 |
+| Marksman at 5: two turns a push, reach across a coupling | NEW | **ON** — RULED, David 2026-08-27, "fix the marksman with the adjacent wave" |
+| Engineer at 6: repairs one tier a push | NEW | **ON** — `power.repair` 4; the job David's damage ruling created |
+| The storm in the yard: one raider covered, one tier drawn, a Ranger sees | NEW | **ON** — the sky live in the new system, per the re-base |
+| Health, hit points, or any bar that fills or empties | NEW | **REFUSED** — a car's condition is the load's condition, in words and looks |
+| Wall time, in any form | INHERITED refusal — CFD-196, CFD-201 | **REFUSED** — no clock, no rAF, no transition |
+| `tacticalTimeMs` as a budget | NEW | **REFUSED** — a budget the player runs out is a clock with the units filed off |
+| `standDownCombatIncident`'s scoring / its trigger | NEW | **ON in substance / REFUSED** — PULL OUT is the same exit under the player's hand |
+| The engine's `rewardMultiplier × 0.25` failure leg | INHERITED refusal — CFD-196 (passed) | **REFUSED** — CFD-145 |
+| Insurance, postures, route events, safety accrual, train damage | INHERITED refusal — CFD-196 (passed) | **REFUSED, unchanged** |
+| Heroes, `HERO_COMBAT_ABILITIES` | INHERITED refusal — CFD-196, CFD-201 | **REFUSED** — the Hero Lodge sitting owns them |
+| Missions beyond convoy, including `raid` | NEW | **REFUSED** — the mission is getting the load home, not striking a camp |
+| The Tollmen's toll paid in cargo (cut a car loose) | NEW | **REFUSED, named** — canon-backed and deliberately held back |
+| The dormant Standfast crane | NEW | **REFUSED, named** — the yard's other half; its own sitting |
+| Goods as nouns | INHERITED refusal, relaxed at the manifest | **ON at the manifest only, flagged** — cars named for what they carry, priced in marks; one currency |
+| Crew hurt, lost, spent; the Sunlark lost | INHERITED — CFD-196 (passed) | **REFUSED** — the crew always comes home, both branches |
+| The train lost — canon's fourth rung | NEW | **REFUSED, named** — the stakes dial defaults gentle |
+| Signal tower, discovery, contracts, a second currency | INHERITED refusal — CFD-196, CFD-201 | **REFUSED, unchanged** |
+| Reading or writing a *passed* board's persisted state | INHERITED — CFD-196 Amendment 1 | **REFUSED, unchanged** — the lineage lock |
+| End-sentences, per push, per run, and terminal | INHERITED — CFD-196 (passed) | **ON** — and `/convoy-stop/` prints none, which this board departs from deliberately |
 
 ---
 
@@ -420,67 +507,84 @@ names the losses without apology and without warning.
 
 Every line expressible as a test.
 
-**The clock, and the lineage's convicted class**
+**The clock**
 
-- Anything on the board moves, changes, eases or resolves on any schedule but
-  a player's own press. `setTimeout`, `setInterval`, `requestAnimationFrame`,
+- Anything moves, changes, eases or resolves on any schedule but a player's own
+  press. `setTimeout`, `setInterval`, `requestAnimationFrame`,
   `performance.now`, `Date.now` in the sim, `transition`, `animation` or
   `@keyframes` appears anywhere in the shipped board.
-- `deltaMs`, `durationSeconds`, `durationMs`, `tacticalTimeMs`, `baseSeconds`
-  or `seconds` is imported, stored, or computed as elapsed time.
+- `deltaMs`, `durationSeconds`, `durationMs`, `tacticalTimeMs` or `baseSeconds`
+  is imported, stored, or computed as elapsed time.
 - The yard's state depends in any way on when the player returns to it. Two
-  identical sequences of presses, one taken in a breath and one across a
-  week, produce different state.
-- A run, a push, or a wave resolves without a press.
-- Any push budget, wave ceiling, or run limit ends a run that the player did
-  not end. PULL OUT is dark in any state where the run is live.
+  identical sequences of presses, one taken in a breath and one across a week,
+  produce different state.
+- A push, a wave, or the sky advances without a committed player action.
+- Any push budget or run limit ends a run the player did not end. PULL OUT is
+  dark in any state where the run is live.
 
 **Dice, and the ruling**
 
 - `roll()` is called anywhere on the yard road, in any branch, ever.
-- Rustfall quotes a percentage, a chance, a risk, or any odds figure, in any
-  state, on the card or in the yard.
+- Rustfall quotes a percentage, chance, risk, or any odds figure, in any state,
+  on the card or in the yard.
 - A wave's size, its named group, or the cars it lands on differs between two
-  runs at the same push with the same cars aboard.
-- Any outcome inside the yard is scripted, forced, or nudged — a forced first
-  hold, a forced first loss.
+  runs at the same push with the same cars in the same condition and the same
+  sky.
+- Any outcome inside the yard is scripted, forced, or nudged.
 
 **Resolution**
 
-- A raider at a car with a Warden on it takes that car.
-- A Gunner turns more than one raider in a push, or turns a raider more than
-  one car from where it stands.
-- The Sapper's switch or siding acts more than once per push, or persists
-  into the next push without being placed again.
-- A raider held past the last push still takes a car.
-- A raider that nobody turned does not take its car, or takes more than its
-  own car.
-- Any hit-point, health, damage, strength or integrity value is stored,
-  decremented, or rendered anywhere on the board.
-- Any bar, meter, gauge or fill represents world state on this board.
-- A placement is refused for a reason the board did not state before the
-  press.
+- A Rail Warden turns more than three raiders in a push, or turns one anywhere
+  but its own car. A Marksman turns more than two, or one more than one car
+  from where it stands. A Ranger turns more than one, or one anywhere but its
+  own car. An Engineer turns any raider at all.
+- The Engineer repairs more than one tier a push, or repairs a car that is
+  intact, or repairs before the wave has resolved.
+- A raider nobody turned fails to damage its car, or damages more than one
+  tier, or damages a car other than its own.
+- A raider is assigned to a car worth nothing, or to any car that is not of
+  greatest current worth under the stated rule.
+- Push 2's raiders land on cars that are not adjacent while two live cars are
+  adjacent.
+- Push 3 leaves a live car untargeted while another live car carries two.
+- Any hit-point or health value is stored or decremented for any raider or any
+  crew member. Any bar, meter, gauge or fill represents world state anywhere on
+  the board.
+- A car's worth at a tier is anything but `floor(full × (3 − tier) / 3)`.
+- A completely damaged car leaves the train, or is targeted, or is repaired
+  from nothing by more than one tier a push.
+
+**The sky in the yard**
+
+- A storm covers more or fewer than one raider a push, or covers any while a
+  Ranger is aboard.
+- A storm damages more or fewer than one car a tier a push, or damages anything
+  but the richest car aboard, or is cancelled by a Ranger.
+- Rustfall's cars are worth more in a storm than in clear weather.
+- The sky fails to advance on a PUSH or a PULL OUT.
+- The yard reads or writes the terrace, the reserve, or the level.
 
 **Stakes and pay**
 
-- A run that comes home empty pays anything. Any fraction of any route
-  reward appears on any failure branch.
+- A run that comes home with every car completely damaged pays anything.
 - A stake, toll, or muster refunds — any branch, any direction.
-- Marks go negative anywhere. The roster leaves 0..4, or moves anywhere but
-  at a muster. A `roster -=`, sell-back, disband or rebate path appears.
-- Any crew member fails to come home, on any branch. The Sunlark is lost.
-  The train, the roster, the town or another board's state is touched by any
-  outcome.
-- A car's worth is anything but 14, 7 and 2, or the three do not sum to 23.
-- `3 / 5 / 6 / 2 / 4 / 3+1 / 10 / 14 / 18 / 0.036` move without this beat
-  moving.
+- Marks go negative. The roster leaves 0..4, or holds more than one Ranger, or
+  moves anywhere but at a muster. A `roster -=`, sell-back or rebate appears.
+- Any crew member fails to come home, on any branch. The Sunlark is lost. The
+  town, the terrace or another board's state is touched by any yard outcome.
+- Three cars do not sum to 23 intact.
+- `3 / 2 / 5 / 6 / 4 / 3+1 / 10 / 14 / 18 / 24 / 0.036 / −0.10` move without
+  this beat or its parents moving.
 
 **Reachability and solvability**
 
 - A wave table ships that has not been proven beatable offline from every car
-  state it can be reached in. *(`/convoy-stop/` shipped an impossible stop-2
-  table and it is in `KILLS.md`; that lineage's answer was a headless solver
-  replaying the same math. Inherit the practice.)*
+  state and every sky it can be reached in. *(`/convoy-stop/` shipped an
+  impossible stop-2 table and it is in `KILLS.md`; that lineage answered it with
+  a headless solver replaying the same math. Inherit the practice.)*
+- A crewless Rustfall run banks more than its 4-mark stake, in any sky.
+- Any of the four crew types is never the strictly correct purchase in any
+  reachable roster and sky.
 - A reachable home state has no lit send. A reachable yard state has neither
   PUSH nor PULL OUT lit.
 - Rustfall sends while `cargoesBanked === 0`, at any capital.
@@ -491,28 +595,25 @@ Every line expressible as a test.
 - A push, a run, or the sitting ends without its sentence.
 - An empty run's sentence drops zero-pay, stake-spent, crew-home, or
   desk-stands; or it names crew that did not ride.
-- The terminal does not read the record, or a register calls a run clean when
-  a car was taken.
+- The terminal does not read the record, or calls a run clean when a car came
+  home damaged.
 - The board says a raider was killed, or that any person died.
 
 **The lineage**
 
 - Live shas are overwritten: dispatch `576ce2b6`, scale `953368a1`, heat
-  `292d6645`, kill `395c18f2`, convoy-stop `5ad814e6`. Any existing board is
-  touched.
-- Any number or rule carried from `/dawnspur-dispatch/` differs from the
-  passed board's.
-- This board reads or writes heat, scale or dispatch state.
+  `292d6645`, kill `395c18f2`, convoy-stop `5ad814e6`, and whatever
+  `/dawnspur-storm/` ships at. Any existing board is touched.
+- Any inherited number or rule differs from the beat that passed it.
 - The HUD grows past the one marks line.
 
 ---
 
 ## The numbers, and where each one comes from
 
-**The civic scale factor 6.5 is inherited, not re-authored.** CFD-196 chose it
-as its one authored number and every figure below that converts a pack
-quantity into marks goes through it, so this board and the passed board share
-one exchange rate.
+**The civic scale factor 6.5 is inherited twice over**, from CFD-196 and through
+CFD-201. Every figure that converts a pack quantity into marks goes through it,
+so this board and both parents share one exchange rate.
 
 ### The load — fully derived, and it checks against itself
 
@@ -528,337 +629,419 @@ converted at `economyConfig.resourceValues` (`marks` 1, `materials` 2,
 | **whole basket** | **150** | **23.077** | | **23** |
 
 The three legs round to 14 + 7 + 2 = **23**, and the whole basket converts to
-**23**. The leg-wise and basket-wise conversions agree, which is the check
-that says the split is a reading of the pack rather than a decoration on it.
-For comparison at the same scale: halt 66 → 10, Mosswake 94 → 14, Cloud Basin
-114 → 18. **Rustfall's 23 is the richest basket on the near map**, which is
-why it is worth defending and why the yard is the tier's natural first site.
+**23**. The leg-wise and basket-wise conversions agree, which is the check that
+says the split is a reading of the pack rather than a decoration on it. At the
+same scale: halt 66 → 10, Mosswake 94 → 14, Cloud Basin 114 → 18. **Rustfall's
+150 is the richest basket on the near map**, ahead of Cloud Basin's 114.
 
-The cars are named for what they carry — the route's own description supplies
-them: *"Old sidings, **ore cranes**, and dormant machinery make useful
-**salvage** and useful ambushes."* Their worth is stated in marks. **There is
-one currency.**
+The cars are named from the route's own description: *"Old sidings, **ore
+cranes**, and dormant machinery make useful **salvage** and useful ambushes."*
+Their worth is stated in marks. **There is one currency.**
 
-**The loading order is the one authored decision in the load, and it is
-argued, not asserted.** Heaviest first, and the reason is not fiction, it is
-the shape of the decision:
+**Damage tiers, derived from David's ruling through the engine's own rounding.**
+He ruled three tiers "with its resources reducing in parallel", so worth falls
+in equal thirds: `worth = floor(full × (3 − tier) / 3)`. The `floor` is not
+chosen — it is `buildCombatResult`'s own `cargoLost = floor(cargo × (1 −
+integrity))`, the tuned instrument's rounding, kept. **Said plainly: the
+strongbox cannot express three distinct tiers** — at 2 marks it reads 2, 1, 0, 0
+— and that is a consequence of the pack's own leg sizes, not a rounding choice.
+Stated rather than hidden.
 
-- Ore first (14 / 21 / 23) puts the biggest commitment on the board at push
-  one and makes every later placement the question *do I hold the ore or the
-  new car*. That question is live at all three pushes.
-- Ore last (2 / 9 / 23) makes pushes one and two meaningless — you are
-  guarding 2 marks and then 9, and the only rational line is to push to the
-  end. **The push-or-retreat call would be fake**, and it is the sitting's
-  core decision.
-
-The fiction agrees without being asked to: the ore cranes are already
-standing, and a crew loads what it came for first.
+**The loading order is heaviest first, and the draft's defence of it was false.**
+The draft claimed the push-or-retreat call was "a real one at every step."
+Measured at push 3 with a Rail Warden and an Engineer, only a small minority of
+placements gain ground and most lose it — the call is live at one step of three,
+not three. **The ordering survives on a different and stronger measurement**:
+the outcome multiset is identical under both orderings, because the load order
+changes only where the bank sits, but **PULL OUT is strictly correct for 10 of
+55 rosters heaviest-first and for none of them lightest-first.** Ore-last makes
+the first two pushes worth 2 and 9 against a 23-mark finish, so the only
+rational line is to push to the end and the sitting's core decision never fires.
+**The cars load heaviest first so that PULL OUT is ever the correct verb.**
 
 ### The stake — 4 marks, by the passed board's own published method
 
 - **Toll 1** — `routeTolls.chartered.flatFee`, verbatim.
-  `routes[rustfall-yard].zone` is `"Chartered Line"`, so Rustfall carries the
-  same civic toll Cloud Basin does, labelled the same way.
-- **Provisions 3** — CFD-196's method, applied to a new route:
+  `routes[rustfall-yard].zone` is `"Chartered Line"`.
+- **Provisions 3** — CFD-196's method applied to a new route:
   `routes[rustfall-yard].durationSeconds` 110 ÷ `routes[mosswake-loop]`'s 75,
-  times Mosswake's authored seed of 2, is 2.93 → **3**. The away-cost the
-  board refuses as time, re-expressed as the stake. **New-play by
+  times Mosswake's authored seed of 2, is 2.93 → **3**. **New-play by
   inheritance** — the seed is authored and stays flagged.
 
 ### The crew — every price derived, none authored
 
 `crewTypes[*].baseCost` through `economyConfig.resourceValues`, over 6.5:
 
-| Crew | baseCost | Equivalents | ÷ 6.5 | Marks |
+| Ships as | pack id | baseCost | Equivalents | ÷ 6.5 | Marks |
+| --- | --- | --- | --- | --- | --- |
+| Ranger | `rangers` | food 7, energy 3 | 13 | 2.000 | **2** — INHERITED, CFD-201 |
+| Rail Warden | `wardens` | food 8, materials 5 | 18 | 2.769 | **3** — INHERITED, CFD-196 |
+| Marksman | `gunners` | food 9, materials 7, parts 2 | 31 | 4.769 | **5** — as CFD-201 published it |
+| Engineer | `sappers` | food 8, materials 8, parts 3 | 36 | 5.538 | **6** — as CFD-201 published it |
+
+The Rail Warden's 3 reproduces the shipped board's muster price exactly, which
+is the check that the method is the method. **The Marksman's 5 does not move**,
+and the ruling did not ask it to: the fix was the wave, not the price. At 5
+against the Warden's 3, the measured ladder below shows it earning its two extra
+marks at exactly one rung, which is what a correctly-priced second option looks
+like.
+
+**Roster cap 4 total** (CFD-196) and **Ranger cap 1** (CFD-201), both inherited,
+both unchanged. 55 rosters are legal.
+
+### Capacity and reach — two derived, one measured, all stated as what they are
+
+| | Reach | Turns a push | Where it comes from |
+| --- | --- | --- | --- |
+| Rail Warden | own car | **3** | `crewTypes[wardens].power.guard` = 3 — the one place a pack power value maps cleanly |
+| Ranger | own car | **1** | `crewTypes[rangers].power.guard` = 1, the same mapping |
+| Marksman | own car ±1 | **2** | reach from `/convoy-stop/`'s `GUN_ACROSS` 1.28 against a cell (own lane and one either side, against `MORTAR_ACROSS` 0.72 for own-lane-only). **The 2 is new-play, flagged, and set by measurement** |
+| Engineer | the train | **0 raiders, 1 tier repaired** | `crewTypes[sappers]` — "Combat engineers … **stabilize damaged spans**", `power.repair` 4 |
+
+**The Marksman's capacity is the one number here set by a solver rather than a
+citation, and the honest reason is that the citations do not scale.** `fire` 4
+against `guard` 3 orders the two crew; it does not say how many raiders a turn
+buys. Capacity 1 made the Marksman dead — that is the panel's finding, and this
+author reproduced it. Capacity 3 makes the Rail Warden the budget option and the
+Marksman the answer to everything — measured, and refused as moving the dead
+button rather than removing it. **2 is the value at which both are correct
+purchases**, and the arithmetic is below.
+
+### The waves — two derived from rulings, one new-play
+
+| Push | Group | `strength` | Raiders | Where the count comes from |
 | --- | --- | --- | --- | --- |
-| Rangers | food 7, energy 3 | 13 | 2.000 | *(2 — refused this sitting)* |
-| **Wardens** | food 8, materials 5 | 18 | 2.769 | **3** *(unchanged, shipped)* |
-| **Gunners** | food 9, materials 7, parts 2 | 31 | 4.769 | **5** |
-| **Sappers** | food 8, materials 8, parts 3 | 36 | 5.538 | **6** |
+| 1 | `raider-scouts-a`, "Raider Scouts" | 18 | **3** | **Derived from David's damage ruling**: three tiers means three unanswered raiders take a car from intact to nothing. Any smaller first wave leaves a crewless run profitable — measured — and an optional muster dissolves the seam this sitting exists to build |
+| 2 | `boarders`, "Boarders" | 20 | **2** | **RULED, David 2026-08-27**: "fix the marksman with the adjacent wave" — two raiders, two adjacent cars |
+| 3 | `scrap-gunners`, "Scrap Gunners" | 24 | **4** | **New-play, flagged.** 4 is the smallest count no two bodies can answer when it spreads across three cars, which is what makes push 3 the summit rather than a formality |
 
-The Warden's 3 reproduces the shipped board's muster price exactly, which is
-the check that the method is the same method. **Roster cap 4 is unchanged and
-remains new-play by inheritance**, Kill-listed by CFD-196 and not moved here.
-
-### The waves — two independent derivations agreeing on three
-
+Group names and strengths are verbatim from
 `COMBAT_SCENARIOS[rustfall-security-charter]` — the tuned scenario for this
-exact route, `routeId: "rustfall-yard"`, `missionIds` including `"convoy"` —
-carries **exactly three** `hostileGroups`. `/convoy-stop/` carries **exactly
-three** waves per stop (`WAVE_SPAWNS[stop]`, `wave` 0..2). Two lineages, one
-number: **three pushes.**
+exact route, `routeId: "rustfall-yard"`, `missionIds` including `"convoy"`.
+**Said plainly: the strengths do one job, and that is the ordering.** A board
+with no health has nothing else to spend a strength value on, and inventing a
+use for it would be a number wearing a citation.
 
-The groups' names and strengths are verbatim from that scenario, and the
-strengths order the waves:
+**The shapes are argued from the names, and the names came first.** Scouts probe
+the prize in force. **Boarders board across the coupling between two cars** —
+which is why the adjacent pair is theirs and not an arbitrary slot for the
+ruling. Scrap Gunners are ranged support and rake the whole train from the
+sidings.
 
-| Push | `hostileGroups` entry | `strength` |
+**Why push 2 and not push 1 or 3 for the adjacent wave.** Push 1 has one car
+aboard, so adjacency is undefined there. Push 3's four raiders spread across
+three cars, which is a different question and already the Marksman's other half.
+Push 2 is the only push that always has exactly two cars aboard, so **the
+adjacent wave fires on every single run**, not in a corner a good player never
+enters. That was the requirement, and it is satisfied structurally rather than
+by tuning.
+
+### The zero-crew hole, and the one clause that closes it
+
+The panel measured that under David's damage tiers a crewless run banked 7
+against a 4-mark stake, because **a wrecked ore car stayed aboard and soaked the
+next wave — being hit made you safer.** The fix is one clause, and it is stronger
+than "target the richest undamaged car":
+
+> **Raiders are assigned to the car of greatest CURRENT worth, and never to a
+> car worth nothing.**
+
+Current worth, not original worth, so a wrecked car is not the richest and soaks
+nothing. Never a car worth nothing, so a wreck is not a decoy either. That
+single rule also closes push 3's hole — "one at each car aboard" was undefined
+once a car was lost, and "distinct live cars while they exist, spill onto the
+richest" is total.
+
+**Measured after the clause, with all three wave-table changes in place at once:
+a crewless run banks 2 against a 4-mark stake in clear weather and 0 in a storm.
+Net −2 and −4. The muster is not optional.**
+
+### The measured ladder, and both crew live
+
+Exhaustive over all 55 legal rosters, optimal placement enumerated at every
+node, PULL OUT live at every node.
+
+**Clear-weather frontier** (cheapest roster reaching each bank):
+
+| Roster | Marks of crew | Banks |
 | --- | --- | --- |
-| 1 | `raider-scouts-a`, "Raider Scouts" | 18 |
-| 2 | `boarders`, "Boarders" | 20 |
-| 3 | `scrap-gunners`, "Scrap Gunners" | 24 |
+| none | 0 | 2 |
+| Ranger | 2 | 8 |
+| Rail Warden | 3 | 18 |
+| Ranger + Warden | 5 | 21 |
+| **Marksman + Ranger** | **7** | **22** |
+| Ranger + 2 Wardens | 8 | **23 — the whole yard** |
 
-**Said plainly: the strengths do one job here, and that is the ordering.** A
-board with no health has nothing else to spend a strength value on, and
-inventing a use for it would be a number wearing a citation. It is stated
-rather than quietly dropped.
+**Storm frontier**: none 0 · Ranger 2 · Warden 4 · Ranger+Warden 11 ·
+**Engineer**+Warden 13 · Engineer+Ranger+Warden 21 · Engineer+Marksman+Ranger 22
+· Engineer+Ranger+2 Wardens 23.
 
-**The wave shapes are new-play and the names argued them.** Boarders board —
-they come at a car together, which is concentration. Scrap Gunners are ranged
-support — they come at everything at once, which is dispersion. Scouts come
-first and alone, which is what scouts do. **Counts 1 / 2 / 3 are new-play**,
-argued from the return-window doctrine: a convoy that has loaded more has more
-to lose, so the pressure rises with the haul.
+**Both crew are correct purchases, measured in both directions:**
 
-### The two verbs' reach — derived from the lineage
+- Swap every Marksman for a Rail Warden — same headcount, 2 marks cheaper — and
+  the bank **falls in 4 rosters** in clear weather and **2 more** in a storm,
+  rising in 1. The panel's original finding was 20 of 20 with zero
+  counterexamples; there are now six.
+- Swap one Rail Warden for a Marksman — 2 marks dearer — and the bank **falls in
+  1 roster** and rises in 3. **The Warden is not dominated**: it holds three
+  frontier rungs (18 at 3, 21 at 5, 23 at 8) and the Marksman holds one (22 at
+  7). The dead button was removed, not moved.
+- **The Engineer never reaches the clear-weather frontier and holds four rungs
+  of the storm frontier.** That is not a dead control, it is a conditional one:
+  repair is worthless when crew *prevents* the damage and decisive when the
+  weather causes damage no placement can prevent. **The Engineer is the storm
+  crew**, and it is the counterplay to weather that CFD-201 asked for and is not
+  immunity — it is a race the storm can still win.
 
-`/convoy-stop/` sets `GUN_ACROSS = 1.28` against a cell height, so a gun
-reaches its own lane **and one either side**; `MORTAR_ACROSS = 0.72` reaches
-its own lane only. That ±1 is the Gunner's reach here, unchanged. **One shot
-per push is new-play**, argued from `GUN_CD = 280` being a real per-shot
-cooldown in that lineage while the placed pieces that hold ground carry none.
+### The storm in the yard, and the one inherited rule this board declines
 
-The Sapper's two pieces are David's seam, verbatim — *"an engineer, a wall
-and an obstacle."* The **switch** is `/convoy-stop/`'s wall (`divertRow` /
-`applyWalls`: redirect, never block, never damage, once per hunter). The
-**siding** is its spike (`SPIKE_SLOW`: slow, never kill). Its lineage
-taxonomy in full is **slow / kill / redirect**, and this board takes two of
-the three and refuses the third by refusing killing outright.
+CFD-201's storm does two things to a route that rolls: **−10 points of chance**
+and, on the Chartered Line, **+6 marks of desperation pay.** Rustfall is
+Chartered and rolls nothing, so both need translating and only one of them
+survives.
+
+**The difficulty translates, in the yard's own currency, in the shape CFD-201
+already uses.** On the terrace, "every turn spent under a storm draws the ground
+one step." In the yard, every push under a storm **draws the richest car one
+tier** — the same cadence on the same clock, applied to the load instead of the
+ground. And **one raider a push cannot be turned**, because weather is cover:
+`ROUTE_EVENTS[fog-bank]` — "Cloud Fog Bank … **Scouts** reduce ambush odds and
+route confusion" — and `ROUTE_EVENTS[raider-scouts]`, at this very route:
+"Wardens and **Rangers** matter on exposed Rustfall sidings."
+
+**A Ranger aboard cancels the cover and not the damage**, which is what keeps it
+from being the immunity CFD-201 names as a trap. `crewTypes[rangers]` — the
+first two words of its description are "**Reveal ambushes**", the one job this
+beat's first draft refused it for want of anything hidden. The storm hides
+something. The refusal is withdrawn on its own terms.
+
+**The pay does not translate, and this is the one place this board declines an
+inherited rule.** CFD-201 sized 24 against Cloud Basin's own break-even and
+measured that a flat premium across all routes made the free halt the best
+business in a storm. At Rustfall the objection is sharper and structural: **the
+route's difficulty and the route's pay are the same quantity.** The storm eats
+the load; a premium per car would pay the player more for each of the cars the
+storm is taking. That is CFD-201's own named trap — *risk-up plus reward-up can
+cancel to nothing, a wash dressed as drama* — in its purest form, because here
+the two levers act on one number rather than two. Cloud Basin can carry both
+because its chance and its pay are separate quantities. **Rustfall cannot, so it
+carries one. Flagged as a deviation, with its reason, rather than slipped.**
+
+**A consequence, named rather than discovered.** Because Rustfall has no storm
+premium to forfeit, TRIM at Rustfall would cost one provision and buy the whole
+sky, where on Cloud Basin it costs a provision *and* the 6-mark premium. **TRIM
+therefore does not offer at Rustfall**, and the Ranger's yard job above is what
+it does instead. That asymmetry is real and it is open question 2.
 
 ### The counterfactual dice line — stated here, never on the board
 
-Had Rustfall rolled, it would have quoted `0.76 − 0.22` = **54.0%** bare,
-rising 3.6 points per Warden to 68.4% at four. **This is the number the desk
-refuses to state**, and it belongs in the beat because it is the tier's
-calibration:
+Had Rustfall rolled, it would have quoted `0.76 − 0.22` = **54.0%** bare in
+clear weather, 3.6 points per Rail Warden to 68.4% at four, and **44.0%** under
+a storm. That is the number the desk refuses to state, and it belongs in the
+beat as the tier's calibration:
 
 - Dice would have paid 23 × 0.540 = **12.4 marks** in expectation at a bare
-  roster, 23 × 0.684 = **15.7** at four Wardens; less the 4-mark stake either
-  way.
-- Bringing home the ore car alone (**14**) roughly matches what the dice
-  would have paid at a bare roster.
-- Bringing home ore and parts (**21**) beats it by two-thirds.
-- Losing the ore puts the run under the dice line, whatever else survives.
+  roster, less the 4-mark stake.
+- A crewless yard run banks **2**. Playing the yard badly is far worse than the
+  coin the desk would have flipped.
+- One Rail Warden banks **18**; a Ranger and a Warden bank **21**; eight marks of
+  crew bank the whole **23**.
 
-**That is the tier justifying its own existence**: a player who places well
-beats the dice, a player who places badly does worse than a coin the desk
-would have flipped for them, and the difference is decisions. If the shipped
-tuning does not produce that, the tuning is wrong, and this paragraph is the
-test.
+**That is the tier justifying its own existence**, and it is a sharper
+justification than the first draft's: the spread between playing badly and
+playing well is 2 to 23, where the dice tier at the same route would have paid a
+fixed 12.4 in expectation regardless of anything the player did. If the shipped
+tuning does not reproduce this table, the tuning is wrong, and this paragraph is
+the test.
 
 ### The failure gradient, and why it is not the consolation CFD-145 killed
 
-These are **two different legs in the engine's own code**, and the passed
-board refused one of them without touching the other:
+Two different legs in the engine's own code, and the passed board refused one
+without touching the other:
 
 - `applyCombatResultToDispatch`: `routeReward = scaleResources(route.rewards,
-  success ? mission.rewardMultiplier : mission.rewardMultiplier * 0.25)`.
-  **This is the consolation.** It pays you for losing. CFD-145 killed it, the
-  passed board refuses it, and this board refuses it: **a run that comes home
-  empty pays zero.**
-- `buildCombatResult`: `cargoIntegrity`, feeding `cargoLost = floor(cargo ×
-  (1 − integrity))`. **This is the gradient.** It does not pay you for
-  losing; it says how much of what you were carrying survived.
+  success ? mission.rewardMultiplier : mission.rewardMultiplier * 0.25)`. **The
+  consolation.** It pays you for losing. CFD-145 killed it; this board refuses
+  it.
+- `buildCombatResult`: `cargoIntegrity`, feeding `cargoLost = floor(cargo × (1 −
+  integrity))`. **The gradient.** It says how much of what you carried survived.
 
-On this board the second leg is the whole pay: the cars that come home are
-the pay, and the cars taken are gone. There is no separate route reward to
-pay a fraction of, so CFD-145's rule is satisfied at the strongest reading —
-**a Rustfall run that loses every car banks nothing at all.**
+On this board the second leg is the whole pay. There is no separate route reward
+to pay a fraction of, so **a Rustfall run whose every car comes home completely
+damaged banks nothing at all** — CFD-145 satisfied at its strongest reading,
+while David's three tiers live in the leg that was always meant to carry them.
+`[MDB]` 1.21 is the positive citation: *"Failure is a gradient rather than a
+state."*
 
 ### The fixture question, asked at design time and answered
 
-**Every state in this beat's arithmetic is reachable from the opening by
-play**, and the shortest path to the yard is exact:
+**Every state in this beat's arithmetic is reachable from the opening by play.**
+Measured by exhaustive search over this board's transition rules, both outcome
+branches allowed: **all 55 legal rosters are reachable, all 55 can reach a
+Rustfall send, and every marks value from 0 upward is reachable at roster 0.**
+
+The shortest path to the yard, exact:
 
 | | marks | roster | banked |
 | --- | --- | --- | --- |
-| opening | 3 | 0 | 0 |
-| DAWNSPUR HALT, free, always lit, home paid at 68% | 13 | 0 | 1 → charter opens |
-| MUSTER WARDEN | 10 | 1 | 1 |
-| MUSTER SAPPER | 4 | 2 | 1 |
-| SEND RUSTFALL, stake 4 | **0** | 2 | 1 |
+| opening | 3 | — | 0 |
+| DAWNSPUR HALT, free, always lit, home paid | 13 | — | 1 → charter opens |
+| MUSTER RANGER | 11 | R | 1 |
+| MUSTER RAIL WARDEN | 8 | R W | 1 |
+| SEND RUSTFALL, stake 4 | **4** | R W | 1 |
 
-**One prior run.** And that crew — one Warden and one Sapper, 9 marks — is a
-crew that can run the yard clean: the Warden holds the concentrated wave at
-push 2, and at push 3 the Sapper's siding removes one raider from the run
-while its switch folds a second onto the Warden's car. Three Wardens (also 9
-marks) solve push 3 a different way and lose push 2's economy. **Two distinct
-clean lines at the same price is the tuning target**, and it is what the
-offline solvability gate must prove before the tables ship.
+**One prior run**, and that crew banks 21 of the yard's 23 in clear weather.
+Reaching 4 marks with a run out is not a deadlock: the halt is free and always
+lit.
 
-Reaching 0 marks with a run out is not a deadlock: the halt is free and
-always lit, which is the passed board's floor rule doing its job across a
-board it was not written for.
+**The parity claim CFD-196 retired is re-made here, on new arithmetic.**
+Amendment 1 retired "every state is reached from that opening by play" because
+every delta on that board but the muster was even, locking marks and roster into
+matching parity. **Rustfall re-opens the lattice, and it is the odd car worths
+that do it** — the yard sends a run home at 21, 9, 7 or 23, odd numbers the dice
+routes' 10 / 14 / 18 against stakes of 0 / 2 / 4 can never produce. Without the
+yard the old lattice would still be closed: **the new system is what makes the
+claim true again, and if the car worths ever move to even numbers this paragraph
+goes back to being false.**
 
-**The claim CFD-196 retired is re-made here deliberately, on new arithmetic,
-and measured rather than argued.** Amendment 1 retired "every state is reached
-from that opening by play" because every delta on that board but the muster
-was even, so from the minted odd float marks and roster were locked into
-matching parity and pairs like *4 marks, roster 0* could never occur.
-
-**Rustfall is what re-opens the lattice, and it is the odd car values that do
-it.** The yard can send a run home with 7, 9, 21 or 23 marks — odd numbers
-that the dice routes' 10 / 14 / 18 against stakes of 0 / 2 / 4 could never
-produce. Measured by exhaustive search over this board's own transition rules,
-both outcome branches allowed, marks bounded at 80: **all 35 crew
-compositions within the cap of 4 are reachable, all 35 can reach a Rustfall
-send, and every marks value from 0 upward is reachable at roster 0** — the
-even ones included, which is precisely what the old lattice forbade. The move
-that breaks the parity class is a single Rustfall run: open 3, halt home paid
-for 13, send Rustfall for 9, come off the yard road with the parts car alone
-for **16** — an even balance at roster 0, which no sequence of dice runs and
-musters could have produced. Everything below it follows from there.
-
-Without Rustfall in the loop the old lattice would still be closed, which is
-worth saying plainly: **the new system is what makes the claim true again, and
-if the yard's car values ever move to even numbers this paragraph goes back to
-being false.**
+**One thing the sitting may not exercise, named rather than discovered.** The
+Engineer is the storm crew and the sitting stops on the first Rustfall run. A
+player who reaches the yard in clear weather may play it entirely in clear
+weather and never need an Engineer. **That is a property of the sitting, not a
+defect in the control**, and it is what open question 3 asks about.
 
 ---
 
 ## Canon check
 
-Per `docs/mechanisms-recommitted.md` §6.1: every mechanism turned ON or
-REFUSED, and the rule or source line it rests on. Rows mirror **On this
-sitting**, in order. Sources: `[LOOP]` The Core Loop, `[ECON]` How the Economy
-Works, `[TEETH]` The Teeth, `[2G]` The Two Games, `[CONF]` How Conflict Works,
-`[WILD]` The Wild and the Legend, `[WB]` World Bible v0.1, `[MDB]` Master
-Design Bible — all under `C:\dev\skyrail\docs\lore\`.
+Per `docs/mechanisms-recommitted.md` §6.1: every mechanism turned ON or REFUSED,
+and the rule or source line it rests on. **Inherited systems are cited to the
+beat that passed them**, per §7. Sources: `[LOOP]` The Core Loop, `[ECON]` How
+the Economy Works, `[TEETH]` The Teeth, `[CONF]` How Conflict Works, `[WILD]`
+The Wild and the Legend, `[WB]` World Bible v0.1, `[MDB]` Master Design Bible —
+all under `C:\dev\skyrail\docs\lore\`.
 
 | Row | ON / REFUSED | Rests on |
 | --- | --- | --- |
-| The dispatch desk and its dice routes, carried | ON | RULED — David 2026-08-26: honest dice for standard runs; the passed CFD-196 beat in full, unamended |
-| Rustfall takes a send | ON | RULED — David 2026-08-26, the EXCEPT clause: "a send into particularly contested territory known to have raiders may lead to the convoy defense game". `[WB]` puts interception exactly on this line class: Chartered routes are "Partly restored or contested routes … **opt-in interception risk** in later builds", against the trunk where "**no player banditry permitted**" |
-| Rustfall quotes no odds; no die on the yard | REFUSED | The same ruling: contested territory "is not a dice roll purely as it depends on the players' decisions on placement and tactics". `[ECON]`'s legibility rule — a stated number the board could not honestly roll is the obfuscated conversion by other means. And the lineage's own law: `/convoy-stop/`, "Fixed every run. **No RNG.**" |
-| The yard as placement, not battle | ON | `[WB]`, the governing sentence: "If a designer is unsure whether a mission is too combat-heavy, the answer is to make it **an escort, a repair, or a survey with a threat in it, rather than a battle**." `[WB]` again: "Combat is route security, not conquest … **Fighting exists to protect logistics, not to replace them.**" `[CONF]`, the touch toolkit: "The grammar is **decisions, not execution** … A player **places autonomous units and positions** rather than steering and aiming … the fight fits one screen with no scrolling to see it" |
-| A turn is a player's press; no wall time anywhere | ON | R4 — "No decay clocks, no upkeep tax, and no alerts"; R8 — a quiet stone is never a session meter. And canon names this model itself: `[LOOP]`, "**A turn-based or tick-on-action model is the live alternative**, and the choice should be tested against how a session actually feels on a phone" — listed under its own **Open calls to playtest**. The boards are that playtest. **Weakness named:** the corpus carries no verbatim refusal of reflex or twitch input anywhere; that refusal rests on `[CONF]`'s "decisions, not execution" plus this repository's own convicted-timer class, and is an extension, not a quote |
-| `tacticalTimeMs` as a budget | REFUSED | R4. A budget the player can run out is a clock with its units filed off, and the engine's own `isCombatPrimaryComplete` makes running it out *count as clearing the raiders* — an outcome no press produced |
-| `standDownCombatIncident`'s scoring kept, its trigger refused | ON / REFUSED | Measured: it "scores through the identical `buildCombatResult` … invents no outcome and applies no penalty or bonus", and its log line already says the right thing — "The crew stood down and **brought the train in**." Its trigger is `now >= lastOrderedAt + durationMs`, 180 seconds of real idle, which R4 refuses without exception. PULL OUT is the same exit under the player's hand |
-| PULL OUT, and the push-or-retreat call | ON | `[TEETH]`, verbatim: "Full success is the haul brought home. **Partial success is turning back early with some of it.** Graceful failure is escaping with nothing but the craft … which makes **the push-or-retreat call the core decision of the whole mode**." And the anti-spiral: "a decided loss never becomes a long doomed grind" — `[MDB]` 1.20 names the verb for this layer, "**a clean concede** and a swing objective" |
-| The return as the risk window (pressure rises with the haul) | ON | `[TEETH]`: "**the return trip is where the risk lives** … Coming home, a player carries the haul and has the most to lose, so the hazard peaks on the way back" |
-| The load as three cars, graded; cars taken individually | ON | `[TEETH]`, "Failure is a gradient, not a state"; and **CFD-196's own signed text assigns that doctrine to this tier by name**: "that doctrine governs the active tier, where the player is on the line making the read, and **it is exactly what the defense instance's placement-and-tactics resolution will be**." R6 — the haul committed is what dies |
-| The `× 0.25` consolation leg | REFUSED | CFD-145, decided: failed runs pay zero route reward. A distinct code leg from the gradient — see The numbers |
-| Health, hit points, damage, any filling bar | REFUSED | `[CONF]`, refused by name: "**A separate combat mode with health bars standing beside the building game.** Conflict is the thermal-and-logistics sim, not a thing next to it." `[MDB]` 1.12: non-cold adversaries are engaged "through this same thermal-and-logistics grammar **rather than through a separate combat system**." `[ECON]`: the ground reports itself "**without a gauge**" |
-| The convoy itself as the thing under siege | ON | `[CONF]`, the prescription in the same breath as the refusal, verbatim and in the source's own order: "**The thing under siege is the thing a player was already optimizing**, which is the lesson the logistics-defense games teach most clearly: when **the supply chain itself is what gets attacked and defended**, the routing and throughput problems already in play become the combat, and nothing has to be grafted on." |
-| Wardens hold a car; Gunners reach ±1; Sappers reroute and hold | ON | `crewTypes[*]` verbatim: Wardens "**absorb danger on convoy runs**", Gunners "Defend railcars and **punish exposed raiders**", Sappers "**Combat engineers**". `[WB]` corroborates each: "Rail Wardens. **Durable guards who protect** stations, convoys, workers, and cargo"; "Gunners. **Ranged support** who defend railcars"; "Sappers. Combat engineers who repair track under pressure". Reach ±1 from `/convoy-stop/`'s `GUN_ACROSS` 1.28 |
-| Reroute as a first-class resolution | ON | `[WB]` twice, and both at this route class: "**The Tollman's Demand** … Pay, fight through, **reroute**, or (outlaw path) cut a deal"; "**The Dormant Crane** … Repair it, **reroute** it, or disable it." A switchyard is made of switches. **Weakness named:** David's seam says "a wall and an obstacle", and the corpus has **no** support for player-placed walls, barricades, chokepoints or terrain-as-tactics — "obstacle" appears once and means broken track a sapper *repairs*. The redirect and the hold rest on **David's ruling and `/convoy-stop/`'s shipped grammar**, not on the corpus, and are flagged as such |
-| Rangers | REFUSED | `crewTypes[rangers].description` — "**Reveal ambushes**." Nothing on this board is hidden: every wave states its size and its cars before a finger moves. A control with nothing to do is the dead-button conviction this house already carries. Its price is recorded, not spent |
-| Raiders as the pressure at Rustfall | ON | `routes[rustfall-yard].tags` — `"raiders"`; the tuned `COMBAT_SCENARIOS[rustfall-security-charter]`, "Line Incident: Rustfall Ambush", route-gated to this route and mission-gated to include `convoy`; `[WB]` — "Raider crews (the Tollmen and similar). Intercept unguarded convoys … Demand tolls, attempt to take cargo. **The reason escorts and wardens matter.**" And the live board's own shipped card. **Weakness named, twice:** `[MDB]` 1.21 is a locked directive reading "**The cold is the only hazard, in five forms**", and raiders are not among them; and `[WILD]`'s stand-in doctrine that supplies NPC attackers — "**a defense wants attackers** … a stand-in raider reading as a Cinderborn outlaw" — is written for the contested deep, while Rustfall is a near-map Chartered route. The reconciliation this beat takes is `[MDB]` 1.12's own: raiders are **pressure on the routing problem**, engaged through the logistics grammar, never a hazard class of their own. That is what the yard is |
-| Raiders are turned, never killed; nobody dies | ON | `[WB]` — "The world should never tip into a **war fantasy**"; "Framed as **rivalry and risk, not war**"; "Outlaws read by silhouette and salvage, **not by cartoon villainy**". `[CONF]` — the reclaim-preferred economy, "a costly last resort". `[MDB]` 1.12 — "never cruelty". The failure ceiling in `[MDB]` 1.21 is the haul and the craft, never a person |
-| Crew always home; the Sunlark never lost | ON | `resolveDispatch` — `addCrew(next, dispatch.crew)` on **both** branches, the engine's own law, kept by the passed board. `[WB]`, from the hero who owns convoy defense: "**Stay in formation. We bring everyone home.**" (Sera Cairn, whose entry reads "Lends her name to patrol and **convoy-defense systems**") |
-| The train lost — canon's fourth rung | REFUSED, named | `[TEETH]` — "Catastrophic failure is crossing the Mark and losing the craft itself", and "craft-loss costs the instance and the haul, **never the capability**". It is a real rung and it is available. `[LOOP]` says why not now: stakes ride the dial, "**defaulting gentle** and turned up only by a player who reaches for it." One system per sitting |
-| The stake as provisions and toll | ON | R6 — "A run that fails costs the haul committed to it and never the home"; R2 untouched — no standing bill, cost only at the player's own click. R1 — the toll is civic and labelled, "the route toll" |
-| The Tollmen's toll paid in cargo (cut a car loose) | REFUSED, named | Fully canon-backed and deliberately held: `[WB]`'s "**Pay**, fight through, reroute, or cut a deal", `[TEETH]`'s "**jettison weight**" as a named counterplay, `[CONF]`'s humane-raiding "**partial loss rather than full loot**". Refused because a verb that resolves a wave *without a placement* is the one thing that could hollow out the tier's first outing, which exists to establish that placement decides the run |
-| Heroes | REFUSED | `buildings[hero-lodge]` is off this board and owns them. Measured, and worth the next author knowing: `applyHeroAbility` permanently parks the hero on order type `"hero-ability"`, which matches no command, dropping it to the 0.55 baseline for the rest of the incident; and one of the five heroes contributes literally zero combat power |
-| `missions[raid]`, the Bandit Camp Raid | REFUSED | `missions[convoy].rewardMultiplier` = 1 is the mission that leaves `route.rewards` untouched, and the mission here is getting the load home. `[MDB]` 1.20 splits them by name — "offense as the raid and **defense as the stand**" — and this is the stand |
-| Postures, route events, safety accrual, train damage, insurance, discovery, contracts | REFUSED, unchanged | Carried verbatim from the passed beat's rows; every one zero by its own refusal |
-| Goods as nouns, at the manifest only | ON, flagged | The passed board's standing refusal held marks as the stand-in. This board names three cars for what they carry because the manifest is the stake and a nameless stake cannot be argued about, and prices every one of them in **marks**. Conversion by `economyConfig.resourceValues`, the pack's own table. **This is the closest the lineage has come to the line, and it is flagged rather than slipped** |
-| The dormant Standfast crane | REFUSED, named | `[WB]`'s own hook for this yard: "reclaim the yard, secure a parts supply, and **contend with a dormant maintenance crane**" — "Repair it, reroute it, or disable it. **Orin prefers reclaiming it.**" `[CONF]` 1.9's reclaim-preferred economy makes it a whole system, not a wave. One per sitting |
-| The storm at the town | REFUSED, unchanged | §5 SIGNED — the reckoning is the scale lineage's; §5's own question sentence scopes itself to "the scale sitting", and CFD-196's RULED seam settled that it does not bind this loop |
-| Reading or writing another board's state | REFUSED, unchanged | Amendment 1's ruling 2 freed the fiction and not the state; the standing lineage lock stands |
-| End-sentences at every terminal | ON | The process rule from the broken sit, and a deliberate departure: `/convoy-stop/` prints **zero sentences** — a lost car returns the player silently to the chooser. This board says what happened |
+| The desk, the dice routes, the float, the charter, the roster's laws | ON, INHERITED | `docs/cfd-196-beat.md` and its two amendments — **passed**, David 2026-08-26 |
+| The sky, the storm's deltas, the terrace, the Ranger, TRIM | ON, INHERITED | `docs/cfd-201-beat.md` — the parent; §7's dropped half licenses carrying them without re-argument |
+| A cumulative board at all | ON | §7, RULED — David 2026-08-26: "yes draft the amendment, and make the next board cumulative" |
+| Rustfall takes a send | ON, NEW | RULED — David 2026-08-26, the EXCEPT clause. `[WB]` puts interception on this line class by name: Chartered routes carry "**opt-in interception risk** in later builds", against the trunk where "**no player banditry permitted**" |
+| Rustfall quotes no odds; no die in the yard | REFUSED | The same ruling — contested territory "is not a dice roll purely as it depends on the players' decisions on placement and tactics". `[ECON]`'s legibility rule. And the lineage's own law: `/convoy-stop/`, "Fixed every run. **No RNG.**" |
+| The yard as placement, not battle | ON, NEW | `[WB]`, the governing sentence: "the answer is to make it **an escort, a repair, or a survey with a threat in it, rather than a battle**"; "**Fighting exists to protect logistics, not to replace them.**" `[CONF]`: "The grammar is **decisions, not execution** … A player **places autonomous units and positions** … the fight fits one screen" |
+| A turn is a player's press | ON | R4; R8. And `[LOOP]` names the model itself: "**A turn-based or tick-on-action model is the live alternative**, and the choice should be tested against how a session actually feels on a phone" — under its own Open calls to playtest. **Weakness named:** the corpus carries no verbatim refusal of reflex input; that rests on `[CONF]`'s "decisions, not execution" plus this repository's convicted-timer class, and is an extension |
+| Damage in three tiers, worth scaling | ON, NEW | **RULED — David, 2026-08-27**, verbatim: "A damaged car should be able to be slightly, very, or completely damaged, with its resources reducing in parallel." Canon's own model by name: `[MDB]` 1.21, "**Failure is a gradient rather than a state**"; `[TEETH]`, "Full success is the haul brought home. **Partial success is turning back early with some of it**" |
+| A car stays coupled at every tier; the train is never lost | ON | `[TEETH]`, verbatim: "**losing a craft costs the instance and the haul but never the capability**" — and this sitting refuses even the instance, one rung short of what canon allows |
+| Health or hit points on any raider or crew; any bar that fills | REFUSED | `[CONF]` refuses "**a second game with health bars bolted beside the building game**" and prescribes the alternative in the same breath. **The kill line is narrowed from the first draft, which was stricter than its own source**: a car's condition is the *load's* condition, and the load is the supply chain, which is exactly what canon says the combat should be. `[ECON]`: the ground reports itself "**without a gauge**" — so condition ships as a look and a word, never a meter |
+| The convoy itself as the thing under siege | ON | `[CONF]`, verbatim and in the source's own order: "**The thing under siege is the thing a player was already optimizing**, which is the lesson the logistics-defense games teach most clearly: when **the supply chain itself is what gets attacked and defended**, the routing and throughput problems already in play become the combat, and nothing has to be grafted on." |
+| PULL OUT, and the push-or-retreat call | ON, NEW | `[TEETH]`: "which makes **the push-or-retreat call the core decision of the whole mode**"; the anti-spiral, "a decided loss never becomes a long doomed grind"; `[MDB]` 1.20 names the verb for this layer — "**a clean concede** and a swing objective" |
+| The return as the risk window | ON | `[TEETH]`: "**the return trip is where the risk lives** … Coming home, a player carries the haul and has the most to lose" |
+| Rail Warden holds a car; Marksman reaches across a coupling; Ranger reads; Engineer repairs | ON | `crewTypes[*]` verbatim — Wardens "**absorb danger on convoy runs**", Gunners "Defend railcars and **punish exposed raiders**", Rangers "**Reveal ambushes**", Sappers "**Combat engineers … stabilize damaged spans**". Reach from `/convoy-stop/`'s `GUN_ACROSS` 1.28. **Capacity 2 for the Marksman is measured, not cited, and says so** |
+| The crew names on the board's face | ON | RULED — David 2026-08-27, carried by `docs/cfd-201-beat.md`'s named ruling: Rail Warden, Ranger, Marksman, Engineer, with pack ids in the numbers |
+| The adjacent wave | ON, NEW | **RULED — David, 2026-08-27**: "fix the marksman with the adjacent wave." The shape is argued from the group's own name — Boarders board, and a coupling is what they board across |
+| The Engineer as repairer rather than wall-builder | ON, NEW | `crewTypes[sappers]`, `power.repair` 4, "stabilize damaged spans" — and David's own 2026-08-27 damage ruling is what created the job. **This supersedes his 2026-08-26 seam's "a wall and an obstacle"**, which the first draft already flagged as resting on the ruling alone: `[WB]`'s only "obstacle" is broken track a sapper *repairs*, and the corpus has no player-placed walls or barricades anywhere. Measured besides: as a placer of two pieces the Engineer was never the correct purchase in 64 configurations. **Named for David, not assumed** |
+| The storm live in the yard | ON, NEW | The re-base requires it. Its cadence is CFD-201's own — "every turn spent under a storm draws the ground one step" — applied to the load. Its cover is `ROUTE_EVENTS[fog-bank]` ("**Scouts** reduce ambush odds and route confusion") and `ROUTE_EVENTS[raider-scouts]` ("Wardens and **Rangers** matter on exposed Rustfall sidings") |
+| Rustfall's pay rising in a storm | REFUSED, argued | CFD-201's own named trap — risk-up plus reward-up cancelling to a wash — is unavoidable here because the route's difficulty and its pay are one quantity. **The one inherited rule this board declines, flagged** |
+| Raiders as the pressure at Rustfall | ON | `routes[rustfall-yard].tags` — `"raiders"`; `COMBAT_SCENARIOS[rustfall-security-charter]`, route- and mission-gated to include `convoy`; `[WB]` — "Raider crews (the Tollmen and similar) … Demand tolls, attempt to take cargo. **The reason escorts and wardens matter.**" **Weakness named, twice:** `[MDB]` 1.21 is locked as "**The cold is the only hazard, in five forms**" and raiders are not among them; and `[WILD]`'s stand-in doctrine that supplies NPC attackers — "**a defense wants attackers** … a stand-in raider reading as a Cinderborn outlaw" — is written for the contested deep, while Rustfall is a near-map Chartered route. The reconciliation is `[MDB]` 1.12's own: raiders are **pressure on the routing problem**, engaged through the logistics grammar, never a hazard class of their own |
+| Raiders are turned, never killed | ON | `[WB]` — "The world should never tip into a **war fantasy**"; "Framed as **rivalry and risk, not war**". `[MDB]` 1.12 — "never cruelty" |
+| Crew always home; the Sunlark never lost | ON, INHERITED | `resolveDispatch` — `addCrew` on **both** branches, kept by the passed board. `[WB]`, from the hero who owns convoy defense: "**Stay in formation. We bring everyone home.**" |
+| The Tollmen's toll paid in cargo | REFUSED, named | Canon-backed and deliberately held: `[WB]`'s "**Pay**, fight through, reroute, or cut a deal", `[TEETH]`'s "**jettison weight**", `[CONF]`'s "**partial loss rather than full loot**". A verb that resolves a wave without a placement would hollow out the tier's first outing |
+| `missions[raid]` | REFUSED | `missions[convoy].rewardMultiplier` = 1 leaves `route.rewards` untouched, and the mission is getting the load home. `[MDB]` 1.20 splits them by name — "offense as the raid and **defense as the stand**" |
+| Heroes; postures; events; safety; damage loop; insurance; discovery; contracts | REFUSED, INHERITED | Carried from both parents; every term zero by its own refusal |
+| Goods as nouns, at the manifest only | ON, flagged | Cars are named for what they carry because the manifest is now the stake and a nameless stake cannot be argued about; every one is priced in **marks**. Conversion by `economyConfig.resourceValues`. **The closest this lineage has come to the line, flagged rather than slipped** |
+| The dormant Standfast crane | REFUSED, named | `[WB]`'s own hook for this yard: "reclaim the yard, secure a parts supply, and **contend with a dormant maintenance crane**" — "Repair it, reroute it, or disable it. **Orin prefers reclaiming it.**" `[CONF]` 1.9's reclaim-preferred economy makes it a whole system |
+| End-sentences at every terminal | ON | The process rule from the broken sit, and a deliberate departure: `/convoy-stop/` prints **zero sentences** — a lost car returns the player silently to the chooser |
 
 ---
 
 ## Author's argued alternatives
 
-The house records rejected roads. Four were close, and one of them is the
-commission's own framing.
+**1. Port the combat engine, replacing the clock with a turn counter.** Rejected
+on the engine's own text: strip the clock and what is left is `health` /
+`maxHealth` on every group, a pressure scalar that only falls, four 0–100
+progress objectives — a health-bar game, which `[CONF]` refuses in the same
+paragraph that prescribes the alternative. The engine also has **no enemy**: no
+AI, no schedule, no wave. What survives the transfer is taken: the shape (orders
+then resolution), the ordering (three hostile groups, by strength), the names,
+the gradient as a leg distinct from the consolation, and the stand-down's
+scoring.
 
-**1. Port the combat engine, replacing the clock with a turn counter.** The
-commission asks for this and it is the road I spent longest on. Rejected on
-the engine's own text: strip the clock and what is left is `health` /
-`maxHealth` on every group, a `hostilePressure` scalar that only falls, four
-objectives with `progress` numbers between 0 and 100, and a `cargoIntegrity`
-formula that mixes two percentages. **That is a health-bar game**, which
-`[CONF]` refuses by name in the same paragraph that prescribes the
-alternative. The engine also has no enemy — no AI, no schedule, no wave — so
-a turn-driven port would be a player pressing a button to watch four numbers
-move, with no opponent and nothing to place. What survives the transfer is
-the *shape* (orders then resolution), the *ordering* (three hostile groups,
-by strength), the *names* (Raider Scouts, Boarders, Scrap Gunners), the
-*gradient* (`cargoIntegrity` as a distinct leg from the consolation), and the
-*stand-down's scoring*. All five are taken. The arithmetic is left where it
-is.
-
-**2. Rustfall as a wave-defense board in `/convoy-stop/`'s image — five lanes,
-a spike, a gun, a mortar, a wall, and three waves that play themselves out.**
-The nearest thing to a finished design already exists and it is real. Rejected
-on two counts, one of them fatal. The fatal one is the clock: that board is a
-`requestAnimationFrame` loop on `performance.now` deltas, and its only untimed
-phase is `quiet`. Its tactics come from continuous space and millisecond
-cooldowns, and both of those *are* the clock; take them out and the placement
-puzzle it was tuned around collapses into arithmetic. The second is scope:
-five lanes and four piece types against three cars and three crew is a bigger
-board than a first sitting on a new tier should be. What is taken is exactly
-what survives the clock — the phase order (say the threat, place, lock,
-resolve), the threat forecast drawn on the lanes it will hit, fixed tables
+**2. Rustfall as a wave-defense board in `/convoy-stop/`'s image.** Rejected on
+the clock — that board is a `requestAnimationFrame` loop whose tactics *are*
+continuous space and millisecond cooldowns — and on scope. Taken from it: the
+phase order, the threat forecast drawn on the lanes it will hit, fixed tables
 with no RNG, the slow/kill/redirect taxonomy, and the offline solvability
-practice that its `sim.js` invented after an impossible table shipped.
+practice its `sim.js` invented after an impossible table shipped.
 
-**3. Rangers in, and the wave's shape hidden until they are aboard.** This is
-the design that makes reach genuinely valuable — commit blind to the
-distribution, and buy the information with a Ranger. It is tempting,
-`recommendedCrew` for this very scenario is `["wardens", "rangers",
-"gunners"]`, and `ROUTE_EVENTS[raider-scouts]` names them at this very
-route: *"Wardens and Rangers matter on exposed Rustfall sidings."* Rejected
-for this sitting on three grounds. It is a second system — concealment — and
-one per sitting. It puts a control on the board whose whole value is removing
-a difficulty the beat just added, which is a circular sale. And measured, the
-`recommendedCrew` field is **display-only**: it feeds `matchingCrew` into
-`manualAdvantage`, and `manualAdvantage` has **no consumer anywhere in the
-repository** — so it is unconsumed content, not tuning, and it does not
-outrank a ruling. Named, priced at 2, and left for the sitting that hides
-something. **This is the sharpest disagreement between the pack and David's
-seam and it is an open question below, not a decision I am confident in.**
+**3. The adjacent-wave fix, taken and corrected.** The proposal put to David was
+"two raiders on two ADJACENT cars, where one Marksman does what two Wardens
+would." **The shape is right and ships. The stated mechanism did not work as
+drafted**, and this is recorded because the ruling was made on it: under the
+first draft's rules a Marksman turned *one* raider a push, so two raiders on two
+adjacent cars would have cost it a car exactly as a Warden would, and the wave
+shape alone would have changed nothing. **The wave shape and the capacity change
+are one fix, not two**, and neither works without the other — the shape gives
+reach something to reach for, the capacity lets it arrive. Both are in, and the
+measurement above is what says the pair works.
 
-**4. Cut a car loose — pay the Tollmen their toll.** `[WB]` names Pay first
-among four resolutions, `[TEETH]` names "jettison weight" as counterplay, and
-`[CONF]`'s humane-raiding toolkit is partial loss rather than full loot. It
-would also put the stakes dial in the player's own hand at every push, which
-`[LOOP]` explicitly wants. Rejected for this sitting alone, and only because
-of what this sitting is: it is the tier's first outing and its whole job is to
-establish that **placement decides the run.** A verb that resolves a wave
-without any placement is the one addition that could make the first sit
-answer *what happened* with "I paid them." It is the strongest candidate for
-the sitting after this one, and it needs no new derivation when it comes.
+**4. Fixing the Marksman by price instead of by wave.** Considered and rejected
+before the ruling closed it: at capacity 1 the Marksman is dominated by the
+Warden at *every* price down to 1 mark, because reach buys nothing under a full
+forecast. **A dead control is not a pricing problem.** Recorded because it is the
+obvious first move and it is measurably wrong.
 
-**A cousin rejection with the same shape: escalating raider grades — Scouts
-answerable by anyone, Boarders only by a Warden, Scrap Gunners only by a
-Gunner.** It reads well, the names support it, and it would give
-`strength` 18 / 20 / 24 a mechanical job. Rejected because it forces the
-roster instead of rewarding it: a run without a Gunner would be unwinnable at
-push 3 regardless of how well it was placed, which is the doomed grind
-`[TEETH]`'s anti-spiral exists to prevent. The flat rule — any body turns any
-raider, the difference is reach and capacity — keeps every crew a real answer
-to some shape. The grade escalation is the obvious knob if the shipped tuning
-comes back too easy, and it is named here so it is not re-invented.
+**5. Hiding the wave forecast to make reach pay.** The clean way to make reach
+valuable is uncertainty, and hiding the distribution would do it in one line.
+Rejected: it is a second new system (concealment), it fights `[ECON]`'s
+legibility rule and `[TEETH]`'s two-reads requirement, and it would put a control
+on the board — the Ranger — whose whole value is removing a difficulty the beat
+had just added. **The storm supplies the only concealment on this board, it
+arrives inherited, and it is bounded to one raider a push.**
+
+**6. Escalating raider grades — Scouts answerable by anyone, Boarders only by a
+Warden, Scrap Gunners only by a Marksman.** It would give `strength` 18 / 20 / 24
+a mechanical job. Rejected because it forces the roster instead of rewarding it:
+a run without a Marksman would be unwinnable at push 3 regardless of placement,
+which is the doomed grind `[TEETH]`'s anti-spiral exists to prevent. Named so it
+is not re-invented — it is the obvious knob if the shipped tuning comes back too
+easy.
+
+**7. Cut a car loose — pay the Tollmen their toll.** `[WB]` names Pay first among
+four resolutions, `[TEETH]` names "jettison weight", `[CONF]`'s humane-raiding
+toolkit is partial loss rather than full loot, and it would put the stakes dial
+in the player's own hand at every push. Rejected for this sitting alone: it is
+the tier's first outing and its job is to establish that **placement decides the
+run.** A verb that resolves a wave without any placement could make the first sit
+answer *what happened* with "I paid them." Strongest candidate for the sitting
+after this one, and it needs no new derivation.
+
+**8. TRIM offered at Rustfall.** Rejected on arithmetic: with no storm premium at
+Rustfall to forfeit, TRIM would cost one provision and buy the whole sky, where
+on Cloud Basin it costs a provision and six marks. That is the effective immunity
+CFD-201 names as the weather unit's trap. The Ranger's yard job — seeing what the
+weather covers, not stopping what it does — is the same idea at the right price.
 
 ---
 
 ## Open questions for David
 
-Five, each answerable in a sentence.
+Four, each answerable in a sentence.
 
-1. **Rangers.** The pack names them at Rustfall twice; your seam named a
-   marksman and an engineer and not a scout. I shipped your seam and refused
-   the Ranger because nothing here is hidden. In, out, or next sitting?
+1. **The Engineer's job changed.** Your 2026-08-26 seam said "an engineer, a wall
+   and an obstacle." Your 2026-08-27 damage ruling created a better job for it —
+   repair — which is what its pack entry always said it did, and measured, the
+   wall-and-obstacle version was never worth buying in 64 configurations. I
+   shipped repair. Right call, or do you want the wall back?
 
-2. **Cutting a car loose.** The Tollmen want a toll and canon lists paying it
-   first among four outs. I held it back so this sitting proves placement
-   decides the run. Hold it, or ship it now?
+2. **The storm does not raise Rustfall's pay**, where it raises Cloud Basin's
+   from 18 to 24. The reason is that at Rustfall the difficulty and the pay are
+   the same quantity, so paying more per car while the storm eats the cars is the
+   wash you were already warned about. Accept the asymmetry?
 
-3. **The loading order.** Heaviest first — ore 14, parts 7, strongbox 2 — so
-   the biggest commitment is on the board from push one and the push-or-retreat
-   call is live at every step. Lightest first makes the early pushes
-   meaningless. Right call?
+3. **The Engineer is the storm crew and the sitting stops on the first Rustfall
+   run** — so a player who reaches the yard in clear weather may never need one.
+   Leave it, or should the stop be the first Rustfall run *in a storm*?
 
-4. **The stop.** The sitting ends on the first Rustfall run off the yard road,
-   loaded **or empty** — so even a bad first run is a complete sitting you can
-   answer *what happened* about. Or should an empty run let you try again
-   before the sitting ends?
-
-5. **The crane.** `[WB]` says the thing that actually holds Rustfall is a
-   dormant Standfast maintenance crane, and that Orin prefers reclaiming it.
-   The live card says raiders. I shipped the raiders because the card is
-   already in your hands. Does the crane get its own sitting, or does it
-   belong in this one?
+4. **The stop, unchanged from the first draft.** First Rustfall run off the yard
+   road, loaded or empty, so even a bad first run is a complete sitting. Or
+   should an empty run let you try again before the sitting ends?
