@@ -1,0 +1,103 @@
+Dawnspur CFD-203, the join sitting (provisions off the terrace) 2026-08-27
+Spec: docs/cfd-203-beat.md - SIGNED, David 2026-08-27 by delegation ("sign the
+beat when the check comes back"). Written under canon section 7: a sitting
+INHERITS what has passed and adds one new thing. This is the first such board.
+
+INHERITED WHOLE, cited to the beats that passed them.
+  the desk    - /dawnspur-dispatch/ (CFD-196 + Amendments 1 and 2): SEND,
+                MUSTER, MEET, three routes and Rustfall dark, honest dice
+                stamped at the send, the charter condition, the muster slider
+                with its armed re-quote and both fences, the opening float of
+                3, failure pays zero, nothing refunds, the crew always comes
+                home, the free halt always lit.
+  the terrace - /dawnspur-scale/ (CFD-183): the greenhouse 1..4, UP at 3/4/5
+                instant with no way back, the reserve 4 down to 0 floored,
+                drawn one step per carry, paying FULL at every reserve
+                including bare and giving no sign.
+
+THE ONE NEW SYSTEM IS THE JOIN: a send's provisions come off the terrace.
+Provisions 0 / 2 / 3 do not move; only their unit does, from marks to FOOD.
+The Chartered toll stays 1 and stays MARKS, because a toll is a civic fee and
+R1 names it as one. NOT ONE FIGURE MOVES - 3 / 2 / 3+1 / 10 / 14 / 18 / 0.036
+/ UP 3,4,5 / reserve depth 4 / roster cap 4 all stand.
+
+Food is not a currency, and every clause is a Kill line this board honours:
+food buys exactly one thing (the provisions leg of a send); no commit trades
+it in either direction; it has one source, the carry; it is never a HUD
+figure; and it never pays a toll, a muster or an UP. Marks rise in exactly one
+place in the sim (a route's payout) and food in exactly one (the carry), and
+the tests pin both counts. R1 is satisfied literally: marks and food never
+share a sink.
+
+CARRY pays FOOD, not marks, and that was forced rather than chosen. With CARRY
+paying marks and provisions drawn off the ground, TEND-then-CARRY mints
+(level - 1) marks per two turns with the ground unchanged and no ceiling. So
+the terrace pays goods and the line pays money.
+
+The stores hold 6, and 6 is DERIVED in the sim rather than typed: a carry
+strands whenever cap - stores < level, the player carries only when
+stores < provisions, so a carry never strands iff cap >= maxProvisions +
+maxLevel - 1 = 3 + 4 - 1. At cap 4 or 5 the ladder's top rung buys NOTHING on
+the only route that fires the ending - cap 4 and cap 5 are the same board.
+Measured against the sim, carries per Chartered send: 3.000 / 1.500 / 1.000 /
+0.750 by level at cap 6, and 3.000 / 1.500 / 1.000 / 1.000 at cap 4 and 5.
+
+TWO INHERITED VERBS ARE CUT, both RULED by David 2026-08-27, both because the
+join changed what they were for. MOSSWAKE +3: the join put a ROUTE of that
+name on this board, so the verb was redundant - "cutting redundant is cheaper
+than renaming colliding". Its precondition is the two-vehicle claim and this
+board honours it: no terrace verb reads the away state, so CARRY and UP stand
+beside MEET while a run is out, verified in a browser. TEND: the join gave its
+job to the food line and its reckoning is weather, which deferred to the storm
+sitting; it measured DOMINATED, not merely inert. It appears nowhere as a
+verb, a field or a path, and it returns on the storm board.
+
+The reserve is ONE-WAY ON THIS SITTING, BECAUSE TEND IS ABSENT FROM IT - not
+as a property of the reserve. It is two-way again when TEND returns. In the
+sim it is DERIVED from the carry count rather than stored, which makes
+"written by anything but a carry" impossible by construction.
+
+The record carries TWO loss counters and the terminal reads both, naming a
+zero rather than omitting it. Mosswake's toll is 0, so a turned-back Mosswake
+run loses food and NO marks, and a cost clause keyed on marks alone would have
+closed the sitting with "cost nothing but the trip" over dead food - the exact
+defect CFD-196 was sent back for, re-opened by the join in a new currency.
+
+Topping the terrace ARMS the ending and says so out loud; the next Chartered
+cargo home FIRES it. A Chartered cargo banked while unarmed is a good run and
+nothing more; a turned-back one while armed is not an ending. So the sitting
+cannot end without the terrace twice over - level 4 arms it and three food
+from the ground fires it.
+
+The terminal's ground clause has TWO registers and not three. The full
+register was cut because it CANNOT FIRE: the stop needs a Chartered outfit of
+3 food, the only source of food is CARRY, and every CARRY draws a step, so
+carries >= 1 at every stop. Re-measured here by breadth-first search over the
+whole reachable space: the reserve at a stop is 0, 1, 2 or 3 and never 4.
+That search also re-earns the claim CFD-196 Amendment 1 had to retire - every
+state reached from the opening by play - which is what opening the stores at 0
+buys: reserve 4 with stores > 0 is not reachable, so minting a store would
+have put the board off its own lattice a second time.
+
+Measured in a browser at 375x812 under mobile emulation, over nine viewports
+from 280x480 to 412x732 in the opening, away and terminal states: the card
+list holds no vertical space it does not fill (worst 0px), no card's content
+escapes its box (worst -6px), and the muster thumb is 44px throughout. The
+walked quick path from the beat reproduces exactly - eight turns, marks 3 to
+18, stopping on a drawn ground at reserve 3.
+
+Lives at sit/dawnspur-line/ with byte-copies at public/dawnspur-line/, so the
+five boards that already stand are untouched - the lineage lock:
+
+  live /dawnspur-dispatch/ sim 576ce2b6 / index 31aead60
+  live /dawnspur-scale/    sim 953368a1 / index 5d2f452f
+  live /dawnspur-heat/     sim 292d6645
+  kill /dawnspur/          sim 395c18f2
+  live /convoy-stop/       sim 5ad814e6
+
+These hashes are graded by test/dawnspur-line.test.js against the bytes on
+disk, measured LF (.gitattributes `* -text` makes the blob the shipped bytes;
+the working tree is never the artefact):
+
+index.html      sha256:b6f21db0dd8a2d4ee9373f859859748c5c0778204a3cad6ee95466c338d43f2a
+sim.js          sha256:18b1324f33114a1dd6b5bf4c8905f2facac80286d5470b0c803ba47877040e65

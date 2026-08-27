@@ -59,7 +59,17 @@ ends.** Re-derived independently by the PM:
 | reserve at the stop | reachable | best by level |
 | --- | --- | --- |
 | 4 — full | **UNREACHABLE at every level** | — |
-| 3 / 2 / 1 / 0 | all reachable by ordinary play | L1 → 1, L2 → 2, L3 → 3, L4 → 3 |
+| 3 / 2 / 1 / 0 | all reachable by ordinary play | best is 3 |
+
+**Correction, 2026-08-27, the PM's labelling error, caught by the implementer.**
+An earlier version of this table carried a column reading *"L1 → 1, L2 → 2,
+L3 → 3, L4 → 3"* as reserve-at-the-stop **by level**. That reads as four
+stop-levels and there is only one: **topping arms the ending, so every stop
+happens at level 4.** Verified in the shipped sim — a Chartered cargo banked
+below level 4 does not stop the sitting. The figures were "best reserve if the
+Chartered outfit was *gathered* at that level", which is a different index. The
+material claims are unchanged and all hold: **full is unreachable, 0–3 are all
+reachable, and the best reserve at any stop is 3.**
 
 **So the dead register was `full`, at the opposite end from where the PM looked**
 — *"everything the line ate was put back"*, a sentence that cannot fire. It is
