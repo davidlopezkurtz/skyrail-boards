@@ -356,3 +356,86 @@ immunity rather than changing how weather is met.
 
 CFD-200, the convoy defense instance, follows rather than leads — by then the
 town has weather, and a contested run has more to work with.
+
+### 7.1 The join beats the mechanic — RULED, David, 2026-08-27
+
+When a cumulative board's one-new-system choice lies between **a mechanic** and
+**the connection that joins the boards it inherits**, the connection wins.
+
+**His argument, verbatim, and it overturned the PM's deferral:**
+
+> "3 (provisions off the terrace) is the one that matters and I think the
+> deferral is wrong. Everything else here is tuning a board where two economies
+> share a purse. This is the item that makes them one game. The stated reason
+> for cutting it is discipline, one new thing per sitting, and that rule has
+> been serving you well. But it was written to stop scope creep, not to block
+> the connection that makes a joined board worth joining. Note what the
+> analysis admits: it's a better game than what ships. If the sitting's purpose
+> is to test whether the two loops combine, shipping without the thing that
+> combines them tests the wrong question. I'd swap it in for weather rather
+> than stacking it on top."
+
+**Why this is a rule and not one decision.** §7 dropped isolation so that levers
+could compound. A cumulative board that inherits two loops and adds a mechanic
+*beside* them has not tested compounding — it has tested a mechanic, on a bigger
+board. The first cumulative sitting's whole job is to find out whether the loops
+are greater than the sum, and **a board that ships without the thing joining
+them answers a different question than the one it was convened to ask.**
+
+**The discipline is preserved exactly, not bent.** He chose SWAP over STACK:
+the join replaces the mechanic as the one new system. §7's kept half is
+untouched — one new system per sitting, and attribution survives, because the
+join is the only new thing on the board.
+
+**The concrete instance.** CFD-201 was drafted with **weather** as its one new
+system and **provisions drawn off the terrace** argued and deferred as
+alternative 1, on the ground that it changed an inherited system and would be a
+second new thing. The beat's own text conceded it was *"a better game than what
+ships here."* Ruled: **the provisions join ships and weather defers.** The
+993-line weather beat is not discarded — it is the storm sitting's beat, held
+for the sitting that carries weather.
+
+**What deferring weather costs, recorded rather than discovered.**
+
+1. **§5 is SIGNED and says the storm is the next sitting's reckoning.** This
+   defers a signed commitment. §5 is not overturned — the storm still carries
+   the haul and in-progress stakes when it arrives — but "next sitting" now
+   means the sitting after the join.
+2. **`/dawnspur-scale/`'s terminal sentence promises weather** — *"The reserve
+   left here is the next sitting's weather bill."* That promise now waits a
+   second sitting. It is not broken, only outstanding, and the join board must
+   not contradict it.
+3. **Three of David's six CFD-201 rulings are storm rulings and travel with the
+   storm**: the Chartered storm pay of 24, the Ranger's trim, and the storm
+   premium's shape. They are ruled, recorded, and not re-opened when weather
+   returns.
+4. **CFD-200's parent changes again.** Its Seat was re-based onto
+   `/dawnspur-storm/`; it re-bases onto the join board instead. This is the
+   general rule that fork already taught: **the parent is the last passed board,
+   named at signature rather than assumed at drafting.**
+
+### 7.2 Sitting length follows the sitting's ambition — RULED, David, 2026-08-27
+
+> "There can be a diversity of sits. Standard loops are quick but more
+> challenging ones that are opted into can be longer to allow for more developed
+> gameplay experience."
+
+A board is not too long because it is longer than the last one. **A longer
+sitting is legitimate when the player opted into it** — the length has to be
+chosen by the player's own ambition rather than imposed on someone who wanted a
+quick loop.
+
+Two things follow, and both are testable:
+
+- **A quick path must exist and must be honest.** If the board's short route is
+  a worse deal than the long one, the player did not opt in; they were priced
+  in. The floor send being free and always lit is the shape this already takes
+  on the dispatch board.
+- **The stop is what makes length opt-in.** A sitting the player can end when
+  they choose is one they chose the length of. Arming-and-triggering (§7.2's
+  companion in CFD-201 ruling 5 — topping the terrace *arms* the ending, the
+  qualifying cargo *triggers* it) is the shape that gives a builder their payoff
+  without ending the sitting under a player who came for the run.
+
+This retires "sits get longer" as a cost in §7's list. It is a property to
+design, not a price to pay.
