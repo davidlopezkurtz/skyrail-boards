@@ -2,7 +2,11 @@
 
 The first cumulative board, re-aimed. `/dawnspur-dispatch/`'s desk and
 `/dawnspur-scale/`'s terrace on one town, with **the connection between them as
-the single new system**: a send eats what the ground grew.
+the single new system**: a send eats what the terrace grew, and the terrace is
+worked by hand, one trip at a time. *(The first draft said "what the ground grew".
+That sentence stops being true after four presses and the correction is worked in
+full under* What the ground does and does not do *— it is this beat's most
+important section.)*
 
 **RULED — David, 2026-08-27**, overturning the PM's deferral and this author's own
 rejection. `docs/mechanisms-recommitted.md` §7.1, verbatim:
@@ -208,17 +212,46 @@ it is measured rather than designed — CFD-183 carried the level-1 yield of +1 
 play, and `resourceValues.food = 1` is the identity element of the table CFD-196
 converted through.
 
-And the ladder is what buys the discount:
+And the ladder is what buys the discount — **but only at a stores cap of 6, and the
+first draft of this beat got this table wrong.**
+
+| carries (= ground steps) per send | L1 | L2 | L3 | L4 |
+| --- | --- | --- | --- | --- |
+| Mosswake, cap 6 | 2.000 | 1.000 | 0.667 | **0.500** |
+| Cloud Basin, cap 6 | 3.000 | 1.500 | 1.000 | **0.750** |
+| Cloud Basin, **cap 4 or 5** | 3.000 | 1.500 | 1.000 | **1.000** |
+
+**The stranding, which is the defect and now has a Kill line.** A carry lands
+`min(level, cap − stores)`. A Chartered send takes 3 of a 4-slot store and leaves
+1 standing, and **no send costs 1**, so at level 4 the stores are never re-entered
+at 0 and every carry lands 3 instead of 4. The level-4 rung then buys **nothing at
+all** on the only route that fires the ending: L3 and L4 are both 1.000. The first
+draft published 0.750 by dividing 3 by 4 and ignoring the leftover, and built a
+headline on the cell.
+
+**The cap is therefore not a feel knob. It is the parameter that decides whether
+the top of the ladder exists**, and its minimum is derivable rather than chosen —
+see The numbers. Cap 4 and cap 5 are the same board; cap 6 is the first cap at
+which a carry never strands.
+
+**What the rung actually buys, in the denominator that binds.** Ground steps are
+the wrong unit, because a step of ground is only worth a mark if the player tends,
+and tending is dominated (see TEND, below). The unit that binds is **turns per
+Chartered send** — two for the send and the meet, plus the carries:
 
 | | L1 | L2 | L3 | L4 |
 | --- | --- | --- | --- | --- |
-| Mosswake — ground steps per run | 2.00 | 1.00 | 0.67 | **0.50** |
-| Cloud Basin — ground steps per run | 3.00 | 1.50 | 1.00 | **0.75** |
-| Cloud Basin — marks if fully tended back | 4.00 | 2.50 | 2.00 | **1.75** |
+| turns per Chartered send (cap 6) | 5.000 | 3.500 | 3.000 | **2.750** |
+| the rung's price | — | 3 marks | 4 marks | 5 marks |
+| turns saved per mark | — | **0.500** | **0.125** | **0.050** |
 
-**At level 1 a Chartered run costs three-quarters of your ground. At level 4 it
-costs a quarter. That is what the greenhouse is for**, and it is the first time
-UP's price has bought anything that reaches the desk.
+**The ladder is steeply diminishing even when it is not broken: the last rung is
+ten times less efficient than the first, and the ending arms on buying it.** That
+is not a defect to fix — it is what the arming was ruled to do (*"makes the terrace
+pay off on its own terms"*). The last rung is bought for the ending as much as for
+the rate, and the beat says so rather than dressing 0.050 turns a mark as a
+discount. **At cap 4 it is a defect**, because the rung then buys the ending and
+literally nothing else.
 
 ---
 
@@ -227,7 +260,18 @@ UP's price has bought anything that reaches the desk.
 **One town, two halves that now need each other.** The terrace grows the food; the
 food provisions the sends; the sends pay the marks; the marks build the terrace and
 muster the crew. Neither half closes on its own: **marks come only off the line,
-and provisions come only off the ground.**
+and provisions come only off the terrace.**
+
+**Said precisely, because the first draft of this beat said it wrong.** The
+recurring price of a provisioned send is **a trip up the hill** — a carry, which is
+a turn. It is *not* the ground's condition: the reserve is a four-step opening
+allowance that the carry draws and the carry does not need, because the carry pays
+full at bare. A first draft of this section said *"a send eats what the ground
+grew"*, and that sentence stops being true after four presses. What is true, and
+never stops being true, is that **a send eats what the terrace grew, and the
+terrace is worked by hand, one trip at a time.** The ground's own condition is
+carried out of the sitting, not spent inside it — see *What the ground does and
+does not do*, which is now this beat's most important section.
 
 ### The desk
 
@@ -267,33 +311,114 @@ Exactly one thing changes, and it is forced:
   land — CFD-183's rule that the button label is the meter, doing the work of a
   cap warning.
 
-**The stores hold 4.** CARRY is dark when they are full, in the same grammar TEND
-already uses for full ground.
+**The stores hold 6**, and 6 is derived rather than chosen: it is the smallest cap
+at which a carry never strands, `maxProvisions + maxLevel − 1 = 3 + 4 − 1`. Below
+it the ladder's top rung buys nothing on the Chartered Line. CARRY is dark when the
+stores are full, in the same grammar TEND already uses for full ground.
 
-### What the ground does not do this sitting, deliberately
+### What the ground does and does not do — the section the rest of the beat rests on
 
-**The reserve gates nothing.** The carry pays full at bare ground, exactly as it
-shipped, so the ground never stops the player and TEND has no operational job on
-this board. That is not an oversight and it is not fixable here:
+**The reserve is a one-time allowance of four steps, not a recurring price.** The
+carry pays full at bare and the reserve floors at 0, both inherited and both
+untouched, so a level-1 player exhausts the ground inside one Chartered run and
+plays the rest of the sitting on a **free, unbounded food faucet**. Nothing on the
+board says so, and a first draft of this beat's own framing — *"a send eats what
+the ground grew"* — stops being true after four presses.
 
-- Giving the reserve a gate means changing CFD-183's kill — *"Carrying at low or
-  bare reserve pays less, stops, warns, or alerts"* — which rests on Geology's
-  *"rides fine for years on a falling reserve, in clear weather, and gives no
-  sign."*
-- The reckoning that scopes that sentence is the storm's, and §7.1.2 is explicit
-  that `/dawnspur-scale/`'s weather promise *"now waits a second sitting"* and
-  *"the join board must not contradict it."* Spending the storm's stake early —
-  for the second time in three beats — is exactly the drift the amendment was
-  written to stop.
+**That is the honest finding, and it is stated before the defence of it**, because
+the board's first four turns otherwise teach a model that is false from the fifth
+turn on.
 
-So **TEND keeps precisely the job it had on the board that passed**: it holds the
-line against a bill one sitting further out, and the terminal sentence reads the
-ground it was left on. What changes is the pressure on it: **this board draws the
-ground far harder than CFD-183 did**, because every provisioned send is paid for in
-carries, so the weather bill handed forward is substantially larger than the scale
-sitting's. That is the join working across sittings rather than inside one.
+#### The bind, and the three shapes that were tried against it
 
-It is named as this board's known thin spot, and it is open question 2.
+For the ground to be a *recurring* price, running it out has to cost something.
+Something can only cost when some action's yield or availability depends on the
+reserve. That is a small, closed space, and every cell of it was worked:
+
+**Shape 1 — the carry is unavailable at bare (gated, not priced).** Yield stays
+flat, nothing pays less, the ground permits rather than prices. **REFUSED on the
+letter.** `docs/cfd-183-beat.md` reads verbatim: *"Carrying at low or bare reserve
+pays less, **stops**, warns, or alerts."* "Stops" is in the kill. Whatever fiction
+is wrapped round it — an empty larder rather than a refusal — the mechanic named is
+the mechanic killed. Recorded because it is the shape a later reader will
+re-propose.
+
+**Shape 2a — the SEND reads the reserve: a send is unavailable at bare.** A send is
+not a carry, so the kill's letter does not reach it, and the pressure lands where
+this board says the join puts it. **It works mechanically**: carries per send are
+`P/L`, so in steady state tends per send are `P/L` too, which makes the ground
+recurringly costly at exactly `P/L` marks a send — permanently equal to the passed
+board's provisions price at level 1. It also un-dominates TEND outright, because at
+reserve 1 a carry darkens the next send and a tend is the only way through.
+**REFUSED on the spirit, and the spirit here is not a resemblance argument.** The
+kill's citation is Geology: *"A drawn-down island rides fine for years on a falling
+reserve, **in clear weather**, and gives no sign. **The reckoning comes only when a
+cold stretch arrives.**"* A send that will not go because the ground is empty is a
+sign, and it is a reckoning arriving with no cold stretch. **The scope words cut
+against it rather than for it**: "in clear weather" is the condition under which
+the ground must give no sign, and this board is *entirely* clear weather, because
+the storm was deferred. And CFD-183's own published gloss of that citation is a
+behaviour rule in terms — *"'gives no sign' governs behavior — nothing fails,
+slows, dims, warns, or alerts at any reserve"* — which a dark send violates
+head-on.
+
+**Shape 2b — the SEND reads the reserve: a send at bare costs one extra
+provision.** Nothing goes dark, nothing pays less, nothing warns; the ground
+**prices** rather than fails, and "costs more" is not among the verbs in the kill
+or in CFD-183's gloss. **This one survives both the letter and the spirit.** It
+fails on arithmetic, measured:
+
+```
+pay the surcharge   = S food per send = S/L carries = S/L turns
+avoid it (tend)     = P/L marks + P/L turns per send
+
+Cloud, level 4:  surcharge 1 -> pay 0.250 turns vs avoid 0.932  -> PAY
+                 surcharge 2 -> pay 0.500          vs avoid 0.932  -> PAY
+                 surcharge 3 -> pay 0.750          vs avoid 0.932  -> PAY
+                 surcharge 4 -> pay 1.000          vs avoid 0.932  -> avoid
+```
+
+The surcharge is cheaper to pay than to avoid at every size below 4 — so the ground
+stays an allowance, TEND stays dominated, and the mechanic buys nothing. To make it
+bite, provisions on the Chartered Line must go 3 to 7 at bare ground, which is a
+cliff rather than a surcharge and fails the spirit after all. **Refused on the
+model, not by resemblance.**
+
+**Shape 2c — a graded surcharge that rises as the ground falls.** It works, and it
+is a *larger* scoping of the same kill than 2a: the world reporting its condition
+through a number that moves is precisely what the five-greens rule exists to
+prevent, and it rewrites one of the four reads CFD-196 requires on every card.
+Refused.
+
+#### The structural fact underneath, which is not a drafting flaw
+
+**The reserve's teeth were always weather.** §5.2 is SIGNED — *"the storm is the
+next sitting's reckoning"* — and §7.1.2 records that the swap David made
+deliberately means *"next sitting"* now lands one further out, with
+`/dawnspur-scale/`'s promise *"not broken, only outstanding"*, and this board
+required *"not to contradict it."*
+
+So **this board inherits a reserve whose reckoning is not available to it.** That is
+the price of the swap, recorded here rather than left for a reader to find. The
+ground is a four-step allowance because the thing that would make it a price is one
+sitting away.
+
+#### What the join actually is, once the arithmetic is right
+
+The join is real, recurring and permanent without the ground being a price at all:
+
+- **Marks come only off the line; provisions come only off the terrace.** Neither
+  ever switches off.
+- **Every provisioned send costs at least one trip up the hill**, and trips are
+  turns, which is this board's binding constraint.
+- **The greenhouse level is trips-per-send**, so UP reaches the desk for the first
+  time.
+- **The terrace cannot bootstrap itself**: UP is funded by marks, marks come only
+  from the line, and the float pays for exactly one rung.
+
+None of that touches the reserve. **So the join's premise does not require CFD-183's
+kill to be scoped, and this beat does not ask David to spend that decision.** What
+the deferral costs is not the join — it is TEND.
 
 ### Two vehicles, and the condition on the MOSSWAKE cut
 
@@ -321,8 +446,17 @@ stores hold nothing and it wants 2), Cloud Basin (twice over — no charter, and
 stores hold nothing), TEND (the ground is full), Rustfall (raiders, in every
 state).
 
-Four controls, two of them free, and the float buys a Warden *or* the first
-level and never both — Amendment 1's own test of the opening, still passing.
+Four controls, two of them free, and the float buys a Warden *or* the first level
+and never both. **Amendment 1's own sizing test is void here and the float is
+re-derived rather than inherited on faith.** That test was *"a Warden (3) or a
+Mosswake send (2), never both"* — and **Mosswake now costs 0 marks**, so 3, 4 and 5
+satisfy it identically and it selects nothing. The float's new derivation is its
+own: MUSTER and UP both cost 3, so **3 is the smallest opening at which the first
+frame contains a paid choice at all, and the exclusivity survives for a new reason
+— both purchases cost exactly the float, so it buys one and never two.** It breaks
+at 6, where it buys both. The figure does not move; its argument does, and the old
+one is retired rather than left standing.
+
 **The first frame's question is the board's whole thesis**: the spine wants two
 from the stores and the stores are empty, so go up the hill or take the free hop.
 
@@ -351,7 +485,7 @@ parents, unchanged.
 **The HUD keeps one line: marks. Nothing joins it.** That is inherited from the
 dispatch board verbatim and it is the constraint that shapes everything below.
 
-**The stores are four slots on the desk's own platform, filled or empty.** Physical
+**The stores are six slots on the desk's own platform, filled or empty.** Physical
 goods where goods sit, not a meter: no bar, no percentage, no numeral in the HUD.
 They must be *countable exactly*, because a send needs an exact quantity and the
 ground's five graded greens cannot answer "do I have three?" — so the read is
@@ -416,15 +550,34 @@ provenance:
   haul unbanked. The free hop staked nothing and nothing comes back; the route paid
   nothing; the train is home, and the desk stands."*
 
-**The terminal reads three things**: the desk's record, in the inherited two
-registers keyed on `runsTurnedBack`; what the terrace put on the line; and the
-ground it was left on.
+**The record splits with the stake, and the first draft did not say so.** The
+parent's sim keeps one scalar — `stake = r.provisions + r.toll`, then
+`s.marksLost += run.stake` — and its terminal keys the cost clause on
+`marksLost === 0`. **Mosswake's toll is 0.** So on the join board, three
+turned-back Mosswake runs lose **6 food and 0 marks**, and an unchanged terminal
+closes the sitting with *"three turned back and cost nothing but the trip"* over
+six dead food and six ground steps.
+
+**That is the exact defect CFD-196 was sent back for**, convicted in a standing
+comment in its own sim, fixed, sat and passed. The join re-opened it in a different
+currency, and the first draft of this beat reported terrace food only as *gross
+dispatched* — food lost was reported nowhere.
+
+**So the record carries two loss counters, and both are read.** `marksLost` keeps
+its name and its meaning (tolls only, on this board). `foodLost` is new and counts
+the provisions that went out and did not come back. The clean register is unchanged
+and still keys on `runsTurnedBack === 0`. The paid register names **both**, naming
+a zero rather than omitting it — the same move CFD-196 made when it was sent back:
 
 > *"The Chartered cargo is home and the terrace is topped. Eleven runs out, eight
-> cargoes banked, three turned back, 3 marks staked and lost on the way. **Fourteen
-> from the terrace went out on the line.** The ground is bare: the reserve left
-> here is still the weather's bill. The record keeps what came home; the line past
-> the basin is the next sitting's."*
+> cargoes banked, three turned back, **6 from the terrace and 3 marks lost on the
+> way.** **Fourteen from the terrace went out on the line.** The ground is bare:
+> the reserve left here is still the weather's bill. The record keeps what came
+> home; the line past the basin is the next sitting's."*
+
+A sitting whose only turn-backs were free halt runs still reads *"three turned back
+and cost nothing but the trip"* — because there both counters are zero, which is
+what that clause was always for.
 
 Ground registers, three, because the ground has three things to say:
 
@@ -448,7 +601,8 @@ does not exist here, and why.
 | **Provisions drawn off the terrace as food** | **ON** — the single new system | new; RULED §7.1 |
 | **CARRY pays food, not marks** | **ON** — forced by the pump, not chosen | new |
 | **The greenhouse level as the ground-to-food multiplier** | **ON** | new |
-| **The stores: 4 slots at the desk, CARRY dark at full** | **ON** | new |
+| **The stores: 6 slots at the desk, CARRY dark at full** | **ON** — 6 derived as the smallest non-stranding cap | new |
+| **The record splits: `marksLost` and `foodLost`, both read at the terminal** | **ON** — CFD-196's own sent-back defect, re-opened by the join in a new currency | new |
 | **A turned-back run loses the food** | **ON** — R6's haul, with a provenance | new |
 | **Topping arms the ending; a Chartered cargo fires it** | **ON** | RULED, David 2026-08-27; §7.2 |
 | The dispatch loop: pick, muster, send, meet | INHERITED | CFD-196, passed |
@@ -504,7 +658,15 @@ says attribution weakens on a cumulative board and the Kill list is the mitigati
 - Any route pays food; the terrace pays marks.
 - Food decays, spoils, expires, or changes on any schedule, at any reserve, in any
   absence.
-- The stores exceed 4, go negative, or change outside a carry or a send.
+- The stores exceed 6, go negative, or change outside a carry or a send.
+- The stores cap is anything but 6, or a carry strands at any reachable level and
+  store level. *(The cap's floor is `maxProvisions + maxLevel − 1`; at 4 or 5 the
+  ladder's top rung buys nothing on the Chartered Line, which is the defect this
+  line exists to catch.)*
+- **Food lost on a turned-back run is not counted, or is counted as marks.** The
+  record carries `marksLost` and `foodLost` separately.
+- **The terminal's paid register omits either loss counter, or omits a zero.** A
+  sitting that lost food and no marks reads "cost nothing but the trip".
 - The stores render as a bar, a meter, a percentage, or a HUD line.
 - The HUD grows past the one marks line.
 
@@ -512,6 +674,9 @@ says attribution weakens on a cumulative board and the Kill list is the mitigati
 
 - *(interaction)* A carry yields anything but the greenhouse level, capped by what
   the stores can still hold.
+- *(interaction)* Steady-state carries per send are anything but `provisions /
+  level` at any reachable level — which is the stranding check, stated as an
+  invariant rather than as a cap number.
 - The carry's stated load is anything but what the carry lands.
 - CARRY is lit when the stores are full.
 - A carry draws anything but exactly one step of ground, or draws below 0.
@@ -550,9 +715,20 @@ says attribution weakens on a cumulative board and the Kill list is the mitigati
 
 **States, sentences, and the stop**
 
-- A reachable state has no lit control. *(The standing unpause assertion, satisfied
-  more strongly here: the free halt and the carry are lit at every balance and
-  every reserve.)*
+- **A reachable home state has no lit send, or an away state has MEET dark.**
+  *(Carried verbatim from `docs/cfd-196-beat.md`. It was lost in transcription from
+  the parent's Kill list into the first draft of this one — not argued away, simply
+  dropped — and the substitute that replaced it named "every balance and every
+  reserve", which are the two dimensions the counterexample does not live on.
+  Measured in the parent sim: `canSend` returns false for every route while a run
+  is away, and `musterReach()` returns 0 while away. On this board CARRY is dark at
+  full stores and TEND is dark at full ground or no marks. **So the away state can
+  reach a position where MEET is the only live control, and nothing else on this
+  board requires it to be lit.** The free halt is a floor at home and is not a floor
+  while away.)*
+- A reachable state has no lit control — **at any balance, any reserve, any stores
+  level, and in the away state as well as at home.** The stronger line is kept
+  beside the parent's, not instead of it.
 - The opening mints anything but marks 3 / level 1 / reserve 4 / stores 0 / roster
   0 / train home / nothing banked / not armed; or the opening's lit set is anything
   but the halt, CARRY, UP and MUSTER; or the opening's cards quote anything but
@@ -606,16 +782,50 @@ says attribution weakens on a cumulative board and the Kill list is the mitigati
 
 ### New-play, flagged
 
-- **The stores cap of 4.** No civic-scale figure supports 4: `BASE_STORAGE.food` is
-  **120**, which over the civic scale factor 6.5 is 18.5 — a cap for a town that
-  has a Warehouse, which this one does not. Reported as the honest null and argued
-  instead, on the same mirror-anchor CFD-183 used for the reserve's own depth
-  (*"depth 4 mirrors maxLevel 4, so the ground can be drawn as far as the
-  greenhouse can climb"*): **stores 4 = reserve depth 4 = maxLevel 4**, so one
-  carry from a topped greenhouse exactly fills the stores, and at level 1 filling
-  them costs the entire ground. David plays it before it is canon.
+- **The stores cap of 6 — derived, and the first draft's 4 was wrong.** No
+  civic-scale figure supports any particular cap: `BASE_STORAGE.food` is **120**,
+  which over the civic scale factor 6.5 is 18.5, and that is a cap for a town with
+  a Warehouse, which this one does not have
+  (`buildings[warehouse].description` — *"raises storage caps, and keeps returning
+  cargo from going to waste"*). So the pack's figure is reported as the honest null
+  and **the cap is derived from the board's own arithmetic instead**:
+
+  > A carry strands whenever `cap − stores < level`. The player carries only when
+  > `stores < provisions`, so the largest store before a carry is `provisions − 1`,
+  > and a carry never strands iff
+  > **`cap >= maxProvisions + maxLevel − 1 = 3 + 4 − 1 = 6`.**
+
+  Verified by sweep: caps 4 and 5 give Cloud Basin 1.000 carries per send at level
+  4 — identical to level 3, so the top rung buys nothing — and caps 6, 7 and 8 all
+  give 0.750. **Cap 4 and cap 5 are the same board. Cap 6 is the smallest board on
+  which the ladder has four rungs.** The first draft chose 4 on a mirror-anchor
+  (stores 4 = reserve 4 = maxLevel 4) that reads well and is arithmetically wrong.
+  Six is still countable at a glance, and it is exactly two Chartered outfits.
 - **The opening stores of 0.** Argued below under the fixture question, where it
   earns something the float could not.
+
+### What the join moved without a numeral moving
+
+Two inherited prices changed in real terms while their figures stood still. Both
+are recorded because a price that moves unrecorded is how a board drifts.
+
+**MUSTER's opportunity cost, measured in both denominations.** A Cloud Basin retry
+cost **4 marks** on CFD-196 (3 provisions + 1 toll) and costs **1 mark** here (the
+toll; the food is grown, not bought). A 3-mark Warden therefore costs the
+equivalent of **0.75 retries there and 3.00 retries here — four times dearer** in
+marks. **The audit's figure is right and its framing overstates**, so both
+denominations are published: measured in *turns*, a retry got **dearer**, not
+cheaper — 2 turns on CFD-196 against 2.75 here at level 4, because a retry now
+needs its carry. And the Warden's own payback is **unchanged**: +0.036 on an
+18-mark route is +0.648 expected marks a send either way, so 3 marks buys back in
+4.63 Chartered sends on both boards. What moved is the *alternative* use of three
+marks, and it moved toward retrying. **The consequence is that Amendment 2's
+central question — "buy odds, or send now" — is answered "send now" more often on
+this board than on its parent**, and the sit should be read with that in mind.
+
+**The Chartered stake fell from 4 marks to 1.** Same cause, and it is why the free
+halt's dominance over the summit narrowed. It is not a re-pricing: 3 and 1 both
+stand, and one of them is now denominated in food.
 
 ### The impurity, disclosed rather than hidden
 
@@ -641,7 +851,11 @@ lines, at every roster:
 | 4 Wardens | **4.120** | 2.744 | 3.659 | 4.116 | 4.390 |
 
 *(Terrace line = one carry, then Mosswake sends off it, spare food banked; the
-halt line = send and meet, nothing staked.)*
+halt line = send and meet, nothing staked. **This table is cap-6 arithmetic and
+survives the stranding correction unchanged**, because Mosswake at 2 provisions
+never strands above cap 5 — the error was confined to the Chartered spine. At cap
+4 the Cloud Basin column would flatten at level 3, which is the defect the cap
+derivation exists to prevent.)*
 
 **The quick path is the better deal at every roster up to greenhouse level 3, and
 is beaten only at level 4** — by 5.4% bare, 6.0% at two Wardens, 6.6% at four. So
@@ -729,7 +943,10 @@ rests on. Inherited rows cite the beat that passed them, per §7.
 | The level-1 identity | ON, measured | `economyConfig.resourceValues.food` = 1; CFD-183's TEND at 1 mark a step; CFD-183's level-1 yield of 1. Three inherited numbers from two beats agreeing, not designed |
 | The stores at the desk | ON | `buildings[greenhouse]` has no `storage`; `buildings[central-station]` and `buildings[switchyard]` do. Goods are stored where the town stores goods |
 | The stores read as objects, not a gauge | ON | Economy — the planting "tells a keeper the state of their ground **without a gauge**"; and CFD-196 Amendment 1's own reading of that sentence — it governs "how the *world* reports hidden state", not the player's own property. Precedent: the muster ladder, passed |
-| Stores cap 4, CARRY dark at full | ON, new-play | `buildings[warehouse].description` — the pack's own overflow rule, "keeps returning cargo from going to waste", with the Warehouse named as its owner and off this board. Mirror-anchor from CFD-183's own reserve depth |
+| Stores cap 6, CARRY dark at full | ON, new-play, **derived** | `buildings[warehouse].description` — the pack's own overflow rule, "keeps returning cargo from going to waste", with the Warehouse named as its owner and off this board. The figure is not a mirror-anchor but the board's own arithmetic: `maxProvisions + maxLevel − 1`, the smallest cap at which a carry never strands. The first draft's mirror-anchor of 4 read well and was wrong |
+| The record's two loss counters | ON | CFD-196's own correction, re-applied in a new currency: the terminal must reconcile in words the gap between what went out and what came home, and must name a zero rather than omit it |
+| The ground as a one-time allowance rather than a price | ON, argued at length | R3 — "tended ground does not decay"; Geology — "rides fine … **in clear weather** … gives no sign"; CFD-183's own gloss — "nothing fails, slows, dims, warns, or alerts at any reserve"; §5.2 SIGNED and §7.1.2 — the reserve's reckoning is the storm's and is not available to this board. Three candidate mechanisms were worked and refused: on the kill's letter, on its cited sentence, and on the model |
+| TEND, dominated for one sitting | ON as drafted, with a priced amendment | RULED — David 2026-08-27: "Keeping TEND on the board with no job for one sitting is honest and cheap; the sit will tell you whether players reach for it." Recorded against his own later standard — a dominated verb is worse than an inert one — which is why the arming amendment is put back to him rather than assumed |
 | A turned-back run loses the food | ON | R6 — "A run that fails costs **the haul committed to it** and never the home or the permanent record"; CFD-145 — failed runs pay zero, recovered stakes are not payouts |
 | Full carry yield at every reserve, untouched | INHERITED, deliberately | CFD-183, passed; Geology — "rides fine for years on a falling reserve, **in clear weather**, and gives no sign". §7.1.2 — the join board "must not contradict" the outstanding weather promise |
 | TEND, with its payoff one sitting out | INHERITED, named | R10 — "tending, heat and liftstone carried to a node whose reserve is falling, **which earns nothing but holds the line**"; §5.2 SIGNED — the reckoning is the storm's; §7.1.2 — that promise now waits a second sitting |
@@ -806,12 +1023,17 @@ goods-as-nouns lands whole.
 
 ## Open questions for David
 
-1. **The stores cap of 4.** New-play, argued from the mirror-anchor. Bigger makes
-   carrying rarer and batchier; smaller makes a Chartered run cost the whole store.
-2. **TEND has no operational job this sitting** — its payoff is the weather bill,
-   one sitting out. Keep it (my recommendation, and §7.1.2 requires the reserve to
-   stay untouched), or cut it the way MOSSWAKE was cut and bring it back with the
-   storm?
+1. **The stores cap is 6, and it is not a feel knob — it is the parameter that
+   decides whether the ladder's fourth rung exists.** At 4 or 5, UP 3 to 4 costs 5
+   marks and buys **nothing** on the route that fires the ending, while the arming
+   requires it. At 6 it buys 25% and 0.050 turns a mark. The question is therefore
+   not "how big" but: **is 5 marks for 0.050 turns a mark plus the ending the price
+   you want on the last rung?** If not, the lever is the rung's price or the
+   arming, not the cap.
+2. **TEND is dominated, not merely inert** — and the fix that costs no kill is to
+   arm the ending on a **full ground** as well as a topped terrace. It is your own
+   "slow TEND-debt" with the collector supplied, and it amends your ruling 5.
+   Recommended; the priced alternatives are (i) ship dominated, (ii) cut TEND.
 3. **Halt-spam then three UPs is the fastest line to the stop**, and a player who
    takes it sees one carry and no tend. That is §7.2 working as written. Is it what
    you want, or should the arming cost more than 12 marks?
@@ -911,3 +1133,100 @@ Kill line it satisfied on its own board.
 
 **This beat is not signed until that audit reports.** Two known findings out of
 six verbs is a high enough rate that the remaining four are not assumed safe.
+
+### The audit reported, 2026-08-27 — six seats, and every verb moved
+
+| verb | did its meaning move? | broken in the draft? |
+| --- | --- | --- |
+| **CARRY** | **Yes** — pays goods, not money; forced by conservation | **Yes** — the stranded-store arithmetic, fixed above; a Kill line now covers it |
+| **TEND** | **Yes** — the join gave its job to the food line | **Yes** — the draft said "no operational job"; the true word is **dominated**, below |
+| **UP** | **Yes** — funded by the line rather than by the terrace's own carries; the greenhouse no longer bootstraps | Shares CARRY's arithmetic error; fixed with it |
+| **MEET** | **Yes** — it is now the *only* way marks enter the board | **Yes** — the parent's "an away state has MEET dark" was lost in transcription; restored above |
+| **SEND** | **Yes** — its stake splits across two currencies, and its failure record with it | **Yes** — `marksLost` reported the wrong currency; fixed above |
+| **MUSTER** | **Yes** — its opportunity cost is four times dearer in marks and slightly cheaper in turns | No defect. The only verb that moved without breaking |
+
+**Six verbs, six movements, four defects.** David predicted MEET specifically,
+before the audit ran, on the grounds that it has the least stated purpose and is
+therefore inherited on faith. He was right, and the guard was **lost in
+transcription rather than argued away** — that is recorded as the failure mode,
+because a guard that is argued away leaves an argument behind and a guard that is
+dropped leaves nothing.
+
+---
+
+## TEND is dominated, and that is the harder word
+
+The beat called it *"no operational job."* The audit's word is **dominated**, and
+it is stronger and it is right. In every state where both are lit:
+
+```
+TEND then CARRY :  marks -1, reserve unchanged, stores +min(L, 6-S), 2 turns
+CARRY alone     :  marks  0, reserve -1 (floors), stores +min(L, 6-S), 1 turn
+```
+
+**Identical stores at every level, one mark poorer, one turn slower** — and the one
+thing the mark and the turn buy, a step of ground, is read by no rule on this
+board. Not by the carry (full yield at bare), not by any send, not by the arming,
+not by the muster. It is read by three closing sentences.
+
+**This beat does not pass through the reading that the TEND-then-CARRY bundle is a
+marks-to-food shop** — the thing argued alternative 2 was rejected for. Drop the
+TEND and the food is identical; the mark buys only the ground step. It is not a
+shop, it is a purchase of something nothing reads.
+
+**Why it matters more than inertness.** David, 2026-08-27: *an inert verb can sit
+for a sitting; a dominated one is a trap that teaches players the wrong thing.*
+A player who reaches for TEND because the macro taught them to is being charged a
+mark and a turn for nothing, and the board never tells them.
+
+**It un-dominates for free the moment weather lands.** The storm sitting's carry
+cap, `min(level, reserve)` under a storm, is exactly the collector David's
+"slow TEND-debt" needs, and it is already drafted and held at
+`docs/cfd-201-beat.md`. So the question is only what to do for **one** sitting.
+
+### The one mechanism that un-dominates TEND without touching any kill — RECOMMENDED, and it needs David's ruling because it amends his own
+
+**The ending arms on a topped terrace *and* a full ground.** Nothing else changes.
+
+- It touches **no** kill. Carry yield never varies and the carry never stops
+  (Shape 1 untouched). No send reads the reserve (Shape 2 untouched). The board
+  describes the ground at a terminal, which is what CFD-183's own terminal does.
+- **It is David's own framing, with the missing piece supplied.** He wrote that
+  *"every send is already a slow TEND-debt and TEND is the repayment"* and the
+  beat's answer was that the debt has no collector. **The arming condition is the
+  collector.** Every step drawn must be put back before the bow is taken, so in the
+  long run tends equal carries and the ground costs exactly `P/L` marks a send —
+  which is, permanently, the passed board's provisions price at level 1.
+- **It un-dominates TEND outright**, because there is a state in which TEND is the
+  only path to the ending.
+
+**What it costs, measured, and it is not nothing.** The terrace's rate advantage at
+the top of the ladder *is* the ground it does not pay back:
+
+| marks per turn, 4 Wardens | halt | L1 | L2 | L3 | L4 |
+| --- | --- | --- | --- | --- | --- |
+| Mosswake, ground free (as drafted) | 4.120 | 2.744 | 3.659 | 4.116 | **4.390** |
+| Mosswake, ground repaid (armed on full) | 4.120 | 1.496 | 2.494 | 3.093 | **3.492** |
+
+**Free, the spine out-earns the free halt at level 4 by 6.6%. Repaid, it loses to
+it at every level.** The same flip holds at 0 and 2 Wardens. So the amendment buys
+a live TEND and sells the spine's only rate advantage, and the terrace is then run
+because the stop requires it rather than because it pays. §7.2 still passes either
+way — it requires the short path not to be *worse*, and it is not — but these are
+two different boards.
+
+**Second cost, flagged rather than discovered:** on a long sitting the debt is one
+tend per carry, so a forty-turn sitting can end in eight or nine consecutive
+tends. That is a tidy-up phase, and it may read as tedium rather than as payoff.
+
+**The recommendation.** Take the amendment. A dominated verb should not ship, the
+collector is David's own idea, and the rate flip is not a disqualifier because the
+terrace's job on this board is the ending, not the rate. **But it amends ruling 5
+in David's own words — "topping the terrace arms the ending" — and this beat will
+not amend his ruling unilaterally.** Three options, priced:
+
+| | TEND | the spine at L4 | ending cost |
+| --- | --- | --- | --- |
+| **(i) ship as drafted** | dominated for one sitting | out-earns the halt | none |
+| **(ii) cut TEND**, restore it with the storm | absent | out-earns the halt | none; the ground only ever falls, and the three ground registers collapse toward one |
+| **(iii) arm on a full ground** *(recommended)* | required | loses to the halt | one tend per carry drawn |
