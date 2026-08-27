@@ -85,6 +85,39 @@ is the shipped bytes. Re-measured at authoring, `git show HEAD:public/<p>/sim.js
 All five stand. `/dawnspur-dispatch/` **PASSED** its sit 2026-08-26 and is now
 a passed board: it does not get overwritten.
 
+### THE PARENT — resolved 2026-08-27, David's ruling, and it was a live fork
+
+This beat was drafted as a cumulative board carrying **the dispatch desk
+only** — no weather, no terrace — because canon §7 landed after it was
+commissioned. CFD-201's beat then landed a cumulative board carrying **the
+dispatch desk AND the scale terrace AND weather**, and §7 sequences CFD-201
+first.
+
+**Two beats therefore claimed different parents, which is a lineage fork —
+the exact isolation §7 was written to end.** Left alone it would have produced
+two incompatible cumulative branches: one town with weather and a terrace,
+another with neither, both calling themselves the next board.
+
+**Ruling: this board re-bases onto the storm board.** Its parent is
+CFD-201's `/dawnspur-storm/`, not `/dawnspur-dispatch/`. Concretely:
+
+- **Everything CFD-201 lands is INHERITED here**, not re-derived and not
+  re-argued: the terrace and its reserve, the sky cycle and its stormbird
+  tell, the storm's pay and chance deltas, the Ranger and its trim, and every
+  price CFD-201 fixes. This beat's `On this sitting` table needs an
+  **INHERITED** column, and each inherited row cites the beat that passed it.
+- **The one NEW system here is still the yard** — Rustfall taking a send and
+  resolving by placement. That is unchanged, and §7's kept half still binds:
+  one new system per sitting.
+- **The sky is live in the yard.** A Rustfall send made under a storm is made
+  under the storm's terms, and the beat must say what that means for a route
+  that quotes no percentage. This is new work created by the re-base and it is
+  not optional — a board that inherits weather and then ignores it in its own
+  new system is two games again.
+- **If CFD-201 does not pass its sit**, this beat re-bases onto whatever did
+  pass. The parent is the last passed board, always, and it is named at
+  signature rather than assumed at drafting.
+
 **The new board lands at `/dawnspur-rustfall/`.** Argued, because two other
 names were available and both are worse:
 
