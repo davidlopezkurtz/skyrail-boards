@@ -28,6 +28,83 @@ Card: CFD-203. **NOT SIGNED.** Awaiting PM citation review, then David.
 
 ---
 
+
+---
+
+## SIGNED — David, 2026-08-27, by delegation
+
+**"sign the beat when the check comes back."**
+
+Recorded as a **delegated** signature rather than an assumed one. David ruled
+every open question on this board across five rounds — the join over weather
+(canon §7.1), the stop's arm-and-trigger shape, the MOSSWAKE cut, the crew
+names, the TEND cut, and the reserve kept as a one-way allowance — and
+authorised the PM to sign once the last reachability check reported. The stated
+boundary was: sign if the check is clean or resolves cleanly; **do not** sign if
+it surfaces a new defect, a reachability hole, or a design question the rulings
+do not already cover. It resolved cleanly.
+
+### What the check found, and it was not what the PM predicted
+
+The PM's caveat was that the terminal's ground clause would become a constant
+and that this board would hand the storm a bare ground every time. **Both were
+wrong, and the author refuted them with a breadth-first search over the
+reachable state space rather than sampled paths.**
+
+Reserve at the stop is `max(0, 4 − carries)`. The stop needs a Chartered outfit
+of 3 food, the only source of food is CARRY, and every CARRY draws a step — so
+**carries ≥ 1 at every stop, and the reserve can never be full when the sitting
+ends.** Re-derived independently by the PM:
+
+| reserve at the stop | reachable | best by level |
+| --- | --- | --- |
+| 4 — full | **UNREACHABLE at every level** | — |
+| 3 / 2 / 1 / 0 | all reachable by ordinary play | L1 → 1, L2 → 2, L3 → 3, L4 → 3 |
+
+**So the dead register was `full`, at the opposite end from where the PM looked**
+— *"everything the line ate was put back"*, a sentence that cannot fire. It is
+cut. **Two registers ship, both reachable**, and the surviving clause reads how
+many trips up the hill the sitting took: the quick path stops drawn at 3, a
+spine-heavy or level-1 sitting stops bare.
+
+A Kill line now makes any unfireable register a kill in its own right. That is
+the second dead register this beat has had to remove, and the pattern is the
+one David ruled on directly: **a register that cannot happen is a dead button in
+sentence form.**
+
+### One cost of the TEND ruling that nobody priced, now priced
+
+The cut removes the instrument that realised the level-1 identity. That claim
+rested on three legs — `resourceValues.food = 1`, CFD-183's level-1 carry yield
+of 1, and **CFD-183's TEND at 1 mark a step.** With the third gone there is no
+way on this board to turn a ground step back into a mark, so the claim weakens
+from a **board measurement** to a **pack citation**: the quantities still match
+and the pack still values one food at one mark, but the on-board conversion
+returns with the verb. The honest form now ships — at level 1 a send costs the
+same quantity it always cost, and that quantity costs **turns** rather than
+marks.
+
+A second proof had to be rebuilt for the same reason: the reachability argument
+rested on TEND's odd −1. Re-measured by BFS under the surviving verb set —
+every mark count 0 to 60 reachable, none missing. **The claim survives; its
+proof was replaced rather than left standing.**
+
+### Verified at signature
+
+Every published figure re-derived independently by the PM against the revised
+beat, because a document amended four times is where a stale cell survives and
+an implementer treats every figure as spec:
+
+- Cloud Basin carries per send, cap 6: **3.000 / 1.500 / 1.000 / 0.750**; at cap
+  4 or 5, **1.000** at level 4 — caps 4 and 5 are the same board.
+- The cap is **derived, not chosen**: `maxProvisions + maxLevel − 1` = 6, the
+  smallest cap at which a carry never strands.
+- Turns per Chartered send: **5.000 / 3.500 / 3.000 / 2.750**, and turns saved
+  per mark **0.500 / 0.125 / 0.050** — the last rung is ten times less efficient
+  than the first, and the beat says so rather than calling it a discount.
+- TEND appears on no live surface; the `full` register appears nowhere.
+- Zero NUL bytes, zero CR.
+
 ## What this beat inherits from CFD-201, and does not re-derive
 
 Four things in the 993-line weather beat were **join** properties, not weather
@@ -188,15 +265,16 @@ Not a second currency, and each clause is a Kill line:
 3. Food has one source: the carry.
 4. Food is never a HUD figure beside marks; it is read as the stores on the
    platform.
-5. Food never pays a toll, a muster, an UP or a tend.
+5. Food never pays a toll, a muster or an UP.
 
 R1 is satisfied *literally*, in its own words — **never the same sink.** Marks and
 food do not share one sink anywhere on the board.
 
 ### The level-1 identity, which is the whole citation
 
-At greenhouse level 1, one step of ground yields one food, and TEND restores one
-step for one mark. `economyConfig.resourceValues.food` is **1** — the pack's own
+At greenhouse level 1, one step of ground yields one food, and on the board that
+passed, TEND restored one step for one mark — **that third leg is cut this sitting,
+and the paragraph after this table prices what its absence costs the claim.** `economyConfig.resourceValues.food` is **1** — the pack's own
 statement that one food is one mark-equivalent. Three inherited numbers, from two
 different beats, agree:
 
@@ -206,11 +284,24 @@ different beats, agree:
 | Mosswake Loop | 2.00 | 2.00 | **2** |
 | Cloud Basin Span | 3.00 | 3 + 1 toll = 4.00 | **4** |
 
-**At greenhouse level 1 this board is economically identical to the passed board.**
-Nothing was re-priced; the unit moved and the price stayed. That is the anchor, and
-it is measured rather than designed — CFD-183 carried the level-1 yield of +1 from
-play, and `resourceValues.food = 1` is the identity element of the table CFD-196
-converted through.
+**At greenhouse level 1 the quantities are identical to the passed board.** Nothing
+was re-priced; the unit moved and the price stayed. CFD-183 carried the level-1
+yield of +1 from play, and `resourceValues.food = 1` is the identity element of the
+table CFD-196 converted through, so the pack values one food at one mark.
+
+**But the TEND cut takes away the instrument that realised it, and that is a cost of
+the ruling nobody priced — so it is priced here.** The third column above reads
+"marks to put the ground back", and with TEND gone **there is no way on this board
+to turn a ground step back into a mark.** The identity therefore weakens from a
+*board measurement* to a *pack citation*: the exchange rate is still the pack's own
+(`resourceValues.food = 1`), and the quantities still match (2 provisions is 2
+provisions), but the on-board conversion that made the equality operational is one
+sitting away with the verb. **The honest form of the claim, and the one this beat
+now makes:** at level 1 a send costs the same *quantity* it always cost, and that
+quantity costs **turns** rather than marks — which is the same correction the
+premise section makes, arriving a second time from a different direction. The third
+column is kept as the arithmetic that will be true again on the storm board, and is
+labelled as such rather than deleted.
 
 And the ladder is what buys the discount — **but only at a stores cap of 6, and the
 first draft of this beat got this table wrong.**
@@ -235,8 +326,9 @@ see The numbers. Cap 4 and cap 5 are the same board; cap 6 is the first cap at
 which a carry never strands.
 
 **What the rung actually buys, in the denominator that binds.** Ground steps are
-the wrong unit, because a step of ground is only worth a mark if the player tends,
-and tending is dominated (see TEND, below). The unit that binds is **turns per
+the wrong unit, because a step of ground is only worth a mark if something can turn
+it back into one, and **TEND is cut this sitting** (see Does), so nothing can. The
+unit that binds is **turns per
 Chartered send** — two for the send and the meet, plus the carries:
 
 | | L1 | L2 | L3 | L4 |
@@ -297,13 +389,49 @@ still quote 68 / 64 / 51 at a bare roster.
 
 ### The terrace
 
-Inherited whole from `/dawnspur-scale/`: the greenhouse at level 1, top at 4; UP at
-3, then 4, then 5 marks, instant, no way back; TEND spends 1 mark, earns nothing,
-gives the ground back one step, lit only below full; the reserve 4 down to 0,
-floored, drawn one step per carry, **paying full at every reserve, bare included,
-and giving no sign**.
+Inherited from `/dawnspur-scale/`: the greenhouse at level 1, top at 4; UP at 3,
+then 4, then 5 marks, instant, no way back; the reserve 4 down to 0, floored, drawn
+one step per carry, **paying full at every reserve, bare included, and giving no
+sign**.
 
-Exactly one thing changes, and it is forced:
+**TEND is CUT this sitting — RULED, David, 2026-08-27**, and his reasoning is the
+part that generalises:
+
+> "**Cut TEND for this sitting.** The full-ground arming is elegant and it's your
+> own debt-collector idea realised. But look at what it costs. It flips the
+> terrace's rate advantage at level 4, meaning **the ladder the ending requires you
+> to climb becomes worse than not climbing it.** It risks a tail of eight or nine
+> consecutive tends, which is **the tedium the sitting's ambition is supposed to buy
+> you out of, not into.** And it does all that to keep a verb alive on a board that
+> structurally cannot give it a job, because the reckoning it exists for went to
+> the next sitting."
+
+> "**The reserve's teeth were always weather. TEND is the tooth.** Building a
+> synthetic collector so a weather verb has something to do on a weatherless board
+> is engineering around a scheduling decision, and it leaves you with a mechanic
+> tuned to a constraint that will change the moment the storm board lands."
+
+Shipping it dominated was ruled out in the same breath — *"a dominated button
+teaches players a wrong lesson and then you have to un-teach it two sittings
+later"* — so the choice was cut-or-amend, and the cut is cheap and reversible:
+**TEND returns on the storm board with its real job.**
+
+### The pattern, recorded as a pattern rather than as two incidents
+
+**This is the second inherited verb dropped, and both went for the same reason:
+the join changed what they were for.**
+
+| verb | why it was dropped | where it goes |
+| --- | --- | --- |
+| MOSSWAKE +3 | the join put a *route* of that name on the same board; the verb was redundant, and *"cutting redundant is cheaper than renaming colliding"* | nowhere — the route is the better Mosswake |
+| TEND | the join gave its job to the food line; its reckoning is weather, and weather went to the next sitting | back, on the storm board, with the reckoning that makes it real |
+
+A cumulative board does not only add. **It re-asks what every inherited verb was
+for, and some of them answer "nothing, here."** That is the audit discipline
+working, not a defect in the join, and the next cumulative beat should expect to
+drop one too.
+
+Exactly one thing changes about what remains, and it is forced:
 
 - **CARRY brings food down to the stores instead of marks up to the wallet.** It
   lands the greenhouse's level, capped by what the stores can still hold, and it
@@ -314,7 +442,8 @@ Exactly one thing changes, and it is forced:
 **The stores hold 6**, and 6 is derived rather than chosen: it is the smallest cap
 at which a carry never strands, `maxProvisions + maxLevel − 1 = 3 + 4 − 1`. Below
 it the ladder's top rung buys nothing on the Chartered Line. CARRY is dark when the
-stores are full, in the same grammar TEND already uses for full ground.
+stores are full — the same grammar the cut TEND used for full ground, which is now
+the only place that grammar appears.
 
 ### What the ground does and does not do — the section the rest of the beat rests on
 
@@ -403,6 +532,59 @@ the price of the swap, recorded here rather than left for a reader to find. The
 ground is a four-step allowance because the thing that would make it a price is one
 sitting away.
 
+#### The reserve is one-way ON THIS SITTING, because TEND is absent from it
+
+**RULED — David, 2026-08-27: keep the reserve, and name it a one-way allowance.**
+
+**The cause is stated next to the fact every time the fact is stated, and this
+paragraph is why.** The reserve is one-way *here* because **TEND is cut**, and TEND
+is cut because its reckoning went to the storm board. It is not a property of the
+reserve. **When TEND returns on the storm sitting the reserve is two-way again and
+the ground is a real economy**, drawn by carries and by the storm and restored by
+tending. Written flat — "the reserve is a one-way allowance" — the sentence reads as
+permanent and hands the storm board a false premise, so it is not written flat
+anywhere in this beat.
+
+What that means concretely, this sitting only:
+
+```
+writers : CARRY only, -1 per carry, floored at 0
+readers : the terminal's ground clause only
+       => reserve = max(0, 4 - carries).  Derived, not state.
+```
+
+**And the emptiness predates the cut.** With TEND on the board its only operational
+reader was *its own lit condition* — a quantity whose only reader is its own writer
+was already inert. Cutting TEND did not make the reserve empty; it removed the last
+thing disguising that it was. Said plainly because the alternative is a later reader
+concluding the cut caused it.
+
+#### The storm handoff, which closes rather than staying open
+
+It was raised as an open consequence — if this board always ends bare, does it hand
+the storm sitting a pre-decided ground and contradict `/dawnspur-scale/`'s promise?
+**It closes, and the reason is the lineage rule this project already has: a
+cumulative board inherits SYSTEMS, not end-states.**
+
+Measured, not assumed: `docs/cfd-201-beat.md`'s own Kill list reads *"The opening
+mints anything but marks 3, Wardens 0, Rangers 0, level 1, **reserve 4**, sky clear
+at turn 1"* — **the storm board mints a full ground at its opening**, exactly as
+this board mints its 3-mark float, and every board's Kill list refuses reading
+another board's persisted state. There is no number crossing the boundary.
+
+So CFD-183's *"the reserve left here is the next sitting's weather bill"* is **not
+contradicted. It is suspended for one sitting and honoured on the board that has
+weather** — which is what §7.1.2 means by *"not broken, only outstanding."* The
+handoff is narrative, and what it hands forward is a system, not a state.
+
+**The residual risk is pedagogical, not mechanical**, and it is the one worth
+guarding: a player who watches the ground fall and nothing happen could learn that
+the ground is scenery, and the storm board would then have to un-teach it — the
+same shape as David's objection to a dominated button. The guard is a sentence, not
+a mechanic: **the terminal names the missing restorer rather than implying one**,
+and that is why the closing register below says *nothing on this desk puts it back*
+instead of repeating the scale board's promise as though this board could keep it.
+
 #### What the join actually is, once the arithmetic is right
 
 The join is real, recurring and permanent without the ground being a price at all:
@@ -424,8 +606,8 @@ the deferral costs is not the join — it is TEND.
 
 The line train works the routes and can be in exactly one place. The terrace
 shuttle works the ground off A. **While a line run is away, the terrace is lit** —
-CARRY, TEND and UP stand beside MEET, so the away state has four live controls and
-not one. The claim is not decorative here: David cut MOSSWAKE +3 *conditionally* on
+CARRY and UP stand beside MEET, so the away state has three live controls and not
+one. The claim is not decorative here: David cut MOSSWAKE +3 *conditionally* on
 the terrace having work while the train is out.
 
 **Verified, and it is stronger on this board than it was on CFD-201's**: carrying
@@ -443,8 +625,7 @@ nothing banked, the ending not armed.
 Lit: **SEND DAWNSPUR HALT** (free, always), **CARRY** (free), **UP** (3), **MUSTER
 WARDEN** (3). Dark, each naming its reason in the board's words: Mosswake (the
 stores hold nothing and it wants 2), Cloud Basin (twice over — no charter, and the
-stores hold nothing), TEND (the ground is full), Rustfall (raiders, in every
-state).
+stores hold nothing), Rustfall (raiders, in every state).
 
 Four controls, two of them free, and the float buys a Warden *or* the first level
 and never both. **Amendment 1's own sizing test is void here and the float is
@@ -506,7 +687,7 @@ cards' own ground per Amendment 2:
 
 - **THE DESK** — MUSTER WARDEN (the slider, unchanged), the three sends, Rustfall
   dark.
-- **THE TERRACE** — CARRY, TEND, UP.
+- **THE TERRACE** — CARRY, UP.
 
 Each sendable card states what it always stated, with the provisions leg re-worded
 to the unit it now costs: *"3 from the stores · toll 1 · pays 18 · 51%."* A send
@@ -572,21 +753,53 @@ a zero rather than omitting it — the same move CFD-196 made when it was sent b
 > *"The Chartered cargo is home and the terrace is topped. Eleven runs out, eight
 > cargoes banked, three turned back, **6 from the terrace and 3 marks lost on the
 > way.** **Fourteen from the terrace went out on the line.** The ground is bare:
-> the reserve left here is still the weather's bill. The record keeps what came
-> home; the line past the basin is the next sitting's."*
+> nothing on this desk puts it back, and that is the next sitting's business. The
+> record keeps what came home; the line past the basin is the next sitting's."*
 
 A sitting whose only turn-backs were free halt runs still reads *"three turned back
 and cost nothing but the trip"* — because there both counters are zero, which is
 what that clause was always for.
 
-Ground registers, three, because the ground has three things to say:
+**Ground registers: TWO, not three, and the third was cut because it cannot fire.**
 
-- Full: *"The ground is full: everything the line ate was put back."*
-- Drawn: *"The ground is drawn and standing."*
-- Bare: *"The ground is bare: the reserve left here is still the weather's bill."*
+- Drawn: *"The ground is drawn and standing. Nothing on this desk puts it back —
+  that is the next sitting's business."*
+- Bare: *"The ground is bare. Nothing on this desk puts it back, and what the line
+  ate came out of a bank this sitting cannot refill. That is the next sitting's
+  business."*
 
-The bare register carries `/dawnspur-scale/`'s outstanding promise forward without
-firing it, which is what §7.1.2 requires of this board.
+**The check, run rather than assumed, over the full reachable state space.** The
+first draft published three registers including *"The ground is full: everything the
+line ate was put back."* **It can never fire**, and the proof is structural rather
+than statistical: the stop requires a Chartered cargo, a Chartered outfit is 3 food,
+the only source of food is CARRY, and every CARRY draws a step. So **carries >= 1 at
+every stop, and the reserve at every stop is at most 3.**
+
+| reserve at the stop | reachable? | shortest |
+| --- | --- | --- |
+| 4 — full | **UNREACHABLE, at every level** | — |
+| 3 — drawn | yes | ~7 commits |
+| 2 — drawn | yes | ~8 commits |
+| 1 — drawn | yes | ~9 commits |
+| 0 — bare | yes | ~10 commits |
+
+**A register that cannot happen is a dead button in sentence form**, and this beat
+has already had to fix one clause that reported a constant as a variable. It is cut.
+
+**What the surviving two-way split actually distinguishes**, said so the reader
+knows it is a real read and not decoration: the reserve at the stop is
+`max(0, 4 − carries)`, so the clause reads **how many trips up the hill the sitting
+took**, saturating at four. The quick path (one carry, at level 3 or 4) stops at
+**3 — drawn**. A spine-heavy sitting, or any sitting run at level 1 where a Chartered
+outfit costs three carries, stops at **0 — bare**. Best possible by level: 1 at
+level 1, 2 at level 2, 3 at levels 3 and 4. So the split reads *speed-run against
+worked-terrace*, and both halves are ordinary play rather than edge cases.
+
+**Neither register repeats `/dawnspur-scale/`'s promise as though this board could
+keep it.** Both name the absent restorer instead. The promise is suspended for one
+sitting and honoured on the board that has weather, per §7.1.2, and the sentence
+that would have carried it forward would have been a promise this board cannot
+fund.
 
 ---
 
@@ -620,8 +833,9 @@ does not exist here, and why.
 | Greenhouse levels 1..4; UP 3 / 4 / 5, instant, no way back | INHERITED | CFD-183, passed |
 | The reserve 4..0, drawn one per carry, five graded greens, no gauge | INHERITED | CFD-183, passed |
 | Full carry yield at every reserve, bare included, no sign | INHERITED, **untouched** | CFD-183, passed |
-| TEND: 1 mark, earns nothing, one step back, lit below full | INHERITED — with its payoff one sitting out, named | CFD-183, passed |
-| CARRY / TEND lit past a topped terrace | re-expressed (Seam 2, CFD-201) | CFD-183, passed |
+| **TEND** | **REFUSED — CUT**, RULED David 2026-08-27; the join gave its job to the food line and its reckoning is weather's. Returns on the storm board | CFD-183, passed |
+| **The reserve, one-way this sitting because TEND is absent** | **ON as an inherited display** — `max(0, 4 − carries)`; derived, not state; two-way again when TEND returns | CFD-183, passed |
+| CARRY lit past a topped terrace | re-expressed (Seam 2, CFD-201) | CFD-183, passed |
 | `wait()` inert, returning false | INHERITED | both parents |
 | Keel-fire bank, hearth | INHERITED as scenery; every heat verb REFUSED | CFD-176, passed |
 | MOSSWAKE +3 | **REFUSED** — CUT, David 2026-08-27; precondition verified in Does | CFD-183, passed |
@@ -654,7 +868,7 @@ says attribution weakens on a cumulative board and the Kill list is the mitigati
 - Any single commit exchanges food for marks or marks for food. A sell, market,
   broker, convert, or salvage path appears.
 - A send's provisions are paid in marks; or the Chartered toll is paid in food.
-- A muster, an UP, or a tend costs food.
+- A muster or an UP costs food.
 - Any route pays food; the terrace pays marks.
 - Food decays, spoils, expires, or changes on any schedule, at any reserve, in any
   absence.
@@ -685,7 +899,16 @@ says attribution weakens on a cumulative board and the Kill list is the mitigati
 - A reserve number, bar, pip row, meter or icon appears anywhere.
 - The ground moves without a commit — across a reload, a blur, or any absence.
 - A level is lost. The greenhouse shrinks, dies, or shows a dead state.
-- TEND earns marks or food, restores more than one step, or lights on full ground.
+- **TEND appears** — as a control, a label, a code path, or a state field. It is cut
+  this sitting and returns on the storm board.
+- **The reserve is written by anything but a carry**, or a carry draws anything but
+  exactly one step, or the draw does not floor at 0. *(With TEND cut, CARRY is the
+  reserve's only writer and the terminal is its only reader.)*
+- **The terminal offers a ground register that cannot fire** — in particular a full
+  register, which is unreachable at every stop because a Chartered outfit costs at
+  least one carry.
+- **The terminal's ground clause states or implies that this board can put the
+  ground back.**
 - UP is free, its price does not climb, or UP rides a train.
 
 **The sends**
@@ -696,7 +919,7 @@ says attribution weakens on a cumulative board and the Kill list is the mitigati
   at SEND. A run resolves without MEET. Any outcome is scripted.
 - Odds move by anything but baseRisk and the roster.
 - A failed run pays any fraction of the route reward, or returns any food.
-- A stake, toll, muster, tend or level refunds, in any branch, any direction.
+- A stake, toll, muster or level refunds, in any branch, any direction.
 - Any crew member fails to come home on either branch.
 - `canSend("cloud-basin-span")` returns true while `cargoesBanked === 0`.
 - A second line run goes out while one is out.
@@ -722,7 +945,8 @@ says attribution weakens on a cumulative board and the Kill list is the mitigati
   reserve", which are the two dimensions the counterexample does not live on.
   Measured in the parent sim: `canSend` returns false for every route while a run
   is away, and `musterReach()` returns 0 while away. On this board CARRY is dark at
-  full stores and TEND is dark at full ground or no marks. **So the away state can
+  full stores, UP is dark at level 4 or with the price unpaid, and TEND does not
+  exist. **So the away state can
   reach a position where MEET is the only live control, and nothing else on this
   board requires it to be lit.** The free halt is a floor at home and is not a floor
   while away.)*
@@ -739,12 +963,13 @@ says attribution weakens on a cumulative board and the Kill list is the mitigati
   its sentence.
 - The sitting stops on a Chartered cargo banked while unarmed, or fails to stop on
   one banked while armed, or stops on topping alone.
-- `3 / 2 / 3+1 / 10 / 14 / 18 / 0.036 / UP 3 / 4 / 5 / TEND 1 / reserve depth 4 /
-  roster cap 4` move.
+- `3 / 2 / 3+1 / 10 / 14 / 18 / 0.036 / UP 3 / 4 / 5 / reserve depth 4 / roster cap
+  4` move. *(`TEND 1` leaves this list with the verb, and returns with it.)*
 - A run or the sitting ends without its sentence; a turned-back sentence drops
   zero-pay, stake-spent, crew-home or desk-stands, or names a crew that did not
   ride; the terminal does not read the record, what the terrace sent, and the
-  ground, in three ground registers.
+  ground, in **two** ground registers — drawn and bare. A third register, or any
+  register that cannot fire at a reachable stop, is itself a kill.
 - Any weather, sky, storm, stormbird, or forecast appears. A Ranger, Marksman or
   Engineer is musterable.
 - Live shas are overwritten (`576ce2b6`, `953368a1`, `292d6645`, `395c18f2`,
@@ -776,9 +1001,10 @@ says attribution weakens on a cumulative board and the Kill list is the mitigati
   caps, and **keeps returning cargo from going to waste**."* The Warehouse is off
   this board, so this town's stores are the platform's own and small.
 - **Everything else inherited.** baseRisks, the success formula, pays 10 / 14 / 18,
-  MUSTER 3, UP 3 / 4 / 5, TEND 1, the carry's +1..+4, reserve depth 4, roster cap
-  4 — all provenanced in `docs/cfd-196-beat.md` and `docs/cfd-183-beat.md`, all
-  unmoved.
+  MUSTER 3, UP 3 / 4 / 5, the carry's +1..+4, reserve depth 4, roster cap 4 — all
+  provenanced in `docs/cfd-196-beat.md` and `docs/cfd-183-beat.md`, all unmoved.
+  `TEND 1` is not on this board at all; it is unmoved in the sense that it was cut
+  rather than re-priced, and it returns at 1 with the storm.
 
 ### New-play, flagged
 
@@ -865,8 +1091,8 @@ The long sitting's payoff is the sitting — more runs, a full roster, a held gr
 and a better closing sentence — which is what "a diversity of sits" asks for.
 
 **Said plainly, because it is the risk:** halt-spam followed by three UPs is the
-fastest line to the stop, and a player who takes it sees one carry and no tend.
-That is §7.2 working as written, and it is open question 3.
+fastest line to the stop, and a player who takes it sees exactly one carry. That is
+§7.2 working as written, and it is open question 3.
 
 ### The quick path, walked
 
@@ -904,10 +1130,16 @@ had to be re-earned, and it is earned by refusing to mint anything else:
   `stores > 0` **is not reachable by play**, because every carry draws a step, so
   a minted opening store would put the board off its own lattice for the second
   time in three beats.
-- With stores 0, every state is reachable. Marks: from the float of 3, TEND's odd
-  −1 (available after one carry) reaches 2, 1 and 0, and the routes' +10 / +14 /
-  +18 reach upward from any of them, so every non-negative mark count is reachable
-  at any roster. Stores 0..4: carries. Reserve 0..4: carries and tends. Level
+- With stores 0, every state is reachable — **and this had to be re-checked, because
+  the first draft's proof rested on TEND's odd −1 and TEND is now cut.** Re-measured
+  by breadth-first search over the whole reachable space under the surviving verb
+  set (CARRY, UP, MUSTER, the three sends and MEET, both dice branches):
+  **every mark count from 0 to 60 is reachable, with none missing** — 0 from the
+  float by a single UP or muster, and 1 and 2 by way of the Chartered toll's odd −1
+  once the charter is open. The claim survives; its proof does not, and the old one
+  is replaced rather than left standing. Stores 0..6: carries. Reserve 4 down to 0:
+  carries alone, and **not upward — that is the one-way property, and it is why the
+  full ground is unreachable at any stop.** Level
   1..4: UP. Reserve 0 at level 4, stores full at reserve 0, the armed state, the
   stop: all reached in the walked path above or by extending it.
 - **The cost is one inherited Kill line re-expressed**: the opening's lit set was
@@ -920,7 +1152,7 @@ had to be re-earned, and it is earned by refusing to mint anything else:
 
 **Estimate, with no instrument, so it is flagged as one.** The quick path is 8
 turns and lands in 12 to 15 with ordinary dice. A player who musters, runs the
-spine, tends the ground and tops out will land between 25 and 40 commits. **The
+spine and tops out will land between 25 and 40 commits. **The
 range is the design**, per §7.2: the arming stop is what puts the choice in the
 player's hands, and the free halt is what keeps the short end honest.
 
@@ -940,17 +1172,20 @@ rests on. Inherited rows cite the beat that passed them, per §7.
 | CARRY pays food, not marks | ON, **forced** | Measured: TEND then CARRY mints `level − 1` marks per two turns with the ground unchanged, unbounded above level 1. R1's structural half — marks and food never share a sink — is what closes it |
 | Food is not a currency | ON, five testable clauses | R1 — "Marks are money"; Economy's legibility rule — "no premium-currency maze and **no obfuscated conversion**". A stock with one source, one sink and no exchange is not a medium of exchange |
 | The greenhouse level as the multiplier | ON | `getProductionPerMinute` — production = base × level, the engine's linear rule, which CFD-183 already carried to civic scale as +1..+4. The level was always the rate; this board gives the rate a destination |
-| The level-1 identity | ON, measured | `economyConfig.resourceValues.food` = 1; CFD-183's TEND at 1 mark a step; CFD-183's level-1 yield of 1. Three inherited numbers from two beats agreeing, not designed |
+| The level-1 identity | ON, **weakened by the TEND cut and said so** | `economyConfig.resourceValues.food` = 1 and CFD-183's level-1 yield of 1 still agree, so the pack values a carry's step at a mark. The third leg — CFD-183's TEND at 1 mark a step — is cut, so the board no longer carries the instrument that realises the exchange. Pack citation, not board measurement, until TEND returns |
 | The stores at the desk | ON | `buildings[greenhouse]` has no `storage`; `buildings[central-station]` and `buildings[switchyard]` do. Goods are stored where the town stores goods |
 | The stores read as objects, not a gauge | ON | Economy — the planting "tells a keeper the state of their ground **without a gauge**"; and CFD-196 Amendment 1's own reading of that sentence — it governs "how the *world* reports hidden state", not the player's own property. Precedent: the muster ladder, passed |
 | Stores cap 6, CARRY dark at full | ON, new-play, **derived** | `buildings[warehouse].description` — the pack's own overflow rule, "keeps returning cargo from going to waste", with the Warehouse named as its owner and off this board. The figure is not a mirror-anchor but the board's own arithmetic: `maxProvisions + maxLevel − 1`, the smallest cap at which a carry never strands. The first draft's mirror-anchor of 4 read well and was wrong |
 | The record's two loss counters | ON | CFD-196's own correction, re-applied in a new currency: the terminal must reconcile in words the gap between what went out and what came home, and must name a zero rather than omit it |
 | The ground as a one-time allowance rather than a price | ON, argued at length | R3 — "tended ground does not decay"; Geology — "rides fine … **in clear weather** … gives no sign"; CFD-183's own gloss — "nothing fails, slows, dims, warns, or alerts at any reserve"; §5.2 SIGNED and §7.1.2 — the reserve's reckoning is the storm's and is not available to this board. Three candidate mechanisms were worked and refused: on the kill's letter, on its cited sentence, and on the model |
-| TEND, dominated for one sitting | ON as drafted, with a priced amendment | RULED — David 2026-08-27: "Keeping TEND on the board with no job for one sitting is honest and cheap; the sit will tell you whether players reach for it." Recorded against his own later standard — a dominated verb is worse than an inert one — which is why the arming amendment is put back to him rather than assumed |
+| TEND | **REFUSED — CUT** | RULED — David 2026-08-27, superseding his own earlier "keep it for one sitting": "**Cut TEND for this sitting** … it does all that to keep a verb alive on a board that structurally cannot give it a job, because the reckoning it exists for went to the next sitting." Shipping it dominated ruled out in the same breath. R10's tending leg is not abandoned — it returns on the storm board with the reckoning that makes it real |
+| The full-ground arming amendment | **REFUSED** | RULED — David 2026-08-27, recommended by this beat and refused with reasons: it flips the terrace's rate advantage at level 4 so "the ladder the ending requires you to climb becomes worse than not climbing it", it risks a tail of eight or nine consecutive tends, and it is "engineering around a scheduling decision" |
+| The reserve, kept and named one-way for this sitting | ON | RULED — David 2026-08-27: keep it, name it a one-way allowance. R3 — "tended ground does not decay", and nothing decays here; R4 — nothing moves in absence. The cause is named beside the fact throughout: one-way **because TEND is absent**, two-way again when it returns |
+| The storm handoff | closed, not open | The lineage rule — a cumulative board inherits **systems, not end-states**. `docs/cfd-201-beat.md`'s Kill list mints **reserve 4** at its own opening, and every board refuses reading another board's persisted state. §7.1.2's promise is suspended for one sitting, not contradicted |
 | A turned-back run loses the food | ON | R6 — "A run that fails costs **the haul committed to it** and never the home or the permanent record"; CFD-145 — failed runs pay zero, recovered stakes are not payouts |
 | Full carry yield at every reserve, untouched | INHERITED, deliberately | CFD-183, passed; Geology — "rides fine for years on a falling reserve, **in clear weather**, and gives no sign". §7.1.2 — the join board "must not contradict" the outstanding weather promise |
-| TEND, with its payoff one sitting out | INHERITED, named | R10 — "tending, heat and liftstone carried to a node whose reserve is falling, **which earns nothing but holds the line**"; §5.2 SIGNED — the reckoning is the storm's; §7.1.2 — that promise now waits a second sitting |
-| The reserve, unchanged in every respect | INHERITED | CFD-183, passed; R10/MDB — "a visible reserve health that over-extraction lowers and that tending runs … raise" |
+| R10's tending leg, off the board for one sitting | REFUSED, named, dated | R10 — "tending … **earns nothing but holds the line**" is a real claim and this board cannot honour it, because there is nothing to hold the line against; §5.2 SIGNED and §7.1.2 put the reckoning on the storm board. The leg returns there rather than being abandoned |
+| The reserve, unchanged in range and read | INHERITED, **with its restoring half absent this sitting** | CFD-183, passed; R10/MDB — "a visible reserve health that over-extraction lowers **and that tending runs … raise**". The lowering half is on this board; the raising half is cut with TEND and returns with it. Named, because half of a cited mechanism is not the mechanism |
 | No level lost, nothing dies, no decay | INHERITED as a refusal held | R3 — "tended ground does not decay"; R4 — "No decay clocks, no upkeep tax, and no alerts"; CFD-183's convictions carried whole |
 | Absence protected without exception | ON as a refusal held | R4 — nothing on either half moves without a commit; food never spoils, the ground never falls, `wait()` returns false |
 | Two vehicles | ON, argued, and the MOSSWAKE cut rests on it | `buildings[switchyard].description` — "Dispatches trains, **adds scheduling capacity**, and keeps cargo moving". R10's three claims stay on the shuttle where CFD-183 put them |
@@ -1030,16 +1265,19 @@ goods-as-nouns lands whole.
    not "how big" but: **is 5 marks for 0.050 turns a mark plus the ending the price
    you want on the last rung?** If not, the lever is the rung's price or the
    arming, not the cap.
-2. **TEND is dominated, not merely inert** — and the fix that costs no kill is to
-   arm the ending on a **full ground** as well as a topped terrace. It is your own
-   "slow TEND-debt" with the collector supplied, and it amends your ruling 5.
-   Recommended; the priced alternatives are (i) ship dominated, (ii) cut TEND.
+2. ~~TEND~~ **RULED and closed, 2026-08-27: cut.** What remains open is its
+   consequence: the reserve now falls and nothing puts it back, and the sit's real
+   question is whether that reads as **unfinished business** or as **scenery**. The
+   terminal's two registers are written to make it the former; the sitting is the
+   test.
 3. **Halt-spam then three UPs is the fastest line to the stop**, and a player who
-   takes it sees one carry and no tend. That is §7.2 working as written. Is it what
-   you want, or should the arming cost more than 12 marks?
-4. **The terminal now reads three things** — the desk's record, what the terrace
-   sent, and the ground. Is the third clause worth the length, or does the ground
-   read better folded into the second?
+   takes it sees exactly one carry — and stops on a **drawn** ground at reserve 3,
+   which is the best ending the board allows. That is §7.2 working as written. Is it
+   what you want, or should the arming cost more than 12 marks?
+4. **The terminal reads three things and the ground clause now has two registers,
+   not three** — the full register was cut because it cannot fire at any stop. Is
+   the ground clause worth its length at two registers, or does it fold into the
+   terrace clause?
 5. **Food is called "the stores" on the board and `food` in the provenance.** Right
    word, or should the board say food?
 
@@ -1090,8 +1328,14 @@ verb — see the next section.
 > sitting is honest and cheap; the sit will tell you whether players reach for
 > it.**"
 
-So the beat ships as drafted on this point. The reserve stays exactly as it
-passed and TEND keeps exactly the job it had.
+**SUPERSEDED IN PLACE, 2026-08-27, same day.** The full six-verb audit reported
+after this ruling was given, and the word it produced was *dominated* rather than
+*inert*. David's own later standard — *"a dominated button teaches players a wrong
+lesson and then you have to un-teach it two sittings later"* — retires the ruling
+above, and **the verb is CUT**. The text stays as the record of what was asked and
+answered, because the reasoning in it is why the cut is cheap: the sit was to tell
+us whether players reach for TEND, and the audit answered the question before the
+sit could, by showing there is nothing for them to reach for.
 
 ### What the sit must report, and this is new work
 
@@ -1101,11 +1345,16 @@ passed and TEND keeps exactly the job it had.
 > exists, and it should either be cut or merged into the food line before
 > Rustfall."
 
-**This is a question put to the player, not a metric.** The sit's ask is
-unchanged — *what happened* — but the PM must come back to TEND specifically
-and get an answer that distinguishes three cases: nobody tended; tended and can
-name what it bought; tended and cannot. The third is the dangerous one, because
-it looks like use.
+**SUPERSEDED by the cut** — there is no TEND to reach for, so the three-way split
+cannot be asked this sitting. **The question travels to the storm board**, where the
+verb returns with a reckoning behind it, and it is the right question there: if
+players still cannot say what a tend bought them on a board where the storm draws
+the ground, the verb is wrong rather than merely early.
+
+**What the sit is asked instead, and it is the cut's own test:** whether the ground
+falling with nothing to put it back reads as *unfinished business* or as *scenery*.
+That is the one risk the cut carries, it is the risk the terminal's two registers
+are written to answer, and it is answerable in the sitting's own words.
 
 ---
 
@@ -1139,7 +1388,7 @@ six verbs is a high enough rate that the remaining four are not assumed safe.
 | verb | did its meaning move? | broken in the draft? |
 | --- | --- | --- |
 | **CARRY** | **Yes** — pays goods, not money; forced by conservation | **Yes** — the stranded-store arithmetic, fixed above; a Kill line now covers it |
-| **TEND** | **Yes** — the join gave its job to the food line | **Yes** — the draft said "no operational job"; the true word is **dominated**, below |
+| **TEND** | **Yes** — the join gave its job to the food line | **Yes**, and terminally: "no operational job" was too soft, **dominated** was the true word, and the outcome is that the verb is **CUT** for this sitting |
 | **UP** | **Yes** — funded by the line rather than by the terrace's own carries; the greenhouse no longer bootstraps | Shares CARRY's arithmetic error; fixed with it |
 | **MEET** | **Yes** — it is now the *only* way marks enter the board | **Yes** — the parent's "an away state has MEET dark" was lost in transcription; restored above |
 | **SEND** | **Yes** — its stake splits across two currencies, and its failure record with it | **Yes** — `marksLost` reported the wrong currency; fixed above |
@@ -1154,7 +1403,7 @@ dropped leaves nothing.
 
 ---
 
-## TEND is dominated, and that is the harder word
+## TEND is dominated — the finding that produced the cut
 
 The beat called it *"no operational job."* The audit's word is **dominated**, and
 it is stronger and it is right. In every state where both are lit:
@@ -1219,14 +1468,30 @@ two different boards.
 tend per carry, so a forty-turn sitting can end in eight or nine consecutive
 tends. That is a tidy-up phase, and it may read as tedium rather than as payoff.
 
-**The recommendation.** Take the amendment. A dominated verb should not ship, the
-collector is David's own idea, and the rate flip is not a disqualifier because the
-terrace's job on this board is the ending, not the rate. **But it amends ruling 5
-in David's own words — "topping the terrace arms the ending" — and this beat will
-not amend his ruling unilaterally.** Three options, priced:
+**RULED — David, 2026-08-27: (ii). Cut TEND.** The recommendation above was (iii)
+and it was refused with reasons, which are recorded in Does and are better than the
+recommendation was:
 
-| | TEND | the spine at L4 | ending cost |
-| --- | --- | --- | --- |
-| **(i) ship as drafted** | dominated for one sitting | out-earns the halt | none |
-| **(ii) cut TEND**, restore it with the storm | absent | out-earns the halt | none; the ground only ever falls, and the three ground registers collapse toward one |
-| **(iii) arm on a full ground** *(recommended)* | required | loses to the halt | one tend per carry drawn |
+- **(iii) flips the terrace's rate advantage at level 4**, so *"the ladder the ending
+  requires you to climb becomes worse than not climbing it."* The beat published
+  that flip as a cost and treated it as acceptable; the ruling reads it as
+  disqualifying, and on inspection it is — the arming *requires* the climb, so a
+  climb that is worse than not climbing is a board arguing with itself.
+- **The tedium tail** — eight or nine consecutive tends — is *"the tedium the
+  sitting's ambition is supposed to buy you out of, not into."* §7.2 makes length
+  opt-in; it does not license length spent on a tidy-up phase.
+- **And the general form, which belongs in every future beat:** *"Building a
+  synthetic collector so a weather verb has something to do on a weatherless board
+  is engineering around a scheduling decision, and it leaves you with a mechanic
+  tuned to a constraint that will change the moment the storm board lands."*
+
+**Shipping dominated was ruled out in the same breath**, so the choice was never
+cut-or-ship — it was cut-or-amend, and the cut wins because it is **cheap and
+reversible**: TEND returns on the storm board with its real job, and nothing about
+it has to be re-derived.
+
+| | TEND | the spine at L4 | ending cost | verdict |
+| --- | --- | --- | --- | --- |
+| (i) ship dominated | a trap | out-earns the halt | none | **REFUSED** — teaches a wrong lesson |
+| **(ii) cut TEND** | absent, returns with the storm | out-earns the halt | none | **RULED IN** |
+| (iii) arm on a full ground | required | **loses to the halt** | a tail of 8–9 tends | **REFUSED** — the two costs above |

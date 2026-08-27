@@ -125,7 +125,12 @@ join board in front of the storm, so the order is:
     CFD-201  /dawnspur-storm/    the storm     weather, deferred not cancelled
     CFD-200  /dawnspur-rustfall/ the yard      THIS BEAT
 
-**This beat's parent is still `/dawnspur-storm/`, and that is not a leftover.**
+**This beat's parent is still `/dawnspur-storm/`, and that is not a leftover.** **Raised and refused three times** — by
+CFD-203's author on 2026-08-27, twice, and by CFD-200's own author once. It is
+recorded here so it stops recurring: the rule *"the parent is the last passed
+board"* resolves to the STORM board, because the line board **inserts before**
+the storm rather than displacing it. Anyone reaching for this edit again should
+read the next paragraph first.
 CFD-203's author recommended re-basing onto `/dawnspur-line/`; the PM checked
 and refused it. The line board *inserts before* the storm rather than
 displacing it, and **every word of this beat's Engineer answer runs on inherited
