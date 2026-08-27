@@ -180,6 +180,97 @@ described.
 
 ---
 
+## Named ruling — the Engineer's role, and the answer the arithmetic gave back
+
+**RULED — David, 2026-08-27**, verbatim:
+
+> "I think that the engineer's role can be diverse. Repair is really good in a
+> weather damage perspective and perhaps repair is where they serve in the
+> defense context as well. Either repairing walls that were placed or repairing
+> damaged weapons or even damaged cars themselves. Downside to not including an
+> engineer as part of the deploy party."
+
+**Repair is the through-line, ratified.** The supersession of the 2026-08-26
+"wall and an obstacle" seam is accepted and is no longer an open question. The
+Engineer repairs, in weather and in defense alike.
+
+### The role's future scope, recorded so a later sitting inherits the intent
+
+David names three things repair might serve: **walls that were placed, damaged
+weapons, and the cars themselves.** Only the third exists on this board, and
+adding the other two would be a second and a third new object — §7's kept half
+forbids it. They are recorded here rather than re-derived later:
+
+- **A placed wall**, repaired between pushes as the raiders work at it.
+- **A gun emplacement or other weapon**, repaired after it has fired.
+- **The cars**, which is what this sitting ships.
+
+**And the measurement below says the first two are not decoration — they are the
+objects that would make repair unconditional.** The reason is exact, and it is
+worth carrying forward: **a car degrades by failing to be defended, so
+prevention removes its damage entirely. A wall or a weapon degrades BY
+DEFENDING** — the damage is a consequence of the thing working, and no amount
+of prevention removes it. That is the object class repair needs, and David named
+it before the solver found it.
+
+### "Downside to not including an engineer" — measured, and it exists
+
+**It does not exist in the way it was asked for, and it does exist in a better
+place.** Five independent levers were run through the solver; all five failed to
+put the Engineer on the clear-weather frontier:
+
+| Lever | Result |
+| --- | --- |
+| Price, 2 through 6 | On the frontier **only at 2**, where it removes the Marksman instead. And 2 is the Ranger's derivation, not the Sapper's |
+| Rail Warden capacity 3 → 2 (breaking its `power.guard` derivation) | **Still never on the clear frontier**, at price 4 or 6 |
+| Repair scale: one tier a push, two, or one per damaged car | **The clear frontier is byte-identical in all three** |
+| Summit wave 4 → 5, 6, 7, 8 raiders | **Never on the clear frontier at any of them**; 5 and 8 kill the Marksman instead |
+| Opportunity cost of dodging the storm elsewhere | CFD-201's own table: the Chartered premium's margin is **+0.66 to +1.60** expected marks. Too small to price a 6-mark control |
+
+**The reason is structural, not a tuning miss, and it is one sentence.** A Rail
+Warden at 3 marks prevents up to three tiers *every push* — nine over a run.
+An Engineer at 6 marks repairs one tier a push — three over a run. **Prevention
+is six times the tier per mark, and no wave shape changes a ratio that is
+between the two controls rather than between either and the waves.** Repair can
+only win where prevention is impossible, and on this board that is exactly and
+only the sky. **Any clear-weather job for repair would have to be damage no
+placement can prevent, which in clear weather with no weather to blame is a flat
+fee — a tax.** The alternative, making the Engineer mandatory, is the dead
+button inverted.
+
+### Where the downside actually lives, and it is sharper than a clear-weather rung
+
+**The stormbird arrives while the convoy is in the yard**, and that is the whole
+answer. The sky is inherited, its cycle is fixed at five clear, two bird, two
+storm from `sky clear at turn 1`, and **CFD-201 Kill-lists the phase counter by
+name** — *"A forecast counter, countdown, phase indicator, turn number, or
+next-storm figure."* So CLEAR is one look: a player cannot tell the first clear
+turn from the fifth without counting by hand.
+
+Measured against the inherited cycle:
+
+- **Sending from a clear look meets a storm push in 2 of the 5 clear turns.**
+- **The beat's own shortest path to the yard lands two of its three pushes under
+  a storm** — SEND at turn 5 under a clear sky, the bird on the board as the
+  yard opens at turn 6 and through push 1 at turn 7, then storm at pushes 2 and
+  3. Not chosen: it falls out of the inherited opening phase and the inherited
+  cycle.
+
+So the bird appears **mid-run, before the storm, with PULL OUT lit.** The player
+who brought an Engineer pushes on. The player who did not pulls out short and
+banks less. **That is the downside, it is felt at a decision the player is
+making with their hands, and it costs no new object, no tax and no mandate.**
+It is also `[TEETH]`'s own sentence delivered literally: *"Where a player lands
+is set by how well they read the cold and when they chose to turn back."*
+
+**One irony, recorded rather than discovered:** buying an Engineer costs a
+muster turn and a second halt run to afford, and on the shortest such path the
+three pushes land entirely in clear weather. So the first sitting may show a
+player wanting an Engineer they did not bring, or holding one they did not need.
+**Both are the lesson; neither is a defect.**
+
+---
+
 ## Does
 
 The board opens exactly as `/dawnspur-storm/` closed: one town, one sky, the
@@ -308,6 +399,33 @@ spills the remainder onto the richest.
 No health, no hit points, no rolls, no timers, no reflex. **Placement decides
 it**, which is what David ruled it would be.
 
+### The sky is live in the yard, and that is a departure this beat must name
+
+**On the three rolling routes the sky is stamped at the SEND.** CFD-201 ruled it
+and gave its reason: a storm arriving while a run is away "would make the storm
+a second instrument behind the card", against the dispatch board's first Kill
+line — *"The stated percent and the sim's rolled threshold disagree anywhere."*
+
+**At Rustfall the sky is not stamped. It moves under the player, push by push.**
+Two reasons, and the first is that CFD-201's reason does not reach here:
+
+1. **There is no card number for the sky to contradict.** Rustfall quotes no
+   percent, in any state, so a live sky cannot make a stated figure a lie. The
+   Kill line that motivated stamping is not in play.
+2. **This is the other tier.** CFD-201's own words for stamping are *"the read
+   happens at the desk"* — which is the passive tier's shape, and CFD-196
+   named the split: the gradient doctrine "governs the active tier, **where the
+   player is on the line making the read**." At Rustfall the player *is* on the
+   line. A sky that could not move under them would be the desk's rule applied
+   to a tier that exists precisely because the desk's rules do not fit it.
+
+**So the stormbird can arrive while the convoy is in the yard**, and that is the
+point rather than a side effect. Under the bird nothing changes — CFD-201 is
+explicit that the bird carries clear terms — but the bird is on the board, and
+it means the next push or two will be under a storm. **PULL OUT is lit.** The
+player reads it and decides, which is the only thing this tier has ever been
+about.
+
 ### PULL OUT, and why it is the point
 
 After every push, two verbs are lit: **PUSH** and **PULL OUT**.
@@ -385,6 +503,13 @@ The crew read by where they stand. A Marksman's reach is drawn as reach. The
 Engineer stands with the train rather than on a car, because it works on the
 cars rather than the road.
 
+**The sky is on the board in the yard exactly as it is in the town** — the same
+light, the same stormbird inland when the bird is up, and **no counter, no
+countdown and no phase pip**, which is CFD-201's Kill line and canon's "no
+readout on the screen" carried through unchanged. A bird over the yard is the
+warning that the next push or two will be under a storm, and it is the only
+warning there is.
+
 **Under a storm the yard says so**, and it says which raider the weather is
 covering only if a Ranger is aboard. Without one, the forecast shows the wave's
 count and the board tells the player plainly that one of them cannot be
@@ -420,6 +545,10 @@ the board's words.
 > *"The weather covered one of them and nobody saw it come. The ore car is
 > slightly damaged, and the rain has been at it besides. Two cars aboard, worth
 > 16."*
+
+**The bird arriving mid-run — the sentence the sitting turns on:**
+> *"A stormbird came in low over the sidings. Two cars aboard, worth 21, and
+> weather behind it."*
 
 **The Engineer working:**
 > *"The Engineer got the parts car's coupling back under it. Two cars aboard,
@@ -484,6 +613,10 @@ not re-argued, per §7.
 | Marksman at 5: two turns a push, reach across a coupling | NEW | **ON** — RULED, David 2026-08-27, "fix the marksman with the adjacent wave" |
 | Engineer at 6: repairs one tier a push | NEW | **ON** — `power.repair` 4; the job David's damage ruling created |
 | The storm in the yard: one raider covered, one tier drawn, a Ranger sees | NEW | **ON** — the sky live in the new system, per the re-base |
+| The sky live per push in the yard, not stamped at the SEND | NEW | **ON, argued** — the one place this board departs from CFD-201's stamping ruling; Rustfall quotes no percent for a live sky to contradict, and this is the active tier |
+| The stormbird visible in the yard, with PULL OUT lit | NEW | **ON** — the tell precedes the event and the counterplay exists; this is where the Engineer earns its place |
+| Repair given a clear-weather job | NEW | **REFUSED, measured** — five levers, none reaches the clear frontier; any such job is a flat tax or a mandate |
+| Walls and weapons as objects repair serves | NEW | **REFUSED, recorded as future scope** — David 2026-08-27; two new objects, and §7's kept half forbids them here |
 | Health, hit points, or any bar that fills or empties | NEW | **REFUSED** — a car's condition is the load's condition, in words and looks |
 | Wall time, in any form | INHERITED refusal — CFD-196, CFD-201 | **REFUSED** — no clock, no rAF, no transition |
 | `tacticalTimeMs` as a budget | NEW | **REFUSED** — a budget the player runs out is a clock with the units filed off |
@@ -562,6 +695,14 @@ Every line expressible as a test.
   but the richest car aboard, or is cancelled by a Ranger.
 - Rustfall's cars are worth more in a storm than in clear weather.
 - The sky fails to advance on a PUSH or a PULL OUT.
+- The yard stamps the sky at the SEND, so a run's pushes all resolve under the
+  sky the SEND was made in.
+- A forecast counter, countdown, phase indicator, turn number or next-storm
+  figure appears anywhere — in the yard or in the town.
+- The stormbird is not on the board in the yard when the sky is under the bird,
+  or PULL OUT is dark on any push where a bird or a storm is showing.
+- The bird changes any number. Under the bird the yard resolves exactly as it
+  does in clear weather.
 - The yard reads or writes the terrace, the reserve, or the level.
 
 **Stakes and pay**
@@ -904,11 +1045,42 @@ yard the old lattice would still be closed: **the new system is what makes the
 claim true again, and if the car worths ever move to even numbers this paragraph
 goes back to being false.**
 
-**One thing the sitting may not exercise, named rather than discovered.** The
-Engineer is the storm crew and the sitting stops on the first Rustfall run. A
-player who reaches the yard in clear weather may play it entirely in clear
-weather and never need an Engineer. **That is a property of the sitting, not a
-defect in the control**, and it is what open question 3 asks about.
+### What the first sitting actually meets, traced against the inherited sky
+
+CFD-201 pins the opening: *"sky clear at turn 1"*, then five clear, two bird,
+two storm, one step per committed action. This beat's own shortest path to the
+yard, traced turn by turn against that cycle:
+
+| Turn | Sky | Action |
+| --- | --- | --- |
+| 1 | clear | SEND — DAWNSPUR HALT, free |
+| 2 | clear | MEET — home paid, +10, the charter opens |
+| 3 | clear | MUSTER RANGER, −2 |
+| 4 | clear | MUSTER RAIL WARDEN, −3 |
+| 5 | clear | **SEND — RUSTFALL, −4.** The sky is clear at the click |
+| 6 | **bird** | MEET — the yard opens, and there is a stormbird over the sidings |
+| 7 | **bird** | push 1 |
+| 8 | **STORM** | push 2 |
+| 9 | **STORM** | push 3 |
+
+**Two of the three pushes land under a storm, and the bird is on the board for
+two turns before the first of them.** Nothing here was chosen for effect: the
+opening phase is inherited, the cycle is inherited, and the path is the one this
+beat already published. **The first sitting, played the fastest way, meets the
+storm in the yard with its warning first** — which is where the Engineer earns
+its price and where a player who skipped it discovers the downside.
+
+**Sending from a clear look is a real read, because there is no counter.**
+Measured across the five clear turns, sending Rustfall from clear lands a storm
+push from **2 of the 5** — and CFD-201 Kill-lists the phase indicator, so those
+five turns look identical. The bird is the only tell, and it arrives in time to
+be acted on.
+
+**One irony, recorded rather than discovered.** Affording an Engineer costs a
+muster turn and a second halt run, and on the shortest such path the three
+pushes land entirely in clear weather. So the first sitting may show a player
+wanting an Engineer they did not bring, or holding one they did not need. Both
+are the lesson.
 
 ---
 
@@ -940,6 +1112,7 @@ all under `C:\dev\skyrail\docs\lore\`.
 | The crew names on the board's face | ON | RULED — David 2026-08-27, carried by `docs/cfd-201-beat.md`'s named ruling: Rail Warden, Ranger, Marksman, Engineer, with pack ids in the numbers |
 | The adjacent wave | ON, NEW | **RULED — David, 2026-08-27**: "fix the marksman with the adjacent wave." The shape is argued from the group's own name — Boarders board, and a coupling is what they board across |
 | The Engineer as repairer rather than wall-builder | ON, NEW | `crewTypes[sappers]`, `power.repair` 4, "stabilize damaged spans" — and David's own 2026-08-27 damage ruling is what created the job. **This supersedes his 2026-08-26 seam's "a wall and an obstacle"**, which the first draft already flagged as resting on the ruling alone: `[WB]`'s only "obstacle" is broken track a sapper *repairs*, and the corpus has no player-placed walls or barricades anywhere. Measured besides: as a placer of two pieces the Engineer was never the correct purchase in 64 configurations. **Named for David, not assumed** |
+| The sky live per push, not stamped at the SEND | ON, NEW, **argued as a departure** | CFD-201 stamps the sky at the SEND, and its stated reason is the dispatch board's Kill line — a storm behind the card would make "the stated percent and the sim's rolled threshold disagree". **Rustfall states no percent**, so that reason does not reach it. And CFD-201's own words for stamping are "the read happens at the desk", which CFD-196 assigns to the passive tier: the gradient doctrine "governs the **active** tier, where the player is on the line making the read". This is that tier. `[TEETH]` supplies the standard the departure has to meet and it meets it: the tell precedes the event (the bird), and the counterplay (PULL OUT, or an Engineer aboard) always exists |
 | The storm live in the yard | ON, NEW | The re-base requires it. Its cadence is CFD-201's own — "every turn spent under a storm draws the ground one step" — applied to the load. Its cover is `ROUTE_EVENTS[fog-bank]` ("**Scouts** reduce ambush odds and route confusion") and `ROUTE_EVENTS[raider-scouts]` ("Wardens and **Rangers** matter on exposed Rustfall sidings") |
 | Rustfall's pay rising in a storm | REFUSED, argued | CFD-201's own named trap — risk-up plus reward-up cancelling to a wash — is unavoidable here because the route's difficulty and its pay are one quantity. **The one inherited rule this board declines, flagged** |
 | Raiders as the pressure at Rustfall | ON | `routes[rustfall-yard].tags` — `"raiders"`; `COMBAT_SCENARIOS[rustfall-security-charter]`, route- and mission-gated to include `convoy`; `[WB]` — "Raider crews (the Tollmen and similar) … Demand tolls, attempt to take cargo. **The reason escorts and wardens matter.**" **Weakness named, twice:** `[MDB]` 1.21 is locked as "**The cold is the only hazard, in five forms**" and raiders are not among them; and `[WILD]`'s stand-in doctrine that supplies NPC attackers — "**a defense wants attackers** … a stand-in raider reading as a Cinderborn outlaw" — is written for the contested deep, while Rustfall is a near-map Chartered route. The reconciliation is `[MDB]` 1.12's own: raiders are **pressure on the routing problem**, engaged through the logistics grammar, never a hazard class of their own |
@@ -1015,7 +1188,39 @@ run.** A verb that resolves a wave without any placement could make the first si
 answer *what happened* with "I paid them." Strongest candidate for the sitting
 after this one, and it needs no new derivation.
 
-**8. TRIM offered at Rustfall.** Rejected on arithmetic: with no storm premium at
+**8. Five ways to give the Engineer a clear-weather job, all measured, all
+rejected.** Recorded in full because the request was reasonable and the answer
+is a no with arithmetic behind it, not a preference.
+
+- **Re-price it.** On the frontier only at 2 marks, where it removes the
+  Marksman instead — the dead button moved, not removed. And 2 is
+  `crewTypes[rangers]`'s derivation; the Sapper's `baseCost` gives 6, and the
+  only way to reach 2 would be to drop its `parts: 3` leg, which is not a
+  derivation, it is a wish.
+- **Lower the Rail Warden to capacity 2**, breaking its `power.guard` = 3
+  mapping. Still never on the clear frontier, at 4 marks or 6. **The derivation
+  would have been spent for nothing.**
+- **Scale repair up** — two tiers a push, or one on every damaged car. The
+  clear frontier is byte-identical in all three variants, because the frontier
+  rosters take no damage and repairing zero is zero at any scale. Scaling up
+  also drops the Marksman off the storm frontier.
+- **Make the summit wave harsher** — 5, 6, 7, 8 raiders. Never on the clear
+  frontier at any of them; 5 and 8 kill the Marksman. And a wave big enough to
+  outrun prevention would be the tax the brief forbids.
+- **Price the dodge** — argue that dodging the storm at the yard costs the
+  Chartered premium elsewhere. Measured against CFD-201's own break-even table
+  and **refuted**: that premium's margin is +0.66 to +1.60 expected marks,
+  sized deliberately to clear break-even rather than to be a windfall. It
+  cannot price a 6-mark control.
+
+**What the five have in common is one ratio.** Prevention buys three tiers a
+push for 3 marks; repair buys one tier a push for 6. Repair is a strictly worse
+rate against the same damage, and every lever above moves the damage rather than
+the ratio. **Repair wins only where prevention is impossible**, which on this
+board is the sky and nothing else — and the objects that would change that are
+the ones David already named.
+
+**9. TRIM offered at Rustfall.** Rejected on arithmetic: with no storm premium at
 Rustfall to forfeit, TRIM would cost one provision and buy the whole sky, where
 on Cloud Basin it costs a provision and six marks. That is the effective immunity
 CFD-201 names as the weather unit's trap. The Ranger's yard job — seeing what the
@@ -1025,23 +1230,24 @@ weather covers, not stopping what it does — is the same idea at the right pric
 
 ## Open questions for David
 
-Four, each answerable in a sentence.
+Three, each answerable in a sentence. **The Engineer's role is no longer among
+them** — repair is ratified, and where its downside lives is answered above by
+measurement rather than by asking.
 
-1. **The Engineer's job changed.** Your 2026-08-26 seam said "an engineer, a wall
-   and an obstacle." Your 2026-08-27 damage ruling created a better job for it —
-   repair — which is what its pack entry always said it did, and measured, the
-   wall-and-obstacle version was never worth buying in 64 configurations. I
-   shipped repair. Right call, or do you want the wall back?
+1. **The sky moves under the player in the yard**, where on the three rolling
+   routes CFD-201 stamps it at the SEND. Rustfall quotes no percent for a live
+   sky to contradict, and this is the tier where the read happens on the line
+   rather than at the desk — which is what lets the stormbird arrive mid-run
+   and makes PULL OUT a weather call. It is the one place this board departs
+   from its parent. Accept?
 
 2. **The storm does not raise Rustfall's pay**, where it raises Cloud Basin's
-   from 18 to 24. The reason is that at Rustfall the difficulty and the pay are
-   the same quantity, so paying more per car while the storm eats the cars is the
-   wash you were already warned about. Accept the asymmetry?
+   from 18 to 24. At Rustfall the difficulty and the pay are the same quantity,
+   so paying more per car while the storm eats the cars is the wash you were
+   already warned about. Accept the asymmetry?
 
-3. **The Engineer is the storm crew and the sitting stops on the first Rustfall
-   run** — so a player who reaches the yard in clear weather may never need one.
-   Leave it, or should the stop be the first Rustfall run *in a storm*?
-
-4. **The stop, unchanged from the first draft.** First Rustfall run off the yard
-   road, loaded or empty, so even a bad first run is a complete sitting. Or
-   should an empty run let you try again before the sitting ends?
+3. **The stop, unchanged.** First Rustfall run off the yard road, loaded or
+   empty, so even a bad first run is a complete sitting. Traced against the
+   inherited sky, the shortest path puts two of its three pushes under a storm,
+   so the sitting does exercise the weather without being forced to. Or should
+   an empty run let you try again before the sitting ends?
