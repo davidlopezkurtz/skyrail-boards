@@ -820,3 +820,94 @@ goods-as-nouns lands whole.
    read better folded into the second?
 5. **Food is called "the stores" on the board and `food` in the provenance.** Right
    word, or should the board say food?
+
+---
+
+## TEND, re-framed — David, 2026-08-27, and this supersedes open question 2
+
+The beat calls TEND-with-no-operational-job a thin spot. **David's reading is
+that it is a finding, and a stronger one than the beat treats it as.** Recorded
+in his words because the reframe is the useful part:
+
+> "'No operational job this sitting' is a stronger finding than it's being
+> treated as. TEND is the verb the whole macro was built around: profit now
+> versus hold the line, the sentence that passed twice, 'I left A too long.' If
+> the join board leaves it inert, that's not a thin spot in the beat. It's a
+> signal that **the join changed what tending is for**, and nobody has
+> re-derived it."
+
+### The structural cause, which is not a scoping accident
+
+> "Before the join, TEND was the only thing standing between you and losing
+> ground, so it competed with income directly. After the join, sends eat food,
+> food comes off the terrace, and the terrace's whole output is now consumed by
+> dispatch. The ground's condition still matters, but **the pressure on it now
+> runs through provisioning rather than through neglect.** TEND didn't lose its
+> job because of a scoping accident. **It lost it because the join gave its job
+> to the food line.**"
+
+### The real question, which is not the one this beat asked
+
+Not *"does TEND keep its seat with no job."* It is:
+
+> "**whether TEND and the food economy are the same mechanic wearing two
+> names.** If food is drawn off the ground and TEND restores the ground, then
+> every send is already a slow TEND-debt and TEND is the repayment. That's a
+> coherent design and it's better than bolting a new job on. But if they're
+> separate, you now have two systems both governing ground condition, which is
+> the sort of thing that reads fine in a spec and plays as mush."
+
+Under audit as of 2026-08-27, with arithmetic, alongside every other inherited
+verb — see the next section.
+
+### The immediate decision — RULED
+
+> "Don't re-scope CFD-183's kill. The instinct to flag rather than fudge is
+> right, and scoping the same kill twice in a week for two different reasons is
+> exactly the drift pattern. **Keeping TEND on the board with no job for one
+> sitting is honest and cheap; the sit will tell you whether players reach for
+> it.**"
+
+So the beat ships as drafted on this point. The reserve stays exactly as it
+passed and TEND keeps exactly the job it had.
+
+### What the sit must report, and this is new work
+
+> "Ask the sitting to report **whether anyone tended at all, and why.** If
+> nobody touches it, that's the answer. If they tend and can't say what it
+> bought them, TEND has become a habit carried from a board that no longer
+> exists, and it should either be cut or merged into the food line before
+> Rustfall."
+
+**This is a question put to the player, not a metric.** The sit's ask is
+unchanged — *what happened* — but the PM must come back to TEND specifically
+and get an answer that distinguishes three cases: nobody tended; tended and can
+name what it bought; tended and cannot. The third is the dangerous one, because
+it looks like use.
+
+---
+
+## Every inherited verb is audited against the join, before the sitting
+
+David, same day:
+
+> "the CARRY-can't-pay-marks finding is the same shape. The join forced it,
+> nobody chose it, and it fell out of conservation. **Two verbs changed meaning
+> because the economies merged.** That's a sign the join is doing real work, and
+> also a reason to **check every other inherited verb against it before the
+> sitting, not after.**"
+
+Two verbs changed meaning without anyone deciding they should — CARRY (cannot
+pay marks, forced by conservation) and TEND (job taken by the food line). Both
+were found by following where a cost comes from and where its output goes, on a
+board whose economy just split in two: **the terrace pays goods, the line pays
+money.**
+
+A fan-out audit runs one seat per inherited verb — SEND, MUSTER, MEET, CARRY,
+TEND, UP — asking of each: what did the passing beat say it was for, what does
+it do here, did its *meaning* change, what funds it and what does it fund now,
+is it the food line wearing another name, and does it break a rule or a parent
+Kill line it satisfied on its own board.
+
+**This beat is not signed until that audit reports.** Two known findings out of
+six verbs is a high enough rate that the remaining four are not assumed safe.
