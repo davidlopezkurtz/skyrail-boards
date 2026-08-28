@@ -1,0 +1,5 @@
+# Wrangler's local cache. It carries the Cloudflare account id and the Pages
+# project name, and this repository is PUBLIC — see NOTICE. Nothing here is a
+# credential, but account identifiers are not published on purpose either, and
+# an unignored cache is one `git add -A` away from being committed.
+.wrangler/
