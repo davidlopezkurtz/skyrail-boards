@@ -409,10 +409,59 @@ for the sitting that carries weather.
    storm**: the Chartered storm pay of 24, the Ranger's trim, and the storm
    premium's shape. They are ruled, recorded, and not re-opened when weather
    returns.
-4. **CFD-200's parent changes again.** Its Seat was re-based onto
-   `/dawnspur-storm/`; it re-bases onto the join board instead. This is the
-   general rule that fork already taught: **the parent is the last passed board,
-   named at signature rather than assumed at drafting.**
+4. **CFD-200's parent does NOT change. The general rule stands; this item's
+   application of it was wrong and is withdrawn — CORRECTED 2026-08-28.** The rule
+   the fork taught is right and is kept: **the parent is the last passed board,
+   named at signature rather than assumed at drafting.** What was wrong was
+   applying it here, to an unsigned beat, on the drafting date.
+
+   As written this item said CFD-200 "re-bases onto the join board instead." It
+   was filed the same way in CFD-203's Linear description **at the same minute**
+   (canon `d245131`, 2026-08-27T17:47:00Z; CFD-203 created 17:47:37Z) — one claim
+   written twice, not two sources. `docs/cfd-200-beat.md` refuted it three and a
+   half hours later (`f4c7b8b`, 21:18:32Z), holding §7.1 in hand and citing it.
+   **That refutation is the later decision and it governs.** Its Seat still names
+   `/dawnspur-storm/` and should. Three reasons, the third structural:
+
+   - **Named at signature.** CFD-200 is unsigned and third in a three-board queue
+     — line, storm, rustfall. It signs *after* the storm sitting, so the last
+     passed board at its signature is the storm board. Re-basing it today is
+     precisely "assumed at drafting," which this item's own clause forbids.
+   - **Insertion is not displacement.** §7.1 deferred weather; it did not cancel
+     it, and says so in terms — the storm beat is "held for the sitting that
+     carries weather." A board inserted *before* the storm does not become the
+     parent of the storm's child.
+   - **§7's kept half forbids the re-base.** CFD-200's one new system is the yard,
+     and every word of its Engineer answer runs on *inherited* weather: the storm
+     covering a raider, the storm drawing a tier, the stormbird arriving mid-run
+     with PULL OUT lit. On the join board CFD-200 would have to originate weather
+     itself, making weather a **second** new system on its board. §7.1 states it
+     leaves §7's kept half untouched; as written, this item broke it.
+
+   **The line board passing on 2026-08-28 does not reopen this.** That pass fixes
+   **CFD-201's** parent, which is what it was for. It moves nothing for CFD-200.
+
+   **The live conditional, so the rule is not lost with the error.** If the storm
+   board is killed rather than passed, CFD-200 re-bases onto whatever did pass —
+   which would then be the join board. `docs/cfd-200-beat.md` already carries that
+   contingency; this item did not, which is why it read as a ruling rather than a
+   guess.
+
+   **Raised and refused four times, and the two counts on record are not a
+   disagreement.** `docs/cfd-200-beat.md` says *three* because it was written at
+   `f4c7b8b` and counts what had happened by then: CFD-203's author twice on
+   2026-08-27, and CFD-200's own author once. **The fourth is this correction** —
+   the same re-base was reached for again on 2026-08-28, off this very item, and
+   that raise is recorded nowhere but here.
+
+   It recurs because canon is read first and this item said the wrong thing in
+   quotable form while the refutation sat a thousand lines into another document.
+   **Withdrawing it here fixes one of two copies:** the same sentence — *"the
+   parent is the last passed board, named at signature rather than assumed at
+   drafting"*, applied there to CFD-200 — is still live in CFD-203's Linear
+   description. Do not re-open this from either. If you still disagree, the
+   argument to beat is in `docs/cfd-200-beat.md`, the paragraph beginning *"This
+   beat's parent is still `/dawnspur-storm/`, and that is not a leftover."*
 
 ### 7.2 Sitting length follows the sitting's ambition — RULED, David, 2026-08-27
 
