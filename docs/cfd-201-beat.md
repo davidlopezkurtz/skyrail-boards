@@ -1073,7 +1073,11 @@ is no longer a tie.** Re-derived:
 The summit leads by **exactly 2.000 marks** — the trim's whole new stake — and
 trails by **one food**. **Those do not net, and this beat may not pretend they do:**
 the join board forbids an exchange in either direction by name, so the crossover row
-is now genuinely incommensurable rather than flat. The variance argument still
+is now genuinely incommensurable rather than flat. **This is not a gap in the
+analysis — it is canon §7.3**, the recorded price of the no-exchange rule: on a
+joined board any two options differing in both currencies are unrankable, and the
+more the game joins the more such pairs there are. Read it there before trying to
+fill this in. The variance argument still
 applies to the marks column and no longer settles the row on its own.
 
 **What survives:** the summit stops losing here rather than starting to win, because

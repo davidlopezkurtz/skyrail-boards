@@ -488,3 +488,62 @@ Two things follow, and both are testable:
 
 This retires "sits get longer" as a cost in §7's list. It is a property to
 design, not a price to pay.
+
+### 7.3 A joined board has unrankable options, and that is the price of the no-exchange rule — RULED, David, 2026-08-28
+
+**The rule this is a consequence of.** The join board makes provisions food and
+forbids conversion by name — `public/dawnspur-line/sim.js`: *"food buys exactly one
+thing … there is no exchange in either direction."* That rule is what stops the
+terrace becoming a second wallet, and it is kept.
+
+**Its unavoidable consequence: any two options that differ in BOTH currencies
+cannot be ranked.** With no exchange rate there is no shadow price, so "two marks
+better and one food worse" has no sum. It is not a close call to be resolved with
+more arithmetic — it is a comparison the board has deliberately given up the
+ability to make.
+
+**The worked instance, measured 2026-08-28** (`docs/cfd-201-beat.md`, the
+ladder-inversion appendix). At the 0W+1R roster, after the trim was re-priced to two
+marks:
+
+| at 0W+1R | marks EV | food staked |
+| --- | --- | --- |
+| trimmed Mosswake | 7.128 | 2 |
+| hot Cloud Basin | 9.128 | 3 |
+
+The summit leads by exactly 2.000 marks and trails by one food. That row had
+previously been published as an **exact tie on both stocks**, which was the table's
+sharpest claim; the re-pricing broke it, and the honest replacement is not a new
+winner but **no ranking at all**. The sentence *"2W is the first roster at which the
+storm run is the best business"* was withdrawn rather than repaired.
+
+**This is a PROPERTY, not a defect, and it must be stated rather than rediscovered
+per row.** David: *"the join's own no-exchange rule guarantees this recurs. Any two
+options differing in both currencies are incomparable, and the more the board joins,
+the more such pairs exist. That's not a defect, it's the price of the rule … A future
+reader hitting an unranked pair will assume something is missing."*
+
+**It gets worse as the game gets better, which is the part to internalise.** Every
+future join adds a stock, and every added stock multiplies the pairs that differ in
+more than one of them. A board with one currency ranks everything; the joined board
+ranks less; a board that joins again ranks less still. **The count of unrankable
+pairs is a measure of how joined the game is, not of how broken the analysis is.**
+
+**What this obliges an author to do:**
+
+- **Publish the columns, never a synthesised total.** A single number for a
+  cross-currency comparison is a shadow price smuggled in, and the board forbids it.
+  Two columns and a stated "these do not net" is the honest form.
+- **Say the row is unranked, out loud, at the row.** Silence reads as an omission and
+  the next reader will try to fill it.
+- **Do not resolve it with a design change by reflex.** An unranked pair is a real
+  decision handed to the player — the whole point of two stocks is that the player
+  weighs them with something the board cannot. Re-pricing to force a ranking is
+  removing a decision, and §7.1 is on record that the join is worth its costs.
+- **A sit can rank what arithmetic cannot.** "Whether a player trades one food for two
+  marks at that rung" is a sit question. Put it on the card rather than in the table.
+
+**The guard against the wrong fix.** If a future beat proposes a food-to-marks
+exchange rate, a shadow price, or any single-number netting of the two stocks, it is
+proposing to undo the join's one new system, and it must be argued as that rather
+than landed as a tuning convenience.
