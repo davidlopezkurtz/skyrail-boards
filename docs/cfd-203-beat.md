@@ -1508,12 +1508,43 @@ it has to be re-derived.
 
 ---
 
-## The sit — PLAYED TO CONCLUSION, David, 2026-08-27. VERDICT OUTSTANDING.
+## The sit — played to conclusion 2026-08-27, **PASSED by David 2026-08-28**.
 
-**No verdict was given and none is inferred.** His words were *"board played to
-its conclusion"* — a statement of fact, not a pass. This board is **not** a
-passed board, does not carry a passed board's protections, and must not be
-recorded as one. When the verdict comes it goes here.
+**David's verdict, 2026-08-28, in full: _"passes"_.**
+
+The sitting was played on 2026-08-27 and recorded that day as played-to-
+conclusion with the verdict explicitly OUTSTANDING — his words then were *"board
+played to its conclusion"*, a statement of fact, and no pass was inferred from
+it. The two are recorded separately on purpose, and the day between them is the
+evidence: a completed sitting is not a verdict, and this project does not
+conflate them.
+
+**What the pass makes true from this moment:**
+
+- **The join is inherited.** Provisions are food the terrace grows; the desk and
+  the terrace are one economy. §7 admits a system as inherited only if it passed
+  a sit. This one has.
+- **`/dawnspur-line/` is a passed board** and carries a passed board's
+  protections. Its bytes are pinned in `test/dawnspur-line.test.js` as of the
+  commit that records this verdict — the guard was renamed from five live boards
+  to six, and mutation-verified: corrupting one pin reddens exactly one test,
+  212 pass / 1 fail, naming `public/dawnspur-line/sim.js` by path. Until it
+  passed, pinning its own bytes here would have been circular.
+- **It is the parent for the next sitting**, named at signature per §7.1.4.
+- **CFD-201 re-bases onto it, and that is a rescue rather than damage.** Measured
+  by exhaustive DP against the parent CFD-201 is currently drafted against
+  (dispatch + scale), deleting BOTH halves of the storm's terrace effect costs
+  **0.0000 marks** at every horizon measured, and UP and TEND are each worth
+  0.0000 — the optimal player never leaves greenhouse level 1, so
+  `min(level, reserve)` has no level to cap and Seam 1 collects nothing. Against
+  THIS board it collects on every send, because every send eats food and food has
+  exactly one source. Seam 1's own words — *"if this is wrong, the whole board is
+  wrong, because it is the only place the reserve has teeth"* — are satisfied only
+  under this parent.
+- **TEND is rescued by the same measurement.** It was cut from this board as
+  DOMINATED. Under this board as parent, holding the ground costs about two
+  Chartered sends per eighteen turns and buys the only route to the FULL
+  register: a stated price for a named thing, which is a real R10 choice.
 
 Sat on the durable host at **`3588bb4`**, `/dawnspur-line/` sim `18b1324f`.
 

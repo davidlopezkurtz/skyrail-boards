@@ -176,10 +176,14 @@ function sittings(seed, runs, steps, each, opts) {
 
 // ---------------------------------------------------------------- guards
 // KILL: "Live shas are overwritten. Any existing board's bytes are touched."
-// FIVE passed or preserved boards, and none of them moves.
+// SIX passed or preserved boards, and none of them moves. The line board joined
+// this list on 2026-08-28, when David passed it: a passed board is protected the
+// moment it passes, and until then pinning its own bytes here would be circular.
 
-test("guard: all five live boards' blobs are unchanged at HEAD", () => {
+test("guard: all six live boards' blobs are unchanged at HEAD", () => {
   const pins = {
+    "sit/dawnspur-line/sim.js": "18b1324f33114a1dd6b5bf4c8905f2facac80286d5470b0c803ba47877040e65",
+    "public/dawnspur-line/sim.js": "18b1324f33114a1dd6b5bf4c8905f2facac80286d5470b0c803ba47877040e65",
     "sit/dawnspur-dispatch/sim.js": "576ce2b6de31dd70653d90d45d203c15067e41aaa0624bba2f09245b31bfa74d",
     "public/dawnspur-dispatch/sim.js": "576ce2b6de31dd70653d90d45d203c15067e41aaa0624bba2f09245b31bfa74d",
     "sit/dawnspur-scale/sim.js": "953368a11dcf0a7f2478e59e4b572ca458a0d404b0dfba78822d04fb306db31c",
