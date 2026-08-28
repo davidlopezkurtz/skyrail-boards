@@ -7,7 +7,47 @@ board" and keeps "one NEW system per sitting". This board is `/dawnspur-dispatch
 desk and `/dawnspur-scale/`'s terrace on one town under one sky, with **weather as
 the single new system**. Drafted under §6's canon-check discipline. Card: CFD-201.
 
-**NOT SIGNED.** Awaiting PM citation review, then David.
+## SIGNED — David, 2026-08-28
+
+His words: *"So sign, with the counter."*
+
+**Signature was HELD earlier the same day and then released, and the reason it was
+released is not the reason it was held.** He held because the trim's take-up rate
+had no instrument, and the trim is this board's newest priced decision:
+
+> *"Signing a beat whose newest mechanic is unmeasurable means the sit is testing
+> the trim and the storm at once, and you won't be able to attribute a bad result.
+> If a storm sim is cheap, it's cheaper than an ambiguous sitting."*
+
+**The sim was then measured and found IMPOSSIBLE, not expensive.** The trim costs
+marks and buys reliability on a stake denominated in food. Any solver needs a total
+order over outcomes, and canon §7.3 forbids a marks-per-food exchange by name — so
+**whatever rate a solver assumed would be its answer.** The instrument would report
+its own premise. The marks-EV solver that *can* be written was run and returns
+"never trim", which is a designed property of the price rather than a finding.
+
+**So the hold's stated route was closed rather than satisfied, and the attribution
+it was protecting is bought another way.** `runsTrimmed`, specified in *Ends*, is
+under ten shipped lines against a denominator that already exists, and it records
+what a player *did* where a solver could only ever have produced what a player
+*should*. David: *"That's better than the thing I asked for."*
+
+**Three refusals travel with the signature and are not to be re-opened:**
+
+1. **No stripped trim probe.** Canon §7 forbids it by name, his own dispatch
+   sitting measured it (*"the sitting was thin"*), and mechanically two marks with
+   no competing sink is *free* — the exact cell the pricing ruling was issued
+   against. It would return "players don't pay for chance" as a near-guaranteed
+   null. *"Cheap instruments that answer the wrong question are worse than no
+   instrument."*
+2. **No storm-lite board.** Dropping `min(level, reserve)` removes the only place
+   the reserve has teeth, and the storm becomes free money on the Chartered line.
+3. **No exchange rate to rescue a comparison.** Canon §7.3, and the guard there.
+
+**What the signature does NOT settle**, carried to the sit card rather than buried:
+the counter tells you whether you paid, never whether two marks is the right price.
+
+Card: CFD-201.
 
 The sitting exists to make two sentences that are already live on a passed board
 mean different things. `sit/dawnspur-scale/sim.js:31-32`, shipped, said to a
@@ -565,11 +605,34 @@ inherited, keyed on `runsTurnedBack` exactly as CFD-196 was sent back to fix; an
 **the ground it was left on**, which is the scale board's two end-sentences
 re-pointed at a storm that actually happened.
 
+**`runsTrimmed` ships, and it is the instrument this beat was signed on.** David
+held signature on 2026-08-28 because the trim's take-up rate had no instrument, and
+then ruled that a storm sim **cannot supply one**: the trim costs marks and buys
+reliability on a stake denominated in food, so any solver needs a marks-per-food
+rate, and canon §7.3 forbids one by name. **Whatever rate a solver assumed would BE
+its answer.** The counter answers the question the solver could not, because it
+records what a player did rather than what a player should do.
+
+It is nearly free. `commitSend` must already distinguish a trimmed run — different
+chance, different pay rate, two more marks staked, its own Ranger sentence — so only
+the counter is new: one field in the state block, one increment beside `runsOut`,
+one line in `record()`, one clause in `ledgerSentence` using the existing helpers.
+
+**It reads as a RATE and never as a count, and the denominator already exists**:
+trimmed sends are a strict subset of storm sends, and the closing sentence already
+reports storm sends. *"Two of those runs went out under storm, one of them trimmed"*
+is the reading, in the player's own hand, at the stop.
+
+**Its limit is stated wherever it is read.** The counter says whether the player
+paid. It never says whether two marks is the right price — see *What the sit must
+report*, which carries that sentence to the card so the first rate that comes back
+is not read as a verdict on the number.
+
 - *"The basin cargo is home out of the storm. Nine runs out, six cargoes banked,
   three turned back, five from the terrace and 1 mark lost on the way; two of
-  those runs went out under storm. **The ground is bare: the storm was met with
-  nothing banked.** The record keeps what came home; the line past the basin is
-  the next sitting's."*
+  those runs went out under storm, **one of them trimmed**. **The ground is bare:
+  the storm was met with nothing banked.** The record keeps what came home; the
+  line past the basin is the next sitting's."*
   (Two counters, not one, and the loss clause's shape is the join parent's own
   `ledgerSentence`. A marks-only clause is a defect this lineage already found
   and fixed: Mosswake's toll is 0, so three turned-back Mosswake runs lose six
@@ -642,6 +705,40 @@ this sitting turns it on. **REFUSED** means it does not exist here and why.
 | Reading or writing another board's persisted state | **REFUSED** — the lineage lock | — |
 | HUD | **INHERITED** — one line, marks | both parents |
 | End-sentences, per-commit and terminal | **INHERITED and extended** — the terminal now reads the desk and the ground | both parents |
+| **`runsTrimmed`, reported as a rate against storm sends** | **ON** — the instrument this beat is signed on, replacing a sim that cannot exist (§7.3) | new |
+
+---
+
+## What the sit must report
+
+Two questions travel to this card, and one caveat travels with them.
+
+**The TEND question, inherited from CFD-203 and owed since the cut.** David:
+*"Ask the sitting to report whether anyone tended at all, and why. If nobody
+touches it, that's the answer. If they tend and can't say what it bought them,
+TEND has become a habit carried from a board that no longer exists."* It was
+superseded there because the join cut TEND; the verb returns here with a reckoning
+behind it, so this is the sitting that can ask it.
+
+**The trim question, and it is what signature was held for.** *At which storm send
+did you consider the trim and not take it?* `runsTrimmed` records the sends that
+were trimmed; only the sitting can recover the ones that were considered and
+refused, and the refusals are where the price lives.
+
+**THE CAVEAT, WRITTEN HERE BECAUSE THIS IS WHERE THE READING IS TAKEN.** David,
+2026-08-28, ruling on the counter:
+
+> *"The counter tells you whether you paid, never whether two is the right price.
+> That limit should be written where the reading is taken, or the first rate that
+> comes back will get read as a verdict on the number."*
+
+So: a low rate does **not** establish that two marks is too dear, and a high rate
+does not establish that it is cheap. A sitting with few storm sends reports a rate
+whose denominator is too small to read at all, and no rate separates *"I did not
+trim because the price is wrong"* from *"no storm send ever mattered to me."* The
+sit-card question above closes most of that gap and not all of it. **What the
+counter changes is that the ambiguity arrives with a number attached instead of a
+recollection** — which is an improvement, and is not a measurement of the price.
 
 ---
 
@@ -861,6 +958,11 @@ list is the mitigation.
   names a crew that did not ride.
 - The terminal sentence does not read the desk's record, or does not read the
   ground, or reads the ground in fewer than three registers.
+- The terminal sentence does not report how many storm sends were trimmed, or
+  reports that count without the storm-send denominator beside it. A bare count is
+  not a rate and cannot be read.
+- `runsTrimmed` counts anything but a committed trimmed send: it moves on an
+  untrimmed send, on a trim that was offered and not taken, or on a MEET.
 - Live shas are overwritten (`18b1324f`, `576ce2b6`, `953368a1`, `292d6645`,
   `395c18f2`, `5ad814e6`). Any existing board's bytes are touched — the `sit/`
   copy as well as the `public/` one, which is how `test/dawnspur-line.test.js`
