@@ -351,7 +351,7 @@ Warden and 2 a Ranger, the **Chartered toll, 1**, TEND 1, UP 3 / 4 / 5. **The
 provisions are no longer a marks sink at all** — `commitSend` takes them off the
 stores (`s.stores -= r.provisions`) and takes only the toll off the wallet — so a
 send's stake reads in two units and never one: **0m 0f at the halt, 0m 2f at
-Mosswake, 1m 3f at the basin**, and the trimmed run stakes one food more.
+Mosswake, 1m 3f at the basin**, and the trimmed run stakes two marks more.
 
 **The terrace grows the second stock: CARRY yields FOOD, +1 to +4, capped by what
 the stores can still hold.**
@@ -705,7 +705,10 @@ list is the mitigation.
 
 - *(interaction)* A carry in clear weather or under the bird pays anything but the
   level, at any reserve, bare included.
-- *(interaction)* A carry in a storm pays anything but `min(level, reserve)`.
+- *(interaction)* A carry in a storm pays anything but
+  `min(level, storesCap − stores, reserve)` — the three-way min, per the
+  shorthand's own definition above. `min(level, reserve)` alone is a licence to
+  overflow the stores and is not what this kills.
 - A carry in a storm warns, is darkened, or is refused; a carry at reserve 0 in a
   storm is not lit.
 - The ground is drawn by anything but a carry, a storm turn, or both on the same
@@ -946,19 +949,29 @@ have.
   costs two and a half to four times the whole payoff at level 1. So the food lever
   has no live setting at the bottom of the ladder: at 0 the trim is a free
   storm-eraser on the Core Line, which is trap 2; at 1 it is already dead at level 1
-  (net 2.46 to 3.18, against this beat's own "never the EV play" floor of 1.73) and
-  free at level 4; and holding it flat needs `level` provisions, which is flat at
-  3.46 to 4.18 gross and dead at every rung. **A mark is worth a mark at every
+  (net 2.46 to 3.18 against a payoff of 1.00 — it costs two and a half to three
+  times what it returns) and free at level 4; and holding it flat needs `level`
+  provisions, which is flat at 3.46 to 4.18 gross and dead at every rung. **A mark is worth a mark at every
   level**, which is what makes it the only instrument on this board whose grain fits
   inside a 1.00-to-1.40-mark decision — turns and reserve steps are level-invariant
   too and are three to five times too big, and drawing the ground is separately a
   Kill line. **2 is the only whole mark that is neither free nor dead**, by the same
-  argument that sized the Chartered storm pay at 24: at 1 the trim is level with the
-  halt and 0.40 ahead on Mosswake at every level, which is the exact cell the ruling
-  was issued against; at 3 the halt trim is 2.00 against it, inside the 1.73-to-2.60
-  band this beat itself calls "never the EV play"; at 2 it costs 1.00 on the halt
-  and 0.60 on Mosswake, at every level and every roster. That the Ranger also costs
-  2 is a coincidence and is **not** the derivation.
+  argument that sized the Chartered storm pay at 24, and measured against the trim's
+  OWN payoff at every step: at 1 the trim is level with the halt and 0.40 ahead on
+  Mosswake at every level, which is the exact cell the ruling was issued against; at
+  3 the halt trim costs 2.00 net against that same 1.00 payoff, twice what it
+  returns; at 2 it costs 1.00 on the halt and 0.60 on Mosswake, at every level and
+  every roster. That the Ranger also costs 2 is a coincidence and is **not** the
+  derivation.
+
+  **The yardstick is the trim's own payoff deliberately, and an earlier draft of this
+  paragraph got it wrong in a way worth recording.** It measured deadness against the
+  Cloud Basin's "never the EV play" band — but that band is **a function of the
+  trim's price**: 1.73 to 2.60 at a one-mark trim, 2.73 to 3.60 at two. Using it to
+  CHOOSE the trim's price is circular, and it silently re-answers itself every time
+  the price moves. The payoff is `pay × 0.10` whatever the stake, so it is fixed,
+  and it is the only yardstick here that can settle the question rather than restate
+  it.
 
   **This resolves a contradiction the beat has carried since it was drafted, and it
   is a repair rather than a change of mind.** Two lines disagreed about the unit:
@@ -1058,7 +1071,7 @@ with one more food than the spine, and this board prices food in turns, not mark
 table's sharpest published claim.** 0W+1R is the only crossover-candidate roster
 with a Ranger on it, so the trim is live. **Before the ruling** a trimmed Mosswake
 paid `0.652 × 14 = 9.128` marks and staked 2+1 = 3 food, against a hot basin run
-at `0.422 × 24 — 1 = 9.128` marks and 3 food: the same marks and the same food,
+at `0.422 × 24 − 1 = 9.128` marks and 3 food: the same marks and the same food,
 at 65.2% instead of 42.2%, so the summit was matched on both stocks and beaten on
 variance.
 
@@ -1134,7 +1147,7 @@ Four independent reasons, each testable:
    stake — and, since the ruling of 2026-08-28, it costs the same at every rung of
    the greenhouse, so no amount of building buys the question away. Buying the Ranger changes what the question is; it does not remove it.
 3. **It is strictly wrong at the summit.** The route the sitting stops on is the one
-   route where trimming is the worse play by 1.73 to 2.60 expected marks. The
+   route where trimming is the worse play by 2.73 to 3.60 expected marks. The
    Ranger cannot buy the player out of the storm run that ends the sitting.
 4. **It does not touch the ground at all.** The storm's other half — the draw and
    the capped carry — is untouched by any roster. **Weather cannot be bought off,
