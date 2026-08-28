@@ -26,22 +26,32 @@ comes, or the scale board was lying.
 ## Seat
 
 Beat only. No implement. No deploy. No merge. Do not touch `public/dawnspur`,
-`public/dawnspur-heat`, `public/dawnspur-scale`, `public/dawnspur-dispatch`, or
-`public/convoy-stop`. Do not `workflow_dispatch`.
+`public/dawnspur-heat`, `public/dawnspur-scale`, `public/dawnspur-dispatch`,
+`public/dawnspur-line`, or `public/convoy-stop` — **nor the `sit/` copy of any
+board that has one, nor any other board directory present at HEAD.** The
+enumeration is a courtesy; the catch-all is the rule. This list said five when
+`git ls-tree -r --name-only HEAD public/` already returned six, and it named only
+`public/` while the lineage lock in `test/dawnspur-line.test.js` pins `sit/` and
+`public/` alike. Do not `workflow_dispatch`.
 
 **Pins are the live boards, never `main`** (CFD-200's correction of CFD-196's
-stale `main` pin stands). Re-measured at authoring, `git show HEAD:public/<p>/sim.js
-| sha256sum`, at boards `ccd5384`:
+stale `main` pin stands). Re-measured, `git show HEAD:public/<p>/sim.js
+| sha256sum`, at boards `7f58c8f`. The five rows recorded at `ccd5384` all
+re-measure **unchanged**; `/dawnspur-line/` is the added row, and it did not exist
+in the tree at that stamp:
 
 | board | sim sha256 (first 8) | index sha256 (first 8) |
 | --- | --- | --- |
+| `/dawnspur-line/` | `18b1324f` | `b6f21db0` |
 | `/dawnspur-dispatch/` | `576ce2b6` | `31aead60` |
 | `/dawnspur-scale/` | `953368a1` | `5d2f452f` |
 | `/dawnspur-heat/` | `292d6645` | — |
 | `/dawnspur/` (the preserved kill) | `395c18f2` | — |
 | `/convoy-stop/` | `5ad814e6` | — |
 
-All five stand. Both parents **PASSED** their sits and neither gets overwritten.
+All six stand. `/dawnspur-line/` **PASSED** its sit on 2026-08-28 and is this
+board's parent; `/dawnspur-dispatch/` and `/dawnspur-scale/` passed theirs before
+it. None gets overwritten.
 
 **The new board lands at `/dawnspur-storm/`.** Argued: it is Dawnspur's board —
 the cumulative rule makes the town the unit, not the loop — and the new system is
@@ -633,8 +643,10 @@ list is the mitigation.
   names a crew that did not ride.
 - The terminal sentence does not read the desk's record, or does not read the
   ground, or reads the ground in fewer than three registers.
-- Live shas are overwritten (`576ce2b6`, `953368a1`, `292d6645`, `395c18f2`,
-  `5ad814e6`). Any existing board's bytes are touched.
+- Live shas are overwritten (`18b1324f`, `576ce2b6`, `953368a1`, `292d6645`,
+  `395c18f2`, `5ad814e6`). Any existing board's bytes are touched — the `sit/`
+  copy as well as the `public/` one, which is how `test/dawnspur-line.test.js`
+  grades it.
 - This board reads or writes any other board's persisted state. *(Naming the town
   in copy is permitted — CFD-196 Amendment 1, ruling 2. Touching another board's
   state is not.)*
