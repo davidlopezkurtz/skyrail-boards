@@ -136,10 +136,13 @@ The scale board's `canCarry()` is `!topped()` and `canTend()` carries the same
 guard. That was not a rule about carrying; it was the terminal rule — *topped at
 4 is the one stop*, so at the stop all jobs go out.
 
-This board's stop is not topping. So the guard re-attaches to **this board's**
-stop: CARRY and TEND are lit until the sitting stops. UP still goes dark at level
-4, because at level 4 there is nothing to buy — that guard is about the ladder and
-it stays.
+On this board topping does not stop the sitting; it **arms** it, and a Chartered
+cargo home out of a storm fires it (RULED — David 2026-08-27, ruling 5; canon
+§7.2). So the guard re-attaches to **this board's** stop: CARRY and TEND are lit
+until the sitting stops — which is now strictly *after* topping, never at it, so
+the re-attached guard has real work to do rather than none. UP still goes dark at
+level 4, because at level 4 there is nothing to buy — that guard is about the
+ladder and it stays.
 
 Re-expressed, not moved. A topped greenhouse that cannot be carried from is a
 level-4 asset that produces nothing, which is the opposite of what the ladder is
@@ -153,7 +156,15 @@ board the name collides**, and one of the two is a route with stated odds and a
 committed stake while the other is a free +2 with a per-carry lock.
 
 The route wins. The scale board's B verb is **REFUSED** on this board, by name,
-for the collision — not for its mechanics, which were fine. §7 says a sitting
+for the collision — not for its mechanics, which were fine. **The collision is why
+a choice had to be made; it is not the whole ground the cut was granted on, and
+this Seam must say so.** David's ruled words are *"cutting redundant is cheaper
+than renaming colliding"* (2026-08-27, ruling 1 below), and the precondition he
+attached is the two-vehicle claim: the terrace must have work while the train is
+out. `/dawnspur-line/` verified that condition in shipped code rather than
+assuming it — `canCarry()` reads no `away` — and Kill-listed it there under *The
+join itself*. This board inherits the cut and its condition together. Break the
+two-vehicle claim and the cut falls, whatever the collision argument says. §7 says a sitting
 *inherits what has passed*; it does not say a join may not resolve a collision the
 join itself creates. This is the first time an inherited system has been dropped
 and it should be read as a precedent being set, not a detail.
@@ -299,12 +310,15 @@ What weather adds, and only this:
 - **TRIM — a Ranger's send.** With a Ranger on the roster, every route in a storm
   offers a second send: the crew takes the long way round the weather. **A trimmed
   run is quoted at the clear-weather chance, pays the clear-weather rate, and
-  stakes one more provision** for the stores the long way eats. Without a Ranger,
-  the storm send is the only send.
+  stakes two marks more** for the days the long way adds. Without a Ranger, the
+  storm send is the only send.
 
-**Stakes do not move.** 0 / 2 / 3+1 in every sky, verbatim from the passed board.
-A trimmed run's extra provision is that option's own stake, not a change to the
-route's.
+**Stakes do not move, and after the join they are read in two units.** 0m 0f /
+0m 2f / 1m 3f in every sky — the Chartered toll off the wallet, the provisions
+off the terrace, verbatim from the passed board. A trimmed run's extra **two
+marks** are that option's own stake, not a change to the route's; they are marks
+rather than a provision by David's ruling of 2026-08-28, and the derivation is
+under *New-play, flagged*.
 
 ### The terrace
 
@@ -328,9 +342,21 @@ never the stake.
 
 ### The wallet
 
-One line, marks. Faucets: the carry (+1 to +4), the routes (+10 / +14 / +18, and
-+24 at the basin in a storm). Sinks: MUSTER 3 a Warden and 2 a Ranger, the stakes
-0 / 2 / 4, TEND 1, UP 3 / 4 / 5. **Heat is not on this board and is not a
+One line, marks, and after the join it has exactly **one** faucet. Faucets: the
+routes (+10 / +14 / +18, and +24 at the basin in a storm) — **and nothing else.**
+The carry mints no marks on this lineage:
+`grep -n "s\.marks *+=" public/dawnspur-line/sim.js` returns one line,
+`s.marks += r.pays`, and CARRY writes `s.stores` (`sim.js:383`). Sinks: MUSTER 3 a
+Warden and 2 a Ranger, the **Chartered toll, 1**, TEND 1, UP 3 / 4 / 5. **The
+provisions are no longer a marks sink at all** — `commitSend` takes them off the
+stores (`s.stores -= r.provisions`) and takes only the toll off the wallet — so a
+send's stake reads in two units and never one: **0m 0f at the halt, 0m 2f at
+Mosswake, 1m 3f at the basin**, and the trimmed run stakes one food more.
+
+**The terrace grows the second stock: CARRY yields FOOD, +1 to +4, capped by what
+the stores can still hold.**
+
+ **Heat is not on this board and is not a
 currency here**: the keel-fire bank and the hearth stand as scenery from the heat
 sitting exactly as they do on both parents, and nothing on this board reads or
 writes either. R1 holds because the collision it forbids never occurs.
@@ -340,9 +366,37 @@ become it.** A single Mosswake cargo pays 14 and the whole greenhouse ladder cos
 12, so on this board the climb is not a marks problem. It is a turns problem: three
 levels are three turns, four steps of reserve are four turns, and there are seven
 workable turns between one storm and the next. **TEND's price is 1 mark on its face
-and one trip in fact** — roughly eight to nine expected marks of forgone send — and
-that is the number the player is actually paying. Cost 2 of §7, answered without
-moving a single inherited price.
+and one TURN in fact — one turn, not one run**, and the beat's earlier figure
+charged it a run. "Eight to nine expected marks" is the *whole-run* EV of the best
+clear send under the parent that took the stake in marks (Mosswake 8.98 at 4
+Wardens, 9.14 at 4W+1R), and a send is SEND **plus** MEET. One TEND buys one turn,
+so the rate that prices it is marks per turn, not marks per run.
+
+Re-derived under the join, where a stake is food and only the Chartered toll is
+marks, and charging every run the carry-turns that grew its food — n food at
+greenhouse level L costs n/L carry-turns — the best send per turn is:
+
+| roster | greenhouse 1-3 | greenhouse 4 |
+| --- | --- | --- |
+| bare | **Dawnspur Halt 3.40** | **Mosswake 3.58** |
+| 4W | **Dawnspur Halt 4.12** | **Mosswake 4.39** |
+| 4W, 1R | **Dawnspur Halt 4.18** | **Mosswake 4.46** |
+
+**So one TEND forgoes between 3.40 and 4.46 expected marks, not eight to nine —
+overstated 2.0 to 2.7 times, and almost the whole of that is the commit count.**
+The food charge itself very nearly vanishes, and the reason is the part worth
+writing down: **the player's answer to a food charge is to run the route with no
+food in it.** Mosswake stakes 2 food and the Halt stakes none, so below level 4 the
+Halt is the better turn even though it is the worse run, and Mosswake takes the
+lead back only at level 4, by 0.18 to 0.28 a turn. With that substitution allowed,
+charging the food costs the rate about a fifth at level 4 and about a quarter below
+it. Forcing Mosswake at every level — charging the food and not letting the player
+answer it — reads as a full half at level 1, and that is the figure this paragraph
+would have published had the substitution gone unchecked.
+
+**The argument survives at about half the published magnitude and its shape does
+not change**: turns are the binding constraint, and TEND's face price is still not
+its price. Cost 2 of §7, answered without moving a single inherited price.
 
 Named as the join's known weakness, because it is one: **the terrace transacts in
 ones and fours and the desk transacts in tens and twenties.** The strongest fix —
@@ -392,8 +446,8 @@ Amendment 1 unchanged: a provisional percent is typed apart and dies with the
 gesture that showed it, on every path out, in the same frame.
 
 **The trim is a second face on the same card, and only in a storm, and only with a
-Ranger.** It states its own three figures — clear percent, clear pay, stake plus
-one — so the fork is read without arithmetic. It never appears in clear weather and
+Ranger.** It states its own three figures — clear percent, clear pay, the route's stake
+and two marks — so the fork is read without arithmetic. It never appears in clear weather and
 never appears without the Ranger.
 
 The away state is a state, not a motion picture, unchanged: platform empty, the
@@ -426,7 +480,27 @@ Every commit the weather changes ends in a sentence, and so does the sitting.
 - To clear: *"The storm has gone off east. The sun is back on the terrace."*
 
 **The bill, said out loud when it is presented.** A carry the storm caps gets a
-sentence; a carry that pays full does not, in any sky.
+sentence; a carry that pays full does not, in any sky. **The trigger is the storm's
+cap and only the storm's cap**, because on the join parent the carry is already
+capped for a second, unrelated reason: `carryLoad()` is
+`Math.min(level, storesCap − stores)`, with the cap **derived** rather than chosen —
+`maxProvisions + maxLevel − 1` = 6 — so a level-4 carry pays +3 at stores 3, +2 at
+stores 4 and +1 at stores 5 **in clear weather**. Measured across every level and
+every stores value on the shipped parent, and the binding state is reached by play:
+with the ladder bought and climbed first, a single carry stands at level 4, stores 4,
+**reserve 3** — the headroom binds where the reserve does not.
+
+So the carry is a **three-way** min — `min(level, storesCap − stores, reserve)` — and
+`min(level, reserve)` as written elsewhere in this beat is **shorthand for that third
+term**, never a licence to overflow the stores. The inherited *"pays the level in
+full at every reserve, bare included"* is the same shorthand: it means full **whenever
+the stores can hold it**, which is what the parent has always done. Both readings bind
+the Kill list, which is otherwise red on the parent's own correct behaviour.
+
+The bill sentence names the bank, so firing it on a carry that is short only because
+the stores are nearly full would disclose the reserve **in clear weather** — which is
+exactly what the inherited *"gives no sign"* forbids. The bill fires when the reserve
+is the binding term, and never otherwise.
 
 - Capped with something banked: *"The sun is off the terrace. The bank covered 2
   of the level's 4."*
@@ -445,20 +519,46 @@ as its agent; a trimmed run names the Ranger.
 - *"The Wardens brought the Cloud Basin cargo home out of the storm. The desk
   banks 24."*
 - *"The storm over the basin. The train turned for home with the haul unbanked.
-  The provisions and the Chartered toll are spent — 4 marks — and nothing comes
-  back; the route paid nothing; the Wardens and the train are home, and the desk
-  stands."*
+  Three from the terrace and the Chartered toll, and nothing comes back; the route
+  paid nothing; the Wardens and the train are home, and the desk stands."*
+  (The spent-clause is the join parent's own, printed verbatim by
+  `public/dawnspur-line/sim.js` `turnedBackSentence` at provisions 3 and toll 1.
+  The stake is no longer four marks and the sentence no longer says so. Its
+  siblings, also printed by the shipped parent: Mosswake — *"Two from the terrace
+  and nothing comes back"*; the halt — *"The free hop staked nothing and nothing
+  comes back"*.)
 - *"The Ranger took them round the weather. The Wardens brought the Cloud Basin
   cargo home. The desk banks 18."*
 
-**The stop is the first Chartered cargo banked out of a storm.** A Cloud Basin send
-committed while the storm is over the town and met home paid. It is the whole
-sitting in one condition: you must bank a cargo to open the charter, hold four
-marks, be standing there when the weather turns, and take the desperate offer at
-41 to 57 percent. A turned-back storm run is deliberately not an ending — the stake
-dies, the desk stands, the halt is still lit, the storm comes back in nine turns.
-Topping the terrace is deliberately not an ending either; it gets its own sentence
-and the sitting goes on.
+**The arming, said out loud.** CFD-203's sentence, carried from a passed board with
+its one clause added:
+
+> *"The terrace is topped. The next Chartered cargo home out of a storm ends the
+> sitting."*
+
+**Topping the terrace arms the ending. The next Chartered cargo banked out of a
+storm fires it.** That is RULED — David, 2026-08-27, ruling 5 — recorded in canon
+§7.2 and already shipped on `/dawnspur-line/`, which passed. This board inherits the
+shape whole and narrows the trigger by one clause: there the cargo need only come
+home; here it must come home *out of a storm*.
+
+- **Level 4 prints its own sentence when it lands, so the arming is never silent.**
+- A Chartered cargo banked before the terrace is topped is a good run and nothing
+  more, in any sky; the sitting continues.
+- A turned-back storm run while armed is not an ending — the stake dies, the desk
+  stands, the halt is still lit, the storm comes back in nine turns.
+- Topping the terrace on its own never stops the sitting. It arms it, and CARRY and
+  TEND stay lit past it under Seam 2.
+
+**You cannot end this sitting without the terrace, and you cannot end it without the
+weather.** The ladder arms it and the storm fires it: bank a cargo to open the
+charter, climb to level 4, hold the basin's stake, be standing there when the
+weather turns, and take the desperate offer at 41 to 57 percent — **41.0 at the earliest
+ending**, because every nine-turn line to the stop is measured to end at a bare
+roster. That is the whole
+sitting in one condition, and ruling 5 is what puts the ladder inside it — *"that
+kills the accidental-ending risk and makes the terrace pay off on its own terms
+without the builder skipping the point."*
 
 At the stop the board reads its own ledger in **two clauses**: the desk's record,
 inherited, keyed on `runsTurnedBack` exactly as CFD-196 was sent back to fix; and
@@ -466,9 +566,17 @@ inherited, keyed on `runsTurnedBack` exactly as CFD-196 was sent back to fix; an
 re-pointed at a storm that actually happened.
 
 - *"The basin cargo is home out of the storm. Nine runs out, six cargoes banked,
-  three turned back, 10 marks staked and lost on the way; two of those runs went
-  out under storm. **The ground is bare: the storm was met with nothing banked.**
-  The record keeps what came home; the line past the basin is the next sitting's."*
+  three turned back, five from the terrace and 1 mark lost on the way; two of
+  those runs went out under storm. **The ground is bare: the storm was met with
+  nothing banked.** The record keeps what came home; the line past the basin is
+  the next sitting's."*
+  (Two counters, not one, and the loss clause's shape is the join parent's own
+  `ledgerSentence`. A marks-only clause is a defect this lineage already found
+  and fixed: Mosswake's toll is 0, so three turned-back Mosswake runs lose six
+  food and no marks, and the sitting would close saying they *"cost nothing but
+  the trip"*. The instance above is one halt, one Mosswake and one basin turned
+  back: 0+2+3 food and 0+0+1 marks. "five" and "1 mark" is the shipped mix —
+  `tally` spells the food, `marksPhrase` prints the digit so the noun agrees.)
 - Ground full: *"**The ground is full: whatever the weather did, something was
   banked to meet it.**"*
 - Ground drawn: *"**The ground is drawn and standing: the bank covered what the
@@ -494,8 +602,9 @@ this sitting turns it on. **REFUSED** means it does not exist here and why.
 | **The terrace pays min(level, reserve) in a storm** | **ON** — Seam 1 | new |
 | **The storm draws the ground one step per storm turn** | **ON** | new |
 | **The Ranger, 2 marks, cap 1** | **ON** — the weather unit | new |
-| **TRIM — the Ranger's second send, clear odds, clear pay, stake plus one** | **ON** | new |
+| **TRIM — the Ranger's second send, clear odds, clear pay, stake plus two marks** | **ON** | new |
 | The fixed nine-turn cycle, five clear / two bird / two storm | **ON** | new |
+| **Topping arms the ending; a Chartered cargo fires it** | **INHERITED and narrowed** — here the cargo must be banked **out of a storm** | CFD-203, passed; RULED David 2026-08-27, ruling 5; §7.2 |
 | The dispatch loop: pick, muster, send, meet | **INHERITED** | CFD-196, passed |
 | Honest dice, one instrument, the percent stamped at SEND | **INHERITED** | CFD-196, passed |
 | Halt / Mosswake / Cloud Basin at 0.08 / 0.12 / 0.25, pays 10 / 14 / 18, stakes 0 / 2 / 3+1 | **INHERITED**, unmoved | CFD-196, passed |
@@ -584,7 +693,10 @@ list is the mitigation.
 - The trim appears in clear weather, under the bird, or with no Ranger on the
   roster.
 - A trimmed run is quoted at anything but the clear-weather chance, pays anything
-  but the clear-weather rate, or stakes anything but the route's stake plus one.
+  but the clear-weather rate, or stakes anything but the route's own stake plus
+  two marks.
+- The trim's extra stake is denominated in food, or moves with the greenhouse
+  level, the reserve, the roster or the sky.
 - The Ranger reduces the storm's bias, shortens the storm, delays it, or reveals
   it earlier. **The Ranger never touches the sky.**
 - A trimmed run counts as anything other than a run out for the record.
@@ -599,20 +711,80 @@ list is the mitigation.
 - The ground is drawn by anything but a carry, a storm turn, or both on the same
   turn; or a storm turn draws more or less than one step; or the draw does not
   floor at 0.
+- **A carry draws anything but exactly one step of ground.** *(The storm turn's
+  step is pinned in the line above and the tend's in the tend line below; the
+  carry's own step is pinned nowhere. `docs/cfd-203-beat.md:906`.)*
+- **The reserve is written by anything but a carry, a storm turn, or a tend** —
+  exactly three writers, −1, −1 and +1, one step each, and no fourth.
+  *(Re-worded rather than copied, and the re-wording is forced.
+  `docs/cfd-203-beat.md:914` reads "written by anything but a carry" and was true
+  **by construction** there: the reserve is derived, `Math.max(0, RESERVE_FULL -
+  s.carries)`, with no field to write, which is what
+  `test/dawnspur-line.test.js:508-516` asserts. Reinstating TEND forces a stored
+  reserve: with a floor at 0 and a cap at full applied per step, the value is
+  path-dependent and cannot be recovered from counts — measured, `max(0, min(4,
+  4 − carries − storms + tends))` disagrees with the stepwise walk on **274 of the
+  729** orderings of length six, the first of them in order being carry ×5 then a
+  tend: walk 1, derived 0. The disagreement starts at length two — a tend then a
+  carry, walk 3 against derived 4 — because the cap saturates as well as the
+  floor. A guard that was free on the parent has to be paid for here.)*
 - *(interaction)* A tend in a storm gives anything but one step, or the storm's
   draw is skipped on a tend turn.
 - The storm touches a greenhouse level, the greenhouse's look, the roster, marks,
   the record, the hearth, or the bank.
+- **A level is lost — any level, by any hand, ever, this sitting. The greenhouse
+  shrinks, dies, or shows a dead state.** *(Carried whole from
+  `docs/cfd-183-beat.md:157-158` and `docs/cfd-203-beat.md:911`. The line above
+  guards the **storm** as the agent and says nothing about any other hand; the
+  range line under *Inherited* allows 1..4 and cannot see a level going 3 to 2.
+  R6's home is never the stake, and this is the board that introduces the first
+  system whose whole job is to take something away, which is where "by any hand"
+  stops being ceremony.)*
 - A reserve number, bar, pip row, meter or icon appears anywhere.
 - The ground moves while no commit has been made — including across a reload, a
   blur, or any absence.
+
+**The join — two vehicles, one sky**
+
+- *(interaction)* **Any terrace verb — CARRY, TEND or UP — goes dark because a
+  line run is away, in any sky.** No terrace predicate reads the away state.
+  **This is the condition David's MOSSWAKE cut was granted on** — ruling 1,
+  2026-08-27, whose recorded condition reads *"Conditioned on the terrace having
+  work while the train is out"*; David's own words there are *"Cutting redundant
+  is cheaper than renaming colliding."* `docs/cfd-203-beat.md`:942 verified the
+  condition rather than assuming it (`test/dawnspur-line.test.js`:644, whose
+  source-shape assertion is that neither `canCarry` nor `canUp` contains
+  `s.away` — TEND has no parent test because `/dawnspur-line/` has no TEND, so
+  that third verb is this board's extension). If this line fails, the cut fails
+  with it and MOSSWAKE +3 comes back.
+- *(interaction)* A line verb goes dark because the terrace is busy, in any sky.
+  There is no terrace-busy state to read, and no send predicate reads one.
+  (`docs/cfd-203-beat.md`:944; `test/dawnspur-line.test.js`:677.)
+- *(interaction)* **A terrace verb taken while a run is away does not advance the
+  sky, or advances it by anything but one step.** *(This clause has no parent —
+  on `/dawnspur-line/` there was no sky. The two vehicles are independent in what
+  they may do and identical in what they cost, which is a turn, and a turn is
+  what the storm is priced in.)*
 
 **Inherited, and unmoved**
 
 - `3 / 2 / 3+1 / 10 / 14 / 18 / 0.036 / 0.08 / 0.12 / 0.25` move.
 - `UP 3 / 4 / 5`, `TEND 1`, `+1..+4`, reserve depth 4, roster cap 4 move.
-- The opening mints anything but marks 3, Wardens 0, Rangers 0, level 1, reserve 4,
-  sky clear at turn 1, train home, nothing banked, Cloud Basin dark.
+- **UP rides a train.** *(The two-vehicle clause of `docs/cfd-183-beat.md`:167 and
+  `docs/cfd-203-beat.md`:922. **Only this clause is restored, deliberately**: an UP
+  whose published price is 0, or does not climb, already moves the figures pinned on
+  the line above. This one does not, because the price can stay 3 / 4 / 5 while the
+  delivery quietly waits on the line train — a vehicle question, not a price
+  question. It is §5's own refusal in guard form, "making it take a run to deliver
+  is a change to an inherited system", and it pins what the passed parent already
+  records as load-bearing at `sim.js`:294 — "no terrace verb reads `away`: while a
+  run is out, CARRY and UP stand beside MEET" — which is what David's MOSSWAKE cut
+  rests on. It costs more here than on either parent: with a sky that advances one
+  step per commit, an UP that rode the train would spend storm turns as well as
+  marks.)*
+- The opening mints anything but marks 3, stores 0, Wardens 0, Rangers 0, level 1,
+  reserve 4, sky clear at turn 1, train home, nothing banked, the ending not
+  armed, Cloud Basin dark.
 - The opening's cards quote anything but 68 / 64 / 51.
 - The opening balance is settable from anything a player can reach. The suite may
   set it; the board may not.
@@ -621,6 +793,13 @@ list is the mitigation.
 - A second line run goes out while one is out. Marks go negative. The roster leaves
   0..4 Wardens or 0..1 Rangers. A level leaves 1..4 or a reserve leaves 0..4.
 - A stake, toll, muster, tend, or level refunds — any branch, any direction.
+- **Any crew member fails to come home, on either branch, ever, this sitting —
+  Wardens and the Ranger alike, in any sky, on a trimmed run as on a straight
+  one.** *(Carried from `docs/cfd-196-beat.md`:297 and `docs/cfd-203-beat.md`:933,
+  where it covers the whole roster. This beat's draft guards the Ranger alone,
+  at the Ranger line above, on the board that raises the Chartered turned-back
+  rate from 34.6% to 44.6% at four Wardens — the beat's own figure at line 208.
+  R6: the home is never the stake, and neither is the crew.)*
 - A failed run pays any fraction of the route reward. The `× 0.25` leg appears.
 - Rustfall sends, quotes odds, rolls dice, or opens anything, in any sky. A
   mini-game or its stub appears.
@@ -632,10 +811,46 @@ list is the mitigation.
 
 **States and sentences**
 
+- **A reachable home state has no lit send, or an away state has MEET dark — in
+  any sky.** *(Carried from `docs/cfd-196-beat.md`:307 through
+  `docs/cfd-203-beat.md`:951, where it was restored after being dropped once in
+  transcription. **This is its second loss.** This beat's draft replaced it with
+  the broad line below, and the broad line cannot see the bug this one names.
+  Measured on the passed parent by exhaustive replay from the real opening —
+  every action path, the shipped sim's own predicates and commits, state keyed on
+  marks|stores|roster|level|reserve|banked|awayRoute|stopped: of 13,106 reachable
+  away states at a marks ceiling of 20, **12,443 — 94.94% — already have a
+  non-MEET control lit**, so the broad line would miss a MEET-dark bug in all of
+  them; the share stays between 92.96% and 95.23% across every ceiling from 8 to
+  24. Across the whole lattice, home and away, **no reachable unstopped state has
+  an empty lit set at all** — DAWNSPUR HALT stakes nothing, so a send is lit in
+  every unstopped home state by construction. The 663 states the broad line does
+  reach are **not** the single shape the parent's own test comment claims: all
+  663 sit at full stores, but they run over all three routes (halt 254, Mosswake
+  219, Cloud Basin 190) and all four levels (462 topped, **201 not**), because
+  `canCarry()` does not read `away` — the two-vehicle claim — so the player
+  carries the stores back to the cap while the run is out. MUSTER, CARRY, CARRY,
+  SEND MOSSWAKE, then six CARRYs, from the real opening with nothing set by the
+  suite, reaches a level-1 untopped away state whose `litJobs()` is exactly
+  `["meet"]`. The one shape the parent's suite pins is
+  `test/dawnspur-line.test.js`:882; its comment naming the free halt on a topped
+  terrace as the only route in is wrong, and is filed separately. **What this
+  board does to that corner is UNAVAILABLE**, and is not asserted here: Seam 2
+  re-attaches the scale board's `!topped()` guard, which the line parent has
+  already dropped, and says nothing about the stores cap the line parent carries
+  — and there is no sim to measure. The broad line is kept beside this one, never
+  instead of it.)*
 - A reachable state has no lit control. *(The standing unpause assertion, and it is
   stronger here: the free halt send is lit in every sky at every balance.)*
-- The sitting stops on anything but a Chartered cargo banked out of a storm.
-  Topping the terrace stops the sitting.
+- The ending arms on anything but the greenhouse reaching level 4, or arms without
+  its sentence.
+- *(interaction)* The arming reads the sky: the terrace arms in one sky and not
+  another, or a sky change arms or disarms it.
+- The sitting stops on a Chartered cargo banked out of a storm while unarmed, or
+  fails to stop on one banked out of a storm while armed, or stops on topping
+  alone.
+- The sitting stops on anything but a Chartered cargo banked out of a storm with
+  the terrace topped. A turned-back storm run while armed stops the sitting.
 - A sky change happens without its sentence. The bird arrives without saying what
   is behind it.
 - A capped carry happens without its sentence, or an uncapped carry prints one.
@@ -715,9 +930,57 @@ have.
   one more than a full four-step re-tend plus two carries costs. David plays these
   before they are canon; survivors flow back per the standing rule.
 - **The Chartered storm pay of 24.** Argued from the board's own break-even, below.
-- **The trimmed run's extra provision, 1.** In the same class as provisions 0 / 2 /
-  3 themselves, which are already flagged new-play on the passed board. Argued
-  below: at 0 the trim is a free storm-eraser on the Core Line, which is trap 2.
+- **The trimmed run's extra stake, 2 MARKS — and marks rather than a provision.**
+  RULED by David 2026-08-28: the trim's cost must not fall as the greenhouse rises,
+  because *"a trim that goes free at level 4 stops being a decision, and it stops
+  being one exactly for the player who has invested most in the board."* His
+  practical note asked for a cost that rises with level rather than a provision
+  count that jumps 1 to 2 to 3. **Measured against the shipped join board that
+  cannot be done with food, and the reason is stronger than lumpiness.** A carry is
+  one turn and yields `level` food, so a provision costs `V / level` marks, where
+  `V` is the board's marks-per-turn clock taken off the free halt — the one send
+  with no stake and no toll, hence the only non-circular anchor. `V` runs 3.46 at
+  0W+1R to 4.40 at 4W+1R, so a provision is worth 3.46 to 4.18 marks at level 1 and
+  0.90 to 1.10 at level 4. **The trim's entire payoff is `pay × 0.10`: 1.00 on the
+  halt, 1.40 on Mosswake.** One provision — the smallest food stake there is —
+  costs two and a half to four times the whole payoff at level 1. So the food lever
+  has no live setting at the bottom of the ladder: at 0 the trim is a free
+  storm-eraser on the Core Line, which is trap 2; at 1 it is already dead at level 1
+  (net 2.46 to 3.18, against this beat's own "never the EV play" floor of 1.73) and
+  free at level 4; and holding it flat needs `level` provisions, which is flat at
+  3.46 to 4.18 gross and dead at every rung. **A mark is worth a mark at every
+  level**, which is what makes it the only instrument on this board whose grain fits
+  inside a 1.00-to-1.40-mark decision — turns and reserve steps are level-invariant
+  too and are three to five times too big, and drawing the ground is separately a
+  Kill line. **2 is the only whole mark that is neither free nor dead**, by the same
+  argument that sized the Chartered storm pay at 24: at 1 the trim is level with the
+  halt and 0.40 ahead on Mosswake at every level, which is the exact cell the ruling
+  was issued against; at 3 the halt trim is 2.00 against it, inside the 1.73-to-2.60
+  band this beat itself calls "never the EV play"; at 2 it costs 1.00 on the halt
+  and 0.60 on Mosswake, at every level and every roster. That the Ranger also costs
+  2 is a coincidence and is **not** the derivation.
+
+  **This resolves a contradiction the beat has carried since it was drafted, and it
+  is a repair rather than a change of mind.** Two lines disagreed about the unit:
+  the class flag above called the extra stake *a provision*, which the join made
+  food, while Fork B's own table read *"1 mark staked instead of 0."* Measured under
+  food, **that published table is correct at no level** — the halt delta is 2.46 to
+  3.18 against the player at level 1 and roughly zero at level 4, never the 0.00 it
+  printed. So the ambiguity is not being decided by preference; the food reading has
+  no level at which the published figures hold, and the marks reading is the one
+  that can be made true.
+
+  **The fiction is the crew's, not a tollman's, and the distinction is load-bearing.**
+  Neither Core Line route grows a toll: both ship `toll: 0`, and the parent justifies
+  the Chartered toll's unit as *"a toll is a civic fee"* — there is no tollman on
+  your own free halt, and inventing one is the weld this house convicts. Marks
+  already pay crew on this lineage without being civic: MUSTER is a wage, 3 a Warden
+  and 2 a Ranger. **The long road is paid work.** The crew is paid for the days it
+  adds, the pay goes out with them, and like every stake on this board it comes back
+  in no direction — no new entity, no third party, and the causation runs from the
+  road outward rather than from the player's pantry inward. If the naming is refused
+  at the sit, the fallback is *"for the crew's time the long way spends"*: same
+  fiction, no invented unit.
 - **The Ranger's cap of 1.** The trim is a capability, not a quantity; a second
   Ranger does nothing, and a control with nothing to do is this house's dead-button
   conviction. It is also half the answer to trap 2: **there is no second Ranger to
@@ -726,9 +989,18 @@ have.
 ### Trap 1, answered with arithmetic — and answered twice, differently
 
 The commission's warning, reproduced and reproduced correctly: at a full roster,
-Cloud Basin clear is 65.4% × 18 − 4 = **7.77** expected marks, and a 10-point storm
-needs the pay to reach **21.2** to hold that flat. Measured here at 21.25 by the
+Cloud Basin clear is 65.4% × 18 − 1 = **10.77** expected marks, and a 10-point storm
+needs the pay to reach **21.2** to hold that flat. Measured here at 21.2491 by the
 same arithmetic; the commission's figure checks out.
+
+**The break-even column is the one thing the currency change does not touch, and
+saying so stops the next reader re-deriving it.** The stake sits on both sides of
+`18 · p_clear = pay · p_storm` and cancels, in marks or in food, so every
+break-even figure below is unmoved by the re-base onto the line parent. What moved
+is the EV columns: the basin's marks stake fell from 4 to 1, so **every basin EV
+below is 3.00 higher than the same figure at the dispatch parent's 4-mark stake,
+and every margin is unchanged.** The 3 provisions are still spent — they are not
+marks, so they do not appear in a marks EV, and R1 forbids pricing them into one.
 
 **Fork A — run the basin hot, or wait for clear. The pay lands deliberately ABOVE
 break-even, and it is argued as reward.**
@@ -738,11 +1010,16 @@ same 0.10:
 
 | roster | clear % | storm % | break-even pay | at 24, storm EV | clear EV | margin |
 | --- | --- | --- | --- | --- | --- | --- |
-| bare (0W, 0R) | 51.0 | 41.0 | 22.39 | 5.84 | 5.18 | **+0.66** |
-| 0W, 1R | 52.2 | 42.2 | 22.27 | 6.13 | 5.40 | **+0.73** |
-| 2W, 0R | 58.2 | 48.2 | 21.73 | 7.57 | 6.48 | **+1.09** |
-| 4W, 0R | 65.4 | 55.4 | 21.25 | 9.30 | 7.77 | **+1.52** |
-| 4W, 1R | 66.6 | 56.6 | 21.18 | 9.58 | 7.99 | **+1.60** |
+| bare (0W, 0R) | 51.0 | 41.0 | 22.39 | 8.84 | 8.18 | **+0.66** |
+| 0W, 1R | 52.2 | 42.2 | 22.27 | 9.13 | 8.40 | **+0.73** |
+| 2W, 0R | 58.2 | 48.2 | 21.73 | 10.57 | 9.48 | **+1.09** |
+| 4W, 0R | 65.4 | 55.4 | 21.25 | 12.30 | 10.77 | **+1.52** |
+| 4W, 1R | 66.6 | 56.6 | 21.18 | 12.58 | 10.99 | **+1.60** |
+
+**Every EV in this table is marks only, and every row also stakes 3 food.** The
+basin's food stake is identical in both skies, so it cancels out of the margin the
+same way the toll does — but it is not zero, and it is not netted here, because
+this board has no exchange rate to net it with.
 
 **24 is the smallest whole mark that clears break-even at every reachable roster by
 more than a rounding step.** 22 fails outright at the bare roster (22 < 22.39). 23
@@ -762,10 +1039,50 @@ at every roster, storm EV against clear EV:
 
 | | clear best | storm best |
 | --- | --- | --- |
-| bare | Mosswake 6.96 | **Cloud Basin 5.84** |
-| 2W | Mosswake 7.97 | **Cloud Basin 7.57** |
-| 4W | Mosswake 8.98 | **Cloud Basin 9.30** |
-| 4W, 1R | Mosswake 9.14 | **Cloud Basin 9.58** |
+| bare | Mosswake 8.96 (2f) | Cloud Basin 8.84 (3f) — *not inverted, by 0.12* |
+| 0W, 1R | Mosswake 9.128 (2f) | Cloud Basin 9.128 (3f) — **the exact crossover** |
+| 2W | Mosswake 9.97 (2f) | **Cloud Basin 10.57** (3f) |
+| 4W | Mosswake 10.98 (2f) | **Cloud Basin 12.30** (3f) |
+| 4W, 1R | Mosswake 11.14 (2f) | **Cloud Basin 12.58** (3f) |
+
+**The join moves the inversion DOWN the roster, and lands it on an exact tie.**
+The basin's marks stake fell 3 and Mosswake's fell 2, so the basin gains exactly
++1.00 against Mosswake at every roster. At 0W+1R the two are equal to the digit —
+`0.652 × 14 = 9.128` and `0.422 × 24 − 1 = 9.128`. Below that Mosswake still wins;
+at and above 2W the summit wins, where on the marks-stake parent it took 4
+Wardens. **The food column is carried, not netted**: the summit's edge is bought
+with one more food than the spine, and this board prices food in turns, not marks.
+
+**The tie row is named here rather than left for a reader to find — and the
+2026-08-28 ruling BREAKS it, which is recorded here because the tie was this
+table's sharpest published claim.** 0W+1R is the only crossover-candidate roster
+with a Ranger on it, so the trim is live. **Before the ruling** a trimmed Mosswake
+paid `0.652 × 14 = 9.128` marks and staked 2+1 = 3 food, against a hot basin run
+at `0.422 × 24 — 1 = 9.128` marks and 3 food: the same marks and the same food,
+at 65.2% instead of 42.2%, so the summit was matched on both stocks and beaten on
+variance.
+
+**Under the ruling the trim stakes two marks instead of a provision, and the row
+is no longer a tie.** Re-derived:
+
+| at 0W+1R | marks EV | food staked |
+| --- | --- | --- |
+| trimmed Mosswake | **7.128** | 2 |
+| hot Cloud Basin | **9.128** | 3 |
+
+The summit leads by **exactly 2.000 marks** — the trim's whole new stake — and
+trails by **one food**. **Those do not net, and this beat may not pretend they do:**
+the join board forbids an exchange in either direction by name, so the crossover row
+is now genuinely incommensurable rather than flat. The variance argument still
+applies to the marks column and no longer settles the row on its own.
+
+**What survives:** the summit stops losing here rather than starting to win, because
+"winning" would need a food price the board refuses to publish. **What changes:** the
+old sentence *"2W is the first roster at which the storm run is the best business"*
+is withdrawn — on marks alone the summit is ahead from 0W+1R up, and the claim
+below should be read as a marks claim from 0W+1R rather than an outright one from
+2W. Whether a player trades one food for two marks at that rung is a sit question,
+not an arithmetic one.
 
 The storm costs exactly **−1.00** on the halt and **−1.40** on Mosswake at every
 roster (`pay × 0.10`), and pays the basin **+0.66 to +1.60**. So the storm is the
@@ -783,18 +1100,20 @@ billed.*
 above EV-neutral, and it is argued as variance**, which is the commission's own
 sanctioned second answer.
 
-Trim delta (trimmed EV minus hot EV) on the Core Line is `pay × 0.10 − 1` and is
-therefore **roster-independent**:
+Trim delta (trimmed EV minus hot EV) on the Core Line is `pay × 0.10 − 2` and is
+therefore **roster-independent — and, since the ruling of 2026-08-28,
+level-independent too**:
 
 | route | trim delta | what it is |
 | --- | --- | --- |
-| Dawnspur Halt | **0.00** exactly | same money, 10 points safer, 1 mark staked instead of 0 |
-| Mosswake Loop | **+0.40** | slightly better money, 10 points safer |
-| Cloud Basin | **−1.73 to −2.60** | forfeits the desperation; never the EV play |
+| Dawnspur Halt | **−1.00** | 10 points safer, bought for one expected mark |
+| Mosswake Loop | **−0.60** | better money and 10 points safer, bought for 0.60 |
+| Cloud Basin | **−2.73 to −3.60** | forfeits the desperation; never the EV play |
 
 That is a real fork and it is not an EV fork: **trim the spine, run the summit
-hot** is the tactic, and at the halt the choice is pure risk appetite at identical
-expectation. A player who is one mark from a stake they cannot afford to lose trims;
+hot** is the tactic, and on the spine the trim is priced insurance — ten points
+off the failure chance for 0.60 to 1.00 expected marks, the same price at every
+rung of the greenhouse. A player who is one mark from a stake they cannot afford to lose trims;
 a player who wants the money runs hot. That is the commission's "a same-EV,
 higher-variance run is a real decision for a player who needs marks now", taken
 deliberately and named as variance rather than smuggled in as reward.
@@ -805,10 +1124,11 @@ Four independent reasons, each testable:
 
 1. **The Ranger never touches the sky.** It does not shorten the storm, delay it,
    reveal it earlier, or reduce its bias. It is a Kill line.
-2. **The trim is a decision at every send, not a purchase that ends.** It costs a
-   provision and forfeits the desperation, so its answer is different on every
+2. **The trim is a decision at every send, not a purchase that ends.** It costs two
+   marks and forfeits the desperation, so its answer is different on every
    route and different again depending on whether the player can afford to lose the
-   stake. Buying the Ranger changes what the question is; it does not remove it.
+   stake — and, since the ruling of 2026-08-28, it costs the same at every rung of
+   the greenhouse, so no amount of building buys the question away. Buying the Ranger changes what the question is; it does not remove it.
 3. **It is strictly wrong at the summit.** The route the sitting stops on is the one
    route where trimming is the worse play by 1.73 to 2.60 expected marks. The
    Ranger cannot buy the player out of the storm run that ends the sitting.
@@ -827,11 +1147,49 @@ reached by play?*
 **Yes, and this board restores a claim its parent had to retire.** CFD-196
 Amendment 1 retired *"every state in this beat's arithmetic is reached from that
 opening by play"* because the minted odd float of 3 broke parity with an all-even
-delta lattice (pays 10 / 14 / 18, stakes 0 / 2 / 4, muster 3). **The carry breaks
-that parity by play**: CARRY at level 1 mints +1, so from the opening every
-non-negative mark count is reachable at any roster, and the lattice is dense again.
-The retired claim is re-assertable on this board and is re-asserted, with its cause
-named.
+delta lattice (pays 10 / 14 / 18, stakes 0 / 2 / 4, muster 3). **The claim is
+re-assertable on this board, but not for the reason the draft gave, and the wrong
+reason is recorded rather than deleted because it is the exact shape of error this
+house keeps making.** The draft said *"CARRY at level 1 mints +1"*. That was true of
+`/dawnspur-scale/`, whose carry is literally `s.marks += s.level`, and it is false of
+the board this beat now inherits from: on `/dawnspur-line/` CARRY writes `s.stores`,
+and the only `s.marks +=` in the whole file is `s.marks += r.pays`. The carry cannot
+break a parity in a currency it no longer touches. The draft was not careless; it was
+correct against a parent that has been replaced, which is what a re-base costs.
+
+**What breaks the parity is the odd marks SINKS — and there are three of them, no one
+of which is the cause.** Measured by ablation over a breadth search of the re-based
+storm model (a harness, not a shipped file, because the board is not written yet)
+rather than argued:
+
+- **MUSTER's 3, the Chartered toll's 1 and TEND's 1 are each individually
+  sufficient.** Remove any two of the three — and flatten UP to an all-even 4 / 4 / 4
+  as well — and every marks count from 0 to 30 is still reached. **None of them is
+  necessary**, so no single one may be named as the cause.
+- **UP's 3 / 4 / 5 alone is not sufficient.** Bounded to three purchases for the whole
+  sitting, it leaves 2, 4, 7, 8, 9, 12, 18 and 22 unreachable.
+- **With every odd sink removed the lattice collapses to 3 / 13 / 17 / 23 / 27**,
+  which is the parity the claim was retired for, and is the control that says the
+  ablation is measuring what it claims to measure.
+- **With the board as it stands, every marks count from 0 to 30 is reached, none
+  missing, the deepest first-reach at 8 turns.** Twenty-six turns was the search
+  horizon; eight is the figure.
+
+The lattice is dense, the retired claim is re-asserted, and its cause is the sink side
+rather than the faucet side.
+
+**Two attributions travel with that, because getting them wrong is how the first
+mechanism went wrong.** TEND is **not** the join's: `/dawnspur-line/` CUT it, RULED by
+David 2026-08-27, and says so in terms — *"It appears nowhere in this file, as a verb,
+a field or a path"* — which is why that board's reserve is one-way. TEND's 1 is
+CFD-183's, and it is **this** board that puts it back. The Chartered toll of 1 is
+CFD-196's, kept by the join unmoved rather than created by it.
+
+**Flagged, not fixed here.** The same search run against `/dawnspur-dispatch/`'s own
+wallet — where muster 3 is already an odd sink — also reaches 0 to 30 with none
+missing. So the sentence above, that CFD-196 Amendment 1 retired the claim against an
+*"all-even delta lattice"* whose own parenthetical lists muster 3, may rest on a
+premise that was never true. That is a different sentence and a separate edit.
 
 Checked individually:
 
@@ -839,11 +1197,32 @@ Checked individually:
 - **Reserve 0 at level 4** — carries pay full in clear weather at every reserve, so
   the 12 marks for the ladder are earnable at any ground. Reachable.
 - **A storm with the charter open and 4 marks in hand** — worked below. Reachable.
-- **The stop** — reachable on the first cycle. Shortest line: CARRY (t1, +1),
-  SEND Mosswake (t2, −2), MEET (t3, win, +14, charter opens), MUSTER to 4 Wardens
-  (t4, −12), CARRY (t5, +1), CARRY (t6, bird, +1), TEND (t7, bird, −1), **SEND Cloud
-  Basin (t8, storm, −4)**, MEET (t9, storm, roll 55.4%). Nine turns, ends at 25
-  marks on bare ground. Every step is a lit control at that state.
+- **The stop** — reachable on the first cycle, and the draft's line was not. The
+  published path's second step is refused by the join parent: after one level-1
+  CARRY the stores hold 1 and `commitSend("mosswake-loop")` **returns false**, the
+  board printing its own reason — *"The stores hold 1. Mosswake wants 2."* Replaced
+  with a line found by exhaustive search and then **replayed commit-by-commit on
+  `public/dawnspur-line/sim.js`, every call returning true and `stopped` turning
+  true at t9** *(the parent has no weather, so that replay grades the nine commits'
+  legality and the stop, not the storm figures: on the parent the same line ends at
+  18 marks with the reserve at 2, and the 24 and the bare ground below are this
+  board's storm pay and storm draw)*: CARRY (t1, +1f), UP to 2 (t2, −3),
+  CARRY (t3, +2f, stores 3), **SEND Dawnspur Halt (t4, free)**, MEET (t5, win, +10,
+  charter opens), UP to 3 (t6, bird, −4), UP to 4 (t7, bird, −5, **the terrace tops
+  and the ending arms**), **SEND Cloud Basin (t8, storm, −3f −1m)**, MEET (t9,
+  storm). Nine turns, ends at 24 marks on bare ground — two carries and two storm
+  turns draw the reserve 4 to 0. Every step is a lit control at that state.
+- **Nine turns is the floor, and the roll at it is 41.0 percent, not 55.4.** The
+  meet cannot land before t9 under any reading, because a send committed under the
+  storm is earliest at t8. Under the ruled stop — topping ARMS, the qualifying cargo
+  TRIGGERS (ANSWERED 5, canon §7.2, and what the parent ships at
+  `sim.js` `commitMeet`) — an exhaustive search of every nine-turn line finds
+  **one** roster at the stop: **bare, 0W 0R**. The ladder costs 12 marks and four
+  Wardens cost 12 marks, and one cycle's income funds one of them. So the earliest
+  stop is taken at the bare basin storm chance, **41.0%**, and the crewed 55.4% is a
+  second-cycle figure. *(Measured: 4 Wardens becomes reachable at a nine-turn stop
+  only if topping is NOT required to arm — see the flagged contradiction between
+  Ends and ANSWERED 5.)*
 - **A capped carry at reserve 0 in a storm** — the path above ends bare in a storm;
   one more carry prints the sentence. Reachable.
 - **The clamp** — the reachable range is 41.0% (Cloud, storm, bare) to 83.6% (halt,
@@ -901,6 +1280,7 @@ the beat that passed it**, per §7. Rows mirror **On this sitting**.
 | Two vehicles: the line train and the terrace shuttle | ON, argued | `buildings[switchyard].description` — "Dispatches trains, **adds scheduling capacity**, and keeps cargo moving". R10's three claims stay on the shuttle, where CFD-183 put them |
 | The desk, whole | INHERITED | `docs/cfd-196-beat.md` and its two amendments, passed 2026-08-26 |
 | The terrace, whole | INHERITED | `docs/cfd-183-beat.md`, passed 2026-08-25 |
+| Topping arms, the qualifying cargo fires | INHERITED, narrowed | RULED — David 2026-08-27, ruling 5, verbatim: *"Topping the terrace arms the ending, a storm cargo triggers it. That kills the accidental-ending risk and makes the terrace pay off on its own terms without the builder skipping the point."* Shipped and passed on the join board — `docs/cfd-203-beat.md`, passed 2026-08-28; `public/dawnspur-line/sim.js`, `if (r.chartered && topped()) s.stopped = true;`, with the arming spoken aloud rather than silent. Canon §7.2 cites ruling 5 by number as "the shape that gives a builder their payoff without ending the sitting under a player who came for the run". **Narrowed here**: the join board took the ruling *minus* its storm clause, so its trigger is any Chartered cargo home; the storm clause is ruling 5's own and returns — a Chartered cargo home **out of a storm** |
 | CARRY / TEND past topped | re-expressed, **Seam 2** | CFD-183's guard was its terminal rule; this board's terminal is different. Named, not silently moved |
 | MOSSWAKE +3 | REFUSED, **Seam 3** | The join creates the name collision and the join resolves it. Flagged as the first inherited system dropped, and reversible in one sentence |
 | Heat's verbs | REFUSED | §3 — the heat board's phase lock collapsed R10's triangle and "stands as played" only as a harness step; re-lighting it here would re-litigate a convicted collapse and add heat as a sink (R1) |
