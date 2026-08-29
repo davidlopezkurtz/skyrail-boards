@@ -39,6 +39,13 @@
 // touches the sky. runsTrimmed increments only on a committed trimmed
 // send and the terminal reports it as a rate against storm sends.
 //
+// RECUT 2026-08-29, same sitting, from the sit: TRIM did not read as a
+// fork (it was a hidden second tap on the card) and TEND was welded to
+// success rates (its payoff is the storm carry, and that was silent).
+// The fork is now two faces on the card plus a TRIM pad at the send.
+// TEND names the bank; CARRY in a storm states the bill before the click
+// when the reserve binds. Not a second system.
+//
 // FOOD IS NOT A CURRENCY, inherited: food buys exactly one thing (the
 // provisions leg of a send); there is no exchange in either direction;
 // food has one source, the carry; food is never a HUD figure. R1 holds
@@ -130,6 +137,9 @@ const ARM_SENTENCE = "The terrace is topped. The next Chartered cargo home out o
 const GROUND_FULL = "The ground is full: whatever the weather did, something was banked to meet it.";
 const GROUND_DRAWN = "The ground is drawn and standing: the bank covered what the storm asked.";
 const GROUND_BARE = "The ground is bare: the storm was met with nothing banked.";
+
+const TEND_CLEAR = "The ground came back one step. A storm carry pays what the bank can cover.";
+const TEND_STORM = "The ground held. A storm cannot be out-tended; it can only be held through.";
 
 const ONES = [
   "no", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
@@ -327,15 +337,18 @@ function make(s) {
     if (sky() === SKY_STORM) return Math.min(room, s.reserve);
     return room;
   }
-  function billSentence(landed) {
+  function billWords(landed, done) {
     if (sky() !== SKY_STORM) return null;
     if (landed >= s.level) return null;
     if (s.reserve >= s.level) return null;
     if (landed !== s.reserve) return null;
     if (s.reserve === 0) {
-      return "The sun is off the terrace and nothing is banked to meet it. The terrace gave nothing.";
+      return done
+        ? "The sun is off the terrace and nothing is banked to meet it. The terrace gave nothing."
+        : "The sun is off the terrace and nothing is banked to meet it.";
     }
-    return "The sun is off the terrace. The bank covered " + s.reserve + " of the level's " + s.level + ".";
+    const verb = done ? "covered" : "covers";
+    return "The sun is off the terrace. The bank " + verb + " " + s.reserve + " of the level's " + s.level + ".";
   }
   // No terrace verb reads the away state. David's MOSSWAKE cut rests on this.
   function canCarry() {
@@ -460,7 +473,7 @@ function make(s) {
     if (!canCarry()) return false;
     const under = sky();
     const landed = carryLoad();
-    const bill = billSentence(landed);
+    const bill = billWords(landed, true);
     s.stores += landed;
     s.carries += 1;
     s.reserve = Math.max(0, s.reserve - 1);
@@ -475,7 +488,7 @@ function make(s) {
     s.marks -= TEND_PRICE;
     s.reserve += 1;
     s.tends += 1;
-    s.sentence = null;
+    s.sentence = under === SKY_STORM ? TEND_STORM : TEND_CLEAR;
     s.skySentence = null;
     finishTurn(under);
     return true;
@@ -616,6 +629,7 @@ function make(s) {
     get stores() { return s.stores; },
     get storesCap() { return STORES_CAP; },
     get carryYield() { return canCarry() ? carryLoad() : null; },
+    get carryBill() { return canCarry() ? billWords(carryLoad(), false) : null; },
     get sky() { return sky(); },
     get away() { return s.away !== null; },
     get armed() { return topped(); },

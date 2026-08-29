@@ -148,7 +148,13 @@
   }
   #town.storm #basin-road { display: block; }
   .co.wx, .cp.wx { color: #d4b06a; font-style: italic; }
-  button.card.trim-face { box-shadow: inset 0 0 0 3px #8a7a3a; }
+  button.card.fork { grid-template-rows: auto auto auto auto; min-height: 72px; }
+  button.card .tn, button.card .tp, button.card .ts, button.card .to { display: none; }
+  button.card.fork .tn, button.card.fork .tp, button.card.fork .ts, button.card.fork .to { display: block; }
+  .tn { grid-column: 1; grid-row: 3; font-size: 12px; font-weight: 700; letter-spacing: .08em; }
+  .tp { grid-column: 2; grid-row: 3; font-size: 13px; font-weight: 700; color: var(--dim); text-align: right; }
+  .ts { grid-column: 1; grid-row: 4; font-size: 11.5px; color: var(--dim); line-height: 1.35; }
+  .to { grid-column: 2; grid-row: 4; font-size: 17px; font-weight: 700; text-align: right; }
   /* The greenhouse grows at each level and never shrinks. The level is read on
      the greenhouse, not in the HUD, which is how Amendment 2's one-line HUD and
      CFD-183's pips stop colliding. */
@@ -290,10 +296,10 @@
       </div>
       <button type="button" class="card" id="ranger"><span class="cn">MUSTER RANGER</span><span class="cp"></span><span class="cs"></span><span class="co"></span></button>
       <div id="cards">
-      <button type="button" class="card" data-route="dawnspur-halt"><span class="cn"></span><span class="cp"></span><span class="cs"></span><span class="co"></span></button>
-      <button type="button" class="card" data-route="mosswake-loop"><span class="cn"></span><span class="cp"></span><span class="cs"></span><span class="co"></span></button>
-      <button type="button" class="card" data-route="cloud-basin-span"><span class="cn"></span><span class="cp"></span><span class="cs"></span><span class="co"></span></button>
-      <button type="button" class="card" data-route="rustfall-yard"><span class="cn"></span><span class="cp"></span><span class="cs"></span><span class="co"></span></button>
+      <button type="button" class="card" data-route="dawnspur-halt"><span class="cn"></span><span class="cp"></span><span class="cs"></span><span class="co"></span><span class="tn"></span><span class="tp"></span><span class="ts"></span><span class="to"></span></button>
+      <button type="button" class="card" data-route="mosswake-loop"><span class="cn"></span><span class="cp"></span><span class="cs"></span><span class="co"></span><span class="tn"></span><span class="tp"></span><span class="ts"></span><span class="to"></span></button>
+      <button type="button" class="card" data-route="cloud-basin-span"><span class="cn"></span><span class="cp"></span><span class="cs"></span><span class="co"></span><span class="tn"></span><span class="tp"></span><span class="ts"></span><span class="to"></span></button>
+      <button type="button" class="card" data-route="rustfall-yard"><span class="cn"></span><span class="cp"></span><span class="cs"></span><span class="co"></span><span class="tn"></span><span class="tp"></span><span class="ts"></span><span class="to"></span></button>
       <div class="grouplabel">THE TERRACE</div>
       <button type="button" class="card" id="carry"><span class="cn">CARRY</span><span class="cp"></span><span class="cs"></span><span class="co"></span></button>
       <button type="button" class="card" id="tend"><span class="cn">TEND</span><span class="cp"></span><span class="cs"></span><span class="co"></span></button>
@@ -307,6 +313,7 @@
   </div>
   <div id="pads">
     <button type="button" class="pad primary" id="send" disabled>SEND</button>
+    <button type="button" class="pad" id="trim" hidden disabled>TRIM</button>
     <button type="button" class="pad meet" id="meet" disabled>MEET THE TRAIN</button>
   </div>
 </div>
@@ -346,9 +353,9 @@
   const endEl = document.getElementById("end");
   const toldEl = document.getElementById("told");
   const sendBtn = document.getElementById("send");
+  const trimBtn = document.getElementById("trim");
   const meetBtn = document.getElementById("meet");
   let pick = null;
-  let trimFace = false;
   // The position under the finger, ABSOLUTE (armed === k means roster would be
   // k) and always an INTEGER, because a position between two Wardens means
   // nothing. Null whenever no finger is down: it is created by a press and it
@@ -377,8 +384,7 @@
     return c.provisions + " from the stores · toll " + c.toll;
   }
   function paint() {
-    if (pick !== null && !board.canSend(pick)) { pick = null; trimFace = false; }
-    if (trimFace && (pick === null || !board.canTrim(pick))) trimFace = false;
+    if (pick !== null && !board.canSend(pick)) pick = null;
     townEl.classList.toggle("bird", board.sky === "bird");
     townEl.classList.toggle("storm", board.sky === "storm");
     // A marks figure agrees with its own noun. The parent board has read
@@ -425,35 +431,45 @@
         el.querySelector(".cp").textContent = "";
         el.querySelector(".cs").textContent = c.note;
         el.querySelector(".co").textContent = "";
+        el.querySelector(".tn").textContent = "";
+        el.querySelector(".tp").textContent = "";
+        el.querySelector(".ts").textContent = "";
+        el.querySelector(".to").textContent = "";
       } else if (c.out) {
         el.querySelector(".cp").textContent = "OUT";
         el.querySelector(".cs").textContent = c.manifestLine;
         el.querySelector(".co").textContent = c.percent + "%";
         el.querySelector(".cp").classList.toggle("wx", false);
         el.querySelector(".co").classList.toggle("wx", false);
+        el.querySelector(".tn").textContent = "";
+        el.querySelector(".tp").textContent = "";
+        el.querySelector(".ts").textContent = "";
+        el.querySelector(".to").textContent = "";
       } else {
-        const face = pick === c.id && trimFace && c.trim ? c.trim : null;
-        const pays = face ? face.pays : c.pays;
-        const percent = face ? face.percent : c.percent;
-        const shifted = face ? false : !!c.shifted;
-        el.querySelector(".cp").textContent = "pays " + pays;
-        el.querySelector(".cp").classList.toggle("wx", shifted && (!c.trim || c.pays !== c.trim.pays));
-        let stake = c.condition === null ? stakeText(c) : c.condition;
-        if (c.trim && c.condition === null) {
-          stake = face
-            ? stakeText(c) + " · +2 marks"
-            : stakeText(c) + " · TRIM +" + c.trim.extraMarks + " marks at " + c.trim.percent + "% / " + c.trim.pays;
-        }
+        el.querySelector(".cp").textContent = "pays " + c.pays;
+        el.querySelector(".cp").classList.toggle("wx", !!c.shifted && (!c.trim || c.pays !== c.trim.pays));
+        const stake = c.condition === null ? stakeText(c) : c.condition;
         el.querySelector(".cs").textContent = stake;
-        el.querySelector(".co").textContent = (c.provisional ? "\u2192 " : "") + percent + "%";
-        el.querySelector(".co").classList.toggle("wx", shifted);
+        el.querySelector(".co").textContent = (c.provisional ? "\u2192 " : "") + c.percent + "%";
+        el.querySelector(".co").classList.toggle("wx", !!c.shifted);
+        if (c.trim) {
+          el.querySelector(".tn").textContent = "TRIM";
+          el.querySelector(".tp").textContent = "pays " + c.trim.pays;
+          el.querySelector(".ts").textContent = "+2 marks";
+          el.querySelector(".to").textContent = c.trim.percent + "%";
+        } else {
+          el.querySelector(".tn").textContent = "";
+          el.querySelector(".tp").textContent = "";
+          el.querySelector(".ts").textContent = "";
+          el.querySelector(".to").textContent = "";
+        }
       }
       el.querySelector(".co").classList.toggle("prov", !!c.provisional);
       el.classList.toggle("dark", !c.sendable);
       el.classList.toggle("out", c.out);
       el.classList.toggle("unlit", c.sendable && !c.lit && !c.out);
       el.classList.toggle("on", pick === c.id);
-      el.classList.toggle("trim-face", pick === c.id && trimFace);
+      el.classList.toggle("fork", !!c.trim);
       el.disabled = !c.lit;
       if (!c.sendable) {
         el.setAttribute("aria-label", c.name + ". No send, no odds. " + c.note);
@@ -461,7 +477,10 @@
         el.setAttribute("aria-label", c.name + ", out. " + c.manifestLine + " " + c.percent + " percent home.");
       } else {
         el.setAttribute("aria-label",
-          c.name + ", pays " + c.pays + ", stake " + c.stake + ", " + c.percent + " percent home");
+          c.name + ", pays " + c.pays + ", " + stakeText(c) + ", " + c.percent + " percent home" +
+          (c.trim
+            ? ". TRIM pays " + c.trim.pays + " at " + c.trim.percent + " percent for two marks"
+            : ""));
       }
     }
     // The terrace, the greenhouse and the stores. The reserve reaches the DOM
@@ -478,9 +497,11 @@
     // doing the work of a cap warning — CFD-183's own rule, inherited.
     carryEl.querySelector(".cp").textContent =
       board.carryYield === null ? "" : "lands " + board.carryYield;
-    carryEl.querySelector(".cs").textContent = board.canCarry()
-      ? "one trip up the hill, one step of ground"
-      : "The stores are full.";
+    carryEl.querySelector(".cs").textContent = board.carryBill
+      ? board.carryBill
+      : board.canCarry()
+        ? "one trip up the hill, one step of ground"
+        : "The stores are full.";
     carryEl.querySelector(".co").textContent = "";
     carryEl.classList.toggle("unlit", !board.canCarry());
     carryEl.disabled = !board.canCarry();
@@ -489,9 +510,9 @@
       : "Carry, the stores are full");
     rangerEl.querySelector(".cp").textContent = board.rangerPrice + " marks";
     rangerEl.querySelector(".cs").textContent = board.rangers >= board.rangerCap
-      ? "The Ranger is already on the roster."
+      ? "The Ranger is on the roster. Storm sends offer the long way."
       : board.canMusterRanger()
-        ? "one berth, the weather unit"
+        ? "one berth. Opens the long way around a storm."
         : "one berth. Wants " + board.rangerPrice + " marks.";
     rangerEl.querySelector(".co").textContent = "";
     rangerEl.classList.toggle("unlit", !board.canMusterRanger());
@@ -501,7 +522,9 @@
       : "Muster Ranger, dark");
     tendEl.querySelector(".cp").textContent = "costs " + board.tendPrice;
     tendEl.querySelector(".cs").textContent = board.canTend()
-      ? "one step of ground back, earns nothing"
+      ? (board.sky === "storm"
+        ? "one step of ground back. A storm cannot be out-tended; it can only be held through."
+        : "one step of ground back. A storm carry pays what the bank can cover.")
       : board.reserve >= board.reserveFull
         ? "The ground is full."
         : "Wants " + board.tendPrice + " mark.";
@@ -529,8 +552,12 @@
     const picked = pick === null ? null : cards.find(function (c) { return c.id === pick; });
     sendBtn.textContent = picked === null || picked === undefined
       ? "SEND"
-      : (trimFace ? "SEND — TRIM — " : "SEND — ") + picked.name;
-    sendBtn.disabled = pick === null || (trimFace ? !board.canTrim(pick) : !board.canSend(pick));
+      : "SEND — " + picked.name;
+    sendBtn.disabled = pick === null || !board.canSend(pick);
+    const forking = picked !== null && picked !== undefined && !!picked.trim;
+    trimBtn.hidden = !forking;
+    trimBtn.disabled = !forking || !board.canTrim(pick);
+    trimBtn.textContent = forking ? "TRIM — " + picked.name : "TRIM";
     meetBtn.disabled = !board.canMeet();
     sayEl.hidden = board.runSentence === null;
     sayEl.textContent = board.runSentence === null ? "" : board.runSentence;
@@ -542,12 +569,7 @@
     tap(el, function () {
       const id = el.getAttribute("data-route");
       if (!board.canSend(id)) return;
-      if (pick === id && board.canTrim(id)) {
-        trimFace = !trimFace;
-      } else {
-        pick = id;
-        trimFace = false;
-      }
+      pick = id;
       paint();
     });
   });
@@ -662,7 +684,11 @@
   });
   tap(sendBtn, function () {
     if (pick === null) return;
-    if (board.commitSend(pick, trimFace)) { pick = null; trimFace = false; paint(); }
+    if (board.commitSend(pick, false)) { pick = null; paint(); }
+  });
+  tap(trimBtn, function () {
+    if (pick === null) return;
+    if (board.commitSend(pick, true)) { pick = null; paint(); }
   });
   tap(meetBtn, function () { if (board.commitMeet()) paint(); });
   // Terrace verbs commit on the tap. They are the town's own hands on the

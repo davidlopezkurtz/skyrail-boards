@@ -781,6 +781,66 @@ test("kill: no reserve number, bar, pip, meter or icon, and the ground does not 
   assert.deepEqual(snap(h.b), before);
 });
 
+test("recut: the trim fork is two faces and a pad — SEND stays hot, TRIM is its own commit", () => {
+  assert.match(SIT_HTML, /id="trim"/);
+  assert.match(SIT_HTML, /commitSend\(pick, false\)/);
+  assert.match(SIT_HTML, /commitSend\(pick, true\)/);
+  assert.doesNotMatch(SIT_HTML, /pick === id && board\.canTrim/);
+  assert.doesNotMatch(SIT_HTML, /SEND — TRIM —/);
+  assert.doesNotMatch(SIT_HTML, /TRIM \+.*marks at /);
+  const paint = SIT_HTML.slice(SIT_HTML.indexOf("function paint()"), SIT_HTML.indexOf("cardEls.forEach"));
+  assert.match(paint, /\.tn"\)\.textContent/);
+  assert.match(paint, /\.tp"\)\.textContent/);
+  assert.match(paint, /\.to"\)\.textContent/);
+  assert.doesNotMatch(SIT_HTML, /help overlay|tutorial mode|tooltip encyclopedia|\? tutorial/i);
+});
+
+test("recut: tend names the bank, never the percent, and a tend commit says so", () => {
+  const tendPaint = SIT_HTML.slice(SIT_HTML.indexOf("tendEl.querySelector"), SIT_HTML.indexOf("upEl.querySelector"));
+  assert.doesNotMatch(tendPaint, /success|percent|odds|chance|safer/i);
+  assert.doesNotMatch(tendPaint, /earns nothing/);
+  assert.match(tendPaint, /A storm carry pays what the bank can cover/);
+  assert.match(tendPaint, /A storm cannot be out-tended; it can only be held through/);
+  assert.match(SIT_SIM, /TEND_CLEAR = "The ground came back one step\. A storm carry pays what the bank can cover\."/);
+  assert.match(SIT_SIM, /TEND_STORM = "The ground held\. A storm cannot be out-tended; it can only be held through\."/);
+  assert.doesNotMatch(SIT_SIM.match(/TEND_CLEAR[\s\S]*TEND_STORM[^\n]+/)[0], /success|percent|odds|chance|safer/i);
+  const clear = walk("C", makeBoard({ marks: 60 }));
+  assert.ok(clear.b.canTend());
+  assert.ok(clear.b.commitTend());
+  assert.match(clear.b.runSentence, /The ground came back one step\. A storm carry pays what the bank can cover\./);
+  const storm = intoSky("storm", makeBoard({ marks: 60 }));
+  if (storm.b.reserve >= 4) assert.ok(storm.b.commitCarry());
+  assert.ok(storm.b.canTend(), "a storm sit must be able to tend so the bank sentence can fire");
+  assert.ok(storm.b.commitTend());
+  assert.match(storm.b.runSentence, /The ground held\. A storm cannot be out-tended; it can only be held through\./);
+});
+
+test("recut: carryBill previews a storm bill only when the reserve binds, present tense", () => {
+  const open = makeBoard().b;
+  assert.equal(open.sky, "clear");
+  assert.equal(open.carryBill, null, "clear carry does not preview a weather bill");
+  const bird = intoSky("bird", makeBoard({ marks: 60 }));
+  assert.equal(bird.b.sky, "bird");
+  assert.equal(bird.b.carryBill, null, "bird carry does not preview a weather bill");
+  const h = walk("CUCh+UU");
+  assert.equal(h.b.sky, "storm");
+  assert.ok(h.b.reserve < h.b.level);
+  const landed = Math.min(h.b.level, h.b.storesCap - h.b.stores, h.b.reserve);
+  assert.equal(landed, h.b.reserve, "this walk binds the reserve");
+  assert.ok(h.b.carryBill);
+  assert.match(h.b.carryBill, /The bank covers /);
+  assert.doesNotMatch(h.b.carryBill, /covered/);
+  const carryPaint = SIT_HTML.slice(SIT_HTML.indexOf("carryEl.querySelector"), SIT_HTML.indexOf("rangerEl.querySelector"));
+  assert.match(carryPaint, /board\.carryBill/);
+});
+
+test("recut: the Ranger names the long way, not a weather unit", () => {
+  const rangerPaint = SIT_HTML.slice(SIT_HTML.indexOf("rangerEl.querySelector"), SIT_HTML.indexOf("tendEl.querySelector"));
+  assert.match(rangerPaint, /Opens the long way around a storm/);
+  assert.match(rangerPaint, /Storm sends offer the long way/);
+  assert.doesNotMatch(rangerPaint, /weather unit/);
+});
+
 test("kill: TEND is back — 1 mark, +1 reserve, lit only below full, and it stays lit past a topped terrace", () => {
   const b = makeBoard({ marks: 60 }).b;
   assert.equal(typeof b.canTend, "function");
@@ -1137,8 +1197,15 @@ test("kill: in a storm a changed figure is typed as changed, and the trim is a s
   assert.match(cssOf(), /\.co\.wx/);
   assert.match(cssOf(), /\.cp\.wx/);
   assert.match(SIT_HTML, /classList\.toggle\("wx"/);
-  assert.match(SIT_HTML, /trimFace/);
-  assert.match(SIT_HTML, /classList\.toggle\("trim-face"/);
+  // Recut 2026-08-29: both faces sit on the card at once. A second tap that
+  // replaces the hot figures is what made the fork leave no impression.
+  assert.doesNotMatch(SIT_HTML, /trimFace/);
+  assert.doesNotMatch(SIT_HTML, /trim-face/);
+  assert.match(SIT_HTML, /class="tn"/);
+  assert.match(SIT_HTML, /class="tp"/);
+  assert.match(SIT_HTML, /class="ts"/);
+  assert.match(SIT_HTML, /class="to"/);
+  assert.match(SIT_HTML, /classList\.toggle\("fork", !!c\.trim\)/);
   const g = makeBoard({ marks: 60, stores: 6 });
   g.b.commitMusterRanger();
   const h = intoSky("storm", g);
@@ -1146,7 +1213,11 @@ test("kill: in a storm a changed figure is typed as changed, and the trim is a s
   assert.equal(cardFor(h.b, CLOUD).shifted || cardFor(h.b, HALT).shifted, true);
   assert.equal(cardFor(h.b, HALT).pays, 10);
   if (h.b.record.cargoesBanked > 0) assert.equal(cardFor(h.b, CLOUD).pays, 24);
-  assert.ok(cardFor(h.b, HALT).trim);
+  const halt = cardFor(h.b, HALT);
+  assert.ok(halt.trim);
+  assert.equal(halt.pays, 10);
+  assert.equal(halt.trim.pays, 10);
+  assert.ok(halt.trim.percent > halt.percent, "the trim face quotes the clear chance beside the storm chance");
 });
 
 test("kill: a turned-back run keeps zero-pay, stake-spent, crew-home, desk-stands, and names only who rode", () => {
