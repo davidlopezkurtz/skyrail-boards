@@ -803,7 +803,8 @@ test("recut: tend names the bank, never the percent, and a tend commit says so",
   assert.match(tendPaint, /A storm cannot be out-tended; it can only be held through/);
   assert.match(SIT_SIM, /TEND_CLEAR = "The ground came back one step\. A storm carry pays what the bank can cover\."/);
   assert.match(SIT_SIM, /TEND_STORM = "The ground held\. A storm cannot be out-tended; it can only be held through\."/);
-  assert.doesNotMatch(SIT_SIM.match(/TEND_CLEAR[\s\S]*TEND_STORM[^\n]+/)[0], /success|percent|odds|chance|safer/i);
+  const tendWords = SIT_SIM.match(/TEND_CLEAR = "([^"]+)"/)[1] + " " + SIT_SIM.match(/TEND_STORM = "([^"]+)"/)[1];
+  assert.doesNotMatch(tendWords, /success|percent|odds|chance|safer/i);
   const clear = walk("C", makeBoard({ marks: 60 }));
   assert.ok(clear.b.canTend());
   assert.ok(clear.b.commitTend());
