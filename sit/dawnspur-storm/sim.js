@@ -46,6 +46,17 @@
 // TEND names the bank; CARRY in a storm states the bill before the click
 // when the reserve binds. Not a second system.
 //
+// RECUT 2026-08-29, second sit, still not a pass: TRIM landed (considered
+// at each storm send and left). TEND was still welded to the percent —
+// "I tended particularly when the storms came in to see if it would
+// improve my success chances" — and a live home desk with lit sends
+// read as the stop because SEND stays grey until a route is picked.
+// TEND now speaks as the ground: what the bank just did, not a hint
+// that odds might move. A live SEND pad names the remaining verb
+// (pick a route, then SEND) and does not go dead-grey. Muster, Ranger,
+// SEND and a non-topping UP print the same caption grammar the sit
+// already liked. Not a second system.
+//
 // FOOD IS NOT A CURRENCY, inherited: food buys exactly one thing (the
 // provisions leg of a send); there is no exchange in either direction;
 // food has one source, the carry; food is never a HUD figure. R1 holds
@@ -138,8 +149,9 @@ const GROUND_FULL = "The ground is full: whatever the weather did, something was
 const GROUND_DRAWN = "The ground is drawn and standing: the bank covered what the storm asked.";
 const GROUND_BARE = "The ground is bare: the storm was met with nothing banked.";
 
-const TEND_CLEAR = "The ground came back one step. A storm carry pays what the bank can cover.";
-const TEND_STORM = "The ground held. A storm cannot be out-tended; it can only be held through.";
+const TEND_CLEAR = "The ground came back one step. One mark went into the bank.";
+const TEND_STORM = "The ground came back one step. The storm drew one. The bank held.";
+const RANGER_SENTENCE = "The desk spent 2 marks. The Ranger is on the roster.";
 
 const ONES = [
   "no", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
@@ -228,6 +240,16 @@ function stakeClause(route, extra) {
 }
 function manifestSentence(route, wardens, rangers, extra) {
   return crewClause(wardens, rangers) + " " + stakeClause(route, extra) + ".";
+}
+function leftSentence(route, extra) {
+  return "The train left for " + route.short + " " + stakeClause(route, extra) + ".";
+}
+function rosterSentence(n, roster) {
+  const who = roster === 1 ? "1 Warden rides" : roster + " Wardens ride";
+  return "The desk spent " + marksPhrase(MUSTER_PRICE * n) + ". " + who + ".";
+}
+function grewSentence(level, price) {
+  return "The greenhouse is at " + tally(level) + ". " + marksPhrase(price) + " went into the glass.";
 }
 
 function whoBrought(wardens) {
@@ -496,9 +518,10 @@ function make(s) {
   function commitUp() {
     if (!canUp()) return false;
     const under = sky();
-    s.marks -= UP_PRICE[s.level];
+    const price = UP_PRICE[s.level];
+    s.marks -= price;
     s.level += 1;
-    s.sentence = topped() ? ARM_SENTENCE : null;
+    s.sentence = topped() ? ARM_SENTENCE : grewSentence(s.level, price);
     s.skySentence = null;
     finishTurn(under);
     return true;
@@ -510,7 +533,7 @@ function make(s) {
     const under = sky();
     s.marks -= MUSTER_PRICE * n;
     s.roster += n;
-    s.sentence = null;
+    s.sentence = rosterSentence(n, s.roster);
     s.skySentence = null;
     finishTurn(under);
     return true;
@@ -520,7 +543,7 @@ function make(s) {
     const under = sky();
     s.marks -= RANGER_PRICE;
     s.rangers += 1;
-    s.sentence = null;
+    s.sentence = RANGER_SENTENCE;
     s.skySentence = null;
     finishTurn(under);
     return true;
@@ -554,7 +577,7 @@ function make(s) {
     s.runsOut += 1;
     if (under === SKY_STORM) s.stormSends += 1;
     if (wantTrim) s.runsTrimmed += 1;
-    s.sentence = null;
+    s.sentence = leftSentence(r, extra);
     s.skySentence = null;
     finishTurn(under);
     return true;
