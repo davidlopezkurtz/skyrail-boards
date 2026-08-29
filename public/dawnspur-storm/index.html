@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Dawnspur Storm</title>
+<style>
+  :root {
+    --bg: #1a1b1e;
+    --strip: #24262b;
+    --ink: #ececec;
+    --dim: #9a9ea6;
+    --card: #2f323a;
+    --card-edge: #3d414b;
+    --pad: #3a3d45;
+    --pad-on: #d8d8d8;
+    --pad-ink: #111;
+    --sel: #f2f2f2;
+    --green: #4f7a4a;
+    --green-deep: #355533;
+    --rust: #4a2f2a;
+    --rust-edge: #3a2622;
+    --rust-ink: #b09088;
+    --slate: #6a6e78;
+    --train: #9a9da4;
+    --train-d: #6e7178;
+    --glass: rgba(170, 210, 200, 0.26);
+    --glass-edge: rgba(210, 230, 220, 0.5);
+    --hearth: #c08a4a;
+    --home: #3d3a36;
+    --soil: #4a4033;
+    --soil-edge: #39322a;
+    /* The thumb's own geometry, named once so no pixel figure has to live in
+       the script that positions it. 44px is the touch floor. */
+    --thumb: 44px;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+  html { touch-action: manipulation; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink);
+    font-family: ui-sans-serif, system-ui, sans-serif; user-select: none; overflow: hidden; }
+  body { display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+    min-height: 100dvh; padding: env(safe-area-inset-top) 10px env(safe-area-inset-bottom); }
+  #app { width: min(440px, 100%); flex: 1; display: flex; flex-direction: column; gap: 8px; padding: 4px 0 10px; min-height: 0; }
+
+  #hud { flex-shrink: 0; padding: 0 4px; }
+  #marks-line {
+    min-height: 22px; text-align: right; font-size: 18px; font-weight: 700;
+    letter-spacing: .06em; color: var(--ink);
+  }
+
+  /* The muster bar. AMENDMENT 2 puts it in the card stack on the cards' own
+     ground, pinned above the routes, because the turn's real question is buy
+     odds or send now and the control belongs among the things it competes
+     with. It is no longer a separate green block above the scenery. The
+     control this lineage started from was 34px against a 52px card and a 76px
+     pad — the only one under the 44px touch floor, and the measured cause of a
+     maximally affordable muster being walked past twice. */
+  /* AMENDMENT 2. The control is a bar in the card stack, on the cards' own
+     ground, pinned above the routes so it never scrolls away. It reads as a
+     peer of the routes because it is one: the turn's question is buy odds or
+     send now, and both halves of it now sit in one stack in one grammar. The
+     --strip furniture ground and the header slot above the scenery are gone. */
+  #stack {
+    flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column;
+    gap: 6px; padding: 6px;
+  }
+  #ladder {
+    flex: 0 0 auto; display: flex; flex-direction: column; gap: 4px;
+    background: var(--card); box-shadow: inset 0 0 0 2px var(--card-edge);
+    padding: 6px 10px 8px;
+  }
+  #lrow1 {
+    display: flex; align-items: center; gap: 8px; min-height: 18px;
+    font-size: 12px; font-weight: 700; letter-spacing: .04em; color: var(--ink);
+  }
+  /* Row 1 never dims. A control that fades when it cannot be used reads as
+     chrome; a control that shows the price you cannot yet pay reads as an
+     instruction. */
+  #muster-word { letter-spacing: .08em; }
+  #roster-read { color: var(--dim); font-weight: 700; }
+  #muster-price { margin-left: auto; text-align: right; }
+  /* One track, four lengths. The dark ground is the whole range; the reachable
+     length is what the marks can reach; the armed length is the pending intent
+     while a finger is down; the filled length is the roster and NOTHING else,
+     which is why it is painted last and can never be overdrawn. */
+  #track {
+    position: relative; height: var(--thumb); touch-action: none; cursor: pointer;
+    background: #26282e; box-shadow: inset 0 0 0 2px var(--card-edge);
+    outline-offset: 2px;
+  }
+  #treach, #tarmed, #tfill {
+    position: absolute; top: 0; bottom: 0; left: 0; pointer-events: none;
+  }
+  #treach { background: var(--pad); }
+  #tarmed { background: var(--pad-on); }
+  #tfill { background: var(--green); box-shadow: inset 0 0 0 2px var(--green-deep); }
+  #thumb {
+    position: absolute; top: 0; width: var(--thumb); height: var(--thumb);
+    background: var(--pad-on); box-shadow: inset 0 0 0 3px var(--pad-ink);
+    pointer-events: none;
+  }
+  #ladder.dim #treach, #ladder.dim #tarmed { opacity: .2; }
+  #ladder.dim #thumb { opacity: .35; }
+
+  #strip {
+    position: relative; flex: 1; min-height: 0; background: var(--strip);
+    overflow: hidden; display: flex; flex-direction: column;
+  }
+  #town {
+    position: relative; height: 96px; flex: 0 1 auto; min-height: 44px;
+    overflow: hidden; background: #1f2126;
+    box-shadow: inset 0 -2px 0 #14161a;
+  }
+  /* THE TERRACE: five graded greens on the ground itself, no number, no bar,
+     no pip row, no meter and no icon. The green pales and the planting recedes
+     one step per carry, and TEND writes it back. Two-way, because the storm
+     is the reckoning the reserve was built to defer. */
+  #terrace {
+    position: absolute; left: 4%; right: 4%; top: 6px; height: 34px;
+    background: var(--soil); box-shadow: inset 0 0 0 2px var(--soil-edge);
+    overflow: hidden;
+  }
+  #terrace .fill {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 100%;
+    background: var(--green);
+  }
+  #terrace.rs4 .fill { height: 100%; background: #4f7a4a; }
+  #terrace.rs3 .fill { height: 84%; background: #5f7a4b; }
+  #terrace.rs2 .fill { height: 66%; background: #6f7950; }
+  #terrace.rs1 .fill { height: 48%; background: #7c7351; }
+  #terrace.rs0 .fill { height: 0%; background: #7c7351; }
+  /* The sky is the light on the board. Clear is the board as it stands.
+     Under the bird the light is the same and a stormbird sits inland over
+     the halt. In the storm the light goes off the terrace and the basin
+     road darkens. No counter, no countdown, no phase pip, no next-storm
+     figure — the sky is read in the world. */
+  #stormbird {
+    display: none; position: absolute; left: 52%; top: 14px; width: 18px; height: 10px;
+    background: #c8c4bc; box-shadow: inset 0 -3px 0 #8a8680;
+    transform: skewX(-18deg);
+  }
+  #town.bird #stormbird { display: block; }
+  #town.storm { background: #14151a; }
+  #town.storm #terrace { filter: brightness(.42); }
+  #basin-road {
+    display: none; position: absolute; left: 62%; right: 4%; bottom: 30px; height: 6px;
+    background: #0c0d10; box-shadow: inset 0 0 0 1px #1a1c20;
+  }
+  #town.storm #basin-road { display: block; }
+  .co.wx, .cp.wx { color: #d4b06a; font-style: italic; }
+  button.card.fork { grid-template-rows: auto auto auto auto; min-height: 72px; }
+  button.card .tn, button.card .tp, button.card .ts, button.card .to { display: none; }
+  button.card.fork .tn, button.card.fork .tp, button.card.fork .ts, button.card.fork .to { display: block; }
+  .tn { grid-column: 1; grid-row: 3; font-size: 12px; font-weight: 700; letter-spacing: .08em; }
+  .tp { grid-column: 2; grid-row: 3; font-size: 13px; font-weight: 700; color: var(--dim); text-align: right; }
+  .ts { grid-column: 1; grid-row: 4; font-size: 11.5px; color: var(--dim); line-height: 1.35; }
+  .to { grid-column: 2; grid-row: 4; font-size: 17px; font-weight: 700; text-align: right; }
+  /* The greenhouse grows at each level and never shrinks. The level is read on
+     the greenhouse, not in the HUD, which is how Amendment 2's one-line HUD and
+     CFD-183's pips stop colliding. */
+  #greenhouse {
+    position: absolute; left: 10%; top: 10px; width: 22px; height: 26px;
+    background: var(--glass); border: 2px solid var(--glass-edge);
+  }
+  #greenhouse.lv2 { width: 34px; }
+  #greenhouse.lv3 { width: 46px; }
+  #greenhouse.lv4 { width: 58px; }
+  #glass {
+    position: absolute; left: 6%; bottom: 16px; width: 46px; height: 22px;
+    background: var(--glass); border: 2px solid var(--glass-edge);
+  }
+  #bank {
+    position: absolute; left: 26%; bottom: 16px; width: 34px; height: 18px;
+    background: #8a7a3a; box-shadow: inset 0 -5px 0 #5c4e22;
+  }
+  #hearth {
+    position: absolute; left: 40%; bottom: 18px; width: 12px; height: 12px;
+    background: var(--hearth); box-shadow: 0 0 10px 3px rgba(192, 138, 74, 0.45);
+  }
+  #platform {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 30px;
+    background: var(--home);
+  }
+  /* THE STORES: physical goods where goods sit, on the desk's own platform.
+     Six discrete slots, filled or empty — countable EXACTLY, because a send
+     needs an exact quantity and the terrace's five graded greens cannot answer
+     "do I have three?". Not a bar, not a meter, not a percentage, and never a
+     HUD figure. */
+  #stores {
+    position: absolute; left: 6%; bottom: 8px; display: flex; gap: 4px;
+  }
+  #stores .slot {
+    width: 12px; height: 14px;
+    background: #2a2c31; box-shadow: inset 0 0 0 2px #14161a;
+  }
+  #stores .slot.full { background: #c4a15a; box-shadow: inset 0 -3px 0 #8a7038; }
+  #train {
+    position: absolute; right: 8%; bottom: 30px; width: 44px; height: 14px;
+    background: var(--train); box-shadow: inset 0 -4px 0 var(--train-d);
+  }
+  #train.gone { display: none; }
+
+  /* AMENDMENT 2. The card list used to claim every spare pixel while its
+     children stayed content-sized, so a tall viewport put the stack against a
+     large void. The cards themselves now take the slack — #cards is exactly as
+     tall as what is in it, at every height. GROW 1, SHRINK 0: measured, a card
+     allowed to shrink puts Rustfall's line 7.8px past its own box on a narrow
+     screen, where overflow:hidden turns the D2 escape into a D2 clip. Growing
+     closes the void; refusing to shrink keeps the text inside the card; the
+     list scrolls when even the content will not fit. */
+  #cards {
+    flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  button.card {
+    flex: 1 0 auto; min-height: 52px; overflow: hidden; border: 0; padding: 6px 10px;
+    background: var(--card); box-shadow: inset 0 0 0 2px var(--card-edge);
+    color: var(--ink); font-family: inherit; text-align: left; cursor: pointer;
+    display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto auto;
+    align-content: center; gap: 2px 8px;
+  }
+  button.card:disabled { cursor: default; }
+  button.card.unlit { opacity: .38; }
+  button.card.on { box-shadow: inset 0 0 0 3px var(--sel); }
+  button.card.out { box-shadow: inset 0 0 0 3px var(--green-deep); background: #2b3330; opacity: 1; }
+  button.card.dark {
+    background: var(--rust); box-shadow: inset 0 0 0 2px var(--rust-edge);
+    color: var(--rust-ink); opacity: 1;
+  }
+  .cn { grid-column: 1; grid-row: 1; font-size: 14px; font-weight: 700; letter-spacing: .05em; }
+  .cp { grid-column: 2; grid-row: 1; font-size: 13px; font-weight: 700; color: var(--dim); text-align: right; }
+  .cs { grid-column: 1; grid-row: 2; font-size: 11.5px; color: var(--dim); line-height: 1.35; }
+  .co { grid-column: 2; grid-row: 2; font-size: 17px; font-weight: 700; text-align: right; }
+  /* A percent quoted for a roster nobody has recruited yet. It is typed apart
+     from a committed number on three axes at once — its own colour, italic,
+     and a leading arrow it never carries at rest — so a conditional figure can
+     never be read as the number the die will be thrown against. */
+  .co.prov { color: var(--pad-on); font-style: italic; font-weight: 700; }
+  .card.dark .cs { color: var(--rust-ink); }
+
+  /* One stack, one grammar, TWO GROUPS, each labelled in the board's words.
+     The desk and the terrace are peers here because the turn's question spans
+     them: go up the hill, or send what is already down. */
+  .grouplabel {
+    flex: 0 0 auto; font-size: 10.5px; font-weight: 700; letter-spacing: .16em;
+    color: var(--dim); padding: 2px 2px 0;
+  }
+  #told {
+    flex: 0 1 auto; min-height: 0; max-height: 46%; overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 0 6px 6px; display: flex; flex-direction: column; gap: 6px;
+  }
+  #say, #end {
+    background: rgba(19, 22, 19, 0.9); box-shadow: inset 0 0 0 1px rgba(210, 230, 220, 0.24);
+    padding: 9px 11px; font-size: 13px; line-height: 1.45; color: var(--ink);
+  }
+  #end { box-shadow: inset 0 0 0 2px var(--green-deep); }
+  #say[hidden], #end[hidden], #told[hidden] { display: none; }
+
+  #pads { display: flex; gap: 6px; min-height: 76px; flex-shrink: 0; align-items: stretch; }
+  button.pad {
+    border: 0; background: var(--pad); color: var(--ink); font-family: inherit;
+    font-size: 13px; font-weight: 700; letter-spacing: .03em;
+    min-height: 76px; min-width: 0; flex: 1; padding: 0 8px;
+  }
+  button.pad.primary { background: var(--pad-on); color: var(--pad-ink); }
+  button.pad.meet { background: var(--slate); color: #101215; }
+  button.pad:disabled { opacity: .28; }
+  button.pad:active:not(:disabled) { filter: brightness(1.12); }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="hud">
+    <div id="marks-line">0 marks</div>
+  </div>
+  <div id="strip">
+    <div id="town" aria-hidden="true">
+      <div id="terrace"><span class="fill"></span></div>
+      <div id="stormbird" aria-hidden="true"></div>
+      <div id="basin-road" aria-hidden="true"></div>
+      <div id="greenhouse"></div>
+      <div id="bank"></div>
+      <div id="hearth"></div>
+      <div id="platform"></div>
+      <div id="stores"></div>
+      <div id="train"></div>
+    </div>
+    <div id="stack">
+      <div class="grouplabel">THE DESK</div>
+      <div id="ladder">
+        <div id="lrow1">
+          <span id="muster-word">MUSTER WARDEN</span><span id="roster-read"></span><span id="muster-price"></span>
+        </div>
+        <div id="track" tabindex="0" role="slider"><span id="treach"></span><span id="tarmed"></span><span id="tfill"></span><span id="thumb"></span></div>
+      </div>
+      <button type="button" class="card" id="ranger"><span class="cn">MUSTER RANGER</span><span class="cp"></span><span class="cs"></span><span class="co"></span></button>
+      <div id="cards">
+      <button type="button" class="card" data-route="dawnspur-halt"><span class="cn"></span><span class="cp"></span><span class="cs"></span><span class="co"></span><span class="tn"></span><span class="tp"></span><span class="ts"></span><span class="to"></span></button>
+      <button type="button" class="card" data-route="mosswake-loop"><span class="cn"></span><span class="cp"></span><span class="cs"></span><span class="co"></span><span class="tn"></span><span class="tp"></span><span class="ts"></span><span class="to"></span></button>
+      <button type="button" class="card" data-route="cloud-basin-span"><span class="cn"></span><span class="cp"></span><span class="cs"></span><span class="co"></span><span class="tn"></span><span class="tp"></span><span class="ts"></span><span class="to"></span></button>
+      <button type="button" class="card" data-route="rustfall-yard"><span class="cn"></span><span class="cp"></span><span class="cs"></span><span class="co"></span><span class="tn"></span><span class="tp"></span><span class="ts"></span><span class="to"></span></button>
+      <div class="grouplabel">THE TERRACE</div>
+      <button type="button" class="card" id="carry"><span class="cn">CARRY</span><span class="cp"></span><span class="cs"></span><span class="co"></span></button>
+      <button type="button" class="card" id="tend"><span class="cn">TEND</span><span class="cp"></span><span class="cs"></span><span class="co"></span></button>
+      <button type="button" class="card" id="up"><span class="cn">UP</span><span class="cp"></span><span class="cs"></span><span class="co"></span></button>
+      </div>
+    </div>
+    <div id="told">
+      <div id="say" hidden></div>
+      <div id="end" hidden></div>
+    </div>
+  </div>
+  <div id="pads">
+    <button type="button" class="pad primary" id="send" disabled>SEND</button>
+    <button type="button" class="pad" id="trim" hidden disabled>TRIM</button>
+    <button type="button" class="pad meet" id="meet" disabled>MEET THE TRAIN</button>
+  </div>
+</div>
+<script src="./sim.js"></script>
+<script>
+(function () {
+  const board = DawnspurStorm.createBoard({ fresh: true });
+  const marksLine = document.getElementById("marks-line");
+  const ladderEl = document.getElementById("ladder");
+  const trackEl = document.getElementById("track");
+  const fillEl = document.getElementById("tfill");
+  const reachEl = document.getElementById("treach");
+  const armedEl = document.getElementById("tarmed");
+  const thumbEl = document.getElementById("thumb");
+  const rosterRead = document.getElementById("roster-read");
+  const priceEl = document.getElementById("muster-price");
+  const cardEls = Array.prototype.slice.call(document.querySelectorAll("button.card[data-route]"));
+  const townEl = document.getElementById("town");
+  const terraceEl = document.getElementById("terrace");
+  const greenhouseEl = document.getElementById("greenhouse");
+  const storesEl = document.getElementById("stores");
+  const rangerEl = document.getElementById("ranger");
+  const carryEl = document.getElementById("carry");
+  const tendEl = document.getElementById("tend");
+  const upEl = document.getElementById("up");
+  // The store slots are built from board.storesCap, which is itself DERIVED in
+  // the sim (maxProvisions + maxLevel - 1), so no slot count is typed here.
+  const slotEls = [];
+  for (let i = 0; i < board.storesCap; i++) {
+    const el = document.createElement("span");
+    el.className = "slot";
+    slotEls.push(el);
+    storesEl.appendChild(el);
+  }
+  const trainEl = document.getElementById("train");
+  const sayEl = document.getElementById("say");
+  const endEl = document.getElementById("end");
+  const toldEl = document.getElementById("told");
+  const sendBtn = document.getElementById("send");
+  const trimBtn = document.getElementById("trim");
+  const meetBtn = document.getElementById("meet");
+  let pick = null;
+  // The position under the finger, ABSOLUTE (armed === k means roster would be
+  // k) and always an INTEGER, because a position between two Wardens means
+  // nothing. Null whenever no finger is down: it is created by a press and it
+  // dies with the gesture that created it, in the same frame, on every path out.
+  let armed = null;
+  let gesture = null;
+
+  // Every length on the track is a fraction of the roster cap, read from the
+  // sim. The thumb's own width is the only pixel here and it comes from the
+  // --thumb token, so no figure is typed into this script either.
+  function at(p) {
+    return "calc((100% - var(--thumb)) * " + (p / board.rosterCap) + " + (var(--thumb) / 2))";
+  }
+  function span(el, from, to) {
+    el.style.left = at(from);
+    el.style.right = "calc(100% - (" + at(to) + "))";
+    el.style.display = to > from ? "block" : "none";
+  }
+
+  function tap(el, fn) {
+    el.addEventListener("pointerdown", function (ev) { ev.preventDefault(); fn(ev); });
+  }
+  function stakeText(c) {
+    if (c.provisions === 0 && c.toll === 0) return "free";
+    if (c.toll === 0) return c.provisions + " from the stores";
+    return c.provisions + " from the stores · toll " + c.toll;
+  }
+  function paint() {
+    if (pick !== null && !board.canSend(pick)) pick = null;
+    townEl.classList.toggle("bird", board.sky === "bird");
+    townEl.classList.toggle("storm", board.sky === "storm");
+    // A marks figure agrees with its own noun. The parent board has read
+    // "1 marks" in this line since it shipped; the join inherits the line and
+    // not the disagreement.
+    marksLine.textContent = board.marks + (board.marks === 1 ? " mark" : " marks");
+    rosterRead.textContent = "Wardens " + board.roster + " of " + board.rosterCap;
+    // The price is REPLACED by the total while a count is armed, never joined
+    // by it, and the total is on the face before any commit can happen.
+    // Armed AT the roster is not an armed state on the face: a thumb dragged
+    // back to where it started is a cancel in progress, and "0 marks" would
+    // read as a price rather than as nothing pending. The face goes back to
+    // the instruction, which is what the aria text already said here.
+    priceEl.textContent = armed === null || armed === board.roster
+      ? board.musterPrice + " each"
+      : board.musterPrice * (armed - board.roster) + " marks";
+    ladderEl.classList.toggle("dim", board.musterReach === 0);
+    // The filled length reads board.roster and NOTHING else, at every point in
+    // the gesture: the pending intent is a separate length that starts where
+    // the filled one ends, so a drag can never lengthen or shorten the record.
+    fillEl.style.left = "0";
+    fillEl.style.right = "calc(100% - (" + at(board.roster) + "))";
+    fillEl.style.display = board.roster > 0 ? "block" : "none";
+    span(reachEl, board.roster, board.roster + board.musterReach);
+    span(armedEl, board.roster, armed === null ? board.roster : armed);
+    const atPos = armed === null ? board.roster : armed;
+    thumbEl.style.left = "calc((100% - var(--thumb)) * " + (atPos / board.rosterCap) + ")";
+    trackEl.setAttribute("aria-valuemin", "0");
+    trackEl.setAttribute("aria-valuemax", String(board.rosterCap));
+    trackEl.setAttribute("aria-valuenow", String(atPos));
+    trackEl.setAttribute("aria-valuetext", atPos === board.roster
+      ? board.roster + " of " + board.rosterCap + " Wardens"
+      : "Recruit to " + atPos + " Wardens for " + board.musterPrice * (atPos - board.roster) + " marks");
+    trackEl.setAttribute("aria-label", "Muster Wardens at " + board.musterPrice + " marks each");
+    trackEl.setAttribute("aria-disabled", board.musterReach === 0 ? "true" : "false");
+    // At rest and while away every card quotes chanceFor(baseRisk, roster).
+    // Only a finger on the ladder asks for anything else, and it asks the sim.
+    const cards = armed === null ? board.cards() : board.cards(armed);
+    for (let i = 0; i < cardEls.length; i++) {
+      const el = cardEls[i];
+      const c = cards[i];
+      el.querySelector(".cn").textContent = c.name;
+      if (!c.sendable) {
+        el.querySelector(".cp").textContent = "";
+        el.querySelector(".cs").textContent = c.note;
+        el.querySelector(".co").textContent = "";
+        el.querySelector(".tn").textContent = "";
+        el.querySelector(".tp").textContent = "";
+        el.querySelector(".ts").textContent = "";
+        el.querySelector(".to").textContent = "";
+      } else if (c.out) {
+        el.querySelector(".cp").textContent = "OUT";
+        el.querySelector(".cs").textContent = c.manifestLine;
+        el.querySelector(".co").textContent = c.percent + "%";
+        el.querySelector(".cp").classList.toggle("wx", false);
+        el.querySelector(".co").classList.toggle("wx", false);
+        el.querySelector(".tn").textContent = "";
+        el.querySelector(".tp").textContent = "";
+        el.querySelector(".ts").textContent = "";
+        el.querySelector(".to").textContent = "";
+      } else {
+        el.querySelector(".cp").textContent = "pays " + c.pays;
+        el.querySelector(".cp").classList.toggle("wx", !!c.shifted && (!c.trim || c.pays !== c.trim.pays));
+        const stake = c.condition === null ? stakeText(c) : c.condition;
+        el.querySelector(".cs").textContent = stake;
+        el.querySelector(".co").textContent = (c.provisional ? "\u2192 " : "") + c.percent + "%";
+        el.querySelector(".co").classList.toggle("wx", !!c.shifted);
+        if (c.trim) {
+          el.querySelector(".tn").textContent = "TRIM";
+          el.querySelector(".tp").textContent = "pays " + c.trim.pays;
+          el.querySelector(".ts").textContent = "+2 marks";
+          el.querySelector(".to").textContent = c.trim.percent + "%";
+        } else {
+          el.querySelector(".tn").textContent = "";
+          el.querySelector(".tp").textContent = "";
+          el.querySelector(".ts").textContent = "";
+          el.querySelector(".to").textContent = "";
+        }
+      }
+      el.querySelector(".co").classList.toggle("prov", !!c.provisional);
+      el.classList.toggle("dark", !c.sendable);
+      el.classList.toggle("out", c.out);
+      el.classList.toggle("unlit", c.sendable && !c.lit && !c.out);
+      el.classList.toggle("on", pick === c.id);
+      el.classList.toggle("fork", !!c.trim);
+      el.disabled = !c.lit;
+      if (!c.sendable) {
+        el.setAttribute("aria-label", c.name + ". No send, no odds. " + c.note);
+      } else if (c.out) {
+        el.setAttribute("aria-label", c.name + ", out. " + c.manifestLine + " " + c.percent + " percent home.");
+      } else {
+        el.setAttribute("aria-label",
+          c.name + ", pays " + c.pays + ", " + stakeText(c) + ", " + c.percent + " percent home" +
+          (c.trim
+            ? ". TRIM pays " + c.trim.pays + " at " + c.trim.percent + " percent for two marks"
+            : ""));
+      }
+    }
+    // The terrace, the greenhouse and the stores. The reserve reaches the DOM
+    // in exactly one shape — the ground's own class — and the stores in exactly
+    // one shape: filled slots. No number, no bar, no meter, no HUD figure.
+    for (let i = 0; i <= board.reserveFull; i++) {
+      terraceEl.classList.toggle("rs" + i, board.reserve === i);
+    }
+    greenhouseEl.className = "lv" + board.level;
+    for (let i = 0; i < slotEls.length; i++) {
+      slotEls[i].classList.toggle("full", i < board.stores);
+    }
+    // CARRY states the load it will actually land, which is the button label
+    // doing the work of a cap warning — CFD-183's own rule, inherited.
+    carryEl.querySelector(".cp").textContent =
+      board.carryYield === null ? "" : "lands " + board.carryYield;
+    carryEl.querySelector(".cs").textContent = board.carryBill
+      ? board.carryBill
+      : board.canCarry()
+        ? "one trip up the hill, one step of ground"
+        : "The stores are full.";
+    carryEl.querySelector(".co").textContent = "";
+    carryEl.classList.toggle("unlit", !board.canCarry());
+    carryEl.disabled = !board.canCarry();
+    carryEl.setAttribute("aria-label", board.canCarry()
+      ? "Carry, lands " + board.carryYield + " from the terrace into the stores"
+      : "Carry, the stores are full");
+    rangerEl.querySelector(".cp").textContent = board.rangerPrice + " marks";
+    rangerEl.querySelector(".cs").textContent = board.rangers >= board.rangerCap
+      ? "The Ranger is on the roster. Storm sends offer the long way."
+      : board.canMusterRanger()
+        ? "one berth. Opens the long way around a storm."
+        : "one berth. Wants " + board.rangerPrice + " marks.";
+    rangerEl.querySelector(".co").textContent = "";
+    rangerEl.classList.toggle("unlit", !board.canMusterRanger());
+    rangerEl.disabled = !board.canMusterRanger();
+    rangerEl.setAttribute("aria-label", board.canMusterRanger()
+      ? "Muster Ranger, " + board.rangerPrice + " marks, one berth"
+      : "Muster Ranger, dark");
+    tendEl.querySelector(".cp").textContent = "costs " + board.tendPrice;
+    tendEl.querySelector(".cs").textContent = board.canTend()
+      ? (board.sky === "storm"
+        ? "one step of ground back. A storm cannot be out-tended; it can only be held through."
+        : "one step of ground back. A storm carry pays what the bank can cover.")
+      : board.reserve >= board.reserveFull
+        ? "The ground is full."
+        : "Wants " + board.tendPrice + " mark.";
+    tendEl.querySelector(".co").textContent = "";
+    tendEl.classList.toggle("unlit", !board.canTend());
+    tendEl.disabled = !board.canTend();
+    tendEl.setAttribute("aria-label", board.canTend()
+      ? "Tend, costs " + board.tendPrice + " mark, one step of ground back"
+      : "Tend, dark");
+    upEl.querySelector(".cp").textContent = board.upPrice === null ? "" : "costs " + board.upPrice;
+    upEl.querySelector(".cs").textContent = board.canUp()
+      ? "greenhouse " + board.level + " of " + board.maxLevel
+      : board.upPrice === null
+        ? "The terrace is topped."
+        : "greenhouse " + board.level + " of " + board.maxLevel +
+          ". The next level wants " + board.upPrice + (board.upPrice === 1 ? " mark." : " marks.");
+    upEl.querySelector(".co").textContent = "";
+    upEl.classList.toggle("unlit", !board.canUp());
+    upEl.disabled = !board.canUp();
+    upEl.setAttribute("aria-label", board.upPrice === null
+      ? "Up, the terrace is topped at " + board.maxLevel
+      : "Up, raise the greenhouse to " + (board.level + 1) + " for " + board.upPrice +
+        (board.upPrice === 1 ? " mark" : " marks"));
+    trainEl.classList.toggle("gone", board.away);
+    const picked = pick === null ? null : cards.find(function (c) { return c.id === pick; });
+    sendBtn.textContent = picked === null || picked === undefined
+      ? "SEND"
+      : "SEND — " + picked.name;
+    sendBtn.disabled = pick === null || !board.canSend(pick);
+    const forking = picked !== null && picked !== undefined && !!picked.trim;
+    trimBtn.hidden = !forking;
+    trimBtn.disabled = !forking || !board.canTrim(pick);
+    trimBtn.textContent = forking ? "TRIM — " + picked.name : "TRIM";
+    meetBtn.disabled = !board.canMeet();
+    sayEl.hidden = board.runSentence === null;
+    sayEl.textContent = board.runSentence === null ? "" : board.runSentence;
+    endEl.hidden = board.endSentence === null;
+    endEl.textContent = board.endSentence === null ? "" : board.endSentence;
+    toldEl.hidden = sayEl.hidden && endEl.hidden;
+  }
+  cardEls.forEach(function (el) {
+    tap(el, function () {
+      const id = el.getAttribute("data-route");
+      if (!board.canSend(id)) return;
+      pick = id;
+      paint();
+    });
+  });
+  // The bar's gesture. One press-and-release: the count under the finger is
+  // armed and its total shown, the finger can slide to any other count or off
+  // the bar entirely, and the commit happens on RELEASE. That release-to-commit
+  // shape is the whole reason to prefer it to a tap: nothing on this board
+  // refunds, so a mis-aimed tap would be unrecoverable, and the slide is the
+  // confirm step David asked for ("clicking on it is confirming that you
+  // recruit that many") with an escape still attached.
+  // Where on the track the finger is, SNAPPED to an integer and clamped to
+  // what the marks can reach. Null means off the bar: dragging away from it
+  // vertically is the cancel, exactly as sliding off the ladder used to be.
+  // Horizontally the ends clamp, because dragging past the end of a slider
+  // means "all of it", not "none of it".
+  function posAt(x, y) {
+    const r = trackEl.getBoundingClientRect();
+    const t = thumbEl.getBoundingClientRect().width;
+    if (y < r.top - r.height || y > r.bottom + r.height) return null;
+    const travel = r.width - t;
+    if (travel <= 0) return board.roster;
+    const raw = (x - r.left - t / 2) / travel * board.rosterCap;
+    const snapped = Math.round(raw);
+    return Math.max(board.roster, Math.min(board.roster + board.musterReach, snapped));
+  }
+  function disarm() {
+    if (armed === null && gesture === null) return;
+    armed = null;
+    endGesture();
+    paint();
+  }
+  //
+  // TRACKING. setPointerCapture is asked for, and NOTHING depends on it. The
+  // move/up/cancel listeners live on window for the duration of the gesture, so
+  // the finger is followed off the ladder and the gesture always terminates,
+  // whether or not capture was granted. That matters more than tidiness: armed
+  // state changes the percent every card is showing, so a gesture that could
+  // get stuck open would leave provisional numbers standing on the board with
+  // no finger down. Hit-testing is by coordinate, never by event target, which
+  // is what lets the window listeners do the same job as the captured ones.
+  function endGesture() {
+    window.removeEventListener("pointermove", onMove);
+    window.removeEventListener("pointerup", onUp);
+    window.removeEventListener("pointercancel", onCancel);
+    window.removeEventListener("blur", onCancel);
+    gesture = null;
+  }
+  function onMove(ev) {
+    if (gesture === null || ev.pointerId !== gesture) return;
+    const p = posAt(ev.clientX, ev.clientY);
+    if (p !== armed) { armed = p; paint(); }
+  }
+  function onUp(ev) {
+    if (gesture === null || ev.pointerId !== gesture) return;
+    const p = posAt(ev.clientX, ev.clientY);
+    const want = p === null ? null : p - board.roster;
+    armed = null;
+    endGesture();
+    // All or nothing, and only over the bar. Any other release commits nothing
+    // and returns every card to the committed roster's percent in this frame.
+    if (want !== null && want >= 1) board.commitMuster(want);
+    paint();
+  }
+  function onCancel() {
+    armed = null;
+    endGesture();
+    paint();
+  }
+  trackEl.addEventListener("pointerdown", function (ev) {
+    if (gesture !== null) return;
+    if (board.musterReach === 0) return;
+    const p = posAt(ev.clientX, ev.clientY);
+    if (p === null) return;
+    ev.preventDefault();
+    gesture = ev.pointerId;
+    armed = p;
+    try { trackEl.setPointerCapture(ev.pointerId); } catch (e) { /* not required */ }
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
+    window.addEventListener("pointercancel", onCancel);
+    window.addEventListener("blur", onCancel);
+    paint();
+  });
+  // The keyboard path: the arrows arm a count and state its total, Enter or
+  // Space commits it, Escape stands it down. Same all-or-nothing call, same
+  // total-before-commit rule.
+  trackEl.addEventListener("blur", disarm);
+  trackEl.addEventListener("keydown", function (ev) {
+    if (board.musterReach === 0) return;
+    const top = board.roster + board.musterReach;
+    const here = armed === null ? board.roster : armed;
+    if (ev.key === "ArrowRight" || ev.key === "ArrowUp") {
+      ev.preventDefault();
+      armed = Math.min(top, here + 1);
+      paint();
+      return;
+    }
+    if (ev.key === "ArrowLeft" || ev.key === "ArrowDown") {
+      ev.preventDefault();
+      armed = Math.max(board.roster, here - 1);
+      paint();
+      return;
+    }
+    if (ev.key === "Escape") { ev.preventDefault(); disarm(); return; }
+    if (ev.key !== "Enter" && ev.key !== " ") return;
+    ev.preventDefault();
+    const want = here - board.roster;
+    armed = null;
+    gesture = null;
+    if (want >= 1) board.commitMuster(want);
+    paint();
+  });
+  tap(sendBtn, function () {
+    if (pick === null) return;
+    if (board.commitSend(pick, false)) { pick = null; paint(); }
+  });
+  tap(trimBtn, function () {
+    if (pick === null) return;
+    if (board.commitSend(pick, true)) { pick = null; paint(); }
+  });
+  tap(meetBtn, function () { if (board.commitMeet()) paint(); });
+  // Terrace verbs commit on the tap. They are the town's own hands on the
+  // shuttle off A, not the line train, and none of them reads the away
+  // state — which is the two-vehicle claim the MOSSWAKE cut rests on.
+  tap(carryEl, function () { if (board.commitCarry()) paint(); });
+  tap(tendEl, function () { if (board.commitTend()) paint(); });
+  tap(upEl, function () { if (board.commitUp()) paint(); });
+  tap(rangerEl, function () { if (board.commitMusterRanger()) paint(); });
+  paint();
+  document.addEventListener("touchstart", function (e) {
+    if (e.touches.length > 1) e.preventDefault();
+  }, { passive: false });
+  let lastTouch = 0;
+  document.addEventListener("touchend", function (e) {
+    const now = Date.now();
+    if (now - lastTouch <= 350) e.preventDefault();
+    lastTouch = now;
+  }, { passive: false });
+})();
+</script>
+</body>
+</html>

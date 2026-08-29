@@ -1,0 +1,55 @@
+Dawnspur CFD-201, the storm sitting (weather as the one new system) 2026-08-28
+RECUT 2026-08-29: trim is two faces and a pad; tend names the bank.
+Spec: docs/cfd-201-beat.md - SIGNED, David 2026-08-28 ("So sign, with the
+counter."). Written under canon section 7: a sitting INHERITS what has passed
+and adds one new thing. The parent is the join board that passed 2026-08-28.
+
+INHERITED WHOLE, cited to the beats that passed them.
+  the desk    - CFD-196 + Amendments 1 and 2: SEND, MUSTER, MEET, three routes
+                and Rustfall dark, honest dice stamped at the send, the
+                charter condition, the muster slider with its armed re-quote
+                and both fences, the opening float of 3, failure pays zero,
+                nothing refunds, the crew always comes home, the free halt
+                always lit.
+  the terrace - CFD-183: the greenhouse 1..4, UP at 3/4/5 instant with no way
+                back, the reserve 4 down to 0 floored, TEND 1 mark +1 step
+                lit below full. The join: CARRY writes stores (food), a send's
+                provisions come off the stores, the Chartered toll stays 1
+                mark. MOSSWAKE +3 stays cut (Seam 3).
+  the stop    - the join's arming shape, narrowed: topping ARMS; a Chartered
+                cargo BANKED out of a storm FIRES it.
+
+THE ONE NEW SYSTEM IS WEATHER. Three sky states, one step per committed
+player action. Cycle fixed: five clear, two bird, two storm, period nine.
+wait() still exists, takes nothing, returns false, and does not advance the
+sky. The bird is news, not weather. Storm: every sendable route -0.10;
+Chartered pay 18->24; Core Line pay unmoved. Sky advances AFTER the commit
+resolves; a turn resolved under storm then draws the ground one step.
+
+The Ranger (2 marks, cap 1) is the weather unit. TRIM is a second send on
+the same card, only in a storm, only with a Ranger: clear chance, clear pay,
+the route's own stake plus two marks. runsTrimmed increments only on a
+committed trimmed send and the terminal reports it as a RATE against storm
+sends.
+
+The reserve is STORED, not derived. Exactly three writers: carry -1, storm
+-1, tend +1. In a storm CARRY pays min(level, storesCap - stores, reserve).
+In clear and under the bird it pays the level whenever the stores can hold
+it, at every reserve, bare included.
+
+Lives at sit/dawnspur-storm/ with byte-copies at public/dawnspur-storm/, so
+the six boards that already stand are untouched - the lineage lock:
+
+  live /dawnspur-line/     sim 18b1324f / index b6f21db0
+  live /dawnspur-dispatch/ sim 576ce2b6 / index 31aead60
+  live /dawnspur-scale/    sim 953368a1 / index 5d2f452f
+  live /dawnspur-heat/     sim 292d6645
+  kill /dawnspur/          sim 395c18f2
+  live /convoy-stop/       sim 5ad814e6
+
+These hashes are graded by test/dawnspur-storm.test.js against the bytes on
+disk, measured LF (.gitattributes `* -text` makes the blob the shipped bytes;
+the working tree is never the artefact):
+
+index.html      sha256:d32720d9881a9103c0fd736a75fd383684650aa74e14aacbf1b672cc38bc476e
+sim.js          sha256:7500460367ce832ae2401acff0a58380aa7759c407c67ae3aa3b46cc93499442
