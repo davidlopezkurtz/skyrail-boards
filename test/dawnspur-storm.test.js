@@ -795,25 +795,79 @@ test("recut: the trim fork is two faces and a pad — SEND stays hot, TRIM is it
   assert.doesNotMatch(SIT_HTML, /help overlay|tutorial mode|tooltip encyclopedia|\? tutorial/i);
 });
 
-test("recut: tend names the bank, never the percent, and a tend commit says so", () => {
+test("recut: tend speaks as the ground — what the bank just did — and never as an odds lever", () => {
   const tendPaint = SIT_HTML.slice(SIT_HTML.indexOf("tendEl.querySelector"), SIT_HTML.indexOf("upEl.querySelector"));
-  assert.doesNotMatch(tendPaint, /success|percent|odds|chance|safer/i);
+  assert.doesNotMatch(tendPaint, /success|percent|odds|chance|safer|improve|held through|out-tended|storm carry/i);
   assert.doesNotMatch(tendPaint, /earns nothing/);
-  assert.match(tendPaint, /A storm carry pays what the bank can cover/);
-  assert.match(tendPaint, /A storm cannot be out-tended; it can only be held through/);
-  assert.match(SIT_SIM, /TEND_CLEAR = "The ground came back one step\. A storm carry pays what the bank can cover\."/);
-  assert.match(SIT_SIM, /TEND_STORM = "The ground held\. A storm cannot be out-tended; it can only be held through\."/);
+  assert.match(tendPaint, /one step of ground back\. One mark into the bank/);
+  assert.match(tendPaint, /The storm draws one; the bank holds/);
+  assert.match(SIT_SIM, /TEND_CLEAR = "The ground came back one step\. One mark went into the bank\."/);
+  assert.match(SIT_SIM, /TEND_STORM = "The ground came back one step\. The storm drew one\. The bank held\."/);
   const tendWords = SIT_SIM.match(/TEND_CLEAR = "([^"]+)"/)[1] + " " + SIT_SIM.match(/TEND_STORM = "([^"]+)"/)[1];
-  assert.doesNotMatch(tendWords, /success|percent|odds|chance|safer/i);
+  assert.doesNotMatch(tendWords, /success|percent|odds|chance|safer|improve|held through|out-tended|storm carry/i);
   const clear = walk("C", makeBoard({ marks: 60 }));
+  const before = clear.b.cards().map((c) => c.percent);
   assert.ok(clear.b.canTend());
   assert.ok(clear.b.commitTend());
-  assert.match(clear.b.runSentence, /The ground came back one step\. A storm carry pays what the bank can cover\./);
+  assert.equal(clear.b.runSentence, "The ground came back one step. One mark went into the bank.");
+  assert.deepEqual(clear.b.cards().map((c) => c.percent), before,
+    "a tend must not move the stated percent — odds still move only by baseRisk, roster and sky");
   const storm = intoSky("storm", makeBoard({ marks: 60 }));
   if (storm.b.reserve >= 4) assert.ok(storm.b.commitCarry());
   assert.ok(storm.b.canTend(), "a storm sit must be able to tend so the bank sentence can fire");
+  const stormBefore = storm.b.cards().map((c) => c.percent);
+  const skyBefore = storm.b.sky;
   assert.ok(storm.b.commitTend());
-  assert.match(storm.b.runSentence, /The ground held\. A storm cannot be out-tended; it can only be held through\./);
+  assert.match(storm.b.runSentence, /The ground came back one step\. The storm drew one\. The bank held\./);
+  assert.doesNotMatch(storm.b.runSentence, /success|percent|odds|chance|safer|improve|held through|out-tended/i);
+  if (storm.b.sky === skyBefore) {
+    assert.deepEqual(storm.b.cards().map((c) => c.percent), stormBefore,
+      "a storm tend that does not turn the sky must leave every percent where it was");
+  }
+});
+
+test("recut: a live home desk with lit sends cannot read as a dead pad — the remaining verb is pick a route, then SEND", () => {
+  const paint = SIT_HTML.slice(SIT_HTML.indexOf("function paint()"), SIT_HTML.indexOf("cardEls.forEach"));
+  assert.match(paint, /SEND — pick a route/);
+  assert.match(paint, /classList\.toggle\("waiting"/);
+  assert.match(paint, /litSends\(\)\.length/);
+  assert.match(cssOf(), /button\.pad:disabled\.waiting/);
+  const waitingRule = rule("button.pad:disabled.waiting");
+  assert.match(waitingRule, /opacity:\s*1/);
+  assert.doesNotMatch(SIT_HTML, /help overlay|tutorial mode|tooltip encyclopedia|\? overlay|\? tutorial/i);
+  const home = makeBoard({ marks: 71, stores: 6 }).b;
+  assert.equal(home.away, false);
+  assert.equal(home.stopped, false);
+  assert.ok(home.litSends().length >= 1, "the false-stop sit had lit sends");
+  assert.ok(home.canSend(HALT));
+  const away = walk("h").b;
+  assert.equal(away.away, true);
+  assert.deepEqual(away.litSends(), []);
+  const stop = walk("CUCh+UUc+").b;
+  assert.equal(stop.stopped, true);
+  assert.deepEqual(stop.litSends(), []);
+});
+
+test("recut: a commit that already changed something no longer stays silent — same caption voice", () => {
+  const w = walk("W", makeBoard({ marks: 60 }));
+  assert.equal(w.b.runSentence, "The desk spent 3 marks. 1 Warden rides.");
+  const ww = walk("WW", makeBoard({ marks: 60 }));
+  assert.match(ww.b.runSentence, /The desk spent 3 marks\. 2 Wardens ride\./);
+  const g = walk("G", makeBoard({ marks: 60 }));
+  assert.equal(g.b.runSentence, "The desk spent 2 marks. The Ranger is on the roster.");
+  const left = walk("h");
+  assert.equal(left.b.runSentence, "The train left for Dawnspur Halt with nothing staked.");
+  const moss = walk("CCm", makeBoard({ marks: 60, stores: 0 }));
+  assert.match(moss.b.runSentence, /The train left for Mosswake with two from the terrace\./);
+  const grew = walk("U", makeBoard({ marks: 60 }));
+  assert.equal(grew.b.runSentence, "The greenhouse is at two. 3 marks went into the glass.");
+  const grew2 = walk("UU", makeBoard({ marks: 60 }));
+  assert.match(grew2.b.runSentence, /The greenhouse is at three\. 4 marks went into the glass\./);
+  const top = walk("UUU", makeBoard({ marks: 60 }));
+  assert.match(top.b.runSentence, /The terrace is topped\. The next Chartered cargo home out of a storm ends the sitting\./);
+  const fullPay = walk("C");
+  assert.equal(fullPay.b.runSentence, null, "a full clear carry stays silent — the beat already named that silence");
+  assert.doesNotMatch(SIT_HTML, /help overlay|tutorial mode|tooltip encyclopedia|\? overlay/i);
 });
 
 test("recut: carryBill previews a storm bill only when the reserve binds, present tense", () => {

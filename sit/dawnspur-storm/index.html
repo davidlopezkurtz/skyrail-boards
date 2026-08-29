@@ -266,6 +266,10 @@
   button.pad.primary { background: var(--pad-on); color: var(--pad-ink); }
   button.pad.meet { background: var(--slate); color: #101215; }
   button.pad:disabled { opacity: .28; }
+  /* A live home desk with lit sends is not the stop. SEND stays dead until
+     a route is picked; that grey pad was read as the sitting ended. The
+     remaining verb stays on the pad, at full ink, until a card is picked. */
+  button.pad:disabled.waiting { opacity: 1; cursor: default; }
   button.pad:active:not(:disabled) { filter: brightness(1.12); }
 </style>
 </head>
@@ -523,8 +527,8 @@
     tendEl.querySelector(".cp").textContent = "costs " + board.tendPrice;
     tendEl.querySelector(".cs").textContent = board.canTend()
       ? (board.sky === "storm"
-        ? "one step of ground back. A storm cannot be out-tended; it can only be held through."
-        : "one step of ground back. A storm carry pays what the bank can cover.")
+        ? "one step of ground back. The storm draws one; the bank holds."
+        : "one step of ground back. One mark into the bank.")
       : board.reserve >= board.reserveFull
         ? "The ground is full."
         : "Wants " + board.tendPrice + " mark.";
@@ -550,10 +554,12 @@
         (board.upPrice === 1 ? " mark" : " marks"));
     trainEl.classList.toggle("gone", board.away);
     const picked = pick === null ? null : cards.find(function (c) { return c.id === pick; });
+    const waiting = pick === null && board.litSends().length > 0;
     sendBtn.textContent = picked === null || picked === undefined
-      ? "SEND"
+      ? (waiting ? "SEND — pick a route" : "SEND")
       : "SEND — " + picked.name;
     sendBtn.disabled = pick === null || !board.canSend(pick);
+    sendBtn.classList.toggle("waiting", waiting);
     const forking = picked !== null && picked !== undefined && !!picked.trim;
     trimBtn.hidden = !forking;
     trimBtn.disabled = !forking || !board.canTrim(pick);
