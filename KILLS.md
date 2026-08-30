@@ -23,6 +23,14 @@ Supersession is an edit with a forward pointer, never a deletion.
   boards for now. Recorded on CFD-176; PLAN §4a carries the same edit.
 
 ## Hosted era (boards.skyrailreclamation.com — hashes are content sha256s; see kills/README.md)
+- 2026-08-30 · Dawnspur Halt · merge `e44212db` / index `f1b6292d` / sim
+  `4126dfc0`. David's sit, verbatim: "I could tell these were different
+  buildings and I could tell that I could feed them resources. Still not
+  totally clear why I want to go they other than it begin right in front of
+  me and I can." Buildings-as-buildings and feed landed. Place did not.
+  Recut: writing on the existing work notices — Dawnspur Halt — Home. Same
+  path. Do not recut buildings-and-feed away. Record: Linear CFD-205.
+
 - 2026-08-25 · Dawnspur scale sitting · build `5fabe7c` / index `d6d5e262` / sim
   `8f13c683` (bytes durable in git and deployment `c2e92c0a` — no byte archive
   needed, unlike the pre-git kills above). David's sit, verbatim: "it broke

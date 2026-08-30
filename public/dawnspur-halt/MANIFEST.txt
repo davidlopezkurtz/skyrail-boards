@@ -1,13 +1,15 @@
-Dawnspur CFD-205 — Dawnspur Halt (Work notices) 2026-08-30
+Dawnspur CFD-205 — Dawnspur Halt — Home (Work notices) 2026-08-30
 Spec: docs/cfd-205-halt-beat.md - SIGNED, David 2026-08-30, Superheavy named it.
-One NEW system: Work notices. Works stays. Foundry is work one. No Halt send.
+Recut of live e44212db / index f1b6292d / sim 4126dfc0. Same path. Writing only.
+One system: Work notices. Works stays. Foundry is work one. No Halt send.
 Four buildings. Tap posts the station board: can do / in process / blocked.
-CAST is a line on the Foundry notice, not a second grey brick.
-Sibling of /dawnspur-site/. Do not recut that board.
+Notices name the place. CAST is a line on the Foundry notice, not a second grey brick.
+Not a new sibling. Not a recut of /dawnspur-site/. Not a recut of storm.
 
 Lives at sit/dawnspur-halt/ with byte-copies at public/dawnspur-halt/, so the
 boards that already stand are untouched - the lineage lock:
 
+  failed sit /dawnspur-halt/ merge e44212db / index f1b6292d / sim 4126dfc0
   live /dawnspur-site/     sim e9f81b74 / index 070a4619  (failed sit; merge c59dc101)
   live /dawnspur-line/     sim 18b1324f / index b6f21db0
   live /dawnspur-dispatch/ sim 576ce2b6 / index 31aead60
@@ -24,5 +26,5 @@ These hashes are graded by test/dawnspur-halt.test.js against the bytes on
 disk, measured LF (.gitattributes `* -text` makes the blob the shipped bytes;
 the working tree is never the artefact):
 
-index.html      sha256:f1b6292d3e055f0805e97114ae19f645db533d2ea872ab628a1f4fb0d2d939af
-sim.js          sha256:4126dfc0b72a4948e03b22d6c293e0924cc7bf5ece508a55ffd289f475abe702
+index.html      sha256:7aa764fa88ecb41e36bfe6122376ec8cba32d2e62813a715f4602065e4934a54
+sim.js          sha256:678075c00c7e5aae38f1435d0f2ef58a88e6b02d153a85c715c917b6d2247572
