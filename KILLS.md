@@ -23,6 +23,13 @@ Supersession is an edit with a forward pointer, never a deletion.
   boards for now. Recorded on CFD-176; PLAN §4a carries the same edit.
 
 ## Hosted era (boards.skyrailreclamation.com — hashes are content sha256s; see kills/README.md)
+- 2026-08-30 · Dawnspur Halt · Home sit · merge `c1b66ee5` / index `7aa764fa` /
+  sim `678075c0`. David's sit, verbatim: "Lit the lamp and started the
+  foundry." Two opening can-dos; he stopped. Glass, consist-home, CAST-heat
+  never became play. Recut: the walk — one live can-do at a time. Same path.
+  Dead jobs stay buttons and still post notices. Not louder Home copy. Not
+  scenery-divs. Record: Linear CFD-205.
+
 - 2026-08-30 · Dawnspur Halt · merge `e44212db` / index `f1b6292d` / sim
   `4126dfc0`. David's sit, verbatim: "I could tell these were different
   buildings and I could tell that I could feed them resources. Still not
