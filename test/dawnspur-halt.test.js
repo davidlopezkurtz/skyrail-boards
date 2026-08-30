@@ -1,9 +1,9 @@
 "use strict";
 
-// CFD-205 — Dawnspur Halt. Spec: docs/cfd-205-halt-beat.md (SIGNED —
-// David, 2026-08-30, Superheavy named it). One NEW system: Work notices.
-// Works stays. Foundry is work one. Sibling of /dawnspur-site/; do not recut
-// that board. Every Kill line expressible as a test is a test.
+// CFD-205 — Dawnspur Halt — Home. Spec: docs/cfd-205-halt-beat.md (SIGNED —
+// David, 2026-08-30, Superheavy named it). Recut the writing. Work notices
+// stay. Four buildings stay. Same path. Not a recut of /dawnspur-site/.
+// Every Kill line expressible as a test is a test.
 
 const { test } = require("node:test");
 const assert = require("node:assert/strict");
@@ -159,6 +159,7 @@ test("MANIFEST.txt records the shipped hashes, and names the boards left standin
     "070a4619", "e9f81b74", "c59dc101",
     "18b1324f", "576ce2b6", "953368a1", "292d6645", "395c18f2", "5ad814e6",
     "f4f17008", "7711f979", "555ba9a9",
+    "e44212db", "f1b6292d", "4126dfc0",
   ]) {
     assert.ok(man.includes(pin), "MANIFEST.txt must record the live sha left standing: " + pin);
   }
@@ -185,6 +186,9 @@ test("the signed halt beat is the brief", () => {
   assert.match(beat, /No Halt SEND/);
   assert.match(beat, /grey square/i);
   assert.match(beat, /peer clickables with no notice/i);
+  assert.match(beat, /Dawnspur Halt — Home/);
+  assert.match(beat, /I could tell these were different buildings/);
+  assert.match(beat, /because it was in front of me and I can/);
 });
 
 // ------------------------------------------------------------ the opening
@@ -237,41 +241,40 @@ test("tapping a building posts its notice — four buildings, each with a notice
   assert.equal(b.postNotice("frame"), false);
 });
 
-test("lamp notice: dark then light it; after, amber and awake", () => {
+test("lamp notice: The Halt. Waiting. then light it; after, someone's home", () => {
   const b = makeBoard().b;
   const dark = b.notice("lamp");
-  assert.match(dark.writing, /lamp/i);
-  assert.match(dark.writing, /Dark/);
+  assert.equal(dark.writing, "The Halt. Waiting.");
   assert.equal(dark.canDo, "Light it.");
   assert.equal(dark.verb, "light");
   assert.equal(dark.inProcess, null);
   assert.ok(b.commitLight());
   const lit = b.notice("lamp");
-  assert.match(lit.writing, /Amber/);
-  assert.match(lit.writing, /Awake/);
+  assert.equal(lit.writing, "Someone's home. The Halt is awake.");
   assert.equal(lit.canDo, null);
-  assert.equal(lit.inProcess, "Awake.");
+  assert.equal(lit.inProcess, "Someone's home.");
   assert.equal(b.lampLit, true);
   assert.equal(b.commitLight(), false);
 });
 
-test("terrace notice: food on the glass; nothing to do; carry/tend/UP blocked as a held island", () => {
+test("terrace notice: a station that feeds itself; nothing to do; carry/tend/UP blocked as a held island", () => {
   const n = makeBoard().b.notice("terrace");
   assert.equal(n.canDo, null);
   assert.equal(n.verb, null);
   assert.match(n.inProcess, /Food on the terrace/);
-  assert.match(n.writing, /glass/);
+  assert.equal(n.writing, "A station that feeds itself. Food already on the glass.");
   assert.match(n.blocked, /held island is not a fuel bill/);
   assert.match(n.blocked, /Carry/);
   assert.match(n.blocked, /tend/i);
   assert.match(n.blocked, /UP/);
 });
 
-test("Foundry notice walks SITE, blocked CAST, then CAST as a line, then hearth live", () => {
+test("Foundry notice walks SITE, blocked CAST, then CAST as a line, then The Halt holds", () => {
   const h = makeBoard();
   const open = h.b.notice("foundry");
   assert.equal(open.canDo, "SITE. Three marks.");
   assert.equal(open.verb, "site");
+  assert.equal(open.writing, "The work that holds this ground.");
   walk("S", h);
   const sited = h.b.notice("foundry");
   assert.equal(sited.canDo, null);
@@ -279,32 +282,40 @@ test("Foundry notice walks SITE, blocked CAST, then CAST as a line, then hearth 
   assert.match(sited.inProcess, /empty/i);
   assert.match(sited.blocked, /CAST/);
   assert.match(sited.blocked, /consist/);
+  assert.match(sited.writing, /work that holds this ground/);
   walk("L", h);
   const landed = h.b.notice("foundry");
   assert.equal(landed.verb, "cast");
   assert.match(landed.canDo, /CAST/);
+  assert.match(landed.canDo, /Heat step/);
   assert.match(landed.writing, /bill is full/i);
+  assert.match(landed.writing, /work that holds this ground/);
   walk("C", h);
   const done = h.b.notice("foundry");
   assert.equal(done.canDo, null);
-  assert.match(done.inProcess, /Hearth live/);
+  assert.equal(done.inProcess, "The Halt holds.");
+  assert.match(done.writing, /The Halt holds/);
   assert.match(done.writing, /already reached took the heat/);
 });
 
-test("consist notice: inbound blocked LAND; after SITE come home; after LAND home, SEND blocked", () => {
+test("consist notice: loops come home; inbound blocked LAND; after SITE come home; after LAND home, SEND blocked", () => {
   const h = makeBoard();
   const open = h.b.notice("consist");
   assert.equal(open.canDo, null);
   assert.equal(open.inProcess, "Inbound.");
+  assert.match(open.writing, /where the loops come home/);
   assert.match(open.blocked, /LAND/);
   assert.match(open.blocked, /No address/);
   walk("S", h);
   const sited = h.b.notice("consist");
   assert.equal(sited.canDo, "Come home.");
   assert.equal(sited.verb, "land");
+  assert.equal(sited.writing, "This is where the loops come home.");
   walk("L", h);
   const home = h.b.notice("consist");
   assert.equal(home.inProcess, "Home.");
+  assert.match(home.writing, /Home/);
+  assert.match(home.writing, /where the loops come home/);
   assert.match(home.blocked, /does not send/);
   assert.equal(home.canDo, null);
 });
@@ -562,7 +573,7 @@ test("kill: SITE/LAND/CAST are not a strip of pads away from the buildings", () 
   assert.doesNotMatch(HTML_CODE, />SITE<|>LAND<|>CAST</);
   assert.doesNotMatch(cssOf(), /button\.pad|#pads\b/);
   assert.match(SIT_HTML, /id="notice-do"/);
-  assert.match(SIM_CODE, /canDo: "CAST\. One heat/);
+  assert.match(SIM_CODE, /canDo: "CAST\. One Heat step/);
 });
 
 test("kill: CAST is a line on the Foundry notice, not a second grey brick", () => {
@@ -686,6 +697,19 @@ test("light costs nothing and does not write Works", () => {
   assert.equal(h.b.sited, false);
   assert.equal(h.b.bill, 0);
   assert.equal(h.b.foundry, false);
+});
+
+test("notices name the place — Home, not objects in front of you", () => {
+  const b = makeBoard().b;
+  assert.equal(b.notice("lamp").writing, "The Halt. Waiting.");
+  assert.match(b.notice("terrace").writing, /A station that feeds itself/);
+  assert.equal(b.notice("foundry").writing, "The work that holds this ground.");
+  assert.match(b.notice("consist").writing, /where the loops come home/);
+  assert.doesNotMatch(SIT_SIM, /The lamp\. Dark/);
+  assert.doesNotMatch(SIT_SIM, /writing: "The ruin\."/);
+  assert.doesNotMatch(SIT_SIM, /writing: "Inbound\."/);
+  assert.doesNotMatch(SIT_SIM, /The lamp\. Amber/);
+  assert.match(SIT_HTML, /aria-label="the Halt"/);
 });
 
 test("the diorama is the town, not a beige HUD strip with a desk", () => {

@@ -1,19 +1,26 @@
 "use strict";
 
-// SKYRAIL Reclamation — CFD-205, Dawnspur Halt.
+// SKYRAIL Reclamation — CFD-205, Dawnspur Halt — Home.
 // Spec: docs/cfd-205-halt-beat.md (SIGNED — David, 2026-08-30, Superheavy named it).
-// One NEW system: Work notices. Works stays. Foundry is work one.
-// No Halt send on this board. Sibling of /dawnspur-site/; do not recut that board.
+// Recut of live e44212db / f1b6292d / 4126dfc0. Same path. Writing only.
+// One system: Work notices. Works stays. Foundry is work one.
+// No Halt send on this board. Not a recut of /dawnspur-site/. Not a recut of storm.
 //
 // Four buildings. Tapping one posts the station board: can do / in process /
 // blocked. The block is a world reason already on the diorama. Writing is the
-// board. CAST is a line on the Foundry notice, not a second brick.
+// board. Notices name the place. CAST is a line on the Foundry notice, not a
+// second brick. No Mara VO. No ?. No tutorial mode.
+//
+// Beat 0: this station's been waiting. Beat 1: lamp means the station's awake,
+// someone's home. Beat 3: a station that can't feed itself isn't a station for
+// long. Beat 5: the reason it matters is the line — this sitting does not SEND;
+// the consist is arrival. World Bible §12: Dawnspur Halt is home base.
 //
 // SITE: marks open the work, scaffold, empty bill. Marks open SITE only.
 // LAND: the inherited loop as sat arrives. Arrival, not a send. Dark until SITE.
 // CAST: OPEN and CAST are one commit. Bill full and terrace food in → Foundry
 // live, food into the town, one Heat step on already-reached ground. The rim
-// does not move. R9: Heat is not Air.
+// does not move. R9: Heat is not Air. After CAST: The Halt holds.
 //
 // Food is already on the glass. There is no carry. The HUD is one marks line.
 // wait() exists, takes nothing, returns false.
@@ -67,16 +74,16 @@ function make(state) {
           verb: "light",
           inProcess: null,
           blocked: null,
-          writing: "The lamp. Dark.",
+          writing: "The Halt. Waiting.",
         };
       }
       return {
         place: "lamp",
         canDo: null,
         verb: null,
-        inProcess: "Awake.",
+        inProcess: "Someone's home.",
         blocked: null,
-        writing: "The lamp. Amber. Awake.",
+        writing: "Someone's home. The Halt is awake.",
       };
     }
 
@@ -88,7 +95,7 @@ function make(state) {
           verb: null,
           inProcess: "Food on the terrace.",
           blocked: "Carry, tend, UP — a held island is not a fuel bill.",
-          writing: "Food on the glass.",
+          writing: "A station that feeds itself. Food already on the glass.",
         };
       }
       return {
@@ -97,7 +104,7 @@ function make(state) {
         verb: null,
         inProcess: "The glass held the food.",
         blocked: "Carry, tend, UP — a held island is not a fuel bill.",
-        writing: "The glass held the food.",
+        writing: "A station that feeds itself. The glass held the food.",
       };
     }
 
@@ -109,7 +116,7 @@ function make(state) {
           verb: "site",
           inProcess: null,
           blocked: null,
-          writing: "The ruin.",
+          writing: "The work that holds this ground.",
         };
       }
       if (!s.landed) {
@@ -119,26 +126,26 @@ function make(state) {
           verb: null,
           inProcess: "Scaffold up. The bill is empty.",
           blocked: "CAST waits. The haul is still on the consist.",
-          writing: "Scaffold up. The bill is empty.",
+          writing: "The work that holds this ground. Scaffold. Empty bill.",
         };
       }
       if (!s.foundry) {
         return {
           place: "foundry",
-          canDo: "CAST. One heat. The rim holds.",
+          canDo: "CAST. One Heat step. The rim holds.",
           verb: "cast",
           inProcess: "Scaffold. Bill full.",
           blocked: null,
-          writing: "The bill is full. Food is on the terrace.",
+          writing: "The work that holds this ground. The bill is full. Food is on the terrace.",
         };
       }
       return {
         place: "foundry",
         canDo: null,
         verb: null,
-        inProcess: "Hearth live.",
+        inProcess: "The Halt holds.",
         blocked: null,
-        writing: "Hearth live. The ground already reached took the heat.",
+        writing: "The Halt holds. The ground already reached took the heat.",
       };
     }
 
@@ -150,7 +157,7 @@ function make(state) {
           verb: null,
           inProcess: "Inbound.",
           blocked: "LAND waits. No address.",
-          writing: "Inbound.",
+          writing: "This is where the loops come home. Inbound.",
         };
       }
       if (!s.landed) {
@@ -160,7 +167,7 @@ function make(state) {
           verb: "land",
           inProcess: "Inbound.",
           blocked: null,
-          writing: "The work has an address.",
+          writing: "This is where the loops come home.",
         };
       }
       return {
@@ -169,7 +176,7 @@ function make(state) {
         verb: null,
         inProcess: "Home.",
         blocked: "This board does not send.",
-        writing: "Home.",
+        writing: "Home. This is where the loops come home.",
       };
     }
 
