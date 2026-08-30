@@ -101,6 +101,13 @@
   }
   #ladder.dim #treach, #ladder.dim #tarmed { opacity: .2; }
   #ladder.dim #thumb { opacity: .35; }
+  /* The bar was treated as the tell. A Ranger-length sentence sits under it
+     so the row names what taking a Warden actually does. Same ink as .cs.
+     Row 1 never dims; neither does this — a faded caption reads as chrome. */
+  #muster-say {
+    font-size: 11.5px; color: var(--dim); line-height: 1.35;
+    padding-top: 4px;
+  }
 
   #strip {
     position: relative; flex: 1; min-height: 0; background: var(--strip);
@@ -297,6 +304,7 @@
           <span id="muster-word">MUSTER WARDEN</span><span id="roster-read"></span><span id="muster-price"></span>
         </div>
         <div id="track" tabindex="0" role="slider"><span id="treach"></span><span id="tarmed"></span><span id="tfill"></span><span id="thumb"></span></div>
+        <div id="muster-say"></div>
       </div>
       <button type="button" class="card" id="ranger"><span class="cn">MUSTER RANGER</span><span class="cp"></span><span class="cs"></span><span class="co"></span></button>
       <div id="cards">
@@ -334,6 +342,7 @@
   const thumbEl = document.getElementById("thumb");
   const rosterRead = document.getElementById("roster-read");
   const priceEl = document.getElementById("muster-price");
+  const musterSay = document.getElementById("muster-say");
   const cardEls = Array.prototype.slice.call(document.querySelectorAll("button.card[data-route]"));
   const townEl = document.getElementById("town");
   const terraceEl = document.getElementById("terrace");
@@ -424,6 +433,11 @@
       : "Recruit to " + atPos + " Wardens for " + board.musterPrice * (atPos - board.roster) + " marks");
     trackEl.setAttribute("aria-label", "Muster Wardens at " + board.musterPrice + " marks each");
     trackEl.setAttribute("aria-disabled", board.musterReach === 0 ? "true" : "false");
+    musterSay.textContent = board.roster > 0
+      ? "The Wardens are on the roster. Sends go out under their guard."
+      : board.canMuster()
+        ? "the roster. Sends go out under their guard."
+        : "the roster. Wants " + board.musterPrice + " marks.";
     // At rest and while away every card quotes chanceFor(baseRisk, roster).
     // Only a finger on the ladder asks for anything else, and it asks the sim.
     const cards = armed === null ? board.cards() : board.cards(armed);
@@ -504,8 +518,8 @@
     carryEl.querySelector(".cs").textContent = board.carryBill
       ? board.carryBill
       : board.canCarry()
-        ? "one trip up the hill, one step of ground"
-        : "The stores are full.";
+        ? "the terrace into the stores. Sends take their provisions from what lands."
+        : "The stores are full. Sends take their provisions from here.";
     carryEl.querySelector(".co").textContent = "";
     carryEl.classList.toggle("unlit", !board.canCarry());
     carryEl.disabled = !board.canCarry();
@@ -527,24 +541,23 @@
     tendEl.querySelector(".cp").textContent = "costs " + board.tendPrice;
     tendEl.querySelector(".cs").textContent = board.canTend()
       ? (board.sky === "storm"
-        ? "one mark into the bank. The storm takes one. The terrace lands what the bank covers."
-        : "one mark into the bank. The terrace lands what the bank covers when the sun is off it.")
+        ? "one mark into the bank. The storm takes one. A storm carry lands what the bank covers."
+        : "one mark into the bank. A storm carry lands what the bank covers when the sun is off it.")
       : board.reserve >= board.reserveFull
-        ? "The ground is full."
+        ? "The ground is full. A storm carry lands what the bank covers."
         : "Wants " + board.tendPrice + " mark.";
     tendEl.querySelector(".co").textContent = "";
     tendEl.classList.toggle("unlit", !board.canTend());
     tendEl.disabled = !board.canTend();
     tendEl.setAttribute("aria-label", board.canTend()
-      ? "Tend, costs " + board.tendPrice + " mark, one mark into the bank. The terrace lands what the bank covers"
+      ? "Tend, costs " + board.tendPrice + " mark, one mark into the bank. A storm carry lands what the bank covers"
       : "Tend, dark");
     upEl.querySelector(".cp").textContent = board.upPrice === null ? "" : "costs " + board.upPrice;
     upEl.querySelector(".cs").textContent = board.canUp()
-      ? "greenhouse " + board.level + " of " + board.maxLevel
+      ? "one level of glass. Carries land the new height."
       : board.upPrice === null
-        ? "The terrace is topped."
-        : "greenhouse " + board.level + " of " + board.maxLevel +
-          ". The next level wants " + board.upPrice + (board.upPrice === 1 ? " mark." : " marks.");
+        ? "The terrace is topped. Carries land the full height."
+        : "one level of glass. Wants " + board.upPrice + (board.upPrice === 1 ? " mark." : " marks.");
     upEl.querySelector(".co").textContent = "";
     upEl.classList.toggle("unlit", !board.canUp());
     upEl.disabled = !board.canUp();
