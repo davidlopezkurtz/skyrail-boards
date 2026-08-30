@@ -1,8 +1,9 @@
 "use strict";
 
-// CFD-205 — Dawnspur Halt — Home. Spec: docs/cfd-205-halt-beat.md (SIGNED —
-// David, 2026-08-30, Superheavy named it). Recut the writing. Work notices
-// stay. Four buildings stay. Same path. Not a recut of /dawnspur-site/.
+// CFD-205 — Dawnspur Halt — Come home. Spec: docs/cfd-205-halt-beat.md
+// (SIGNED — David, 2026-08-30, Superheavy named it). One NEW system: the
+// walk. One live can-do at a time. Work notices stay. Four buildings stay.
+// Home writing stays. Same path. Not a recut of /dawnspur-site/.
 // Every Kill line expressible as a test is a test.
 
 const { test } = require("node:test");
@@ -160,6 +161,7 @@ test("MANIFEST.txt records the shipped hashes, and names the boards left standin
     "18b1324f", "576ce2b6", "953368a1", "292d6645", "395c18f2", "5ad814e6",
     "f4f17008", "7711f979", "555ba9a9",
     "e44212db", "f1b6292d", "4126dfc0",
+    "c1b66ee5", "7aa764fa", "678075c0",
   ]) {
     assert.ok(man.includes(pin), "MANIFEST.txt must record the live sha left standing: " + pin);
   }
@@ -186,9 +188,11 @@ test("the signed halt beat is the brief", () => {
   assert.match(beat, /No Halt SEND/);
   assert.match(beat, /grey square/i);
   assert.match(beat, /peer clickables with no notice/i);
-  assert.match(beat, /Dawnspur Halt — Home/);
-  assert.match(beat, /I could tell these were different buildings/);
-  assert.match(beat, /because it was in front of me and I can/);
+  assert.match(beat, /Dawnspur Halt — Come home/);
+  assert.match(beat, /the walk/);
+  assert.match(beat, /one live can-do/i);
+  assert.match(beat, /Lit the lamp and started the foundry/);
+  assert.match(beat, /Home writing that shipped stays/);
 });
 
 // ------------------------------------------------------------ the opening
@@ -213,15 +217,80 @@ test("kill: the opening mints marks 3, food on the glass, inbound run, lamp dark
   assert.equal(b.posted, null);
   assert.deepEqual(b.buildings(), ["lamp", "terrace", "foundry", "consist"]);
   assert.equal(b.canLight(), true);
-  assert.equal(b.canSite(), true);
+  assert.equal(b.canSite(), false, "SITE waits on the lamp — two opening can-dos is the miss");
   assert.equal(b.canLand(), false);
   assert.equal(b.canCast(), false);
+  assert.equal(b.liveCanDo().place, "lamp");
+  assert.equal(b.liveCanDo().verb, "light");
   assert.deepEqual(b.rim, { left: 78, width: 18 });
 });
 
 test("kill: the opening's marks and food are not settable from the board the thumb reaches", () => {
   assert.doesNotMatch(SIT_HTML, /createBoard\([^)]*marks/, "the board hands in no balance");
   assert.match(SIT_HTML, /createBoard\(\{ fresh: true \}\)/, "the board opens fresh");
+});
+
+function canDos(b) {
+  return b.buildings().map((p) => b.notice(p)).filter((n) => n.canDo);
+}
+
+// -------------------------------------------------------- the walk
+
+test("the walk: one live can-do at a time — lamp, SITE, Come home, CAST, none", () => {
+  const h = makeBoard();
+  assert.deepEqual(canDos(h.b).map((n) => n.place), ["lamp"]);
+  assert.equal(h.b.liveCanDo().canDo, "Light it.");
+  assert.equal(h.b.notice("foundry").canDo, null);
+  assert.match(h.b.notice("foundry").blocked, /dark station is waiting/);
+  assert.equal(h.b.notice("consist").canDo, null);
+  assert.match(h.b.notice("consist").blocked, /No address/);
+  assert.equal(h.b.notice("terrace").canDo, null);
+  walk("i", h);
+  assert.deepEqual(canDos(h.b).map((n) => n.place), ["foundry"]);
+  assert.equal(h.b.liveCanDo().verb, "site");
+  assert.equal(h.b.notice("lamp").canDo, null);
+  walk("S", h);
+  assert.deepEqual(canDos(h.b).map((n) => n.place), ["consist"]);
+  assert.equal(h.b.liveCanDo().canDo, "Come home.");
+  assert.equal(h.b.notice("foundry").canDo, null);
+  assert.match(h.b.notice("foundry").blocked, /CAST/);
+  walk("L", h);
+  assert.deepEqual(canDos(h.b).map((n) => n.place), ["foundry"]);
+  assert.equal(h.b.liveCanDo().verb, "cast");
+  assert.equal(h.b.notice("consist").canDo, null);
+  walk("C", h);
+  assert.deepEqual(canDos(h.b), []);
+  assert.equal(h.b.liveCanDo(), null);
+});
+
+test("kill: SITE before the lamp refuses — two opening can-dos is the miss", () => {
+  const b = makeBoard().b;
+  assert.equal(b.canSite(), false);
+  assert.equal(b.commitSite(), false);
+  assert.equal(b.sited, false);
+  assert.equal(b.marks, OPENING_MARKS);
+  assert.equal(b.notice("foundry").canDo, null);
+});
+
+test("dead jobs stay buttons and still post blocked or in-process notices", () => {
+  const h = makeBoard();
+  for (const place of h.b.buildings()) {
+    assert.equal(h.b.postNotice(place), true);
+    const n = h.b.postedNotice();
+    assert.ok(n.writing);
+    if (place !== "lamp") {
+      assert.equal(n.canDo, null);
+      assert.ok(n.blocked || n.inProcess, place + " dead job posted no blocked/in-process");
+    }
+  }
+  walk("iSLC", h);
+  for (const place of h.b.buildings()) {
+    assert.equal(h.b.postNotice(place), true);
+    assert.equal(h.b.postedNotice().canDo, null);
+    assert.ok(h.b.postedNotice().writing);
+  }
+  assert.doesNotMatch(SIT_HTML, /function asButton|livePlace|createElement\(live/);
+  assert.doesNotMatch(SIM_CODE, /livePlace/);
 });
 
 // -------------------------------------------------------- work notices
@@ -271,6 +340,12 @@ test("terrace notice: a station that feeds itself; nothing to do; carry/tend/UP 
 
 test("Foundry notice walks SITE, blocked CAST, then CAST as a line, then The Halt holds", () => {
   const h = makeBoard();
+  const dark = h.b.notice("foundry");
+  assert.equal(dark.canDo, null);
+  assert.equal(dark.verb, null);
+  assert.match(dark.blocked, /dark station is waiting/);
+  assert.equal(dark.writing, "The work that holds this ground.");
+  walk("i", h);
   const open = h.b.notice("foundry");
   assert.equal(open.canDo, "SITE. Three marks.");
   assert.equal(open.verb, "site");
@@ -306,7 +381,7 @@ test("consist notice: loops come home; inbound blocked LAND; after SITE come hom
   assert.match(open.writing, /where the loops come home/);
   assert.match(open.blocked, /LAND/);
   assert.match(open.blocked, /No address/);
-  walk("S", h);
+  walk("iS", h);
   const sited = h.b.notice("consist");
   assert.equal(sited.canDo, "Come home.");
   assert.equal(sited.verb, "land");
@@ -327,6 +402,11 @@ test("commitPosted fires the posted notice's can-do and no other verb", () => {
   assert.equal(h.b.commitPosted(), false);
   h.b.postNotice("consist");
   assert.equal(h.b.commitPosted(), false, "LAND is blocked until SITE");
+  h.b.postNotice("foundry");
+  assert.equal(h.b.commitPosted(), false, "SITE is blocked until the lamp");
+  h.b.postNotice("lamp");
+  assert.ok(h.b.commitPosted());
+  assert.equal(h.b.lampLit, true);
   h.b.postNotice("foundry");
   assert.ok(h.b.commitPosted());
   assert.equal(h.b.sited, true);
@@ -375,7 +455,7 @@ test("the walked path: light, SITE, LAND, CAST — five tells stand", () => {
 });
 
 test("SITE opens the work, posts the bill, and spends the float", () => {
-  const h = walk("S");
+  const h = walk("iS");
   assert.equal(h.b.marks, 0);
   assert.equal(h.b.sited, true);
   assert.equal(h.b.scaffold, true);
@@ -387,7 +467,7 @@ test("SITE opens the work, posts the bill, and spends the float", () => {
 });
 
 test("LAND fills the bill", () => {
-  const h = walk("SL");
+  const h = walk("iSL");
   assert.equal(h.b.bill, 1);
   assert.equal(h.b.panes, 2);
   assert.equal(h.b.landed, true);
@@ -399,7 +479,7 @@ test("LAND fills the bill", () => {
 // ------------------------------------------ kill: bill payable in marks alone
 
 test("kill hardest: SITE cannot complete the bill with marks alone", () => {
-  const h = walk("S");
+  const h = walk("iS");
   assert.equal(h.b.canCast(), false);
   assert.equal(h.b.commitCast(), false);
   assert.equal(h.b.foundry, false);
@@ -409,6 +489,7 @@ test("kill hardest: SITE cannot complete the bill with marks alone", () => {
 
 test("kill hardest: leftover marks cannot pay the bill or fire CAST", () => {
   const h = makeBoard({ marks: 99 });
+  assert.ok(h.b.commitLight());
   assert.ok(h.b.commitSite());
   assert.equal(h.b.marks, 96);
   assert.equal(h.b.canCast(), false);
@@ -435,7 +516,7 @@ test("LAND before SITE refuses — a haul with no address does not fill the bill
 });
 
 test("CAST before LAND refuses even when food is already on the terrace", () => {
-  const h = walk("S");
+  const h = walk("iS");
   assert.equal(h.b.foodOnTerrace, true);
   assert.equal(h.b.canCast(), false);
   assert.equal(h.b.commitCast(), false);
@@ -496,7 +577,7 @@ test("kill: no second HUD line, no gauge, panes are look not a HUD line", () => 
 test("kill: CAST does not move the rim", () => {
   const h = makeBoard();
   const before = h.b.rim;
-  walk("SLC", h);
+  walk("iSLC", h);
   assert.deepEqual(h.b.rim, before);
   assert.deepEqual(h.b.rim, { left: 78, width: 18 });
 });
@@ -510,7 +591,7 @@ test("kill: SITE on the rim is refused", () => {
 });
 
 test("kill: Foundry does Heat, not Air — one step on already-reached ground", () => {
-  const h = walk("SLC");
+  const h = walk("iSLC");
   assert.equal(h.b.heatStep, 1);
   assert.equal(h.b.rim.left, 78, "the rim did not advance");
   const ground = rule("#ground");
@@ -617,7 +698,7 @@ test("kill: no lecture, no help, no tutorial mode, no plaque", () => {
 });
 
 test("kill: auto LAND is still impossible — SITE does not fill the bill", () => {
-  const h = walk("S");
+  const h = walk("iS");
   assert.equal(h.b.inbound, true);
   assert.equal(h.b.landed, false);
   assert.equal(h.b.bill, 0);
@@ -672,7 +753,7 @@ test("kill: wait is inert — nothing moves with wall time", () => {
 });
 
 test("SITE, LAND and CAST each refuse a second press", () => {
-  const h = walk("S");
+  const h = walk("iS");
   assert.equal(h.b.commitSite(), false);
   walk("L", h);
   assert.equal(h.b.commitLand(), false);
@@ -681,7 +762,7 @@ test("SITE, LAND and CAST each refuse a second press", () => {
 });
 
 test("CAST spends terrace food into the town and does not spend marks", () => {
-  const h = walk("SL");
+  const h = walk("iSL");
   const marks = h.b.marks;
   assert.ok(h.b.commitCast());
   assert.equal(h.b.marks, marks);

@@ -1,14 +1,18 @@
-Dawnspur CFD-205 — Dawnspur Halt — Home (Work notices) 2026-08-30
+Dawnspur CFD-205 — Dawnspur Halt — Come home (the walk) 2026-08-30
 Spec: docs/cfd-205-halt-beat.md - SIGNED, David 2026-08-30, Superheavy named it.
-Recut of live e44212db / index f1b6292d / sim 4126dfc0. Same path. Writing only.
-One system: Work notices. Works stays. Foundry is work one. No Halt send.
-Four buildings. Tap posts the station board: can do / in process / blocked.
-Notices name the place. CAST is a line on the Foundry notice, not a second grey brick.
+Recut of live c1b66ee5 / index 7aa764fa / sim 678075c0. Same path. The walk.
+One NEW system: the walk. One live can-do at a time. Work notices stay.
+Four buildings stay buildings. Home writing that shipped stays.
+Works stays. Foundry is work one. No Halt send.
+Dead jobs stay buttons and still post blocked / in-process notices.
+CAST is a line on the Foundry notice, not a second grey brick.
 Not a new sibling. Not a recut of /dawnspur-site/. Not a recut of storm.
+Not louder Home copy. Not scenery-divs.
 
 Lives at sit/dawnspur-halt/ with byte-copies at public/dawnspur-halt/, so the
 boards that already stand are untouched - the lineage lock:
 
+  failed sit /dawnspur-halt/ merge c1b66ee5 / index 7aa764fa / sim 678075c0
   failed sit /dawnspur-halt/ merge e44212db / index f1b6292d / sim 4126dfc0
   live /dawnspur-site/     sim e9f81b74 / index 070a4619  (failed sit; merge c59dc101)
   live /dawnspur-line/     sim 18b1324f / index b6f21db0
@@ -26,5 +30,5 @@ These hashes are graded by test/dawnspur-halt.test.js against the bytes on
 disk, measured LF (.gitattributes `* -text` makes the blob the shipped bytes;
 the working tree is never the artefact):
 
-index.html      sha256:7aa764fa88ecb41e36bfe6122376ec8cba32d2e62813a715f4602065e4934a54
-sim.js          sha256:678075c00c7e5aae38f1435d0f2ef58a88e6b02d153a85c715c917b6d2247572
+index.html      sha256:b5a56a146b548747a5ecfce9b253e56e0bea89f47557328a57205ddfd56ab5ef
+sim.js          sha256:6eb957e790c90c6702f2b8cc45bb6b9081b6b092816498b32df4e1b2b3dc07b4
