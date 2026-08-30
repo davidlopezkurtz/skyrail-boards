@@ -795,35 +795,45 @@ test("recut: the trim fork is two faces and a pad — SEND stays hot, TRIM is it
   assert.doesNotMatch(SIT_HTML, /help overlay|tutorial mode|tooltip encyclopedia|\? tutorial/i);
 });
 
-test("recut: tend speaks as the ground — what the bank just did — and never as an odds lever", () => {
+test("recut: tend names the terrace the bank covers — the spend, not an odds lever", () => {
+  // Recut 2 named the bank and the storm draw. David sat it and still could
+  // not say what tend bought. The missing clause is the terrace pay — the
+  // same nouns the bill already uses (bank, terrace, sun off). Caption
+  // grammar: what did what, and why. Not a help paragraph.
   const tendPaint = SIT_HTML.slice(SIT_HTML.indexOf("tendEl.querySelector"), SIT_HTML.indexOf("upEl.querySelector"));
   assert.doesNotMatch(tendPaint, /success|percent|odds|chance|safer|improve|held through|out-tended|storm carry/i);
   assert.doesNotMatch(tendPaint, /earns nothing/);
-  assert.match(tendPaint, /one step of ground back\. One mark into the bank/);
-  assert.match(tendPaint, /The storm draws one; the bank holds/);
-  assert.match(SIT_SIM, /TEND_CLEAR = "The ground came back one step\. One mark went into the bank\."/);
-  assert.match(SIT_SIM, /TEND_STORM = "The ground came back one step\. The storm drew one\. The bank held\."/);
+  assert.doesNotMatch(tendPaint, /the bank holds/i);
+  assert.match(tendPaint, /one mark into the bank\. The terrace lands what the bank covers when the sun is off it/);
+  assert.match(tendPaint, /one mark into the bank\. The storm takes one\. The terrace lands what the bank covers/);
+  assert.match(SIT_SIM, /TEND_CLEAR = "One mark went into the bank\. The terrace lands what the bank covers when the sun is off it\."/);
+  assert.match(SIT_SIM, /TEND_STORM = "One mark went into the bank\. The storm took one\. The terrace lands what the bank covers\."/);
   const tendWords = SIT_SIM.match(/TEND_CLEAR = "([^"]+)"/)[1] + " " + SIT_SIM.match(/TEND_STORM = "([^"]+)"/)[1];
   assert.doesNotMatch(tendWords, /success|percent|odds|chance|safer|improve|held through|out-tended|storm carry/i);
+  assert.match(tendWords, /terrace/);
+  assert.match(SIT_SIM, /GROUND_FULL = "The ground is full: the terrace had a bank for when the sun went off it\."/);
+  assert.match(SIT_SIM, /GROUND_DRAWN = "The ground is drawn and standing: the bank covered the terrace when the sun was off it\."/);
+  assert.match(SIT_SIM, /GROUND_BARE = "The ground is bare: the terrace had nothing banked when the sun went off it\."/);
   const clear = walk("C", makeBoard({ marks: 60 }));
   const before = clear.b.cards().map((c) => c.percent);
   assert.ok(clear.b.canTend());
   assert.ok(clear.b.commitTend());
-  assert.equal(clear.b.runSentence, "The ground came back one step. One mark went into the bank.");
+  assert.equal(clear.b.runSentence, "One mark went into the bank. The terrace lands what the bank covers when the sun is off it.");
   assert.deepEqual(clear.b.cards().map((c) => c.percent), before,
     "a tend must not move the stated percent — odds still move only by baseRisk, roster and sky");
   const storm = intoSky("storm", makeBoard({ marks: 60 }));
   if (storm.b.reserve >= 4) assert.ok(storm.b.commitCarry());
-  assert.ok(storm.b.canTend(), "a storm sit must be able to tend so the bank sentence can fire");
+  assert.ok(storm.b.canTend(), "a storm sit must be able to tend so the terrace sentence can fire");
   const stormBefore = storm.b.cards().map((c) => c.percent);
   const skyBefore = storm.b.sky;
   assert.ok(storm.b.commitTend());
-  assert.match(storm.b.runSentence, /The ground came back one step\. The storm drew one\. The bank held\./);
+  assert.match(storm.b.runSentence, /One mark went into the bank\. The storm took one\. The terrace lands what the bank covers\./);
   assert.doesNotMatch(storm.b.runSentence, /success|percent|odds|chance|safer|improve|held through|out-tended/i);
   if (storm.b.sky === skyBefore) {
     assert.deepEqual(storm.b.cards().map((c) => c.percent), stormBefore,
       "a storm tend that does not turn the sky must leave every percent where it was");
   }
+  assert.doesNotMatch(SIT_HTML, /help overlay|tutorial mode|tooltip encyclopedia|\? overlay|\? tutorial/i);
 });
 
 test("recut: a live home desk with lit sends cannot read as a dead pad — the remaining verb is pick a route, then SEND", () => {
@@ -1301,7 +1311,7 @@ test("kill: the terminal reads the desk record, the ground in three registers, a
   assert.match(said, /cargoes banked/);
   assert.match(said, /went out under storm/);
   assert.match(said, /trimmed/);
-  assert.match(said, /The ground is bare: the storm was met with nothing banked/);
+  assert.match(said, /The ground is bare: the terrace had nothing banked when the sun went off it/);
   assert.match(said, /The record keeps what came home; the line past the basin is the next sitting's\.$/);
   assert.doesNotMatch(said, /one of them trimmed(?!.)/); // rate, not a bare count alone — the storm denominator is beside it
   assert.match(said, /of those runs went out under storm/);
@@ -1310,11 +1320,11 @@ test("kill: the terminal reads the desk record, the ground in three registers, a
   const drawn = walk("UUUCh+Tc+", makeBoard({ marks: 60, stores: 0 }));
   assert.equal(drawn.b.stopped, true);
   assert.ok(drawn.b.reserve > 0 && drawn.b.reserve < 4, "drawn register, reserve " + drawn.b.reserve);
-  assert.match(drawn.b.endSentence, /The ground is drawn and standing: the bank covered what the storm asked/);
+  assert.match(drawn.b.endSentence, /The ground is drawn and standing: the bank covered the terrace when the sun was off it/);
   const full = walk("UUUCh+TcTT+", makeBoard({ marks: 60, stores: 0 }));
   assert.equal(full.b.stopped, true);
   assert.equal(full.b.reserve, 4, "full register reachable because TEND returns and a terrace verb while away is a turn");
-  assert.match(full.b.endSentence, /The ground is full: whatever the weather did, something was banked to meet it/);
+  assert.match(full.b.endSentence, /The ground is full: the terrace had a bank for when the sun went off it/);
   assert.match(SIT_SIM, /GROUND_FULL/);
   assert.match(SIT_SIM, /GROUND_DRAWN/);
   assert.match(SIT_SIM, /GROUND_BARE/);
