@@ -66,6 +66,15 @@
 // sun off). The ledger's three ground registers do the same. Odds
 // still move only by baseRisk, roster, sky. Not a second system.
 //
+// RECUT 2026-08-30, fourth sit, still not a pass: Ranger was the gold
+// ("The Ranger is on the roster. Storm sends offer the long way.").
+// Warden was count+bar only. Carry named the trip. Tend named the
+// bank without the player verb that takes from it. Up said only that
+// the terrace was topped. Those four now use the Ranger caption
+// grammar: what the row is, and what taking it (or having taken it)
+// actually does. Ranger gold is untouched. Odds still move only by
+// baseRisk, roster, sky. Not a second system.
+//
 // FOOD IS NOT A CURRENCY, inherited: food buys exactly one thing (the
 // provisions leg of a send); there is no exchange in either direction;
 // food has one source, the carry; food is never a HUD figure. R1 holds
@@ -158,8 +167,8 @@ const GROUND_FULL = "The ground is full: the terrace had a bank for when the sun
 const GROUND_DRAWN = "The ground is drawn and standing: the bank covered the terrace when the sun was off it.";
 const GROUND_BARE = "The ground is bare: the terrace had nothing banked when the sun went off it.";
 
-const TEND_CLEAR = "One mark went into the bank. The terrace lands what the bank covers when the sun is off it.";
-const TEND_STORM = "One mark went into the bank. The storm took one. The terrace lands what the bank covers.";
+const TEND_CLEAR = "One mark went into the bank. A storm carry lands what the bank covers when the sun is off it.";
+const TEND_STORM = "One mark went into the bank. The storm took one. A storm carry lands what the bank covers.";
 const RANGER_SENTENCE = "The desk spent 2 marks. The Ranger is on the roster.";
 
 const ONES = [
@@ -254,11 +263,11 @@ function leftSentence(route, extra) {
   return "The train left for " + route.short + " " + stakeClause(route, extra) + ".";
 }
 function rosterSentence(n, roster) {
-  const who = roster === 1 ? "1 Warden rides" : roster + " Wardens ride";
+  const who = roster === 1 ? "1 Warden is on the roster" : roster + " Wardens are on the roster";
   return "The desk spent " + marksPhrase(MUSTER_PRICE * n) + ". " + who + ".";
 }
-function grewSentence(level, price) {
-  return "The greenhouse is at " + tally(level) + ". " + marksPhrase(price) + " went into the glass.";
+function grewSentence(level) {
+  return "The greenhouse is at " + tally(level) + ". Carries land the new height.";
 }
 
 function whoBrought(wardens) {
@@ -530,7 +539,7 @@ function make(s) {
     const price = UP_PRICE[s.level];
     s.marks -= price;
     s.level += 1;
-    s.sentence = topped() ? ARM_SENTENCE : grewSentence(s.level, price);
+    s.sentence = topped() ? ARM_SENTENCE : grewSentence(s.level);
     s.skySentence = null;
     finishTurn(under);
     return true;
