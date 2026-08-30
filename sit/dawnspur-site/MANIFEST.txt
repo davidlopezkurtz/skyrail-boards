@@ -1,16 +1,16 @@
-Dawnspur CFD-205 recut 1 — Three places (Works; Foundry is work one) 2026-08-30
+Dawnspur CFD-205 recut 2 — One live place (Works; Foundry is work one) 2026-08-30
 Spec: docs/cfd-205-beat.md - SIGNED, David 2026-08-30, word "Signed."
 One NEW system: Works. Foundry is work one. No Halt send on this board.
-Recut: the SITE/LAND/CAST strip and the lecture boxes leave. Three commits
-stay as three places. Ruin is SITE then inert. Inbound consist is LAND.
-Posted frame is CAST. Auto-land still killed.
+Recut: two of the three objects are scenery. Only the live job is a button.
+Dead jobs are not disabled pads. They are not buttons. The hopping glow
+on dead bricks leaves. Ruin then consist then frame, then none.
 
 SITE: marks open the work, scaffold, bill on the frame. Marks open SITE only.
 LAND: the inherited loop as sat arrives; cargo lands on the frame; the bill
-fills. Arrival, not a send. Dark until SITE.
+fills. Arrival, not a send. Consist is not a button before SITE.
 CAST: OPEN and CAST are one commit. Bill full and terrace food in → Foundry
 live, food into the town, one Heat step on already-reached ground. The rim
-does not move.
+does not move. CAST is the posted frame, not the ruin.
 
 Lives at sit/dawnspur-site/ with byte-copies at public/dawnspur-site/, so the
 seven boards that already stand are untouched - the lineage lock:
@@ -29,5 +29,5 @@ These hashes are graded by test/dawnspur-site.test.js against the bytes on
 disk, measured LF (.gitattributes `* -text` makes the blob the shipped bytes;
 the working tree is never the artefact):
 
-index.html      sha256:e641a3333671db36ac39e500108b256d2a81b8536494a9788e3fb25cfa9e9702
-sim.js          sha256:e9999eed77b27024026018d6a599ba1fd7686cfece39d2e56a6149e840fb8443
+index.html      sha256:070a4619af45efa423ac68050c81fa2ca13e95a8eb9316e529d349145fccf3a7
+sim.js          sha256:e9f81b743d11a7359a0c6c1b8c5629818f5d70c3a3f5f0b96c7484469500306f
