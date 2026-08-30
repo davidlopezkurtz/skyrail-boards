@@ -527,8 +527,8 @@
     tendEl.querySelector(".cp").textContent = "costs " + board.tendPrice;
     tendEl.querySelector(".cs").textContent = board.canTend()
       ? (board.sky === "storm"
-        ? "one step of ground back. The storm draws one; the bank holds."
-        : "one step of ground back. One mark into the bank.")
+        ? "one mark into the bank. The storm takes one. The terrace lands what the bank covers."
+        : "one mark into the bank. The terrace lands what the bank covers when the sun is off it.")
       : board.reserve >= board.reserveFull
         ? "The ground is full."
         : "Wants " + board.tendPrice + " mark.";
@@ -536,7 +536,7 @@
     tendEl.classList.toggle("unlit", !board.canTend());
     tendEl.disabled = !board.canTend();
     tendEl.setAttribute("aria-label", board.canTend()
-      ? "Tend, costs " + board.tendPrice + " mark, one step of ground back"
+      ? "Tend, costs " + board.tendPrice + " mark, one mark into the bank. The terrace lands what the bank covers"
       : "Tend, dark");
     upEl.querySelector(".cp").textContent = board.upPrice === null ? "" : "costs " + board.upPrice;
     upEl.querySelector(".cs").textContent = board.canUp()

@@ -1,6 +1,7 @@
 Dawnspur CFD-201, the storm sitting (weather as the one new system) 2026-08-28
 RECUT 2026-08-29: trim is two faces and a pad; tend names the bank.
 RECUT 2026-08-29 (2): tend speaks as the ground; a live SEND names the pick.
+RECUT 2026-08-30 (3): tend names the terrace the bank covers.
 Spec: docs/cfd-201-beat.md - SIGNED, David 2026-08-28 ("So sign, with the
 counter."). Written under canon section 7: a sitting INHERITS what has passed
 and adds one new thing. The parent is the join board that passed 2026-08-28.
@@ -52,5 +53,5 @@ These hashes are graded by test/dawnspur-storm.test.js against the bytes on
 disk, measured LF (.gitattributes `* -text` makes the blob the shipped bytes;
 the working tree is never the artefact):
 
-index.html      sha256:b117d7db8229369a823c045d6e3c2c109af751187af90ca5de45ddcb4c6d7e44
-sim.js          sha256:904dab9b10bee07f4d2b43b7deafe84b0a32fabc2bc6401d40f0ea48273fb600
+index.html      sha256:4f7d5cd90f4dfa5d0f3acb906737fa7e509e524d5aa517c4bc1bbdacb2258763
+sim.js          sha256:34325f0ab4ba2ed9901dbe64bbfc1790ce433e7db583b66bc6c493c9ff656119

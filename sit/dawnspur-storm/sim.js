@@ -57,6 +57,15 @@
 // SEND and a non-topping UP print the same caption grammar the sit
 // already liked. Not a second system.
 //
+// RECUT 2026-08-30, third sit, still not a pass: TRIM held. TEND named
+// the bank and the storm draw, and that was not enough — "Still don't
+// totally understand what tend does so a text explanation of that
+// makes sense to me". The bank sentence never said the terrace pay is
+// what the bank covers, so tend still read as a weather tactic. The
+// card and the commit now use the bill's own nouns (bank, terrace,
+// sun off). The ledger's three ground registers do the same. Odds
+// still move only by baseRisk, roster, sky. Not a second system.
+//
 // FOOD IS NOT A CURRENCY, inherited: food buys exactly one thing (the
 // provisions leg of a send); there is no exchange in either direction;
 // food has one source, the carry; food is never a HUD figure. R1 holds
@@ -145,12 +154,12 @@ const STORES_CAP = MAX_PROVISIONS + MAX_LEVEL - 1;
 
 const ARM_SENTENCE = "The terrace is topped. The next Chartered cargo home out of a storm ends the sitting.";
 
-const GROUND_FULL = "The ground is full: whatever the weather did, something was banked to meet it.";
-const GROUND_DRAWN = "The ground is drawn and standing: the bank covered what the storm asked.";
-const GROUND_BARE = "The ground is bare: the storm was met with nothing banked.";
+const GROUND_FULL = "The ground is full: the terrace had a bank for when the sun went off it.";
+const GROUND_DRAWN = "The ground is drawn and standing: the bank covered the terrace when the sun was off it.";
+const GROUND_BARE = "The ground is bare: the terrace had nothing banked when the sun went off it.";
 
-const TEND_CLEAR = "The ground came back one step. One mark went into the bank.";
-const TEND_STORM = "The ground came back one step. The storm drew one. The bank held.";
+const TEND_CLEAR = "One mark went into the bank. The terrace lands what the bank covers when the sun is off it.";
+const TEND_STORM = "One mark went into the bank. The storm took one. The terrace lands what the bank covers.";
 const RANGER_SENTENCE = "The desk spent 2 marks. The Ranger is on the roster.";
 
 const ONES = [
