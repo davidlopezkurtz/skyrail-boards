@@ -70,10 +70,18 @@
 // ("The Ranger is on the roster. Storm sends offer the long way.").
 // Warden was count+bar only. Carry named the trip. Tend named the
 // bank without the player verb that takes from it. Up said only that
-// the terrace was topped. Those four now use the Ranger caption
-// grammar: what the row is, and what taking it (or having taken it)
-// actually does. Ranger gold is untouched. Odds still move only by
-// baseRisk, roster, sky. Not a second system.
+// the terrace was topped. Those four used the Ranger caption grammar
+// and named the pipe. Ranger gold is untouched.
+//
+// RECUT 2026-08-30, fifth sit, still not a pass: the four second
+// sentences named how the board moves stuff — the guard on a send,
+// provisions off a landing, the bank as a carry pipe, height as a
+// carry pipe. David: the descriptions of why to do these things
+// do not make much sense. The first sentence stays (what the row
+// is). The second is now an offer — a thing the player can take —
+// the way Ranger names the long way. The log already taught the
+// Warden why. No unit sink. Odds still move only by baseRisk,
+// roster, sky. Not a second system.
 //
 // FOOD IS NOT A CURRENCY, inherited: food buys exactly one thing (the
 // provisions leg of a send); there is no exchange in either direction;
@@ -167,8 +175,8 @@ const GROUND_FULL = "The ground is full: the terrace had a bank for when the sun
 const GROUND_DRAWN = "The ground is drawn and standing: the bank covered the terrace when the sun was off it.";
 const GROUND_BARE = "The ground is bare: the terrace had nothing banked when the sun went off it.";
 
-const TEND_CLEAR = "One mark went into the bank. A storm carry lands what the bank covers when the sun is off it.";
-const TEND_STORM = "One mark went into the bank. The storm took one. A storm carry lands what the bank covers.";
+const TEND_CLEAR = "One mark went into the bank. Cover stands for when the sun is off it.";
+const TEND_STORM = "One mark went into the bank. The storm took one. Cover stands for when the sun is off it.";
 const RANGER_SENTENCE = "The desk spent 2 marks. The Ranger is on the roster.";
 
 const ONES = [
@@ -267,7 +275,7 @@ function rosterSentence(n, roster) {
   return "The desk spent " + marksPhrase(MUSTER_PRICE * n) + ". " + who + ".";
 }
 function grewSentence(level) {
-  return "The greenhouse is at " + tally(level) + ". Carries land the new height.";
+  return "The greenhouse is at " + tally(level) + ". A taller greenhouse stands.";
 }
 
 function whoBrought(wardens) {
