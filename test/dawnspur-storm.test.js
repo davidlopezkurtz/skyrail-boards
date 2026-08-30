@@ -796,21 +796,24 @@ test("recut: the trim fork is two faces and a pad — SEND stays hot, TRIM is it
 });
 
 test("recut: tend names the terrace the bank covers — the spend, not an odds lever", () => {
-  // Recut 3 named the terrace pay. Recut 4 keeps those nouns and names the
-  // player verb that takes from the bank, the way Ranger names the long way.
-  // Odds still do not move. Not a help paragraph.
+  // Recut 3 named the terrace pay. Recut 5 keeps the spend and the storm
+  // draw, and replaces the pipe why ("a storm carry lands what the bank
+  // covers") with an offer: cover for when the sun is off it. Odds still
+  // do not move. Not a help paragraph.
   const tendPaint = SIT_HTML.slice(SIT_HTML.indexOf("tendEl.querySelector"), SIT_HTML.indexOf("upEl.querySelector"));
   assert.doesNotMatch(tendPaint, /success|percent|odds|chance|safer|improve|held through|out-tended/i);
   assert.doesNotMatch(tendPaint, /earns nothing/);
   assert.doesNotMatch(tendPaint, /the bank holds/i);
-  assert.match(tendPaint, /one mark into the bank\. A storm carry lands what the bank covers when the sun is off it/);
-  assert.match(tendPaint, /one mark into the bank\. The storm takes one\. A storm carry lands what the bank covers/);
-  assert.match(SIT_SIM, /TEND_CLEAR = "One mark went into the bank\. A storm carry lands what the bank covers when the sun is off it\."/);
-  assert.match(SIT_SIM, /TEND_STORM = "One mark went into the bank\. The storm took one\. A storm carry lands what the bank covers\."/);
+  assert.doesNotMatch(tendPaint, /A storm carry lands what the bank covers/);
+  assert.match(tendPaint, /one mark into the bank\. Opens cover for when the sun is off it/);
+  assert.match(tendPaint, /one mark into the bank\. The storm takes one\. Opens cover for when the sun is off it/);
+  assert.match(SIT_SIM, /TEND_CLEAR = "One mark went into the bank\. Cover stands for when the sun is off it\."/);
+  assert.match(SIT_SIM, /TEND_STORM = "One mark went into the bank\. The storm took one\. Cover stands for when the sun is off it\."/);
   const tendWords = SIT_SIM.match(/TEND_CLEAR = "([^"]+)"/)[1] + " " + SIT_SIM.match(/TEND_STORM = "([^"]+)"/)[1];
   assert.doesNotMatch(tendWords, /success|percent|odds|chance|safer|improve|held through|out-tended/i);
+  assert.doesNotMatch(tendWords, /A storm carry lands what the bank covers/);
   assert.match(tendWords, /bank/);
-  assert.match(tendWords, /storm carry/);
+  assert.match(tendWords, /cover/i);
   assert.match(SIT_SIM, /GROUND_FULL = "The ground is full: the terrace had a bank for when the sun went off it\."/);
   assert.match(SIT_SIM, /GROUND_DRAWN = "The ground is drawn and standing: the bank covered the terrace when the sun was off it\."/);
   assert.match(SIT_SIM, /GROUND_BARE = "The ground is bare: the terrace had nothing banked when the sun went off it\."/);
@@ -818,7 +821,7 @@ test("recut: tend names the terrace the bank covers — the spend, not an odds l
   const before = clear.b.cards().map((c) => c.percent);
   assert.ok(clear.b.canTend());
   assert.ok(clear.b.commitTend());
-  assert.equal(clear.b.runSentence, "One mark went into the bank. A storm carry lands what the bank covers when the sun is off it.");
+  assert.equal(clear.b.runSentence, "One mark went into the bank. Cover stands for when the sun is off it.");
   assert.deepEqual(clear.b.cards().map((c) => c.percent), before,
     "a tend must not move the stated percent — odds still move only by baseRisk, roster and sky");
   const storm = intoSky("storm", makeBoard({ marks: 60 }));
@@ -827,8 +830,9 @@ test("recut: tend names the terrace the bank covers — the spend, not an odds l
   const stormBefore = storm.b.cards().map((c) => c.percent);
   const skyBefore = storm.b.sky;
   assert.ok(storm.b.commitTend());
-  assert.match(storm.b.runSentence, /One mark went into the bank\. The storm took one\. A storm carry lands what the bank covers\./);
+  assert.match(storm.b.runSentence, /One mark went into the bank\. The storm took one\. Cover stands for when the sun is off it\./);
   assert.doesNotMatch(storm.b.runSentence, /success|percent|odds|chance|safer|improve|held through|out-tended/i);
+  assert.doesNotMatch(storm.b.runSentence, /A storm carry lands what the bank covers/);
   if (storm.b.sky === skyBefore) {
     assert.deepEqual(storm.b.cards().map((c) => c.percent), stormBefore,
       "a storm tend that does not turn the sky must leave every percent where it was");
@@ -836,12 +840,13 @@ test("recut: tend names the terrace the bank covers — the spend, not an odds l
   assert.doesNotMatch(SIT_HTML, /help overlay|tutorial mode|tooltip encyclopedia|\? overlay|\? tutorial/i);
 });
 
-test("recut: Warden, Carry, Tend and Up speak in the Ranger caption grammar", () => {
-  // Recut 3 sit: Ranger was the gold ("The Ranger is on the roster. Storm
-  // sends offer the long way."). Warden was count+bar only. Carry named the
-  // trip. Tend named the bank without the player verb that takes from it.
-  // Up said "The terrace is topped." Same grammar now: what the row is, and
-  // what taking it (or having taken it) actually does. Not a lecture. No ?.
+test("recut: Warden, Carry, Tend and Up name a reason to tap, not the pipe", () => {
+  // Recut 4 sit: Ranger gold held. The other four second sentences copied
+  // Ranger's shape and named the pipe (how the board moves stuff). David:
+  // those descriptions of why to do these things do not make much sense.
+  // Recut 5 keeps the first sentence (what the row is) and writes an offer
+  // — a thing the player can take — the way Ranger names the long way.
+  // The log already taught the Warden why. No deaths, no sink, no ?.
   const rangerPaint = SIT_HTML.slice(SIT_HTML.indexOf("rangerEl.querySelector"), SIT_HTML.indexOf("tendEl.querySelector"));
   assert.match(rangerPaint, /The Ranger is on the roster\. Storm sends offer the long way\./);
   assert.match(rangerPaint, /one berth\. Opens the long way around a storm\./);
@@ -849,26 +854,36 @@ test("recut: Warden, Carry, Tend and Up speak in the Ranger caption grammar", ()
 
   assert.match(SIT_HTML, /id="muster-say"/);
   const wardenPaint = SIT_HTML.slice(SIT_HTML.indexOf("musterSay"), SIT_HTML.indexOf("carryEl.querySelector"));
-  assert.match(wardenPaint, /The Wardens are on the roster\. Sends go out under their guard\./);
-  assert.match(wardenPaint, /the roster\. Sends go out under their guard\./);
+  assert.doesNotMatch(wardenPaint, /Sends go out under their guard/);
+  assert.match(wardenPaint, /The Wardens are on the roster\. They bring the cargo home\./);
+  assert.match(wardenPaint, /the roster\. Opens the cargo's way home\./);
   assert.doesNotMatch(wardenPaint, /help overlay|\? overlay|tutorial|tooltip encyclopedia/i);
+  const wardenWhy = SIT_HTML.slice(SIT_HTML.indexOf("musterSay.textContent"), SIT_HTML.indexOf("const cards ="));
+  assert.doesNotMatch(wardenWhy, /upkeep|roster drain|units sink|deaths/i);
 
   const carryPaint = SIT_HTML.slice(SIT_HTML.indexOf("carryEl.querySelector"), SIT_HTML.indexOf("rangerEl.querySelector"));
   assert.doesNotMatch(carryPaint, /one trip up the hill, one step of ground/);
-  assert.match(carryPaint, /the terrace into the stores\. Sends take their provisions from what lands\./);
-  assert.match(carryPaint, /The stores are full\. Sends take their provisions from here\./);
+  assert.doesNotMatch(carryPaint, /Sends take their provisions from what lands/);
+  assert.doesNotMatch(carryPaint, /Sends take their provisions from here/);
+  assert.match(carryPaint, /the terrace into the stores\. Opens a landing\./);
+  assert.match(carryPaint, /The stores are full\. The landing stands\./);
 
   const tendPaint = SIT_HTML.slice(SIT_HTML.indexOf("tendEl.querySelector"), SIT_HTML.indexOf("upEl.querySelector"));
-  assert.match(tendPaint, /A storm carry lands what the bank covers/);
-  assert.match(tendPaint, /The ground is full\. A storm carry lands what the bank covers\./);
+  assert.doesNotMatch(tendPaint, /A storm carry lands what the bank covers/);
+  assert.match(tendPaint, /one mark into the bank\. Opens cover for when the sun is off it/);
+  assert.match(tendPaint, /The ground is full\. Cover stands for when the sun is off it\./);
   assert.doesNotMatch(tendPaint, /success|percent|odds|chance|safer|improve/i);
 
   const upPaint = SIT_HTML.slice(SIT_HTML.indexOf("upEl.querySelector"), SIT_HTML.indexOf("trainEl.classList"));
   assert.doesNotMatch(upPaint, /greenhouse " \+ board\.level/);
-  assert.match(upPaint, /one level of glass\. Carries land the new height\./);
-  assert.match(upPaint, /The terrace is topped\. Carries land the full height\./);
+  assert.doesNotMatch(upPaint, /Carries land the new height/);
+  assert.doesNotMatch(upPaint, /Carries land the full height/);
+  assert.match(upPaint, /one level of glass\. Opens a taller greenhouse\./);
+  assert.match(upPaint, /The terrace is topped\. A storm cargo home can end it\./);
   assert.match(upPaint, /one level of glass\. Wants /);
 
+  assert.doesNotMatch(SIT_SIM, /Carries land the new height/);
+  assert.doesNotMatch(SIT_SIM, /A storm carry lands what the bank covers/);
   assert.doesNotMatch(SIT_HTML, /help overlay|tutorial mode|tooltip encyclopedia|\? overlay|\? tutorial/i);
   assert.doesNotMatch(SIT_HTML, /title="[^"]{20,}"/);
 });
@@ -907,9 +922,9 @@ test("recut: a commit that already changed something no longer stays silent — 
   const moss = walk("CCm", makeBoard({ marks: 60, stores: 0 }));
   assert.match(moss.b.runSentence, /The train left for Mosswake with two from the terrace\./);
   const grew = walk("U", makeBoard({ marks: 60 }));
-  assert.equal(grew.b.runSentence, "The greenhouse is at two. Carries land the new height.");
+  assert.equal(grew.b.runSentence, "The greenhouse is at two. A taller greenhouse stands.");
   const grew2 = walk("UU", makeBoard({ marks: 60 }));
-  assert.match(grew2.b.runSentence, /The greenhouse is at three\. Carries land the new height\./);
+  assert.match(grew2.b.runSentence, /The greenhouse is at three\. A taller greenhouse stands\./);
   const top = walk("UUU", makeBoard({ marks: 60 }));
   assert.match(top.b.runSentence, /The terrace is topped\. The next Chartered cargo home out of a storm ends the sitting\./);
   const fullPay = walk("C");

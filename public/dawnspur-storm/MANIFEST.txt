@@ -3,6 +3,7 @@ RECUT 2026-08-29: trim is two faces and a pad; tend names the bank.
 RECUT 2026-08-29 (2): tend speaks as the ground; a live SEND names the pick.
 RECUT 2026-08-30 (3): tend names the terrace the bank covers.
 RECUT 2026-08-30 (4): Warden, Carry, Tend and Up speak in the Ranger voice.
+RECUT 2026-08-30 (5): those four why-clauses are reasons to tap, not the pipe.
 Spec: docs/cfd-201-beat.md - SIGNED, David 2026-08-28 ("So sign, with the
 counter."). Written under canon section 7: a sitting INHERITS what has passed
 and adds one new thing. The parent is the join board that passed 2026-08-28.
@@ -54,5 +55,5 @@ These hashes are graded by test/dawnspur-storm.test.js against the bytes on
 disk, measured LF (.gitattributes `* -text` makes the blob the shipped bytes;
 the working tree is never the artefact):
 
-index.html      sha256:2fc47ab653277cfa58bf04b011544b92013c9651ea6f03c019907e30f037fb50
-sim.js          sha256:53239355db482a38b48c38bf479f5cddca8eec690aae4b12eea22048af5c5504
+index.html      sha256:7711f979f8b0e09c1ae00b834497b945599a92f31b4cef849bf9c50e06198682
+sim.js          sha256:f4f17008dcba0c726504f76f250158767e4288a8fa39623e6238de2ad6c91064

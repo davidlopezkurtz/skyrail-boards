@@ -434,9 +434,9 @@
     trackEl.setAttribute("aria-label", "Muster Wardens at " + board.musterPrice + " marks each");
     trackEl.setAttribute("aria-disabled", board.musterReach === 0 ? "true" : "false");
     musterSay.textContent = board.roster > 0
-      ? "The Wardens are on the roster. Sends go out under their guard."
+      ? "The Wardens are on the roster. They bring the cargo home."
       : board.canMuster()
-        ? "the roster. Sends go out under their guard."
+        ? "the roster. Opens the cargo's way home."
         : "the roster. Wants " + board.musterPrice + " marks.";
     // At rest and while away every card quotes chanceFor(baseRisk, roster).
     // Only a finger on the ladder asks for anything else, and it asks the sim.
@@ -518,8 +518,8 @@
     carryEl.querySelector(".cs").textContent = board.carryBill
       ? board.carryBill
       : board.canCarry()
-        ? "the terrace into the stores. Sends take their provisions from what lands."
-        : "The stores are full. Sends take their provisions from here.";
+        ? "the terrace into the stores. Opens a landing."
+        : "The stores are full. The landing stands.";
     carryEl.querySelector(".co").textContent = "";
     carryEl.classList.toggle("unlit", !board.canCarry());
     carryEl.disabled = !board.canCarry();
@@ -541,22 +541,22 @@
     tendEl.querySelector(".cp").textContent = "costs " + board.tendPrice;
     tendEl.querySelector(".cs").textContent = board.canTend()
       ? (board.sky === "storm"
-        ? "one mark into the bank. The storm takes one. A storm carry lands what the bank covers."
-        : "one mark into the bank. A storm carry lands what the bank covers when the sun is off it.")
+        ? "one mark into the bank. The storm takes one. Opens cover for when the sun is off it."
+        : "one mark into the bank. Opens cover for when the sun is off it.")
       : board.reserve >= board.reserveFull
-        ? "The ground is full. A storm carry lands what the bank covers."
+        ? "The ground is full. Cover stands for when the sun is off it."
         : "Wants " + board.tendPrice + " mark.";
     tendEl.querySelector(".co").textContent = "";
     tendEl.classList.toggle("unlit", !board.canTend());
     tendEl.disabled = !board.canTend();
     tendEl.setAttribute("aria-label", board.canTend()
-      ? "Tend, costs " + board.tendPrice + " mark, one mark into the bank. A storm carry lands what the bank covers"
+      ? "Tend, costs " + board.tendPrice + " mark, one mark into the bank. Opens cover for when the sun is off it"
       : "Tend, dark");
     upEl.querySelector(".cp").textContent = board.upPrice === null ? "" : "costs " + board.upPrice;
     upEl.querySelector(".cs").textContent = board.canUp()
-      ? "one level of glass. Carries land the new height."
+      ? "one level of glass. Opens a taller greenhouse."
       : board.upPrice === null
-        ? "The terrace is topped. Carries land the full height."
+        ? "The terrace is topped. A storm cargo home can end it."
         : "one level of glass. Wants " + board.upPrice + (board.upPrice === 1 ? " mark." : " marks.");
     upEl.querySelector(".co").textContent = "";
     upEl.classList.toggle("unlit", !board.canUp());
