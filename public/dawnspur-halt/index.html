@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Dawnspur Halt</title>
+<style>
+  :root {
+    --bg: #161018;
+    --ink: #ece6dc;
+    --sel: #f2e6c8;
+    --warm: #c07a3a;
+    --ember: #e87828;
+    --molten: #f09030;
+    --soil: #5a3820;
+    --soil-edge: #3a2414;
+    --rim: #1e2430;
+    --rim-edge: #12161c;
+    --bronze: #8a5a28;
+    --bronze-d: #5a3818;
+    --glass: rgba(140, 210, 190, 0.38);
+    --glass-edge: rgba(190, 240, 220, 0.55);
+    --food: #e8b040;
+    --food-d: #b07820;
+    --hearth: #ff9020;
+    --home: #3a2a1c;
+    --timber: #3a2a1c;
+    --timber-edge: #241810;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+  html { touch-action: manipulation; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink);
+    font-family: ui-sans-serif, system-ui, sans-serif; user-select: none; overflow: hidden; }
+  body { display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+    min-height: 100dvh; padding: env(safe-area-inset-top) 10px env(safe-area-inset-bottom); }
+  #app { width: min(440px, 100%); flex: 1; display: flex; flex-direction: column; gap: 8px; padding: 4px 0 10px; min-height: 0; }
+
+  /* The HUD is museum: one marks line. Nothing else. */
+  #hud { flex-shrink: 0; padding: 0 4px; }
+  #marks-line {
+    min-height: 22px; text-align: right; font-size: 18px; font-weight: 700;
+    letter-spacing: .06em; color: var(--ink);
+  }
+
+  #strip {
+    position: relative; flex: 1; min-height: 0; background: #1a1420;
+    overflow: hidden;
+    box-shadow: inset 0 0 0 2px #100c14;
+  }
+
+  #sky {
+    position: absolute; left: 0; right: 0; top: 0; height: 38%;
+    background: #241428;
+    box-shadow: inset 0 -18px 0 rgba(232, 120, 40, 0.12);
+  }
+
+  #ground {
+    position: absolute; left: 0; right: 22%; bottom: 0; top: 38%;
+    background: var(--soil);
+    box-shadow: inset 0 0 0 2px var(--soil-edge), inset 0 20px 0 rgba(232, 120, 40, 0.22);
+  }
+  #ground.step {
+    box-shadow: inset 0 0 0 2px var(--soil-edge), inset 0 20px 0 rgba(232, 120, 40, 0.22),
+      inset 30% 0 0 0 rgba(240, 144, 48, 0.32);
+  }
+  #heat-step {
+    display: none; position: absolute; left: 30%; bottom: 20%; width: 14%; height: 12%;
+    background: var(--molten);
+    box-shadow: 0 0 16px 5px rgba(240, 144, 48, 0.5);
+  }
+  #ground.step #heat-step { display: block; }
+
+  #rim {
+    position: absolute; left: 78%; right: 0; top: 28%; bottom: 0;
+    width: 18%;
+    background: var(--rim);
+    box-shadow: inset 0 0 0 2px var(--rim-edge);
+    pointer-events: none;
+  }
+
+  #horizon { position: absolute; left: 8%; right: 24%; top: 16%; height: 22%; pointer-events: none; }
+  .hz {
+    position: absolute; bottom: 0; background: #2a1830;
+    box-shadow: inset 0 -6px 0 #1a101c;
+  }
+  #hz-a { left: 4%; width: 10%; height: 70%; }
+  #hz-b { left: 22%; width: 8%; height: 48%; }
+  #hz-c { left: 70%; width: 12%; height: 62%; }
+
+  /* Station board. Writing is the board. Not a lecture box. */
+  #notice {
+    position: absolute; left: 14%; top: 3%; width: 58%; height: 18%;
+    background: var(--timber);
+    box-shadow: inset 0 0 0 3px var(--timber-edge);
+    padding: 6px 8px;
+    display: flex; flex-direction: column; justify-content: center; gap: 2px;
+    pointer-events: none;
+  }
+  #notice-now, #notice-wait {
+    font-size: 13px; line-height: 1.25; letter-spacing: .02em; color: var(--sel);
+    min-height: 0;
+  }
+  #notice-do {
+    display: none; align-self: flex-start;
+    margin: 0; padding: 0; border: 0; background: transparent;
+    font: inherit; font-size: 13px; line-height: 1.25; letter-spacing: .02em;
+    font-weight: 700; color: var(--molten);
+    text-decoration: underline; text-underline-offset: 2px;
+    cursor: pointer; pointer-events: auto;
+    touch-action: manipulation;
+  }
+  #notice.has-do #notice-do { display: inline; }
+
+  /* Four buildings. Always buttons. No grey brick, no hopping outline. */
+  #lamp, #terrace, #foundry, #consist {
+    border: 0; padding: 0; font: inherit; color: inherit;
+    background: transparent;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  #lamp {
+    position: absolute; left: 5%; bottom: 22%; width: 11%; height: 36%;
+    background: transparent;
+  }
+  #lamp .post {
+    position: absolute; left: 40%; bottom: 0; width: 20%; height: 70%;
+    background: var(--bronze);
+    box-shadow: inset 0 0 0 2px var(--bronze-d);
+    pointer-events: none;
+  }
+  #lamp .arm {
+    position: absolute; left: 48%; top: 18%; width: 28%; height: 8%;
+    background: var(--bronze-d);
+    pointer-events: none;
+  }
+  #lamp .globe {
+    position: absolute; left: 16%; top: 0; width: 68%; height: 26%;
+    border-radius: 50%;
+    background: #2a1c10;
+    box-shadow: inset 0 0 0 2px var(--bronze-d);
+    pointer-events: none;
+  }
+  #lamp.lit .globe {
+    background: var(--molten);
+    box-shadow: 0 0 18px 6px rgba(240, 144, 48, 0.55), inset 0 0 0 2px #c87818;
+  }
+
+  #terrace {
+    position: absolute; left: 18%; bottom: 28%; width: 18%; height: 26%;
+    background: transparent;
+  }
+  #terrace .roof {
+    position: absolute; left: 4%; top: 0; width: 92%; height: 28%;
+    background: #2a5a38;
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    pointer-events: none;
+  }
+  #terrace .glass {
+    position: absolute; left: 8%; top: 26%; right: 8%; bottom: 8%;
+    background: var(--glass);
+    box-shadow: inset 0 0 0 2px var(--glass-edge), inset 0 -10px 0 #2a4a32;
+    pointer-events: none;
+  }
+  #terrace .food {
+    display: none; position: absolute; left: 22%; right: 22%; bottom: 16%; height: 22%;
+    background: var(--food);
+    box-shadow: inset 0 -3px 0 var(--food-d);
+    pointer-events: none;
+  }
+  #terrace.has-food .food { display: block; }
+
+  #foundry {
+    position: absolute; left: 38%; bottom: 22%; width: 24%; height: 38%;
+    background: transparent;
+  }
+  #foundry .stack {
+    position: absolute; left: 62%; top: 0; width: 22%; height: 36%;
+    background: #a04828;
+    box-shadow: inset 0 0 0 2px #6a2818;
+    pointer-events: none;
+  }
+  #foundry .hall {
+    position: absolute; left: 6%; top: 28%; right: 6%; bottom: 8%;
+    background: #b05028;
+    box-shadow: inset 0 0 0 3px #7a3018;
+    pointer-events: none;
+  }
+  #foundry .mouth {
+    position: absolute; left: 28%; bottom: 14%; width: 28%; height: 22%;
+    background: #2a140c;
+    pointer-events: none;
+  }
+  #foundry .scaffold {
+    display: none; position: absolute; left: 10%; right: 10%; top: 32%; bottom: 16%;
+    box-shadow: inset 2px 0 0 #e8c080, inset -2px 0 0 #e8c080, inset 0 2px 0 #e8c080;
+    pointer-events: none;
+  }
+  #foundry.sited .scaffold { display: block; }
+  #foundry .hearth {
+    display: none; position: absolute; left: 32%; bottom: 16%; width: 20%; height: 16%;
+    background: var(--hearth);
+    box-shadow: 0 0 14px 4px rgba(255, 144, 32, 0.55);
+    pointer-events: none;
+  }
+  #foundry.live .hall { background: #d06028; }
+  #foundry.live .hearth { display: block; }
+  #foundry.live .mouth { background: var(--ember); }
+  #foundry .bill {
+    display: none; position: absolute; left: 10%; right: 10%; bottom: 4%; height: 12%;
+    box-shadow: inset 0 0 0 1px rgba(210, 230, 220, 0.4);
+    pointer-events: none;
+  }
+  #foundry.posted .bill { display: block; }
+  #foundry .pane {
+    display: none; position: absolute; bottom: 5%; width: 16%; height: 10%;
+    background: var(--glass);
+    box-shadow: inset 0 0 0 1px var(--glass-edge);
+    pointer-events: none;
+  }
+  #pane-a { left: 16%; }
+  #pane-b { right: 16%; }
+  #foundry.filled .pane { display: block; }
+
+  #consist {
+    position: absolute; z-index: 3;
+    background: transparent;
+  }
+  #consist.inbound { left: 66%; bottom: 12%; width: 16%; height: 16%; }
+  #consist.home { left: 4%; bottom: 2%; width: 16%; height: 10%; }
+  #consist .engine {
+    position: absolute; left: 0; top: 8%; width: 42%; bottom: 18%;
+    background: #5a3020;
+    box-shadow: inset 0 -4px 0 #3a1c14, inset 8px 6px 0 0 #e8a040;
+    pointer-events: none;
+  }
+  #consist .car {
+    position: absolute; top: 22%; bottom: 22%; width: 26%;
+    background: #6a3824;
+    box-shadow: inset 0 0 0 1px #3a2014, inset 6px 4px 0 0 #d09038;
+    pointer-events: none;
+  }
+  #car-a { left: 44%; }
+  #car-b { right: 0; }
+
+  #town-food {
+    display: none; position: absolute; left: 22%; bottom: 16%; width: 8%; height: 8%;
+    background: var(--food);
+    box-shadow: inset 0 -3px 0 var(--food-d);
+    pointer-events: none;
+  }
+  #town-food.in { display: block; }
+
+  #platform {
+    position: absolute; left: 0; right: 22%; bottom: 0; height: 12%;
+    background: var(--home);
+    pointer-events: none;
+  }
+
+  /* Anchor locks: scenery. Waiting on new ground. Not pads. */
+  #anchors {
+    position: absolute; left: 84%; bottom: 18%; width: 12%; height: 20%;
+    pointer-events: none;
+  }
+  .lock {
+    position: absolute; bottom: 0; width: 38%; height: 70%;
+    background: #2a323c;
+    box-shadow: inset 0 -8px 0 #1a2028;
+  }
+  #lock-a { left: 0; height: 80%; }
+  #lock-b { right: 0; height: 56%; }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="hud">
+    <div id="marks-line">0 marks</div>
+  </div>
+  <div id="strip">
+    <div id="sky" aria-hidden="true"></div>
+    <div id="ground">
+      <span id="heat-step"></span>
+    </div>
+    <div id="rim" aria-hidden="true"></div>
+    <div id="horizon" aria-hidden="true">
+      <span class="hz" id="hz-a"></span>
+      <span class="hz" id="hz-b"></span>
+      <span class="hz" id="hz-c"></span>
+    </div>
+    <div id="notice">
+      <div id="notice-now"></div>
+      <button type="button" id="notice-do"></button>
+      <div id="notice-wait"></div>
+    </div>
+    <button type="button" id="lamp" aria-label="lamp">
+      <span class="post"></span>
+      <span class="arm"></span>
+      <span class="globe"></span>
+    </button>
+    <button type="button" id="terrace" aria-label="greenhouse terrace">
+      <span class="roof"></span>
+      <span class="glass"></span>
+      <span class="food"></span>
+    </button>
+    <button type="button" id="foundry" aria-label="Foundry">
+      <span class="stack"></span>
+      <span class="hall"></span>
+      <span class="mouth"></span>
+      <span class="scaffold"></span>
+      <span class="hearth"></span>
+      <span class="bill"></span>
+      <span class="pane" id="pane-a"></span>
+      <span class="pane" id="pane-b"></span>
+    </button>
+    <div id="town-food" aria-hidden="true"></div>
+    <div id="platform" aria-hidden="true"></div>
+    <button type="button" id="consist" class="inbound" aria-label="inbound consist">
+      <span class="engine"></span>
+      <span class="car" id="car-a"></span>
+      <span class="car" id="car-b"></span>
+    </button>
+    <div id="anchors" aria-hidden="true">
+      <span class="lock" id="lock-a"></span>
+      <span class="lock" id="lock-b"></span>
+    </div>
+  </div>
+</div>
+<script src="./sim.js"></script>
+<script>
+(function () {
+  const board = DawnspurHalt.createBoard({ fresh: true });
+  const marksLine = document.getElementById("marks-line");
+  const lampEl = document.getElementById("lamp");
+  const terraceEl = document.getElementById("terrace");
+  const foundryEl = document.getElementById("foundry");
+  const consistEl = document.getElementById("consist");
+  const groundEl = document.getElementById("ground");
+  const townFoodEl = document.getElementById("town-food");
+  const noticeEl = document.getElementById("notice");
+  const nowEl = document.getElementById("notice-now");
+  const doEl = document.getElementById("notice-do");
+  const waitEl = document.getElementById("notice-wait");
+
+  function tap(el, fn) {
+    el.addEventListener("pointerdown", function (ev) { ev.preventDefault(); fn(ev); });
+  }
+
+  function paint() {
+    marksLine.textContent = board.marks + (board.marks === 1 ? " mark" : " marks");
+    lampEl.classList.toggle("lit", board.lampLit);
+    terraceEl.classList.toggle("has-food", board.foodOnTerrace);
+    foundryEl.classList.toggle("sited", board.sited);
+    foundryEl.classList.toggle("live", board.foundry);
+    foundryEl.classList.toggle("posted", board.billPosted);
+    foundryEl.classList.toggle("filled", board.panes >= 2);
+    consistEl.className = board.inbound ? "inbound" : board.landed ? "home" : "gone";
+    consistEl.setAttribute("aria-label", board.landed ? "consist home" : "inbound consist");
+    groundEl.classList.toggle("step", board.heatStep >= 1);
+    townFoodEl.classList.toggle("in", board.foodInTown);
+
+    const n = board.postedNotice();
+    if (!n) {
+      nowEl.textContent = "";
+      doEl.textContent = "";
+      waitEl.textContent = "";
+      noticeEl.classList.remove("has-do");
+      return;
+    }
+    nowEl.textContent = n.writing;
+    waitEl.textContent = n.blocked || "";
+    if (n.canDo) {
+      doEl.textContent = n.canDo;
+      noticeEl.classList.add("has-do");
+    } else {
+      doEl.textContent = "";
+      noticeEl.classList.remove("has-do");
+    }
+  }
+
+  tap(lampEl, function () { board.postNotice("lamp"); paint(); });
+  tap(terraceEl, function () { board.postNotice("terrace"); paint(); });
+  tap(foundryEl, function () { board.postNotice("foundry"); paint(); });
+  tap(consistEl, function () { board.postNotice("consist"); paint(); });
+  tap(doEl, function () { if (board.commitPosted()) paint(); });
+  paint();
+  document.addEventListener("touchstart", function (e) {
+    if (e.touches.length > 1) e.preventDefault();
+  }, { passive: false });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,304 @@
+"use strict";
+
+// SKYRAIL Reclamation — CFD-205, Dawnspur Halt.
+// Spec: docs/cfd-205-halt-beat.md (SIGNED — David, 2026-08-30, Superheavy named it).
+// One NEW system: Work notices. Works stays. Foundry is work one.
+// No Halt send on this board. Sibling of /dawnspur-site/; do not recut that board.
+//
+// Four buildings. Tapping one posts the station board: can do / in process /
+// blocked. The block is a world reason already on the diorama. Writing is the
+// board. CAST is a line on the Foundry notice, not a second brick.
+//
+// SITE: marks open the work, scaffold, empty bill. Marks open SITE only.
+// LAND: the inherited loop as sat arrives. Arrival, not a send. Dark until SITE.
+// CAST: OPEN and CAST are one commit. Bill full and terrace food in → Foundry
+// live, food into the town, one Heat step on already-reached ground. The rim
+// does not move. R9: Heat is not Air.
+//
+// Food is already on the glass. There is no carry. The HUD is one marks line.
+// wait() exists, takes nothing, returns false.
+
+const SITE_PRICE = 3;
+const OPENING_MARKS = 3;
+const BILL_NEED = 1;
+const PANES_LOOK = 2;
+const BUILDINGS = Object.freeze(["lamp", "terrace", "foundry", "consist"]);
+
+// The rim is a constant. CAST does not write it. SITE does not write it.
+const RIM = Object.freeze({ left: 78, width: 18 });
+
+function make(state) {
+  const s = state;
+
+  function canLight() {
+    return !s.lampLit;
+  }
+
+  function canSite(target) {
+    if (s.stopped) return false;
+    if (s.sited) return false;
+    if (s.marks < SITE_PRICE) return false;
+    if (target === "rim") return false;
+    if (target != null && target !== "foundry") return false;
+    return true;
+  }
+
+  function canLand() {
+    if (s.stopped) return false;
+    if (!s.sited) return false;
+    if (!s.inbound) return false;
+    return true;
+  }
+
+  function canCast() {
+    if (s.stopped) return false;
+    if (!s.sited) return false;
+    if (s.bill < BILL_NEED) return false;
+    if (!s.foodOnTerrace) return false;
+    return true;
+  }
+
+  function notice(place) {
+    if (place === "lamp") {
+      if (!s.lampLit) {
+        return {
+          place: "lamp",
+          canDo: "Light it.",
+          verb: "light",
+          inProcess: null,
+          blocked: null,
+          writing: "The lamp. Dark.",
+        };
+      }
+      return {
+        place: "lamp",
+        canDo: null,
+        verb: null,
+        inProcess: "Awake.",
+        blocked: null,
+        writing: "The lamp. Amber. Awake.",
+      };
+    }
+
+    if (place === "terrace") {
+      if (s.foodOnTerrace) {
+        return {
+          place: "terrace",
+          canDo: null,
+          verb: null,
+          inProcess: "Food on the terrace.",
+          blocked: "Carry, tend, UP — a held island is not a fuel bill.",
+          writing: "Food on the glass.",
+        };
+      }
+      return {
+        place: "terrace",
+        canDo: null,
+        verb: null,
+        inProcess: "The glass held the food.",
+        blocked: "Carry, tend, UP — a held island is not a fuel bill.",
+        writing: "The glass held the food.",
+      };
+    }
+
+    if (place === "foundry") {
+      if (!s.sited) {
+        return {
+          place: "foundry",
+          canDo: "SITE. Three marks.",
+          verb: "site",
+          inProcess: null,
+          blocked: null,
+          writing: "The ruin.",
+        };
+      }
+      if (!s.landed) {
+        return {
+          place: "foundry",
+          canDo: null,
+          verb: null,
+          inProcess: "Scaffold up. The bill is empty.",
+          blocked: "CAST waits. The haul is still on the consist.",
+          writing: "Scaffold up. The bill is empty.",
+        };
+      }
+      if (!s.foundry) {
+        return {
+          place: "foundry",
+          canDo: "CAST. One heat. The rim holds.",
+          verb: "cast",
+          inProcess: "Scaffold. Bill full.",
+          blocked: null,
+          writing: "The bill is full. Food is on the terrace.",
+        };
+      }
+      return {
+        place: "foundry",
+        canDo: null,
+        verb: null,
+        inProcess: "Hearth live.",
+        blocked: null,
+        writing: "Hearth live. The ground already reached took the heat.",
+      };
+    }
+
+    if (place === "consist") {
+      if (!s.sited) {
+        return {
+          place: "consist",
+          canDo: null,
+          verb: null,
+          inProcess: "Inbound.",
+          blocked: "LAND waits. No address.",
+          writing: "Inbound.",
+        };
+      }
+      if (!s.landed) {
+        return {
+          place: "consist",
+          canDo: "Come home.",
+          verb: "land",
+          inProcess: "Inbound.",
+          blocked: null,
+          writing: "The work has an address.",
+        };
+      }
+      return {
+        place: "consist",
+        canDo: null,
+        verb: null,
+        inProcess: "Home.",
+        blocked: "This board does not send.",
+        writing: "Home.",
+      };
+    }
+
+    return null;
+  }
+
+  function postNotice(place) {
+    if (BUILDINGS.indexOf(place) < 0) return false;
+    s.posted = place;
+    return true;
+  }
+
+  function postedNotice() {
+    if (!s.posted) return null;
+    return notice(s.posted);
+  }
+
+  function commitLight() {
+    if (!canLight()) return false;
+    s.lampLit = true;
+    return true;
+  }
+
+  function commitSite(target) {
+    if (!canSite(target)) return false;
+    s.marks -= SITE_PRICE;
+    s.sited = true;
+    s.scaffold = true;
+    s.billPosted = true;
+    return true;
+  }
+
+  function commitLand() {
+    if (!canLand()) return false;
+    s.inbound = false;
+    s.landed = true;
+    s.bill = BILL_NEED;
+    s.panes = PANES_LOOK;
+    return true;
+  }
+
+  function commitCast() {
+    if (!canCast()) return false;
+    s.foodOnTerrace = false;
+    s.foodInTown = true;
+    s.foundry = true;
+    s.heatStep = 1;
+    s.stopped = true;
+    return true;
+  }
+
+  function commitPosted() {
+    const n = postedNotice();
+    if (!n || !n.verb) return false;
+    if (n.verb === "light") return commitLight();
+    if (n.verb === "site") return commitSite("foundry");
+    if (n.verb === "land") return commitLand();
+    if (n.verb === "cast") return commitCast();
+    return false;
+  }
+
+  function wait() {
+    return false;
+  }
+
+  function buildings() {
+    return BUILDINGS.slice();
+  }
+
+  return {
+    get marks() { return s.marks; },
+    get sitePrice() { return SITE_PRICE; },
+    get openingMarks() { return OPENING_MARKS; },
+    get billNeed() { return BILL_NEED; },
+    get panesLook() { return PANES_LOOK; },
+    get lampLit() { return s.lampLit; },
+    get foodOnTerrace() { return s.foodOnTerrace; },
+    get foodInTown() { return s.foodInTown; },
+    get sited() { return s.sited; },
+    get scaffold() { return s.scaffold; },
+    get billPosted() { return s.billPosted; },
+    get bill() { return s.bill; },
+    get panes() { return s.panes; },
+    get inbound() { return s.inbound; },
+    get landed() { return s.landed; },
+    get foundry() { return s.foundry; },
+    get heatStep() { return s.heatStep; },
+    get rim() { return { left: s.rim.left, width: s.rim.width }; },
+    get stopped() { return s.stopped; },
+    get posted() { return s.posted; },
+    canLight,
+    canSite,
+    canLand,
+    canCast,
+    commitLight,
+    commitSite,
+    commitLand,
+    commitCast,
+    commitPosted,
+    postNotice,
+    notice,
+    postedNotice,
+    wait,
+    buildings,
+  };
+}
+
+function createBoard(opts) {
+  const marks = opts && Number.isInteger(opts.marks) ? opts.marks : OPENING_MARKS;
+  return make({
+    marks: marks,
+    lampLit: false,
+    foodOnTerrace: true,
+    foodInTown: false,
+    sited: false,
+    scaffold: false,
+    billPosted: false,
+    bill: 0,
+    panes: 0,
+    inbound: true,
+    landed: false,
+    foundry: false,
+    heatStep: 0,
+    rim: { left: RIM.left, width: RIM.width },
+    stopped: false,
+    posted: null,
+  });
+}
+
+const api = { createBoard };
+if (typeof module === "object" && module.exports) module.exports = api;
+if (typeof globalThis !== "undefined") globalThis.DawnspurHalt = api;
