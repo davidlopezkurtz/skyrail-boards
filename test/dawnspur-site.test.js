@@ -1,10 +1,10 @@
 "use strict";
 
-// CFD-205 recut 1 — Three places. Spec: docs/cfd-205-beat.md (SIGNED —
+// CFD-205 recut 2 — One live place. Spec: docs/cfd-205-beat.md (SIGNED —
 // David, 2026-08-30, word "Signed."). Works stays. Foundry is work one.
-// One NEW change: the SITE/LAND/CAST strip and the lecture boxes leave.
-// Three commits stay as three places. Every Kill line expressible as a
-// test is a test.
+// One NEW change: two of the three objects are scenery. Only the live
+// job is a button. Dead jobs are not disabled pads. Every Kill line
+// expressible as a test is a test.
 
 const { test } = require("node:test");
 const assert = require("node:assert/strict");
@@ -177,12 +177,13 @@ test("the board ships three files and reaches for nothing off itself", () => {
 test("the signed recut is the brief", () => {
   const beat = fs.readFileSync(path.join(ROOT, "docs/cfd-205-beat.md"), "utf8");
   assert.match(beat, /SIGNED — David, 2026-08-30, word "Signed\."/);
-  assert.match(beat, /Recut 1 — Three places/);
+  assert.match(beat, /Recut 2 — One live place/);
   assert.match(beat, /Ask: What happened/);
   assert.match(beat, /bill payable in marks alone/i);
   assert.match(beat, /No Halt send/);
   assert.match(beat, /job row/);
   assert.match(beat, /CAST-on-same-ruin|ruin hitbox must not also be CAST/);
+  assert.match(beat, /peer clickables|Only the live job is a button/i);
 });
 
 // ------------------------------------------------------------ the opening
@@ -207,6 +208,7 @@ test("kill: the opening mints marks 3, food on the terrace, one inbound run, Fou
   assert.equal(b.endSentence, null);
   assert.deepEqual(b.rim, { left: 78, width: 18 });
   assert.deepEqual(b.litJobs(), ["site"]);
+  assert.equal(b.livePlace(), "foundry");
   assert.equal(b.canSite(), true);
   assert.equal(b.canLand(), false);
   assert.equal(b.canCast(), false);
@@ -237,6 +239,7 @@ test("the walked path: SITE, LAND, CAST — address, panes, food into the town",
   assert.match(h.b.endSentence, /terrace food went into the town/);
   assert.match(h.b.endSentence, /already reached took one heat/);
   assert.deepEqual(h.b.litJobs(), []);
+  assert.equal(h.b.livePlace(), null);
 });
 
 test("SITE opens the work, posts the bill, and spends the float", () => {
@@ -251,6 +254,7 @@ test("SITE opens the work, posts the bill, and spends the float", () => {
   assert.equal(h.b.foodOnTerrace, true);
   assert.equal(h.b.runSentence, "The work is open. The scaffold is up. The bill is on the frame.");
   assert.deepEqual(h.b.litJobs(), ["land"]);
+  assert.equal(h.b.livePlace(), "train");
 });
 
 test("LAND fills the bill and puts panes on the frame", () => {
@@ -263,6 +267,7 @@ test("LAND fills the bill and puts panes on the frame", () => {
   assert.equal(h.b.foodOnTerrace, true);
   assert.equal(h.b.runSentence, "The run came back with an address. The panes are on the frame.");
   assert.deepEqual(h.b.litJobs(), ["cast"]);
+  assert.equal(h.b.livePlace(), "frame");
 });
 
 // ------------------------------------------ kill: bill payable in marks alone
@@ -428,7 +433,7 @@ test("kill: scaffold is SITE's tell, never a verb — crane stays at Rustfall", 
   assert.match(SIT_HTML, /id="scaffold"/);
 });
 
-// ------------------------------------------ recut 1: three places, not a strip
+// ------------------------------------------ recut 2: one live place
 
 test("kill: no job row — named pads leave", () => {
   assert.doesNotMatch(SIT_HTML, /id="pads"|id="site"|id="land"|id="cast"|class="pad"/);
@@ -444,17 +449,90 @@ test("kill: no lecture boxes, no tutorial, no help overlay", () => {
   assert.doesNotMatch(SIM_CODE, /help|tutorial|plaque|citizen/i);
 });
 
-test("three places: ruin is SITE, inbound is LAND, posted frame is CAST", () => {
-  const buttons = SIT_HTML.match(/<button\b[^>]*>/g) || [];
-  assert.equal(buttons.length, 3, "exactly three place buttons: " + JSON.stringify(buttons));
-  assert.ok(buttons.some((b) => b.includes('id="foundry"')), "SITE is the Foundry ruin");
-  assert.ok(buttons.some((b) => b.includes('id="train"')), "LAND is the inbound consist");
-  assert.ok(buttons.some((b) => b.includes('id="frame"')), "CAST is the posted frame");
-  assert.match(SIT_HTML, /tap\(trainEl, function \(\) \{ if \(board\.commitLand\(\)\) paint\(\); \}\);/);
-  assert.match(SIT_HTML, /tap\(frameEl, function \(\) \{ if \(board\.commitCast\(\)\) paint\(\); \}\);/);
+test("exactly one live button at a time — ruin, then consist, then frame, then none", () => {
+  const open = makeBoard().b;
+  assert.equal(open.livePlace(), "foundry");
+  assert.deepEqual(open.litJobs(), ["site"]);
+  assert.equal(open.litJobs().length, 1);
+  const sited = walk("S").b;
+  assert.equal(sited.livePlace(), "train");
+  assert.deepEqual(sited.litJobs(), ["land"]);
+  assert.equal(sited.canSite(), false);
+  assert.equal(sited.canCast(), false);
+  const landed = walk("SL").b;
+  assert.equal(landed.livePlace(), "frame");
+  assert.deepEqual(landed.litJobs(), ["cast"]);
+  assert.equal(landed.canSite(), false);
+  assert.equal(landed.canLand(), false);
+  const done = walk("SLC").b;
+  assert.equal(done.livePlace(), null);
+  assert.deepEqual(done.litJobs(), []);
+  assert.equal(done.canSite(), false);
+  assert.equal(done.canLand(), false);
+  assert.equal(done.canCast(), false);
 });
 
-test("kill: ruin is SITE then inert — not CAST a second time", () => {
+test("kill: peer clickables — opening markup has one button, two scenery objects", () => {
+  const buttons = SIT_HTML.match(/<button\b[^>]*>/g) || [];
+  assert.equal(buttons.length, 1, "exactly one opening button: " + JSON.stringify(buttons));
+  assert.ok(buttons[0].includes('id="foundry"'), "the opening button is the Foundry ruin");
+  assert.doesNotMatch(SIT_HTML, /<button[^>]*id="train"/);
+  assert.doesNotMatch(SIT_HTML, /<button[^>]*id="frame"/);
+  assert.match(SIT_HTML, /<div id="train" class="inbound" aria-hidden="true">/);
+  assert.match(SIT_HTML, /<div id="frame" aria-hidden="true">/);
+  assert.match(SIT_HTML, /id="foundry"/);
+  assert.match(SIT_HTML, /id="train"/);
+  assert.match(SIT_HTML, /id="frame"/);
+});
+
+test("kill: dead jobs are not buttons — no pointer, no hopping glow, no disabled pad", () => {
+  assert.match(cssOf(), /div#foundry,\s*div#frame,\s*div#train\s*\{[^}]*pointer-events:\s*none/);
+  assert.match(cssOf(), /div#foundry,\s*div#frame,\s*div#train\s*\{[^}]*cursor:\s*default/);
+  assert.match(cssOf(), /button#foundry,\s*button#frame,\s*button#train\s*\{[^}]*cursor:\s*pointer/);
+  const outlines = cssOf().match(/[^{}]*\{[^}]*outline:[^}]*\}/g) || [];
+  assert.ok(outlines.length >= 1, "the live place still has an outline tell");
+  for (const r of outlines) {
+    assert.match(r, /button#/, "outline only on a live button, not a dead brick: " + r.trim());
+  }
+  assert.match(cssOf(), /button#foundry\.on\s*\{[^}]*outline:/);
+  assert.match(cssOf(), /button#frame\.live\s*\{[^}]*outline:/);
+  assert.match(cssOf(), /button#train\.live\s*\{[^}]*outline:/);
+  assert.doesNotMatch(cssOf(), /#(foundry|frame|train)[^\{]*:disabled/);
+  assert.doesNotMatch(SIT_HTML, /foundryEl\.disabled|frameEl\.disabled|trainEl\.disabled/);
+  assert.doesNotMatch(SIT_HTML, /<button[^>]*\bdisabled\b/);
+  assert.doesNotMatch(cssOf(), /@keyframes|animation:/);
+  assert.doesNotMatch(rule("#train.inbound"), /opacity:/);
+});
+
+test("paint promotes only the live place to a button", () => {
+  assert.match(SIT_HTML, /const place = board\.livePlace\(\)/);
+  assert.match(SIT_HTML, /asButton\(foundryEl, place === "foundry"/);
+  assert.match(SIT_HTML, /asButton\(trainEl, place === "train"/);
+  assert.match(SIT_HTML, /asButton\(frameEl, place === "frame"/);
+  assert.match(SIT_HTML, /if \(board\.commitLand\(\)\) paint\(\)/);
+  assert.match(SIT_HTML, /if \(board\.commitCast\(\)\) paint\(\)/);
+  const asButton = SIT_HTML.match(/function asButton\([\s\S]*?\n  \}/);
+  assert.ok(asButton, "asButton found");
+  assert.match(asButton[0], /live \? "BUTTON" : "DIV"/);
+  assert.match(asButton[0], /createElement\(live \? "button" : "div"\)/);
+});
+
+test("kill: consist is not a button before SITE", () => {
+  const b = makeBoard().b;
+  assert.equal(b.inbound, true);
+  assert.equal(b.canLand(), false);
+  assert.equal(b.livePlace(), "foundry");
+  assert.notEqual(b.livePlace(), "train");
+  assert.doesNotMatch(SIT_HTML, /<button[^>]*id="train"/);
+  assert.match(SIT_HTML, /asButton\(trainEl, place === "train"/);
+  const foundry = box("#foundry");
+  const consist = box("#train.inbound");
+  assert.equal(overlap(foundry, consist), false, "consist and ruin are different places");
+  const frame = box("#frame");
+  assert.equal(overlap(frame, consist), false, "consist and frame are different places");
+});
+
+test("kill: ruin is SITE then scenery — not CAST a second time", () => {
   const ruin = foundryMarkup();
   assert.doesNotMatch(ruin, /id="frame"/, "the frame left the ruin's hitbox");
   assert.doesNotMatch(ruin, /commitCast/, "the ruin does not fire CAST");
@@ -463,39 +541,28 @@ test("kill: ruin is SITE then inert — not CAST a second time", () => {
   assert.equal(h.b.commitSite(), false);
   assert.equal(h.b.commitSite("foundry"), false);
   assert.equal(h.b.canCast(), false);
+  assert.equal(h.b.livePlace(), "train");
+  assert.notEqual(h.b.livePlace(), "foundry");
   walk("L", h);
   assert.equal(h.b.canSite(), false);
   assert.equal(h.b.commitSite("foundry"), false);
   assert.equal(h.b.foundry, false, "tapping the ruin after SITE does not CAST");
   assert.equal(h.b.canCast(), true);
-  assert.match(SIT_HTML, /foundryEl\.disabled = !board\.canSite\(\)/);
+  assert.equal(h.b.livePlace(), "frame");
+  assert.match(SIT_HTML, /asButton\(foundryEl, place === "foundry"/);
 });
 
 test("kill: CAST is the posted frame, distinct hitbox from the ruin", () => {
-  assert.match(SIT_HTML, /<button type="button" id="frame"/);
+  assert.match(SIT_HTML, /id="frame"/);
+  assert.match(SIT_HTML, /asButton\(frameEl, place === "frame"/);
   const foundry = box("#foundry");
   const frame = box("#frame");
   assert.equal(overlap(foundry, frame), false, "ruin and frame hitboxes must not overlap");
-  assert.doesNotMatch(rule("#frame"), /pointer-events:\s*none/, "the frame is a place");
-  assert.match(SIT_HTML, /frameEl\.disabled = !board\.canCast\(\)/);
-});
-
-test("kill: inbound consist is LAND and dark until SITE", () => {
-  const b = makeBoard().b;
-  assert.equal(b.inbound, true);
-  assert.equal(b.canLand(), false);
-  assert.match(SIT_HTML, /<button type="button" id="train"/);
-  assert.doesNotMatch(rule("#train"), /pointer-events:\s*none/, "the consist is not dead scenery");
-  const inbound = rule("#train.inbound");
-  assert.doesNotMatch(inbound, /pointer-events:\s*none/);
-  const dark = rule("#train.inbound:disabled");
-  assert.match(dark, /opacity:\s*\.32/, "LAND is dark until SITE");
-  assert.match(SIT_HTML, /trainEl\.disabled = !board\.canLand\(\)/);
-  const foundry = box("#foundry");
-  const consist = box("#train.inbound");
-  assert.equal(overlap(foundry, consist), false, "consist and ruin are different places");
-  const frame = box("#frame");
-  assert.equal(overlap(frame, consist), false, "consist and frame are different places");
+  assert.doesNotMatch(rule("#frame"), /pointer-events:\s*none/, "the frame's box is typed once");
+  const landed = walk("SL").b;
+  assert.equal(landed.livePlace(), "frame");
+  assert.notEqual(landed.livePlace(), "foundry");
+  assert.equal(landed.canSite(), false);
 });
 
 test("kill: auto LAND is still impossible — SITE does not fill the bill", () => {

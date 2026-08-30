@@ -106,21 +106,25 @@
   }
   #terrace.has-food .food { display: block; }
 
-  /* Three places. Not a job row. Place buttons share a reset; each hitbox
-     is typed once and they do not nest. */
+  /* One live place. Two of the three objects are scenery. Dead jobs are
+     not buttons: no pointer, no outline, no disabled-pad treatment. */
   #foundry, #frame, #train {
-    border: 0; padding: 0; cursor: pointer; font: inherit; color: inherit;
+    border: 0; padding: 0; font: inherit; color: inherit;
     touch-action: manipulation;
   }
-  #foundry:disabled, #frame:disabled, #train:disabled { cursor: default; }
+  button#foundry, button#frame, button#train { cursor: pointer; }
+  div#foundry, div#frame, div#train {
+    pointer-events: none;
+    cursor: default;
+  }
 
-  /* SITE is this ruin. After SITE the ruin is inert — not CAST. */
+  /* SITE is this ruin. After SITE the ruin is scenery — not CAST. */
   #foundry {
     position: absolute; left: 32%; bottom: 30%; width: 26%; height: 34%;
     background: var(--rust);
     box-shadow: inset 0 0 0 3px var(--rust-edge);
   }
-  #foundry.on { outline: 3px solid var(--sel); outline-offset: 3px; }
+  button#foundry.on { outline: 3px solid var(--sel); outline-offset: 3px; }
   #foundry.live {
     background: #5a4030;
     box-shadow: inset 0 0 0 3px var(--warm-deep), 0 0 16px 2px rgba(192, 138, 74, 0.35);
@@ -155,7 +159,7 @@
     box-shadow: inset 0 0 0 2px #1a1814;
   }
   #frame.posted { box-shadow: inset 0 0 0 2px rgba(210, 230, 220, 0.4); }
-  #frame.live { outline: 3px solid var(--sel); outline-offset: 3px; }
+  button#frame.live { outline: 3px solid var(--sel); outline-offset: 3px; }
   #bill {
     display: none; position: absolute; inset: 3px;
     box-shadow: inset 0 0 0 1px rgba(210, 230, 220, 0.28);
@@ -184,7 +188,7 @@
     pointer-events: none;
   }
 
-  /* LAND is the inbound consist. Dark until SITE. Tappable when live. */
+  /* LAND is the inbound consist. Scenery until SITE. Button only when live. */
   #train {
     position: absolute; z-index: 3;
     background: var(--train);
@@ -197,8 +201,7 @@
     left: 6%; bottom: 8%; width: 16%; height: 12%;
   }
   #train.gone { display: none; }
-  #train.inbound:disabled { opacity: .32; }
-  #train.live { outline: 3px solid var(--sel); outline-offset: 3px; }
+  button#train.live { outline: 3px solid var(--sel); outline-offset: 3px; }
   .car {
     position: absolute; top: 18%; bottom: 28%; width: 28%;
     background: var(--train-d);
@@ -231,17 +234,17 @@
       <span id="works"></span>
       <span id="hearth"></span>
     </button>
-    <button type="button" id="frame" disabled aria-label="posted frame">
+    <div id="frame" aria-hidden="true">
       <span id="bill"></span>
       <span class="pane" id="pane-a"></span>
       <span class="pane" id="pane-b"></span>
-    </button>
+    </div>
     <div id="town-food" aria-hidden="true"></div>
     <div id="platform" aria-hidden="true"></div>
-    <button type="button" id="train" class="inbound" disabled aria-label="inbound consist">
+    <div id="train" class="inbound" aria-hidden="true">
       <span class="car" id="car-a"></span>
       <span class="car" id="car-b"></span>
-    </button>
+    </div>
   </div>
 </div>
 <script src="./sim.js"></script>
@@ -249,49 +252,80 @@
 (function () {
   const board = DawnspurSite.createBoard({ fresh: true });
   const marksLine = document.getElementById("marks-line");
-  const foundryEl = document.getElementById("foundry");
-  const frameEl = document.getElementById("frame");
+  let foundryEl = document.getElementById("foundry");
+  let frameEl = document.getElementById("frame");
   const terraceEl = document.getElementById("terrace");
   const groundEl = document.getElementById("ground");
-  const trainEl = document.getElementById("train");
+  let trainEl = document.getElementById("train");
   const townFoodEl = document.getElementById("town-food");
 
   function tap(el, fn) {
     el.addEventListener("pointerdown", function (ev) { ev.preventDefault(); fn(ev); });
   }
 
+  // Dead jobs are not buttons. The live place is a button; the other two
+  // are scenery divs. No disabled pad, no pointer on a dead brick.
+  function asButton(el, live, onTap) {
+    const want = live ? "BUTTON" : "DIV";
+    if (el.tagName === want) return el;
+    const next = document.createElement(live ? "button" : "div");
+    if (live) next.type = "button";
+    next.id = el.id;
+    while (el.firstChild) next.appendChild(el.firstChild);
+    el.parentNode.replaceChild(next, el);
+    if (live) tap(next, onTap);
+    return next;
+  }
+
   function paint() {
+    const place = board.livePlace();
+    foundryEl = asButton(foundryEl, place === "foundry", function () {
+      if (board.commitSite("foundry")) paint();
+    });
+    trainEl = asButton(trainEl, place === "train", function () {
+      if (board.commitLand()) paint();
+    });
+    frameEl = asButton(frameEl, place === "frame", function () {
+      if (board.commitCast()) paint();
+    });
     marksLine.textContent = board.marks + (board.marks === 1 ? " mark" : " marks");
     terraceEl.classList.toggle("has-food", board.foodOnTerrace);
     foundryEl.classList.toggle("sited", board.sited);
     foundryEl.classList.toggle("live", board.foundry);
-    foundryEl.classList.toggle("on", board.canSite());
-    foundryEl.disabled = !board.canSite();
-    foundryEl.setAttribute("aria-label", board.foundry
-      ? "Foundry, live"
-      : board.sited
-        ? "Foundry work, open"
-        : "Foundry ruin");
+    foundryEl.classList.toggle("on", place === "foundry");
+    if (place === "foundry") {
+      foundryEl.setAttribute("aria-label", "Foundry ruin");
+      foundryEl.removeAttribute("aria-hidden");
+    } else {
+      foundryEl.setAttribute("aria-hidden", "true");
+      foundryEl.removeAttribute("aria-label");
+    }
     frameEl.classList.toggle("posted", board.billPosted);
     frameEl.classList.toggle("filled", board.panes >= 2);
-    frameEl.classList.toggle("live", board.canCast());
-    frameEl.disabled = !board.canCast();
-    frameEl.setAttribute("aria-label", board.panes >= 2
-      ? "posted frame, filled"
-      : board.billPosted
-        ? "posted frame"
-        : "frame");
+    frameEl.classList.toggle("live", place === "frame");
+    if (place === "frame") {
+      frameEl.setAttribute("aria-label", board.panes >= 2
+        ? "posted frame, filled"
+        : "posted frame");
+      frameEl.removeAttribute("aria-hidden");
+    } else {
+      frameEl.setAttribute("aria-hidden", "true");
+      frameEl.removeAttribute("aria-label");
+    }
     groundEl.classList.toggle("step", board.heatStep >= 1);
     townFoodEl.classList.toggle("in", board.foodInTown);
     trainEl.className = (board.inbound ? "inbound" : board.landed ? "home" : "gone")
-      + (board.canLand() ? " live" : "");
-    trainEl.disabled = !board.canLand();
-    trainEl.setAttribute("aria-label", board.landed ? "consist, home" : "inbound consist");
+      + (place === "train" ? " live" : "");
+    if (place === "train") {
+      trainEl.setAttribute("aria-label", "inbound consist");
+      trainEl.removeAttribute("aria-hidden");
+    } else {
+      trainEl.setAttribute("aria-hidden", "true");
+      trainEl.removeAttribute("aria-label");
+    }
   }
 
   tap(foundryEl, function () { if (board.commitSite("foundry")) paint(); });
-  tap(trainEl, function () { if (board.commitLand()) paint(); });
-  tap(frameEl, function () { if (board.commitCast()) paint(); });
   paint();
   document.addEventListener("touchstart", function (e) {
     if (e.touches.length > 1) e.preventDefault();

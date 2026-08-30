@@ -2,7 +2,9 @@
 
 // SKYRAIL Reclamation — CFD-205, the site sitting.
 // Spec: docs/cfd-205-beat.md (SIGNED — David, 2026-08-30, word "Signed.").
+// Recut 2 — One live place (signed 2026-08-30). Works stays. Foundry is work one.
 // One NEW system: Works. Foundry is work one. No Halt send on this board.
+// Only one place is a button at a time. Dead jobs are scenery, not pads.
 //
 // SITE: marks open the work, scaffold, bill on the frame. Marks open SITE only.
 // LAND: the inherited loop as sat arrives; cargo lands on the frame; the bill
@@ -61,6 +63,16 @@ function make(state) {
     if (canLand()) jobs.push("land");
     if (canCast()) jobs.push("cast");
     return jobs;
+  }
+
+  // Recut 2: exactly one live place, or none after CAST. Dead jobs are not
+  // buttons. Ruin before SITE, consist after SITE before LAND, frame after
+  // LAND before CAST.
+  function livePlace() {
+    if (canSite()) return "foundry";
+    if (canLand()) return "train";
+    if (canCast()) return "frame";
+    return null;
   }
 
   function commitSite(target) {
@@ -128,6 +140,7 @@ function make(state) {
     commitCast,
     wait,
     litJobs,
+    livePlace,
   };
 }
 
