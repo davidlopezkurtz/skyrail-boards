@@ -1,0 +1,30 @@
+Dawnspur CFD-205, the site sitting (Works; Foundry is work one) 2026-08-30
+Spec: docs/cfd-205-beat.md - SIGNED, David 2026-08-30, word "Signed."
+One NEW system: Works. Foundry is work one. No Halt send on this board.
+
+SITE: marks open the work, scaffold, bill on the frame. Marks open SITE only.
+LAND: the inherited loop as sat arrives; cargo lands on the frame; the bill
+fills. Arrival, not a send.
+CAST: OPEN and CAST are one commit. Bill full and terrace food in → Foundry
+live, food into the town, one Heat step on already-reached ground. The rim
+does not move.
+
+Lives at sit/dawnspur-site/ with byte-copies at public/dawnspur-site/, so the
+seven boards that already stand are untouched - the lineage lock:
+
+  live /dawnspur-line/     sim 18b1324f / index b6f21db0
+  live /dawnspur-dispatch/ sim 576ce2b6 / index 31aead60
+  live /dawnspur-scale/    sim 953368a1 / index 5d2f452f
+  live /dawnspur-heat/     sim 292d6645
+  kill /dawnspur/          sim 395c18f2
+  live /convoy-stop/       sim 5ad814e6
+  live /dawnspur-storm/    sim f4f17008 / index 7711f979
+
+Storm live merge is 555ba9a9. Do not recut it.
+
+These hashes are graded by test/dawnspur-site.test.js against the bytes on
+disk, measured LF (.gitattributes `* -text` makes the blob the shipped bytes;
+the working tree is never the artefact):
+
+index.html      sha256:f369563319ee6047aedbfdc3b1ff01e3d479cd036e6668a0d76ffd6e90bf0c7c
+sim.js          sha256:e9999eed77b27024026018d6a599ba1fd7686cfece39d2e56a6149e840fb8443

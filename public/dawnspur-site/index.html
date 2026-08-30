@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Dawnspur Site</title>
+<style>
+  :root {
+    --bg: #16141a;
+    --ink: #ece6dc;
+    --dim: #9a9388;
+    --pad: #3a3d45;
+    --pad-on: #d8d8d8;
+    --pad-ink: #111;
+    --sel: #f2f2f2;
+    --warm: #8a5a32;
+    --warm-deep: #5c3a1c;
+    --ember: #c07a3a;
+    --soil: #4a3828;
+    --soil-edge: #2e241c;
+    --rim: #2a2c32;
+    --rim-edge: #1a1c20;
+    --rust: #6a4034;
+    --rust-edge: #3a2420;
+    --glass: rgba(170, 210, 200, 0.28);
+    --glass-edge: rgba(210, 230, 220, 0.5);
+    --hearth: #c08a4a;
+    --home: #3d3a36;
+    --train: #9a9da4;
+    --train-d: #6e7178;
+    --food: #c4a15a;
+    --food-d: #8a7038;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+  html { touch-action: manipulation; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink);
+    font-family: ui-sans-serif, system-ui, sans-serif; user-select: none; overflow: hidden; }
+  body { display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+    min-height: 100dvh; padding: env(safe-area-inset-top) 10px env(safe-area-inset-bottom); }
+  #app { width: min(440px, 100%); flex: 1; display: flex; flex-direction: column; gap: 8px; padding: 4px 0 10px; min-height: 0; }
+
+  #hud { flex-shrink: 0; padding: 0 4px; }
+  #marks-line {
+    min-height: 22px; text-align: right; font-size: 18px; font-weight: 700;
+    letter-spacing: .06em; color: var(--ink);
+  }
+
+  #strip {
+    position: relative; flex: 1; min-height: 0; background: #1c1a20;
+    overflow: hidden;
+    box-shadow: inset 0 0 0 2px #121014;
+  }
+
+  /* Heat-as-terrain: the reached ground holds warmth in the stone. New-play
+     look. CAST adds one step on this ground. The rim stays put. */
+  #ground {
+    position: absolute; left: 0; right: 22%; bottom: 0; top: 38%;
+    background: var(--soil);
+    box-shadow: inset 0 0 0 2px var(--soil-edge), inset 0 18px 0 rgba(192, 122, 58, 0.18);
+  }
+  #ground.step {
+    box-shadow: inset 0 0 0 2px var(--soil-edge), inset 0 18px 0 rgba(192, 122, 58, 0.18),
+      inset 28% 0 0 0 rgba(192, 138, 74, 0.28);
+  }
+  #heat-step {
+    display: none; position: absolute; left: 28%; bottom: 22%; width: 16%; height: 10%;
+    background: var(--ember);
+    box-shadow: 0 0 14px 4px rgba(192, 122, 58, 0.45);
+  }
+  #ground.step #heat-step { display: block; }
+
+  #sky {
+    position: absolute; left: 0; right: 0; top: 0; height: 38%;
+    background: #1a1c24;
+    box-shadow: inset 0 -2px 0 #12141a;
+  }
+
+  /* The rim is the cold edge. Not a pad. Position is typed once and never
+     rewritten by a commit. */
+  #rim {
+    position: absolute; left: 78%; right: 0; top: 28%; bottom: 0;
+    width: 18%;
+    background: var(--rim);
+    box-shadow: inset 0 0 0 2px var(--rim-edge);
+    pointer-events: none;
+  }
+
+  /* Horizon ruins: silhouettes. Not buttons. Not this work. */
+  #horizon { position: absolute; left: 8%; right: 24%; top: 18%; height: 22%; pointer-events: none; }
+  .hz {
+    position: absolute; bottom: 0; background: #2a2830;
+    box-shadow: inset 0 -6px 0 #1c1a22;
+  }
+  #hz-a { left: 4%; width: 10%; height: 70%; }
+  #hz-b { left: 22%; width: 8%; height: 48%; }
+  #hz-c { left: 70%; width: 12%; height: 62%; }
+
+  #terrace {
+    position: absolute; left: 4%; bottom: 28%; width: 22%; height: 22%;
+    background: #3a4a32;
+    box-shadow: inset 0 0 0 2px #2a3624;
+    pointer-events: none;
+  }
+  #terrace .food {
+    display: none; position: absolute; left: 12%; right: 12%; bottom: 14%; height: 36%;
+    background: var(--food);
+    box-shadow: inset 0 -4px 0 var(--food-d);
+  }
+  #terrace.has-food .food { display: block; }
+
+  /* The one pad. The one ruin. SITE taps this. */
+  #foundry {
+    position: absolute; left: 36%; bottom: 18%; width: 28%; height: 36%;
+    border: 0; padding: 0; cursor: pointer;
+    background: var(--rust);
+    box-shadow: inset 0 0 0 3px var(--rust-edge);
+    touch-action: manipulation;
+  }
+  #foundry:disabled { cursor: default; }
+  #foundry.on { outline: 3px solid var(--sel); outline-offset: 3px; }
+  #foundry.live {
+    background: #5a4030;
+    box-shadow: inset 0 0 0 3px var(--warm-deep), 0 0 16px 2px rgba(192, 138, 74, 0.35);
+  }
+
+  #scaffold {
+    display: none; position: absolute; left: 8%; right: 8%; top: 8%; bottom: 38%;
+    box-shadow: inset 2px 0 0 #c4b49a, inset -2px 0 0 #c4b49a, inset 0 2px 0 #c4b49a;
+    pointer-events: none;
+  }
+  #foundry.sited #scaffold { display: block; }
+
+  #works {
+    display: none; position: absolute; left: 18%; right: 18%; top: 12%; height: 42%;
+    background: #4a3830;
+    box-shadow: inset 0 -8px 0 #2e221c;
+    pointer-events: none;
+  }
+  #foundry.live #works { display: block; }
+  #hearth {
+    display: none; position: absolute; left: 42%; bottom: 8%; width: 16%; height: 16%;
+    background: var(--hearth);
+    box-shadow: 0 0 12px 3px rgba(192, 138, 74, 0.5);
+    pointer-events: none;
+  }
+  #foundry.live #hearth { display: block; }
+
+  /* The bill lives on the frame. Panes are the look, not a stock. */
+  #frame {
+    position: absolute; left: 10%; right: 10%; bottom: 8%; height: 22%;
+    background: #2a2622;
+    box-shadow: inset 0 0 0 2px #1a1814;
+    pointer-events: none;
+  }
+  #bill {
+    display: none; position: absolute; inset: 3px;
+    box-shadow: inset 0 0 0 1px rgba(210, 230, 220, 0.28);
+  }
+  #frame.posted #bill { display: block; }
+  .pane {
+    display: none; position: absolute; top: 18%; bottom: 18%; width: 28%;
+    background: var(--glass);
+    box-shadow: inset 0 0 0 2px var(--glass-edge);
+  }
+  #pane-a { left: 12%; }
+  #pane-b { right: 12%; }
+  #frame.filled .pane { display: block; }
+
+  #town-food {
+    display: none; position: absolute; left: 66%; bottom: 20%; width: 8%; height: 8%;
+    background: var(--food);
+    box-shadow: inset 0 -3px 0 var(--food-d);
+    pointer-events: none;
+  }
+  #town-food.in { display: block; }
+
+  #platform {
+    position: absolute; left: 0; right: 22%; bottom: 0; height: 14%;
+    background: var(--home);
+    pointer-events: none;
+  }
+  #train {
+    position: absolute; width: 14%; height: 8%;
+    background: var(--train);
+    box-shadow: inset 0 -4px 0 var(--train-d);
+    pointer-events: none; z-index: 3;
+  }
+  #train.inbound { right: 4%; bottom: 22%; }
+  #train.home { left: 8%; bottom: 12%; }
+  #train.gone { display: none; }
+
+  #told {
+    position: absolute; left: 4%; right: 4%; top: 4%;
+    z-index: 4; pointer-events: none;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  #say, #end {
+    background: rgba(19, 18, 16, 0.9);
+    box-shadow: inset 0 0 0 1px rgba(210, 230, 220, 0.24);
+    padding: 9px 11px; font-size: 13px; line-height: 1.45; color: var(--ink);
+  }
+  #end { box-shadow: inset 0 0 0 2px var(--warm-deep); }
+  #say[hidden], #end[hidden], #told[hidden] { display: none; }
+
+  #pads { display: flex; gap: 6px; min-height: 76px; flex-shrink: 0; align-items: stretch; }
+  button.pad {
+    border: 0; background: var(--pad); color: var(--ink); font-family: inherit;
+    font-size: 13px; font-weight: 700; letter-spacing: .03em;
+    min-height: 76px; min-width: 0; flex: 1; padding: 0 8px;
+  }
+  button.pad.primary { background: var(--pad-on); color: var(--pad-ink); }
+  button.pad.cast {
+    background: var(--warm); color: #1a1208;
+    box-shadow: inset 0 0 0 3px var(--warm-deep);
+  }
+  button.pad:disabled { opacity: .28; }
+  button.pad:active:not(:disabled) { filter: brightness(1.12); }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="hud">
+    <div id="marks-line">0 marks</div>
+  </div>
+  <div id="strip">
+    <div id="sky" aria-hidden="true"></div>
+    <div id="ground">
+      <span id="heat-step"></span>
+    </div>
+    <div id="rim" aria-hidden="true"></div>
+    <div id="horizon" aria-hidden="true">
+      <span class="hz" id="hz-a"></span>
+      <span class="hz" id="hz-b"></span>
+      <span class="hz" id="hz-c"></span>
+    </div>
+    <div id="terrace"><span class="food"></span></div>
+    <button type="button" id="foundry" aria-label="Foundry ruin">
+      <span id="scaffold"></span>
+      <span id="works"></span>
+      <span id="hearth"></span>
+      <span id="frame">
+        <span id="bill"></span>
+        <span class="pane" id="pane-a"></span>
+        <span class="pane" id="pane-b"></span>
+      </span>
+    </button>
+    <div id="town-food" aria-hidden="true"></div>
+    <div id="platform" aria-hidden="true"></div>
+    <div id="train" class="inbound" aria-hidden="true"></div>
+    <div id="told" hidden>
+      <div id="say" hidden></div>
+      <div id="end" hidden></div>
+    </div>
+  </div>
+  <div id="pads">
+    <button type="button" class="pad primary" id="site">SITE</button>
+    <button type="button" class="pad" id="land" disabled>LAND</button>
+    <button type="button" class="pad cast" id="cast" disabled>CAST</button>
+  </div>
+</div>
+<script src="./sim.js"></script>
+<script>
+(function () {
+  const board = DawnspurSite.createBoard({ fresh: true });
+  const marksLine = document.getElementById("marks-line");
+  const foundryEl = document.getElementById("foundry");
+  const frameEl = document.getElementById("frame");
+  const terraceEl = document.getElementById("terrace");
+  const groundEl = document.getElementById("ground");
+  const trainEl = document.getElementById("train");
+  const townFoodEl = document.getElementById("town-food");
+  const sayEl = document.getElementById("say");
+  const endEl = document.getElementById("end");
+  const toldEl = document.getElementById("told");
+  const siteBtn = document.getElementById("site");
+  const landBtn = document.getElementById("land");
+  const castBtn = document.getElementById("cast");
+
+  function tap(el, fn) {
+    el.addEventListener("pointerdown", function (ev) { ev.preventDefault(); fn(ev); });
+  }
+
+  function paint() {
+    marksLine.textContent = board.marks + (board.marks === 1 ? " mark" : " marks");
+    terraceEl.classList.toggle("has-food", board.foodOnTerrace);
+    foundryEl.classList.toggle("sited", board.sited);
+    foundryEl.classList.toggle("live", board.foundry);
+    foundryEl.classList.toggle("on", board.canSite());
+    foundryEl.disabled = !board.canSite();
+    foundryEl.setAttribute("aria-label", board.foundry
+      ? "Foundry, live"
+      : board.sited
+        ? "Foundry work, open"
+        : "Foundry ruin");
+    frameEl.classList.toggle("posted", board.billPosted);
+    frameEl.classList.toggle("filled", board.panes >= 2);
+    groundEl.classList.toggle("step", board.heatStep >= 1);
+    townFoodEl.classList.toggle("in", board.foodInTown);
+    trainEl.className = board.inbound ? "inbound" : board.landed ? "home" : "gone";
+    siteBtn.disabled = !board.canSite();
+    landBtn.disabled = !board.canLand();
+    castBtn.disabled = !board.canCast();
+    sayEl.hidden = board.runSentence === null || board.endSentence !== null;
+    sayEl.textContent = board.runSentence === null ? "" : board.runSentence;
+    endEl.hidden = board.endSentence === null;
+    endEl.textContent = board.endSentence === null ? "" : board.endSentence;
+    toldEl.hidden = sayEl.hidden && endEl.hidden;
+  }
+
+  tap(foundryEl, function () { if (board.commitSite("foundry")) paint(); });
+  tap(siteBtn, function () { if (board.commitSite()) paint(); });
+  tap(landBtn, function () { if (board.commitLand()) paint(); });
+  tap(castBtn, function () { if (board.commitCast()) paint(); });
+  paint();
+  document.addEventListener("touchstart", function (e) {
+    if (e.touches.length > 1) e.preventDefault();
+  }, { passive: false });
+})();
+</script>
+</body>
+</html>
