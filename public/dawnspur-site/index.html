@@ -9,9 +9,6 @@
     --bg: #16141a;
     --ink: #ece6dc;
     --dim: #9a9388;
-    --pad: #3a3d45;
-    --pad-on: #d8d8d8;
-    --pad-ink: #111;
     --sel: #f2f2f2;
     --warm: #8a5a32;
     --warm-deep: #5c3a1c;
@@ -39,6 +36,7 @@
     min-height: 100dvh; padding: env(safe-area-inset-top) 10px env(safe-area-inset-bottom); }
   #app { width: min(440px, 100%); flex: 1; display: flex; flex-direction: column; gap: 8px; padding: 4px 0 10px; min-height: 0; }
 
+  /* The HUD is museum: one marks line. Nothing else. */
   #hud { flex-shrink: 0; padding: 0 4px; }
   #marks-line {
     min-height: 22px; text-align: right; font-size: 18px; font-weight: 700;
@@ -108,15 +106,20 @@
   }
   #terrace.has-food .food { display: block; }
 
-  /* The one pad. The one ruin. SITE taps this. */
-  #foundry {
-    position: absolute; left: 36%; bottom: 18%; width: 28%; height: 36%;
-    border: 0; padding: 0; cursor: pointer;
-    background: var(--rust);
-    box-shadow: inset 0 0 0 3px var(--rust-edge);
+  /* Three places. Not a job row. Place buttons share a reset; each hitbox
+     is typed once and they do not nest. */
+  #foundry, #frame, #train {
+    border: 0; padding: 0; cursor: pointer; font: inherit; color: inherit;
     touch-action: manipulation;
   }
-  #foundry:disabled { cursor: default; }
+  #foundry:disabled, #frame:disabled, #train:disabled { cursor: default; }
+
+  /* SITE is this ruin. After SITE the ruin is inert — not CAST. */
+  #foundry {
+    position: absolute; left: 32%; bottom: 30%; width: 26%; height: 34%;
+    background: var(--rust);
+    box-shadow: inset 0 0 0 3px var(--rust-edge);
+  }
   #foundry.on { outline: 3px solid var(--sel); outline-offset: 3px; }
   #foundry.live {
     background: #5a4030;
@@ -124,7 +127,7 @@
   }
 
   #scaffold {
-    display: none; position: absolute; left: 8%; right: 8%; top: 8%; bottom: 38%;
+    display: none; position: absolute; left: 8%; right: 8%; top: 8%; bottom: 18%;
     box-shadow: inset 2px 0 0 #c4b49a, inset -2px 0 0 #c4b49a, inset 0 2px 0 #c4b49a;
     pointer-events: none;
   }
@@ -145,13 +148,14 @@
   }
   #foundry.live #hearth { display: block; }
 
-  /* The bill lives on the frame. Panes are the look, not a stock. */
+  /* CAST is the posted frame. Own hitbox, outside the ruin. */
   #frame {
-    position: absolute; left: 10%; right: 10%; bottom: 8%; height: 22%;
+    position: absolute; left: 34%; bottom: 8%; width: 22%; height: 18%;
     background: #2a2622;
     box-shadow: inset 0 0 0 2px #1a1814;
-    pointer-events: none;
   }
+  #frame.posted { box-shadow: inset 0 0 0 2px rgba(210, 230, 220, 0.4); }
+  #frame.live { outline: 3px solid var(--sel); outline-offset: 3px; }
   #bill {
     display: none; position: absolute; inset: 3px;
     box-shadow: inset 0 0 0 1px rgba(210, 230, 220, 0.28);
@@ -167,7 +171,7 @@
   #frame.filled .pane { display: block; }
 
   #town-food {
-    display: none; position: absolute; left: 66%; bottom: 20%; width: 8%; height: 8%;
+    display: none; position: absolute; left: 14%; bottom: 16%; width: 8%; height: 8%;
     background: var(--food);
     box-shadow: inset 0 -3px 0 var(--food-d);
     pointer-events: none;
@@ -179,42 +183,30 @@
     background: var(--home);
     pointer-events: none;
   }
+
+  /* LAND is the inbound consist. Dark until SITE. Tappable when live. */
   #train {
-    position: absolute; width: 14%; height: 8%;
+    position: absolute; z-index: 3;
     background: var(--train);
     box-shadow: inset 0 -4px 0 var(--train-d);
-    pointer-events: none; z-index: 3;
   }
-  #train.inbound { right: 4%; bottom: 22%; }
-  #train.home { left: 8%; bottom: 12%; }
+  #train.inbound {
+    left: 62%; bottom: 12%; width: 16%; height: 14%;
+  }
+  #train.home {
+    left: 6%; bottom: 8%; width: 16%; height: 12%;
+  }
   #train.gone { display: none; }
-
-  #told {
-    position: absolute; left: 4%; right: 4%; top: 4%;
-    z-index: 4; pointer-events: none;
-    display: flex; flex-direction: column; gap: 6px;
+  #train.inbound:disabled { opacity: .32; }
+  #train.live { outline: 3px solid var(--sel); outline-offset: 3px; }
+  .car {
+    position: absolute; top: 18%; bottom: 28%; width: 28%;
+    background: var(--train-d);
+    box-shadow: inset 0 0 0 1px #5a5c62;
+    pointer-events: none;
   }
-  #say, #end {
-    background: rgba(19, 18, 16, 0.9);
-    box-shadow: inset 0 0 0 1px rgba(210, 230, 220, 0.24);
-    padding: 9px 11px; font-size: 13px; line-height: 1.45; color: var(--ink);
-  }
-  #end { box-shadow: inset 0 0 0 2px var(--warm-deep); }
-  #say[hidden], #end[hidden], #told[hidden] { display: none; }
-
-  #pads { display: flex; gap: 6px; min-height: 76px; flex-shrink: 0; align-items: stretch; }
-  button.pad {
-    border: 0; background: var(--pad); color: var(--ink); font-family: inherit;
-    font-size: 13px; font-weight: 700; letter-spacing: .03em;
-    min-height: 76px; min-width: 0; flex: 1; padding: 0 8px;
-  }
-  button.pad.primary { background: var(--pad-on); color: var(--pad-ink); }
-  button.pad.cast {
-    background: var(--warm); color: #1a1208;
-    box-shadow: inset 0 0 0 3px var(--warm-deep);
-  }
-  button.pad:disabled { opacity: .28; }
-  button.pad:active:not(:disabled) { filter: brightness(1.12); }
+  #car-a { left: 10%; }
+  #car-b { right: 10%; }
 </style>
 </head>
 <body>
@@ -238,24 +230,18 @@
       <span id="scaffold"></span>
       <span id="works"></span>
       <span id="hearth"></span>
-      <span id="frame">
-        <span id="bill"></span>
-        <span class="pane" id="pane-a"></span>
-        <span class="pane" id="pane-b"></span>
-      </span>
+    </button>
+    <button type="button" id="frame" disabled aria-label="posted frame">
+      <span id="bill"></span>
+      <span class="pane" id="pane-a"></span>
+      <span class="pane" id="pane-b"></span>
     </button>
     <div id="town-food" aria-hidden="true"></div>
     <div id="platform" aria-hidden="true"></div>
-    <div id="train" class="inbound" aria-hidden="true"></div>
-    <div id="told" hidden>
-      <div id="say" hidden></div>
-      <div id="end" hidden></div>
-    </div>
-  </div>
-  <div id="pads">
-    <button type="button" class="pad primary" id="site">SITE</button>
-    <button type="button" class="pad" id="land" disabled>LAND</button>
-    <button type="button" class="pad cast" id="cast" disabled>CAST</button>
+    <button type="button" id="train" class="inbound" disabled aria-label="inbound consist">
+      <span class="car" id="car-a"></span>
+      <span class="car" id="car-b"></span>
+    </button>
   </div>
 </div>
 <script src="./sim.js"></script>
@@ -269,12 +255,6 @@
   const groundEl = document.getElementById("ground");
   const trainEl = document.getElementById("train");
   const townFoodEl = document.getElementById("town-food");
-  const sayEl = document.getElementById("say");
-  const endEl = document.getElementById("end");
-  const toldEl = document.getElementById("told");
-  const siteBtn = document.getElementById("site");
-  const landBtn = document.getElementById("land");
-  const castBtn = document.getElementById("cast");
 
   function tap(el, fn) {
     el.addEventListener("pointerdown", function (ev) { ev.preventDefault(); fn(ev); });
@@ -294,23 +274,24 @@
         : "Foundry ruin");
     frameEl.classList.toggle("posted", board.billPosted);
     frameEl.classList.toggle("filled", board.panes >= 2);
+    frameEl.classList.toggle("live", board.canCast());
+    frameEl.disabled = !board.canCast();
+    frameEl.setAttribute("aria-label", board.panes >= 2
+      ? "posted frame, filled"
+      : board.billPosted
+        ? "posted frame"
+        : "frame");
     groundEl.classList.toggle("step", board.heatStep >= 1);
     townFoodEl.classList.toggle("in", board.foodInTown);
-    trainEl.className = board.inbound ? "inbound" : board.landed ? "home" : "gone";
-    siteBtn.disabled = !board.canSite();
-    landBtn.disabled = !board.canLand();
-    castBtn.disabled = !board.canCast();
-    sayEl.hidden = board.runSentence === null || board.endSentence !== null;
-    sayEl.textContent = board.runSentence === null ? "" : board.runSentence;
-    endEl.hidden = board.endSentence === null;
-    endEl.textContent = board.endSentence === null ? "" : board.endSentence;
-    toldEl.hidden = sayEl.hidden && endEl.hidden;
+    trainEl.className = (board.inbound ? "inbound" : board.landed ? "home" : "gone")
+      + (board.canLand() ? " live" : "");
+    trainEl.disabled = !board.canLand();
+    trainEl.setAttribute("aria-label", board.landed ? "consist, home" : "inbound consist");
   }
 
   tap(foundryEl, function () { if (board.commitSite("foundry")) paint(); });
-  tap(siteBtn, function () { if (board.commitSite()) paint(); });
-  tap(landBtn, function () { if (board.commitLand()) paint(); });
-  tap(castBtn, function () { if (board.commitCast()) paint(); });
+  tap(trainEl, function () { if (board.commitLand()) paint(); });
+  tap(frameEl, function () { if (board.commitCast()) paint(); });
   paint();
   document.addEventListener("touchstart", function (e) {
     if (e.touches.length > 1) e.preventDefault();
