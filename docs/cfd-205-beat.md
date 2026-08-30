@@ -4,9 +4,9 @@ The town the loops leave from. Every sitting since the rebuild has been a
 loop leaving Dawnspur. This sitting is the spine those loops attach to:
 **Works**. Foundry is work one. Sibling path `/dawnspur-site/`. Card: CFD-205.
 
-**SIGNED — David, 2026-08-30, word "Signed."** Combined Works Foundry beat
-(Fable v2 + Superheavy patches). Draft PR. Do not merge until SuperheavyReview
-PASS. David sits first. **Ask: What happened.**
+**SIGNED — David, 2026-08-30, word "Signed."** Recut 1 — Three places
+(Superheavy). Draft PR. Do not merge until SuperheavyReview PASS. David sits
+first. **Ask: What happened.** GameDesigner is off this job.
 
 ---
 
@@ -14,10 +14,12 @@ PASS. David sits first. **Ask: What happened.**
 
 One NEW system: **Works**. Foundry is work one. No Halt send on this board.
 
-New sibling path: `/dawnspur-site/` (both `sit/dawnspur-site/` and
-`public/dawnspur-site/`, byte-identical). Branch from current `main`. Do not
-touch `/dawnspur-storm/` or any other board directory except the index row
-that lists boards (hash digits only if that file lists them).
+Sibling path: `/dawnspur-site/` (both `sit/dawnspur-site/` and
+`public/dawnspur-site/`, byte-identical). Recut of the live first ship
+(`450b3d94`, index `f3695633`, sim `e9999eed`). Do not reopen the city
+first-cut. Do not touch `/dawnspur-storm/` or any other board directory
+except the index row that lists boards (hash digits only if that file
+lists them).
 
 Draft. Do not merge. Do not deploy. Do not `workflow_dispatch`. David sits
 first.
@@ -37,105 +39,132 @@ Pins are the live boards, never `main`. Re-measured at authoring against
 
 ---
 
-## The signed beat
+## The signed recut — Three places
 
-**SITE:** marks open the work, scaffold, bill on the frame. Marks open SITE
-only.
+One NEW change: the SITE/LAND/CAST strip and the lecture boxes leave.
+Three commits stay as three places.
 
-**Pay:** inherited loop runs as sat on its own board; run ends in the
-diorama; cargo lands on the frame. Bill = hauls addressed to this site.
-Panes are the look, not a stock. No glass currency. HUD one marks line.
+- **SITE** is the Foundry ruin (then inert).
+- **LAND** is the inbound consist (arrival, not SEND; dark until SITE).
+- **CAST** is the posted frame, not the ruin a second time. Frame leaves
+  the ruin's hitbox.
 
-**OPEN and CAST are one commit:** bill full, terrace food in, Foundry live,
-one Heat step on already-reached ground. Not past the rim (R9 Heat ≠ Air).
-Rim refuses SITE and does not move. Heat-as-terrain is the look (new-play),
-not a write to `/dawnspur-heat/` or any live pin.
+Auto-land still killed (marks would equal the haul).
 
-**Binds:** one pad, one ruin this sitting. Other ruins if visible are horizon
-only (not tappable). Not Warehouse, Signal, Market/League, postcard hall, or
-a second greenhouse. Crane stays at Rustfall (scaffold is SITE's construction
-tell, never a verb). Jobs do not recut live pins.
+**Wanted after a sit:** the player can point at the ruin they opened, the
+train that came home, the bill they spent, the food that went in, the
+ground that took heat.
 
-**Ask:** What happened.
+**Fail:** named pads; a lecture; the same ruin twice; paid in marks; sent
+a train.
 
-**Wanted:** run came back with an address; panes on the frame; food into the
-town.
-
-**Fail:** paid in marks; sent a train; warmed the ground; ran Dawnspur; a
-lecture about glass.
+Works stays. Foundry is work one.
 
 ---
 
 ## Does
 
-The paying run is not a send verb on this board. A live loop as sat (its own
-sibling) is how hauls exist; this sitting receives the landing. Do not embed
-storm or dispatch route-picking. Do not `workflow_dispatch` a second loop.
-If the board must show a returning run, it is **arrival**, not SEND.
+**SITE:** marks open the work only. Scaffold up. Bill posts on the frame.
+SITE costs 3 (inherited float). HUD one marks line. After SITE the ruin
+is not a second job.
 
-**Look:** station-town diorama, not the beige PWA HUD. Heat-as-terrain is the
-ground's look on already-reached ground, new-play, not a heat-map recut.
+**LAND:** arrival of the already-inbound run (not SEND, not a sixth loop).
+Cargo lands on the frame. Bill = hauls addressed to this site. LAND dark
+until SITE.
+
+**OPEN+CAST = one commit:** bill full + terrace food in then Foundry live,
+food into the town, one Heat step on already-reached ground. Rim refuses
+SITE and does not move. CAST is the posted frame — tapping the Foundry a
+second time is the strip with one button.
+
+Heat-as-terrain is the look. No Halt send. No CARRY. Food already on
+terrace.
+
+The paying run is not a send verb on this board. A live loop as sat (its
+own sibling) is how hauls exist; this sitting receives the landing. If
+the board must show a returning run, it is **arrival**, not SEND.
+
+**Look:** station-town diorama, not the beige PWA HUD. The HUD is museum.
+Heat-as-terrain is the ground's look on already-reached ground, new-play,
+not a heat-map recut.
 
 **Start state is new-play:** enough marks to SITE, food already on the
 terrace, a paying run that can land hauls without this board owning SEND.
 
-### The three commits
+### The three places
 
-1. **SITE** — 3 marks, the inherited float. Opens the Foundry work on the one
-   warm pad. Scaffold goes up. The bill posts on the frame, empty. Marks do
-   this and only this. The rim refuses SITE. Horizon ruins are not pads.
-2. **LAND** — arrival. The inbound run (already out; the loop as sat) ends in
-   the diorama. Cargo lands on the frame because the work now has an address.
-   The bill fills. Panes appear as the look of that haul, not as a stock.
-   LAND is dark until SITE: a haul with no address does not fill the bill.
-3. **CAST** — OPEN and CAST are one commit. Lit only when the bill is full
-   **and** the terrace still holds its food. Fires: Foundry live, terrace food
-   into the town, one Heat step on already-reached ground. The rim does not
-   move. The sitting ends.
+1. **SITE — the Foundry ruin.** 3 marks, the inherited float. Opens the
+   Foundry work on the one warm pad. Scaffold goes up. The bill posts on
+   the frame, empty. Marks do this and only this. The rim refuses SITE.
+   Horizon ruins are not pads. After SITE the ruin is inert.
+2. **LAND — the inbound consist.** Arrival. The inbound run (already out;
+   the loop as sat) ends in the diorama. Cargo lands on the frame because
+   the work now has an address. The bill fills. Panes appear as the look
+   of that haul, not as a stock. LAND is dark until SITE: a haul with no
+   address does not fill the bill. The consist is tappable when live.
+3. **CAST — the posted frame.** OPEN and CAST are one commit. Lit only
+   when the bill is full **and** the terrace still holds its food. Fires:
+   Foundry live, terrace food into the town, one Heat step on
+   already-reached ground. The rim does not move. The sitting ends. The
+   frame's hitbox is not the ruin's.
 
-SITE cannot complete the bill. Leftover marks cannot complete the bill. There
-is no marks-to-bill path, no glass wallet, and no second HUD line.
+SITE cannot complete the bill. Leftover marks cannot complete the bill.
+There is no marks-to-bill path, no glass wallet, and no second HUD line.
 
 ### Why LAND is a verb
 
 The run is already inbound at the opening. Showing it as arrival is the
-honest form of "the loop as sat lands here." Automatic landing on SITE would
-make marks and the haul the same commit, and the hardest kill — bill payable
-in marks alone — would be untestable. SITE writes the address; LAND writes
-the haul; CAST spends the food and opens the Foundry.
+honest form of "the loop as sat lands here." Automatic landing on SITE
+would make marks and the haul the same commit, and the hardest kill —
+bill payable in marks alone — would be untestable. SITE writes the
+address; LAND writes the haul; CAST spends the food and opens the
+Foundry.
 
 ### Why the bill is one inbound haul
 
-This board does not own SEND. A bill that needed a second outbound run would
-force a sixth loop or a Halt send. One paying run, already out, fills the
-bill. Two panes are the look of that haul, not a count the player spends.
+This board does not own SEND. A bill that needed a second outbound run
+would force a sixth loop or a Halt send. One paying run, already out,
+fills the bill. Two panes are the look of that haul, not a count the
+player spends.
 
 ### Why SITE costs 3
 
-The inherited opening float is 3. SITE at 3 is the smallest opening at which
-the first frame contains a paid choice, and after it the wallet is empty, so
-the bill's remaining price cannot be mistaken for marks. The figure does not
-move; it is the float doing the job Amendment 1 sized it for: one paid
-opening, never two.
+The inherited opening float is 3. SITE at 3 is the smallest opening at
+which the first frame contains a paid choice, and after it the wallet is
+empty, so the bill's remaining price cannot be mistaken for marks. The
+figure does not move; it is the float doing the job Amendment 1 sized it
+for: one paid opening, never two.
+
+### Why the frame leaves the ruin
+
+CAST is the bill. Tapping the Foundry a second time is the strip with one
+button. The frame leaves the ruin's hitbox so SITE and CAST are not the
+same brick.
 
 ---
 
 ## Sees
 
-One HUD line: marks. The bill lives on the frame. Food lives on the terrace,
-then in the town. Panes are objects on the frame. The Foundry is the one
-tappable ruin. Horizon ruins are silhouettes. The rim is the cold edge and
-is not a pad. Heat-as-terrain is the reached ground's colour. The scaffold
-is SITE's tell. The inbound train is scenery until LAND.
+One HUD line: marks. Museum. The bill lives on the frame. Food lives on
+the terrace, then in the town. Panes are objects on the frame. The
+Foundry is the one tappable ruin, then inert. The inbound consist is
+LAND. The posted frame is CAST. Horizon ruins are silhouettes. The rim
+is the cold edge and is not a pad. Heat-as-terrain is the reached
+ground's colour. The scaffold is SITE's tell.
 
-No help overlay, no `?`, no tutorial, no plaque, no citizen, no interior, no
+No job row. No named pads. No lecture boxes (`#say` / `#end`). No help
+overlay, no `?`, no tutorial, no plaque, no citizen, no interior, no
 zoning, no cutscene.
 
 ---
 
 ## Ends
 
-Every commit ends in a sentence.
+The board does not lecture. After a sit the five tells stand: the ruin
+they opened, the train that came home, the bill they spent, the food that
+went in, the ground that took heat.
+
+The sim still records the sitting's sentences (not painted):
 
 **SITE:** *"The work is open. The scaffold is up. The bill is on the frame."*
 
@@ -154,6 +183,7 @@ Ask: What happened.
 | --- | --- | --- |
 | **Works — SITE, address, bill on the frame** | **ON** — the single new system | new; SIGNED |
 | **Foundry as work one** | **ON** | new |
+| **Three places (ruin / consist / frame)** | **ON** — the recut | SIGNED recut 1 |
 | **LAND as arrival, not SEND** | **ON** | new; the loop as sat |
 | **CAST = OPEN: bill full + terrace food → Foundry, food in, Heat step** | **ON** | new |
 | Marks, one HUD line | INHERITED | CFD-196 / every later board |
@@ -162,6 +192,7 @@ Ask: What happened.
 | Heat-as-terrain look on reached ground | **ON as look**, new-play | R9; not a write to the heat pin |
 | Keel-fire / hearth as scenery | INHERITED as scenery | CFD-176 |
 | Greenhouse as a standing terrace job | INHERITED as scenery; not a second greenhouse and not UP | CFD-183 |
+| Job row / named pads / lecture boxes | **REFUSED** | signed recut 1 |
 | Switchyard / desk / SEND / MUSTER / MEET | **REFUSED** | the loop owns them |
 | Halt send | **REFUSED** — sixth loop | signed |
 | CARRY / UP / TEND / weather / Ranger / trim | **REFUSED** | signed |
@@ -188,10 +219,15 @@ Every line testable, red-first.
 - Write to `/dawnspur-heat/` or any live pin.
 - Heat step past the rim. Rim refuses SITE and does not move.
 - Warehouse / Signal / Market / second greenhouse as this work.
-- SITE as caption only (no verb).
+- SITE as a named pad (SITE is the ruin).
 - Help overlay, `?`, tutorial, plaques, citizens, interiors, zoning, cutscenes.
 - PWA town, LoopBeat, units sink, parts as currency, food-marks exchange.
 - Overwrite any live board.
+- Job row / named pads.
+- Lecture boxes / tutorial / help overlay.
+- CAST-on-same-ruin (ruin hitbox must not also be CAST).
+- Dead inbound (consist must be tappable for LAND when live).
+- Auto LAND.
 
 ---
 
@@ -212,6 +248,7 @@ Every line testable, red-first.
 | --- | --- | --- |
 | Works as the one new system | ON | §7 KEPT — one new system; SIGNED David 2026-08-30 |
 | Foundry is work one | ON | buildings exist because they do jobs; Foundry is Heat (food into already-reached ground) |
+| Three places, not a strip | ON | signed recut 1 — Superheavy; David 2026-08-30 |
 | Marks open SITE only | ON | R1 — marks pay for buildout, they are not heat and they are not the bill |
 | Bill = addressed hauls | ON | R10 — a load can be buildout; the loop as sat is how the haul exists |
 | Panes are look, not stock | ON | R1 — no second currency; no glass wallet |
@@ -228,8 +265,8 @@ Every line testable, red-first.
 
 David sits first. **Ask: What happened.**
 
-Wanted: the run came back with an address; panes on the frame; food into
-the town.
+Wanted: they can point at the ruin they opened, the train that came home,
+the bill they spent, the food that went in, the ground that took heat.
 
-Fail: paid in marks; sent a train; warmed the ground; ran Dawnspur; a
-lecture about glass.
+Fail: named pads; a lecture; the same ruin twice; paid in marks; sent a
+train.
