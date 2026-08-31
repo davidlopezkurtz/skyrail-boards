@@ -69,8 +69,8 @@ them.
 
 ## The signed beat — Herbs in the larder — the run feeds the place
 
-Canon this sitting (cite, do not recall as a second bible): Tutorial
-Script Beat 7 (`Skyrail-Reclamation-Tutorial-Script-Dawnspur-Halt.md`):
+Canon this sitting (cite, do not recall as a second bible): Tutorial Script Beat 7
+(`Skyrail-Reclamation-Tutorial-Script-Dawnspur-Halt.md`):
 "And home she comes. Herbs in the larder, Mosswake glad to have a
 neighbor again." Player action: tap to collect. Favor through the act
 of helping, not a lecture. Kill list forbids a Favor **meter** and a
