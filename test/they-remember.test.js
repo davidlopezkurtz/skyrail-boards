@@ -1,9 +1,10 @@
 "use strict";
 
 // CFD-208 — They Remember — Favor through the act.
-// Spec: docs/cfd-208-beat.md (SIGNED — David, 2026-08-30, Superheavy named it).
-// One NEW system: Favor as the act. One live can-do: Collect. Sibling
-// /they-remember/. Not a recut of halt, mosswake, herbs-larder, site,
+// Spec: docs/cfd-208-beat.md. Cut 0 SIGNED — David, 2026-08-30.
+// Cut 1 SIGNED — David, 2026-08-31: the taking moves off the Halt.
+// One NEW system: Favor as the act. One live can-do: Collect — at Mosswake.
+// Sibling /they-remember/. Not a recut of halt, mosswake, herbs-larder, site,
 // storm, /dawnspur-line/, or /dawnspur-dispatch/. Every Kill line
 // expressible as a test is a test.
 
@@ -326,11 +327,11 @@ test("kill: opening is herbs already in the larder; only Collect is live; no SEN
   assert.equal(typeof b.commitHome, "undefined");
   assert.equal(typeof b.canPutUp, "undefined");
   assert.equal(typeof b.commitPutUp, "undefined");
-  assert.equal(b.liveCanDo().place, "halt");
+  assert.equal(b.liveCanDo().place, "mosswake");
   assert.equal(b.liveCanDo().verb, "collect");
   assert.equal(b.liveCanDo().canDo, "Collect.");
-  assert.deepEqual(canDos(b).map((n) => n.place), ["halt"]);
-  assert.equal(b.notice("mosswake").canDo, null);
+  assert.deepEqual(canDos(b).map((n) => n.place), ["mosswake"]);
+  assert.equal(b.notice("halt").canDo, null);
   assert.equal(b.notice("consist").canDo, null);
   assert.doesNotMatch(SIM_CODE, /\bSEND\b|canSend|commitSend/);
   assert.doesNotMatch(HTML_CODE, /\bSEND\b/);
@@ -349,9 +350,10 @@ test("kill: the opening's marks are not settable from the board the thumb reache
 test("Collect: the world answers; people remember who showed up", () => {
   const h = makeBoard();
   assert.equal(h.b.liveCanDo().canDo, "Collect.");
-  assert.equal(h.b.notice("mosswake").canDo, null);
+  assert.equal(h.b.liveCanDo().place, "mosswake");
+  assert.equal(h.b.notice("halt").canDo, null);
   assert.equal(h.b.notice("consist").canDo, null);
-  assert.match(h.b.notice("mosswake").blocked, /leave already sat/);
+  assert.match(h.b.notice("halt").blocked, /already up/);
   walk("C", h);
   assert.equal(h.b.collected, true);
   assert.equal(h.b.remembered, true);
@@ -362,15 +364,15 @@ test("Collect: the world answers; people remember who showed up", () => {
   assert.equal(h.b.stopped, true);
   assert.deepEqual(canDos(h.b), []);
   assert.equal(h.b.liveCanDo(), null);
-  assert.equal(h.b.notice("halt").writing, "People remember who showed up.");
-  assert.equal(h.b.notice("mosswake").writing, "The herbs were never just cargo.");
+  assert.equal(h.b.notice("mosswake").writing, "People remember who showed up.");
+  assert.equal(h.b.notice("halt").writing, "The Halt holds. Herbs in the larder.");
 });
 
-test("wanted after a sit: people remember who showed up; the herbs were never just cargo", () => {
+test("wanted after a sit: people remember who showed up — the tap was at Mosswake", () => {
   const h = walk("C");
   assert.equal(h.b.remembered, true, "people remember");
-  assert.equal(h.b.notice("halt").writing, "People remember who showed up.");
-  assert.equal(h.b.notice("mosswake").writing, "The herbs were never just cargo.");
+  assert.equal(h.b.notice("mosswake").writing, "People remember who showed up.");
+  assert.equal(h.b.notice("halt").writing, "The Halt holds. Herbs in the larder.");
   assert.equal(h.b.herbsInLarder, true, "the herbs were already in the Halt");
   assert.equal(h.b.promiseKept, true, "because the line ran");
   assert.equal(h.b.neighborAgain, true, "Mosswake had a neighbor again");
@@ -393,7 +395,7 @@ test("dead jobs stay buttons and still post blocked or in-process notices", () =
     assert.equal(h.b.postNotice(place), true);
     const n = h.b.postedNotice();
     assert.ok(n.writing);
-    if (place !== "halt") {
+    if (place !== "mosswake") {
       assert.equal(n.canDo, null);
       assert.ok(n.blocked || n.inProcess, place + " dead job posted no blocked/in-process");
     }
@@ -425,28 +427,32 @@ test("tapping a place posts its notice — two nodes and the consist, each with 
   assert.equal(b.postNotice("rim"), false);
 });
 
-test("Halt notice: holds; herbs already in; Collect, then the protected line", () => {
+test("Halt notice: holds; herbs already in; blocked, pointing out — never Collect", () => {
   const h = makeBoard();
   const n = h.b.notice("halt");
   assert.equal(n.writing, "The Halt holds. Herbs in the larder.");
-  assert.equal(n.canDo, "Collect.");
-  assert.equal(n.verb, "collect");
+  assert.equal(n.canDo, null);
+  assert.equal(n.verb, null);
   assert.equal(n.inProcess, "The place already took the haul.");
+  assert.equal(n.blocked, "The herbs are already up. Nothing here is yours to take.");
   walk("C", h);
-  assert.equal(h.b.notice("halt").writing, "People remember who showed up.");
+  assert.equal(h.b.notice("halt").writing, "The Halt holds. Herbs in the larder.");
   assert.equal(h.b.notice("halt").canDo, null);
+  assert.ok(h.b.notice("halt").blocked);
 });
 
-test("Mosswake notice walks neighbor, then the herbs were never just cargo", () => {
+test("Mosswake notice: Collect, then the protected line", () => {
   const h = makeBoard();
   const open = h.b.notice("mosswake");
   assert.equal(open.writing, "Mosswake. A neighbor again.");
-  assert.equal(open.canDo, null);
-  assert.match(open.blocked, /leave already sat/);
+  assert.equal(open.canDo, "Collect.");
+  assert.equal(open.verb, "collect");
+  assert.equal(open.blocked, null);
+  assert.notEqual(open.writing, "People remember who showed up.");
   walk("C", h);
   const after = h.b.notice("mosswake");
-  assert.equal(after.writing, "The herbs were never just cargo.");
-  assert.equal(after.inProcess, "A neighbor again.");
+  assert.equal(after.writing, "People remember who showed up.");
+  assert.equal(after.inProcess, "The world answered.");
   assert.equal(after.canDo, null);
 });
 
@@ -467,11 +473,11 @@ test("consist notice: empty, haul already up — no Put them up", () => {
 test("commitPosted fires the posted notice's can-do and no other verb", () => {
   const h = makeBoard();
   assert.equal(h.b.commitPosted(), false);
-  h.b.postNotice("mosswake");
-  assert.equal(h.b.commitPosted(), false);
+  h.b.postNotice("halt");
+  assert.equal(h.b.commitPosted(), false, "the Halt carries no verb — tapping it does not Collect");
   h.b.postNotice("consist");
   assert.equal(h.b.commitPosted(), false);
-  h.b.postNotice("halt");
+  h.b.postNotice("mosswake");
   assert.ok(h.b.commitPosted());
   assert.equal(h.b.collected, true);
   assert.equal(h.b.remembered, true);
@@ -499,7 +505,7 @@ test("Collect does not spend food or fuel; marks landing is museum, not the sit"
   const h = makeBoard();
   assert.equal(h.b.marks, OPENING_MARKS);
   assert.ok(h.b.commitCollect());
-  assert.equal(h.b.notice("halt").writing, "People remember who showed up.",
+  assert.equal(h.b.notice("mosswake").writing, "People remember who showed up.",
     "the sit is the writing");
   assert.ok(h.b.marks >= OPENING_MARKS, "marks may land on the museum HUD");
   assert.equal(h.b.foodInTown, true);
@@ -584,13 +590,14 @@ test("kill: no Favor meter, no Favor bar, no Favor number, no new currency; Mark
   assert.doesNotMatch(SIM_CODE, /s\.favor|s\.currency|glass\s*[:=]|s\.glass/);
   assert.doesNotMatch(HTML_CODE, /favor|Favour|FAVOR/i);
   assert.doesNotMatch(SIT_HTML, /<progress|<meter/i);
+  assert.doesNotMatch(SIT_HTML, /title="[^"]*[Ff]avor/);
   assert.doesNotMatch(BOARD, /that's Favor|That's Favor|that is Favor/i);
   const h = makeBoard();
   assert.equal(h.b.marks, 0);
   assert.equal(typeof h.b.favor, "undefined");
   walk("C", h);
   assert.equal(typeof h.b.favor, "undefined");
-  assert.equal(h.b.notice("halt").writing, "People remember who showed up.",
+  assert.equal(h.b.notice("mosswake").writing, "People remember who showed up.",
     "the sit is the writing, not a Favor number and not the marks");
 });
 
@@ -806,9 +813,118 @@ test("hub lists the sibling and does not rewrite other boards' hub copy", () => 
 
 test("protect the load-bearing line — People remember who showed up", () => {
   const h = walk("C");
-  assert.equal(h.b.notice("halt").writing, "People remember who showed up.");
+  assert.equal(h.b.notice("mosswake").writing, "People remember who showed up.");
   assert.match(SIT_SIM, /People remember who showed up\./);
   assert.doesNotMatch(h.b.notice("halt").writing, /that's Favor|That's Favor/i);
   assert.doesNotMatch(h.b.notice("mosswake").writing, /that's Favor|That's Favor/i);
   assert.doesNotMatch(h.b.notice("consist").writing, /that's Favor|That's Favor/i);
+});
+
+// -------------------------------------------------------- cut 1 — the taking at Mosswake
+
+test("the signed cut 1 beat is the brief", () => {
+  const beat = fs.readFileSync(path.join(ROOT, "docs/cfd-208-beat.md"), "utf8");
+  assert.match(beat, /The recut — cut 1 — Go to the people who remember/);
+  assert.match(beat, /SIGNED — David, 2026-08-31/);
+  assert.match(beat, /The taking moves off the Halt/);
+  assert.match(beat, /The one live can-do is at Mosswake/);
+  assert.match(beat, /You do not collect from your own larder/);
+  assert.match(beat, /People remember who showed up/);
+  assert.match(beat, /The Halt carries a live can-do/);
+  assert.match(beat, /More than one live can-do at any moment/);
+  assert.match(beat, /Beat 7's/);
+  assert.match(beat, /\*Feedback\*/);
+  assert.match(beat, /board refuses that/);
+  assert.match(beat, /SIGNED — David, 2026-08-30, Superheavy named it/);
+});
+
+test("kill: the one live can-do is at Mosswake — never the Halt, never two", () => {
+  const b = makeBoard().b;
+  const live = b.liveCanDo();
+  assert.ok(live, "there is one live can-do");
+  assert.equal(live.place, "mosswake");
+  assert.equal(live.verb, "collect");
+  assert.equal(live.canDo, "Collect.");
+  assert.equal(b.notice("halt").canDo, null);
+  assert.equal(b.notice("halt").verb, null);
+  assert.equal(b.notice("consist").canDo, null);
+  const lives = canDos(b);
+  assert.equal(lives.length, 1, "more than one live can-do at a moment");
+  assert.equal(lives[0].place, "mosswake");
+  const after = walk("C");
+  assert.equal(after.b.liveCanDo(), null);
+  assert.deepEqual(canDos(after.b), []);
+});
+
+test("kill: Halt is blocked with a world reason that points outward", () => {
+  const h = makeBoard();
+  const n = h.b.notice("halt");
+  assert.equal(n.canDo, null);
+  assert.ok(n.blocked, "Halt carries no world reason for being blocked");
+  assert.match(n.blocked, /already up|larder is full|nothing here is yours/i);
+  assert.doesNotMatch(n.blocked, /grey|scenery|disabled/i);
+  assert.equal(n.writing, "The Halt holds. Herbs in the larder.");
+  assert.equal(n.inProcess, "The place already took the haul.");
+  h.b.postNotice("halt");
+  assert.equal(h.b.commitPosted(), false);
+  assert.equal(h.b.collected, false);
+  walk("C", h);
+  const after = h.b.notice("halt");
+  assert.equal(after.canDo, null);
+  assert.ok(after.blocked || after.inProcess, "Halt after the tap still posts a world reason");
+  assert.notEqual(after.writing, "People remember who showed up.");
+});
+
+test("kill: Halt stays a place — not a grey square, not a scenery-div", () => {
+  assert.match(SIT_HTML, /<button type="button" id="halt"/);
+  assert.doesNotMatch(SIT_HTML, /<div[^>]*id="halt"/);
+  assert.match(rule("#halt"), /background:\s*transparent/);
+  assert.match(SIT_HTML, /id="halt"[^>]*>[\s\S]*class="globe"/);
+  assert.match(SIT_HTML, /id="halt"[^>]*>[\s\S]*class="larder"/);
+  assert.match(SIT_HTML, /id="halt"[^>]*>[\s\S]*class="hall"/);
+  assert.match(SIT_HTML, /board\.postNotice\("halt"\)/);
+  const n = makeBoard().b.notice("halt");
+  assert.ok(n.writing);
+  assert.ok(n.blocked);
+});
+
+test("kill: the protected line is verbatim and arrives only after the tap at Mosswake", () => {
+  const h = makeBoard();
+  const LINE = "People remember who showed up.";
+  assert.notEqual(h.b.notice("halt").writing, LINE);
+  assert.notEqual(h.b.notice("mosswake").writing, LINE);
+  assert.notEqual(h.b.notice("consist").writing, LINE);
+  h.b.postNotice("mosswake");
+  assert.notEqual(h.b.postedNotice().writing, LINE, "the line arrives before the tap");
+  assert.equal(h.b.postedNotice().canDo, "Collect.");
+  assert.ok(h.b.commitPosted());
+  assert.equal(h.b.postedNotice().writing, LINE);
+  assert.equal(h.b.notice("mosswake").writing, LINE);
+  const count = (SIT_SIM.match(/People remember who showed up\./g) || []).length;
+  assert.ok(count >= 1);
+  assert.equal(h.b.notice("mosswake").writing, LINE);
+  assert.doesNotMatch(h.b.notice("mosswake").writing, /that's Favor|That's Favor|that is Favor/i);
+});
+
+test("kill: no Favor meter, bar, number, percentage, or tooltip — Beat 7 Feedback is refused", () => {
+  assert.match(SIT_SIM, /Beat 7 Feedback asks/);
+  assert.match(SIT_SIM, /This board\n\/\/ refuses that/);
+  assert.doesNotMatch(HTML_CODE, /favor|Favour|FAVOR/i);
+  assert.doesNotMatch(SIT_HTML, /<progress|<meter/i);
+  assert.doesNotMatch(SIT_HTML, /title="[^"]*favor/i);
+  assert.doesNotMatch(BOARD, /tooltip/i);
+  assert.doesNotMatch(BOARD, /that's Favor|That's Favor|that is Favor/i);
+  assert.equal(typeof makeBoard().b.favor, "undefined");
+});
+
+test("kill: tapping the Halt never Collects — the act is not a Halt rename", () => {
+  const h = makeBoard();
+  h.b.postNotice("halt");
+  assert.equal(h.b.postedNotice().canDo, null);
+  assert.equal(h.b.postedNotice().verb, null);
+  assert.equal(h.b.commitPosted(), false);
+  assert.equal(h.b.collected, false);
+  assert.equal(h.b.remembered, false);
+  assert.equal(h.b.notice("halt").canDo, null);
+  assert.equal(h.b.liveCanDo().place, "mosswake");
 });
