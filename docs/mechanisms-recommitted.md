@@ -608,6 +608,36 @@ place.**
   restores the reserve and route odds move with sky and roster. **An intent answer
   is a player theory, not a measurement.** Acting on it would have sent the team to
   fix nothing.
+
+  **And the failure is structural, not a bad sitting.** David, 2026-08-31:
+  *"Players narrate causes, and the narration is confabulated in exactly the cases
+  where you most want the truth."* That is the whole objection. A player who
+  understood the board would not need asking; a player who did not will supply a
+  cause anyway, because supplying causes is what people do with their own
+  behaviour. **So the question returns its worst answer precisely when the board is
+  most broken** — which is the only time anyone would think to ask it. It is not
+  that the answer is unreliable. It is that it is unreliable in a direction that
+  reads as insight.
+
+  **The shape that DOES work is already in the corpus, and it is the near-miss
+  worth studying.** `docs/cfd-203-beat.md:1352` asks:
+
+  > *"Ask the sitting to report **whether anyone tended at all, and why.** If
+  > nobody touches it, that's the answer. If they tend and **can't say what it
+  > bought them**, TEND has become a habit carried from a board that no longer
+  > exists."*
+
+  That looks like an intent question and is not one. It asks **what they did** — a
+  fact the board can check — and then whether they can **name what it bought**,
+  which tests whether the mechanism is legible without asking them to explain it.
+  Crucially, **it pre-registers what each answer means**, including the null: *"if
+  nobody touches it, that's the answer."* An intent question has no such structure;
+  whatever comes back sounds like a finding.
+
+  **The rule, then: ask what they did, and whether they can name what it bought.
+  Never ask what they were trying to do.** The first two are observations with a
+  stated reading. The third invites a theory and this project has already acted on
+  one.
 - **Not a claim that writing recuts are wrong.** Three storm recuts were pure copy
   **because David asked for copy, verbatim, three sits running**. A copy recut
   answering a copy complaint is the rule working. The failure is a copy recut
