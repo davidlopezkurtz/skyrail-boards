@@ -1,0 +1,292 @@
+# CFD-208 — They remember — Favor through the act
+
+Sibling `/they-remember/`. Not a recut of halt, mosswake, herbs-larder, site,
+storm, `/dawnspur-line/`, or `/dawnspur-dispatch/`. Card: CFD-208.
+
+**SIGNED — David, 2026-08-30, Superheavy named it.** One scene. One NEW
+system: **Favor as the act.** People remember who showed up. One live
+can-do: Collect. Herbs already in the larder (Put them up already sat on
+`/herbs-larder/`). Halt holds. Mosswake a neighbor again. Consist home,
+empty. Tap: the world answers the help. Writing: people remember who
+showed up. No SEND. No Put them up. No Favor number. No Favor bar. No
+tooltip lecture. Marks may land on the museum HUD (opening 0); they are
+not the sit. Writing is the board. Mara shows, not lectures. Tutorial is
+the same system. GameDesigner is off this job. Draft PR. Do not merge
+until SuperheavyReview PASS. David sits first.
+**Ask: What happened.**
+
+---
+
+## Seat
+
+New sibling: `/they-remember/` (both `sit/they-remember/` and
+`public/they-remember/`, byte-identical). Same pattern as `/herbs-larder/`,
+`/mosswake-loop/`, and `/dawnspur-halt/`: `index.html` + `sim.js` +
+`MANIFEST.txt`. Hub `public/index.html` lists the new board. The only
+extra touch outside this board, this beat, and this board's tests is the
+hub index row. Do not replace the host index with this board.
+
+Do not recut `/herbs-larder/` (PASSED sit; live merge `6e606e5`, index
+`676587bc`, sim `76c886b9`). Do not add Put them up as a live verb on
+this board. You may READ the larder as the inherited already-up haul;
+you may not write herbs-larder files.
+
+Do not recut `/dawnspur-halt/` (PASSED sit; live merge `66b5507`, index
+`b5a56a14`, sim `6eb957e7`). Do not add SEND to `/dawnspur-halt/`. You
+may READ halt as the inherited lit home node on this board; you may not
+write halt files.
+
+Do not recut `/mosswake-loop/` (PASSED sit; live merge `510a392`, index
+`6c30179c`, sim `f5407bca`). Do not add a second Mosswake SEND onto
+Halt or onto this board. You may READ mosswake as the inherited quiet
+neighbor; you may not write mosswake files.
+
+Do not recut `/dawnspur-site/` (failed sit; live `c59dc101`, index
+`070a4619`, sim `e9f81b74`). Do not recut storm. Do not recut
+`/dawnspur-line/` or `/dawnspur-dispatch/`. Those stay as they are. This
+sitting is not their recut. The new sitting is Favor as the act, on a
+sibling path.
+
+Do not merge. Do not deploy. Do not `workflow_dispatch`. David sits first.
+Superheavy reviews the PR. Superheavy does not implement. Superheavy
+does not merge.
+
+Pins are the live boards, never `main`. Re-measured at authoring against
+`6e606e5` (herbs-larder live merge, PASSED), `510a392` (Mosswake live
+merge, PASSED), and `66b5507` (halt live merge, PASSED). Do not recut
+any pin.
+
+| board | sim | index |
+| --- | --- | --- |
+| `/herbs-larder/` | `76c886b9` | `676587bc` |
+| `/mosswake-loop/` | `f5407bca` | `6c30179c` |
+| `/dawnspur-halt/` | `6eb957e7` | `b5a56a14` |
+| `/dawnspur-site/` | `e9f81b74` | `070a4619` |
+| `/dawnspur-storm/` | `f4f17008` | `7711f979` |
+| `/dawnspur-line/` | `18b1324f` | `b6f21db0` |
+| `/dawnspur-dispatch/` | `576ce2b6` | `31aead60` |
+| `/dawnspur-scale/` | `953368a1` | `5d2f452f` |
+| `/dawnspur-heat/` | `292d6645` | — |
+| `/dawnspur/` | `395c18f2` | — |
+| `/convoy-stop/` | `5ad814e6` | — |
+
+Halt live merge is `66b5507`. Mosswake live merge is `510a392`.
+Herbs-larder live merge is `6e606e5`. Site live merge is `c59dc101`.
+Storm live merge is `555ba9a9`. Do not recut them.
+
+---
+
+## The signed beat — They remember — Favor through the act
+
+Canon this sitting (cite, do not recall as a second bible). Bible sha
+`9a305653`. File + section where reached; do not invent.
+
+Tutorial Script Beat 7 unpaid half
+(`Skyrail-Reclamation-Tutorial-Script-Dawnspur-Halt.md`): Goal: Close
+the loop. Pay the player. Introduce Favor through the act of having
+helped. First Mara line sat on C10 ("Herbs in the larder, Mosswake glad
+to have a neighbor again."). Second line unpaid: "That last part
+matters more than the coin. People remember who showed up. That's
+**Favor**, and it opens doors that Marks never will." Player action:
+tap to collect the contract reward. Designer notes: "People remember
+who showed up" is a load-bearing theme line; protect it. Kill list
+forbids a Favor **meter**; this sitting is the act, not the number.
+Marks landing is museum, not the sit.
+
+Tutorial Beat 8 frontier / Cloud Basin / Sera: not this sitting.
+
+Core Loop, What the loop pays out (`Skyrail-Reclamation-The-Core-Loop.md`):
+"it earns Favor by helping neighbors and keeping promises."
+
+Bible §5.8 Contracts. Supply. This is collecting the already-kept
+Supply, not a new dispatch. The §5.8 file body was not reachable this
+sitting beyond the signed brief; do not invent a Supply basket number.
+
+Bible §1.19 Heat/Air dyad. Heat not Air. Bible §8 maps Tutorial Script
+to Dawnline + Mara. World Bible v0.1 is LEGACY except §8 (sections 2,
+4, 6). Do not cite World Bible §12 as live canon.
+
+One NEW system: **Favor as the act.** People remember who showed up.
+One live can-do: Collect. Herbs already in the larder (inherited, not
+replayed). Halt holds. Mosswake a neighbor again. Consist home, empty.
+Tap: the world answers the help. Writing: people remember who showed
+up. No SEND. No Put them up. No Favor number. No Favor bar. No tooltip
+lecture. Marks may land on the museum HUD (opening 0); they are not
+the sit. Writing is the board. Mara shows, not lectures. Tutorial is
+the same system. No Mara VO. No `?`. No tutorial mode.
+
+Inherited: Halt live `66b5507` / `b5a56a14` / `6eb957e7`. Mosswake live
+`510a392` / `6c30179c` / `f5407bca`. Herbs-larder live `6e606e5` /
+`676587bc` / `76c886b9`. Works stays. Foundry is work one. Heat not
+Air. Held island is not a fuel bill. Put them up already sat on the
+larder. The leave already sat on Mosswake as SEND.
+
+Refused: Halt SEND on `/dawnspur-halt/`. A second Mosswake SEND. Recut
+`/herbs-larder/`. Favor meter. Favor bar. Favor number. Marks as the
+sit. Food CARRY. Fuel as standing bill. New currency. Cloud Basin.
+Storm. CFD-200. Site recut. Beat 8 frontier. Sera Cairn. Crews. League.
+A second contract. A new terrace.
+
+Look: Halt holds (read, not recut). Herbs already up. Mosswake quiet,
+a neighbor again. Consist empty. One live pad. Station-town diorama,
+not beige HUD.
+
+**Wanted after one sit:** people remember who showed up. The herbs
+were never just cargo.
+
+**Fail:** recut halt, mosswake, or herbs-larder; lecture "that's
+Favor"; Mara VO; `?`; tutorial mode; Favor meter; Marks as the sit;
+Food CARRY; Halt SEND; second Mosswake SEND; SEND on this board; Cloud
+Basin bolted on; grey squares; scenery-divs; beige HUD.
+
+---
+
+## Does
+
+**Collect:** the only opening can-do. The world answers the help.
+Writing: people remember who showed up. Protect that line. Collecting
+the already-kept Supply, not a new dispatch. Costs nothing this
+sitting — no food CARRY, no fuel bill, no new currency, no Favor
+number. Marks may land on the museum HUD; they are not the sit. The
+promise is already kept. The herbs are already in the larder. The
+consist is already home and empty. This sitting does not SEND. This
+sitting does not Put them up.
+
+**Halt (read):** already lit, already holds. Lamp awake, Foundry live,
+heat already on the reached ground, food already in the town, herbs
+already in the larder. The glass held the food. A held island is not a
+fuel bill. This node posts. It does not light, SITE, LAND, CAST, or
+SEND. Collect lives here — the kept Supply is at the Halt. After
+Collect the writing is the protected line. Do not recut halt files.
+
+**Mosswake (read):** quiet. A neighbor again (the run already came
+home). After Collect: the herbs were never just cargo. Do not recut
+mosswake files. Do not bolt a second SEND onto this board.
+
+The HUD is museum: one marks line. Opening marks 0. Marks may land.
+Marks are not the sit. Marks do not buy Collect.
+
+**Look:** station-town diorama, not the beige PWA HUD. Two nodes and a
+span. The span is the line, scenery, not a pad. The run already
+happened. The haul is already up. Bright molten, never grime. Nodes
+read as places (Halt lamp / glass / Foundry / larder; Mosswake
+glasshouse, quiet, a neighbor again), not grey squares.
+
+**Start state is new-play on a sibling:** Halt already home and
+holding. Herbs already in the larder. Mosswake quiet, a neighbor
+again. Consist home, empty. Only Collect is live. No SEND. No Put them
+up. No lamp / SITE / LAND / CAST walk copied onto this board.
+
+---
+
+## Sees
+
+One HUD line: marks. Museum. Two nodes and a span. The Halt node is a
+place. The Mosswake node is a place. The consist is home and empty.
+Tapping a node or the consist posts the station board. Notices name
+the place. The span is scenery. The gap is the cold between islands
+and is not a pad. Heat-as-terrain is the Halt ground's colour —
+already stepped.
+
+No job row. No named pads. No lecture boxes (`#say` / `#end`). No help
+overlay, no `?`, no tutorial mode, no plaque, no citizen, no interior, no
+zoning, no cutscene. No second HUD. No Mara VO. No Favor meter. No
+Favor bar. No Favor number. No route cards. No muster. No SEND. No Put
+them up.
+
+---
+
+## Ends
+
+The board does not lecture. After a sit, people remember who showed
+up. The herbs were never just cargo.
+
+Ask: What happened.
+
+---
+
+## On this sitting
+
+| System | This sitting | From |
+| --- | --- | --- |
+| **Favor as the act — Collect** | **ON** — the single new system | new; SIGNED They remember |
+| **Halt lit and holds** | **ON as look** — read, not recut | inherited Halt PASSED |
+| **Herbs already in the larder** | **inherited, not replayed** | inherited herbs-larder PASSED |
+| **Mosswake quiet, a neighbor again** | **ON as look** — read, not recut | inherited Mosswake PASSED |
+| **The promise already kept** | **inherited, not replayed** | inherited Mosswake SEND + home + larder |
+| **Works — Foundry is work one** | **ON as look** — already live | inherited |
+| **Heat not Air** | **ON as look** — Halt ground already stepped | inherited; not a write to the heat pin |
+| **Held island is not a fuel bill** | **ON** | inherited |
+| **Put them up** | **already sat** on `/herbs-larder/` — this sitting does not Put them up | inherited herbs-larder |
+| **LAND as arrival** | **already sat** on Halt | inherited Halt |
+| **SEND as the leave** | **already sat** on Mosswake — this sitting does not SEND | inherited Mosswake |
+| Marks, one HUD line | INHERITED as museum; opening 0; may land; not the sit | CFD-196 / every later board |
+| Halt SEND on `/dawnspur-halt/` | **REFUSED** | signed |
+| A second Mosswake SEND | **REFUSED** | signed |
+| SEND on this board | **REFUSED** | signed |
+| Put them up as a live verb | **REFUSED** | signed |
+| Food CARRY | **REFUSED** | signed |
+| Fuel as standing bill | **REFUSED** | signed |
+| Favor meter / Favor bar / Favor number / new currency | **REFUSED** | signed |
+| Marks as the sit | **REFUSED** | signed |
+| Auto SEND | **REFUSED** | signed |
+| Lecture "that's Favor" | **REFUSED** | signed; Mara shows |
+| Mara VO / `?` / tutorial mode | **REFUSED** | signed |
+| Grey squares / scenery-divs / hopping glow | **REFUSED** | site/halt fails |
+| Units sink / beige PWA HUD / help overlay | **REFUSED** | signed |
+| Recut of halt / mosswake / herbs-larder / site / storm / line / dispatch | **REFUSED** | pins |
+| Lamp / SITE / LAND / CAST walk copied onto this board | **REFUSED** | signed |
+| Beat 8 frontier / Sera Cairn / Crews / League / Cloud Basin | **REFUSED** | signed |
+| A second contract / a new terrace | **REFUSED** | signed |
+| CFD-200 / Unity Taste / LoopBeat | **REFUSED** | signed |
+| Reading or writing another board's persisted state | **REFUSED** | lineage lock |
+
+---
+
+## Kill
+
+Every line testable, red-first.
+
+- Recut halt / mosswake / herbs-larder / site / storm / `/dawnspur-line/` / `/dawnspur-dispatch/`.
+- Halt SEND on `/dawnspur-halt/`.
+- A second Mosswake SEND bolted onto Halt or onto this board.
+- Auto SEND.
+- SEND on this board at all.
+- Put them up as a live verb on this board.
+- Lecture / Mara VO / `?` / tutorial mode / louder slogans.
+- Lecture "that's Favor".
+- Favor meter / Favor bar / Favor number / new currency.
+- Marks as the sit.
+- Grey squares / scenery-divs / hopping glow.
+- Food CARRY; fuel as standing bill; Foundry doing Air+Heat.
+- Units sink; beige PWA HUD; help overlay.
+- Peer clickables with no notice.
+- Lamp / SITE / LAND / CAST walk copied onto this board.
+- Beat 8 frontier; Sera Cairn; Crews; League; Cloud Basin.
+- A second contract; a new terrace.
+- CFD-200; Unity Taste / LoopBeat.
+- Overwrite any live pin.
+- Merge, deploy, or workflow_dispatch.
+
+---
+
+## The numbers, new-play, flagged
+
+- **Collect costs nothing.** No food stake, no fuel, no Favor number.
+- **Opening marks 0.** Marks may land on the museum HUD. They are not the sit.
+- **One Collect. No SEND. No Put them up. No second can-do.**
+- **Rim / gap is a constant.** Collect does not write it.
+- **No cited §5.8 Supply basket.** The file body was not reachable. Do not invent one. Museum marks are museum.
+
+---
+
+## Sit
+
+David sits first. **Ask: What happened.**
+
+Wanted: people remember who showed up. The herbs were never just cargo.
+
+Fail: recut of a pin; lecture "that's Favor"; Mara VO; `?`; tutorial
+mode; Favor meter; Marks as the sit; Food CARRY; Halt SEND; second
+Mosswake SEND; SEND on this board; Put them up as a live verb; grey
+squares; scenery-divs; auto SEND.
