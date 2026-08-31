@@ -293,7 +293,28 @@ squares; scenery-divs; auto SEND.
 
 ---
 
-## The recut — cut 1 — Go to the people who remember. **SIGNED — David, 2026-08-31.**
+## The recut — cut 1 — Go to the people who remember. **PASSED — David, 2026-08-31.**
+
+**The sit, verbatim:** *"herbs were collected from mosswake and people remember
+who showed up."*
+
+**Pass.** He named Mosswake, and he named what it bought — canon §7.4's question
+form answered in one sentence, unprompted. He was not asked the refused question
+and did not need to be.
+
+**Cut 0's sit was "I collected herbs."** Cut 1's is the same verb with a source
+and a consequence attached. The button still reads `Collect.` — nothing about the
+wording changed. What moved was the act, off the Halt and onto the neighbour, and
+the sentence followed it. That is what makes this an act recut rather than the
+writing recut §7.4 forbids.
+
+**`/they-remember/` is a PASSED board and does not get overwritten.** Bytes pinned
+at index `acbf4304` / sim `a3345903`, self-pinned in `test/they-remember.test.js`
+at the moment it passed and mutation-verified (554/1, naming the path). Live
+fetch-verified: sim hashes `a3345903` uninjected, index 14,583 bytes hashing
+`acbf4304`.
+
+**SIGNED — David, 2026-08-31.**
 
 His word: *"signed"*.
 

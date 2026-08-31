@@ -92,8 +92,18 @@ function canDos(b) {
 
 // ---------------------------------------------------------------- guards
 
-test("guard: live pins including PASSED herbs-larder, mosswake, and halt are unchanged at HEAD", () => {
+// /they-remember/ PASSED its sit 2026-08-31 — David: "herbs were collected from
+// mosswake and people remember who showed up." It joins its own pin list at that
+// moment and not before: while a board is being cut, pinning its own bytes is
+// circular, and the sit-equals-public test below cannot see a COORDINATED
+// overwrite of both copies. That gap is why the join board was pinned the day it
+// passed, and it is why this one is pinned now.
+test("guard: live pins including PASSED they-remember, herbs-larder, mosswake, and halt are unchanged at HEAD", () => {
   const pins = {
+    "sit/they-remember/sim.js": "a3345903c01ea506295c3e1a3c442bf1973b0d551167a2394555579c756d542e",
+    "public/they-remember/sim.js": "a3345903c01ea506295c3e1a3c442bf1973b0d551167a2394555579c756d542e",
+    "sit/they-remember/index.html": "acbf4304c3cabd22a8d7ff95cd72a5b09aa939416c66805e7f31651f07c78cbd",
+    "public/they-remember/index.html": "acbf4304c3cabd22a8d7ff95cd72a5b09aa939416c66805e7f31651f07c78cbd",
     "sit/herbs-larder/sim.js": PIN.larderSim,
     "public/herbs-larder/sim.js": PIN.larderSim,
     "sit/herbs-larder/index.html": PIN.larderIndex,
