@@ -1,0 +1,41 @@
+Herbs in the Larder CFD-207 — the larder (the run feeds the place) 2026-08-30
+Spec: docs/cfd-207-beat.md - SIGNED, David 2026-08-30, Superheavy named it.
+Sibling /herbs-larder/. Not a recut of halt, mosswake, site, storm,
+/dawnspur-line/, or /dawnspur-dispatch/. One NEW system: the larder.
+The place takes the haul. One live can-do: Put them up. Writing is the
+board. Mara shows, not lectures. Tutorial is the same system.
+Halt is lit and holds (read, not recut). Mosswake quiet, herbs already
+gone (read, not recut). Works stays. Foundry is work one.
+No Halt SEND on /dawnspur-halt/. No SEND on this board. Heat not Air.
+Held island is not a fuel bill.
+
+Canon (cite, do not recall as a second bible): Tutorial Script Beat 7.
+Core Loop: nodes and lines. Halt's function here is the larder. Bible
+§1.19 Heat/Air. §5.8 Contracts. Heat not Air. Bible §8. Do not cite
+World Bible §12 as live canon. Bible sha 9a305653.
+
+Lives at sit/herbs-larder/ with byte-copies at public/herbs-larder/, so the
+boards that already stand are untouched - the lineage lock:
+
+  live /mosswake-loop/     sim f5407bca / index 6c30179c  (PASSED; merge 510a392)
+  live /dawnspur-halt/     sim 6eb957e7 / index b5a56a14  (PASSED; merge 66b5507)
+  live /dawnspur-site/     sim e9f81b74 / index 070a4619  (failed sit; merge c59dc101)
+  live /dawnspur-line/     sim 18b1324f / index b6f21db0
+  live /dawnspur-dispatch/ sim 576ce2b6 / index 31aead60
+  live /dawnspur-scale/    sim 953368a1 / index 5d2f452f
+  live /dawnspur-heat/     sim 292d6645
+  kill /dawnspur/          sim 395c18f2
+  live /convoy-stop/       sim 5ad814e6
+  live /dawnspur-storm/    sim f4f17008 / index 7711f979
+
+Halt live merge is 66b5507. Do not recut it. Do not add SEND to it.
+Mosswake live merge is 510a392. Do not recut it. Do not add a second SEND.
+Storm live merge is 555ba9a9. Do not recut it.
+Site live merge is c59dc101. Do not recut it.
+
+These hashes are graded by test/herbs-larder.test.js against the bytes on
+disk, measured LF (.gitattributes `* -text` makes the blob the shipped bytes;
+the working tree is never the artefact):
+
+index.html      sha256:676587bce8b3629ce8f8c64d03f78a722b0479bec53c655413067d2c61f7eb90
+sim.js          sha256:76c886b928bc2b4758362331b1880ff0703d034781aee3137d5c895a8d4e6811
