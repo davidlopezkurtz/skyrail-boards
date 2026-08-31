@@ -1,0 +1,48 @@
+They Remember CFD-208 — Favor as the act (they remember) 2026-08-30
+Spec: docs/cfd-208-beat.md - SIGNED, David 2026-08-30, Superheavy named it.
+Sibling /they-remember/. Not a recut of halt, mosswake, herbs-larder, site,
+storm, /dawnspur-line/, or /dawnspur-dispatch/. One NEW system: Favor as
+the act. People remember who showed up. One live can-do: Collect.
+Writing is the board. Mara shows, not lectures. Tutorial is the same system.
+Halt is lit and holds (read, not recut). Mosswake quiet, a neighbor again
+(read, not recut). Herbs already in the larder (read, not recut). Works
+stays. Foundry is work one. No Halt SEND on /dawnspur-halt/. No SEND on
+this board. No Put them up as a live verb. Heat not Air. Held island is
+not a fuel bill.
+
+Canon (cite, do not recall as a second bible): Tutorial Script Beat 7
+unpaid half. File: Skyrail-Reclamation-Tutorial-Script-Dawnspur-Halt.md.
+Protect: People remember who showed up. Core Loop: earns Favor by helping
+neighbors and keeping promises. File: Skyrail-Reclamation-The-Core-Loop.md.
+Bible §5.8 Contracts. Supply. Collecting the already-kept Supply, not a
+new dispatch. Bible §1.19 Heat/Air. Heat not Air. Bible §8. Do not cite
+World Bible §12 as live canon. Bible sha 9a305653. Beat 8 frontier is
+not this sitting.
+
+Lives at sit/they-remember/ with byte-copies at public/they-remember/, so the
+boards that already stand are untouched - the lineage lock:
+
+  live /herbs-larder/     sim 76c886b9 / index 676587bc  (PASSED; merge 6e606e5)
+  live /mosswake-loop/     sim f5407bca / index 6c30179c  (PASSED; merge 510a392)
+  live /dawnspur-halt/     sim 6eb957e7 / index b5a56a14  (PASSED; merge 66b5507)
+  live /dawnspur-site/     sim e9f81b74 / index 070a4619  (failed sit; merge c59dc101)
+  live /dawnspur-line/     sim 18b1324f / index b6f21db0
+  live /dawnspur-dispatch/ sim 576ce2b6 / index 31aead60
+  live /dawnspur-scale/    sim 953368a1 / index 5d2f452f
+  live /dawnspur-heat/     sim 292d6645
+  kill /dawnspur/          sim 395c18f2
+  live /convoy-stop/       sim 5ad814e6
+  live /dawnspur-storm/    sim f4f17008 / index 7711f979
+
+Halt live merge is 66b5507. Do not recut it. Do not add SEND to it.
+Mosswake live merge is 510a392. Do not recut it. Do not add a second SEND.
+Herbs-larder live merge is 6e606e5. Do not recut it. Do not add Put them up.
+Storm live merge is 555ba9a9. Do not recut it.
+Site live merge is c59dc101. Do not recut it.
+
+These hashes are graded by test/they-remember.test.js against the bytes on
+disk, measured LF (.gitattributes `* -text` makes the blob the shipped bytes;
+the working tree is never the artefact):
+
+index.html      sha256:acbf4304c3cabd22a8d7ff95cd72a5b09aa939416c66805e7f31651f07c78cbd
+sim.js          sha256:164bd741d4ec80f41e525b58741bab6fdce59a845fc1bf7f36b1f4752e9a3efb
