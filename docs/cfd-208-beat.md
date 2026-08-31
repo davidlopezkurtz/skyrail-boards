@@ -290,3 +290,205 @@ Fail: recut of a pin; lecture "that's Favor"; Mara VO; `?`; tutorial
 mode; Favor meter; Marks as the sit; Food CARRY; Halt SEND; second
 Mosswake SEND; SEND on this board; Put them up as a live verb; grey
 squares; scenery-divs; auto SEND.
+
+---
+
+## The recut — cut 1 — Go to the people who remember. NOT SIGNED.
+
+**Beat only. Do not implement. Do not merge. Do not `workflow_dispatch`.**
+Sibling stays `/they-remember/`. Recut this sibling only. Cut 0 above is the
+record of what shipped and is not deleted; it is superseded by this section.
+
+### The sit that produced this recut
+
+David, 2026-08-31, live `/they-remember/` (merge `7bcc315`, index `acbf4304`,
+sim `164bd741`): **"I collected herbs."** Not a pass. Collect landed. The herbs
+stayed cargo.
+
+**He was not wrong and he did not misread the board.** Measured against the
+shipped sim before this beat was written:
+
+```
+liveCanDo        {"place":"halt","verb":"collect","canDo":"Collect."}
+halt             canDo "Collect."   blocked null
+mosswake         canDo null         blocked "The leave already sat."
+consist          canDo null         blocked "The haul is already up."
+```
+
+**Every verb on the board is at the Halt — the player's own house.** Mosswake,
+the neighbour who was actually helped, carries no verb in any state. So the
+reward is taken out of your own larder, and nothing in the doing points anywhere
+but at your own stores. *"I collected herbs"* is an accurate report of the act.
+
+### What this recut is NOT, and the wrong move is the obvious one
+
+**The protected line is not unreachable and this is not a reachability fix.**
+Measured: `commitCollect()` never touches `s.posted`; `postedNotice()` re-reads
+the same place with `collected === true`; `paint()` writes `n.writing` with no
+`stopped` guard. *"People remember who showed up."* is on screen the instant
+Collect commits, with no second action. A recut that surfaces it changes nothing
+a player could see.
+
+**And it is not a writing recut.** The available wrong move here is renaming the
+button or rewriting the card. Canon **§7.4**: a sit about the act cannot be
+answered by the nearest editable surface. David, ruling this recut's test:
+
+> *"If the player still taps one thing and gets one thing, changing what the
+> thing is called or what it contains is a writing recut with a different noun.
+> The thing that would make it an act recut: the collection has to be separable
+> from the help."*
+
+### The ONE NEW CUT
+
+**The taking moves off the Halt. The one live can-do is at Mosswake.**
+
+Same system — Favor as the act. Same one live can-do. No new verb count, no new
+currency, no meter. What changes is **where the act happens**, and therefore what
+the act means.
+
+You do not collect from your own larder. **You go to the people you helped, and
+you take what they set aside.** The source is visible in the doing because the
+doing has a destination. The causal link sits in the sequence, not in the caption.
+
+This is canon's own logic read literally: *people* remember who showed up, and the
+people are not at your Halt.
+
+**Precedent, and it is the strongest in the corpus.** `/dawnspur-halt/` is the
+only recut-to-pass on the project, and it passed by moving the act rather than the
+words — `923002d`, header `// One NEW system: the walk.`, one live can-do at a
+time with world-gated blocked reasons routing the player. The PM refused *"a
+louder Home recut"* first. This recut is that shape.
+
+### Canon this sitting
+
+Bible sha `9a305653`. File + section where reached; do not invent.
+
+**Tutorial Script Beat 7**
+(`Skyrail-Reclamation-Tutorial-Script-Dawnspur-Halt.md`), the load-bearing line
+for this cut: **Player action — "Tap to collect the contract reward."** *The
+contract reward*, not the herbs. The herbs are Mara's first line — *"Herbs in the
+larder, Mosswake glad to have a neighbor again"* — and **that line already sat on
+C10** (`/herbs-larder/`, "Herbs placed", PASS). Cut 0 put line 1's content in
+front of the tap and line 2's after it, so the player performed the beat that had
+already passed.
+
+Designer notes: *"People remember who showed up"* is load-bearing; protect it.
+Kill list forbids a Favor **meter**; this sitting is the act, not the number.
+Marks landing is museum, not the sit.
+
+**Core Loop, What the loop pays out**
+(`Skyrail-Reclamation-The-Core-Loop.md`): *"it earns Favor by helping neighbors
+and keeping promises."* **Helping neighbors** — the neighbour is a place on this
+board and it is the place the reward comes from.
+
+**Bible §5.8 Contracts. Supply.** This is collecting the already-kept Supply, not
+a new dispatch. Do not invent a Supply basket number.
+
+**Bible §1.19** Heat not Air. **Bible §8** maps Tutorial Script to Dawnline +
+Mara. World Bible v0.1 is LEGACY except §8; do not cite §12 as live canon.
+
+**One divergence from canon, stated so it is not rediscovered.** Beat 7's
+*Feedback* asks for Favor lit on the resource bar with a one-line tooltip. **This
+board refuses that** — the kill list forbids a Favor meter, bar, number and
+lecture, and the refusal is deliberate. Canon was read, not missed.
+
+### Does
+
+**At the Halt — blocked, with a world reason that points outward.** The herbs are
+up; the larder is full; there is nothing here that is yours to take. The Halt is
+where the haul landed, not where the remembering happened. It stays a place you
+read. Work notices stay. Not a grey square, not a scenery-div.
+
+**At Mosswake — the one live can-do.** They kept something back for you. Tap it.
+Costs nothing; the price was already paid by showing up. Writing on the tap:
+**"People remember who showed up."** Protect that line verbatim.
+
+**At the consist — unchanged.** Home. Empty. The haul is already up.
+
+**Marks** may land on the museum HUD (opening 0). They are not the sit. No Favor
+number, no bar, no meter, no tooltip, no lecture, no `?`, no tutorial mode, no
+Mara VO. Mara shows, not lectures. Writing is the board.
+
+**No SEND on this board.** No second Mosswake SEND — the leave already sat on C9
+and this is not a leave. No Put them up — that already sat on C10.
+
+### Sees
+
+Station-town diorama, not beige HUD. Halt holds and reads as held. Herbs already
+up. Mosswake is where the light is — it carries the one live pad, and it is the
+only pad. Consist home, empty. One live can-do at a time, as the walk board ships
+it.
+
+### Ends
+
+The tap at Mosswake ends the sitting. The board stops on the protected line.
+
+### On this sitting
+
+| System | This sitting | From |
+| --- | --- | --- |
+| **The taking happens at the neighbour, not the larder** | **ON** — the one new cut | new |
+| Favor as the act, one live can-do | **INHERITED from cut 0** — unchanged in kind | CFD-208 cut 0 |
+| Herbs in the larder | **INHERITED, not replayed** — sat on C10 | CFD-207 PASSED |
+| Mosswake a neighbour again | **INHERITED** — sat on C9 | CFD-206 PASSED |
+| Halt holds | **INHERITED** — read, not recut | CFD-205 PASSED |
+| A Favor meter, bar or number | **REFUSED** — the act, not the number | Beat 7 kill list |
+| SEND on this board | **REFUSED** | cut 0, unchanged |
+| A second Mosswake SEND | **REFUSED** — the leave already sat | CFD-206 |
+| Put them up | **REFUSED** — already sat | CFD-207 |
+| Renaming Collect | **REFUSED** — that is the writing recut §7.4 forbids | §7.4 |
+
+### Kill
+
+Every line a test. Red-first.
+
+- The one live can-do is anywhere but Mosswake.
+- The Halt carries a live can-do.
+- The Halt is a grey square, a scenery-div, or carries no world reason for being
+  blocked.
+- More than one live can-do at any moment.
+- The protected line is anything but **"People remember who showed up."**
+- The protected line is absent, or arrives before the tap.
+- A Favor meter, bar, number, percentage or tooltip appears anywhere.
+- Any text lectures "that's Favor."
+- Mara VO, `?`, tutorial mode, help overlay.
+- SEND on this board. A second Mosswake SEND. Put them up as a live verb.
+- Food CARRY. Fuel as a standing bill. A new currency. Marks as the sit.
+- Beige PWA HUD. Grey squares.
+- Cloud Basin, storm, Beat 8, Sera, Crews, League bolted on.
+- **Any pin moves.** herbs-larder `6e606e5` / `676587bc` / `76c886b9`; mosswake
+  `510a392` / `6c30179c` / `f5407bca`; halt `66b5507` / `b5a56a14` / `6eb957e7`;
+  site `c59dc101` / `070a4619` / `e9f81b74`; storm `555ba9a9` / `7711f979` /
+  `f4f17008`; line `18b1324f` / `b6f21db0`; dispatch `576ce2b6` / `31aead60`.
+  All eight verified unmoved at `7998e8e` before this beat was written.
+- `sit/` and `public/` copies differ.
+
+### Wanted after one sit
+
+**He names the neighbour, not the larder.** A sit that says he went to Mosswake,
+or that they had something for him, or that they remembered — the remembering as
+something he *did*, not something the board told him afterwards.
+
+### Fail
+
+*"I collected herbs"* again, or any sit naming the cargo and not the people.
+Renaming the button. A lecture. A meter. Mara VO. `?`. Tutorial mode. Grey
+squares. Recutting halt, mosswake, herbs-larder, site, storm, line or dispatch.
+
+### Sit
+
+David sits first. **Ask: What happened.**
+
+Per canon §7.4: **ask what he did, and whether he can name what it bought.
+Do not ask what he was trying to do** — that question is refused on this project
+and the refusal is recorded with its evidence.
+
+**If this fails, the next move is not a third cut of this sibling.** §7.4's other
+half binds: if the only remaining move is another writing recut, the finding
+routes to a new beat or a sibling path.
+
+### What is not measured
+
+Whether this passes. That is a sitting, not an arithmetic. Nothing in the repo
+can tell you whether moving the act to the neighbour makes the remembering read
+as something the player did.
