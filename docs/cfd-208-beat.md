@@ -293,11 +293,24 @@ squares; scenery-divs; auto SEND.
 
 ---
 
-## The recut — cut 1 — Go to the people who remember. NOT SIGNED.
+## The recut — cut 1 — Go to the people who remember. **SIGNED — David, 2026-08-31.**
 
-**Beat only. Do not implement. Do not merge. Do not `workflow_dispatch`.**
-Sibling stays `/they-remember/`. Recut this sibling only. Cut 0 above is the
-record of what shipped and is not deleted; it is superseded by this section.
+His word: *"signed"*.
+
+**Cursor implements. Superheavy reviews the PR. Superheavy does not implement and
+does not merge. The orchestrator lands. David sits first after live.** Sibling
+stays `/they-remember/`. Recut this sibling only. Cut 0 above is the record of
+what shipped and is not deleted; it is superseded by this section.
+
+**What the signature covers, stated so the implementer does not have to infer it.**
+The one new cut — the live can-do moves off the Halt to Mosswake — and everything
+in the Kill list below. It does not cover a second live can-do, a new verb, a new
+currency, or any pin moving. If the implementation needs any of those, it stops
+and says so rather than proceeding.
+
+**The act is the deliverable, not the wording.** Per canon §7.4 this is an ACT
+recut. If the implementation ends with the player tapping one thing at the Halt
+under a different label, it has failed regardless of what the tests say.
 
 ### The sit that produced this recut
 
