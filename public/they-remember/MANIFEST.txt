@@ -1,23 +1,31 @@
-They Remember CFD-208 — Favor as the act (they remember) 2026-08-30
-Spec: docs/cfd-208-beat.md - SIGNED, David 2026-08-30, Superheavy named it.
-Sibling /they-remember/. Not a recut of halt, mosswake, herbs-larder, site,
-storm, /dawnspur-line/, or /dawnspur-dispatch/. One NEW system: Favor as
-the act. People remember who showed up. One live can-do: Collect.
-Writing is the board. Mara shows, not lectures. Tutorial is the same system.
-Halt is lit and holds (read, not recut). Mosswake quiet, a neighbor again
-(read, not recut). Herbs already in the larder (read, not recut). Works
+They Remember CFD-208 — Favor as the act (they remember) cut 1 2026-08-31
+Spec: docs/cfd-208-beat.md - Cut 0 SIGNED, David 2026-08-30. Cut 1 SIGNED,
+David 2026-08-31: the taking moves off the Halt. Sibling /they-remember/.
+Not a recut of halt, mosswake, herbs-larder, site, storm, /dawnspur-line/,
+or /dawnspur-dispatch/. One NEW system: Favor as the act. People remember
+who showed up. One live can-do: Collect — at Mosswake. You go to the people
+you helped and take what they set aside. Writing is the board. Mara shows,
+not lectures. Tutorial is the same system.
+Halt is lit and holds (read, not recut). Halt is blocked: the herbs are
+already up; nothing here is yours to take. Mosswake carries the one live
+pad (read, not recut). Herbs already in the larder (read, not recut). Works
 stays. Foundry is work one. No Halt SEND on /dawnspur-halt/. No SEND on
 this board. No Put them up as a live verb. Heat not Air. Held island is
 not a fuel bill.
 
 Canon (cite, do not recall as a second bible): Tutorial Script Beat 7
 unpaid half. File: Skyrail-Reclamation-Tutorial-Script-Dawnspur-Halt.md.
+Player action: tap to collect the contract reward — not the herbs.
 Protect: People remember who showed up. Core Loop: earns Favor by helping
 neighbors and keeping promises. File: Skyrail-Reclamation-The-Core-Loop.md.
 Bible §5.8 Contracts. Supply. Collecting the already-kept Supply, not a
 new dispatch. Bible §1.19 Heat/Air. Heat not Air. Bible §8. Do not cite
 World Bible §12 as live canon. Bible sha 9a305653. Beat 8 frontier is
 not this sitting.
+
+Beat 7 Feedback asks for Favor on the resource bar with a tooltip. This
+board refuses that — the kill list forbids a Favor meter, bar, number and
+lecture. Canon was read, not missed. The refusal is deliberate.
 
 Lives at sit/they-remember/ with byte-copies at public/they-remember/, so the
 boards that already stand are untouched - the lineage lock:
@@ -45,4 +53,4 @@ disk, measured LF (.gitattributes `* -text` makes the blob the shipped bytes;
 the working tree is never the artefact):
 
 index.html      sha256:acbf4304c3cabd22a8d7ff95cd72a5b09aa939416c66805e7f31651f07c78cbd
-sim.js          sha256:164bd741d4ec80f41e525b58741bab6fdce59a845fc1bf7f36b1f4752e9a3efb
+sim.js          sha256:a3345903c01ea506295c3e1a3c442bf1973b0d551167a2394555579c756d542e

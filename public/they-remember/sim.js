@@ -1,10 +1,12 @@
 "use strict";
 
 // SKYRAIL Reclamation — CFD-208, They Remember — Favor through the act.
-// Spec: docs/cfd-208-beat.md (SIGNED — David, 2026-08-30, Superheavy named it).
+// Spec: docs/cfd-208-beat.md. Cut 0 shipped (SIGNED — David, 2026-08-30).
+// Cut 1 recut (SIGNED — David, 2026-08-31): the taking moves off the Halt.
 // Sibling /they-remember/. Not a recut of halt, mosswake, herbs-larder, site,
 // storm, /dawnspur-line/, or /dawnspur-dispatch/. One NEW system: Favor as
-// the act. People remember who showed up. One live can-do: Collect.
+// the act. People remember who showed up. One live can-do: Collect — at
+// Mosswake. You go to the people you helped and take what they set aside.
 // Writing is the board. Mara shows, not lectures. Tutorial is the same
 // system.
 //
@@ -18,6 +20,7 @@
 //
 // Canon (cite, do not recall as a second bible): Tutorial Script Beat 7
 // unpaid half. File: Skyrail-Reclamation-Tutorial-Script-Dawnspur-Halt.md.
+// Player action: tap to collect the contract reward — not the herbs.
 // Protect: "People remember who showed up." Do not lecture "that's Favor."
 // Core Loop: earns Favor by helping neighbors and keeping promises. File:
 // Skyrail-Reclamation-The-Core-Loop.md. Bible §5.8 Contracts. Supply.
@@ -26,13 +29,20 @@
 // canon. Bible sha 9a305653. Beat 8 frontier / Cloud Basin / Sera: not
 // this sitting.
 //
-// Two nodes and a span. Dawnspur Halt lit (read, not recut). Mosswake
-// quiet, a neighbor again. The consist is home, empty. The span is
-// scenery. Herbs already in the larder.
+// One divergence, stated so it is not rediscovered: Beat 7 Feedback asks
+// for Favor lit on the resource bar with a one-line tooltip. This board
+// refuses that — the kill list forbids a Favor meter, bar, number and
+// lecture. Canon was read, not missed. The refusal is deliberate.
 //
-// Collect: the world answers the help. No route picker, no Cloud Basin,
-// no SEND, no Put them up. Marks may land on the museum HUD. They are
-// not the sit. No Favor number. No Favor bar.
+// Two nodes and a span. Dawnspur Halt lit (read, not recut). Halt is
+// blocked: the herbs are already up; nothing here is yours to take.
+// Mosswake carries the one live pad. The consist is home, empty. The
+// span is scenery. Herbs already in the larder.
+//
+// Collect: the world answers the help. The tap is at Mosswake. Writing
+// on the tap: People remember who showed up. No route picker, no Cloud
+// Basin, no SEND, no Put them up. Marks may land on the museum HUD. They
+// are not the sit. No Favor number. No Favor bar. No Favor tooltip.
 //
 // The HUD is one marks line. Opening marks 0. wait() exists, takes nothing,
 // returns false.
@@ -59,23 +69,13 @@ function make(state) {
 
   function notice(place) {
     if (place === "halt") {
-      if (!s.collected) {
-        return {
-          place: "halt",
-          canDo: "Collect.",
-          verb: "collect",
-          inProcess: "The place already took the haul.",
-          blocked: null,
-          writing: "The Halt holds. Herbs in the larder.",
-        };
-      }
       return {
         place: "halt",
         canDo: null,
         verb: null,
-        inProcess: "The world answered.",
-        blocked: null,
-        writing: "People remember who showed up.",
+        inProcess: "The place already took the haul.",
+        blocked: "The herbs are already up. Nothing here is yours to take.",
+        writing: "The Halt holds. Herbs in the larder.",
       };
     }
 
@@ -83,10 +83,10 @@ function make(state) {
       if (!s.collected) {
         return {
           place: "mosswake",
-          canDo: null,
-          verb: null,
-          inProcess: "The run already came home.",
-          blocked: "The leave already sat.",
+          canDo: "Collect.",
+          verb: "collect",
+          inProcess: "They kept something back.",
+          blocked: null,
           writing: "Mosswake. A neighbor again.",
         };
       }
@@ -94,9 +94,9 @@ function make(state) {
         place: "mosswake",
         canDo: null,
         verb: null,
-        inProcess: "A neighbor again.",
+        inProcess: "The world answered.",
         blocked: null,
-        writing: "The herbs were never just cargo.",
+        writing: "People remember who showed up.",
       };
     }
 
