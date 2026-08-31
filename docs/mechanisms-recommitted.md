@@ -547,3 +547,89 @@ pairs is a measure of how joined the game is, not of how broken the analysis is.
 exchange rate, a shadow price, or any single-number netting of the two stocks, it is
 proposing to undo the join's one new system, and it must be argued as that rather
 than landed as a tuning convenience.
+
+### 7.4 A recut may not be the same KIND as the one that just failed — WRITTEN DOWN 2026-08-31, in use since 2026-08-29
+
+**This rule was already running. It produced the only recut-to-pass in the corpus,
+it terminated two boards, and it was written down nowhere** — it survived as four
+ad-hoc refusals in Linear comments. That is the condition this file exists to end.
+
+**The rule.** When a sit fails, name what KIND the last recut was — **writing**,
+**act**, **affordance**, or **structure**. The next recut must be a *different*
+kind. When the only remaining move is the same kind again, **stop recutting** and
+route the finding to a new beat or a sibling path.
+
+**Why kind and not count.** A recut budget rations the wrong thing. Boards are
+small and recuts are cheap; what is scarce is David's sitting. Two recuts of the
+same kind consume two sittings to learn one thing. The rule below spends a sitting
+only on a question the last one did not already answer.
+
+#### The evidence, measured 2026-08-31
+
+**`/dawnspur-halt/` is the clean experiment, because both kinds were tried in
+sequence on one board.** Sits in order, from CFD-205:
+
+1. grey-square random clicks — **fail**
+2. buildings and feed without why — **fail**
+3. *"Lit the lamp and started the foundry."* — **fail**; he did the two opening
+   can-dos and stopped
+
+The PM then refused the obvious next move by name — *"Superheavy names a recut that
+is **not** louder Home labels"*, and *"PM already refused a louder Home recut"* —
+and the recut that shipped changed the **act**: `923002d`, whose source header reads
+`// One NEW system: the walk.` and which adds `if (!s.lampLit) return false;` and a
+`liveCanDo()` gate, one live can-do at a time.
+
+**That recut passed.** David: *"Lit the lantern and tended home and provided
+resources."* The PM's own reading of the pass is the rule in one line:
+
+> **"Place is what he did, not a slogan."**
+
+**Two boards were stopped by the same rule rather than recut further.**
+`/dawnspur-site/` ended on *"no further grey-square recut"*. `/dawnspur-storm/`
+stopped at five with *"do not recut `/dawnspur-storm/` for 'why more glass' — that
+is the city sitting"*, and David's own redirect: *"It's definitely time for the
+city. I think we have a good loop buildout and need the spine to attach it to."*
+**Neither was a failure of the board. Both were findings routed to the right
+place.**
+
+#### What this rule is NOT, and these were tested and refused on 2026-08-31
+
+- **Not a recut cap.** A two-recut cap was proposed and measured: it would bind in
+  **one case out of six**, permits `/dawnspur-halt/` with zero margin, and on the
+  one board where it would have bound the named cause was the missing city, which
+  no cap can fix. Near-vacuous. Refused.
+- **Not "ask the player what they were trying to do."** Also proposed, also
+  refused, and this one is actively dangerous: it was **already tried** on
+  `docs/cfd-201-beat.md`, whose *"What the sit must report"* asks two intent
+  questions. The one intent answer on record is a **confabulated mechanism** —
+  *"I noticed it degrade and started to see a connection between fully tended land
+  and success rates"* — a link that does not exist on that board, where TEND
+  restores the reserve and route odds move with sky and roster. **An intent answer
+  is a player theory, not a measurement.** Acting on it would have sent the team to
+  fix nothing.
+- **Not a claim that writing recuts are wrong.** Three storm recuts were pure copy
+  **because David asked for copy, verbatim, three sits running**. A copy recut
+  answering a copy complaint is the rule working. The failure is a copy recut
+  answering a complaint the copy cannot reach.
+
+#### The trap this rule is aimed at, named so it is recognisable
+
+**A sit verdict about the act reads exactly like a request for better words.**
+*"The descriptions of why to do these things do not make much sense"* is a sentence
+about captions on its face and about stakes underneath. The caption is also the
+nearest editable surface. So the default move is always the writing, and a board
+can absorb several sittings without the question moving.
+
+**The tell is that the sit keeps arriving in the same shape.** When the third sit
+restates the second, the next recut is the wrong kind by definition — whatever kind
+the last one was.
+
+#### What an author owes when proposing a recut
+
+One line, before the beat: **what kind the last recut was, what kind this one is,
+and what would make it the last.** If those are the same kind, the recut does not
+ship and the finding goes to a new beat.
+
+Related: §7 (one new system per sitting), §7.2 (the stop is what makes length
+opt-in), and `KILLS.md`, where every recut decision and its shas are recorded.
