@@ -3,13 +3,53 @@
 The first board where the city and the loop are one object. Sibling
 `/dice-at-the-places/`. Not a recut of anything.
 
-**NOT SIGNED.** Awaiting David.
+## SIGNED — David, 2026-08-31.
+
+His word: *"signed"*.
+
+**Cursor implements. Superheavy reviews the PR. Superheavy does not implement and
+does not merge. The orchestrator lands. David sits first after live.**
+
+### What the signature covers, so the implementer does not infer scope
+
+**Covered:** the one new system — a tap at a place can fail — the corridor at max
+live can-do = 1, the desk deleted as a surface, and everything in the Kill list.
+
+**NOT covered:** a second live can-do anywhere, weather in any form, a second new
+system of any kind, a new currency, or any pin moving. **If the implementation
+needs one of those, it stops and says so rather than proceeding.**
+
+### The acceptance condition, because the Kill list can pass while the board fails
+
+**The player must meet a run that does not work.** If a sitting can be walked
+end to end without ever losing a haul, the dice did not arrive and the board has
+failed whatever the tests say. The corridor must route *through* the wager, not
+around it.
+
+### Two things to fix rather than inherit
+
+1. **`s.marks = MUSEUM_MARKS` is an assignment.** See the defect section below.
+   This board opens with the desk's float; write it as an increment.
+2. **Four boards each set `stopped`.** Only one may survive, and it must be the
+   armed one. State the stop's condition explicitly; do not inherit the accident
+   described under *Ends*.
+
+### Where the work actually is
+
+**The seams, not the verbs.** One map, not `rim` and `gap`. One consist, not
+`inbound`/`landed` beside `consistAt`. One representation of *home but not
+stowed*. Those three are the C8→C10 mismatches measured below and they are the
+bulk of the job.
 
 ---
 
 ## Seat
 
-Beat only. Do not implement. Do not merge. Do not `workflow_dispatch`.
+**SIGNED 2026-08-31 — this line was "Beat only. Do not implement" before the
+signature and is corrected here, because the Seat is the first thing an
+implementer reads.** Cursor implements on a branch. Superheavy reviews the PR.
+**Superheavy does not implement and does not merge.** The orchestrator lands.
+Do not `workflow_dispatch`. Do not deploy by hand — CI deploys a green main.
 
 Do not touch `public/dawnspur`, `public/dawnspur-heat`, `public/dawnspur-scale`,
 `public/dawnspur-dispatch`, `public/dawnspur-line`, `public/dawnspur-storm`,
