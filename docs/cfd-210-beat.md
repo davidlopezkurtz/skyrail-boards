@@ -31,9 +31,14 @@ Mosswake weigh therefore only ever occurs in the RICH regime, where the two are
 only moment it can occur, which is null 3 arrived at on paper.
 
 **And the measurement found a better fork sitting in the short regime.** After a
-failure the board arms and offers `Collect.` — the ending. A free Halt send there
-is **bank what you have, or take a free 68 for 10 more**: exclusive branches, real
-stakes, and it exists precisely at the moment the board already treats as decisive.
+failure the board arms and offers `Collect.` — the ending. A free send *there* is
+**bank what you have, or roll her out once more**: exclusive branches, real stakes,
+at the moment the board already treats as decisive.
+
+*(This paragraph first proposed that free send as "the Halt, 68 for 10." A second
+measurement refuted it — the Halt is HOME on this board, not a destination. See
+"The Halt is NOT a destination on this board" below. The fork survived the
+refutation; only its route and its tile changed.)*
 
 **RULED, David, 2026-09-01: the fork MOVES.** *"Bank-or-press-on beside
 `Collect.` is the better fork and the measurement makes it not a preference."*
@@ -114,41 +119,75 @@ break.**
 
 ## THE ONE NEW SYSTEM: the corridor forks once, after commitment
 
-**One live can-do opens the board, exactly as five passed boards do. After the
-first run comes home, a second place lights, and the order is the player's.**
+**One live can-do opens the board, exactly as five passed boards do. When a run
+comes home SHORT and the board arms, a second place lights — and the player must
+choose between them.**
+
+*(This sentence read "after the first run comes home, a second place lights, and
+the order is the player's" until 2026-09-01. That was wrong twice over: it lit the
+fork after a PAID run, which this beat's own Kill list forbids, and "the order is
+the player's" describes a queue, which is the exact thing David refused. Corrected
+rather than left, because the heading sentence is what an implementer reads first.)*
 
 Not two at the open. That is the measured failure and it stays refused by name.
 
-### The fork is BANK OR PRESS ON, and the mechanic is already half-built
+### The fork is BANK OR PRESS ON, and it lives on the CONSIST
 
-**Measured on the shipped parent, and it is why this location works:**
-`canSend()` returns false `if (s.armed)`. **Arming currently removes the send.**
-That is what forces the short regime to a single option and it is the exact line
-this board relaxes.
+**RULED, David, 2026-09-01 — outcome B.** *"Bank and the sitting ends with
+something, press on and it might end with nothing."*
 
-**Today:** a run comes home short → the board arms → `Collect.` is the only thing
-lit → the sitting ends.
+**Today:** a run comes home short → the board arms → `Collect.` at Mosswake is the
+only thing lit → tapping it ends the sitting.
 
-**This board:** a run comes home short → the board arms → **`Collect.` lights AND
-the Halt lights, free.** Bank the ending you have earned, or take one more run at
-**68 for 10** first.
+**This board:** a run comes home short → the board arms → `Collect.` lights at
+Mosswake **exactly as it ships**, and **the consist lights too**: *ROLL HER OUT.
+64.* — one more Mosswake run, **stake waived.**
 
-**And pressing on risks the ending itself.** A successful press-on **clears the
-arm**, because the board's own closing sentence is *"the run came home short and
-the larder covered it"* — and if your last run came home paid, that sentence is no
-longer true. So you are back in the rich loop and must come home short again to
-earn an ending.
-
-That is what makes it a wager rather than free upside:
-
-| | you keep | you risk |
+| | 64% | 36% |
 | --- | --- | --- |
-| **Bank** | the ending, now, with what you have | the 10 you did not go for |
-| **Press on** | a 68% shot at 10 more | the ending — a win puts it back out of reach |
+| **Press on** | +14 marks, **the arm clears**, back in the paying loop | **the sitting ENDS COLD** — no `Collect.`, no +1, no remembering |
+| **Bank** | `Collect.` — +1 mark, the sitting ends with the neighbour's gift | — |
 
-**Exclusive by construction**, not by the board forbidding a second helping. You
-cannot both bank this ending and go for the run, because winning the run is what
-takes the ending away.
+**A failed press-on ends the sitting with nothing.** That is rule B and it is what
+makes this a wager rather than a button with a delay in front of it. David: *"Under
+A, pressing on is never wrong and banking is dominated. That's not a fork, it's a
+button with a delay in front of it."*
+
+**The fiction carries the rule, and that is why it is not arbitrary.** *"The larder
+covered it once and cannot twice"* is a **reason, not a rule** — a player who loses
+can say why rather than feeling punished. That sentence must be on the consist tile
+**before** the tap, not after.
+
+**Exclusive in the sharpest available currency: the run itself.** Not exclusive
+because the board forbids a second helping — exclusive because winning takes the
+ending away and losing takes everything.
+
+#### The numbers, and they are Mosswake's
+
+There is **no second route**. The press-on is a Mosswake run with `stakeOf()`
+waived: **64 for 14, stake 0**, all three inherited unmoved from the shipped parent.
+Nothing is invented, nothing is balanced, no new constant enters the file.
+
+#### Where it lives, and why it cannot live anywhere else
+
+**Measured on the shipped parent — three facts that fix the location:**
+
+1. **`Collect.` renders at MOSSWAKE, not at the Halt.** `notice("mosswake")`,
+   `sit/dice-at-the-places/sim.js:170`: `if (s.armed && !s.collected)` returns
+   `canDo: "Collect."`
+2. **`notice()` returns ONE `canDo` per place.** The Mosswake tile is therefore
+   full at the arm. A second can-do must be on a different tile.
+3. **The consist tile is empty at the arm** — `sim.js:244` returns `canDo: null`
+   with blocked text *"The haul was lost. The larder covered it."*
+
+So the consist is the only tile available, and it is also the **right** one: the
+consist is the thing you are wagering. You are not tapping an abstraction; you are
+rolling her out again.
+
+**And the corridor holds through the away leg for free.** `notice("mosswake")`
+tests `s.consistAt === "mosswake"` **first** (`sim.js:161`), so once she is out
+`Collect.` goes dark on its own and only *"Home she comes. 64."* is live. Two lit
+at the arm, one lit while she is out, and nothing needed to be added to achieve it.
 
 ### Why NOT the Halt beside Mosswake — the fork this beat first proposed
 
@@ -164,11 +203,37 @@ asymmetry would bite.** The weigh could therefore only ever occur in the rich
 regime, where the two branches are EV-equal — **a null reachable on paper, which
 is the cheapest kind to find.**
 
-### Why the Halt is the second send, and where its numbers come from
+### The Halt is NOT a destination on this board — the error this beat shipped
 
-*(This heading and the next were transposed in the first draft — this section is
-about the Halt, the next is about Rustfall. Corrected rather than left to confuse
-the implementer.)*
+**This is the most important thing in the document for the next author, and it
+survived a signature.**
+
+Until 2026-09-01 this beat specified the fork as *"the Dawnspur Halt lights as a
+free send, 68 for 10."* **It cannot be built.** On `/dice-at-the-places/` the
+string `"halt"` is **where the consist lives** — `canSend()` requires
+`s.consistAt === "halt"`, meaning she is home — and `notice("halt")` returns
+`canDo: null` on **both** of its branches (`sim.js:132`–`:155`). The Halt has
+never been tappable. "Send her to the Halt" means sending her where she already is.
+
+**The 68-for-10 numbers are real, and they belong to a different board.**
+`sit/dawnspur-line/sim.js:88` defines a route object `id: "dawnspur-halt"`,
+`baseRisk 0.08`, `pays 10` — where the Halt is a **destination**. Two boards, one
+word, two meanings: **home** in one model, **a place you send to** in the other.
+
+**A route's numbers were imported across a name collision between two lineages.**
+The prior instance of this class was the double-modelled consist at the C8→C9 seam.
+That makes twice. David, 2026-09-01: *"the name collision finding is the more
+valuable half of this message."*
+
+**Why the earlier check did not catch it.** The two models were compared on their
+**exported names** and found to share exactly three — `marks`, `stopped`, `wait`.
+`"halt"` is not an export. It is a **string value** and a **place id**, so the
+instrument could not see it. *The small number was read as reassurance when it was
+only the measure of a narrow instrument.*
+
+An audit of the remaining name-spaces is open as a separate piece of work.
+
+### Where the Halt's numbers came from, kept as provenance only
 
 `/dice-at-the-places/` ships **one** route. Mosswake: `baseRisk 0.12`, pays 14,
 stake 2. Its stated chance is **64**, measured live.
@@ -186,12 +251,20 @@ baseRisk` — that is **68**.
 | **Dawnspur Halt** | 68 | 10 | **0** | **6.80** |
 | **Mosswake Loop** | 64 | 14 | 2 | **6.96** |
 
-**Nothing new is invented for this board.** Both rows are inherited numbers from
-passed boards, which is why the fork costs no balancing work.
+**This table is PROVENANCE, not the fork, and neither row is what this board
+builds.** It is kept because both numbers were measured and one of them was acted
+on wrongly, and the next author needs to see what was refused.
 
-**The table is here as provenance, not as the fork** — those two are 0.16 apart
-and the section below records why that is fatal. **The Halt's row is what matters:
-free, and 68 for 10.** That is what a press-on costs and pays.
+**The Mosswake row is the live one.** The press-on is a Mosswake run with the stake
+waived — **64 for 14, stake 0** — so the only number this board uses is one the
+shipped parent already rolls.
+
+**The Dawnspur Halt row is dead here.** Its numbers are real but they belong to
+`sit/dawnspur-line/sim.js:88`, where the Halt is a destination. `/dawnspur-line/`
+is **not marked PASSED** in the Seat table above — an earlier draft of this beat
+called it "the passed line board," which is a second unverified claim in the same
+sentence as the first. Under §7 an unpassed system does not travel, so the route
+could not have been inherited even if the word had meant the same thing.
 
 **§7.2's quick path is BANKING**, and it is honest by construction: `Collect.`
 alone is the whole of C12's ending, available the instant the board arms, and a
@@ -281,23 +354,34 @@ able to tell the difference at the open.
 Until then the board is C12 exactly: one live can-do, no choice, and a player who
 has sat C12 cannot tell the difference.
 
-**At the arm there are two live can-dos and never more.** `Collect.` as it ships
-today, and the Halt as a free send with its chance and pay on its face before the
-tap. The player picks.
+**At the arm there are two live can-dos and never more.** `Collect.` at Mosswake
+exactly as it ships, and **the consist**: *ROLL HER OUT. 64.* — a free Mosswake
+run. The player picks.
 
-**A successful press-on clears the arm.** The ending goes back out of reach and the
-board returns to its single-file loop until the next short run. **A failed
-press-on costs nothing** — the Halt stakes 0 — and the arm survives, so `Collect.`
-is still there. That asymmetry is the whole wager and it must be legible before
-the tap, not discovered after it.
+**The press-on's cost must be on the tile before the tap.** *The larder covered it
+once. It will not cover it twice.* A player who taps it without knowing what a
+failure does has not made a choice, and that is a Kill line rather than a polish
+note.
+
+**A paid press-on clears the arm.** +14 marks, `Collect.` goes out of reach, and
+the board returns to its single-file paying loop until the next short run.
+
+**A FAILED press-on ends the sitting cold.** No `Collect.`, no +1 mark, no
+remembering. This is the whole wager and it is the one place C12's machinery moves.
+
+**The ending text must distinguish the two ways a sitting can end**, and it cannot
+do so through `endSentence`. **Measured: `index.html` never reads it** — grep
+count of `endSentence`, `runSentence`, `inProcess` and `stopped` in
+`sit/dice-at-the-places/index.html` is **0** for each. The page renders
+`notice().writing` and `notice().blocked` and nothing else. **Every word this
+board needs a player to see goes in those two fields**, or it is dead text.
 
 **Each branch is its own wager.** The stated number is the rolled number, per the
-dispatch board's own rule — *"not quote a number it cannot honestly roll."* A
-failed run on either costs its stake and nothing else.
+dispatch board's own rule — *"not quote a number it cannot honestly roll."*
 
-**The stop is unchanged and still requires a failed run.** Inherited from C12,
-where the board cannot arm without one — the corridor routes through the wager,
-and that survives the fork.
+**The stop still requires a failed run.** Inherited from C12 — the board cannot arm
+without one, so the corridor routes every player through the wager. This board adds
+a second way to reach the stop and removes none.
 
 **No third route.** No Rustfall. No weather. No new currency. No crews.
 
@@ -323,16 +407,26 @@ board keeps both **and adds a clear**: a press-on that comes home paid sets
 
 So the arm is no longer a one-way latch. State the full condition explicitly:
 
-| event | arm | why |
-| --- | --- | --- |
-| run comes home short | **set** | C12, unchanged |
-| press-on comes home paid | **cleared** | new — the closing line is no longer true |
-| press-on comes home short | **stays set** | the ending is still there; the wager cost nothing |
+| event | arm | stop | why |
+| --- | --- | --- | --- |
+| run comes home short | **set** | no | C12, unchanged |
+| `Collect.` tapped while armed | — | **STOP, banked** | C12, unchanged |
+| press-on comes home paid | **cleared** | no | the closing line is no longer true; back in the loop |
+| press-on comes home short | — | **STOP, COLD** | rule B — the larder cannot cover twice |
+
+**There are now TWO endings and they must not share a sentence.** C12's
+`endSentence` getter hardcodes *"The run came home short and the larder covered
+it."* — true of a banked ending, **false of a cold one**. And it is never rendered
+anyway (see Does). The two endings are distinguished in
+`notice().writing`/`blocked` or they are not distinguished at all.
 
 **Termination is probabilistic and always was** — C12 cannot end without a failed
-run either. This board does not weaken that; it lets a player *choose* to defer it.
-**Confirm by driving the board that a player who presses on repeatedly still
-reaches an ending**, and that the ending's text still reads true when they do.
+run either. This board does not weaken it: under B, pressing on is **also** a way
+to reach an ending, so a presser terminates *faster*, not slower.
+
+**Confirm by driving the board** that a player who presses on every time reaches an
+ending, that a player who banks every time reaches an ending, and that the two
+endings read differently on screen.
 
 ---
 
@@ -341,8 +435,10 @@ reaches an ending**, and that the ending's text still reads true when they do.
 | System | This sitting | From |
 | --- | --- | --- |
 | **The corridor forks once, after commitment** | **ON** — the one new system | new |
-| **The Halt lights as a free send AT THE ARM** | **ON** — the fork's second branch | CFD-196 route, inherited numbers |
-| **A paid press-on clears the arm** | **ON** — what makes it a wager | new |
+| **The consist lights as a free Mosswake run AT THE ARM** | **ON** — the fork's second branch | Mosswake's own numbers, stake waived |
+| **A paid press-on clears the arm** | **ON** — the ending goes out of reach | new |
+| **A failed press-on ends the sitting cold** | **ON** — rule B; what makes it a wager | new |
+| **The Halt as a send** | **REFUSED** — it is HOME on this board, not a destination | measured 2026-09-01 |
 | A tap at a place can fail | **INHERITED** | CFD-209, PASSED |
 | One live can-do at the open | **INHERITED** — and it stays one | CFD-205, PASSED |
 | The desk deleted as a surface | **INHERITED** | CFD-209 |
@@ -365,17 +461,26 @@ Every line a test. Red-first.
 - **More than two live can-dos at any frame, ever.**
 - The fork lights before the board arms — at the open, or after a run that came
   home paid.
-- The fork never lights: a sitting exists in which the board arms and the Halt
+- The fork never lights: a sitting exists in which the board arms and the consist
   stays dark.
-- A successful press-on does not clear the arm, or a failed one does.
-- `Collect.` becomes unreachable after a failed press-on.
-- The press-on's cost — that winning takes the ending away — is not legible before
-  the tap.
-- Either branch quotes a number it does not roll.
-- The Halt's chance or pay differ from its canonical route values without the beat
-  saying why.
+- `Collect.` moves off Mosswake, or changes its text, or stops ending the sitting.
+  **C12's banked ending is inherited whole; touching it is a recut, not this board.**
+- A paid press-on does not clear the arm.
+- **A failed press-on does not end the sitting**, or ends it with `Collect.` still
+  reachable, or credits the +1 mark.
+- The two endings — banked and cold — render the same words.
+- The press-on's cost is not on the consist tile **before** the tap.
+- A press-on costs marks. It is free; `stakeOf()` is waived, not paid.
+- Either branch quotes a number it does not roll, or the press-on's chance differs
+  from Mosswake's own 64.
+- **The Halt becomes tappable.** It is home on this board. Kill line, by name.
+- `liveCanDo()` is used to grade the corridor. It returns the FIRST match
+  (`sim.js:369`) and cannot see a second live can-do at all.
 - A failed run costs the home, the lamp, the larder, or Favor already earned.
 - The stop becomes unreachable for a player who only ever takes one branch.
+- A state field is left `undefined` rather than initialised. `make()` aliases the
+  state literal with no defaulting, so `undefined !== null` is **true** and a
+  forgotten field lights the fork at the open.
 - The unchosen branch is rendered grey, dimmed to scenery, or as a dead button.
 - Anything moves with wall time; a branch expires, decays, or times out.
 - Rustfall becomes sendable. Weather appears. A third route appears.
@@ -410,16 +515,30 @@ the sit-question rule below, **it counts only if it arrives unprompted.**
 **None of these is a failure. Each is an answer, and they do not mean the same
 thing.**
 
-1. **He banks immediately, every time, without remarking on it.** The press-on
-   was never a live option to him. That says the corridor is load-bearing
-   **wherever** it breaks, C12's shape becomes permanent, and the question closes.
-2. **He presses on and never mentions the ending he passed up.** The fork is real
-   but only one branch is visible as a branch. That routes to *what makes a
-   forgone option legible*, not to a recut of this board.
-3. **He does it once and cannot say why.** The decision happened but had no
-   content — a coin-flip dressed as a choice. That routes to **differentiation**:
-   68-for-10 against banking is not a weigh he can articulate, and the next
-   question is what would make it one.
+**David pre-registered the first two himself, 2026-09-01, before the sit, and the
+wording is his** — a sitting that ends cold and a sitting that ends banked are
+**not distinguishable in any completion count**, which is §7.5's whole point.
+
+1. **Ended cold after pressing on.** *"That's the branch working, and the sit
+   question is whether the player can name the trade without being asked."*
+   Routes to: the fork is live — go to what the next fork should be.
+2. **Banked immediately, never pressed.** *"Ambiguous between 'the wager was
+   correctly frightening' and 'the press-on wasn't legible as an option.' Those
+   route differently, and the tell is whether the consist tile read as a thing you
+   could do."* **The tell is legibility, not the count** — so the sit must recover
+   whether he SAW the consist as tappable.
+3. **Pressed on, won, and kept playing.** The arm cleared and the sitting continued.
+   Reachable at 64% and it needs a meaning: the wager was taken and paid, but the
+   ending it risked was never actually spent, so the sit shows the fork FIRING
+   without showing what it COSTS. Routes to whether one sitting can even answer
+   this, or whether the cold branch has to be met to count.
+4. **Did it once and cannot say why.** A coin-flip dressed as a choice. Routes to
+   **differentiation** — 64-for-14 against banking is not a weigh he can
+   articulate, and the next question is what would make it one.
+
+**Note what none of these is: a completion count.** All four log as "the sitting
+ended." Per §7.5, if a split can be resolved by a counter it was not worth
+registering — and this one cannot be.
 
 **None of these is a failure and they do not mean the same thing.** Pre-registering
 the split is what stops a single observed outcome being rationalised into whichever
