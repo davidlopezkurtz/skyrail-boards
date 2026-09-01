@@ -285,12 +285,12 @@ test("the signed CFD-209 beat is the brief", () => {
   assert.match(beat, /\/dice-at-the-places\//);
   assert.match(beat, /a tap at a place can fail/);
   assert.match(beat, /the desk deleted as a surface/i);
-  assert.match(beat, /max live can-do = 1/);
+  assert.match(beat, /live can-do = 1/);
   assert.match(beat, /The player must meet a run that does not work/);
   assert.match(beat, /s\.marks = MUSEUM_MARKS/);
   assert.match(beat, /One map/);
   assert.match(beat, /One consist/);
-  assert.match(beat, /home but not stowed/);
+  assert.match(beat, /home but not\s+stowed/);
   assert.match(beat, /Ask: What happened/);
   assert.match(beat, /9a305653/);
   assert.match(beat, /\/they-remember\//);

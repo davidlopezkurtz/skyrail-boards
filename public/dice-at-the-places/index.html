@@ -125,7 +125,7 @@
   #notice.has-do #notice-do { display: inline; }
 
   /* Places stay buttons. Not grey brick, not hopping outline, not scenery-divs. */
-  #halt, #mosswake, #consist, #rustfall {
+  #halt, #mosswake, #consist {
     border: 0; padding: 0; font: inherit; color: inherit;
     background: transparent;
     cursor: pointer;
@@ -275,7 +275,10 @@
   /* Rustfall. Dark. Beat 8 dressing. A place, not a grey square. */
   #rustfall {
     position: absolute; left: 86%; bottom: 62%; width: 12%; height: 16%;
+    border: 0; padding: 0; font: inherit; color: inherit;
     background: transparent;
+    cursor: pointer;
+    touch-action: manipulation;
   }
   #rustfall .shed {
     position: absolute; left: 18%; top: 28%; width: 64%; height: 52%;

@@ -47,5 +47,5 @@ These hashes are graded by test/dice-at-the-places.test.js against the
 bytes on disk, measured LF (.gitattributes `* -text` makes the blob the
 shipped bytes; the working tree is never the artefact):
 
-index.html      sha256:cc3d50f6fabbeb54b210fc370e075760217d43c357fe6e7956b2069c259adb79
+index.html      sha256:d97d995173276e286c37156697ca296d31f238774d0e783c00c7a91db125868c
 sim.js          sha256:f64b4309e407f28b54cd228d502971b47355b457afe3337b77e5f6618c186611
