@@ -28,7 +28,9 @@ RICH   (after a good run)     marks 15  armed false
 unaffordable exactly when the stake asymmetry would matter.** The Halt-versus-
 Mosswake weigh therefore only ever occurs in the RICH regime, where the two are
 **0.16 marks apart**. The fork this beat designs is EV-equal by construction at the
-only moment it can occur, which is null 3 arrived at on paper.
+only moment it can occur, which is null 3 arrived at on paper *(null 3 as numbered
+at signature — differentiation; it is null 4 in the section below, since rule B and
+the arm clear split the pressed-on outcome into cold and won-and-kept-playing)*.
 
 **And the measurement found a better fork sitting in the short regime.** After a
 failure the board arms and offers `Collect.` — the ending. A free send *there* is
@@ -60,7 +62,10 @@ a choice; it is a queue with a gate on it.
 
 ## Seat
 
-Beat only. Do not implement. Do not merge. Do not `workflow_dispatch`.
+Implemented at `796d9a2` — `sit/two-ways-from-here/`, byte-copied to `public/`; not yet
+sat. Do not merge. Do not `workflow_dispatch`. *(This line read "Beat only. Do not
+implement." until the board landed; cfd-209 superseded its own copy the same way at
+signature.)*
 
 Do not touch any existing board directory — **nor the `sit/` copy of any board
 that has one, nor any other board directory present at HEAD.** The enumeration is
@@ -77,8 +82,12 @@ a courtesy; the catch-all is the rule.
 | `/dawnspur-halt/` **PASSED** | `6eb957e7` | `b5a56a14` |
 | `/dawnspur-site/` | `e9f81b74` | `070a4619` |
 | `/dawnspur-storm/` | `f4f17008` | `7711f979` |
-| `/dawnspur-line/` | `18b1324f` | `b6f21db0` |
-| `/dawnspur-dispatch/` | `576ce2b6` | `31aead60` |
+| `/dawnspur-line/` **PASSED** | `18b1324f` | `b6f21db0` |
+| `/dawnspur-dispatch/` **PASSED** | `576ce2b6` | `31aead60` |
+
+*(Earlier cuts of this table, inherited from CFD-209's Seat, marked only the four
+city passes; `/dawnspur-line/` passed 2026-08-28 and `/dawnspur-dispatch/`
+2026-08-26 — see "Where the Halt's numbers came from" below.)*
 
 **Parent: `/dice-at-the-places/`** — CFD-209, PASSED 2026-09-01. Named at
 signature per §7.1 item 4, not assumed at drafting.
@@ -185,7 +194,8 @@ consist is the thing you are wagering. You are not tapping an abstraction; you a
 rolling her out again.
 
 **And the corridor holds through the away leg for free.** `notice("mosswake")`
-tests `s.consistAt === "mosswake"` **first** (`sim.js:161`), so once she is out
+tests `s.consistAt === "mosswake"` **first** (`sim.js:158`) *(an earlier cut cited
+`:161`, the `canDo: null` line inside that branch)*, so once she is out
 `Collect.` goes dark on its own and only *"Home she comes. 64."* is live. Two lit
 at the arm, one lit while she is out, and nothing needed to be added to achieve it.
 
@@ -229,7 +239,12 @@ valuable half of this message."*
 **exported names** and found to share exactly three — `marks`, `stopped`, `wait`.
 `"halt"` is not an export. It is a **string value** and a **place id**, so the
 instrument could not see it. *The small number was read as reassurance when it was
-only the measure of a narrow instrument.*
+only the measure of a narrow instrument.* *(Re-measured 2026-09-01 by enumerating
+both boards' exported keys — `Object.getOwnPropertyNames` over `createBoard()` —
+`/dice-at-the-places/` and `/dawnspur-line/` share nine: `marks`, `armed`, `stopped`,
+`runSentence`, `endSentence`, `record`, `canSend`, `commitSend`, `wait` — so "exactly
+three" was wrong on its own terms as well as narrow; `canSend`/`commitSend` are shared
+exports with different arities. The name-collision audit carries the full surface.)*
 
 An audit of the remaining name-spaces is open as a separate piece of work.
 
@@ -261,10 +276,15 @@ shipped parent already rolls.
 
 **The Dawnspur Halt row is dead here.** Its numbers are real but they belong to
 `sit/dawnspur-line/sim.js:88`, where the Halt is a destination. `/dawnspur-line/`
-is **not marked PASSED** in the Seat table above — an earlier draft of this beat
-called it "the passed line board," which is a second unverified claim in the same
-sentence as the first. Under §7 an unpassed system does not travel, so the route
-could not have been inherited even if the word had meant the same thing.
+passed its sit on 2026-08-28 (`docs/cfd-201-beat.md:92`, `docs/cfd-203-beat.md:1527`,
+canon §7.1 item 4), so the route is a passed system — and it is still dead here for
+the reason above: the word does not mean the same thing on this board. *(An earlier
+cut said the line board was "not marked PASSED in the Seat table above" and called
+"the passed line board" a second unverified claim. The Seat table's omission was the
+stale thing — the pass is recorded in three places — and this document's own
+provenance table said "the passed line board" at the same time. The §7 "does not
+travel" argument is withdrawn; the name collision was always the whole reason. The
+`9618352` memo carries the same inference and is the dated record, not the ruling.)*
 
 **§7.2's quick path is BANKING**, and it is honest by construction: `Collect.`
 alone is the whole of C12's ending, available the instant the board arms, and a
@@ -296,11 +316,13 @@ nothing, so a player takes both — which is precisely the pre-walk Halt result,
 construction and teach nothing about choice.
 
 **The fork only becomes a decision because pressing on can lose you something.**
-Banking takes the ending you have earned; pressing on is a 68% shot at 10 more
-that, *if it succeeds*, puts the ending back out of reach. **That cost exists only
-because the board has dice and an arm condition** — without them, a second lit
-thing is just a second tap and the player takes both. C12 is the only board that
-has them.
+Banking takes the ending you have earned; pressing on is a 64% shot at 14 more
+that, *if it succeeds*, puts the ending back out of reach — and, *if it fails*,
+ends the sitting cold. **That cost exists only because the board has dice and an
+arm condition** — without them, a second lit thing is just a second tap and the
+player takes both. C12 is the only board that has them. *(An earlier cut read "a
+68% shot at 10 more"; those were the Halt route's numbers, withdrawn with the fork —
+see "The Halt is NOT a destination on this board".)*
 
 **This is what the small-board version could never have had**, and it is the
 argument's whole point: on a board without dice there is nothing to wager, so
@@ -309,8 +331,11 @@ argument's whole point: on a board without dice there is nothing to wager, so
 So: cumulative, parent `/dice-at-the-places/`, per §7 and §7.1.4 — and for a
 reason that would hold even if §7 permitted otherwise.
 
-**The cost is honestly stated:** C12 was the largest board the project has
-attempted, and this is C12 plus a branch. If the implementation runs much longer
+**The cost is honestly stated:** C12 was the largest city board the project has
+attempted, and this is C12 plus a branch. *(An earlier cut said "the largest board";
+by line count — cfd-209's own instrument — `/dawnspur-storm/` (767 / 733),
+`/dawnspur-line/` (549 / 610) and `/dawnspur-dispatch/` (481 / 494) are larger than
+C12's 477 / 450; it is the largest of the city lineage.)*
 than the boards before it, **that is information and it should be reported rather
 than pushed through.**
 
@@ -331,8 +356,8 @@ keeping promises."* Both branches are promises. Neither is the wrong one to keep
 **R6 — stakes live in the run and the in-progress, never the secured home.** A
 failed press-on costs the ending it had not yet banked — the `Collect.` it
 forwent — and never the home, the lamp, the larder, or Favor already earned.
-Mosswake's cold tile says it in four words: *"Still a neighbor. Nothing to
-collect."*
+Mosswake's cold tile says it in six words *(an earlier cut counted four)*: *"Still a
+neighbor. Nothing to collect."*
 
 **R2 / R3 / R4** — no upkeep, no decay, nothing moves with wall time. The
 unchosen branch does not rot, expire, or become unavailable through waiting. **A
@@ -516,10 +541,12 @@ the sit-question rule below, **it counts only if it arrives unprompted.**
 
 ---
 
-## Three pre-registered nulls, and each routes somewhere different
+## Four pre-registered nulls, and each routes somewhere different
 
 **None of these is a failure. Each is an answer, and they do not mean the same
-thing.**
+thing.** *(The heading read "Three" until rule B and the arm clear together split
+the pressed-on outcome into ended-cold and won-and-kept-playing; the section has
+listed four since the 2026-09-01 re-cut.)*
 
 **David pre-registered the first two himself, 2026-09-01, before the sit, and the
 wording is his** — a sitting that ends cold and a sitting that ends banked are
@@ -582,8 +609,15 @@ the intent question refused.
 - **Whether the corridor is load-bearing.** That is what this card is for.
 - **Whether a mid-sitting fork behaves like an opening fork.** The two have never
   been separated; that separation is the card's whole design.
-- **Whether two EV-equal branches are enough differentiation.** 6.80 against 6.96
-  is a marks-only reading. Null 3 exists because the honest answer may be no.
-- **The cost of building it.** C12 was the largest board attempted and this is
-  C12 plus a branch. No base rate. Report it if it runs long.
+- **Whether the two branches are differentiated enough to be weighed.** They are
+  in different currencies (§7.3) and no marks figure ranks them; null 4 exists
+  because the honest answer may be no. *(This bullet read "Whether two EV-equal
+  branches are enough differentiation. 6.80 against 6.96 is a marks-only reading.
+  Null 3 exists…" from the signature (`fdf0744`) through three re-cuts; that was
+  the Halt fork's arithmetic, withdrawn, and the differentiation null is now the
+  fourth.)*
+- **The cost of building it.** C12 was the largest city board attempted and this
+  is C12 plus a branch. No base rate. Report it if it runs long. *(An earlier cut
+  said "the largest board"; by line count three desk boards are larger — see the
+  Sequencing section. At `796d9a2` the C13 sim is 625 lines, 148 over C12's 477.)*
 - **Whether the answer generalises past Dawnspur.**

@@ -110,7 +110,11 @@ Home writing that shipped:
 4. **Inbound consist.** This is where the loops come home. After SITE:
    Come home. After LAND: home. This board does not send.
 
-Anchor locks are scenery. Blocked: waiting on new ground. Not ghost pads.
+Anchor locks are scenery. Nothing posts for them — they are `aria-hidden` and
+take no pointer. Not ghost pads. *(An earlier cut read "Blocked: waiting on new
+ground"; that sentence was only ever a CSS comment on the anchors block, never a
+notice, in this cut and in both earlier cuts — `255d828` and `b23006d` — it
+inherits from.)*
 
 Works stays. Foundry is work one. No Halt SEND. Heat not Air. Held
 island is not a fuel bill.

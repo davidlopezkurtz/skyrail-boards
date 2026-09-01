@@ -101,8 +101,15 @@ HEAD.** The enumeration is a courtesy; the catch-all is the rule.
 | `/dawnspur-halt/` **PASSED** | `6eb957e7` | `b5a56a14` |
 | `/dawnspur-site/` | `e9f81b74` | `070a4619` |
 | `/dawnspur-storm/` | `f4f17008` | `7711f979` |
-| `/dawnspur-line/` | `18b1324f` | `b6f21db0` |
-| `/dawnspur-dispatch/` | `576ce2b6` | `31aead60` |
+| `/dawnspur-line/` **PASSED** | `18b1324f` | `b6f21db0` |
+| `/dawnspur-dispatch/` **PASSED** | `576ce2b6` | `31aead60` |
+
+*(Earlier cuts of this table marked only the four city passes. `/dawnspur-line/`
+PASSED 2026-08-28 at host `3588bb4` — `docs/cfd-203-beat.md:1511`, `:1549` — and
+`/dawnspur-dispatch/` PASSED 2026-08-26 at host `663d4fa` —
+`docs/cfd-196-beat.md:835-838`; `git show <host>:sit/<b>/sim.js | sha256sum` gives
+`18b1324f` and `576ce2b6`, the pins above, unchanged at HEAD. The rows this beat
+inherits from them under §7 require those passes.)*
 
 All eight stand. **Parent: `/they-remember/`** — CFD-208, PASSED 2026-08-31.
 Named at signature per §7.1 item 4, not assumed at drafting.
@@ -206,11 +213,15 @@ already earned are never the stake.
 **R2 / R3 / R4** — no upkeep, no decay, nothing moves with wall time. A failed run
 costs what was committed to it and nothing accrues afterwards.
 
-**R1** — heat is the master resource, marks are money, never the same sink. Heat
-not Air.
+**R1** — heat is the master resource, marks are money, never the same sink. **R9**
+— Heat not Air. *(An earlier cut filed "Heat not Air" under R1; it is R9, directive
+1.19.)*
 
-**Tutorial Beat 8 — "Rustfall stays dark."** Beat 8's player action is *"None
-required"*, so it is not a sitting and never will be. Its content **already ships**:
+**Tutorial Beat 8 — "A taste of the frontier (gentle)"
+(`Skyrail-Reclamation-Tutorial-Script-Dawnspur-Halt.md`:193) — Rustfall stays dark.**
+Beat 8's player action is *"None required"* *(an earlier cut quoted "Rustfall stays
+dark" as the beat's title; that is this lineage's gloss — the script names Rustfall
+Yard only at :240, after the tutorial)*, so it is not a sitting and never will be.
 `dawnspur-line/sim.js:112` carries Rustfall as `chartered: true, sendable: false`,
 *"Raiders hold the yard road."* That is Mara's *"people who'd rather take a railcar
 than fill one"* rendered as a route that refuses. **It arrives here inherited, as
@@ -235,10 +246,14 @@ says so in its own writing, and the corridor continues. **No re-roll, no refund,
 consolation.** The sitting does not end on a failure — the world keeps going, which
 is R6's fail-forward read.
 
-**The stakes are the route's own**, inherited: provisions and toll as already
-shipped. No new currency. No food-to-marks exchange rate (canon §7.3 — and a pair
-that differs in both stocks is unrankable, which is a property to publish, not a
-defect to price away).
+**The stakes are the route's own**, inherited: provisions 2 and toll 0, paid in
+marks — the dispatch board's denomination (CFD-196), not food off the terrace
+(CFD-203's join, refused below). No new currency, and no second stock: there is no
+food here to exchange, so no food-to-marks rate can exist. *(An earlier cut read
+"provisions and toll as already shipped" and cited canon §7.3's unrankable pair;
+"as shipped" names two boards that debit provisions from different stocks —
+`s.stores` on the line, `s.marks` on dispatch — and §7.3's property needs two
+stocks where this board carries marks only.)*
 
 **Marks**: the opening float is the desk's, not the museum's zero. **See the defect
 note below — this board must not inherit `they-remember`'s marks assignment.**
@@ -259,7 +274,11 @@ chance. One 440px column, no scroll, no camera.
 
 ## Ends
 
-Arm-then-trigger, inherited from CFD-208's ruling 5 shape. **Note the structural
+Arm-then-trigger, inherited from CFD-201's ruling 5 shape — *"topping the terrace
+arms the ending, a storm cargo triggers it"* — as shipped and passed on the line
+board (CFD-203) and cited by canon §7.2. *(An earlier cut attributed the ruling to
+CFD-208; `/they-remember/`'s stop is a single act, `commitCollect` → `stopped`, and
+its beat carries no ruling 5.)*
 trap the author must not walk into:** on the line board
 `if (r.chartered && topped()) s.stopped = true` is the only stop, and
 `cloud-basin-span` is the **only** route that is both `chartered` and `sendable` —
@@ -281,7 +300,7 @@ condition explicitly on this board rather than inheriting an accident.
 | Favor as booleans, no meter | **INHERITED** | CFD-208 |
 | Routes: pays, provisions, toll, honest chance | **INHERITED** | CFD-196 / CFD-203 |
 | Rustfall dark — Beat 8 dressing | **INHERITED** | CFD-203 |
-| Arm-then-trigger stop | **INHERITED**, stated explicitly here | CFD-208 |
+| Arm-then-trigger stop | **INHERITED**, stated explicitly here | CFD-201 ruling 5 / CFD-203, via §7.2 *(was "CFD-208")* |
 | Weather | **REFUSED** — the storm stopped, it did not pass; importing it is a second new system | §7 |
 | Simultaneous lit places | **REFUSED** — its own card, ruled by David 2026-08-31 | §7 |
 | A Favor meter, bar, number or new currency | **REFUSED** | Beat 7 kill list |
@@ -396,6 +415,8 @@ evidence recorded.
 **Pre-registered null:** if he sends once from the free Halt and stops, the places
 are still scenery and the desk was doing the work all along. **That is a finding,
 not a failure**, and it routes to a smaller board rather than a recut.
+
+*(Recorded 2026-09-01, after the sit, and the sentence above is left as it was pre-registered: "the free Halt" is the line board's route — `dawnspur-halt`, provisions 0, toll 0, on `/dawnspur-line/` — and on this board the Halt is HOME: `canSend()` requires `consistAt === "halt"` and `notice("halt")` never lights, so the null as written describes a send the board cannot make. The only send here is Mosswake, at a stake of two; read the null as "sends Mosswake once, brings her home, and stops". The sit met a failed run, so the null did not fire. This is the name collision the cfd-210 re-cut found one beat downstream, recorded here at its upstream.)*
 
 **If it fails, §7.4 binds:** the next recut may not be the same KIND as the one that
 failed, and if the only remaining move is another writing recut, the finding goes to

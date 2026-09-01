@@ -220,8 +220,10 @@ Every line testable, red-first.
 - **SEND costs nothing.** No marks, no food stake, no fuel, no Favor.
 - **Opening marks 0.** The Halt already spent the float.
 - **One SEND. One run. One home.**
-- **Rim / gap is a constant.** SEND does not write it. Home does not
-  write it.
+- **The gap is a constant.** `GAP` is `{ left: 42, width: 16 }`. This board has no
+  rim — `rim` is `/dawnspur-halt/`'s own constant and is not read here. SEND does
+  not write it. Home does not write it. *(An earlier cut read "Rim / gap is a
+  constant"; the rim is halt's, and this board carries only the gap.)*
 
 ---
 

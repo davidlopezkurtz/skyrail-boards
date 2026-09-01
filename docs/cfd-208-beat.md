@@ -143,6 +143,13 @@ Basin bolted on; grey squares; scenery-divs; beige HUD.
 
 ## Does
 
+*Cut 0, superseded in place. The recut — cut 1 — Go to the people who remember
+(PASSED 2026-08-31, `a525218`) moved the one live can-do off the Halt to Mosswake;
+the shipped sim is `a3345903` (cut-1 merge `7b58a18`), not cut 0's `164bd741`
+(merge `7bcc315`). The Does, Sees, Ends, On this sitting, numbers and Sit sections
+from here to the recut are the record of what shipped on 2026-08-30 and are not the
+shipped board. The Seat above, its pins, and both Kill lists still govern.*
+
 **Collect:** the only opening can-do. The world answers the help.
 Writing: people remember who showed up. Protect that line. Collecting
 the already-kept Supply, not a new dispatch. Costs nothing this
@@ -156,7 +163,10 @@ sitting does not Put them up.
 heat already on the reached ground, food already in the town, herbs
 already in the larder. The glass held the food. A held island is not a
 fuel bill. This node posts. It does not light, SITE, LAND, CAST, or
-SEND. Collect lives here — the kept Supply is at the Halt. After
+SEND. Collect lived here on cut 0 — the kept Supply was taken at the Halt. *(Cut 1
+moved the one live can-do to Mosswake; on the shipped board (`a3345903`) the Halt
+is blocked, pointing outward — "The herbs are already up. Nothing here is yours to
+take." — see the recut below.)* After
 Collect the writing is the protected line. Do not recut halt files.
 
 **Mosswake (read):** quiet. A neighbor again (the run already came
@@ -387,9 +397,11 @@ doing has a destination. The causal link sits in the sequence, not in the captio
 This is canon's own logic read literally: *people* remember who showed up, and the
 people are not at your Halt.
 
-**Precedent, and it is the strongest in the corpus.** `/dawnspur-halt/` is the
-only recut-to-pass on the project, and it passed by moving the act rather than the
-words — `923002d`, header `// One NEW system: the walk.`, one live can-do at a
+**Precedent, and it is the strongest in the corpus.** `/dawnspur-halt/` was, when
+this recut was written, the only recut-to-pass on the project, and it passed by
+moving the act rather than the words *(An earlier cut read "is the only
+recut-to-pass"; this board became the second at `a525218`, 2026-08-31.)* —
+`923002d`, header `// One NEW system: the walk.`, one live can-do at a
 time with world-gated blocked reasons routing the player. The PM refused *"a
 louder Home recut"* first. This recut is that shape.
 
@@ -494,7 +506,9 @@ Every line a test. Red-first.
   `510a392` / `6c30179c` / `f5407bca`; halt `66b5507` / `b5a56a14` / `6eb957e7`;
   site `c59dc101` / `070a4619` / `e9f81b74`; storm `555ba9a9` / `7711f979` /
   `f4f17008`; line `18b1324f` / `b6f21db0`; dispatch `576ce2b6` / `31aead60`.
-  All eight verified unmoved at `7998e8e` before this beat was written.
+  All seven verified unmoved at `7998e8e` before this beat was written. *(An earlier
+  cut read "eight"; the list above names seven boards, and seven is what was
+  measured.)*
 - `sit/` and `public/` copies differ.
 
 ### Wanted after one sit
