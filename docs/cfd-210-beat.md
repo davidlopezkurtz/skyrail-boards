@@ -3,7 +3,47 @@
 The first choice in the game. Sibling `/two-ways-from-here/`. Not a recut of
 anything.
 
-**NOT SIGNED.** Awaiting David.
+## SIGNED — David, 2026-09-01.
+
+His word: *"Sign it."*
+
+**IMPLEMENTATION IS HELD FOR ONE EXCHANGE, and the reason is a measurement David
+asked for and got.** He signed with a caveat: *"0.16 apart is a very tight fork,
+and the third null is the one I'd expect… The stake asymmetry, free versus two, is
+the only real difference and it only bites when you're short. Worth checking the
+opening float makes that live rather than academic."*
+
+**Checked. The asymmetry is live, and it makes the designed fork academic anyway.**
+Driven against the shipped parent:
+
+```
+SHORT  (after a failed run)   marks 1   armed TRUE
+         LIVE: mosswake "Collect."
+         dark: halt, consist, rustfall
+RICH   (after a good run)     marks 15  armed false
+         LIVE: mosswake "SEND. 64."
+```
+
+**Mosswake costs 2 and the float is 3, so a failed run leaves 1 — Mosswake is
+unaffordable exactly when the stake asymmetry would matter.** The Halt-versus-
+Mosswake weigh therefore only ever occurs in the RICH regime, where the two are
+**0.16 marks apart**. The fork this beat designs is EV-equal by construction at the
+only moment it can occur, which is null 3 arrived at on paper.
+
+**And the measurement found a better fork sitting in the short regime.** After a
+failure the board arms and offers `Collect.` — the ending. A free Halt send there
+is **bank what you have, or take a free 68 for 10 more**: exclusive branches, real
+stakes, and it exists precisely at the moment the board already treats as decisive.
+
+**So there is a one-line question for David before Cursor starts, and holding one
+exchange is cheaper than a sitting spent proving a null we predicted:**
+
+> **Does the Halt light beside `Collect.` in the short regime (bank or press on
+> free), rather than beside Mosswake in the rich one (0.16 apart)?**
+
+Either answer keeps the one new system — the corridor forks once, after
+commitment — and both are a fork after commitment. Only the location moves. The
+rest of this beat stands as written under either.
 
 ---
 
@@ -297,13 +337,20 @@ Per canon §7.4: **ask what he did, and whether he can name what it bought. Neve
 ask what he was trying to do** — refused on this project with its evidence
 recorded.
 
-**One thing to listen for, carried from C12 and marked as an observation rather
-than a finding.** His C12 sit opened on capability — *"I could send Mosswake runs,
-which I did"* — where the four city passes before it opened on the act. One
-phrasing, n=1. **This board is the first that can actually test it:** a fork is
-where *could* and *did* come apart, and if the sit names what he could have done
-and did not, that is the finding this lineage has twice reached for and never
-had.
+**One thing to listen for — and DO NOT ASK FOR IT.** David's correction,
+2026-09-01: *"Asking 'what didn't you do' produces an answer whether or not the
+option was ever live, same failure mode as the intent question §7.4 refuses. Ask
+what happened, and count it only if the unchosen branch appears on its own."*
+
+So: **ask what happened. Nothing else.** His C12 sit opened on capability —
+*"I could send Mosswake runs, which I did"* — where the four city passes before it
+opened on the act. A fork is where *could* and *did* come apart, and if the
+unchosen branch appears **unprompted**, that is the finding this lineage has twice
+reached for and never had.
+
+**If it has to be asked for, it does not count.** A prompted answer here is
+indistinguishable from a manufactured one, which is the exact defect that makes
+the intent question refused.
 
 ---
 
