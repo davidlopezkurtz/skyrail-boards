@@ -663,3 +663,87 @@ ship and the finding goes to a new beat.
 
 Related: §7 (one new system per sitting), §7.2 (the stop is what makes length
 opt-in), and `KILLS.md`, where every recut decision and its shas are recorded.
+
+### 7.5 Pre-register what each outcome means — including the null — before the sit. RULED, David, 2026-09-01
+
+**The rule.** Before a board is sat, write down the outcomes it can produce and
+what each one would mean. **Including the outcome where nothing happens.** A sit
+that arrives without that split gets read against whichever story is nearest, and
+the nearest story is the one the author already believed.
+
+**Why it is canon and not a habit: it was rediscovered twice, in different shapes,
+from different seats, five days apart** — David's TEND question on 2026-08-27
+(`f02cbc7`), the orchestrator's three nulls on CFD-210 on 2026-09-01. David:
+*"Two independent rediscoveries in different shapes is enough evidence, and the
+value is specifically that it forces the split before you have a result to
+rationalise."*
+
+**§7.4 got here first and filed it as a detail.** It cites the TEND question as
+the worked example of a question that *looks* like an intent question and is not,
+and it does say — in a subordinate clause — that the question *"pre-registers what
+each answer means, including the null."* So the observation was made and then used
+as support for a different rule. §7.5 promotes it: **the pre-registration is not a property that made one good question good, it
+is the requirement.**
+
+**The value is the timing, not the writing.** Anyone can classify an outcome after
+seeing it. The split is only worth something while it is still cheap to be wrong
+about — which is before the sitting, when nobody is defending anything.
+
+#### Worked example 1 — CFD-203, the TEND question
+
+Quoted in full at **§7.4** and at `docs/cfd-203-beat.md:1352`. Not re-quoted here:
+it is one passage, and a second copy in an adjacent section is how a document
+starts disagreeing with itself. Its three outcomes, written before the sit:
+
+| outcome | what it means | where it routes |
+| --- | --- | --- |
+| nobody tends | *"that's the answer"* — the verb is dead | cut it |
+| they tend and name what it bought | the verb is live | keep it |
+| they tend and cannot say what it bought | a habit from a board that no longer exists | cut it, or merge it into the food line |
+
+**Note the middle and the third look identical in a usage count.** Both are "TEND
+was used." Only the pre-registered split separates a live verb from a reflex, and
+**a counter can never make that distinction at all.**
+
+#### Worked example 2 — CFD-210, the three nulls
+
+The same insight in a different shape. Three ways a fork can produce no decision:
+
+| outcome | what it means | where it routes |
+| --- | --- | --- |
+| banks immediately, without remarking | the branch was never live to him | the corridor is load-bearing; close the question |
+| presses on, never mentions what he passed up | the fork is real, one branch invisible | what makes a forgone option legible |
+| does it once, cannot say why | a coin-flip dressed as a choice | differentiation |
+
+**All three would be logged as "the player used the fork."** They mean three
+different things and route to three different places. Without the split, the first
+sit produces whichever reading the author was already carrying.
+
+#### What this obliges
+
+- **Write the outcomes and their meanings into the beat, before signature.** Not
+  as a prediction of which will happen — as a commitment to how each will be read.
+- **Include the null, always, and say what it would mean.** *"Nobody touched it"*
+  is a result. This project has twice found the null to be the most informative
+  outcome available, and an unregistered null gets reported as "inconclusive."
+- **Say where each outcome routes.** An outcome with no destination will be argued
+  about instead of acted on.
+- **A result you cannot map onto the registered split is a finding in itself** —
+  it means the board could do something the beat did not anticipate, which is
+  worth more than a clean confirmation.
+
+#### What it is not
+
+**Not a prediction.** Registering three outcomes is not a claim about which will
+occur, and a beat that argues for one of them has defeated the purpose.
+
+**Not a substitute for the sit.** The split says what an outcome would mean; only
+the sitting says which happened. §7.4's question form still binds — **ask what
+they did, and whether they can name what it bought.**
+
+**Not a licence to count.** Two of the TEND outcomes are the same number and
+different findings. If a split can be resolved by a counter, it was not a split
+worth registering — and if it cannot, the counter is not the instrument.
+
+Related: §7.4 (the sit's question form, and the refused one), and CFD-203 and
+CFD-210, which carry the worked examples above.
