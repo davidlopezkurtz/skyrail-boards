@@ -1,0 +1,74 @@
+Two Ways from Here CFD-210 — C13 — two ways from here 2026-09-01
+Spec: docs/cfd-210-beat.md - SIGNED, David 2026-09-01, and re-cut the
+same day after a measurement refuted its own premise: the Halt is HOME
+on this board, not a destination, and the fork moved to bank-or-press-on
+at the arm. Sibling /two-ways-from-here/. Not a recut of anything.
+Parent: /dice-at-the-places/ (CFD-209, PASSED 2026-09-01).
+One NEW system: the corridor forks once, after commitment. One live
+can-do opens the board, exactly as the parent's does. A run comes home
+SHORT, the board arms, and a second place lights: Collect. at Mosswake
+(bank - C12's ending, inherited whole) and ROLL HER OUT. 64. on the
+consist (press on - one more Mosswake run, stakeOf() waived). Paid:
++14, the arm clears, Collect. goes out of reach, back in the paying
+loop. Short: the sitting ends COLD - no Collect., no +1, no
+remembering. Rule B, David 2026-09-01. The cost is on the consist tile
+BEFORE the tap: "The larder covered it once. It will not cover it
+twice." Two live can-dos at the arm and never more; one everywhere
+else; never two at the OPEN. No new numbers - 64 / 14 / stake 0 are
+Mosswake's own, inherited unmoved. Two stops, each stated. Two
+endings, two sentences, both on the tiles - endSentence is never
+rendered. Every place button carries `lit` from notice().canDo - one
+rule, identical for every button, never grey for the unlit. Opening
+marks 3 - the desk's float. Collect increments. Rustfall dark - Beat 8
+dressing. Writing is the board. Mara shows, not lectures.
+
+Refused: the Halt as a send (it is home here - the name-collision error
+the beat shipped and withdrew), Rustfall as a send (CFD-200 owns it by
+name), a third live can-do, two lit at the OPEN, weather, a second new
+system, a new currency, crews, Sera, a Favor meter, a timer or decay on
+the fork, Mara VO, `?`, tutorial mode, any pin moving.
+
+Canon (cite, do not recall as a second bible): Bible §5.8 Contracts.
+Supply - both branches are promises with a stated chance. Core Loop:
+earns Favor by helping neighbors and keeping promises. File:
+Skyrail-Reclamation-The-Core-Loop.md. R6 - stakes live in the run,
+never the secured home: a cold ending costs this sitting's ending and
+nothing already earned. R2 / R3 / R4 - nothing moves with wall time;
+the unchosen branch never expires. §7.2 - the quick path is banking.
+§7.5 - the nulls are pre-registered in the beat. Bible sha 9a305653.
+Beat 8 frontier is inherited dressing, not a sitting.
+
+Lives at sit/two-ways-from-here/ with byte-copies at
+public/two-ways-from-here/, so the boards that already stand are
+untouched - the lineage lock:
+
+  live /dice-at-the-places/ sim f64b4309 / index d97d9951  (PASSED - the parent)
+  live /they-remember/     sim a3345903 / index acbf4304  (PASSED)
+  live /herbs-larder/      sim 76c886b9 / index 676587bc  (PASSED; merge 6e606e5)
+  live /mosswake-loop/     sim f5407bca / index 6c30179c  (PASSED; merge 510a392)
+  live /dawnspur-halt/     sim 6eb957e7 / index b5a56a14  (PASSED; merge 66b5507)
+  live /dawnspur-site/     sim e9f81b74 / index 070a4619  (failed sit; merge c59dc101)
+  live /dawnspur-line/     sim 18b1324f / index b6f21db0
+  live /dawnspur-dispatch/ sim 576ce2b6 / index 31aead60
+  live /dawnspur-scale/    sim 953368a1 / index 5d2f452f
+  live /dawnspur-heat/     sim 292d6645
+  kill /dawnspur/          sim 395c18f2
+  live /convoy-stop/       sim 5ad814e6
+  live /dawnspur-storm/    sim f4f17008 / index 7711f979
+
+Dice-at-the-places is PASSED and is the parent. Do not recut it.
+Halt live merge is 66b5507. Do not recut it. Do not add SEND to it.
+Mosswake live merge is 510a392. Do not recut it.
+Herbs-larder live merge is 6e606e5. Do not recut it.
+They-remember is PASSED. Do not recut it.
+Storm live merge is 555ba9a9. Do not recut it.
+Site live merge is c59dc101. Do not recut it.
+
+These hashes are graded by test/two-ways-from-here.test.js against the
+bytes on disk, measured LF (.gitattributes `* -text` makes the blob the
+shipped bytes; the working tree is never the artefact). Nothing was
+committed when this was written, so they are disk hashes of the
+authored copy; a manifest cannot carry its own.
+
+index.html      sha256:d800c8de6bec83dce31dd7513023f7f71f4cac309c52f76c6358a80e3b613910
+sim.js          sha256:13bb2d43d8650ef814764d928c6aa0f26a74776b2831874a336ff82c9b131858
