@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Dice at the Places</title>
+<style>
+  :root {
+    --bg: #161018;
+    --ink: #ece6dc;
+    --sel: #f2e6c8;
+    --warm: #c07a3a;
+    --ember: #e87828;
+    --molten: #f09030;
+    --soil: #5a3820;
+    --soil-edge: #3a2414;
+    --moss-soil: #3a2a18;
+    --moss-edge: #24180c;
+    --gap: #12161c;
+    --gap-edge: #0a0c10;
+    --bronze: #8a5a28;
+    --bronze-d: #5a3818;
+    --glass: rgba(140, 210, 190, 0.38);
+    --glass-edge: rgba(190, 240, 220, 0.55);
+    --moss-glass: rgba(80, 140, 120, 0.28);
+    --moss-glass-edge: rgba(120, 180, 150, 0.4);
+    --food: #e8b040;
+    --food-d: #b07820;
+    --herbs: #c87820;
+    --herbs-d: #8a5010;
+    --hearth: #ff9020;
+    --home: #3a2a1c;
+    --timber: #3a2a1c;
+    --timber-edge: #241810;
+    --rail: #c87828;
+    --rail-d: #8a4818;
+    --yard: #241410;
+    --yard-edge: #140c08;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+  html { touch-action: manipulation; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink);
+    font-family: ui-sans-serif, system-ui, sans-serif; user-select: none; overflow: hidden; }
+  body { display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+    min-height: 100dvh; padding: env(safe-area-inset-top) 10px env(safe-area-inset-bottom); }
+  #app { width: min(440px, 100%); flex: 1; display: flex; flex-direction: column; gap: 8px; padding: 4px 0 10px; min-height: 0; }
+
+  /* The HUD is museum: one marks line. Nothing else. */
+  #hud { flex-shrink: 0; padding: 0 4px; }
+  #marks-line {
+    min-height: 22px; text-align: right; font-size: 18px; font-weight: 700;
+    letter-spacing: .06em; color: var(--ink);
+  }
+
+  #strip {
+    position: relative; flex: 1; min-height: 0; background: #1a1420;
+    overflow: hidden;
+    box-shadow: inset 0 0 0 2px #100c14;
+  }
+
+  #sky {
+    position: absolute; left: 0; right: 0; top: 0; height: 38%;
+    background: #241428;
+    box-shadow: inset 0 -18px 0 rgba(232, 120, 40, 0.12);
+  }
+
+  /* Halt island. Heat-as-terrain already stepped. Read, not recut. */
+  #halt-ground {
+    position: absolute; left: 0; width: 42%; bottom: 0; top: 38%;
+    background: var(--soil);
+    box-shadow: inset 0 0 0 2px var(--soil-edge), inset 0 20px 0 rgba(232, 120, 40, 0.22),
+      inset 30% 0 0 0 rgba(240, 144, 48, 0.32);
+  }
+  #heat-step {
+    position: absolute; left: 28%; bottom: 22%; width: 18%; height: 12%;
+    background: var(--molten);
+    box-shadow: 0 0 16px 5px rgba(240, 144, 48, 0.5);
+  }
+
+  /* One map. Cold between islands. Not a pad. */
+  #gap {
+    position: absolute; left: 42%; width: 16%; top: 32%; bottom: 0;
+    background: var(--gap);
+    box-shadow: inset 0 0 0 2px var(--gap-edge);
+    pointer-events: none;
+  }
+
+  /* Mosswake island. Quiet. An island riding high. A neighbor again. */
+  #moss-ground {
+    position: absolute; left: 58%; width: 42%; bottom: 0; top: 40%;
+    background: var(--moss-soil);
+    box-shadow: inset 0 0 0 2px var(--moss-edge), inset 0 14px 0 rgba(80, 140, 90, 0.16);
+  }
+
+  #horizon { position: absolute; left: 6%; right: 6%; top: 14%; height: 20%; pointer-events: none; }
+  .hz {
+    position: absolute; bottom: 0; background: #2a1830;
+    box-shadow: inset 0 -6px 0 #1a101c;
+  }
+  #hz-a { left: 2%; width: 8%; height: 64%; }
+  #hz-b { left: 78%; width: 10%; height: 52%; }
+
+  /* Station board. Writing is the board. Not a lecture box. */
+  #notice {
+    position: absolute; left: 16%; top: 3%; width: 68%; height: 16%;
+    background: var(--timber);
+    box-shadow: inset 0 0 0 3px var(--timber-edge);
+    padding: 6px 8px;
+    display: flex; flex-direction: column; justify-content: center; gap: 2px;
+    pointer-events: none;
+  }
+  #notice-now, #notice-wait {
+    font-size: 13px; line-height: 1.25; letter-spacing: .02em; color: var(--sel);
+    min-height: 0;
+  }
+  #notice-do {
+    display: none; align-self: flex-start;
+    margin: 0; padding: 0; border: 0; background: transparent;
+    font: inherit; font-size: 13px; line-height: 1.25; letter-spacing: .02em;
+    font-weight: 700; color: var(--molten);
+    text-decoration: underline; text-underline-offset: 2px;
+    cursor: pointer; pointer-events: auto;
+    touch-action: manipulation;
+  }
+  #notice.has-do #notice-do { display: inline; }
+
+  /* Places stay buttons. Not grey brick, not hopping outline, not scenery-divs. */
+  #halt, #mosswake, #consist {
+    border: 0; padding: 0; font: inherit; color: inherit;
+    background: transparent;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  /* The Halt. Lit. Holds. Herbs already in the larder. */
+  #halt {
+    position: absolute; left: 3%; bottom: 16%; width: 36%; height: 44%;
+    background: transparent;
+  }
+  #halt .lamp-post {
+    position: absolute; left: 8%; bottom: 0; width: 6%; height: 62%;
+    background: var(--bronze);
+    box-shadow: inset 0 0 0 2px var(--bronze-d);
+    pointer-events: none;
+  }
+  #halt .lamp-arm {
+    position: absolute; left: 10%; top: 28%; width: 10%; height: 6%;
+    background: var(--bronze-d);
+    pointer-events: none;
+  }
+  #halt .globe {
+    position: absolute; left: 4%; top: 12%; width: 16%; height: 20%;
+    border-radius: 50%;
+    background: var(--molten);
+    box-shadow: 0 0 18px 6px rgba(240, 144, 48, 0.55), inset 0 0 0 2px #c87818;
+    pointer-events: none;
+  }
+  #halt.remembered .globe {
+    box-shadow: 0 0 22px 8px rgba(240, 144, 48, 0.7), inset 0 0 0 2px #c87818;
+  }
+  #halt .roof {
+    position: absolute; left: 24%; top: 18%; width: 28%; height: 16%;
+    background: #2a5a38;
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    pointer-events: none;
+  }
+  #halt .glass {
+    position: absolute; left: 26%; top: 32%; width: 24%; height: 28%;
+    background: var(--glass);
+    box-shadow: inset 0 0 0 2px var(--glass-edge), inset 0 -8px 0 #2a4a32;
+    pointer-events: none;
+  }
+  #halt .stack {
+    position: absolute; left: 72%; top: 4%; width: 14%; height: 28%;
+    background: #a04828;
+    box-shadow: inset 0 0 0 2px #6a2818;
+    pointer-events: none;
+  }
+  #halt .hall {
+    position: absolute; left: 54%; top: 28%; width: 38%; height: 48%;
+    background: #d06028;
+    box-shadow: inset 0 0 0 3px #7a3018;
+    pointer-events: none;
+  }
+  #halt .hearth {
+    position: absolute; left: 66%; bottom: 28%; width: 12%; height: 14%;
+    background: var(--hearth);
+    box-shadow: 0 0 14px 4px rgba(255, 144, 32, 0.55);
+    pointer-events: none;
+  }
+  #halt .larder {
+    position: absolute; left: 28%; bottom: 2%; width: 20%; height: 14%;
+    background: #4a2c18;
+    box-shadow: inset 0 0 0 2px #2a180c, inset 0 3px 0 #6a3c20;
+    pointer-events: none;
+  }
+  #halt .larder-haul {
+    display: none; position: absolute; left: 31%; bottom: 5%; width: 14%; height: 7%;
+    background: var(--herbs);
+    box-shadow: inset 0 -2px 0 var(--herbs-d);
+    pointer-events: none;
+  }
+  #halt.put-up .larder-haul { display: block; }
+
+  #town-food {
+    position: absolute; left: 14%; bottom: 18%; width: 7%; height: 7%;
+    background: var(--food);
+    box-shadow: inset 0 -3px 0 var(--food-d);
+    pointer-events: none;
+  }
+  #town-herbs {
+    display: none; position: absolute; left: 24%; bottom: 18%; width: 7%; height: 7%;
+    background: var(--herbs);
+    box-shadow: inset 0 -3px 0 var(--herbs-d);
+    pointer-events: none;
+  }
+  #town-herbs.in { display: block; }
+
+  #platform-halt {
+    position: absolute; left: 0; width: 42%; bottom: 0; height: 12%;
+    background: var(--home);
+    pointer-events: none;
+  }
+
+  /* The span. The line already ran. Scenery, not a pad. */
+  #span {
+    position: absolute; left: 40%; bottom: 10%; width: 20%; height: 8%;
+    pointer-events: none;
+  }
+  #span .rail {
+    position: absolute; left: 0; right: 0; top: 36%; height: 28%;
+    background: var(--ember);
+    box-shadow: inset 0 -2px 0 var(--rail-d), 0 0 10px 2px rgba(232, 120, 40, 0.35);
+  }
+  #span.kept .rail {
+    background: var(--ember);
+    box-shadow: inset 0 -2px 0 var(--rail-d), 0 0 10px 2px rgba(232, 120, 40, 0.35);
+  }
+  #span .tie {
+    position: absolute; top: 18%; width: 8%; height: 64%;
+    background: var(--bronze-d);
+  }
+  #tie-a { left: 12%; }
+  #tie-b { left: 46%; }
+  #tie-c { left: 80%; }
+
+  /* Mosswake. Quiet glasshouse. A neighbor again. A place, not a square. */
+  #mosswake {
+    position: absolute; left: 60%; bottom: 18%; width: 32%; height: 40%;
+    background: transparent;
+  }
+  #mosswake .roof {
+    position: absolute; left: 8%; top: 4%; width: 84%; height: 28%;
+    background: #1a4a38;
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    pointer-events: none;
+  }
+  #mosswake .glass {
+    position: absolute; left: 12%; top: 30%; right: 12%; bottom: 12%;
+    background: var(--moss-glass);
+    box-shadow: inset 0 0 0 2px var(--moss-glass-edge), inset 0 -10px 0 #0c2a22;
+    pointer-events: none;
+  }
+  #mosswake.remembered .glass {
+    background: rgba(80, 140, 120, 0.4);
+    box-shadow: inset 0 0 0 2px rgba(120, 180, 150, 0.55), inset 0 -10px 0 #0c2a22;
+  }
+
+  #platform-moss {
+    position: absolute; left: 58%; width: 42%; bottom: 0; height: 12%;
+    background: #24180c;
+    pointer-events: none;
+  }
+
+  /* Rustfall. Dark. Beat 8 dressing. A place, not a grey square. */
+  #rustfall {
+    position: absolute; left: 86%; bottom: 62%; width: 12%; height: 16%;
+    border: 0; padding: 0; font: inherit; color: inherit;
+    background: transparent;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+  #rustfall .shed {
+    position: absolute; left: 18%; top: 28%; width: 64%; height: 52%;
+    background: var(--yard);
+    box-shadow: inset 0 0 0 2px var(--yard-edge);
+    pointer-events: none;
+  }
+  #rustfall .peak {
+    position: absolute; left: 10%; top: 8%; width: 80%; height: 28%;
+    background: #1a100c;
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    pointer-events: none;
+  }
+
+  #consist {
+    position: absolute; z-index: 3;
+    background: transparent;
+  }
+  #consist.at-halt { left: 4%; bottom: 1%; width: 18%; height: 12%; }
+  #consist.home { left: 4%; bottom: 1%; width: 18%; height: 12%; }
+  #consist.at-mosswake { left: 68%; bottom: 2%; width: 18%; height: 12%; }
+  #consist .engine {
+    position: absolute; left: 0; top: 8%; width: 42%; bottom: 18%;
+    background: #5a3020;
+    box-shadow: inset 0 -4px 0 #3a1c14, inset 8px 6px 0 0 #e8a040;
+    pointer-events: none;
+  }
+  #consist .car {
+    position: absolute; top: 22%; bottom: 22%; width: 26%;
+    background: #6a3824;
+    box-shadow: inset 0 0 0 1px #3a2014, inset 6px 4px 0 0 #d09038;
+    pointer-events: none;
+  }
+  #car-a { left: 44%; }
+  #car-b { right: 0; }
+  #consist .haul {
+    display: none; position: absolute; left: 48%; top: 28%; width: 18%; height: 28%;
+    background: var(--herbs);
+    box-shadow: inset 0 -2px 0 var(--herbs-d);
+    pointer-events: none;
+  }
+  #consist.hauled .haul { display: block; }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="hud">
+    <div id="marks-line">3 marks</div>
+  </div>
+  <div id="strip">
+    <div id="sky" aria-hidden="true"></div>
+    <div id="halt-ground">
+      <span id="heat-step"></span>
+    </div>
+    <div id="gap" aria-hidden="true"></div>
+    <div id="moss-ground"></div>
+    <div id="horizon" aria-hidden="true">
+      <span class="hz" id="hz-a"></span>
+      <span class="hz" id="hz-b"></span>
+    </div>
+    <div id="notice">
+      <div id="notice-now"></div>
+      <button type="button" id="notice-do"></button>
+      <div id="notice-wait"></div>
+    </div>
+    <button type="button" id="halt" class="holds put-up" aria-label="the Halt">
+      <span class="lamp-post"></span>
+      <span class="lamp-arm"></span>
+      <span class="globe"></span>
+      <span class="roof"></span>
+      <span class="glass"></span>
+      <span class="stack"></span>
+      <span class="hall"></span>
+      <span class="hearth"></span>
+      <span class="larder"></span>
+      <span class="larder-haul"></span>
+    </button>
+    <div id="town-food" aria-hidden="true"></div>
+    <div id="town-herbs" class="in" aria-hidden="true"></div>
+    <div id="platform-halt" aria-hidden="true"></div>
+    <div id="span" class="kept" aria-hidden="true">
+      <span class="tie" id="tie-a"></span>
+      <span class="tie" id="tie-b"></span>
+      <span class="tie" id="tie-c"></span>
+      <span class="rail"></span>
+    </div>
+    <button type="button" id="mosswake" aria-label="Mosswake">
+      <span class="roof"></span>
+      <span class="glass"></span>
+    </button>
+    <div id="platform-moss" aria-hidden="true"></div>
+    <button type="button" id="rustfall" aria-label="Rustfall">
+      <span class="peak"></span>
+      <span class="shed"></span>
+    </button>
+    <button type="button" id="consist" class="home" aria-label="the consist">
+      <span class="engine"></span>
+      <span class="car" id="car-a"></span>
+      <span class="car" id="car-b"></span>
+      <span class="haul"></span>
+    </button>
+  </div>
+</div>
+<script src="./sim.js"></script>
+<script>
+(function () {
+  const board = DiceAtThePlaces.createBoard({ fresh: true });
+  const marksLine = document.getElementById("marks-line");
+  const haltEl = document.getElementById("halt");
+  const mossEl = document.getElementById("mosswake");
+  const consistEl = document.getElementById("consist");
+  const spanEl = document.getElementById("span");
+  const townHerbsEl = document.getElementById("town-herbs");
+  const noticeEl = document.getElementById("notice");
+  const nowEl = document.getElementById("notice-now");
+  const doEl = document.getElementById("notice-do");
+  const waitEl = document.getElementById("notice-wait");
+
+  function tap(el, fn) {
+    el.addEventListener("pointerdown", function (ev) { ev.preventDefault(); fn(ev); });
+  }
+
+  function paint() {
+    marksLine.textContent = board.marks + (board.marks === 1 ? " mark" : " marks");
+    mossEl.classList.toggle("dim", board.mossDim);
+    mossEl.classList.toggle("quiet", board.mossQuiet);
+    mossEl.classList.toggle("neighbor", board.neighborAgain);
+    mossEl.classList.toggle("remembered", board.remembered);
+    haltEl.classList.toggle("holds", board.haltHolds);
+    haltEl.classList.toggle("put-up", board.herbsInLarder);
+    haltEl.classList.toggle("remembered", board.remembered);
+    consistEl.className = board.consistAt === "mosswake" ? "at-mosswake" : "home";
+    consistEl.classList.toggle("hauled", board.haulOnConsist);
+    consistEl.setAttribute("aria-label", board.consistAt === "mosswake" ? "consist at Mosswake" : "the consist");
+    spanEl.classList.toggle("kept", board.promiseKept);
+    townHerbsEl.classList.toggle("in", board.herbsInLarder);
+
+    const n = board.postedNotice();
+    if (!n) {
+      nowEl.textContent = "";
+      doEl.textContent = "";
+      waitEl.textContent = "";
+      noticeEl.classList.remove("has-do");
+      return;
+    }
+    nowEl.textContent = n.writing;
+    waitEl.textContent = n.blocked || "";
+    if (n.canDo) {
+      doEl.textContent = n.canDo;
+      noticeEl.classList.add("has-do");
+    } else {
+      doEl.textContent = "";
+      noticeEl.classList.remove("has-do");
+    }
+  }
+
+  tap(haltEl, function () { board.postNotice("halt"); paint(); });
+  tap(mossEl, function () { board.postNotice("mosswake"); paint(); });
+  tap(consistEl, function () { board.postNotice("consist"); paint(); });
+  tap(document.getElementById("rustfall"), function () { board.postNotice("rustfall"); paint(); });
+  tap(doEl, function () { if (board.commitPosted()) paint(); });
+  paint();
+  document.addEventListener("touchstart", function (e) {
+    if (e.touches.length > 1) e.preventDefault();
+  }, { passive: false });
+})();
+</script>
+</body>
+</html>
