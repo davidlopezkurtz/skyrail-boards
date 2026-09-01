@@ -35,15 +35,21 @@ failure the board arms and offers `Collect.` — the ending. A free Halt send th
 is **bank what you have, or take a free 68 for 10 more**: exclusive branches, real
 stakes, and it exists precisely at the moment the board already treats as decisive.
 
-**So there is a one-line question for David before Cursor starts, and holding one
-exchange is cheaper than a sitting spent proving a null we predicted:**
+**RULED, David, 2026-09-01: the fork MOVES.** *"Bank-or-press-on beside
+`Collect.` is the better fork and the measurement makes it not a preference."*
 
-> **Does the Halt light beside `Collect.` in the short regime (bank or press on
-> free), rather than beside Mosswake in the rich one (0.16 apart)?**
+**And he named the reason that matters more than affordability.** *"Bank versus
+press-on is exclusive by construction, where Halt-versus-Mosswake in the rich
+regime is only exclusive because the board says so. A player with 15 marks can see
+no reason not to do both eventually, so the weigh is imposed rather than felt.
+Ending the run or risking it for 10 more is a decision the player already knows
+they're making."*
 
-Either answer keeps the one new system — the corridor forks once, after
-commitment — and both are a fork after commitment. Only the location moves. The
-rest of this beat stands as written under either.
+That distinction — **exclusive by construction against exclusive by fiat** — is the
+one to carry forward. A fork the board merely forbids you from having twice is not
+a choice; it is a queue with a gate on it.
+
+**Implementation is released.** The beat below is written to the moved fork.
 
 ---
 
@@ -113,7 +119,56 @@ first run comes home, a second place lights, and the order is the player's.**
 
 Not two at the open. That is the measured failure and it stays refused by name.
 
-### The fork is the Halt, and the numbers are why
+### The fork is BANK OR PRESS ON, and the mechanic is already half-built
+
+**Measured on the shipped parent, and it is why this location works:**
+`canSend()` returns false `if (s.armed)`. **Arming currently removes the send.**
+That is what forces the short regime to a single option and it is the exact line
+this board relaxes.
+
+**Today:** a run comes home short → the board arms → `Collect.` is the only thing
+lit → the sitting ends.
+
+**This board:** a run comes home short → the board arms → **`Collect.` lights AND
+the Halt lights, free.** Bank the ending you have earned, or take one more run at
+**68 for 10** first.
+
+**And pressing on risks the ending itself.** A successful press-on **clears the
+arm**, because the board's own closing sentence is *"the run came home short and
+the larder covered it"* — and if your last run came home paid, that sentence is no
+longer true. So you are back in the rich loop and must come home short again to
+earn an ending.
+
+That is what makes it a wager rather than free upside:
+
+| | you keep | you risk |
+| --- | --- | --- |
+| **Bank** | the ending, now, with what you have | the 10 you did not go for |
+| **Press on** | a 68% shot at 10 more | the ending — a win puts it back out of reach |
+
+**Exclusive by construction**, not by the board forbidding a second helping. You
+cannot both bank this ending and go for the run, because winning the run is what
+takes the ending away.
+
+### Why NOT the Halt beside Mosswake — the fork this beat first proposed
+
+Recorded because it was measured and refused rather than merely reconsidered.
+
+The Halt is a canonical route — `baseRisk 0.08`, pays 10, provisions 0 — which at
+roster 0 is **68 against Mosswake's 64**, for 10 against 14, at a stake of 0
+against 2. Expected marks **6.80 against 6.96: 0.16 apart.**
+
+**It dies on regime, not on tightness.** Mosswake costs 2 and the opening float is
+3, so a failed run leaves 1 and **Mosswake is unaffordable exactly when the stake
+asymmetry would bite.** The weigh could therefore only ever occur in the rich
+regime, where the two branches are EV-equal — **a null reachable on paper, which
+is the cheapest kind to find.**
+
+### Why the Halt is the second send, and where its numbers come from
+
+*(This heading and the next were transposed in the first draft — this section is
+about the Halt, the next is about Rustfall. Corrected rather than left to confuse
+the implementer.)*
 
 `/dice-at-the-places/` ships **one** route. Mosswake: `baseRisk 0.12`, pays 14,
 stake 2. Its stated chance is **64**, measured live.
@@ -124,20 +179,23 @@ route** on the passed line board: `dawnspur-halt`, `baseRisk 0.08`, **pays 10,
 provisions 0, toll 0.**
 
 Under the board's own `chanceFor(baseRisk, wardens)` at roster 0 — `BASE −
-baseRisk` — that is **68**. So:
+baseRisk` — that is **68**.
 
 | | chance | pays | stake | expected marks |
 | --- | --- | --- | --- | --- |
 | **Dawnspur Halt** | 68 | 10 | **0** | **6.80** |
 | **Mosswake Loop** | 64 | 14 | 2 | **6.96** |
 
-**0.16 marks apart.** The fork is not an arithmetic problem with a right answer —
-it is **risk appetite and cash in hand**, which is what makes a choice a decision
-rather than a calculation. The Halt is free, safer and pays less; Mosswake costs
-two up front, is riskier, and pays more.
+**Nothing new is invented for this board.** Both rows are inherited numbers from
+passed boards, which is why the fork costs no balancing work.
 
-It also satisfies §7.2 by construction: **the Halt is a quick path and an honest
-one** — free, and not a worse deal.
+**The table is here as provenance, not as the fork** — those two are 0.16 apart
+and the section below records why that is fatal. **The Halt's row is what matters:
+free, and 68 for 10.** That is what a press-on costs and pays.
+
+**§7.2's quick path is BANKING**, and it is honest by construction: `Collect.`
+alone is the whole of C12's ending, available the instant the board arms, and a
+player who never presses on has a complete sitting.
 
 ### Why the Halt and not Rustfall
 
@@ -164,10 +222,16 @@ nothing, so a player takes both — which is precisely the pre-walk Halt result,
 *"did both and stopped."* A small board would reproduce that failure by
 construction and teach nothing about choice.
 
-**The fork only becomes a decision because both branches are wagers.** Choosing
-Mosswake means spending 2 marks you have and accepting 64 instead of 68; choosing
-the Halt means banking less. That tension does not exist without the dice C12
-shipped, and C12 is the only board that has them.
+**The fork only becomes a decision because pressing on can lose you something.**
+Banking takes the ending you have earned; pressing on is a 68% shot at 10 more
+that, *if it succeeds*, puts the ending back out of reach. **That cost exists only
+because the board has dice and an arm condition** — without them, a second lit
+thing is just a second tap and the player takes both. C12 is the only board that
+has them.
+
+**This is what the small-board version could never have had**, and it is the
+argument's whole point: on a board without dice there is nothing to wager, so
+"did both and stopped" is guaranteed by construction.
 
 So: cumulative, parent `/dice-at-the-places/`, per §7 and §7.1.4 — and for a
 reason that would hold even if §7 permitted otherwise.
@@ -213,12 +277,19 @@ Mosswake. The Halt dark with its world reason, the consist dark, Rustfall dark.
 This is inherited whole and unchanged, and a player who has sat C12 should not be
 able to tell the difference at the open.
 
-**The fork lights after the first run comes home** — success or failure, either
-way. The Halt's notice changes from *"nothing here is yours to take"* to a send it
-can honestly offer, with its chance and pay on its face before the tap.
+**The fork lights when the board arms — that is, when a run comes home short.**
+Until then the board is C12 exactly: one live can-do, no choice, and a player who
+has sat C12 cannot tell the difference.
 
-**From that moment there are two live can-dos and never more.** The player picks.
-Both remain available; taking one does not extinguish the other.
+**At the arm there are two live can-dos and never more.** `Collect.` as it ships
+today, and the Halt as a free send with its chance and pay on its face before the
+tap. The player picks.
+
+**A successful press-on clears the arm.** The ending goes back out of reach and the
+board returns to its single-file loop until the next short run. **A failed
+press-on costs nothing** — the Halt stakes 0 — and the arm survives, so `Collect.`
+is still there. That asymmetry is the whole wager and it must be legible before
+the tap, not discovered after it.
 
 **Each branch is its own wager.** The stated number is the rolled number, per the
 dispatch board's own rule — *"not quote a number it cannot honestly roll."* A
@@ -245,10 +316,23 @@ fork rendered as one bright option and one dead one is not a fork.
 
 ## Ends
 
-Inherited from C12, unchanged: arm on a failed run, trigger as it triggers there.
-**State the condition explicitly rather than inheriting it silently**, and confirm
-by driving the board that the fork cannot make the stop unreachable — a player who
-only ever takes the Halt must still be able to finish.
+**NOT inherited unchanged, and this is the one place the beat moves C12's
+machinery.** C12 arms on a failed run and `canCollect()` requires `armed`. This
+board keeps both **and adds a clear**: a press-on that comes home paid sets
+`armed` false again.
+
+So the arm is no longer a one-way latch. State the full condition explicitly:
+
+| event | arm | why |
+| --- | --- | --- |
+| run comes home short | **set** | C12, unchanged |
+| press-on comes home paid | **cleared** | new — the closing line is no longer true |
+| press-on comes home short | **stays set** | the ending is still there; the wager cost nothing |
+
+**Termination is probabilistic and always was** — C12 cannot end without a failed
+run either. This board does not weaken that; it lets a player *choose* to defer it.
+**Confirm by driving the board that a player who presses on repeatedly still
+reaches an ending**, and that the ending's text still reads true when they do.
 
 ---
 
@@ -257,7 +341,8 @@ only ever takes the Halt must still be able to finish.
 | System | This sitting | From |
 | --- | --- | --- |
 | **The corridor forks once, after commitment** | **ON** — the one new system | new |
-| **The Halt lights as a second send** | **ON** — the fork's second branch | CFD-196 route, inherited numbers |
+| **The Halt lights as a free send AT THE ARM** | **ON** — the fork's second branch | CFD-196 route, inherited numbers |
+| **A paid press-on clears the arm** | **ON** — what makes it a wager | new |
 | A tap at a place can fail | **INHERITED** | CFD-209, PASSED |
 | One live can-do at the open | **INHERITED** — and it stays one | CFD-205, PASSED |
 | The desk deleted as a surface | **INHERITED** | CFD-209 |
@@ -278,10 +363,14 @@ Every line a test. Red-first.
   comes home. Enumerate `notice()` across every place at every frame; do not grade
   through a first-match helper.
 - **More than two live can-dos at any frame, ever.**
-- The fork lights before the player has committed to anything.
-- The fork never lights — a sitting exists in which the Halt stays dark after a
-  run has come home.
-- Taking one branch extinguishes the other, or makes it unreachable.
+- The fork lights before the board arms — at the open, or after a run that came
+  home paid.
+- The fork never lights: a sitting exists in which the board arms and the Halt
+  stays dark.
+- A successful press-on does not clear the arm, or a failed one does.
+- `Collect.` becomes unreachable after a failed press-on.
+- The press-on's cost — that winning takes the ending away — is not legible before
+  the tap.
 - Either branch quotes a number it does not roll.
 - The Halt's chance or pay differ from its canonical route values without the beat
   saying why.
@@ -304,11 +393,15 @@ Every line a test. Red-first.
 **A sit that names a choice and why he made it.** Not which button he pressed —
 what he weighed. Something in the register of the passed sits:
 
-> *"I took the Halt because I only had the one mark."*
-> *"I kept sending Mosswake because it pays."*
+> *"I took the free run first because it cost nothing."*
+> *"I stopped there — I'd have had to earn the ending again."*
 
 The sitting has landed if the fork produced **a reason**, and the reason is his
 rather than the board's.
+
+**The second of those two is the one to hope for** and it is the finding this
+lineage has reached for twice: it names the branch he did not take. Per §7.5 and
+the sit-question rule below, **it counts only if it arrives unprompted.**
 
 ---
 
@@ -317,15 +410,20 @@ rather than the board's.
 **None of these is a failure. Each is an answer, and they do not mean the same
 thing.**
 
-1. **He does both once, then stops.** Exactly the pre-walk Halt. That says the
-   corridor is load-bearing **wherever** it breaks, C12's shape becomes permanent,
-   and this question is closed for good.
-2. **He takes one and never the other.** The fork is real but the unchosen branch
-   is dead content. That routes to *what a branch has to be worth*, not to a
-   recut of this board.
-3. **He alternates without weighing** — the fork became a rhythm rather than a
-   decision. That says two EV-equal branches are not a choice, and the next
-   question is about **differentiation**, not about the corridor.
+1. **He banks immediately, every time, without remarking on it.** The press-on
+   was never a live option to him. That says the corridor is load-bearing
+   **wherever** it breaks, C12's shape becomes permanent, and the question closes.
+2. **He presses on and never mentions the ending he passed up.** The fork is real
+   but only one branch is visible as a branch. That routes to *what makes a
+   forgone option legible*, not to a recut of this board.
+3. **He does it once and cannot say why.** The decision happened but had no
+   content — a coin-flip dressed as a choice. That routes to **differentiation**:
+   68-for-10 against banking is not a weigh he can articulate, and the next
+   question is what would make it one.
+
+**None of these is a failure and they do not mean the same thing.** Pre-registering
+the split is what stops a single observed outcome being rationalised into whichever
+story is nearest — canon **§7.5**.
 
 ---
 
