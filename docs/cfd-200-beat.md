@@ -303,7 +303,7 @@ a send and rolls nothing.
 ### Inherited whole, and not re-argued
 
 From **CFD-196** (passed): the three sendable routes at 0.08 / 0.12 / 0.25
-paying 10 / 14 / 18 against stakes of 0 / 2 / 3+1; the charter condition; the
+paying 10 / 14 / 18 against stakes of 0m 0f / 0m 2f / 1m 3f (two units — the join's, below)
 opening float of 3; SEND commits and MEET resolves; the muster slider on the
 card ground; a failed run pays zero; nothing refunds in any direction; the crew
 always comes home on both branches; the whole roster rides every send; the
@@ -316,7 +316,15 @@ of 24; the terrace, its reserve, `min(level, reserve)` under a storm and the
 one-step draw per stormy turn; **the Ranger at 2 marks, cap 1, the weather
 unit**, and TRIM, its storm send.
 
-**Nothing in either list moves.** Every figure above is Kill-listed as
+From **CFD-203** (passed 2026-08-28), sitting between the two above in the
+lineage: the join — CARRY writes the stores (food); a send's provisions come off
+the stores and the Chartered toll stays 1 mark; the stores cap at 6; MOSSWAKE +3
+stays cut. The stakes therefore read in two units, 0m 0f / 0m 2f / 1m 3f, and
+Rustfall's reads 1m 3f. *(An earlier cut inherited only from CFD-196 and CFD-201
+and read the stakes as "0 / 2 / 3+1" in marks; the join travels with the storm
+board and is what The stake is denominated in.)*
+
+**Nothing in these three lists moves.** Every figure above is Kill-listed as
 unchanged.
 
 ### The muster grows by exactly two crew types
@@ -342,8 +350,13 @@ that says so is in The numbers, not asserted here.
 
 ### RUSTFALL YARD takes a send, and quotes no odds
 
-It stakes **3 provisions and the Chartered toll of 1** — 4 marks, spent at the
-click like any other, refunded in no direction. It needs the charter, like any
+It stakes **3 provisions off the terrace and the Chartered toll of 1 mark** — the
+provisions come off the stores and the toll off the wallet, spent at the click
+like any other Chartered send on the parent, refunded in no direction. *(An
+earlier cut read "— 4 marks, spent at the click"; that was the dispatch board's
+purse. The parent this beat re-based onto is the storm board, whose sends draw
+provisions from the stores CFD-203's join put there — `s.stores -= r.provisions;
+s.marks -= r.toll`.)* It needs the charter, like any
 other Chartered Line route. Where the other three cards carry a percentage that
 moves with the sky, this one carries its stake and its manifest and one
 sentence about why it carries no number: **by David's ruling this route's
@@ -583,9 +596,14 @@ the board's words.
 
 **Home empty** — carrying all four clauses CFD-196 requires of a run that paid
 nothing:
-> *"Rustfall kept everything it had. The provisions and the Chartered toll are
-> spent — 4 marks — and nothing comes back; the route paid nothing; the
-> Wardens, the Engineer and the train are home, and the desk stands."*
+> *"Rustfall kept everything it had. Three from the terrace and the Chartered
+> toll, and nothing comes back; the route paid nothing; the Wardens, the
+> Engineer and the train are home, and the desk stands."*
+
+*(An earlier cut read "The provisions and the Chartered toll are spent — 4 marks
+—"; the parent's register speaks the provisions as "from the terrace" and keeps
+`foodLost` apart from `marksLost`, so the paid terminal reads food lost and marks
+lost as two clauses, never one marks figure.)*
 
 The empty sentence names whoever actually rode, exactly as the passed board
 learned to: a run with no crew aboard promises no crew home.
@@ -601,12 +619,15 @@ anything was lost:
   out, five cargoes banked, three cars off the cranes and not a scratch on
   them. The dormant crane at the far end is the next sitting's."*
 - **Paid:** *"The Sunlark is off Rustfall. Seven runs out, four cargoes banked,
-  two turned back, the ore car very damaged and the strongbox gone, and 8 marks
-  staked and lost along the way. The record keeps what came home; the dormant
-  crane at the far end is the next sitting's."*
+  two turned back, the ore car very damaged and the strongbox gone, six from the
+  terrace and 2 marks staked and lost along the way. The record keeps what came
+  home; the dormant crane at the far end is the next sitting's."* *(An earlier
+  cut read "8 marks staked and lost"; the parent's `ledgerSentence` reads food
+  and marks as two clauses, and two Rustfall turn-backs are six from the terrace
+  and 2 marks.)*
 
 The terminal must read the record — runs out, cargoes banked, runs turned back,
-cars off the cranes, their condition, marks lost — and the paid register names
+cars off the cranes, their condition, food lost and marks lost as two clauses
 the losses without apology and without warning.
 
 ---
@@ -745,7 +766,9 @@ Every line expressible as a test.
   state and every sky it can be reached in. *(`/convoy-stop/` shipped an
   impossible stop-2 table and it is in `KILLS.md`; that lineage answered it with
   a headless solver replaying the same math. Inherit the practice.)*
-- A crewless Rustfall run banks more than its 4-mark stake, in any sky.
+- A crewless Rustfall run banks more than its stake — three off the terrace and
+  the 1-mark toll — in any sky. *(An earlier cut read "its 4-mark stake"; see The
+  stake.)*
 - Any of the four crew types is never the strictly correct purchase in any
   reachable roster and sky.
 - A reachable home state has no lit send. A reachable yard state has neither
@@ -849,8 +872,18 @@ against the Warden's 3, the measured ladder below shows it earning its two extra
 marks at exactly one rung, which is what a correctly-priced second option looks
 like.
 
-**Roster cap 4 total** (CFD-196) and **Ranger cap 1** (CFD-201), both inherited,
-both unchanged. 55 rosters are legal.
+**Rail Warden cap 4** (CFD-196) and **Ranger cap 1, outside the Warden cap**
+(CFD-201 — the parent musters a Ranger onto a full roster of four), both
+inherited, both unchanged. Whether the Marksman and the Engineer share the
+Wardens' four is this beat's own call and is stated where they are priced. *(An
+earlier cut read "Roster cap 4 total … 55 rosters are legal"; 55 counts the
+Ranger inside the four, which the parent does not. With the Ranger outside and
+the three roster crews sharing the four, the space is 70, and every figure below
+quoted "of 55" is to be re-run. The frontier tables survive by dominance rather
+than re-measurement: every added roster carries the Ranger plus four of {3, 5, 6}
+and costs at least 14 marks, above the clear 23-rung at 8; the storm 23-rung at
+14 is matched in price only by 4W+R, which has no repair against three storm
+tiers. "10 of 55" cannot be re-derived here — the solver is not in the repo.)*
 
 ### Capacity and reach — two derived, one measured, all stated as what they are
 
@@ -991,8 +1024,11 @@ because its chance and its pay are separate quantities. **Rustfall cannot, so it
 carries one. Flagged as a deviation, with its reason, rather than slipped.**
 
 **A consequence, named rather than discovered.** Because Rustfall has no storm
-premium to forfeit, TRIM at Rustfall would cost one provision and buy the whole
-sky, where on Cloud Basin it costs a provision *and* the 6-mark premium. **TRIM
+premium to forfeit, TRIM at Rustfall would cost the two marks the long way costs
+everywhere and buy the whole sky, where on Cloud Basin it costs those two marks
+*and* forfeits the 6-mark premium. *(An earlier cut priced the trim at "one
+provision"; the parent stakes it at `TRIM_MARKS` 2 — marks, not a provision, by
+David's ruling of 2026-08-28 carried in CFD-201.)* **TRIM
 therefore does not offer at Rustfall**, and the Ranger's yard job above is what
 it does instead. That asymmetry is real and it is open question 2.
 
@@ -1045,27 +1081,38 @@ Rustfall send, and every marks value from 0 upward is reachable at roster 0.**
 
 The shortest path to the yard, exact:
 
-| | marks | roster | banked |
-| --- | --- | --- | --- |
-| opening | 3 | — | 0 |
-| DAWNSPUR HALT, free, always lit, home paid | 13 | — | 1 → charter opens |
-| MUSTER RANGER | 11 | R | 1 |
-| MUSTER RAIL WARDEN | 8 | R W | 1 |
-| SEND RUSTFALL, stake 4 | **4** | R W | 1 |
+| | marks | stores | roster | banked |
+| --- | --- | --- | --- | --- |
+| opening | 3 | 0 | — | 0 |
+| DAWNSPUR HALT, free, always lit, home paid | 13 | 0 | — | 1 → charter opens |
+| CARRY, three trips — the level pays one a trip | 13 | 3 | — | 1 |
+| MUSTER RANGER | 11 | 3 | R | 1 |
+| MUSTER RAIL WARDEN | 8 | 3 | R W | 1 |
+| SEND RUSTFALL, three off the terrace and the toll | **7** | 0 | R W | 1 |
 
-**One prior run**, and that crew banks 21 of the yard's 23 in clear weather.
-Reaching 4 marks with a run out is not a deadlock: the halt is free and always
-lit.
+**One prior run and three carries**, and that crew banks 21 of the yard's 23 in
+clear weather. Reaching 7 marks with a run out is not a deadlock: the halt is
+free and always lit. *(An earlier cut had five rows, no CARRY, and ended on 4
+marks; that path was the dispatch board's, on which provisions were marks. On
+the storm parent the stores open at 0, `carryYield` is 1 at level 1, and a
+3-provision send is refused — "The stores hold 0. Cloud Basin wants 3." — until
+three carries have landed. The carries may precede the halt run or ride
+alongside it; the row order is free, the turn count is not.)*
 
 **The parity claim CFD-196 retired is re-made here, on new arithmetic.**
 Amendment 1 retired "every state is reached from that opening by play" because
 every delta on that board but the muster was even, locking marks and roster into
 matching parity. **Rustfall re-opens the lattice, and it is the odd car worths
 that do it** — the yard sends a run home at 21, 9, 7 or 23, odd numbers the dice
-routes' 10 / 14 / 18 against stakes of 0 / 2 / 4 can never produce. Without the
-yard the old lattice would still be closed: **the new system is what makes the
-claim true again, and if the car worths ever move to even numbers this paragraph
-goes back to being false.**
+routes' 10 / 14 / 18 against marks stakes of 0 / 2 / 4 could never produce on the dispatch board. But
+the parent had already re-opened the lattice before the yard: the toll of 1, TEND
+at 1, the Ranger at 2, UP at 3 / 4 / 5 and the trim's 2 are odd and even deltas
+together, so every marks value is reachable at roster 0 on `/dawnspur-storm/`
+with no yard at all. The odd car worths are a second route to the same parity,
+not the first. *(An earlier cut read "the new system is what makes the claim
+true again"; that was measured against the dispatch board's even deltas, not the
+storm board's, and its "stakes of 0 / 2 / 4" are the dispatch purse — see The
+stake.)*
 
 ### What the first sitting actually meets, traced against the inherited sky
 
@@ -1120,15 +1167,15 @@ all under `C:\dev\skyrail\docs\lore\`.
 | The desk, the dice routes, the float, the charter, the roster's laws | ON, INHERITED | `docs/cfd-196-beat.md` and its two amendments — **passed**, David 2026-08-26 |
 | The sky, the storm's deltas, the terrace, the Ranger, TRIM | ON, INHERITED | `docs/cfd-201-beat.md` — the parent; §7's dropped half licenses carrying them without re-argument |
 | A cumulative board at all | ON | §7, RULED — David 2026-08-26: "yes draft the amendment, and make the next board cumulative" |
-| Rustfall takes a send | ON, NEW | RULED — David 2026-08-26, the EXCEPT clause. `[WB]` puts interception on this line class by name: Chartered routes carry "**opt-in interception risk** in later builds", against the trunk where "**no player banditry permitted**" |
+| Rustfall takes a send | ON, NEW | RULED — David 2026-08-26, the EXCEPT clause. `[WB]` puts interception one line class **out** from this one: Frontier Lines carry "**opt-in interception risk** in later builds", Chartered Lines are "moderate risk, league rules apply", and the trunk is where "**no player banditry permitted**" — so Rustfall's raiders are the Chartered tier's moderate risk rendered, not the Frontier's opt-in interception. *(An earlier cut read "Chartered routes carry 'opt-in interception risk'"; that sentence is the Frontier Lines bullet, World-Bible-v0.1.md:105, and the Chartered bullet at :104 does not carry it.)* |
 | Rustfall quotes no odds; no die in the yard | REFUSED | The same ruling — contested territory "is not a dice roll purely as it depends on the players' decisions on placement and tactics". `[ECON]`'s legibility rule. And the lineage's own law: `/convoy-stop/`, "Fixed every run. **No RNG.**" |
 | The yard as placement, not battle | ON, NEW | `[WB]`, the governing sentence: "the answer is to make it **an escort, a repair, or a survey with a threat in it, rather than a battle**"; "**Fighting exists to protect logistics, not to replace them.**" `[CONF]`: "The grammar is **decisions, not execution** … A player **places autonomous units and positions** … the fight fits one screen" |
 | A turn is a player's press | ON | R4; R8. And `[LOOP]` names the model itself: "**A turn-based or tick-on-action model is the live alternative**, and the choice should be tested against how a session actually feels on a phone" — under its own Open calls to playtest. **Weakness named:** the corpus carries no verbatim refusal of reflex input; that rests on `[CONF]`'s "decisions, not execution" plus this repository's convicted-timer class, and is an extension |
 | Damage in three tiers, worth scaling | ON, NEW | **RULED — David, 2026-08-27**, verbatim: "A damaged car should be able to be slightly, very, or completely damaged, with its resources reducing in parallel." Canon's own model by name: `[MDB]` 1.21, "**Failure is a gradient rather than a state**"; `[TEETH]`, "Full success is the haul brought home. **Partial success is turning back early with some of it**" |
-| A car stays coupled at every tier; the train is never lost | ON | `[TEETH]`, verbatim: "**losing a craft costs the instance and the haul but never the capability**" — and this sitting refuses even the instance, one rung short of what canon allows |
+| A car stays coupled at every tier; the train is never lost | ON | `[MDB]` 1.21, verbatim: "**losing a craft costs the instance and the haul but never the capability**" — `[TEETH]`:73 restates it as "craft-loss costs the instance and the haul, never the capability" *(An earlier cut cited [TEETH] as the verbatim source; the verbatim is the Master Design Bible's, directive 1.21.)* — and this sitting refuses even the instance, one rung short of what canon allows |
 | Health or hit points on any raider or crew; any bar that fills | REFUSED | `[CONF]` refuses "**a second game with health bars bolted beside the building game**" and prescribes the alternative in the same breath. **The kill line is narrowed from the first draft, which was stricter than its own source**: a car's condition is the *load's* condition, and the load is the supply chain, which is exactly what canon says the combat should be. `[ECON]`: the ground reports itself "**without a gauge**" — so condition ships as a look and a word, never a meter |
 | The convoy itself as the thing under siege | ON | `[CONF]`, verbatim and in the source's own order: "**The thing under siege is the thing a player was already optimizing**, which is the lesson the logistics-defense games teach most clearly: when **the supply chain itself is what gets attacked and defended**, the routing and throughput problems already in play become the combat, and nothing has to be grafted on." |
-| PULL OUT, and the push-or-retreat call | ON, NEW | `[TEETH]`: "which makes **the push-or-retreat call the core decision of the whole mode**"; the anti-spiral, "a decided loss never becomes a long doomed grind"; `[MDB]` 1.20 names the verb for this layer — "**a clean concede** and a swing objective" |
+| PULL OUT, and the push-or-retreat call | ON, NEW | `[TEETH]`: "which makes **the push-or-retreat call the core decision of the whole mode**"; the anti-spiral, "a decided loss never becomes a long doomed grind" (`[MDB]` 1.21); `[MDB]` 1.21 names the verb for this layer — "**a clean concede** and a swing objective", which `[TEETH]`:139 carries verbatim *(An earlier cut cited 1.20 and [TEETH]; both phrases are 1.21's.)* |
 | The return as the risk window | ON | `[TEETH]`: "**the return trip is where the risk lives** … Coming home, a player carries the haul and has the most to lose" |
 | Rail Warden holds a car; Marksman reaches across a coupling; Ranger reads; Engineer repairs | ON | `crewTypes[*]` verbatim — Wardens "**absorb danger on convoy runs**", Gunners "Defend railcars and **punish exposed raiders**", Rangers "**Reveal ambushes**", Sappers "**Combat engineers … stabilize damaged spans**". Reach from `/convoy-stop/`'s `GUN_ACROSS` 1.28. **Capacity 2 for the Marksman is measured, not cited, and says so** |
 | The crew names on the board's face | ON | RULED — David 2026-08-27, carried by `docs/cfd-201-beat.md`'s named ruling: Rail Warden, Ranger, Marksman, Engineer, with pack ids in the numbers |
@@ -1137,7 +1184,7 @@ all under `C:\dev\skyrail\docs\lore\`.
 | The sky live per push, not stamped at the SEND | ON, NEW, **argued as a departure** | CFD-201 stamps the sky at the SEND, and its stated reason is the dispatch board's Kill line — a storm behind the card would make "the stated percent and the sim's rolled threshold disagree". **Rustfall states no percent**, so that reason does not reach it. And CFD-201's own words for stamping are "the read happens at the desk", which CFD-196 assigns to the passive tier: the gradient doctrine "governs the **active** tier, where the player is on the line making the read". This is that tier. `[TEETH]` supplies the standard the departure has to meet and it meets it: the tell precedes the event (the bird), and the counterplay (PULL OUT, or an Engineer aboard) always exists |
 | The storm live in the yard | ON, NEW | The re-base requires it. Its cadence is CFD-201's own — "every turn spent under a storm draws the ground one step" — applied to the load. Its cover is `ROUTE_EVENTS[fog-bank]` ("**Scouts** reduce ambush odds and route confusion") and `ROUTE_EVENTS[raider-scouts]` ("Wardens and **Rangers** matter on exposed Rustfall sidings") |
 | Rustfall's pay rising in a storm | REFUSED, argued | CFD-201's own named trap — risk-up plus reward-up cancelling to a wash — is unavoidable here because the route's difficulty and its pay are one quantity. **The one inherited rule this board declines, flagged** |
-| Raiders as the pressure at Rustfall | ON | `routes[rustfall-yard].tags` — `"raiders"`; `COMBAT_SCENARIOS[rustfall-security-charter]`, route- and mission-gated to include `convoy`; `[WB]` — "Raider crews (the Tollmen and similar) … Demand tolls, attempt to take cargo. **The reason escorts and wardens matter.**" **Weakness named, twice:** `[MDB]` 1.21 is locked as "**The cold is the only hazard, in five forms**" and raiders are not among them; and `[WILD]`'s stand-in doctrine that supplies NPC attackers — "**a defense wants attackers** … a stand-in raider reading as a Cinderborn outlaw" — is written for the contested deep, while Rustfall is a near-map Chartered route. The reconciliation is `[MDB]` 1.12's own: raiders are **pressure on the routing problem**, engaged through the logistics grammar, never a hazard class of their own |
+| Raiders as the pressure at Rustfall | ON | `routes[rustfall-yard].tags` — `"raiders"`; `COMBAT_SCENARIOS[rustfall-security-charter]`, route- and mission-gated to include `convoy`; `[WB]` — "Raider crews (the Tollmen and similar) … Demand tolls, attempt to take cargo. **The reason escorts and wardens matter.**" **Weakness named, twice:** `[MDB]` 1.21 is locked as "**The cold is the only hazard, in five forms**" and raiders are not among them; and `[WILD]`'s stand-in doctrine that supplies NPC attackers — "**a defense wants attackers** … a stand-in raider reading as a Cinderborn outlaw" — is written for the contested deep, while Rustfall is a near-map Chartered route. The reconciliation is `[MDB]` 1.21's engineering consequence — "the hazard system is the routing pressure rather than a layer over it" — and `[CONF]`'s, "the routing and throughput problems already in play become the combat", with 1.12's "never cruelty" for the tone: raiders are pressure on the routing problem, engaged through the logistics grammar, never a hazard class of their own *(An earlier cut set the phrase in 1.12's voice as the bible's; the verbatim is 1.21's.)* |
 | Raiders are turned, never killed | ON | `[WB]` — "The world should never tip into a **war fantasy**"; "Framed as **rivalry and risk, not war**". `[MDB]` 1.12 — "never cruelty" |
 | Crew always home; the Sunlark never lost | ON, INHERITED | `resolveDispatch` — `addCrew` on **both** branches, kept by the passed board. `[WB]`, from the hero who owns convoy defense: "**Stay in formation. We bring everyone home.**" |
 | The Tollmen's toll paid in cargo | REFUSED, named | Canon-backed and deliberately held: `[WB]`'s "**Pay**, fight through, reroute, or cut a deal", `[TEETH]`'s "**jettison weight**", `[CONF]`'s "**partial loss rather than full loot**". A verb that resolves a wave without a placement would hollow out the tier's first outing |
@@ -1243,8 +1290,10 @@ board is the sky and nothing else — and the objects that would change that are
 the ones David already named.
 
 **9. TRIM offered at Rustfall.** Rejected on arithmetic: with no storm premium at
-Rustfall to forfeit, TRIM would cost one provision and buy the whole sky, where
-on Cloud Basin it costs a provision and six marks. That is the effective immunity
+Rustfall to forfeit, TRIM would cost the two marks it costs everywhere and buy
+the whole sky, where on Cloud Basin it costs those two marks and forfeits the
+6-mark premium. *(An earlier cut read "one provision"; the parent stakes the
+trim at `TRIM_MARKS` 2, by David's ruling of 2026-08-28 carried in CFD-201.)* That is the effective immunity
 CFD-201 names as the weather unit's trap. The Ranger's yard job — seeing what the
 weather covers, not stopping what it does — is the same idea at the right price.
 

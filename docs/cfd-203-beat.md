@@ -24,7 +24,10 @@ it is the join. **Weather defers whole** to the storm sitting, with
 `docs/cfd-201-beat.md` held as that sitting's beat and three of its rulings
 travelling with it (§7.1.3).
 
-Card: CFD-203. **NOT SIGNED.** Awaiting PM citation review, then David.
+Card: CFD-203. **SIGNED — David, 2026-08-27, by delegation** (the block below);
+**PASSED — David, 2026-08-28** (*The sit*, at the foot of this file). *(An earlier
+cut read "NOT SIGNED. Awaiting PM citation review, then David."; that was the
+drafting header, overtaken by the signature and the pass and never edited.)*
 
 ---
 
@@ -140,9 +143,14 @@ re-argued:
 
 ## Seat
 
-Beat only. No implement. No deploy. No merge. Do not touch `public/dawnspur`,
-`public/dawnspur-heat`, `public/dawnspur-scale`, `public/dawnspur-dispatch`, or
-`public/convoy-stop`. Do not `workflow_dispatch`.
+The drafting seat was beat only — no implement, no deploy, no merge. The board
+has since shipped at `3588bb4` and passed at `7f58c8f`; see *The sit*. The
+do-not-touch list still binds — `public/dawnspur`, `public/dawnspur-heat`,
+`public/dawnspur-scale`, `public/dawnspur-dispatch`, `public/convoy-stop` — and
+`public/dawnspur-line` has joined it as a passed board. Do not
+`workflow_dispatch`. *(An earlier cut read "Beat only. No implement. No deploy.
+No merge."; that was the drafting seat, overtaken by the ship and the pass and
+never edited.)*
 
 Pins are the live boards, never `main`. Re-measured at authoring,
 `git show HEAD:public/<p>/sim.js | sha256sum`, at boards `d245131`:
@@ -163,11 +171,16 @@ because CFD-200 has already re-based onto it once and a name used twice is the
 lineage fork this project just closed. Not `/dawnspur-join/`: the board is the
 town, not the commit.
 
-**CFD-200's parent moves a third time**, and §7.1.4 already records the general
-rule — *the parent is the last passed board, named at signature rather than
-assumed at drafting*. Its Seat says `/dawnspur-storm/`; it re-bases onto
-`/dawnspur-line/`, and the terrace, its reserve and the greenhouse arrive there
-without weather. Flagged for the PM, not for David.
+**CFD-200's parent does NOT move.** Its Seat says `/dawnspur-storm/` and should:
+§7.1.4 (corrected 2026-08-28) holds that the parent is the last passed board
+*named at signature*, and CFD-200 signs after the storm sitting, so re-basing it
+today is exactly "assumed at drafting". This board's pass fixes **CFD-201's**
+parent, not CFD-200's; the live conditional — CFD-200 re-bases onto the join
+board only if the storm board is killed rather than passed — is carried in
+`docs/cfd-200-beat.md`. *(An earlier cut read "CFD-200's parent moves a third
+time … it re-bases onto `/dawnspur-line/`"; that was this author's 2026-08-27
+re-base, raised and refused four times and withdrawn in canon §7.1.4. Do not
+re-open it from here.)*
 
 David sits first. Ask: What happened.
 
@@ -707,8 +720,10 @@ number before it is pressed.
 
 The away state is a state, not a motion picture, unchanged: platform empty, the
 sent line marked, MEET the one lit verb at the desk — and the terrace's three verbs
-lit beside it. The manifest now itemizes something real: *"2 Wardens ride with 3
-from the terrace."*
+lit beside it. The manifest now itemizes something real: *"2 Wardens ride with three
+from the terrace and the Chartered toll paid."* *(An earlier cut read "2 Wardens
+ride with 3 from the terrace."; the only three-food route is the Chartered one,
+whose manifest also names the toll, and the sim spells the food count.)*
 
 Layout priority under pressure is inherited and still binds: scenery first, then
 the sentence panels inside their cap, then the cards, which never shrink below
@@ -761,10 +776,17 @@ and still keys on `runsTurnedBack === 0`. The paid register names **both**, nami
 a zero rather than omitting it — the same move CFD-196 made when it was sent back:
 
 > *"The Chartered cargo is home and the terrace is topped. Eleven runs out, eight
-> cargoes banked, three turned back, **6 from the terrace and 3 marks lost on the
-> way.** **Fourteen from the terrace went out on the line.** The ground is bare:
-> nothing on this desk puts it back, and that is the next sitting's business. The
+> cargoes banked, three turned back, **seven from the terrace and 1 mark lost on
+> the way.** **Fourteen from the terrace went out on the line.** The ground is
+> bare. Nothing on this desk puts it back, and what the line ate came out of a
+> bank this sitting cannot refill. That is the next sitting's business. The
 > record keeps what came home; the line past the basin is the next sitting's."*
+
+*(An earlier cut read "6 from the terrace and 3 marks lost" over a bare ground
+with the old bare clause; that record is unreachable — three marks lost means
+three Cloud Basin turn-backs and at least nine food — and the sim spells food
+counts. The sentence above is the shipped terminal, driven from the real opening
+by `h+CCm-CCm-CCCc-CCm+CCm+h+h+h+h+UUUCc+`.)*
 
 A sitting whose only turn-backs were free halt runs still reads *"three turned back
 and cost nothing but the trip"* — because there both counters are zero, which is
@@ -788,10 +810,15 @@ every stop, and the reserve at every stop is at most 3.**
 | reserve at the stop | reachable? | shortest |
 | --- | --- | --- |
 | 4 — full | **UNREACHABLE, at every level** | — |
-| 3 — drawn | yes | ~7 commits |
-| 2 — drawn | yes | ~8 commits |
-| 1 — drawn | yes | ~9 commits |
-| 0 — bare | yes | ~10 commits |
+| 3 — drawn | yes | 8 commits |
+| 2 — drawn | yes | 9 commits |
+| 1 — drawn | yes | 10 commits |
+| 0 — bare | yes | 11 commits |
+
+*(An earlier cut read ~7 / ~8 / ~9 / ~10; each was one short. The exact minima
+are measured by breadth-first search over the shipped sim's own commits — a stop
+needs a banked cargo (2 commits), three UPs, one carry per ground step drawn, and
+the Chartered send and meet, so nothing shorter than 8 exists.)*
 
 **A register that cannot happen is a dead button in sentence form**, and this beat
 has already had to fix one clause that reported a constant as a variable. It is cut.
@@ -1443,7 +1470,11 @@ cap, `min(level, reserve)` under a storm, is exactly the collector David's
 "slow TEND-debt" needs, and it is already drafted and held at
 `docs/cfd-201-beat.md`. So the question is only what to do for **one** sitting.
 
-### The one mechanism that un-dominates TEND without touching any kill — RECOMMENDED, and it needs David's ruling because it amends his own
+### The one mechanism that un-dominates TEND without touching any kill — RECOMMENDED at drafting, REFUSED by David 2026-08-27
+
+*(The heading read "RECOMMENDED, and it needs David's ruling because it amends
+his own" after the ruling had been given; corrected in place because the
+implementer reads headings.)*
 
 **The ending arms on a topped terrace *and* a full ground.** Nothing else changes.
 

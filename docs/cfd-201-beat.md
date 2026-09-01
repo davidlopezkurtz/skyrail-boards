@@ -65,7 +65,18 @@ comes, or the scale board was lying.
 
 ## Seat
 
-Beat only. No implement. No deploy. No merge. Do not touch `public/dawnspur`,
+The drafting seat was beat only — no implement, no deploy, no merge. The board
+has since shipped at `/dawnspur-storm/` (`42e4aa8`, 2026-08-28; sim `f4f17008`,
+index `7711f979`, both in `sit/dawnspur-storm/MANIFEST.txt`) and David sat it
+five times, 2026-08-28 to 2026-08-29 local, each sit answered by a recut —
+five recuts, three of them copy, each recorded in the MANIFEST and the sim's
+header — and it stopped after five recuts and no pass: *"Mechanically it all
+worked nicely… It's definitely time for the city."* The stop is recorded at
+canon §7.4 and `docs/cfd-209-beat.md`; `KILLS.md`, the ledger of record, carries
+no storm line. The board stands at that sha, unpassed, and is not to be recut
+for *"why more glass"*. *(An earlier cut read "Beat only. No implement. No
+deploy. No merge."; true on the day of signature, record now.)* The do-not-touch
+list still binds. Do not touch `public/dawnspur`,
 `public/dawnspur-heat`, `public/dawnspur-scale`, `public/dawnspur-dispatch`,
 `public/dawnspur-line`, or `public/convoy-stop` — **nor the `sit/` copy of any
 board that has one, nor any other board directory present at HEAD.** The
@@ -100,7 +111,8 @@ thing being sat, and `/dawnspur-storm/` is what a kill line can name. Not
 `/dawnspur-scale-2/` or `/dawnspur-dispatch-2/`: this is neither loop's second
 sitting. `/dawnspur-rustfall/` is CFD-200's and is not touched.
 
-David sits first. Ask: What happened.
+David sat it five times. Ask: What happened. *(An earlier cut read "David sits
+first."; the sits happened — see the Seat.)*
 
 ---
 
@@ -486,8 +498,12 @@ Amendment 1 unchanged: a provisional percent is typed apart and dies with the
 gesture that showed it, on every path out, in the same frame.
 
 **The trim is a second face on the same card, and only in a storm, and only with a
-Ranger.** It states its own three figures — clear percent, clear pay, the route's stake
-and two marks — so the fork is read without arithmetic. It never appears in clear weather and
+Ranger — and its commit is a TRIM pad beside SEND.** It states its own three
+figures — clear percent, clear pay, and two marks — so the fork is read without
+arithmetic. *(An earlier cut had the trim as a second tap on the card that
+replaced the hot figures; recut 1, `7fb5aeb`, 2026-08-29, after the first sit,
+made it two faces at once plus a `#trim` pad, because a replacing tap left no
+impression of a fork. `test/dawnspur-storm.test.js:784` grades it.)* It never appears in clear weather and
 never appears without the Ranger.
 
 The away state is a state, not a motion picture, unchanged: platform empty, the
@@ -631,8 +647,10 @@ is not read as a verdict on the number.
 - *"The basin cargo is home out of the storm. Nine runs out, six cargoes banked,
   three turned back, five from the terrace and 1 mark lost on the way; two of
   those runs went out under storm, **one of them trimmed**. **The ground is bare:
-  the storm was met with nothing banked.** The record keeps what came home; the
-  line past the basin is the next sitting's."*
+  the terrace had nothing banked when the sun went off it.** The record keeps
+  what came home; the line past the basin is the next sitting's."* *(An earlier
+  cut read "the storm was met with nothing banked"; recut 3, `7b5a38e`,
+  2026-08-30, after the third sit.)*
   (Two counters, not one, and the loss clause's shape is the join parent's own
   `ledgerSentence`. A marks-only clause is a defect this lineage already found
   and fixed: Mosswake's toll is 0, so three turned-back Mosswake runs lose six
@@ -640,10 +658,15 @@ is not read as a verdict on the number.
   the trip"*. The instance above is one halt, one Mosswake and one basin turned
   back: 0+2+3 food and 0+0+1 marks. "five" and "1 mark" is the shipped mix —
   `tally` spells the food, `marksPhrase` prints the digit so the noun agrees.)
-- Ground full: *"**The ground is full: whatever the weather did, something was
-  banked to meet it.**"*
-- Ground drawn: *"**The ground is drawn and standing: the bank covered what the
-  storm asked.**"*
+- Ground full: *"**The ground is full: the terrace had a bank for when the sun
+  went off it.**"*
+- Ground drawn: *"**The ground is drawn and standing: the bank covered the
+  terrace when the sun was off it.**"*
+  *(An earlier cut read "whatever the weather did, something was banked to meet
+  it" and "the bank covered what the storm asked"; recut 3, `7b5a38e`,
+  2026-08-30, put the bill's own nouns — bank, terrace, sun off — into all three
+  registers because TEND still read as a weather tactic, and
+  `test/dawnspur-storm.test.js:817-819` pins the shipped strings.)*
 
 Three ground registers — full, drawn, bare — because the ground has three things to
 say and five looks to say them in. The sentence must read both halves: what the
@@ -720,10 +743,13 @@ TEND has become a habit carried from a board that no longer exists."* It was
 superseded there because the join cut TEND; the verb returns here with a reckoning
 behind it, so this is the sitting that can ask it.
 
-**The trim question, and it is what signature was held for.** *At which storm send
-did you consider the trim and not take it?* `runsTrimmed` records the sends that
-were trimmed; only the sitting can recover the ones that were considered and
-refused, and the refusals are where the price lives.
+**The trim question.** *Did you trim, and what did it buy you?* — what they did,
+and whether they can name what it bought (canon §7.4). `runsTrimmed` records the
+sends that were trimmed; the sitting supplies whether the price was legible.
+*(An earlier cut asked "At which storm send did you consider the trim and not
+take it?" — the intent form canon §7.4, RULED 2026-08-31, refuses, naming this
+section as where it was tried; its one intent answer on record was a
+confabulated mechanism.)*
 
 **THE CAVEAT, WRITTEN HERE BECAUSE THIS IS WHERE THE READING IS TAKEN.** David,
 2026-08-28, ruling on the counter:
@@ -1019,8 +1045,13 @@ have.
   "a misted basin span where condensers hang out over the dark below, and crews
   re-trim sagging supports". Nobody at your own halt is desperate. A flat premium
   across all three would make the **free** send the best business in a storm — 10 ×
-  0.724 = 7.24 rising to 9.41 at a 13-mark pay, above every clear-weather send on
-  the board, for a stake of nothing. Measured, and refused.
+  0.724 = 7.24 rising to 9.41 at a 13-mark pay, a free send out-earning its own
+  clear-weather 8.24 and closing to within 1.6 of Mosswake's clear 10.98, for a
+  stake of nothing. Measured, and refused. *(An earlier cut read "above every
+  clear-weather send on the board"; that was true under the dispatch parent's
+  marks stakes (Mosswake 8.98, Cloud 7.77 at 4W) and is not under the join's food
+  stakes (10.98, 10.77); a 13-mark storm halt trails clear Mosswake at every
+  roster.)*
 
 ### New-play, flagged
 
@@ -1045,8 +1076,11 @@ have.
   one turn and yields `level` food, so a provision costs `V / level` marks, where
   `V` is the board's marks-per-turn clock taken off the free halt — the one send
   with no stake and no toll, hence the only non-circular anchor. `V` runs 3.46 at
-  0W+1R to 4.40 at 4W+1R, so a provision is worth 3.46 to 4.18 marks at level 1 and
-  0.90 to 1.10 at level 4. **The trim's entire payoff is `pay × 0.10`: 1.00 on the
+  0W+1R to 4.18 at 4W+1R — the halt's own per-turn row in the table above — so a
+  provision is worth 3.46 to 4.18 marks at level 1 and 0.87 to 1.05 at level 4.
+  *(An earlier cut read "4.40" and "0.90 to 1.10"; 0.836 × 10 over the
+  send-plus-meet's two turns is 4.18, the figure the same sentence's next clause
+  and the table already used.)* **The trim's entire payoff is `pay × 0.10`: 1.00 on the
   halt, 1.40 on Mosswake.** One provision — the smallest food stake there is —
   costs two and a half to four times the whole payoff at level 1. So the food lever
   has no live setting at the bottom of the ladder: at 0 the trim is a free
@@ -1340,10 +1374,17 @@ Checked individually:
   Wardens cost 12 marks, and one cycle's income funds one of them. So the earliest
   stop is taken at the bare basin storm chance, **41.0%**, and the crewed 55.4% is a
   second-cycle figure. *(Measured: 4 Wardens becomes reachable at a nine-turn stop
-  only if topping is NOT required to arm — see the flagged contradiction between
-  Ends and ANSWERED 5.)*
-- **A capped carry at reserve 0 in a storm** — the path above ends bare in a storm;
-  one more carry prints the sentence. Reachable.
+  only if topping is NOT required to arm; Ends and ANSWERED 5 agree that it is,
+  so the crewed 55.4% is a second-cycle figure. An earlier cut pointed at "the
+  flagged contradiction between Ends and ANSWERED 5", which no longer exists in
+  this file — the pointer was written at `9b8916d`, the same commit that rewrote
+  Ends to the arming shape, so it never had a live target.)*
+- **A capped carry at reserve 0 in a storm** — the path above stops at t9, and a
+  stopped board carries nothing; take the same line to t7 and CARRY at t8 and t9
+  instead of sending: the first lands 2 and leaves the ground bare, the second
+  lands nothing and prints the bare sentence. Reachable. *(An earlier cut read
+  "the path above ends bare in a storm; one more carry prints the sentence";
+  `canCarry()` is false at the stop.)*
 - **The clamp** — the reachable range is 41.0% (Cloud, storm, bare) to 83.6% (halt,
   clear, 4W+1R). The engine's 0.12 / 0.96 clamp is carried anyway, engine-faithful,
   and never binds.
@@ -1393,7 +1434,7 @@ the beat that passed it**, per §7. Rows mirror **On this sitting**.
 | Marksman / Engineer | REFUSED | `missions[*].preferred` — fire and repair are off this board; `docs/cfd-200-beat.md` holds them, priced 5 and 6. A hire with no job is dead UI |
 | The defense instance | REFUSED | David 2026-08-26's EXCEPT clause; CFD-200's whole subject; one NEW system per sitting (§7, KEPT) |
 | Signal Tower / a bought tell | REFUSED, argued | `buildings[signal-tower].description` is about damaged track, not weather; the weather quote belongs to the Updraft Relay hero beat (`Content-Build-Cinderbelt-Windward.md:101`). §5.3 — the storm is fair **because** telegraphed, so the tell cannot be a purchase |
-| Fuel / burning against the storm | REFUSED, and it is canon's own second lever | Geology names it exactly — fire is lit at "a storm that has stolen the sun for days" — and R7 protects it as "a cost paid at the turns, not a thing kept burning". Refused only because heat is not on this board: adding it is a second sink (R1) and a second new system (§7, KEPT). **Named as the strongest thing this sitting leaves on the table** |
+| Fuel / burning against the storm | REFUSED, and it is canon's own second lever | Geology names it exactly — fire is lit at "a storm that has stolen the sun for days" — and Geology protects it — *"Burning is a cost paid at the turns, not a thing kept burning"* (`Geology-and-Weather.md:43`) — while R7 says the same in the Core Loop's words, "a cost of pushing and weathering rather than the standing fuel bill" *(an earlier cut attributed the Geology sentence to R7)*
 | One wallet, marks only | ON | R1 — "Heat is the master resource. Marks are money. Never the same sink." Heat never appears; the bank and hearth are scenery, read and written by nothing |
 | Turns, not marks, as the binding constraint | ON, argued | R10 — "The felt choice is output now against holding the line"; the allocation is real only if the claims compete for something scarce, and on a joined board marks are not it |
 | Two vehicles: the line train and the terrace shuttle | ON, argued | `buildings[switchyard].description` — "Dispatches trains, **adds scheduling capacity**, and keeps cargo moving". R10's three claims stay on the shuttle, where CFD-183 put them |
@@ -1551,3 +1592,7 @@ has no weather and no terrace. If CFD-201 lands first, CFD-200 must be re-based 
 the storm board or the lineage forks into two incompatible cumulative branches — the
 exact isolation §7 was written to end. **Flagged before either is signed.** The
 cheap fix is one paragraph in CFD-200's Seat naming its base as `/dawnspur-storm/`.
+*(Resolved: `docs/cfd-200-beat.md` names `/dawnspur-storm/` as its base and
+refuses the re-base by name, and canon §7.1 item 4, corrected 2026-08-28, records
+the re-base as withdrawn. Kept as record of the collision this section found
+first.)*

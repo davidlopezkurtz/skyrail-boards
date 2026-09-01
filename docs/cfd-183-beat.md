@@ -38,9 +38,12 @@ Pins, normalized to sha256 at PM review (the author quoted git blob ids —
 both instruments verified to agree on the same bytes): the scale board being
 recut, at `main` (`5fabe7c`): index `d6d5e262…`, sim `8f13c683…`. Live
 re-measured at review: `/dawnspur-scale/sim.js` serves `8f13c683…` and the
-host stamps `5fabe7c`, dirty false. Standing pins: `/dawnspur-heat/` build
-`c887359` / index `cedf765c` / sim `292d6645` / greenhouse `7fdf7468`; the
-preserved kill at `/dawnspur/` index `bdde9b50` / sim `395c18f2`.
+host stamps `5fabe7c`, dirty false. Standing pins: `/dawnspur-heat/` index
+`b5f7e14f` / sim `292d6645` / greenhouse `7fdf7468` (the heat board as CFD-175's
+`efbed23` left it; `test/dawnspur-scale.test.js:80-84` grades these bytes); the
+preserved kill at `/dawnspur/` index `bdde9b50` / sim `395c18f2`. *(An earlier cut
+read "build `c887359` / index `cedf765c`"; that was the heat index before
+`efbed23`, already superseded when this beat was drafted.)*
 
 David sits first. Ask: What happened.
 
@@ -174,7 +177,7 @@ the top: the carry is always lit, so marks can always be earned toward UP.
 - The HUD grows past one asset line.
 - Furnace word, radius, CFD-163 field, Air, a second scaling asset, or an attacker appear.
 - 173 lights are recut. The heat sitting is touched.
-- Live shas are overwritten (`c887359` / `cedf765c` / `292d6645`; kill `bdde9b50` / `395c18f2`).
+- Live shas are overwritten (heat index `b5f7e14f` / sim `292d6645` / greenhouse `7fdf7468`; kill `bdde9b50` / `395c18f2`). *(An earlier cut read "`c887359` / `cedf765c` / `292d6645`"; `cedf765c` was the heat index before CFD-175's `efbed23`, superseded before this beat was signed.)*
 
 ## The numbers, and where each one comes from
 

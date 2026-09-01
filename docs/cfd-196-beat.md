@@ -15,8 +15,10 @@ document; the Kill list is the red-first test spec.
 ## At landing — what shipped, and where it departs from this document
 
 Recorded by the PM at landing, so the differences are read rather than
-discovered. Two are deviations from signed example sentences and are DAVID'S
-to accept or reverse at the sit; the third is this document going stale.
+discovered. Three are deviations from signed example sentences — items 1, 2 and 4 — and
+are DAVID'S to accept or reverse at the sit; item 3 is this document going
+stale. *(An earlier cut counted two; the third deviation, the turned-back
+sentence's crew clause, was found by the 2026-09-01 sweep.)*
 
 1. **Neither terminal register names the weather.** The signed example reads
    "lost to the weather on the way"; the board ships "lost on the way", and
@@ -45,6 +47,18 @@ to accept or reverse at the sit; the third is this document going stale.
    live boards, and those were graded directly instead: scale `953368a1`,
    heat `292d6645`, the preserved kill `395c18f2`, convoy-stop `5ad814e6`,
    all standing, verified live after deploy.
+
+4. **The turned-back sentence names whoever rode, and never "the crew".** The
+   signed example below reads "The crew turned the train for home … crew and
+   train are home"; the board ships "The train turned for home … the train is
+   home" at roster 0, "the Warden and the train are home" at 1, and "the
+   Wardens and the train are home" above. Cause: the opening roster is 0, so
+   the first turned-back sentence a cold player can meet would have promised
+   a crew home that never rode (`turnedBackSentence`, sim.js). Shipped from
+   `ed7f49d`; all four clauses stand, and the Kill list's "crew-home" clause
+   is read as whoever-rode-is-home, per the sim's own comment and the test
+   that grades it. *(This section first recorded two deviations from signed
+   example sentences; this is the third, found by the 2026-09-01 sweep.)*
 
 ## Named ruling — dice for standard runs, the instance for contested ones
 
@@ -641,7 +655,7 @@ turns ON or REFUSES, and the rule or source line it rests on.
 | The opening float, 3 marks | ON | Tutorial Script, Beat 4 — "only the three resources the player has touched are active", Marks among the three with its own tooltip ("Coin. Pays tolls, fees, and wages"), two beats before the first dispatch. **Weakness named:** "touched" does not prove a nonzero balance, so the float is **new-play, flagged**. R1 untouched — a float is an initial condition, not a faucet, and no sink is shared with heat. |
 | Naming the town as the float's source | **ON** | David 2026-08-26, ruling 2: "I do not care if we read the town I kind of think that rule is stupid." The beat's scenery sentence is retired for copy. |
 | Reading or writing another board's persisted state | **REFUSED, unchanged** | This beat's Kill list, verbatim: "this board reads or writes heat or scale state"; and the standing lineage lock — never overwrite a passed or killed board. Ruling 2 frees the fiction, not the state. Flagged for David in "Ruling 2, split". |
-| Opening Wardens (roster >= 1) | **REFUSED** | David 2026-08-26, ruling 5: "no". Corroborated: Tutorial Script Beat 8 defers its one warden by name — "that's a conversation for when your line's a little longer", designer note "seeds hero recruitment as post-tutorial content". Measured: `s.roster += 1` is the only write to the roster, so a granted Warden deletes this beat's published bare odds row (68.0 / 64.0 / 51.0) from play permanently, and turns 24 of 63 tests red. |
+| Opening Wardens (roster >= 1) | **REFUSED** | David 2026-08-26, ruling 5: "no". Corroborated: Tutorial Script Beat 8 defers its one warden by name — "that's a conversation for when your line's a little longer", designer note "seeds hero recruitment as post-tutorial content". Measured: `s.roster += n` (`commitMuster`, sim.js) is the only write to the roster *(measured at `ed7f49d`, the board this amendment was written against, where the write was `s.roster += 1` and the file held 63 tests; the ladder that shipped at `2a3e9dd` made it `s.roster += n`)*, so a granted Warden deletes this beat's published bare odds row (68.0 / 64.0 / 51.0) from play permanently, and turns 24 of 63 tests red. |
 | The charter condition on the Chartered Line | ON | David 2026-08-26, ruling 3: "in". R1 — marks' sinks are civic and labeled, and the list names "the charter filing fee" verbatim; the Chartered Line is the one line here already carrying the civic toll. A charter's own precondition is a **service record**, not a survey. And it is the shipped board's own law promoted: `test/dawnspur-dispatch.test.js`, "the stop is never one run: reaching Cloud Basin home paid always takes a banked cargo first." |
 | Signal tower / route discovery | REFUSED, unchanged | `routes[cloud-basin-span].discoveredAtSignalLevel` 1 — the near map stays pre-surveyed, the deviation stays flagged. The route is on the map from frame one, quotes its percent throughout, and names its condition; nothing here is discovered. |
 | Quantity confirmed before the commit | ON | David 2026-08-26 direction, verbatim: "select the mission, **confirm the number and type of troops**, and off they go" — the shipped +1 tap has no quantity-confirm step at all. And this amendment's origin: "clicking on it is confirming that you recruit that many." **Not cited to R10**: R10 is "Every load is one of three claims" — profit, tending, buildout — and governs what a train carries, not a spending menu. |

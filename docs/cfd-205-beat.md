@@ -6,7 +6,9 @@ loop leaving Dawnspur. This sitting is the spine those loops attach to:
 
 **SIGNED — David, 2026-08-30, word "Signed."** Recut 2 — One live place
 (Superheavy). Recut 1 sat as three peer clickables; that is the miss.
-Draft PR. Do not merge until SuperheavyReview PASS. David sits first.
+Draft PR, merged `c59dc101` after SuperheavyReview; sat 2026-08-30, not passed,
+stopped rather than recut. *(An earlier cut read "Do not merge until
+SuperheavyReview PASS. David sits first."; superseded by the merge and the sit.)*
 **Ask: What happened.** GameDesigner is off this job.
 
 ---
@@ -22,8 +24,13 @@ first-cut. Do not touch `/dawnspur-storm/` or any other board directory
 except the index row that lists boards (hash digits only if that file
 lists them).
 
-Draft. Do not merge. Do not deploy. Do not `workflow_dispatch`. David sits
-first.
+Merged `c59dc101` (PR #13, 2026-08-30 16:35Z) and shipped at `/dawnspur-site/`
+(index `070a4619`, sim `e9f81b74`). **Sat 2026-08-30; the sit did not pass and
+the board was stopped rather than recut — "no further grey-square recut" (canon
+§7.4: a finding routed to the Halt, not a failure of the board). Do not recut
+this path.** The pins stand. *(An earlier cut read "Draft. Do not merge. Do not
+deploy. Do not `workflow_dispatch`. David sits first."; that was the pre-sit
+state, superseded by the merge and the sit.)*
 
 Pins are the live boards, never `main`. Re-measured at authoring against
 `555ba9a9` (storm live merge). Do not recut it.
@@ -281,7 +288,8 @@ Every line testable, red-first.
 
 ## Sit
 
-David sits first. **Ask: What happened.**
+David sat 2026-08-30. **Ask: What happened.** *(An earlier cut read "David sits
+first."; the sit happened.)*
 
 Wanted: they can point at the ruin that took the marks, the consist that
 filled the bill, the frame that spent the food. Same five tells: ruin,
