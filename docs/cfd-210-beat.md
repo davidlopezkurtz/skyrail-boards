@@ -270,7 +270,7 @@ could not have been inherited even if the word had meant the same thing.
 alone is the whole of C12's ending, available the instant the board arms, and a
 player who never presses on has a complete sitting.
 
-### Why the Halt and not Rustfall
+### Why not Rustfall
 
 Rustfall is on the board and dark — *"Raiders hold the yard road."* It is the
 obvious second route and **it is refused here by name.** CFD-200 owns it: *"C5 —
@@ -320,26 +320,32 @@ than pushed through.**
 
 Bible sha `9a305653`. File + section where reached; do not invent.
 
-**Bible §5.8 Contracts. Supply.** Two contracts, each with its own stated chance.
-Both are Supply already kept; neither is a new dispatch.
+**Bible §5.8 Contracts. Supply.** One contract — Mosswake's, with its own stated
+chance — and two ways to run it: at stake, or with the stake waived after a short
+run. Neither is a new dispatch. *(An earlier cut read "two contracts"; that was
+the Halt fork, withdrawn.)*
 
 **Core Loop, What the loop pays out** — *"it earns Favor by helping neighbors and
 keeping promises."* Both branches are promises. Neither is the wrong one to keep.
 
 **R6 — stakes live in the run and the in-progress, never the secured home.** A
-failed run on either branch costs the haul committed and never the home, the
-lamp, the larder, or Favor already earned.
+failed press-on costs the ending it had not yet banked — the `Collect.` it
+forwent — and never the home, the lamp, the larder, or Favor already earned.
+Mosswake's cold tile says it in four words: *"Still a neighbor. Nothing to
+collect."*
 
 **R2 / R3 / R4** — no upkeep, no decay, nothing moves with wall time. The
 unchosen branch does not rot, expire, or become unavailable through waiting. **A
 timer on a fork would be a decay clock wearing a decision's clothes.**
 
-**§7.2** — the quick path must exist and be honest. The Halt is it: free, safer,
-lower-paying, and never a trap.
+**§7.2** — the quick path must exist and be honest. Banking is it: `Collect.`
+the instant the board arms, C12's whole ending, and never a trap. *(An earlier
+cut named the Halt here; withdrawn with the fork.)*
 
-**§7.3** — publish the columns, never a synthesised total. The two branches differ
-in chance, pay and stake; **the beat's own EV table is a marks-only reading and
-must be presented as such.**
+**§7.3** — publish the columns, never a synthesised total. The two branches are
+in different currencies — a mark and an ending against a 64% shot at fourteen and
+a 36% shot at nothing — and **no single number ranks them.** The EV table kept
+under provenance is a marks-only reading of a fork this beat no longer builds.
 
 ---
 
