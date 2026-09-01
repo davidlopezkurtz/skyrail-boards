@@ -1,0 +1,51 @@
+Dice at the Places CFD-209 — C12 — the dice come to the places 2026-09-01
+Spec: docs/cfd-209-beat.md - SIGNED, David 2026-08-31. Sibling
+/dice-at-the-places/. Not a recut of they-remember, herbs-larder,
+mosswake-loop, halt, site, storm, /dawnspur-line/, or /dawnspur-dispatch/.
+Parent: /they-remember/ (CFD-208, PASSED 2026-08-31).
+One NEW system: a tap at a place can fail. The desk is deleted as a
+surface. You tap Mosswake; the tap IS the send; the run can come home
+empty. Swap, not stack. Corridor max live can-do = 1 in every reachable
+state. A success-only walk never stops. A turned-back run arms; Collect
+at Mosswake fires. The player must meet a run that does not work.
+Opening marks 3 — the desk's float. Collect increments; it does not
+assign. One map. One consist. One home-but-not-stowed. Rustfall dark —
+Beat 8 dressing. Writing is the board. Mara shows, not lectures.
+Tutorial is the same system.
+
+Canon (cite, do not recall as a second bible): Bible §5.8 Contracts.
+Supply. Core Loop: earns Favor by helping neighbors and keeping
+promises. File: Skyrail-Reclamation-The-Core-Loop.md. R6 fail-forward.
+R1 Heat not Air. Bible sha 9a305653. Beat 8 frontier is inherited
+dressing, not a sitting.
+
+Lives at sit/dice-at-the-places/ with byte-copies at
+public/dice-at-the-places/, so the boards that already stand are
+untouched - the lineage lock:
+
+  live /they-remember/     sim a3345903 / index acbf4304  (PASSED)
+  live /herbs-larder/      sim 76c886b9 / index 676587bc  (PASSED; merge 6e606e5)
+  live /mosswake-loop/     sim f5407bca / index 6c30179c  (PASSED; merge 510a392)
+  live /dawnspur-halt/     sim 6eb957e7 / index b5a56a14  (PASSED; merge 66b5507)
+  live /dawnspur-site/     sim e9f81b74 / index 070a4619  (failed sit; merge c59dc101)
+  live /dawnspur-line/     sim 18b1324f / index b6f21db0
+  live /dawnspur-dispatch/ sim 576ce2b6 / index 31aead60
+  live /dawnspur-scale/    sim 953368a1 / index 5d2f452f
+  live /dawnspur-heat/     sim 292d6645
+  kill /dawnspur/          sim 395c18f2
+  live /convoy-stop/       sim 5ad814e6
+  live /dawnspur-storm/    sim f4f17008 / index 7711f979
+
+Halt live merge is 66b5507. Do not recut it. Do not add SEND to it.
+Mosswake live merge is 510a392. Do not recut it.
+Herbs-larder live merge is 6e606e5. Do not recut it.
+They-remember is PASSED. Do not recut it.
+Storm live merge is 555ba9a9. Do not recut it.
+Site live merge is c59dc101. Do not recut it.
+
+These hashes are graded by test/dice-at-the-places.test.js against the
+bytes on disk, measured LF (.gitattributes `* -text` makes the blob the
+shipped bytes; the working tree is never the artefact):
+
+index.html      sha256:cc3d50f6fabbeb54b210fc370e075760217d43c357fe6e7956b2069c259adb79
+sim.js          sha256:f64b4309e407f28b54cd228d502971b47355b457afe3337b77e5f6618c186611
