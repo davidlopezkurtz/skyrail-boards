@@ -3,6 +3,39 @@
 The first board where the city and the loop are one object. Sibling
 `/dice-at-the-places/`. Not a recut of anything.
 
+## PASSED — David, 2026-09-01. (Signed 2026-08-31.)
+
+**The sit, verbatim:**
+
+> *"I could send Mosswake runs, which I did, then the run came home short and the
+> larder covered it."*
+
+**Pass.** He named the act and what it bought — canon §7.4's question form
+answered without being asked it — and the sentence is the beat's own *Wanted*
+almost word for word.
+
+**The acceptance condition was met in play, not just in test.** He hit a failed
+run. The board cannot arm without one, so the corridor routed him *through* the
+wager rather than around it — which is what this beat asked for and what a green
+Kill list alone could not have shown.
+
+**`/dice-at-the-places/` is a PASSED board and does not get overwritten.** Bytes
+pinned at index `d97d9951` / sim `f64b4309`, self-pinned in
+`test/dice-at-the-places.test.js` on the day it passed and mutation-verified
+(616/1, naming the path).
+
+**The city and the loop are one object.** Two lineages that shared exactly three
+exported names now share a board.
+
+**One observation carried forward, not a finding.** The sit opens on capability —
+*"I could send Mosswake runs"* — where the four city passes open on the act
+itself. n=1, and the second half of the sentence is the act and the payoff
+exactly as wanted. It is recorded because *available* versus *done* is the
+distinction this lineage has twice turned on, and **CFD-210 is the card that can
+actually test it.**
+
+---
+
 ## SIGNED — David, 2026-08-31.
 
 His word: *"signed"*.

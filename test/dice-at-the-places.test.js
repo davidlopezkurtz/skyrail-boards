@@ -111,7 +111,19 @@ function frames() {
 // ---------------------------------------------------------------- guards
 
 test("guard: live pins including PASSED they-remember and the eight Seat pins are unchanged at HEAD", () => {
+  // /dice-at-the-places/ PASSED its sit 2026-09-01 — David: "I could send
+  // Mosswake runs, which I did, then the run came home short and the larder
+  // covered it." It joins its own pin list at that moment and not before:
+  // while a board is being cut, pinning its own bytes is circular, and the
+  // sit-equals-public test cannot see a COORDINATED overwrite of both copies.
+  // This is the THIRD board to need self-pinning on the day it passed — each
+  // new board's test pins the PRIOR boards, so the newest passed board is
+  // always unprotected until a successor exists. Make this part of a pass.
   const pins = {
+    "sit/dice-at-the-places/sim.js": "f64b4309e407f28b54cd228d502971b47355b457afe3337b77e5f6618c186611",
+    "public/dice-at-the-places/sim.js": "f64b4309e407f28b54cd228d502971b47355b457afe3337b77e5f6618c186611",
+    "sit/dice-at-the-places/index.html": "d97d995173276e286c37156697ca296d31f238774d0e783c00c7a91db125868c",
+    "public/dice-at-the-places/index.html": "d97d995173276e286c37156697ca296d31f238774d0e783c00c7a91db125868c",
     "sit/they-remember/sim.js": PIN.rememberSim,
     "public/they-remember/sim.js": PIN.rememberSim,
     "sit/they-remember/index.html": PIN.rememberIndex,
