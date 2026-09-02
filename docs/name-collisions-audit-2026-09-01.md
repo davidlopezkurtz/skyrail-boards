@@ -829,9 +829,11 @@ design call for its beat, not a cleanup.
   and the description "The home halt, …". The boards' desk lineage inherited a *route* to
   the place the city lineage calls home. Recorded here for the PWA repo; not a boards
   change.
-- **`KILLS.md:63` cites `docs/cfd-176-beat.md`, which does not exist in this repository**
-  (the CFD-176 beat lived on the pre-git host and in a pull request). The ledger's own
-  header rule — a kill names its record — is unmet for that line; and **no storm sitting is
+- **`KILLS.md:63` cites `docs/cfd-176-beat.md`, which did not exist on main** — it lived only
+  on pull request #3's branch since 2026-08-24, beside three implementation PRs marked
+  do-not-merge. *(Superseded 2026-09-02: the beat was merged onto main from #3 with a
+  provenance header; the cite now resolves. It remains the one beat not swept against its
+  board.)* And **no storm sitting is
   in `KILLS.md` at all** although the storm board was sat five times without a pass
   (`docs/mechanisms-recommitted.md:589-590`, `docs/cfd-209-beat.md:114`). Both are ledger
   gaps, not beat lines; disposition in §6.

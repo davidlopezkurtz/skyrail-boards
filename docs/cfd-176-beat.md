@@ -1,5 +1,13 @@
 # CFD-176 — first-cut beat
 
+*Provenance, added 2026-09-02 when this file was merged onto main from
+skyrail-boards#3 (branch head `90af963`, opened 2026-08-24). `KILLS.md:63` has cited
+it as the recut behind the preserved kill since 2026-08-25. The file carries no
+signature line of its own; the signature's record is Linear CFD-176. The shipped
+board's header (`sit/dawnspur-heat/sim.js:3-6`) restates the Does below line for
+line. This is the one beat the 2026-09-01 sweep did not read against its board —
+open work, recorded in `docs/name-collisions-audit-2026-09-01.md` §6.*
+
 Seat: Superheavy beat only. No implement. No deploy. No merge. 173 stays Done. Do not recut the lights. [skyrail-boards#2](https://github.com/davidlopezkurtz/skyrail-boards/pull/2) stays draft and unused. Do not touch `public/dawnspur`, `public/convoy-stop`, or live board bytes. Do not `workflow_dispatch`.
 
 Live kill (do not overwrite): https://boards.skyrailreclamation.com/dawnspur/ index `bdde9b50` / sim `395c18f2`.
