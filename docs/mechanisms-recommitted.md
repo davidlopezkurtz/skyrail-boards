@@ -68,8 +68,14 @@ respectable high islands burn fuel themselves … rationed and quiet." (Fuel
 Heresy)
 
 **R8 — The three locked terms, and what a quiet stone means.**
-"Three distinct terms hold: liftstone (material), keel stone (apparatus), and
-keel-fire (warmth)." (World Bible, resolved) "A cold stone is quiet, and a
+"Hold three distinct terms: liftstone (material), keel stone (apparatus), and
+keel-fire (warmth)." (World Bible, resolved — the
+`weekend-worldbuilding-2026-06-29/source/` cut at
+`Skyrail-Reclamation-World-Bible-v0.1.md:464`; the top-level
+`.extracted.md:462` is the earlier, unresolved cut and carries no resolution)
+*(An earlier cut read "Three distinct terms hold:"; the source sentence is the
+imperative "Hold three distinct terms:", and the inverted wording appears nowhere
+in the corpus. The three terms and their glosses are unchanged.)* "A cold stone is quiet, and a
 quiet stone is a falling one" (Geology) — and the falling in question is the
 Quiet's mechanism, abandonment at world scale: "A great many people, over a
 long time, simply stopped filling the bank, and the bill came due all at once."
@@ -107,8 +113,11 @@ Every row of his 2026-08-25 reading checks out against the sources:
 
 ## 3. The boards, judged
 
-- **The scale sitting (`/dawnspur-scale/`, CFD-183) violates R3, R4, R6 and
-  R8-as-session-meter**: decay-on-idle at a held greenhouse is the refused
+- **The scale sitting's convicted first cut (CFD-183, build `5fabe7c` — index
+  `d6d5e262` / sim `8f13c683`, killed 2026-08-25, `KILLS.md`'s 2026-08-25 scale entry) violates R3, R4,
+  R6 and R8-as-session-meter** *(an earlier cut read "The scale sitting
+  (`/dawnspur-scale/`, CFD-183)"; since `1aea540` that path has served the recut,
+  which passed its sit and which §7's pass table lists among the passed boards)*: decay-on-idle at a held greenhouse is the refused
   treadmill, applied to the home, on a 1.5-second meter. The beat's DOWN-as-
   the-world's-hand is anti-canon on held ground. What survives canon: marks
   pricing UP (R1's marks-pay-for-work-and-buildout), the level ladder itself,
@@ -124,7 +133,10 @@ Every row of his 2026-08-25 reading checks out against the sources:
 ## 4. What the scale recut must be
 
 Derivation, not yet a beat. The next beat draft follows David's signature on
-this document.
+this document. *(Written 17:18, before the 17:34 signature. The beat followed the
+same day — `docs/cfd-183-beat.md`, drafted from §5, signed by David, shipped at
+`1aea540`, passed its sit; this section is the record of the derivation, not an
+open task.)*
 
 1. **The world's hand comes off held ground.** No level is ever taken by
    idling. The greenhouse, once stood, is a secured holding (R3, R4).
@@ -175,7 +187,12 @@ sitting as what a storm does, never as standalone mechanics.** The evidence:
    (Geology) A storm "steals its sun and chills its keel at once" (Geology) and
    "can foul a line, threaten the cargo on it" (Core Loop) — so when the storm
    lands, the haul in transit is at risk (that is (a)) and the in-progress
-   purchase can suffer (that is (b), "a project left mid-advance can suffer,
+   though never the holdings already secured" — MDB, directive 1.12). *(An earlier
+   cut attributed this sentence to Two-Games. The wording is verbatim from
+   `Skyrail-Reclamation-Master-Design-Bible.md:41` and appears nowhere in
+   `The-Two-Games.md`; Two-Games:39 states the same rule in different words — "A
+   project left mid-advance can suffer, though the holdings already secured never
+   do" — which is what R6 above quotes.)* Loss stays
    though never the holdings already secured" — Two-Games). Loss stays
    fail-forward by rule: "costs the haul committed to it and never the home."
 3. **The storm is fair by canon — it is telegraphed.** "To see a stormbird
@@ -187,17 +204,36 @@ sitting as what a storm does, never as standalone mechanics.** The evidence:
    pack, so the board's storm-tell has a building waiting to own it.) The tell
    precedes the event; the counterplay (tend the reserve beforehand, hold the
    train home during) always exists.
-4. **Why not (a) alone, first:** "Raiding and loss are a soft sink, and it
-   earns its place as drama and texture rather than as the economy's regulator.
-   The regulator is the cold." (Economy) Haul-loss without the weather system
+4. **Why not (a) alone, first:** "This is a soft sink, and it earns its place as
+   drama and texture rather than as the economy's regulator. The regulator is the
+   cold." (Economy, under the heading "Raiding and loss are a soft sink, not the
+   regulator") *(An earlier cut opened the quotation "Raiding and loss are a soft
+   sink, and it earns…", splicing the section heading at
+   `How-the-Economy-Works.md:45` onto the body sentence at `:47` as one
+   continuous quote; no line of the corpus carries the joined wording. Substance
+   unchanged.)*
+   Haul-loss without the weather system
    is drama with no canonical agent — an RNG tax on a one-train board.
 5. **Why not (b) alone, first:** the in-progress needs a pressor, and canon's
-   pressor is the cold and its weather ("The cold presses … the in-progress
-   project" while a player plays — Two-Games). Without the storm, (b) has no
+   pressor is the cold and its weather ("The cold is the second, pressing the
+   warmed edge and the in-progress project and the deep frontier …" — Core Loop)
+   *(An earlier cut read "The cold presses … the in-progress project" while a
+   player plays — Two-Games; that ellipsis spanned `The-Two-Games.md:39` and
+   `:37` in reverse order and no line carries the joined wording.
+   `The-Core-Loop.md:79` carries the claim in one sentence.)*. Without the storm, (b) has no
    agent either.
 6. **The sequencing instrument is the sitting discipline itself** — one system
-   per sitting has produced three passed sits; and stakes default gentle by
-   rule: "the whole intensity rides the stakes dial … defaulting gentle and
+6. **The sequencing instrument is the sitting discipline itself** — one system
+   per sitting has produced three passed sits *(a dated count, not a ruling, and
+   it was wrong on its date: at the signature, 2026-08-25 17:34:58 (`7081028`),
+   exactly one sit had passed — `/dawnspur-heat/`, recorded in the PWA at
+   `c29090a` 13:36:36 as "the first sitting to survive a sit". The scale first
+   cut had been killed that afternoon (`KILLS.md`'s 2026-08-25 scale entry, build
+   `5fabe7c`) and
+   its recut landed at 18:16:07 (`1aea540`); `/dawnspur-dispatch/` passed
+   2026-08-26 (`83b2ac1`). Three is the count §7's pass table tabulates and it
+   has been overtaken since — read the tabulation, not this number. The discipline
+   this item invokes is itself amended by §7's "one NEW NAMED system" sentence.)*; and stakes default gentle by
    turned up only by a player who reaches for it." (Core Loop)
 
 David's standing sentence — able to die while something is at stake — is then
@@ -237,13 +273,33 @@ cumulative."*
 
 ### The rule was never literally true, and the measurement says so
 
-Counted 2026-08-26 across the three boards that have passed a sit:
+Counted 2026-08-26 across the three boards that have passed a sit: *(Superseded
+2026-09-02: this is the 2026-08-26 count and stands as that measurement — at
+`d7cd1ab` heat, scale and dispatch were the only passed boards in the tree. Six
+more have passed since and are not in the table: `/dawnspur-line/`, PASSED
+2026-08-28 (`7f58c8f`); `/dawnspur-halt/`, `/mosswake-loop/` and
+`/herbs-larder/`, whose passes the repository records only as "PASSED sit; live
+merge" against `66b5507`, `510a392` and `6e606e5` — no pass date is written
+down for those three, and the merge date is not one; `/they-remember/`, PASSED
+2026-08-31 (`a525218`); `/dice-at-the-places/`, PASSED 2026-09-01
+(`12ccd3d`). Their lever counts are not re-measured in this table. This table is
+not a pass ledger; the standing list is `docs/cfd-210-beat.md:78-86`.)*
 
 | board | player verbs | state fields |
 | --- | --- | --- |
-| `/dawnspur-heat/` | 4 — GOODS / B / HOLD / WARM | 4 |
+| `/dawnspur-heat/` | 4 — GOODS / B / HOLD / WARM | 8 |
 | `/dawnspur-scale/` | 4 — CARRY / MOSSWAKE / TEND / UP | 7 |
-| `/dawnspur-dispatch/` | 3 — SEND / MUSTER / MEET | 8 |
+| `/dawnspur-dispatch/` | 3 — SEND / MUSTER / MEET | 10 |
+
+*(Superseded 2026-09-02: an earlier cut read 4 / 7 / 8 in the state-field column
+and named no instrument. The two instruments that reproduce the scale row's 7 —
+the keys of the object `createBoard({fresh:true})` hands to `make()`, and the
+distinct `s.<field>` names the file references — agree on all three and give
+heat 8 (`sit/dawnspur-heat/sim.js:104-113`), scale 7 (`:128-136`) and dispatch
+10 (`sit/dawnspur-dispatch/sim.js:465-476`). All three sims are byte-identical
+between this count and HEAD, so nothing drifted. The verb column, which is what
+the argument below uses, reproduces exactly on the boards' `commit*` and
+`can*` sets.)*
 
 Every passed board carries three or four levers. **"One mechanism per sitting"
 has always meant one NEW NAMED system, and the boards have quietly been
@@ -258,12 +314,29 @@ On the dispatch board, 2026-08-26:
 - **Sitting 1**, one lever engaged (SEND only — the muster was never found):
   three runs, all won, and the sitting was thin.
 - **Sitting 2**, two levers engaged: *"got more of a fleshed out experience with
-  this."*
+  this."* *(Note 2026-09-02: the quoted sentence has no copy in either repository,
+  and the commit that landed it (`d7cd1ab`) transcribes the same sitting in its
+  own body as "a more fleshed out experience with this" — one of the two is not
+  verbatim. The lever count does not reconcile either: driven from
+  `createBoard({fresh:true})`, a sent run never resolves under `wait()` and
+  only `commitMeet()` throws the die and pays
+  (`sit/dawnspur-dispatch/sim.js:376-396`), so every banked run is a SEND and a
+  MEET and the count here can only mean levers chosen between — leaving MUSTER as
+  the second. `docs/cfd-196-beat.md:871-872` says "Three sittings failed to find
+  a 34px control in the header slot; the fourth used it to a full roster." Which
+  lever it was is not recorded here. Sitting 3 (`2a3e9dd`,
+  `docs/cfd-196-beat.md:730`) is not listed.)*
 - **Sitting 4**, all levers, real losses: *"I think this worked well overall"* —
   the pass.
 
 Same board, same day, same player. The only variable was **how many levers were
-in play**. That is the clearest measurement this project has that lever-count is
+in play**. *(Superseded 2026-09-02: same day and same player; not the same board.
+Sittings 1–2 were on `ed7f49d`, sitting 3 on `2a3e9dd` (Amendment 1: the
+3-mark float, the charter condition, the muster ladder), sitting 4 on `663d4fa`
+(Amendment 2: the control moved into the card stack).
+`docs/cfd-196-beat.md:871-874` attributes the muster being found to Amendment 2's
+placement, so lever-count was not the only variable. The direction of the evidence
+stands; its strength is overstated here.)* That is the clearest measurement this project has that lever-count is
 the thing, and it argues against the rule as written.
 
 ### What was actually constraining, which is not lever-count
@@ -305,13 +378,24 @@ mechanics stay dead.
 
 1. **Sits get longer**, and a board stops being something shippable in an
    afternoon. That is the price of the thing being a game rather than a probe.
+   *(The first clause is retired as a cost by §7.2 — RULED, David,
+   2026-08-27: a longer sitting the player opted into is a property to design, not
+   a price to pay. The authoring cost in the rest of this item is not retired and
+   stands; the item is left in place as the cost as first recorded.)*
 2. **The fiction has to join.** The desk and the terrace are currently different
    places. A cumulative board makes Dawnspur one town with a desk *and* a
    terrace — which is what the game is, but it is a decision that has been
-   deferred until now and cannot be deferred any further.
+   deferred until now and cannot be deferred any further. *(Discharged 2026-08-28,
+   recorded here 2026-09-02: `/dawnspur-line/` (CFD-203, shipped `3588bb4`
+   2026-08-27, PASSED 2026-08-28 at `7f58c8f`) put the desk and the terrace on
+   one town; §7.1 records why the join, and not a mechanic, was the one new
+   system.)*
 3. **The economies have to reconcile.** The scale board spends marks on UP and
    TEND; the dispatch board spends marks on MUSTER and stakes. One wallet, more
-   claims on it. R1 still binds: heat is the master resource, marks are money,
+   claims on it. *(Discharged 2026-08-27, recorded here 2026-09-02: reconciled on
+   `/dawnspur-line/` by the no-exchange rule — provisions became food off the
+   terrace and marks stayed the desk's (`public/dawnspur-line/sim.js:47`); §7.3
+   records the consequence, that cross-currency pairs are unrankable.)* R1 still binds: heat is the master resource, marks are money,
    never the same sink.
 4. **Attribution weakens at the margin.** Only one lever is new, but it now sits
    among several, and an interaction defect is harder to place than an isolated
@@ -335,7 +419,13 @@ mechanics stay dead.
 
 **CFD-201, the storm sitting**, reframed by this ruling: `/dawnspur-dispatch/`'s
 loop and `/dawnspur-scale/`'s ground on one town, with **weather as the single
-new system**.
+new system**. *(Superseded 2026-08-27 by §7.1, recorded here 2026-09-02: the first
+cumulative board became `/dawnspur-line/` (CFD-203) with the provisions join as
+its one new system, PASSED 2026-08-28. CFD-201 then shipped as `/dawnspur-storm/`
+on the line parent (`42e4aa8`, 2026-08-28) carrying weather as its one new
+system; it was sat five times and stopped without a pass
+(`docs/cfd-201-beat.md:68-76`). The paragraphs below are the 2026-08-26 framing
+and stand as record.)*
 
 This dissolves CFD-201's open lineage question rather than answering it — the
 storm does not have to choose a board, because the board now has both. It is
@@ -391,8 +481,12 @@ join is the only new thing on the board.
 system and **provisions drawn off the terrace** argued and deferred as
 alternative 1, on the ground that it changed an inherited system and would be a
 second new thing. The beat's own text conceded it was *"a better game than what
-ships here."* Ruled: **the provisions join ships and weather defers.** The
 993-line weather beat is not discarded — it is the storm sitting's beat, held
+for the sitting that carries weather. *(993 lines at `d245131`; the beat has
+since been re-derived against the join board at `9b8916d` and is longer. Status
+at HEAD: the sitting it was held for has happened — the board shipped at
+`/dawnspur-storm/` (`42e4aa8`, 2026-08-28), was sat five times and stopped
+without a pass, canon §7.4. "Held" describes 2026-08-27, not now.)*
 for the sitting that carries weather.
 
 **What deferring weather costs, recorded rather than discovered.**
@@ -406,9 +500,17 @@ for the sitting that carries weather.
    second sitting. It is not broken, only outstanding, and the join board must
    not contradict it.
 3. **Three of David's six CFD-201 rulings are storm rulings and travel with the
-   storm**: the Chartered storm pay of 24, the Ranger's trim, and the storm
-   premium's shape. They are ruled, recorded, and not re-opened when weather
-   returns.
+   storm**: the Chartered storm pay of 24, the Ranger's trim, and the stop's
+   storm-narrowed form — topping ARMS, a Chartered cargo home *out of a storm*
+   fires. They are ruled, recorded, and not re-opened when weather returns. *(An
+   earlier cut named the third "the storm premium's shape", as did this ruling's
+   commit body at `d245131`; no ruling of that name is among the six recorded at
+   `docs/cfd-201-beat.md:1527-1565`, and "premium" in that beat is the
+   desperation pay — the Chartered pay itself, already first in this list. The
+   board that shipped names the three it carries:
+   `sit/dawnspur-storm/sim.js:27-28` the Chartered pay 18→24, `:36-40` the
+   Ranger and TRIM, `:20-21` "CFD-203's arming shape, narrowed". Of the six, 1
+   and 3 shipped on the join board and 6 became canon §7.2.)*
 4. **CFD-200's parent does NOT change. The general rule stands; this item's
    application of it was wrong and is withdrawn — CORRECTED 2026-08-28.** The rule
    the fork taught is right and is kept: **the parent is the last passed board,
@@ -455,11 +557,21 @@ for the sitting that carries weather.
    that raise is recorded nowhere but here.
 
    It recurs because canon is read first and this item said the wrong thing in
-   quotable form while the refutation sat a thousand lines into another document.
-   **Withdrawing it here fixes one of two copies:** the same sentence — *"the
+   quotable form while the refutation sat in another document, unread by anyone
+   who stopped at canon. *(An earlier cut read "a thousand lines into another
+   document"; the refuting paragraph was at `docs/cfd-200-beat.md:128` when this
+   was written — the Seat section of a 1,275-line file — and is at `:132` at
+   HEAD. The distance was wrong; the reading-order mechanism was not.)*
+   **Withdrawing it here fixed one of three copies:** the same sentence — *"the
    parent is the last passed board, named at signature rather than assumed at
-   drafting"*, applied there to CFD-200 — is still live in CFD-203's Linear
-   description. Do not re-open this from either. If you still disagree, the
+   drafting"*, applied there to CFD-200 — is live in CFD-203's Linear description
+   (not checkable from this repository), and a third copy sat unmarked in
+   `docs/cfd-203-beat.md` from `3618d76` (2026-08-27T18:03:26Z) until the
+   2026-09-01 sweep superseded it at `16ac8e5` (`:176-185` at HEAD). *(An
+   earlier cut read "fixes one of two copies" and named only the Linear
+   description. The in-repo copy it missed is the second of the two 2026-08-27
+   raises this item counts just above, and missing it is why that copy governed unmarked
+   for four days.)* Do not re-open this from any of them. If you still disagree, the
    argument to beat is in `docs/cfd-200-beat.md`, the paragraph beginning *"This
    beat's parent is still `/dawnspur-storm/`, and that is not a leftover."*
 
@@ -503,8 +615,11 @@ more arithmetic — it is a comparison the board has deliberately given up the
 ability to make.
 
 **The worked instance, measured 2026-08-28** (`docs/cfd-201-beat.md`, the
-ladder-inversion appendix). At the 0W+1R roster, after the trim was re-priced to two
-marks:
+ladder-inversion tables under *Trap 1, answered with arithmetic — and answered
+twice, differently*, which follow the line *"in a storm the ladder inverts"*).
+*(An earlier cut read "the ladder-inversion appendix"; the beat has no section of
+that name — the passage sits inside Trap 1.)* At the 0W+1R roster, after the trim
+was re-priced to two marks:
 
 | at 0W+1R | marks EV | food staked |
 | --- | --- | --- |
@@ -550,9 +665,19 @@ than landed as a tuning convenience.
 
 ### 7.4 A recut may not be the same KIND as the one that just failed — WRITTEN DOWN 2026-08-31, in use since 2026-08-29
 
-**This rule was already running. It produced the only recut-to-pass in the corpus,
-it terminated two boards, and it was written down nowhere** — it survived as four
-ad-hoc refusals in Linear comments. That is the condition this file exists to end.
+**This rule was already running. It produced the first of the two recuts-to-pass
+it has yet produced — `/dawnspur-halt/` at `923002d` (2026-08-30), with
+`/they-remember/` the second at `a525218` (2026-08-31, ninety minutes after
+this section was written) — it terminated two boards, and it was written down
+nowhere** — it survived as four ad-hoc refusals in Linear comments. That is the
+condition this file exists to end. *(An earlier cut read "It produced the only
+recut-to-pass in the corpus". It was stale within ninety minutes on the narrow
+reading and was already false on the plain one when written: §7's own pass
+table lists `/dawnspur-heat/` and `/dawnspur-scale/` among the passed
+boards, and both are recuts of killed cuts — `KILLS.md`'s 2026-08-24 starve-or-feed
+entry and `1aea540`.
+`docs/cfd-208-beat.md:401-403` has superseded its own copy of the same
+sentence.)*
 
 **The rule.** When a sit fails, name what KIND the last recut was — **writing**,
 **act**, **affordance**, or **structure**. The next recut must be a *different*
@@ -566,13 +691,29 @@ only on a question the last one did not already answer.
 
 #### The evidence, measured 2026-08-31
 
-**`/dawnspur-halt/` is the clean experiment, because both kinds were tried in
-sequence on one board.** Sits in order, from CFD-205:
+**`/dawnspur-halt/` is the clean experiment, because a writing recut and an act
+recut were tried in sequence on one board.** Sits in order, from CFD-205, across
+its two paths:
 
-1. grey-square random clicks — **fail**
-2. buildings and feed without why — **fail**
-3. *"Lit the lamp and started the foundry."* — **fail**; he did the two opening
-   can-dos and stopped
+1. grey-square random clicks — **fail**, on `/dawnspur-site/`, the path stopped
+   below (that board was sat at least twice: "random clickables" is its recut 1,
+   `docs/cfd-205-beat.md:8`, `:52`, and the stop is recut 2, `:28`)
+2. buildings and feed without why — **fail**, `/dawnspur-halt/` cut 0 (merge
+   `e44212db`; `KILLS.md`'s 2026-08-30 Halt buildings entry)
+3. *"Lit the lamp and started the foundry."* — **fail**, `/dawnspur-halt/`'s
+   writing recut `b23006d` (merge `c1b66ee5`; `KILLS.md`'s 2026-08-30 Halt Home-sit
+   entry); he did the
+   two opening can-dos and stopped
+
+*(An earlier cut read "because both kinds were tried in sequence on one board"
+and listed all three sits under `/dawnspur-halt/`. The rule above names four kinds;
+the two this board tried are **writing** (the Home-sit entry's *"Recut: writing on the
+existing work notices"*) and **act** (the
+`923002d` recut named below). The first sit was the site's — `docs/cfd-205-halt-beat.md:217`,
+"recut-2 fail; grey-square UI stays on `/dawnspur-site/`", and the halt's own
+manifest, `sit/dawnspur-halt/MANIFEST.txt:9`, reads "Not a recut of
+/dawnspur-site/". The argument is unchanged: the two kinds tried in sequence on
+one board are `b23006d` and `923002d`.)*
 
 The PM then refused the obvious next move by name — *"Superheavy names a recut that
 is **not** louder Home labels"*, and *"PM already refused a louder Home recut"* —
@@ -601,8 +742,13 @@ place.**
   no cap can fix. Near-vacuous. Refused.
 - **Not "ask the player what they were trying to do."** Also proposed, also
   refused, and this one is actively dangerous: it was **already tried** on
-  `docs/cfd-201-beat.md`, whose *"What the sit must report"* asks two intent
-  questions. The one intent answer on record is a **confabulated mechanism** —
+  `docs/cfd-201-beat.md`, whose *"What the sit must report"* asked, as signed at
+  `30ff642`, *"At which storm send did you consider the trim and not take it?"* —
+  beside the TEND question quoted below. *(An earlier cut read "asks two intent
+  questions"; the second of the two is the CFD-203 TEND question this section
+  holds up below as the shape that is **not** an intent question, and
+  the trim question was recut into that shape at `16ac8e5`, 2026-09-01, so at
+  HEAD that card asks none in the intent form.)* The one intent answer on record is a **confabulated mechanism** —
   *"I noticed it degrade and started to see a connection between fully tended land
   and success rates"* — a link that does not exist on that board, where TEND
   restores the reserve and route odds move with sky and roster. **An intent answer
@@ -623,9 +769,16 @@ place.**
   worth studying.** `docs/cfd-203-beat.md:1386` asks:
 
   > *"Ask the sitting to report **whether anyone tended at all, and why.** If
-  > nobody touches it, that's the answer. If they tend and **can't say what it
-  > bought them**, TEND has become a habit carried from a board that no longer
-  > exists."*
+  > nobody touches it, that's the answer. If they tend and can't say what it
+  > bought them, TEND has become a habit carried from a board that no longer
+  > exists, and it should either be cut or merged into the food line before
+  > Rustfall."*
+
+  *(An earlier cut stopped the quotation at "exists." and set "can't say what it
+  bought them" in bold; the source at `docs/cfd-203-beat.md:1386-1390` has
+  neither, and §7.5's third outcome — "cut it, or merge it into the food line" —
+  routes on the clause that was cut. §7.5's worked example 1 calls this
+  quotation "in full"; with this correction it is.)*
 
   That looks like an intent question and is not one. It asks **what they did** — a
   fact the board can check — and then whether they can **name what it bought**,
