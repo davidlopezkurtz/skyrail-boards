@@ -724,7 +724,11 @@ today" items fall, and its account of what the guard catches was too generous.**
   the pin that held** — see #10; the behavioural pins at `dice.test:441/:451/:472` are.
   The argument survives with the correct citation: mechanical, *behavioural* pins have
   held; prose and by-name regexes have not.
-- **"And it does not cover `docs/`."** Confirmed by doing it: the spec-vs-source sweep of
+- **"And it does not cover `docs/`."** *(Superseded 2026-09-02: it does now — the guard's
+  docs half landed at `6e95383`, 11 tests, and is red against the pre-sweep tree naming
+  cfd-209:396, cfd-210:299, cfd-210:585, cfd-200:345 and cfd-200's stake heading, which this
+  sweep missed. The sentence below was true when written and is why that half exists.)*
+  Confirmed by doing it: the spec-vs-source sweep of
   the twelve beats is recorded in §6, and it found bridges no source guard could see.
 
 
@@ -803,7 +807,11 @@ DOM surface of `id=`, `classList.toggle(` and `.className =` tokens), one declar
 one row per name that crosses the seam and per adjudicated intra-lineage finding, meaning
 per side, unit and debit target where numeric, source pins, driven paths from the opening
 with every step asserted true; `armed` CONTESTED with both readings verbatim), and the
-test that diffs them and prints both sides. **22 tests; suite 694 → 716.**
+test that diffs them and prints both sides. **23 tests after a second fix pass** (`919b6be`),
+**and a docs half at `6e95383`** — `test/beats-lexicon.test.js` with its own ledger, 11 tests,
+which reads the beats for a token used in the other lineage's meaning and is proved against
+history: red at `796d9a2` naming five bridges with zero false positives, green at HEAD.
+**Suite 694 → 728.**
 No byte under `sit/`, `public/`, `docs/` or any existing test.
 
 Red-first by the author and by the orchestrator (an empty ledger prints the full derived

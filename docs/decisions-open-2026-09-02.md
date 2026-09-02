@@ -107,7 +107,7 @@ clear, pushes at turns 7, 8, 9 with `| 8 | **STORM** |` and `| 9 | **STORM** |`,
 `:1151-1152` concludes: *"Two of the three pushes land under a storm, and the bird is on
 the board for two turns before the first of them."*
 
-**What source says.** `docs/name-collisions-audit-2026-09-01.md:935-937`: *"the
+**What source says.** `docs/name-collisions-audit-2026-09-01.md:943-945`: *"the
 first-sitting sky trace is the dispatch path, and the inference on it is inverted: driven
 on the parent, the send falls at t8 under STORM and the pushes at t10–t12 clear. Design
 paragraphs (`:263-292`) rest on it — **David's call**, not built."* Those paragraphs are
@@ -139,7 +139,7 @@ register (*"The Engineer got the parts car's coupling back under it. Two cars ab
 worth 21."*) and `:625-630` the clean and paid registers — the beat's terminal vocabulary,
 none of which mentions UP or topping.
 
-**What source says.** `docs/name-collisions-audit-2026-09-01.md:945-948`, graded **HIGH**:
+**What source says.** `docs/name-collisions-audit-2026-09-01.md:953-956`, graded **HIGH**:
 *"the beat 'carries the whole storm board' and never mentions UP, topping, or the parent's
 own arming stop (`sim.js:626`), reachable by play and ending the sitting before any
 Rustfall send. Two stops on one board, unreconciled. **David's call**; a refuter-only edit
@@ -328,7 +328,7 @@ superseded by the sweeps (`cfd-201:80`, `cfd-203:153`, `cfd-205:10`/`:31`), one 
 **No test pins any of these lines** — `grep -rn "David sits first|Do not merge|No
 implement|Beat only" test/` returns nothing — so the fix is docs-only and free.
 
-**Raised as.** `docs/name-collisions-audit-2026-09-01.md:1253-1254` (one beat) and
+**Raised as.** `docs/name-collisions-audit-2026-09-01.md:1261-1262` (one beat) and
 `docs/sweep-2026-09-02.md:866-874` (one beat, flagged as a precedent split and *"held
 behind his word"*). **The hold did not hold** — `cfd-176:11` landed at `b232440` anyway,
 so the split is now live in the tree with one side superseded and five not.
@@ -391,7 +391,7 @@ served), and `docs/cfd-183-beat.md:329` and `:385` — both **unsuperseded**, wh
 pin at `:45` and `:182` in the same file *does* carry supersession notes from the
 2026-09-01 sweep.
 
-**Raised as.** `docs/name-collisions-audit-2026-09-01.md:960-963` — *"**The same stale pin
+**Raised as.** `docs/name-collisions-audit-2026-09-01.md:968-971` — *"**The same stale pin
 is shipped** in `sit/dawnspur-scale/MANIFEST.txt:25` — a passed board's bytes; David's."*
 The audit named one of four sites.
 
@@ -462,7 +462,7 @@ over the full ordering space.
 
 **Question.** Pick one severity.
 
-**What the document says.** `docs/name-collisions-audit-2026-09-01.md:799-805`: *"One
+**What the document says.** `docs/name-collisions-audit-2026-09-01.md:803-809`: *"One
 reviewer adjudicates BENIGN_SHARED_NAME / LOW … The report holds REAL_COLLISION / MEDIUM …
 The guard's ledger carries the row as CONTESTED with both readings and every measured
 site; **nothing downstream may cite a single severity for it until David rules.**"*
@@ -479,7 +479,7 @@ ledger (`test/lexicon-ledger.js:322-328`). One call, three places.
 
 **Blocked.** Any downstream citation of a single severity — the ledger says so in terms.
 The completeness critic calls the split *definitional, not factual*
-(`docs/name-collisions-audit-2026-09-01.md:802-803`).
+(`docs/name-collisions-audit-2026-09-01.md:806-807`).
 
 **Orchestrator's read.** *LOW.* The export answers one question on all four boards and the
 world-cause differing is what a shared abstraction looks like; but the critic is right
@@ -562,7 +562,7 @@ Loop: nodes and lines. Geology:"*.
 citation goes red.** Two later beats carry the opposite instruction, also pinned:
 `test/herbs-larder.test.js:265` and `test/they-remember.test.js:300` both assert
 `/Do not cite World Bible §12/`. The audit records the §12 source was ruled LEGACY 33
-minutes after the merge (`docs/name-collisions-audit-2026-09-01.md:1265-1266`).
+minutes after the merge (`docs/name-collisions-audit-2026-09-01.md:1273-1274`).
 
 **Blocked.** Nothing. The parenthetical form keeps all three regexes green; a removal does
 not.
@@ -616,7 +616,7 @@ profit leg, as played: pays marks by the level (+1, +2, +3; the ladder's +4 is n
 because topped at 4 is the stop and the carry goes dark with it …)"* — no mark gate stated.
 `:238` states the gate only as *"gate carried from the played board's cadence"*.
 
-**What source says.** `docs/name-collisions-audit-2026-09-01.md:1007-1008`, under *refuted at
+**What source says.** `docs/name-collisions-audit-2026-09-01.md:1015-1016`, under *refuted at
 review*: *"cfd-183 M4's 'stricter than signed' (the mark gate is specified by reference to
 heat `sim.js:22`)"*, and `:1021-1022` puts it in do-not-average — *"sweeper DAVID, refuter
 NONE; both agree the beat and the board are consistent."*
@@ -637,7 +637,7 @@ consistent; the only question is register, and the reference is unambiguous.
 **Question.** Yes or no: do beats written before the convention get a Canon check section
 added retroactively?
 
-**What the audit says.** `docs/name-collisions-audit-2026-09-01.md:1266-1267`: *"no Canon
+**What the audit says.** `docs/name-collisions-audit-2026-09-01.md:1274-1275`: *"no Canon
 check section on 205-halt, 206, 207, 208 (retroactive or not)"*. The CFD-176 sweep raised
 the same thing independently as row `M6`, UNCITED, action DAVID — *"the whole beat: no
 Canon check section, zero R-rule citations"*.
@@ -673,7 +673,7 @@ halt's, and this board carries only the gap.)*"
 Put them up does not write it."* and `cfd-208:288` reads *"**Rim / gap is a constant.**
 Collect does not write it."* — **neither carries the note.** The audit's cite
 `cfd-208:278` has drifted to `:288`; corrected here. Both edits are built and held:
-`docs/name-collisions-audit-2026-09-01.md:1240-1242`, *"the two conditional `rim` edits"*.
+`docs/name-collisions-audit-2026-09-01.md:1248-1250`, *"the two conditional `rim` edits"*.
 
 **Blocked.** Two built edits, held since 2026-09-01.
 
@@ -763,7 +763,7 @@ was kept anyway.
 feed, lamp and Foundry as actions, and Home writing landed. The walk did not. Recut so
 only one action is live at a"*.
 
-**What source says.** The audit's disposition, `docs/name-collisions-audit-2026-09-01.md:1256-1257`:
+**What source says.** The audit's disposition, `docs/name-collisions-audit-2026-09-01.md:1264-1265`:
 *"'Home writing landed. The walk did not.' as a sit finding (it is a ruling; say so)"*.
 `KILLS.md:41-45` records the sit verbatim as *"Lit the lamp and started the foundry."* —
 the walk sentence is not in it.
@@ -789,7 +789,7 @@ line board's route …"* and closing *"This is the name collision the cfd-210 re
 one beat downstream, recorded here at its upstream.)"* The pre-registered sentence it sits
 under is at `:395`: *"The run came home short and the larder covered it."*
 
-**What source says.** `docs/name-collisions-audit-2026-09-01.md:1228-1231`: *"the synthesis
+**What source says.** `docs/name-collisions-audit-2026-09-01.md:1236-1239`: *"the synthesis
 re-worded the pre-registered null; the orchestrator refused that form and appended a dated
 note beneath the sentence kept verbatim, because a pre-registration is the one sentence a
 beat must not rewrite after the sit it pre-registered (canon §7.5's whole point); **David
@@ -818,7 +818,7 @@ parenthetical explaining that earlier cuts marked only the four city passes.
 
 **What source says.** The audit's own instruction: *"the desk PASSED markers (landed in
 both tables; strike both or neither)"*
-(`docs/name-collisions-audit-2026-09-01.md:1259-1261`).
+(`docs/name-collisions-audit-2026-09-01.md:1267-1269`).
 
 **Blocked.** Nothing.
 
@@ -840,7 +840,7 @@ terminal register names the weather.**"*; *"2. **The paid register carries a fou
 — the turned-back count.**"*; and the third, *"the registers now key on"* cost rather than
 the implementer's first test.
 
-**What source says.** `docs/name-collisions-audit-2026-09-01.md:977-978` records the third
+**What source says.** `docs/name-collisions-audit-2026-09-01.md:985-986` records the third
 as **built** — *"cfd-196's third register deviation and the roster write's dating
 (`ed7f49d` → `2a3e9dd`)"* — leaving the acceptance question for the pair.
 
@@ -880,7 +880,7 @@ already ruled DAVID once.
 
 **Question.** Pick one severity.
 
-**What the document says.** `docs/name-collisions-audit-2026-09-01.md:806-810`: *"The reviewer
+**What the document says.** `docs/name-collisions-audit-2026-09-01.md:838-843` *(an earlier cut cited `:806-810`, which is the guard’s own description and never held these words)*: *"The reviewer
 reads MEDIUM on the report's own grounds (it does not end the sitting; the timer's effect
 is the documented design) and says HIGH is defensible if the pin count dominates (twelve
 test files freeze heat's bytes, so the divergence can never be conformed, only renamed on
@@ -910,7 +910,7 @@ moved 5 / 22 / 31 with the choice. The lists below are the orchestrator's ruling
 placement is one row — `litJobs` — which crosses only because site carries it beside heat,
 scale, line and storm."*
 
-**What source says.** `docs/name-collisions-audit-2026-09-01.md:795`: *"The rulings it carries
+**What source says.** `docs/name-collisions-audit-2026-09-01.md:799`: *"The rulings it carries
 as **declared, not blocked**: `armed`; the membership."*
 
 **Blocked.** Nothing — declared, not blocked, and the guard is green at HEAD.
@@ -1037,7 +1037,7 @@ the form.
 ## 37. The audit's §5 says the `cfd-201` halt bridge was superseded. It was not.
 
 **Nothing is blocked; this is a record correction.**
-`docs/name-collisions-audit-2026-09-01.md:825-826` reads: *"**`docs/cfd-201-beat.md:1017` and
+`docs/name-collisions-audit-2026-09-01.md:833-834` reads: *"**`docs/cfd-201-beat.md:1017` and
 `:1386`, and `docs/cfd-209-beat.md:396`** carry the halt bridge in the design record
 (§1.4). Superseded in place by the sweep — §6."* Measured at HEAD: `cfd-209`'s **was**
 superseded (`:423`), but `cfd-201`'s two are at `:1052` and `:1442` with **no supersession
@@ -1052,7 +1052,7 @@ document disagree about one fact.
 ## 38. The audit still records `/dawnspur-heat/` as never swept
 
 **Nothing is blocked; this is a record correction.**
-`docs/name-collisions-audit-2026-09-01.md:864-865`: *"**`/dawnspur-heat/` cites no beat** —
+`docs/name-collisions-audit-2026-09-01.md:872-873`: *"**`/dawnspur-heat/` cites no beat** —
 its spec is not in this repository — and was not swept."* The "was not swept" half is false
 since `97f3ecd`. The "cites no beat" half is still true — `sit/dawnspur-heat/sim.js` has no
 `Spec:` line, verified. The CFD-176 sweep filed this itself (`docs/sweep-2026-09-02.md:920-923`)
@@ -1094,7 +1094,7 @@ documents.
   `C:\dev\skyrail` (`840dbd0`): `src/content.js:381` files the home under `ROUTES` as
   *"The home halt, newly awake, with warm lamps, market gardens, and the first working
   platform."* — the desk lineage inherited a **route** to the place the city lineage calls
-  home. Recorded at `docs/name-collisions-audit-2026-09-01.md:827-831`. My read: *file it on
+  home. Recorded at `docs/name-collisions-audit-2026-09-01.md:835-839`. My read: *file it on
   the PWA side and leave the boards alone*; a note in one beat fixes the symptom in one
   file.
 
@@ -1150,7 +1150,7 @@ it is the second time in two days that a correction pass has damaged the file it
 correcting, and entries #5 and #35 both ask you to ratify things that set landed.
 
 **Stale in the audit, and worth a line when it is next touched:**
-`docs/name-collisions-audit-2026-09-01.md:782` publishes *"**22 tests; suite 694 → 716.**"*
+`docs/name-collisions-audit-2026-09-01.md:786` publishes *"**22 tests; suite 694 → 716.**"*
 The guard is 23 tests and the suite is 717 as of `919b6be`.
 
 **If more than a few hours pass before this is ruled on, re-derive the canon line numbers
