@@ -66,8 +66,11 @@ comes, or the scale board was lying.
 ## Seat
 
 The drafting seat was beat only — no implement, no deploy, no merge. The board
-has since shipped at `/dawnspur-storm/` (`42e4aa8`, 2026-08-28; sim `f4f17008`,
-index `7711f979`, both in `sit/dawnspur-storm/MANIFEST.txt`) and David sat it
+has since shipped at `/dawnspur-storm/` — cut 0 `42e4aa8`, 2026-08-28 (sim
+`a1430c3c`, index `3321ca54`), standing at HEAD as recut 5 `299c950` (sim
+`f4f17008`, index `7711f979`, both in `sit/dawnspur-storm/MANIFEST.txt`) *(an
+earlier cut paired `42e4aa8` with recut 5's two hashes; each pair re-measured
+2026-09-02 by `git show <commit>:sit/dawnspur-storm/<file> | sha256sum`)* and David sat it
 five times, 2026-08-28 to 2026-08-29 local, each sit answered by a recut —
 five recuts, three of them copy, each recorded in the MANIFEST and the sim's
 header — and it stopped after five recuts and no pass: *"Mechanically it all

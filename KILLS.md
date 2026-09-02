@@ -23,6 +23,20 @@ Supersession is an edit with a forward pointer, never a deletion.
   boards for now. Recorded on CFD-176; PLAN §4a carries the same edit.
 
 ## Hosted era (boards.skyrailreclamation.com — hashes are content sha256s; see kills/README.md)
+- 2026-08-31 · They Remember · cut 0 · merge `7bcc315` (PR #19, 2026-08-31
+  02:01Z) / index `acbf4304` / sim `164bd741`; Pages deployment id not in repo.
+  David's sit, verbatim: "I collected herbs." Not a pass. Collect landed; the
+  herbs stayed cargo. Every verb on the board sat at the Halt — the player's own
+  house — so the reward came out of his own larder and nothing in the doing
+  pointed at Mosswake, the neighbour who was helped. Recut: cut 1, an ACT recut
+  under canon §7.4 — the one live can-do moves off the Halt to Mosswake; same
+  path, same button ("Collect."). Refused, both measured: a reachability fix and
+  a writing recut. Signed `0d67fd6`; implemented `ef87a12`, merged `7b58a18`;
+  PASSED at `a525218`, 2026-08-31 — index `acbf4304` **unmoved**, sim
+  `a3345903`, so the index hash does not distinguish the kill from the pass.
+  Sit recorded at `docs/cfd-208-beat.md:346-350`; same verbatim in commit body
+  `3c22c9a`. Record: Linear CFD-208.
+
 - 2026-08-30 · Dawnspur Halt · Home sit · merge `c1b66ee5` / index `7aa764fa` /
   sim `678075c0`. David's sit, verbatim: "Lit the lamp and started the
   foundry." Two opening can-dos; he stopped. Glass, consist-home, CAST-heat
@@ -37,6 +51,44 @@ Supersession is an edit with a forward pointer, never a deletion.
   me and I can." Buildings-as-buildings and feed landed. Place did not.
   Recut: writing on the existing work notices — Dawnspur Halt — Home. Same
   path. Do not recut buildings-and-feed away. Record: Linear CFD-205.
+
+- 2026-08-30 · Dawnspur Site · recut 2, one live place · merge `c59dc101`
+  (PR #13, 2026-08-30 16:35Z) / index `070a4619` / sim `e9f81b74`; Pages
+  deployment id not in repo. David's sit: (verbatim on Linear CFD-205; not in
+  repo). Sat 2026-08-30, not passed. Canon §7.4's evidence table records the
+  sit as "grey-square random clicks — **fail**"
+  (`docs/mechanisms-recommitted.md:572`). No recut: the board was stopped
+  rather than recut, on "no further grey-square recut"
+  (`docs/mechanisms-recommitted.md:589`; `docs/cfd-205-beat.md:9-11` and
+  `:28-33`) — a finding routed to the Halt, not a failure of the board. That
+  stop phrase is quoted in both places and attributed to no speaker. Do not
+  recut this path; the pins stand and five later beats carry it as a failed
+  sit (`docs/cfd-206-beat.md:28`). Record: Linear CFD-205.
+
+- 2026-08-28/29 · Dawnspur Storm · five sits, five recuts, stopped without a
+  pass · `/dawnspur-storm/`; Pages deployment ids not in repo. The cuts, each
+  measured `git show <commit>:sit/dawnspur-storm/<file> | sha256sum`: cut 0
+  `42e4aa8` / index `3321ca54` / sim `a1430c3c`; recut 1 `7fb5aeb` / index
+  `d32720d9` / sim `75004603` — **both reached main in one merge, `eb92050`,
+  2026-08-29 16:52Z, so no deploy of main ever served cut 0's bytes**; recut 2
+  `7231c72` / index `b117d7db` / sim `904dab9b` (merge `f0a676d`); recut 3
+  `7b5a38e` / index `4f7d5cd9` / sim `34325f0a` (merge `b964407`); recut 4
+  `5d243a5` / index `2fc47ab6` / sim `53239355` (merge `ff6580e`); recut 5
+  `299c950` / index `7711f979` / sim `f4f17008` (merge `555ba9a`) — where the
+  board stands at HEAD, and recut 5 was never sat. `docs/cfd-201-beat.md:69-70`
+  attributes recut 5's two hashes to `42e4aa8`; measured, they are `299c950`'s.
+  David's five sits: (verbatim on Linear CFD-201; not in repo — the findings
+  survive only as paraphrase in the five recut commit bodies, and `299c950`
+  alone attributes words to him, unquoted in its source: "those descriptions of
+  why to do these things do not make much sense"). The stop, verbatim,
+  2026-08-29: "Mechanically it all worked nicely… It's definitely time for the
+  city. I think we have a good loop buildout and need the spine to attach it
+  to." (`docs/cfd-209-beat.md:121-124`; from "It's" on also at
+  `docs/mechanisms-recommitted.md:591-592`). No recut: stopped at five on "do
+  not recut `/dawnspur-storm/` for 'why more glass' — that is the city
+  sitting" (`docs/mechanisms-recommitted.md:590-591`, attributed to no
+  speaker) — a finding routed to the city, not a failure of the board (canon
+  §7.4, `:588-594`). Record: Linear CFD-201.
 
 - 2026-08-25 · Dawnspur scale sitting · build `5fabe7c` / index `d6d5e262` / sim
   `8f13c683` (bytes durable in git and deployment `c2e92c0a` — no byte archive
