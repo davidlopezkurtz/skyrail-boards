@@ -767,7 +767,32 @@ own base.
 
 Three instructions, one ordering constraint: the spec-vs-source sweep of the twelve beats
 runs and lands before the guard does. This document is the third instruction; §6 is the
-first; the guard is recorded here when it lands and is cited from §4's verification block.
+first; the guard is the last, and it landed at `84da020`:
+
+### The guard — landed `84da020`, test-only
+
+`test/lexicon.test.js`, `test/lexicon-derive.js`, `test/lexicon-ledger.js` — one derivation of
+every board's name surface (exports with kind, arity, opening value and key lists; place ids
+and `consistAt`; the per-card objects from `cards()`; the eleven `walk()` legends; a bounded
+DOM surface of `id=`, `classList.toggle(` and `.className =` tokens), one declared ledger
+(lineage membership DECLARED — the orchestrator's ruling: halt and site on the city side;
+one row per name that crosses the seam and per adjudicated intra-lineage finding, meaning
+per side, unit and debit target where numeric, source pins, driven paths from the opening
+with every step asserted true; `armed` CONTESTED with both readings verbatim), and the
+test that diffs them and prints both sides. **22 tests; suite 694 → 716.**
+No byte under `sit/`, `public/`, `docs/` or any existing test.
+
+Red-first by the author and by the orchestrator (an empty ledger prints the full derived
+list of what to declare). Mutation-verified by the author (eleven), the orchestrator (three,
+by hand), and an adversarial critic in its own worktree (nineteen). The critic found two
+blockers and two highs: the ledger's `wait` row carried §1.3's REFUTED sentence — "ends the
+sitting" — signed into the guard, the exact class it exists to stop; four citations pointed
+at scratch files; the inert-`wait` check was a regex over the whole file, fooled by a
+shadowing second function or a block comment; a `sourcePin` matched inside a comment or a
+string while the measured value disagreed. All fixed in the author's fix pass and re-mutated
+red before landing. What it provably does not catch is written in the file: anything in
+`docs/`, a meaning change no declared column expresses, and DOM shapes outside the three it
+reads. The rulings it carries as declared, not blocked: `armed`; the membership.
 
 ### Do not average these
 
@@ -1205,8 +1230,16 @@ the sit it pre-registered (canon §7.5's whole point); David may strike the note
 - **Held for David:** the canon §7.5 edit (`mechanisms-recommitted.cfd-210-M4`, built,
   dry-run clean at the landing tree — his rule, his rows); the two conditional `rim`
   edits (cfd-207:251, cfd-208:278).
-- **Refuter-only edits (6)** — cfd-208 ×2, 209 ×1, 210 ×3 — with the second reader;
-  disposition below when read.
+- **Refuter-only edits (6) — five landed `fecdb0b`, one dropped** after the same second
+  reader re-counted every anchor at three trees and graded the three beat-reading tests'
+  regexes on previews (39 / 15 / 14, all green): cfd-208:469 (the Favor-meter refusal
+  sourced to a "Beat 7 kill list" that does not exist), cfd-209:193 (the stated chance is
+  CFD-196's rule, not Bible §5.8's), cfd-210:294 and :307 ("did both and stopped" was set
+  in quotation marks as if quoted from a ledger; `KILLS.md:28` reads "Two opening can-dos;
+  he stopped"), cfd-210:381 (the page also renders the `canDo` face). Dropped: the optional
+  note at cfd-208:419 — a true note on a true, dated line inside the superseded cut-0
+  record. Suite 694 / 694; docs-only. **The sweep's edit sets are closed: 86 supersessions
+  across eleven beat files and the canon file, every one refuter-agreed or second-read.**
 - **David's calls (15), in the synthesis's order:** cfd-205-halt:33-34 the discharged gate
   (leave; status lives in the next Seat); cfd-205-halt:203-206 "inherited" for
   Works/SITE/LAND/CAST that never passed (rename the cell "kept by signature");
