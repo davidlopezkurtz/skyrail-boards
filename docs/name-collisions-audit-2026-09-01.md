@@ -895,6 +895,14 @@ sweep was aimed at, and where the sweepers reported twelve of the nineteen bridg
 synthesised in a second pass from the same journal. Nothing was lost; the halves are
 recorded separately below because they were measured separately.
 
+**The landed supersessions were checked against what they claim to supersede** (2026-09-02):
+every parenthetical of the form *An earlier cut read "…"* across the twelve beats and the
+canon file — 36 of them — had its quoted fragment searched for in the pre-sweep tree at
+`796d9a2`. 33 match byte for byte; 2 match once markdown markup (bold, nested quote marks,
+a blockquote prefix across a line break) is normalised; 1 quoted a prefix of the original
+sentence without an ellipsis (`cfd-200`, the interception bullet) and was made exact in the
+commit that records this line. No re-quote changed a word.
+
 ### The desk half — cfd-183, 196, 200, 201, 203, 205
 
 | beat | checked | holds | mismatches | uncheckable | rows | refuter missed | C / P / R |
