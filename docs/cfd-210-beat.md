@@ -3,6 +3,159 @@
 The first choice in the game. Sibling `/two-ways-from-here/`. Not a recut of
 anything.
 
+## PASSED — David, 2026-09-02. (Signed 2026-09-01.)
+
+**The sit, verbatim:**
+
+> *"a run came home short and hte larder was able to cover the difference. It
+> made sense what was ahppening and clicking around to the different buildings
+> and options is feeling more like a full expeirnece with context"*
+
+**Asked how it ended:**
+
+> *"I banked it — clicked Collect and it ended there"*
+
+**The verdict:**
+
+> *"pass - move forward"*
+
+*(His typos are kept. The ledger convention here is that a verbatim is a
+verbatim — `KILLS.md` carries "it broke needs ta review." with its typo intact.)*
+
+### Registered outcome 2 fired, and the pre-registration is what made it readable
+
+He banked and never pressed on. That is **outcome 2** of the four registered
+below, and **he is the one who wrote it down as the ambiguous one**, before the
+sit:
+
+> *"Ambiguous between 'the wager was correctly frightening' and 'the press-on
+> wasn't legible as an option.' Those route differently, and the tell is whether
+> the consist tile read as a thing you could do."*
+
+Without that sentence on paper beforehand, *"I banked it"* gets read against
+whichever of the two the author was already carrying. **This is §7.5 doing the
+only job it has**, and it is the first time on this card that the split has had
+a result to catch.
+
+### How the ambiguity was resolved: by measurement, not by asking him
+
+§7.4 refuses the question that would settle it directly — *"what didn't you do"*
+produces an answer whether or not the option was ever live. So the tell David
+named — **did the consist tile read as a thing you could do** — was recovered
+from the shipped board instead, by driving it with his exact tap sequence and
+nothing added.
+
+**`postNotice` leaves the consist POSTED when you tap it to bring her home.** So
+when the roll comes up short, the notice board repaints with the consist's ARMED
+notice **already on screen**:
+
+```
+posted    consist
+writing   The run came home short and the larder covered it.
+canDo     ROLL HER OUT. 64.
+blocked   The larder covered it once. It will not cover it twice.
+```
+
+- **The press-on required no tap to discover.** It was the default posted action,
+  with its cost stated directly beneath it.
+- **Banking is the branch that costs an extra navigation.** To reach `Collect.`
+  the player must LEAVE that notice — tap Mosswake, which repaints to *"Mosswake.
+  A neighbor again."* / *"Collect."* — and only then commit.
+- **His sit paraphrases the writing line, AND THAT PROVES NOTHING.** *"a run came
+  home short and hte larder was able to cover the difference"* reads like evidence
+  he was looking at the box the button was in. It is not, and the leg is struck.
+  **The identical sentence is the PARENT board's consist writing line** —
+  `sit/dice-at-the-places/sim.js:253`, where it sits under `canDo: null`, a notice
+  with no action on it at all — and it was **his own wording one day earlier**, in
+  the C12 sit this board inherits from: *"the run came home short and the larder
+  covered it."* (`12ccd3d`). The paraphrase places him in a short-run notice and
+  goes no further. **Offered as evidence by the orchestrator, refuted at review,
+  kept here as the record of a leg that did not hold** — striking it silently
+  would leave the conclusion standing on a reason nobody could re-check.
+
+**So outcome 2 resolves ON THE BOARD'S SIDE, and only there.** The press-on was
+presented as legibly as this board can present anything: posted by default, priced
+in place, and cheaper to reach than the ending he chose. **A DESIGN legibility
+failure is ruled out** — there is no edit that would make a branch more available
+than already-on-screen, named, and priced.
+
+**Whether it registered with him is NOT recoverable, and this beat does not claim
+it.** The single player-side leg was offered and refuted above; nothing replaces
+it. §7.4 forbids the question that would settle it, and *"did you notice the
+consist?"* is *"what didn't you do"* wearing a different hat — it returns an
+answer whether or not the option was ever live.
+
+So his own ambiguity splits, and the split is not the one the orchestrator first
+reported to him:
+
+| his registered reading | after measurement |
+| --- | --- |
+| *"the press-on wasn't legible as an option"* | **refuted as a property of the BOARD**; untested as a property of the reading |
+| *"the wager was correctly frightening"* | **unproven** — it requires a perception nothing here measures |
+
+**The work routes the same way under either.** There is no legibility recut
+available to make, because the board already does the most a board can do. That is
+what sends this to a next card rather than to another cut of this one — and it is
+a weaker, truer reason than *"seen and declined"*, which was the orchestrator's
+first read and is withdrawn.
+
+### An unregistered rider: the board offers at most ONE look at the fork per sitting
+
+**The beat did not anticipate this.** §7.5's fourth obligation says a result that
+maps onto none of the registered outcomes is a finding in itself. This one **does**
+map — it is outcome 2 — but it arrives carrying something none of the four
+describe, so it is recorded beside the outcome rather than folded into it.
+
+Measured on the shipped board, each from the arm:
+
+| branch | after | fork reachable again |
+| --- | --- | --- |
+| **bank** | `stopped` — the sitting ends | no |
+| **press on, short** | `stopped`, `endedCold` — it ends cold | no |
+| **press on, paid** | the arm clears, play continues | yes, after another short run |
+
+**Only a PAID press-on clears the arm and lets the fork be reached a second
+time.** A banking player therefore decides **once, on first exposure, against a
+threat they have never seen fire** — the cost line is a sentence, not an
+experience. *(Not "weighing": this section has just recorded that a weighing is
+exactly what the sit cannot show.)*
+
+That is not a defect of this cut and it is not what the card asked. It is the
+shape of the next question.
+
+### What did NOT fire: the could-and-did read
+
+The *Wanted* asked for the branch he did not take to appear **unprompted**. It
+did not. Counting the two prior reaches this beat records, **that is three cards
+running** that have asked for it and not had it.
+
+**This routes to a NEXT CARD, and explicitly not to a recut of this one.** Two
+reasons, either sufficient on its own:
+
+- **David ruled the board out of recut range.** *"pass - move forward."* A passed
+  board is not recut; its bytes are pinned.
+- **§7.4 would forbid the recut that would be reached for anyway.** Both of this
+  beat's pre-sit re-cuts were **structural** — the fork moving off
+  Halt-beside-Mosswake onto the arm, and the arming condition moving from a paid
+  run to a short one. A third structural cut here is the same KIND again, which
+  is exactly where §7.4 says stop recutting and route the finding to a new beat.
+
+### The board is PASSED and its bytes do not move
+
+`/two-ways-from-here/` is pinned at index `d800c8de` / sim `13bb2d43`, `sit/` and
+`public/` byte-identical, **self-pinned in `test/two-ways-from-here.test.js` on
+the day it passed** and mutation-verified.
+
+This is the **FOURTH** board to need self-pinning on the day of its pass, after
+the join board (2026-08-28), `/they-remember/` (2026-08-31) and
+`/dice-at-the-places/` (2026-09-01). The structural cause is stated in that
+test's own comment: each new board's test pins the PRIOR boards, so the newest
+passed board is unprotected until a successor exists. Writing it down three times
+has not stopped it recurring, which is why it is written into the test and not
+only here.
+
+---
+
 ## SIGNED — David, 2026-09-01.
 
 His word: *"Sign it."*

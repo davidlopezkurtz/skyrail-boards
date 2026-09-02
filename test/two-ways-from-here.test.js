@@ -195,12 +195,25 @@ function atArm(b) {
 // ---------------------------------------------------------------- guards
 
 test("guard: live pins including PASSED they-remember and the eight Seat pins are unchanged at HEAD", () => {
+  // /two-ways-from-here/ PASSED its sit 2026-09-02 — David: "a run came home
+  // short and hte larder was able to cover the difference." Verdict: "pass -
+  // move forward." It joins its own pin list at that moment and not before:
+  // while a board is being cut, pinning its own bytes is circular, and the
+  // sit-equals-public test below cannot see a COORDINATED overwrite of both
+  // copies. The comment here previously said this board would be pinned "in
+  // its successor's test" — that is the hole. This is the FOURTH board to
+  // need self-pinning on the day it passed, because each new board's test
+  // pins the PRIOR boards, so the newest passed board is always unprotected
+  // until a successor exists. Self-pinning is part of recording a pass.
+  //
   // /dice-at-the-places/ PASSED its sit 2026-09-01 and is this board's
   // parent. Its four paths are pinned here exactly as its own test pins
-  // them — copied, not retyped. /two-ways-from-here/ is NOT pinned: while a
-  // board is being cut, pinning its own bytes is circular. It joins on the
-  // day it passes, in its successor's test, and not before.
+  // them — copied, not retyped.
   const pins = {
+    "sit/two-ways-from-here/sim.js": "13bb2d43d8650ef814764d928c6aa0f26a74776b2831874a336ff82c9b131858",
+    "public/two-ways-from-here/sim.js": "13bb2d43d8650ef814764d928c6aa0f26a74776b2831874a336ff82c9b131858",
+    "sit/two-ways-from-here/index.html": "d800c8de6bec83dce31dd7513023f7f71f4cac309c52f76c6358a80e3b613910",
+    "public/two-ways-from-here/index.html": "d800c8de6bec83dce31dd7513023f7f71f4cac309c52f76c6358a80e3b613910",
     "sit/dice-at-the-places/sim.js": "f64b4309e407f28b54cd228d502971b47355b457afe3337b77e5f6618c186611",
     "public/dice-at-the-places/sim.js": "f64b4309e407f28b54cd228d502971b47355b457afe3337b77e5f6618c186611",
     "sit/dice-at-the-places/index.html": "d97d995173276e286c37156697ca296d31f238774d0e783c00c7a91db125868c",
