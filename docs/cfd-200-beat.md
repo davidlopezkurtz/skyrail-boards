@@ -859,7 +859,9 @@ the first two pushes worth 2 and 9 against a 23-mark finish, so the only
 rational line is to push to the end and the sitting's core decision never fires.
 **The cars load heaviest first so that PULL OUT is ever the correct verb.**
 
-### The stake — 4 marks, by the passed board's own published method
+### The stake — three off the terrace and a 1-mark toll, by the passed board's own published method
+
+*(The heading read “4 marks” until 2026-09-02; that is the dispatch board’s purse, and this beat is based on `/dawnspur-storm/`, which debits provisions from the stores and the toll alone from marks — `sit/dawnspur-storm/sim.js:588-589`. The bullets below already read 1 mark and 3 provisions; only the heading summed them into one currency. The same bridge was superseded at The stake’s opening line and at the Kill list on 2026-09-01 and missed here, because it sits in a heading rather than a sentence.)*
 
 - **Toll 1** — `routeTolls.chartered.flatFee`, verbatim.
   `routes[rustfall-yard].zone` is `"Chartered Line"`.
