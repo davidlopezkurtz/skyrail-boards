@@ -478,7 +478,7 @@ The tap at Mosswake ends the sitting. The board stops on the protected line.
 | Herbs in the larder | **INHERITED, not replayed** — sat on C10 | CFD-207 PASSED |
 | Mosswake a neighbour again | **INHERITED** — sat on C9 | CFD-206 PASSED |
 | Halt holds | **INHERITED** — read, not recut | CFD-205 PASSED |
-| A Favor meter, bar or number | **REFUSED** — the act, not the number | Beat 7 kill list |
+| A Favor meter, bar or number | **REFUSED** — the act, not the number | this beat's Kill list; Beat 7's *Feedback* asks for the meter and is refused above *(an earlier cut read "Beat 7 kill list"; Beat 7 carries none)* |
 | SEND on this board | **REFUSED** | cut 0, unchanged |
 | A second Mosswake SEND | **REFUSED** — the leave already sat | CFD-206 |
 | Put them up | **REFUSED** — already sat | CFD-207 |

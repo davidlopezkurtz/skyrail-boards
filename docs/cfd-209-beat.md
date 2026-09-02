@@ -197,8 +197,12 @@ deferred by name. It is not this sitting and must not be smuggled in.
 
 Bible sha `9a305653`. File + section where reached; do not invent.
 
-**Bible §5.8 Contracts. Supply.** A send is a contract with a stated chance. This
-board takes that to the place rather than to a desk.
+**Bible §5.8 Contracts. Supply.** A send is a Supply contract; §5.8 names the
+contract types and says nothing about chance — the stated chance is the dispatch
+board's own rule, *"not quote a number it cannot honestly roll"*
+(`dawnspur-dispatch/sim.js:12`, CFD-196, PASSED). This board takes that to the place
+rather than to a desk. *(An earlier cut read "A send is a contract with a stated
+chance" under the §5.8 citation; the chance is CFD-196's, not the bible's.)*
 
 **Core Loop, What the loop pays out** (`Skyrail-Reclamation-The-Core-Loop.md`):
 *"it earns Favor by helping neighbors and keeping promises."* A promise that can be

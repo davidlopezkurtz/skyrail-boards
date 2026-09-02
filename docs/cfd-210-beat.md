@@ -311,8 +311,10 @@ recorded that argument as unresolved and owed here.
 board would guarantee the null.**
 
 On a board without dice, two lit things are **two taps**. Taking both costs
-nothing, so a player takes both — which is precisely the pre-walk Halt result,
-*"did both and stopped."* A small board would reproduce that failure by
+nothing, so a player takes both — which is precisely the pre-walk Halt result — he
+did both and stopped *(this beat's gloss; an earlier cut set it in quotation
+marks as if quoted, and the ledger's words at `KILLS.md:28` are "Two opening
+can-dos; he stopped")*. A small board would reproduce that failure by
 construction and teach nothing about choice.
 
 **The fork only becomes a decision because pressing on can lose you something.**
@@ -326,7 +328,7 @@ see "The Halt is NOT a destination on this board".)*
 
 **This is what the small-board version could never have had**, and it is the
 argument's whole point: on a board without dice there is nothing to wager, so
-"did both and stopped" is guaranteed by construction.
+*did both and stopped* is guaranteed by construction.
 
 So: cumulative, parent `/dice-at-the-places/`, per §7 and §7.1.4 — and for a
 reason that would hold even if §7 permitted otherwise.
@@ -404,8 +406,10 @@ remembering. This is the whole wager and it is the one place C12's machinery mov
 do so through `endSentence`. **Measured: `index.html` never reads it** — grep
 count of `endSentence`, `runSentence`, `inProcess` and `stopped` in
 `sit/dice-at-the-places/index.html` is **0** for each. The page renders
-`notice().writing` and `notice().blocked` and nothing else. **Every word this
-board needs a player to see goes in those two fields**, or it is dead text.
+`notice().writing`, `notice().blocked` and the `canDo` face, and nothing else of
+the notice. **Every word this board needs a player to see goes in those fields**,
+or it is dead text. *(An earlier cut said "those two fields"; the can-do face —
+"ROLL HER OUT. 64." is one — is the third, and it is rendered on both boards.)*
 
 **Each branch is its own wager.** The stated number is the rolled number, per the
 dispatch board's own rule — *"not quote a number it cannot honestly roll."*
