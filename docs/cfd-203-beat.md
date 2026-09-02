@@ -78,7 +78,9 @@ reachable, and the best reserve at any stop is 3.**
 — *"everything the line ate was put back"*, a sentence that cannot fire. It is
 cut. **Two registers ship, both reachable**, and the surviving clause reads how
 many trips up the hill the sitting took: the quick path stops drawn at 3, a
-spine-heavy or level-1 sitting stops bare.
+spine-heavy sitting, or a level-1 sitting that carries a fourth time, stops bare
+*(an earlier cut read "a spine-heavy or level-1 sitting stops bare"; three
+level-1 carries leave reserve 1)*.
 
 A Kill line now makes any unfireable register a kill in its own right. That is
 the second dead register this beat has had to remove, and the pattern is the
@@ -827,9 +829,14 @@ has already had to fix one clause that reported a constant as a variable. It is 
 knows it is a real read and not decoration: the reserve at the stop is
 `max(0, 4 − carries)`, so the clause reads **how many trips up the hill the sitting
 took**, saturating at four. The quick path (one carry, at level 3 or 4) stops at
-**3 — drawn**. A spine-heavy sitting, or any sitting run at level 1 where a Chartered
-outfit costs three carries, stops at **0 — bare**. Best possible by level: 1 at
-level 1, 2 at level 2, 3 at levels 3 and 4. So the split reads *speed-run against
+**3 — drawn**. A spine-heavy sitting stops at **0 — bare**; a Chartered outfit
+gathered at level 1 costs three carries and by itself leaves the ground at 1, so
+a level-1 sitting stops bare only once it has carried a fourth time. Best reserve
+at the stop by the level the outfit was *gathered* at — one stop level, read
+four ways: 1 at level 1, 2 at level 2, 3 at levels 3 and 4. *(An earlier cut read
+"any sitting run at level 1 where a Chartered outfit costs three carries, stops
+at 0 — bare"; three level-1 carries leave reserve 1, driven by `h+CCCUUUc+`, and
+the bare stop needs a fourth.)* So the split reads *speed-run against
 worked-terrace*, and both halves are ordinary play rather than edge cases.
 
 **Neither register repeats `/dawnspur-scale/`'s promise as though this board could

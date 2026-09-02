@@ -620,7 +620,7 @@ place.**
   reads as insight.
 
   **The shape that DOES work is already in the corpus, and it is the near-miss
-  worth studying.** `docs/cfd-203-beat.md:1379` asks:
+  worth studying.** `docs/cfd-203-beat.md:1386` asks:
 
   > *"Ask the sitting to report **whether anyone tended at all, and why.** If
   > nobody touches it, that's the answer. If they tend and **can't say what it
@@ -691,7 +691,7 @@ about — which is before the sitting, when nobody is defending anything.
 
 #### Worked example 1 — CFD-203, the TEND question
 
-Quoted in full at **§7.4** and at `docs/cfd-203-beat.md:1379`. Not re-quoted here:
+Quoted in full at **§7.4** and at `docs/cfd-203-beat.md:1386`. Not re-quoted here:
 it is one passage, and a second copy in an adjacent section is how a document
 starts disagreeing with itself. Its three outcomes, written before the sit:
 

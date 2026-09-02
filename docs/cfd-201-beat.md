@@ -832,8 +832,14 @@ list is the mitigation.
   `min(level, storesCap − stores, reserve)` — the three-way min, per the
   shorthand's own definition above. `min(level, reserve)` alone is a licence to
   overflow the stores and is not what this kills.
-- A carry in a storm warns, is darkened, or is refused; a carry at reserve 0 in a
-  storm is not lit.
+- A carry in a storm is darkened or refused; a carry at reserve 0 in a storm is
+  not lit. *(An earlier cut also killed a storm carry that "warns". This beat's
+  own Ends presents the bill — "said out loud when it is presented" — and recut
+  1, `7fb5aeb`, 2026-08-29, put it on the card before the click when the reserve
+  binds — `carryBill`, `test/dawnspur-storm.test.js:935` — because the cap was
+  silent until after the tap. A stated bill is not a warning-away: the carry
+  stays lit and lands exactly what the card says, `carryBill` and the commit
+  reading the same `carryLoad()`.)*
 - The ground is drawn by anything but a carry, a storm turn, or both on the same
   turn; or a storm turn draws more or less than one step; or the draw does not
   floor at 0.
@@ -1349,7 +1355,13 @@ Checked individually:
 - **Reserve 0** — four carries from the opening. Reachable.
 - **Reserve 0 at level 4** — carries pay full in clear weather at every reserve, so
   the 12 marks for the ladder are earnable at any ground. Reachable.
-- **A storm with the charter open and 4 marks in hand** — worked below. Reachable.
+- **A storm with the charter open and 4 marks in hand** — SEND Dawnspur Halt (t1),
+  MEET (t2, +10, 13 marks, the charter open), then five carries to t7; t8 is the
+  storm with 13 marks, five in the stores and the charter open, so the Chartered
+  send is lit under it. Reachable. *(An earlier cut pointed at the worked line
+  below, which reaches the storm with 1 mark, not 4. The "4 marks" is the dispatch
+  parent's Chartered stake, provisions and toll in one purse; on this parent the
+  stake is three from the stores and the toll's one mark.)*
 - **The stop** — reachable on the first cycle, and the draft's line was not. The
   published path's second step is refused by the join parent: after one level-1
   CARRY the stores hold 1 and `commitSend("mosswake-loop")` **returns false**, the

@@ -376,9 +376,12 @@ and the paid register names the losses without apology and without warning.
   halt's 0 is deliberate floor-pricing so no reachable state deadlocks. David
   plays these before they are canon; survivors flow back to the pack per its
   standing rule.
-- **Toll 1** — `routeTolls.chartered.flatFee`, verbatim, already civic-scale.
-  Core Line's toll is rate-only (0.01, flatFee 0) and rounds to zero at this
-  scale (0.01 × 14 = 0.14 → 0); stated rather than silently dropped.
+- **Toll 1** — `routeTolls.chartered.flatFee`, verbatim, already civic-scale; the
+  Chartered line also carries a rate (0.025), which rounds to zero the same way
+  (0.025 × 18 = 0.45 → 0) and is dropped with the Core Line's, stated. Core
+  Line's toll is rate-only (0.01, flatFee 0) and rounds to zero at this scale
+  (0.01 × 14 = 0.14 → 0); stated rather than silently dropped. *(An earlier cut
+  named only the Core rate; the Chartered rate leg was dropped unsaid.)*
 - **Roster cap 4 — new-play.** The engine caps crewBonus at 0.3 (≈8 Wardens);
   4 keeps the muster a one-control line and the odds ceiling at 82.4%, inside
   the engine's clamp with room. Flagged.

@@ -81,8 +81,12 @@ is the shipped bytes. Re-measured at authoring, `git show HEAD:public/<p>/sim.js
 | `/dawnspur-heat/` | `292d6645` |
 | `/dawnspur/` (the preserved kill) | `395c18f2` |
 | `/convoy-stop/` | `5ad814e6` |
+| `/dawnspur-line/` (PASSED 2026-08-28) | `18b1324f` |
 
-All five stand. `/dawnspur-dispatch/` **PASSED** its sit 2026-08-26 and is now
+All five stand, and the sixth is measured. *(`/dawnspur-line/` was absent at
+`83b2ac1`; measured at `796d9a2` with the same command. The storm stays
+"whatever `/dawnspur-storm/` ships at" — the Kill list's own words under The
+lineage — until it passes.)* `/dawnspur-dispatch/` **PASSED** its sit 2026-08-26 and is now
 a passed board: it does not get overwritten.
 
 ### THE PARENT — resolved 2026-08-27, David's ruling, and it was a live fork
@@ -610,7 +614,10 @@ learned to: a run with no crew aboard promises no crew home.
 
 **The stop is the first Rustfall run off the yard road**, loaded or empty. The
 system this sitting exists to sit has then been played once, end to end, and
-David has an answer to *what happened* either way.
+David has an answer to *what happened* either way. *(The parent carries its own
+stop — topping ARMS, a Chartered cargo banked out of a storm FIRES, storm
+`sim.js:626`; whether it survives beside this one is the flagged row under On
+this sitting. An earlier cut was silent on it.)*
 
 At the stop the board reads its own ledger, in two registers keyed on whether
 anything was lost:
@@ -646,6 +653,7 @@ not re-argued, per §7.
 | The terrace, its reserve, `min(level, reserve)`, the stormy draw | INHERITED — CFD-201 | **ON, unchanged** — the yard neither reads nor writes it |
 | Rail Warden at 3, cap 4 total, permanent, never spent | INHERITED — CFD-196 (passed) | **ON, unchanged** |
 | Ranger at 2, cap 1, the weather unit; TRIM on the rolling routes | INHERITED — CFD-201 | **ON, unchanged** — and it gains a yard job |
+| The inherited stop — topping ARMS, a Chartered cargo banked out of a storm FIRES (CFD-203, narrowed by CFD-201) | INHERITED — CFD-201 | **UNRESOLVED — decide at signature.** This beat's stop is the first Rustfall run off the yard road (Ends). Carried unchanged, the parent's stop ends the sitting on a stormy Cloud Basin cargo after UP ×3, before any Rustfall send, and a stopped desk has no lit send. Carry, narrow to Rustfall, or refuse — David's call, flagged here rather than assumed |
 | Rustfall takes a send | NEW | **ON** — the ruling's EXCEPT clause, delivered |
 | Rustfall quotes odds; any die in the yard | NEW | **REFUSED** — placement decides it |
 | Rustfall's pay rises in a storm | NEW | **REFUSED, argued** — the one inherited rule this board declines, and the reason is measured |
@@ -757,8 +765,14 @@ Every line expressible as a test.
 - Any crew member fails to come home, on any branch. The Sunlark is lost. The
   town, the terrace or another board's state is touched by any yard outcome.
 - Three cars do not sum to 23 intact.
-- `3 / 2 / 5 / 6 / 4 / 3+1 / 10 / 14 / 18 / 24 / 0.036 / −0.10` move without
-  this beat or its parents moving.
+- `3 / 2 / 5 / 6 / 1m 3f / 10 / 14 / 18 / 24 / 0.036 / 0.012 / −0.10`, the roster
+  cap 4, the routes' 0.08 / 0.12 / 0.25, the sky's five clear, two bird, two
+  storm, the terrace's `UP 3 / 4 / 5`, `TEND 1` and reserve 4, the join's stores
+  cap 6, and the trim's 2 move without this beat or its parents moving. *(An
+  earlier cut listed the desk's numbers only — `… / 4 / 3+1 / …`, the 4 the
+  roster cap and the 3+1 a marks reading of the stake; Inherited whole promises
+  every figure it carries is Kill-listed, and the terrace's, the join's, the
+  sky's and the routes' were not.)*
 
 **Reachability and solvability**
 
@@ -1184,7 +1198,7 @@ all under `C:\dev\skyrail\docs\lore\`.
 | The sky live per push, not stamped at the SEND | ON, NEW, **argued as a departure** | CFD-201 stamps the sky at the SEND, and its stated reason is the dispatch board's Kill line — a storm behind the card would make "the stated percent and the sim's rolled threshold disagree". **Rustfall states no percent**, so that reason does not reach it. And CFD-201's own words for stamping are "the read happens at the desk", which CFD-196 assigns to the passive tier: the gradient doctrine "governs the **active** tier, where the player is on the line making the read". This is that tier. `[TEETH]` supplies the standard the departure has to meet and it meets it: the tell precedes the event (the bird), and the counterplay (PULL OUT, or an Engineer aboard) always exists |
 | The storm live in the yard | ON, NEW | The re-base requires it. Its cadence is CFD-201's own — "every turn spent under a storm draws the ground one step" — applied to the load. Its cover is `ROUTE_EVENTS[fog-bank]` ("**Scouts** reduce ambush odds and route confusion") and `ROUTE_EVENTS[raider-scouts]` ("Wardens and **Rangers** matter on exposed Rustfall sidings") |
 | Rustfall's pay rising in a storm | REFUSED, argued | CFD-201's own named trap — risk-up plus reward-up cancelling to a wash — is unavoidable here because the route's difficulty and its pay are one quantity. **The one inherited rule this board declines, flagged** |
-| Raiders as the pressure at Rustfall | ON | `routes[rustfall-yard].tags` — `"raiders"`; `COMBAT_SCENARIOS[rustfall-security-charter]`, route- and mission-gated to include `convoy`; `[WB]` — "Raider crews (the Tollmen and similar) … Demand tolls, attempt to take cargo. **The reason escorts and wardens matter.**" **Weakness named, twice:** `[MDB]` 1.21 is locked as "**The cold is the only hazard, in five forms**" and raiders are not among them; and `[WILD]`'s stand-in doctrine that supplies NPC attackers — "**a defense wants attackers** … a stand-in raider reading as a Cinderborn outlaw" — is written for the contested deep, while Rustfall is a near-map Chartered route. The reconciliation is `[MDB]` 1.21's engineering consequence — "the hazard system is the routing pressure rather than a layer over it" — and `[CONF]`'s, "the routing and throughput problems already in play become the combat", with 1.12's "never cruelty" for the tone: raiders are pressure on the routing problem, engaged through the logistics grammar, never a hazard class of their own *(An earlier cut set the phrase in 1.12's voice as the bible's; the verbatim is 1.21's.)* |
+| Raiders as the pressure at Rustfall | ON | `routes[rustfall-yard].tags` — `"raiders"`; `COMBAT_SCENARIOS[rustfall-security-charter]`, route- and mission-gated to include `convoy`; `[WB]` — "Raider crews (the Tollmen and similar). Intercept unguarded convoys on **Frontier and Stormwild lines**. Demand tolls, attempt to take cargo. **The reason escorts and wardens matter.**" **Weakness named, three times:** the bible places the Tollmen on Frontier and Stormwild lines, one and two classes out from this Chartered route (the same displacement as the interception line above) *(an earlier cut elided the line-class clause with an ellipsis)*; `[MDB]` 1.21 is locked as "**The cold is the only hazard, in five forms**" and raiders are not among them; and `[WILD]`'s stand-in doctrine that supplies NPC attackers — "**a defense wants attackers** … a stand-in raider reading as a Cinderborn outlaw" — is written for the contested deep, while Rustfall is a near-map Chartered route. The reconciliation is `[MDB]` 1.21's engineering consequence — "the hazard system is the routing pressure rather than a layer over it" — and `[CONF]`'s, "the routing and throughput problems already in play become the combat", with 1.12's "never cruelty" for the tone: raiders are pressure on the routing problem, engaged through the logistics grammar, never a hazard class of their own *(An earlier cut set the phrase in 1.12's voice as the bible's; the verbatim is 1.21's.)* |
 | Raiders are turned, never killed | ON | `[WB]` — "The world should never tip into a **war fantasy**"; "Framed as **rivalry and risk, not war**". `[MDB]` 1.12 — "never cruelty" |
 | Crew always home; the Sunlark never lost | ON, INHERITED | `resolveDispatch` — `addCrew` on **both** branches, kept by the passed board. `[WB]`, from the hero who owns convoy defense: "**Stay in formation. We bring everyone home.**" |
 | The Tollmen's toll paid in cargo | REFUSED, named | Canon-backed and deliberately held: `[WB]`'s "**Pay**, fight through, reroute, or cut a deal", `[TEETH]`'s "**jettison weight**", `[CONF]`'s "**partial loss rather than full loot**". A verb that resolves a wave without a placement would hollow out the tier's first outing |
@@ -1319,6 +1333,18 @@ measurement rather than by asking.
 
 3. **The stop, unchanged.** First Rustfall run off the yard road, loaded or
    empty, so even a bad first run is a complete sitting. Traced against the
-   inherited sky, the shortest path puts two of its three pushes under a storm,
-   so the sitting does exercise the weather without being forced to. Or should
+   inherited sky on the storm parent, the path this beat publishes — a Ranger and
+   a Warden after one halt run and three carries — sends INTO the storm at turn 8
+   and lands all three pushes in clear weather at turns 10 to 12; the literal
+   shortest path, uncrewed, sends under the bird at turn 6 and meets the storm at
+   pushes 1 and 2; a single Warden or the Ranger alone sends at turn 7 and meets
+   it at push 1. So how much of the yard's weather the first sitting meets is set
+   by how much crew is bought before the first send — is that acceptable, or
+   should the stop be the first Rustfall run that meets a bird? *(An earlier cut
+   read "puts two of its three pushes under a storm"; that was the dispatch
+   board's five-action path, unreachable on the parent because the stake's three
+   provisions are three committed carries. The trace under What the first
+   sitting actually meets still shows that path and is flagged for David rather
+   than rewritten here. Pushes are counted as that trace counts them: MEET opens
+   the yard the turn after the SEND and each push is a turn.)* Or should
    an empty run let you try again before the sitting ends?

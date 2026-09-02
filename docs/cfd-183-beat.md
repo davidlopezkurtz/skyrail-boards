@@ -57,7 +57,9 @@ sitting is pure build plus the triangle's tending leg, non-lethal, per signed
 Three claims on the one train, and a purchase in the HUD:
 
 - **CARRY FOOD** — the profit leg, as played: pays marks by the level (+1, +2,
-  +3, +4) and **draws the terrace's reserve down one step**. The ground the
+  +3; the ladder's +4 is never paid, because topped at 4 is the stop and the
+  carry goes dark with it — *an earlier cut read "+1, +2, +3, +4"; the level-4
+  figure is the engine rule's, unreachable on this board*) and **draws the terrace's reserve down one step**. The ground the
   greenhouse feeds on is the ground the carrying draws.
 - **TEND** — REPAIR recut into the tending run. It rides to A like every job on
   this board, **earns nothing**, spends 1 mark, and gives the ground back one
@@ -237,7 +239,7 @@ sitting**, in order.
 | World's turn as clear weather | ON | R6/Geology — "A drawn-down island rides fine for years on a falling reserve"; §5 — no deaths this sitting |
 | World's turn reports honestly | ON | Carried bug-fix spec line from the broken sit: no true-returning no-ops |
 | Levels and reserve never out of range | ON | Carried bug-fix spec line from the broken sit |
-| End-sentence at topped | ON | The process rule from the broken sit: terminal states say what happened in the board's words; the deferred tell is licensed by §5 ("the reserve you leave is the next sitting's weather bill") |
+| End-sentence at topped | ON | The process rule from the broken sit: terminal states say what happened in the board's words; the deferred tell is licensed by §5.2 — "The storm is the NEXT sitting: the reckoning" — and named in this beat's own words at Does ("the reserve you leave is the next sitting's weather bill"). *(An earlier cut attributed that clause to §5; it is this beat's own line, which canon §7.1 later quotes from the board.)* |
 | Bank and hearth as standing scenery | ON | R8 — the bank-in-the-stone stands as played (§3); R4 — the hearth is spared, "never touching the hearth" |
 | The storm / any reckoning | REFUSED | §5.2 SIGNED — "The storm is the NEXT sitting: the reckoning"; R6/Geology — "The reckoning comes only when a cold stretch arrives" |
 | Storm-tell (stormbird, signal tower) | REFUSED | §5.3 — the tell precedes the event, so it belongs to the sitting that carries the event |
