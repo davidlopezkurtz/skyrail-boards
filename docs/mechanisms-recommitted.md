@@ -187,13 +187,13 @@ sitting as what a storm does, never as standalone mechanics.** The evidence:
    (Geology) A storm "steals its sun and chills its keel at once" (Geology) and
    "can foul a line, threaten the cargo on it" (Core Loop) — so when the storm
    lands, the haul in transit is at risk (that is (a)) and the in-progress
+   purchase can suffer (that is (b), "a project left mid-advance can suffer,
    though never the holdings already secured" — MDB, directive 1.12). *(An earlier
    cut attributed this sentence to Two-Games. The wording is verbatim from
    `Skyrail-Reclamation-Master-Design-Bible.md:41` and appears nowhere in
    `The-Two-Games.md`; Two-Games:39 states the same rule in different words — "A
    project left mid-advance can suffer, though the holdings already secured never
    do" — which is what R6 above quotes.)* Loss stays
-   though never the holdings already secured" — Two-Games). Loss stays
    fail-forward by rule: "costs the haul committed to it and never the home."
 3. **The storm is fair by canon — it is telegraphed.** "To see a stormbird
    inland is to know a storm is coming in behind it" (Bestiary; "creatures as
@@ -223,7 +223,6 @@ sitting as what a storm does, never as standalone mechanics.** The evidence:
    `The-Core-Loop.md:79` carries the claim in one sentence.)*. Without the storm, (b) has no
    agent either.
 6. **The sequencing instrument is the sitting discipline itself** — one system
-6. **The sequencing instrument is the sitting discipline itself** — one system
    per sitting has produced three passed sits *(a dated count, not a ruling, and
    it was wrong on its date: at the signature, 2026-08-25 17:34:58 (`7081028`),
    exactly one sit had passed — `/dawnspur-heat/`, recorded in the PWA at
@@ -234,6 +233,7 @@ sitting as what a storm does, never as standalone mechanics.** The evidence:
    2026-08-26 (`83b2ac1`). Three is the count §7's pass table tabulates and it
    has been overtaken since — read the tabulation, not this number. The discipline
    this item invokes is itself amended by §7's "one NEW NAMED system" sentence.)*; and stakes default gentle by
+   rule: "the whole intensity rides the stakes dial … defaulting gentle and
    turned up only by a player who reaches for it." (Core Loop)
 
 David's standing sentence — able to die while something is at stake — is then
@@ -481,13 +481,13 @@ join is the only new thing on the board.
 system and **provisions drawn off the terrace** argued and deferred as
 alternative 1, on the ground that it changed an inherited system and would be a
 second new thing. The beat's own text conceded it was *"a better game than what
+ships here."* Ruled: **the provisions join ships and weather defers.** The
 993-line weather beat is not discarded — it is the storm sitting's beat, held
 for the sitting that carries weather. *(993 lines at `d245131`; the beat has
 since been re-derived against the join board at `9b8916d` and is longer. Status
 at HEAD: the sitting it was held for has happened — the board shipped at
 `/dawnspur-storm/` (`42e4aa8`, 2026-08-28), was sat five times and stopped
 without a pass, canon §7.4. "Held" describes 2026-08-27, not now.)*
-for the sitting that carries weather.
 
 **What deferring weather costs, recorded rather than discovered.**
 
