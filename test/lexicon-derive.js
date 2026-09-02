@@ -39,6 +39,13 @@
 //     `null`, never `[]`. A walk() body the parser cannot fully read throws,
 //     naming the file, rather than returning a partial legend; so does a file
 //     with letter branches and no column-0 walk(), and a letter declared twice.
+//   * TWO ASSUMPTIONS THIS MODULE CANNOT CHECK, stated rather than implied.
+//     (1) Every getter is pure. `deriveExports` CALLS every getter on every
+//     board, so a getter with a side effect would mutate the board mid-
+//     derivation and nothing here would notice; the claim that they are pure
+//     is a reading of the twelve files, not a measurement. (2) A board that
+//     fails to load reports something printable — a throw carrying no usable
+//     message is rendered by `inventory()` rather than trusted.
 //   * Nothing here reads a clock or a die. The boards' own createBoard()
 //     default their roll to the runtime's random source; the derivation never
 //     calls a function that rolls, and the test injects a fixed roll wherever
@@ -93,26 +100,84 @@ function simSource(board) {
   return fs.readFileSync(simPath(board), "utf8").replace(/\r\n/g, "\n");
 }
 
-/** Block comments and `//` comments removed. */
+/**
+ * ONE scanner, not a chain of regexes, because a chain cannot know which
+ * delimiter opened first. It walks the source once and removes comments,
+ * and — when `blankLiterals` is set — the CONTENTS of every string, template
+ * and regex literal, keeping the delimiters and every newline so the shape
+ * and the line numbering survive.
+ *
+ * The chain it replaces stripped "…" and '…' and missed the template
+ * literal, so a pinned line parked in one satisfied its pin: critic 2's n01
+ * made scale's carry pay double under a green guard, and three sims already
+ * contain backticks.
+ *
+ * A regex literal is recognised by the classic heuristic — a "/" opens one
+ * unless the previous significant character could end a value — and that is
+ * the one place this scanner can be fooled (`a / b / c` reads as a regex).
+ * It matters only for the walk-DSL check, where test files carry regexes
+ * containing quotes, which is why the naive chain could not be used there.
+ */
+function scan(src, blankLiterals) {
+  const isValueEnd = (c) => c !== "" && /[A-Za-z0-9_$)\]]/.test(c);
+  let out = "";
+  let prev = "";
+  let i = 0;
+  while (i < src.length) {
+    const c = src[i];
+    const d = src[i + 1];
+    if (c === "/" && d === "/") {
+      while (i < src.length && src[i] !== "\n") i += 1;
+      continue;
+    }
+    if (c === "/" && d === "*") {
+      i += 2;
+      while (i < src.length && !(src[i] === "*" && src[i + 1] === "/")) {
+        if (src[i] === "\n") out += "\n";
+        i += 1;
+      }
+      i += 2;
+      continue;
+    }
+    const opensLiteral = c === '"' || c === "'" || c === "\u0060" || (c === "/" && !isValueEnd(prev));
+    if (opensLiteral) {
+      const close = c;
+      let inClass = false;
+      let body = "";
+      i += 1;
+      while (i < src.length) {
+        const ch = src[i];
+        if (ch === "\\") { body += src.slice(i, i + 2); i += 2; continue; }
+        if (close === "/" && ch === "[") inClass = true;
+        else if (close === "/" && ch === "]") inClass = false;
+        else if (ch === close && !inClass) { i += 1; break; }
+        else if (ch === "\n" && close !== "\u0060") break;
+        body += ch;
+        i += 1;
+      }
+      out += c + (blankLiterals ? body.replace(/[^\n]/g, "") : body) + close;
+      prev = close;
+      continue;
+    }
+    out += c;
+    if (!/\s/.test(c)) prev = c;
+    i += 1;
+  }
+  return out;
+}
+
+/** Comments removed; the contents of strings, templates and regexes kept. */
 function stripComments(src) {
-  return src.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\/\/.*$/gm, "");
+  return scan(src, false);
 }
 
 /**
- * Block comments, string literals and `//` comments removed — the subject for
- * source pins, so a comment quoting a defect by name, or a string carrying
- * the old line, cannot satisfy a pin on the code. (The critic's m09 / m10:
- * the pinned line kept in a block comment or a string literal passed the
- * `//`-only strip.) Order matters: block comments first, then strings (a
- * `//` inside a string is not a comment), then line comments. Strings are
- * emptied, not removed, so the code's shape around them survives.
+ * Comments removed AND every literal emptied — the subject for source pins,
+ * so a comment quoting a defect by name, or a string or template carrying
+ * the old line, cannot satisfy a pin on the code.
  */
 function stripForPins(src) {
-  return src
-    .replace(/\/\*[\s\S]*?\*\//g, "")
-    .replace(/"(?:[^"\\\n]|\\.)*"/g, '""')
-    .replace(/'(?:[^'\\\n]|\\.)*'/g, "''")
-    .replace(/\/\/.*$/gm, "");
+  return scan(src, true);
 }
 
 function simCode(board) {
@@ -218,7 +283,15 @@ function inventory() {
     try {
       out[board] = deriveBoard(board);
     } catch (e) {
-      out[board] = { board, error: e.message, exports: {}, placeIds: null, buildingIds: null, consistAt: null, cards: null };
+      // `e.message` is undefined for `throw "…"` and "" for `new Error("")`.
+      // Both are falsy, so the board dropped straight out of the very test
+      // written to name it and the only red left was a FALSE sentence from
+      // the wait row — M5's failure mode reintroduced by M5's fix (critic 2's
+      // n03 / n03b). The detail below is therefore never empty.
+      const detail = e && typeof e.message === "string" && e.message !== ""
+        ? (e.name || "Error") + ": " + e.message
+        : "threw a value with no usable message: " + Object.prototype.toString.call(e) + " " + String(e);
+      out[board] = { board, error: detail, exports: {}, placeIds: null, buildingIds: null, consistAt: null, cards: null };
     }
   }
   return out;
@@ -338,13 +411,18 @@ function testFiles() {
  *   { "S": "commitSend()", "+": "commitMeet() [roll 0]", ".": "wait() === false", ... }
  */
 function deriveWalk(file) {
-  const src = fs.readFileSync(path.join(TEST_DIR, file), "utf8").replace(/\r\n/g, "\n");
+  const raw = fs.readFileSync(path.join(TEST_DIR, file), "utf8").replace(/\r\n/g, "\n");
+  // A comment can neither declare nor retire a branch, so the shape is judged
+  // with comments gone; and a file with NO walk is judged on its code alone,
+  // so prose quoting the DSL inside a string is not a hard throw. Both fired
+  // at the wrong author with a wrong diagnosis before (critic 2's n07 / n08).
+  const src = stripComments(raw);
   const fn = /\nfunction walk\([^)]*\)\s*\{([\s\S]*?)\n\}/.exec(src);
   if (!fn) {
     // Letter branches with no column-0 `function walk(` is a walk of a shape
     // this parser does not read (the critic's m14: an arrow-function walk).
     // Silence here would be an under-count; refuse instead.
-    if (/\bch === "/.test(src)) {
+    if (/\bch === "/.test(stripForPins(raw))) {
       throw new Error(
         `lexicon-derive: test/${file} has letter branches (ch === "...") but no column-0 function walk( — ` +
           `a walk of a shape the derivation does not read; teach it the shape or rename the DSL.`,

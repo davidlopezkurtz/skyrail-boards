@@ -74,14 +74,39 @@ const PUBLIC_ONLY = {
 //     surface: "card"           this board carries the name inside cards(), not
 //                               at top level — graded by the cards test
 //     unit / debitTarget        where the name carries a number
-//     sourcePin                 a RegExp the board's comment-stripped sim.js
-//                               must match — the meaning pinned in the code
+//     sourcePin                 a RegExp the board's sim.js must match once
+//                               comments AND the contents of every string,
+//                               template and regex literal are removed. It is
+//                               EVIDENCE ABOUT THE FILE'S TEXT, NOT ABOUT ITS
+//                               BEHAVIOUR: a split statement defeats it, and
+//                               before the stripper became a scanner a pinned
+//                               line parked in a template satisfied it while
+//                               the board paid double (critic 2's n01). Pair
+//                               every numeric pin with a drive.
+//     inertShape                wait rows only: the RegExp the EXPORTED
+//                               function's source must match when a board is
+//                               declared inert. Optional; defaults to the bare
+//                               `return false;`. A board that is genuinely
+//                               inert in another shape declares that shape
+//                               here — the opening and getter probes still
+//                               apply — rather than being forced to change a
+//                               board the lineage rule freezes (critic 2's n06)
 //     discardsArgument          SEND rows: a stray argument is ignored and the
 //                               send still fires (self-cancelling: goes red the
 //                               day a refusal lands)
+//     index                     ids rows: the position the id must occupy in
+//                               places() / buildings(), so "PLACES[0]" and
+//                               "BUILDINGS[3]" are graded, not prose
+//     values                    ids rows: the card fields the meaning quotes
+//                               (pays / provisions / toll), graded per board
+//     list                      buildings rows: the exact list the board must
+//                               return
 //     drives                    [{ roll, path: [[fn, ...args]], expect: [[probe, value]] }]
 //                               driven from createBoard({fresh:true}) through the
 //                               board's own commits, EACH asserted true, so the
+//                               fixture is proven reachable before it is read.
+//                               `roll` is one number for every draw, or an
+//                               array consumed in order with the last repeating
 //                               fixture is proven reachable before it is read
 //     pins                      "test/<file>:<line>" (optionally "#substring") —
 //                               the board-local test line that pins this side
@@ -135,6 +160,10 @@ const ROWS = {
       desk: "The world's turn. Inert on scale, dispatch, line and storm (takes nothing, returns false). On dawnspur-heat ALONE it is a mutator, latent behind `banked`, so it reads false at the opening like the others. WARM is what ends the sitting: `banked` darkens every job the instant commitWarm() returns (litJobs() is [] before any wait). After GOODS > B > HOLD > WARM, wait() moves the step out->gone and the phase sent->sat, returns true, and returns true again on every later call; the page fires it from a 1500 ms idle timer once the shuttle is home (index.html:218-220).",
       city: "The world's turn, inert on every city board: takes nothing, returns false, published in each header and walked as `.` in each test.",
     },
+    // READ, NOT DERIVED: the page's 1500 ms idle timer named in the desk
+    // sentence. This derivation reads sim.js and the DOM token sets, never
+    // the page's script, so the timer is a citation into index.html:218-220
+    // and not a measurement.
     boards: {
       "dawnspur-heat": {
         kind: "method", arity: 0, mutates: true,
@@ -173,6 +202,8 @@ const ROWS = {
       // No fresh-opening marks assertion exists in test/dawnspur-heat.test.js:
       // :96 asserts >= 1 on the NON-fresh opening (marks 1, phase "b") that no
       // page constructs, and :101 asserts after commitGoods. Unpinned, said so.
+      // READ, NOT DERIVED: the non-fresh opening figures in the line above —
+      // this derivation only ever opens a board with { fresh: true }.
       "dawnspur-heat": { kind: "getter", opening: 0, unit: "marks", pins: [] },
       "dawnspur-scale": { kind: "getter", opening: 0, unit: "marks", pins: ["test/dawnspur-scale.test.js:131"] },
       "dawnspur-dispatch": { kind: "getter", opening: 3, unit: "marks", pins: ["test/dawnspur-dispatch.test.js:246"] },
@@ -191,31 +222,52 @@ const ROWS = {
   stopped: {
     surface: "export",
     adjudication: "HIGH",
-    by: "audit §1.5 (the stopped/commitHome pair). Every board that carries the flag is DRIVEN to its stop from the opening below, so each sentence in `meaning` is a measurement, not a description: the critic's m13 (dispatch's Chartered stop deleted) went green while this row was read-only. Absent on heat and scale — `while (!board.stopped)` is true forever there and throws nowhere",
+    // WHAT IS MEASURED HERE, CLAUSE BY CLAUSE — the previous text said "each
+    // sentence in `meaning` is a measurement, not a description", and critic 2
+    // falsified four of them with the guard green (n12, n15, n10, n11). The
+    // drives below now carry the qualifiers as well as the existence, and the
+    // one clause that CANNOT be driven says so instead of claiming it is.
+    by: "audit §1.5 (the stopped/commitHome pair). EXISTENCE: every board that carries the flag is driven to its stop from the opening — m13, dispatch's Chartered stop deleted, went green while this row was read-only. QUALIFIERS: dispatch's `chartered`, line's `topped()`, and storm's `run.storm` and `topped()` are each driven by a TWIN — a near-identical path that must NOT stop — so deleting the clause turns a drive red (n14, n12, n13, n15). The `while armed` on dice and two-ways is NOT enforced by the stop line: `canCollect()` refuses an unarmed Collect, so `if (s.armed) s.stopped = true` is unreachable-when-false and deleting the guard changes no reachable behaviour at all — measured, under n10 `commitCollect()` still returns false at the opening and after a paid run. The twin there drives the gate that does enforce the sentence, and the stop line itself is carried by a source pin, which is a text match and not a behaviour. Absent on heat and scale — `while (!board.stopped)` is true forever there and throws nowhere",
     meaning: {
-      desk: "The sitting has ended: a Chartered cargo banked (dispatch), banked with the terrace topped (line), banked OUT OF A STORM with the terrace topped (storm — the same run sent under a bird sky does not stop it; both are driven).",
+      desk: "The sitting has ended: a Chartered cargo banked (dispatch), banked with the terrace topped (line), banked OUT OF A STORM with the terrace topped (storm).",
       city: "The sitting has ended: CAST (halt, site); Home (mosswake); Put them up (herbs); Collect (they-remember); Collect while armed (dice); Collect while armed OR a cold press-on (two-ways).",
     },
     boards: {
+      // The twin here is the first meet: under a stop that drops `r.chartered`
+      // the free halt run ends the sitting, and the Cloud send that follows is
+      // then refused — the drive fails on its own step assert (n14).
       "dawnspur-dispatch": {
         kind: "getter", opening: false,
         drives: [{ roll: 0, path: [["commitSend", "dawnspur-halt"], ["commitMeet"], ["commitSend", "cloud-basin-span"], ["commitMeet"]], expect: [["stopped", true], ["marks", 27]] }],
         pins: ["test/dawnspur-dispatch.test.js:249"],
       },
+      // Twin: the SAME Chartered run one UP short of the top must not stop the
+      // sitting. That is `topped()` measured — n12 deleted it and stayed green
+      // while only the first drive existed, because its only Chartered run was
+      // also its topped one.
       "dawnspur-line": {
         kind: "getter", opening: false,
-        drives: [{ roll: 0, path: [["commitUp"], ["commitSend", "dawnspur-halt"], ["commitMeet"], ["commitUp"], ["commitUp"], ["commitCarry"], ["commitSend", "cloud-basin-span"], ["commitMeet"]], expect: [["level", 4], ["stopped", true], ["marks", 18]] }],
+        drives: [
+          { roll: 0, path: [["commitUp"], ["commitSend", "dawnspur-halt"], ["commitMeet"], ["commitUp"], ["commitUp"], ["commitCarry"], ["commitSend", "cloud-basin-span"], ["commitMeet"]], expect: [["level", 4], ["stopped", true], ["marks", 18]] },
+          { roll: 0, path: [["commitUp"], ["commitSend", "dawnspur-halt"], ["commitMeet"], ["commitUp"], ["commitCarry"], ["commitSend", "cloud-basin-span"], ["commitMeet"]], expect: [["level", 3], ["record.cargoesBanked", 2], ["stopped", false], ["marks", 23]] },
+        ],
         pins: ["test/dawnspur-line.test.js:248"],
       },
       // The sky is one step per commit, period nine: five clear, two bird, two
       // storm. Six commits before the Chartered send put it at turn 7 (bird);
-      // seven put it at turn 8 (storm). Same path, one carry more, and the
-      // stop fires — that is the storm clause measured, not source-pinned.
+      // seven put it at turn 8 (storm). Three drives, two of them twins:
+      //   A  topped + storm sky   -> stops
+      //   B  topped, bird sky     -> does not (the `run.storm` clause)
+      //   C  storm sky, level 3   -> does not (the `topped()` clause, n15)
+      // C swaps A's second carry for a TEND so the seventh commit still lands
+      // on turn 8: a third carry is refused at the stores cap, which would end
+      // the drive on its own step assert and measure nothing.
       "dawnspur-storm": {
         kind: "getter", opening: false,
         drives: [
           { roll: 0, path: [["commitUp"], ["commitSend", "dawnspur-halt"], ["commitMeet"], ["commitUp"], ["commitUp"], ["commitCarry"], ["commitCarry"], ["commitSend", "cloud-basin-span"], ["commitMeet"]], expect: [["level", 4], ["record.stormSends", 1], ["stopped", true], ["marks", 24]] },
           { roll: 0, path: [["commitUp"], ["commitSend", "dawnspur-halt"], ["commitMeet"], ["commitUp"], ["commitUp"], ["commitCarry"], ["commitSend", "cloud-basin-span"], ["commitMeet"]], expect: [["level", 4], ["record.stormSends", 0], ["record.cargoesBanked", 2], ["stopped", false], ["marks", 18]] },
+          { roll: 0, path: [["commitUp"], ["commitSend", "dawnspur-halt"], ["commitMeet"], ["commitUp"], ["commitCarry"], ["commitCarry"], ["commitTend"], ["commitSend", "cloud-basin-span"], ["commitMeet"]], expect: [["level", 3], ["record.stormSends", 1], ["record.cargoesBanked", 2], ["stopped", false], ["marks", 28]] },
         ],
         pins: ["test/dawnspur-storm.test.js:238"],
       },
@@ -244,19 +296,29 @@ const ROWS = {
         drives: [{ roll: null, path: [["commitCollect"]], expect: [["stopped", true], ["marks", 1]] }],
         pins: ["test/they-remember.test.js:330"],
       },
+      // Twin: a PAID run leaves the board unarmed, and Collect is then refused
+      // — the gate that actually enforces "while armed". The source pin holds
+      // the stop line itself, which no drive can reach (see `by`).
       "dice-at-the-places": {
         kind: "getter", opening: false,
-        drives: [{ roll: 0.99, path: [["commitSend"], ["commitHome"], ["commitCollect"]], expect: [["stopped", true]] }],
+        sourcePin: /if \(s\.armed\) s\.stopped = true;/,
+        drives: [
+          { roll: 0.99, path: [["commitSend"], ["commitHome"], ["commitCollect"]], expect: [["stopped", true]] },
+          { roll: 0, path: [["commitSend"], ["commitHome"]], expect: [["marks", 15], ["armed", false], ["canCollect()", false], ["commitCollect()", false], ["stopped", false]] },
+        ],
         pins: ["test/dice-at-the-places.test.js:338"],
       },
       "two-ways-from-here": {
         kind: "getter", opening: false,
-        drives: [{ roll: 0.99, path: [["commitSend"], ["commitHome"], ["commitCollect"]], expect: [["stopped", true], ["endedCold", false]] }],
+        sourcePin: /if \(s\.armed\) s\.stopped = true;/,
+        drives: [
+          { roll: 0.99, path: [["commitSend"], ["commitHome"], ["commitCollect"]], expect: [["stopped", true], ["endedCold", false]] },
+          { roll: 0, path: [["commitSend"], ["commitHome"]], expect: [["marks", 15], ["armed", false], ["canCollect()", false], ["commitCollect()", false], ["stopped", false]] },
+        ],
         pins: ["test/two-ways-from-here.test.js:453"],
       },
     },
   },
-
   armed: {
     surface: "export",
     adjudication: "CONTESTED",
@@ -290,6 +352,7 @@ const ROWS = {
       },
       // A PAID run first (+14), then the short one: the arm lands at 13 marks,
       // so `canSend() false` can only be the armed guard. Measured 2026-09-01:
+      // READ, NOT DERIVED (a note about a fixture this row no longer uses):
       // with a single short run from the opening the board holds 1 mark, the
       // stake is 2, and a two-ways with the armed guard deleted from canSend
       // still passed — false for want of the stake. A fixture that asserts
@@ -355,7 +418,7 @@ const ROWS = {
   record: {
     surface: "export",
     adjudication: "HIGH",
-    by: "audit §1.7 — `marksLost` is a key of this object on every board that carries it and its COMPOSITION splits: toll only (line), toll + the trim's two marks (storm), the whole stake (dispatch), provisions + toll (dice, two-ways). The discriminator is the ABSENCE of `foodLost`, which the key list below pins. Each composition is DRIVEN below (one short Mosswake run from the opening: the audit's LINE 0 / DICE 2 / DISPATCH 2) as well as source-pinned — the critic's m09 / m10 kept the pinned line in a block comment and in a string literal and the pin alone passed",
+    by: "audit §1.7 — `marksLost` is a key of this object on every board that carries it, and its COMPOSITION splits: toll only (line), toll plus the trim's two marks (storm), the whole stake (dispatch), provisions + toll (dice, two-ways). The discriminator is the ABSENCE of `foodLost`, which the key list below pins. WHAT THE DRIVES MEASURE: the marks-vs-food split — the audit's LINE 0 / DICE 2 — is driven on every board by one short Mosswake run from the opening, and storm's `+ run.extra` by a second, TRIMMED run (critic 2's n04 dropped that clause and left the untrimmed drive green). WHAT THEY CANNOT: dispatch's `stake` is not a different composition at all — `stake` IS `provisions + toll`, measured on all three sendable cards (0/0, 2/2, 4/4) — so no drive can separate the desk wording from the city one, and DISPATCH 2 must not be read as a composition measurement. Each composition is also source-pinned, and a pin is a text match: m09 / m10 / n02 parked the pinned line in a block comment, a string and a template literal, and the pin alone passed until the stripper was made a scanner",
     meaning: {
       desk: "The sitting's tally: runs out, cargoes banked, runs turned back, marks lost — plus food lost / sent and carries on the join boards, and tends / storm sends / trimmed on storm. marksLost counts MARKS only; food losses go to foodLost.",
       city: "The sitting's tally: runs out, cargoes banked, runs turned back, marks lost (+ press-ons on two-ways). marksLost = provisions + toll, because provisions are MARKS here.",
@@ -373,10 +436,19 @@ const ROWS = {
         drives: [{ roll: 0.99, path: [["commitCarry"], ["commitCarry"], ["commitSend", "mosswake-loop"], ["commitMeet"]], expect: [["record.marksLost", 0], ["record.foodLost", 2], ["marks", 3], ["stores", 0]] }],
         pins: ["test/dawnspur-line.test.js:251"],
       },
+      // Two drives. The first is the untrimmed short run, which measures the
+      // food/marks split. The second is the TRIMMED one, and it is the only
+      // path that reaches `+ run.extra`: a Ranger, four carries to put the
+      // Chartered send on turn 8's storm sky, then a trim whose two marks are
+      // the whole of marksLost because Mosswake's toll is 0. Without it n04
+      // (dropping `+ run.extra`) left this drive green on an untrimmed run.
       "dawnspur-storm": {
         kind: "getter", keys: ["cargoesBanked", "carries", "foodLost", "foodSent", "marksLost", "runsOut", "runsTrimmed", "runsTurnedBack", "stormSends", "tends"],
         marksLost: "the toll plus the trim's two marks; provisions are food and go to foodLost", sourcePin: /s\.marksLost \+= run\.toll \+ run\.extra;/,
-        drives: [{ roll: 0.99, path: [["commitCarry"], ["commitCarry"], ["commitSend", "mosswake-loop"], ["commitMeet"]], expect: [["record.marksLost", 0], ["record.foodLost", 2], ["marks", 3], ["stores", 0]] }],
+        drives: [
+          { roll: 0.99, path: [["commitCarry"], ["commitCarry"], ["commitSend", "mosswake-loop"], ["commitMeet"]], expect: [["record.marksLost", 0], ["record.foodLost", 2], ["marks", 3], ["stores", 0]] },
+          { roll: [0, 0.99], path: [["commitSend", "dawnspur-halt"], ["commitMeet"], ["commitMusterRanger"], ["commitCarry"], ["commitCarry"], ["commitCarry"], ["commitCarry"], ["commitSend", "mosswake-loop", true], ["commitMeet"]], expect: [["record.runsTrimmed", 1], ["record.stormSends", 1], ["record.marksLost", 2], ["record.foodLost", 2], ["marks", 9], ["stores", 2]] },
+        ],
         pins: ["test/dawnspur-storm.test.js:242"],
       },
       "dice-at-the-places": {
@@ -489,7 +561,10 @@ const ROWS = {
         kind: "method", arity: 0, stopsOnHome: "cold press-on only",
         drives: [
           { roll: 0.99, path: [["commitSend"], ["commitHome"]], expect: [["stopped", false], ["armed", true], ["endedCold", false]] },
-          { roll: 0.99, path: [["commitSend"], ["commitHome"], ["commitPress"], ["commitHome"]], expect: [["stopped", true], ["endedCold", true], ["collected", false]] },
+          // The cold ending adds nothing: a press-on stakes 0 / 0, so marksLost
+          // is still the 2 the FIRST short run cost. That sentence used to be
+          // prose in `marksLost:`; it is an expectation now.
+          { roll: 0.99, path: [["commitSend"], ["commitHome"], ["commitPress"], ["commitHome"]], expect: [["stopped", true], ["endedCold", true], ["collected", false], ["record.marksLost", 2], ["record.pressOns", 1]] },
         ],
         pins: ["test/two-ways-from-here.test.js:757#endedCold"],
       },
@@ -506,9 +581,26 @@ const ROWS = {
       desk: "What the next CARRY lands. scale: the level, paid in MARKS, full at every reserve. line: min(level, stores headroom), landed as FOOD in the stores. storm: the same, and clamped by the reserve in a storm.",
     },
     boards: {
-      "dawnspur-scale": { kind: "getter", opening: 1, unit: "marks", debitTarget: "s.marks (credit)", sourcePin: /s\.marks \+= s\.level;/, pins: ["test/dawnspur-scale.test.js:135"] },
-      "dawnspur-line": { kind: "getter", opening: 1, unit: "food", debitTarget: "s.stores (credit)", sourcePin: /s\.stores \+= carryLoad\(\);/, pins: ["test/dawnspur-line.test.js:467"] },
-      "dawnspur-storm": { kind: "getter", opening: 1, unit: "food", debitTarget: "s.stores (credit)", sourcePin: /s\.stores \+= landed;/, pins: ["test/dawnspur-storm.test.js:654"] },
+      // Each board's carry is DRIVEN as well as pinned. Until now this HIGH
+      // row's only measured column was a source pin, and no drive in the whole
+      // ledger touched dawnspur-scale: critic 2's n01 made the carry pay
+      // double, parked the pinned line in a template literal, and the guard
+      // stayed green 22/22. A pin is a text match; the unit is the credit.
+      "dawnspur-scale": {
+        kind: "getter", opening: 1, unit: "marks", debitTarget: "s.marks (credit)", sourcePin: /s\.marks \+= s\.level;/,
+        drives: [{ roll: null, path: [["commitCarry"]], expect: [["marks", 1], ["level", 1], ["reserve", 3], ["carryYield", 1]] }],
+        pins: ["test/dawnspur-scale.test.js:135"],
+      },
+      "dawnspur-line": {
+        kind: "getter", opening: 1, unit: "food", debitTarget: "s.stores (credit)", sourcePin: /s\.stores \+= carryLoad\(\);/,
+        drives: [{ roll: null, path: [["commitCarry"]], expect: [["stores", 1], ["marks", 3], ["reserve", 3], ["carryYield", 1]] }],
+        pins: ["test/dawnspur-line.test.js:467"],
+      },
+      "dawnspur-storm": {
+        kind: "getter", opening: 1, unit: "food", debitTarget: "s.stores (credit)", sourcePin: /s\.stores \+= landed;/,
+        drives: [{ roll: null, path: [["commitCarry"]], expect: [["stores", 1], ["marks", 3], ["reserve", 3], ["carryYield", 1]] }],
+        pins: ["test/dawnspur-storm.test.js:654"],
+      },
     },
   },
 
@@ -522,7 +614,10 @@ const ROWS = {
       city: "halt: the four structures (lamp, terrace, foundry, consist), and there is no places(). Every other city board: an alias of places(), the map nodes.",
     },
     boards: {
-      "dawnspur-halt": { kind: "method", arity: 0, aliasOfPlaces: false, pins: ["test/dawnspur-halt.test.js:218"] },
+      // `list` grades the four structures the meaning sentence names, so the
+      // one board whose buildings() is real is checked against it rather than
+      // described.
+      "dawnspur-halt": { kind: "method", arity: 0, aliasOfPlaces: false, list: ["lamp", "terrace", "foundry", "consist"], pins: ["test/dawnspur-halt.test.js:218"] },
       "mosswake-loop": { kind: "method", arity: 0, aliasOfPlaces: true, pins: ["test/mosswake-loop.test.js:76#places()"] },
       "herbs-larder": { kind: "method", arity: 0, aliasOfPlaces: true, pins: [] },
       "they-remember": { kind: "method", arity: 0, aliasOfPlaces: true, pins: [] },
@@ -545,15 +640,19 @@ const ROWS = {
       desk: "\"dawnspur-halt\" is a ROUTE id — the free Core Line hop, baseRisk 0.08, pays 10 — a destination the train is sent TO.",
       city: "\"halt\" is the HOME position: PLACES[0], the consistAt opening, the place every send leaves FROM and every home returns to. On dawnspur-halt itself no id contains the word: BUILDINGS are lamp / terrace / foundry / consist.",
     },
+    // `index` and `values` make the sentences above assertions rather than
+    // prose: PLACES[0] and the card's pays / provisions / toll are checked by
+    // the ids test. READ, NOT DERIVED: "baseRisk 0.08" — `baseRisk` is not a
+    // key of cards() on any board, so nothing here can grade it.
     boards: {
-      "dawnspur-dispatch": { where: "cards", id: "dawnspur-halt", pins: ["test/dawnspur-dispatch.test.js:49"] },
-      "dawnspur-line": { where: "cards", id: "dawnspur-halt", pins: ["test/dawnspur-line.test.js:42"] },
-      "dawnspur-storm": { where: "cards", id: "dawnspur-halt", pins: ["test/dawnspur-storm.test.js:25"] },
-      "mosswake-loop": { where: "places", id: "halt", consistAt: true, pins: [] },
-      "herbs-larder": { where: "places", id: "halt", consistAt: true, pins: [] },
-      "they-remember": { where: "places", id: "halt", consistAt: true, pins: [] },
-      "dice-at-the-places": { where: "places", id: "halt", consistAt: true, pins: ["test/dice-at-the-places.test.js:331"] },
-      "two-ways-from-here": { where: "places", id: "halt", consistAt: true, pins: [] },
+      "dawnspur-dispatch": { where: "cards", id: "dawnspur-halt", values: { pays: 10, provisions: 0, toll: 0 }, pins: ["test/dawnspur-dispatch.test.js:49"] },
+      "dawnspur-line": { where: "cards", id: "dawnspur-halt", values: { pays: 10, provisions: 0, toll: 0 }, pins: ["test/dawnspur-line.test.js:42"] },
+      "dawnspur-storm": { where: "cards", id: "dawnspur-halt", values: { pays: 10, provisions: 0, toll: 0 }, pins: ["test/dawnspur-storm.test.js:25"] },
+      "mosswake-loop": { where: "places", id: "halt", index: 0, consistAt: true, pins: [] },
+      "herbs-larder": { where: "places", id: "halt", index: 0, consistAt: true, pins: [] },
+      "they-remember": { where: "places", id: "halt", index: 0, consistAt: true, pins: [] },
+      "dice-at-the-places": { where: "places", id: "halt", index: 0, consistAt: true, pins: ["test/dice-at-the-places.test.js:331"] },
+      "two-ways-from-here": { where: "places", id: "halt", index: 0, consistAt: true, pins: [] },
       "dawnspur-halt": { where: "absent", pins: ["test/dawnspur-halt.test.js:218#consist"] },
     },
   },
@@ -572,12 +671,12 @@ const ROWS = {
       desk: "No place ids at all — the desk has routes, not places.",
     },
     boards: {
-      "dawnspur-halt": { where: "buildings", id: "consist", pins: ["test/dawnspur-halt.test.js:218"] },
-      "mosswake-loop": { where: "places", id: "consist", pins: [] },
-      "herbs-larder": { where: "places", id: "consist", pins: [] },
-      "they-remember": { where: "places", id: "consist", pins: [] },
-      "dice-at-the-places": { where: "places", id: "consist", pins: [] },
-      "two-ways-from-here": { where: "places", id: "consist", pins: [] },
+      "dawnspur-halt": { where: "buildings", id: "consist", index: 3, pins: ["test/dawnspur-halt.test.js:218"] },
+      "mosswake-loop": { where: "places", id: "consist", index: 2, pins: [] },
+      "herbs-larder": { where: "places", id: "consist", index: 2, pins: [] },
+      "they-remember": { where: "places", id: "consist", index: 2, pins: [] },
+      "dice-at-the-places": { where: "places", id: "consist", index: 2, pins: [] },
+      "two-ways-from-here": { where: "places", id: "consist", index: 2, pins: [] },
     },
   },
 };

@@ -30,14 +30,33 @@
 //
 // What it catches: a shared name acquiring a new board, a changed signature
 // (kind / arity / opening / keys), an undeclared board, a unit or debit target
-// moving under a numeric name (source pins), a walk legend changing, a DOM
-// token moving board. What it provably does NOT catch: a name changing meaning
-// on a board it already occupies in a way no declared column expresses, and
-// anything in docs/ — the halt defect was a spec sentence, and no source-side
-// guard sees a spec.
+// moving under a numeric name, a stop or a composition losing its qualifier
+// (the twin drives), a walk legend changing, a DOM token moving board.
 //
-// Determinism: the last test reads this file, the derivation and the ledger
-// and refuses any clock, timer or random source. Rolls are injected.
+// WHAT IT PROVABLY DOES NOT CATCH — narrowed twice, because the first two
+// versions of this paragraph were too kind to the guard:
+//   * A meaning change no DRIVEN or PINNED column expresses. `meaning`, `by`
+//     and `marksLost` are prose: nothing grades them, on a HIGH row or any
+//     other, and four `meaning` sentences were false under a green guard
+//     until the twin drives landed (critic 2's n10 / n11 / n12 / n15).
+//   * A source pin is a text match over a file with comments and literals
+//     removed. It is evidence about the text, not the behaviour: a split
+//     statement defeats it, and a pinned line parked in a template literal
+//     satisfied it until the stripper became a scanner (n01). Every numeric
+//     pin is now paired with a drive; a pin alone is not a measurement.
+//   * A getter with a side effect. The derivation calls every getter on every
+//     board and assumes all of them are pure — read, not measured.
+//   * A behavioural change with no reachable path. `if (s.armed) s.stopped =
+//     true` on dice and two-ways is unreachable-when-false because canCollect
+//     already refuses an unarmed Collect, so deleting it changes nothing a
+//     drive can see; only the source pin holds it.
+//   * Anything in docs/ — the halt defect was a spec sentence, and no
+//     source-side guard sees a spec.
+//
+// Determinism: the last test refuses a clock, a timer or a die in the guard's
+// own three files — by member access in either spelling, and by counting
+// actual calls to the runtime's random source across a full derivation and
+// every drive replayed. Rolls are injected.
 
 const { test } = require("node:test");
 const assert = require("node:assert/strict");
@@ -376,6 +395,21 @@ test("ids: halt is a route id on the desk, the home position in the city and not
       }
       const seen = bag.get(want.id) || [];
       if (!seen.includes(want.where)) drift.push(`${name}: ${b} declares ${JSON.stringify(want.id)} in ${want.where}; derived ${seen.length ? seen.join("+") : "nothing"} (ids seen: ${JSON.stringify([...bag.keys()])})`);
+      // `index` and `values` grade what the meaning sentences quote — PLACES[0],
+      // BUILDINGS[3], and the card's pays / provisions / toll — so those figures
+      // are re-derived rather than typed once and trusted.
+      if (typeof want.index === "number") {
+        const list = want.where === "places" ? INV[b].placeIds : want.where === "buildings" ? INV[b].buildingIds : null;
+        const at = list ? list[want.index] : undefined;
+        if (at !== want.id) drift.push(`${name}: ${b} declares ${JSON.stringify(want.id)} at ${want.where}[${want.index}]; derived ${JSON.stringify(at)} (${want.where}: ${JSON.stringify(list)})`);
+      }
+      if (want.values) {
+        const card = (INV[b].cards || []).find((c) => c.id === want.id);
+        if (!card) drift.push(`${name}: ${b} declares card values for ${JSON.stringify(want.id)} but has no such card`);
+        else for (const k of Object.keys(want.values)) {
+          if (card[k] !== want.values[k]) drift.push(`${name}: ${b} card ${want.id}: ${k} derived ${JSON.stringify(card[k])} / declared ${JSON.stringify(want.values[k])}`);
+        }
+      }
       const extra = hits.filter((h) => h !== want.id);
       if (extra.length) drift.push(`${name}: ${b} also carries ${JSON.stringify(extra)}, which the row does not declare`);
       if (want.consistAt && INV[b].consistAt !== want.id) drift.push(`${name}: ${b} declares consistAt opens at ${JSON.stringify(want.id)}; derived ${JSON.stringify(INV[b].consistAt)}`);
@@ -393,6 +427,10 @@ test("buildings: dawnspur-halt's is the real one (structures, no places()); ever
     const want = row.boards[b];
     if (!inv || inv.buildingIds === null) { drift.push(`${b}: no buildings()`); continue; }
     const isAlias = inv.placeIds !== null && JSON.stringify(inv.placeIds) === JSON.stringify(inv.buildingIds);
+    // `list` grades the structures the meaning sentence names.
+    if (want.list && JSON.stringify(inv.buildingIds) !== JSON.stringify(want.list)) {
+      drift.push(`${b}: buildings() derived ${JSON.stringify(inv.buildingIds)} / declared ${JSON.stringify(want.list)}`);
+    }
     if (isAlias !== want.aliasOfPlaces) drift.push(`${b}: buildings() ${JSON.stringify(inv.buildingIds)} vs places() ${JSON.stringify(inv.placeIds)} — derived alias ${isAlias} / declared ${want.aliasOfPlaces}`);
   }
   assert.deepEqual(drift, [], fail(["buildings row drift:", ...drift.map((d) => "  " + d)]));
@@ -439,13 +477,23 @@ test("wait: every board declared inert is inert at the opening AND its EXPORTED 
       continue;
     }
     const board = D.fresh(b);
+    // The typeof guard comes FIRST: it used to sit three lines below the call
+    // it exists to make safe, so a board exporting `wait` as a getter died on
+    // an unnamed TypeError instead of the named problem (critic 2's n16).
+    if (typeof board.wait !== "function") { problems.push(`${b}: declared inert but exports no wait() function — it is ${JSON.stringify(D.signature(INV[b].exports.wait))}`); continue; }
     const snap = () => JSON.stringify(Object.keys(INV[b].exports).filter((k) => INV[b].exports[k].kind === "getter" && "opening" in INV[b].exports[k]).map((k) => [k, board[k]]));
     const before = snap();
     if (board.wait() !== false) problems.push(`${b}: declared inert but wait() returned true at the opening`);
     if (snap() !== before) problems.push(`${b}: wait() returned false but changed a getter — it is not inert`);
-    if (typeof board.wait !== "function") { problems.push(`${b}: declared inert but exports no wait() function`); continue; }
+    // The shape is DECLARED, not one hard-coded literal. A board that is
+    // genuinely inert in another shape declares it here and keeps both probes
+    // above; before this, `mutates:false` demanded one exact byte sequence and
+    // `mutates:true` demanded drives that do not exist, so an inert rewrite
+    // could only go green by editing a board the lineage rule freezes
+    // (critic 2's n06).
+    const shape = e.inertShape instanceof RegExp ? e.inertShape : bare;
     const exported = D.stripComments(Function.prototype.toString.call(board.wait)).trim();
-    if (!bare.test(exported)) problems.push(`${b}: declared inert (mutates:false) but the EXPORTED wait() is not the bare \`return false;\` — it reads: ${exported.replace(/\s+/g, " ").slice(0, 90)} — a latent mutator reads false at the opening, so declare the arming path (drives) instead of trusting the opening probe`);
+    if (!shape.test(exported)) problems.push(`${b}: declared inert (mutates:false) but the EXPORTED wait() does not match ${shape} — it reads: ${exported.replace(/\s+/g, " ").slice(0, 90)} — a latent mutator reads false at the opening, so either declare the arming path (drives) or declare this shape as inertShape`);
   }
   assert.deepEqual(problems, [], fail(["wait row (test/lexicon-ledger.js ROWS.wait):", ...problems.map((p) => "  " + p)]));
 });
@@ -518,16 +566,62 @@ test("pins: every cited test line exists and mentions the token — a locator, n
   assert.deepEqual(bad, [], fail(["Stale pins — re-point the cite, do not delete it:", ...bad.map((x) => "  " + x)]));
 });
 
-test("determinism: the guard's own three files read no clock, set no timer and roll no die", () => {
+test("determinism: the guard's own three files read no clock, set no timer and roll no die — spelling AND behaviour", () => {
   const files = ["lexicon.test.js", "lexicon-derive.js", "lexicon-ledger.js"];
-  // Assembled from fragments so this file's own text cannot satisfy it.
-  const banned = new RegExp("\\b(" + [
-    "Date\\." + "now", "new " + "Date", "performance\\." + "now", "Math\\." + "random",
-    "set" + "Timeout", "set" + "Interval", "set" + "Immediate", "process\\." + "hrtime",
-  ].join("|") + ")\\b");
+  // Matched through the MEMBER ACCESS rather than a fixed spelling: the
+  // word-anchored list walked straight past `Date["now"]()` (critic 2's n17).
+  // Each name is assembled from fragments so this file's own text cannot
+  // satisfy the pattern it builds.
+  const member = (obj, prop) => obj + "\\s*(?:\\.\\s*" + prop + "|\\[\\s*[\"']" + prop + "[\"']\\s*\\])";
+  const banned = new RegExp("(" + [
+    member("Date", "n" + "ow"), member("performance", "n" + "ow"), member("Math", "r" + "andom"),
+    member("process", "h" + "rtime"), "new\\s+Date\\b",
+    "\\bset" + "Timeout\\b", "\\bset" + "Interval\\b", "\\bset" + "Immediate\\b",
+  ].join("|") + ")");
+  // ONE exemption, and it is bounded and named: the behavioural probe below
+  // must say the random source's name in order to stub and count it. The
+  // markers may appear exactly once, in this file only — a second pair would
+  // be a place to hide a real reach.
+  const START = "// deterministic-" + "probe:start";
+  const END = "// deterministic-" + "probe:end";
   for (const f of files) {
-    const code = fs.readFileSync(path.join(__dirname, f), "utf8").replace(/\/\/.*$/gm, "");
-    const m = banned.exec(code);
+    const raw = fs.readFileSync(path.join(__dirname, f), "utf8");
+    const opens = raw.split(START).length - 1;
+    const closes = raw.split(END).length - 1;
+    assert.ok(
+      (f === "lexicon.test.js" && opens === 1 && closes === 1) || (opens === 0 && closes === 0),
+      `test/${f}: the probe exemption markers may appear exactly once, in lexicon.test.js only — found ${opens} start / ${closes} end`,
+    );
+    const cut = opens === 1 ? raw.slice(0, raw.indexOf(START)) + raw.slice(raw.indexOf(END)) : raw;
+    const m = banned.exec(D.stripComments(cut));
     assert.equal(m ? m[0] : null, null, `test/${f} reaches for ${m && m[0]} — the guard must be deterministic; inject a roll instead`);
   }
+
+  // deterministic-probe:start
+  // The spelling list is a tripwire, not the instrument. This is: stub the
+  // runtime's random source, run a full derivation and replay every drive in
+  // the ledger, and count. A guard that rolls a real die cannot be trusted to
+  // report the same thing twice, however it spelled the call.
+  const real = Math.random;
+  let calls = 0;
+  Math.random = () => { calls += 1; return real.call(Math); };
+  try {
+    // Every step is wrapped: this test counts DICE, it does not grade drives.
+    // Unwrapped, a drive that fails under some unrelated defect surfaced here
+    // as a determinism failure — the wrong diagnosis, which is the very thing
+    // this pass exists to remove. The driven: tests report a broken drive.
+    const quiet = (f) => { try { f(); } catch (ignored) { /* graded elsewhere */ } };
+    quiet(() => D.inventory());
+    quiet(() => D.domInventory());
+    quiet(() => D.walkInventory());
+    for (const name of Object.keys(L.ROWS)) {
+      for (const b of Object.keys(L.ROWS[name].boards)) {
+        for (const spec of L.ROWS[name].boards[b].drives || []) quiet(() => drive(name, b, spec));
+      }
+    }
+  } finally {
+    Math.random = real;
+  }
+  // deterministic-probe:end
+  assert.equal(calls, 0, `the derivation and every drive together reached the runtime's random source ${calls} time(s) — a drive is missing its injected roll`);
 });
