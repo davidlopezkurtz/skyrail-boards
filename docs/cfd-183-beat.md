@@ -256,7 +256,7 @@ sitting**, in order.
 | Waterworks / sunspire | REFUSED | Standing — `townExpansions[production-terrace].buildings` names them; they stay off |
 | A second scaling asset | REFUSED | Standing — the direction's plural honored serially, one asset per ground |
 | Air | REFUSED | R9 — "no build that does both"; this sitting climbs ground already reached |
-| Attacker / raiders | REFUSED | §5.4 — "Raiding and loss are a soft sink … The regulator is the cold" (Economy) |
+| Attacker / raiders | REFUSED | §5.4 — “This is a soft sink, and it earns its place as drama and texture rather than as the economy’s regulator. The regulator is the cold.” (Economy `:47`, under the heading “Raiding and loss are a soft sink, not the regulator”) *(an earlier cut opened the quotation “Raiding and loss are a soft sink …”, which is the heading with “, not the regulator” dropped, spliced onto the body — the same splice corrected in the canon at §5 on 2026-09-02)* |
 | Furnace word / radius / CFD-163 field | REFUSED | Standing kills, carried |
 | Marks-as-heat (anywhere) | REFUSED | R1 — "marks never are the heat"; the bank neither pays nor is paid |
 
