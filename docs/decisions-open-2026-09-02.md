@@ -27,7 +27,8 @@ tree they were measured at.
 
 # Decisions waiting on David — Skyrail boards, measured at `97f3ecd`, re-verified at `c32ff52`
 
-**40 decisions.** Eight block work — a cut, a signature, a built-and-held edit, or a
+**39 open, 1 closed.** *(Entry 4 RULED and carried out 2026-09-02 at `20bf043`; it
+took the sweep's calls 12 and 13 with it.)* **Seven** block work — a cut, a signature, a built-and-held edit, or a
 landing that is drafted and ready. The rest split into eleven that publish something
 measurably wrong to whoever reads the file next, fifteen convention-and-register calls
 where measurement genuinely does not decide, and six record corrections that need no
@@ -58,7 +59,7 @@ is not numbered below — but most of Tier 3 is waiting behind it.
 
 ---
 
-# Tier 1 — Blocks a cut, a signature, or a built edit (8)
+# Tier 1 — Blocks a cut, a signature, or a built edit (8; **7 open**, entry 4 closed 2026-09-02)
 
 ## 1. CFD-200's parent, after the storm stopped unpassed
 
@@ -192,6 +193,24 @@ beat's own line, or you land a new false statement while fixing a stale one.
 
 **Cost of getting it wrong.** The canon section that governs how every future beat
 pre-registers its outcomes keeps a worked example that fails its own test.
+
+**RULED — David, 2026-09-02. All three parts, as one edit, and calls 12 and 13 with
+them.** *"Clear §7.5 first, in the same pass. Canon is first-read for every beat
+author, and shipping a new beat whose authority document contains an example that
+fails its own rule means whoever reads it next either applies the rule wrong or
+discovers the contradiction and trusts the section less. Both are worse than one
+ruling now. This is the canon-ordering finding again: the error sits early in the
+reading order and the correction sits in a beat nobody reaches."*
+
+**Carried out at `20bf043`.** The held file was NOT landed as built: its own opening
+carried the *"no completion count separates"* claim the sweep measured false, so the
+beat's narrower line — *"All four log as 'the sitting ended.'"* — was used instead.
+The section now states `pressOns` outright and shows it **resolves none of the
+split**, so the counter demonstrates the third prohibition rather than convicting
+the example. One precision defect in the fix's own first draft was caught before
+landing (`pressOns` is non-zero, not 1 — a repeat presser reaches 4). A closing
+paragraph recording how the example RESOLVED was added beyond the ruling and
+flagged as strikeable. **CLOSED.**
 
 ---
 
