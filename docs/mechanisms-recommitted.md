@@ -858,19 +858,50 @@ starts disagreeing with itself. Its three outcomes, written before the sit:
 was used." Only the pre-registered split separates a live verb from a reflex, and
 **a counter can never make that distinction at all.**
 
-#### Worked example 2 — CFD-210, the three nulls
+#### Worked example 2 — CFD-210, the four nulls
 
-The same insight in a different shape. Three ways a fork can produce no decision:
+The same insight in a different shape, and the beat's own framing: **none of these
+is a failure — each is an answer.** Four outcomes, registered in
+`docs/cfd-210-beat.md` before the sit, the first two in David's own words:
 
 | outcome | what it means | where it routes |
 | --- | --- | --- |
-| banks immediately, without remarking | the branch was never live to him | the corridor is load-bearing; close the question |
-| presses on, never mentions what he passed up | the fork is real, one branch invisible | what makes a forgone option legible |
-| does it once, cannot say why | a coin-flip dressed as a choice | differentiation |
+| ended cold after pressing on | the branch working — can he name the trade unasked | what the next fork should be |
+| banked immediately, never pressed | ambiguous: correctly frightening, or never legible as an option | the tell, and it is not the count |
+| pressed on, won, kept playing | the fork fired without ever costing anything | whether one sitting can answer this at all |
+| did it once, cannot say why | a coin-flip dressed as a choice | differentiation |
 
-**All three would be logged as "the player used the fork."** They mean three
-different things and route to three different places. Without the split, the first
-sit produces whichever reading the author was already carrying.
+**All four log as "the sitting ended."** They mean four different things and route
+to four different places. Without the split, the first sit produces whichever
+reading the author was already carrying.
+
+**And this example demonstrates the third prohibition below rather than escaping
+it.** The shipped board does keep a counter — `pressOns`, which stays 0 when the
+player banks and goes non-zero the moment either press-on is taken (a repeat
+presser reaches 4), asserted in `test/two-ways-from-here.test.js`. It separates
+the banked row from the pressed rows and **resolves none of the split**: it cannot tell row 1 from row 3, it cannot
+reach row 4, and it is silent on the only question row 2 actually turned on. A
+counter that halves a split has not resolved it.
+
+*(Two corrections, both landed 2026-09-02. The table read THREE rows from
+`6a55533` until `9618352` re-cut the beat, splitting the pressed-on outcome and
+letting David re-register the first two — that half was staleness. The other half
+was wrong on the day it was written: this section called them "three ways a fork
+can produce **no decision**", which neither the beat then nor now says — its
+framing has always been "none of these is a failure" — and it claimed **"All three
+would be logged as 'the player used the fork'"**, which is false of the banked row,
+since banking never touches the press branch at all. The "three nulls" in this
+section's OPENING paragraph is different and stands: that is dated history of the
+rediscovery, true of 2026-09-01.)*
+
+**How it resolved, because an example that stops at registration teaches half the
+rule.** David sat the board on 2026-09-02 and landed on **row 2**. Its ambiguity
+was settled by DRIVING the board — the press-on proved to be the already-posted
+default action with its cost stated beneath it, so the option was legible and the
+board's side of the question was answered — and **not** by asking him, because the
+question that would have asked is the one §7.4 refuses. One leg the orchestrator
+first offered was refuted at review and struck in place. The record is in
+`docs/cfd-210-beat.md`.
 
 #### What this obliges
 
