@@ -274,16 +274,34 @@ function atFork(b) {
 
 // ---------------------------------------------------------------- guards
 
-test("guard: the twelve pinned boards are unchanged at HEAD — the parent's four paths among them", () => {
-  // /still-standing/ is NOT pinned here. A board joins its own pin list the
-  // day it PASSES, not before: while a board is being cut, pinning its own
-  // bytes is circular, and the sit-equals-public test below cannot see a
-  // COORDINATED overwrite of both copies. Self-pinning is part of recording a
-  // pass — four boards have now needed it on the day they passed.
+// "Thirteen" is boards pinned by an INDEX+SIM PAIR. The table names fifteen distinct
+// board directories; /dawnspur/ and /convoy-stop/ carry a public sim only and are
+// counted by neither. Stating the denominator so the next increment is not a guess.
+test("guard: the thirteen pinned boards (index+sim pairs) are unchanged at HEAD — this board and the parent among them", () => {
+  // /still-standing/ PASSED its sit 2026-09-04 — David: "I was able to do runs
+  // to mosswake over adn over until then one failed and the larder covered it
+  // and then I kept going until there was a nother issue and the larder could
+  // not cover it twice at which poiint the instance was over and I could not
+  // do anything else." Verdict: "Pass, and land it against outcome 2 as
+  // registered." It joins its own pin list at that moment and not before:
+  // while a board is being cut, pinning its own bytes is circular, and the
+  // sit-equals-public test below cannot see a COORDINATED overwrite of both
+  // copies. Self-pinning is part of recording a pass.
+  //
+  // This is the FIFTH board to need self-pinning on the day it passed. The
+  // cause is structural, not forgetfulness: each new board's test pins the
+  // PRIOR boards, so the newest passed board is unprotected until a successor
+  // exists. The comment this replaces said four boards had needed it; the
+  // count moves every time, which is the tell that the hole is in the shape
+  // and not in anyone's memory.
   //
   // The parent /two-ways-from-here/ PASSED 2026-09-02. Its four paths are
   // pinned here exactly as its own test pins them — copied, not retyped.
   const pins = {
+    "sit/still-standing/sim.js": "6b3b9267d4e43542c3a68c1dad8267db4ef1b97744fd614d49490bd1994d2ea8",
+    "public/still-standing/sim.js": "6b3b9267d4e43542c3a68c1dad8267db4ef1b97744fd614d49490bd1994d2ea8",
+    "sit/still-standing/index.html": "69ab4662c534ee16fa7dbb82d52bb6edd70ca9607be38ccfe761b2c2b9d4ae40",
+    "public/still-standing/index.html": "69ab4662c534ee16fa7dbb82d52bb6edd70ca9607be38ccfe761b2c2b9d4ae40",
     "sit/two-ways-from-here/sim.js": PIN.twoWaysSim,
     "public/two-ways-from-here/sim.js": PIN.twoWaysSim,
     "sit/two-ways-from-here/index.html": PIN.twoWaysIndex,

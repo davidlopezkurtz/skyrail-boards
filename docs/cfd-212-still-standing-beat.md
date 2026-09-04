@@ -3,8 +3,256 @@
 The first board on which the sitting outlives a decision. Sibling `/still-standing/`.
 Not a recut of anything.
 
-**Beat only. Do not implement. Not signed.** The status line is at the foot of this
-document and it is the only one that governs.
+**Signed, implemented, and PASSED.** The status sections are the PASSED section
+immediately below and the signature at the foot; those two govern, and nothing else in
+this document does.
+
+---
+
+## PASSED — David, 2026-09-04. (Signed 2026-09-04, the same day.)
+
+**The sit, verbatim:**
+
+> *"I was able to do runs to mosswake over adn over until then one failed and the
+> larder covered it and then I kept going until there was a nother issue and the
+> larder could not cover it twice at which poiint the instance was over and I
+> could not do anything else"*
+
+**The verdict:**
+
+> *"Pass, and land it against outcome 2 as registered."*
+
+*(His typos are kept. The ledger convention here is that a verbatim is a
+verbatim — `KILLS.md` carries "it broke needs ta review." with its typo intact.)*
+
+### Registered outcome 2 fired, and §7.5 is why that is readable rather than arguable
+
+**Outcome 2**, quoted from this beat's own pre-registered split below:
+
+> **He plays on and never mentions it, because it stopped mattering.** … **Not the
+> same as not noticing.** A forgone option that is fully visible and simply
+> irrelevant is a finding about whether forgone options carry weight at all.
+
+His sit names, in order: **the loop** (*"runs to mosswake over adn over"*), **the
+first shortfall covered** (*"one failed and the larder covered it"*), **continuing**
+(*"I kept going"*), **the second shortfall not covered** (*"the larder could not
+cover it twice"*), and **the end** (*"the instance was over and I could not do
+anything else"*).
+
+He names **none** of: the fork, the choice, the press-on, `Collect.`, or the branch
+he did not take.
+
+**That is outcome 2, and it was written down before the sit, so it did not have to be
+argued afterwards.** Without the split on paper, *"he never mentioned the road"* reads
+against whichever story the reader already carries — *he didn't see it* or *it stopped
+mattering* — and those route to opposite places. §7.5 is the only reason this sitting
+produced an answer instead of a debate.
+
+### The measurements, taken BEFORE the sit was read
+
+Driven on the shipped board, not reasoned about. `sit/still-standing/sim.js` at HEAD.
+`S` send · `+` home paid · `-` home short · `C` `Collect.` · `P` press-on.
+
+**1. THE FORK CANNOT BE WALKED PAST. Continuing required resolving it.**
+
+At the arm (`S-`):
+
+```
+stopped   false
+canSend() false
+live      ["mosswake:Collect.", "consist:ROLL HER OUT. 64."]
+
+mosswake  writing  Mosswake. A neighbor again.
+          canDo    Collect.
+consist   writing  The run came home short and the larder covered it.
+          canDo    ROLL HER OUT. 64.
+          blocked  The larder covered it once. Roll her out and there is nothing left to collect.
+```
+
+**`canSend()` is FALSE while the arm is up.** The only two live can-dos on the board
+are the fork's two branches. There is no third thing to tap and no way to send again
+without first resolving it. **He said he kept going, so he resolved it** — which means
+**the one new system fired: a branch did not end the sitting.**
+
+**2. THE ENDING WAS THE RULED STOP, NOT THE FLOOR.** The board has two endings and
+David ruled they may not share a sentence. His description is unambiguous against that
+ruling:
+
+| ending | consist's WRITING | mosswake's BLOCKED |
+| --- | --- | --- |
+| **A — the second staked short run** (`S-CS-`, `S-P+S-`) | *"She came home short again. **The larder could not cover it twice.**"* | *"The larder could not cover it twice."* |
+| **B — the floor** (`S-P-`) | *"The consist is home. There is nothing left to put up."* | *"There is nothing left to put up for a run."* |
+
+**The two columns are different FIELDS and the header now says so.** An earlier cut
+labelled both "reads", which momentarily asserts the wider claim this section corrects
+below: Mosswake's WRITING does differ between Ending A's two branches — *"People
+remember who showed up."* when banked against *"Mosswake. A neighbor again."* when
+pressed on and won.
+
+*"the larder could not cover it twice"* is **Ending A's sentence, verbatim, and it
+appears nowhere in Ending B.** So this sitting is **NOT** the lose-at-the-opening-arm
+line registered below as *unexercised*, which terminates on Ending B with **zero
+frames past the fork**. **THE CARD WAS EXERCISED.** He played past the fork and the
+sitting ended on the ruled stop.
+
+**3. THE DISCRIMINATOR THAT SURVIVES THE INHERITED-COPY PROBLEM.** His words are
+inherited text — this board's sentences are the parent's sentences — so the wording
+alone cannot prove which board he read. **The ARC can.** The same line driven on the
+parent, `/two-ways-from-here/` (C13):
+
+```
+C13, S-P+S-  (a second staked short run)
+  stopped   false
+  live      ["mosswake:Collect.", "consist:ROLL HER OUT. 64."]
+  consist   blocked  The larder covered it once. It will not cover it twice.
+```
+
+**On C13 a second staked short run does not end the sitting.** It arms again and
+re-offers the fork. C13 binds *"the larder could not cover it twice"* to a **lost
+press-on** — the cost line on a branch you have to choose — and never to a second run
+failure. **So *"a nother issue and the larder could not cover it twice"* as the answer
+to a second RUN FAILURE is C14-only.**
+
+**But that antecedent is load-bearing and an earlier cut dropped it, writing "He was
+on this board." flatly.** Measured on C13: the same ending sentence IS reachable
+there, by `S-P+S-P-` — press on, WIN, keep playing, send, come home short, press on,
+LOSE. If *"a nother issue"* names a lost press-on rather than a second run failure,
+C13 produces those words too.
+
+**What survives is softer and still real: on C13, continuing past the arm REQUIRES
+WINNING A GAMBLE.** Driven — at C13's arm the only live can-dos are `Collect.` (which
+ends it) and the press-on (which ends it on a loss). There is no third route, so *"I
+kept going"* on C13 can only mean *"I pressed on and won."* On C14 it can also mean
+banking. **That is evidence, not proof**, and the difference is recorded rather than
+rounded off.
+
+### What outcome 2 does NOT establish — and this is the paragraph that governs the rest
+
+**David, 2026-09-04, on what the result licenses:**
+
+> *"it says forgone options didn't carry weight in this sitting. It doesn't yet say
+> whether that's a property of forgone options generally, or of this fork, or of a
+> fork whose branches were 8.96 against banking. One sit, one player, one fork."*
+
+*(The 8.96 reconciles and is not a stray: it is the press-on's expected marks on the
+inherited Mosswake numbers — 0.64 × 14 — against banking's +1, the figure CFD-210 was
+argued on. A reviewer flagged it as matching nothing in this beat, whose own nearest
+number is the unrelated 12.96%; re-derived here, the reviewer's flag is REFUTED and
+the quote stands unannotated in the ledger sense.)*
+
+**Three candidate scopes, and the sitting does not separate them.** Nothing after this
+line may be written as though it does. A finding that *forgone options do not carry
+weight* is **not** what was measured. What was measured is that **this** fork's
+forgone branch was not mentioned by **this** player in **one** sitting.
+
+### The narration asymmetry — THE ORCHESTRATOR'S READ, not a finding
+
+**Marked as a read on purpose, and it is not evidence.** The orchestrator observed
+that everything David narrated was **done to him** — the run failing, the larder
+covering, the larder failing to cover, the instance ending — and that the one thing he
+**chose** went unnarrated.
+
+**David's own conditional is the whole disposition:**
+
+> *"The mechanic done to the player registered and the one they chose didn't. If that
+> recurs on the next board it's a pattern about agency in this lineage. If it doesn't,
+> it was one sitting."*
+
+**So it is recorded and it waits.** It is not a finding, it routes no work, and it may
+not be cited as one. One sitting is not a pattern.
+
+### WHICH BRANCH HE TOOK IS NOT RECOVERABLE, and this beat does not guess
+
+Banking and pressing-on-and-winning both reach Ending A, and at that terminal frame the
+**consist notice is byte-identical** between them:
+
+```
+bank branch  S-CS-   consist  {"canDo":null,"blocked":null,
+                               "writing":"She came home short again. The larder could not cover it twice."}
+win  branch  S-P+S-  consist  {"canDo":null,"blocked":null,
+                               "writing":"She came home short again. The larder could not cover it twice."}
+identical: true
+```
+
+His sit quotes that sentence and nothing else, so it places him at Ending A and goes no
+further. **Do not guess which branch he took.**
+
+**One correction to that measurement as it was first stated.** The two branches are
+**not** identical across the whole terminal frame — **Mosswake differs**:
+
+| branch | mosswake writing at Ending A |
+| --- | --- |
+| **banked** | *"People remember who showed up."* |
+| **pressed on and won** | *"Mosswake. A neighbor again."* |
+
+**So the BOARD can tell the two apart; the SIT REPORT cannot.** That is narrower and
+truer than *"the endings are identical"*, and it matters because it locates the missing
+instrument: not in the board's writing, but in the fact that a *what happened* answer
+quotes at most one tile. Recorded rather than folded away, because the wider claim is
+the one that first went into the record.
+
+**A related measurement, taken while checking the above:** on the bank branch the
+forgone marker `She was not rolled out.` stands on the consist through play (`S-C`,
+`S-CS+`) and is **wiped by the ending** (`S-CS-`, `blocked: null`). The road stands
+while you play beside it and is gone in the terminal frame.
+
+### THE STOPPING RULING — David, 2026-09-04
+
+> *"Three cards have now reached for could-and-did and none have gotten it. That's
+> enough to stop reaching. The question it routes to, whether forgone options carry
+> weight at all, is a different question and should get a different shape rather than a
+> fourth fork."*
+
+**The could-and-did read is closed.** No card after this one asks the player to name,
+unprompted, the branch they did not take. Three attempts is the ruling's evidence, and
+the ruling is the disposition.
+
+**And the question it routes to gets a DIFFERENT SHAPE, explicitly not a fourth fork.**
+*Whether forgone options carry weight at all* is the live question. A fourth board that
+offers a choice and watches for a mention is the same instrument again, and this ruling
+forbids it.
+
+### The instrument gap, routed to the NEXT card
+
+**David, 2026-09-04:**
+
+> *"Two branches reaching an ending with byte-identical copy means the record can't
+> distinguish them, which is the same class as the counter that halves a split."*
+
+**This is fixed BEFORE the next card and NOT on this one.** `/still-standing/` has
+**PASSED** and its bytes are pinned; a passed board is not recut. The obligation lands
+on the next beat: **two branches must not reach an ending the sit report cannot tell
+apart.** It is the §7.5 counter rule one level up — a split a counter can resolve was
+not worth registering, and an ending the writing does not separate is a split the
+report cannot resolve either.
+
+### The board is PASSED and its bytes do not move
+
+`/still-standing/` is pinned at index `69ab4662` / sim `6b3b9267`, `sit/` and `public/`
+byte-identical, **self-pinned in `test/still-standing.test.js` on the day it passed**
+and mutation-verified.
+
+**AND THE BOARD'S OWN MANIFEST NOW CONTRADICTS THAT, PERMANENTLY.**
+`sit/still-standing/MANIFEST.txt` says *"/still-standing/ is NOT self-pinned"* and
+*"four boards have now needed it on the day they passed"*. Both were TRUE when the
+manifest was authored, before the sit. Both are false now. **The manifest is inside
+the pinned directory, so it can never be corrected** — a passed board is not recut,
+and that rule is why the file is trustworthy in the first place.
+
+**This is structural and it will recur on every board that passes.** A manifest is
+written at cut time and frozen at pass time, so any sentence in it that describes the
+board's own pin status is a claim the pass falsifies. The cheap prevention, for the
+next board: **a manifest must not describe its own pin status at all** — it records
+bytes and the boards left standing, and lets the test file carry the pin narrative.
+Recorded here rather than fixed, because fixing it would mean moving a pinned byte.
+
+**This is the FIFTH board to need self-pinning on the day of its pass**, after the join
+board (2026-08-28), `/they-remember/` (2026-08-31), `/dice-at-the-places/` (2026-09-01)
+and `/two-ways-from-here/` (2026-09-02). The structural cause is unchanged and is
+stated in that test's own comment: **each new board's test pins the PRIOR boards, so
+the newest passed board is unprotected until a successor exists.** Writing it down four
+times has not stopped it recurring, which is why it is written into the test and not
+only here.
 
 ---
 
