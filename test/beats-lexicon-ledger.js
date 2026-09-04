@@ -100,7 +100,7 @@ const BEATS_WITHOUT_BOARD = {
       "stake, its shortest path, its Kill line and its terminal registers in the dispatch board's marks " +
       "purse'. Four HIGH rows came out of exactly that.",
   },
-  "cfd-211-still-standing-beat.md": {
+  "cfd-212-still-standing-beat.md": {
     parent: "two-ways-from-here",
     why:
       "/still-standing/ is unbuilt and the beat is NOT SIGNED. Its parent is named provisionally at " +
@@ -108,10 +108,12 @@ const BEATS_WITHOUT_BOARD = {
       "declares two-ways-from-here because every number, tile and sentence in it is answerable to that " +
       "board's mechanics - it prices the press-on as unstaked off commitPress's provisions 0 / toll 0, " +
       "reads the stop out of the mosswake notice's branch order, and quotes that board's own writing. " +
-      "The number was taken from Linear, not guessed: CFD-210 was the highest issue in the " +
-      "Skyrail Reclamation project when this landed, so this is 211. The Linear issue itself is NOT " +
-      "yet filed - the number is reserved by this document alone. Rename the file and this key " +
-      "together if Linear assigns a different one.",
+      "The number came from Linear ASSIGNING it, not from reading a ceiling: the issue was created " +
+      "and Linear returned CFD-212. An earlier cut of this row said 211, derived by taking the " +
+      "highest issue in the SKYRAIL PROJECT - but CFD numbering is TEAM-wide, and CFD-211 was " +
+      "already CFDBDevBot Minimum Useful Beta in another project. That is exactly the failure " +
+      "CLAUDE.md warns about: prefer null to a plausible number, and never read an issue ceiling " +
+      "out of a project when the sequence belongs to the team. Create the issue; let Linear answer.",
   },
 };
 

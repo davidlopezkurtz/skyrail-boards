@@ -929,5 +929,31 @@ they did, and whether they can name what it bought.**
 different findings. If a split can be resolved by a counter, it was not a split
 worth registering — and if it cannot, the counter is not the instrument.
 
-Related: §7.4 (the sit's question form, and the refused one), and CFD-203 and
-CFD-210, which carry the worked examples above.
+#### Worked instance — the prohibition REFUSING a split, CFD-212
+
+**The two examples above show the rule finding a real split. This one shows it
+throwing a fake one out, which is the half nobody had written down.** David,
+2026-09-02: *"The §7.5 third prohibition demoting two candidates out of the split is
+the best evidence the rule is working. Registering the dead screen would have spent a
+sitting on something `node --test` finds first."*
+
+CFD-212's draft registered six outcomes. Two were struck before signature because a
+counter the board already exposes resolves each of them:
+
+| candidate | the counter that kills it | what it becomes instead |
+| --- | --- | --- |
+| the board reaches a state with nothing lit and the sitting still running | `!stopped && liveCanDos().length === 0` | a **LANDING GATE** — red-first, green at landing, so it cannot occur |
+| he never reaches the fork; every run pays | `record.runsTurnedBack === 0` | a **RE-SIT CONDITION** — a card cannot be judged on a sitting that never reached it |
+
+**Neither is a lesser finding. Both are findings the wrong instrument was assigned
+to.** A registered outcome costs a sitting, and a sitting is the scarcest thing this
+project has; a gate costs a test run. **The prohibition is not about tidiness — it is
+about not spending the expensive instrument on what the cheap one already answers.**
+
+**So the rule cuts twice.** It refuses a split a counter can resolve, AND it refuses a
+counter as the instrument for a split that needs a person. Applying only the first
+half produces beats that register nothing; applying only the second produces beats
+that register everything.
+
+Related: §7.4 (the sit's question form, and the refused one), and CFD-203, CFD-210 and
+CFD-212, which carry the worked examples above.

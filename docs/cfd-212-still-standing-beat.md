@@ -1,4 +1,4 @@
-# CFD-211 — C14 — Still standing
+# CFD-212 — C14 — Still standing
 
 The first board on which the sitting outlives a decision. Sibling `/still-standing/`.
 Not a recut of anything.
@@ -219,10 +219,44 @@ walk, not by the render, and it is the only exposure this board has.**
 
 ---
 
-## THE OPEN CALL: if neither branch ends the sitting, what does?
+## THE STOP — RULED, David, 2026-09-02
 
-**This is the design question this beat argues rather than decides, and it needs
-David.** §7.2 (`docs/mechanisms-recommitted.md:578`) requires that the stop exist and
+> *"Take the second staked run as the stop, and don't try to fix the 36%."*
+
+**And the reason is a distinction this beat had collapsed.** David:
+
+> *"The exhaustion path isn't the branch ending the sitting. Pressing on and losing
+> doesn't end anything; running out of affordable sends does, two decisions later,
+> after the player has lived past the fork with the forgone road standing. That's the
+> property the card exists to test, and it holds. The board ends because you spent
+> everything, which is a different thing from the board ending because you chose."*
+
+**The draft counted the exhaustion path as a cost of the recommendation — 36% of
+sittings on which "a branch does end the sitting after all."** That was wrong, and it
+is corrected rather than deleted so the next reader can see which reading was
+discarded. Losing the press-on ends nothing. The player keeps playing, with the
+ending forgone and visible, and the sitting closes later because the wallet is empty.
+**Ending by spending everything is not the fork ending the sitting.** The one new
+system survives the exhaustion path intact.
+
+**What David did push on is the FRAMING, and it is now a Kill line rather than a
+polish note:**
+
+> *"'Nothing lit and the sitting still running' is a dead screen even when it's
+> diegetically correct, and it's the outcome you're most likely to hit at 36%. The
+> stop firing on exhaustion means the player sees an ending; it doesn't mean they see
+> why. Worth checking the exhaustion stop reads as a consequence rather than as the
+> board giving up, since a player who can't tell those apart will report the second."*
+
+**So the exhaustion ending must say what spent the wallet.** A player who cannot tell
+"you ran out" from "the board stopped working" will report the second, and that report
+would be about the ending rather than about the forgone road — which is the one thing
+this card cannot afford to have its sitting spent on. The words go in
+`notice().writing`/`.blocked`, because those are the only two fields the page renders.
+
+### Why this was an open call, and what §7.2 required of it
+
+§7.2 (`docs/mechanisms-recommitted.md:578`) requires that the stop exist and
 be honest, and that the quick path be real. **C13's stop *was* the fork.** Remove that
 and the stop has no home. There is no version of the one new system that leaves the
 question open, so the answer is part of the same system rather than a second one.
@@ -401,7 +435,10 @@ presses at the opening arm, it is **12.96%**. *(An earlier cut printed the 12.96
 against the conditional denominator. Both figures are right; the pairing was not, and
 36% is the one that argues for the clause.)*
 
-**Three ways out, and the beat recommends the first.**
+**The floor clause is RULED IN — it is what closes the dead screen — and the two
+alternatives below are refused.** What is NOT ruled in is the draft's framing of the
+floor as a cost: see the ruling at the head of this section. The floor closes a state
+in which nothing is lit; it does not make the fork end the sitting.
 
 1. **The stop covers it, evaluated only when nothing is in the air.** State the floor as:
    the sitting ends when **the fork is spent, the consist is HOME, no run is out, and no
@@ -446,20 +483,31 @@ the §7.2 clause it buys back.
 
 ## ARGUE THESE, DO NOT GUESS
 
-Four calls this beat could not settle from the source. **They are for David, and an
-implementer who picks one silently is a worker whose output has to be re-derived.**
+**Two of the four are RULED, 2026-09-02, and are kept here with their rulings rather
+than moved out — a call that vanishes once answered leaves the next reader unable to
+see what was weighed.** Two remain open.
 
-1. **What `PRESS_COST` now threatens.** *"The larder covered it once. It will not cover
-   it twice."* stays literally true under the recommendation — the larder covers what
-   was staked, the press-on stakes nothing, the next staked shortfall is refused. **But
-   what it threatens changes.** On the parent it meant *the sitting ends cold.* Here it
-   means *the ending is gone and you keep playing.* Is losing the ending cost enough for
-   that sentence, or does the consist tile need new words before the tap? **Changing it
-   is a copy change to inherited, passed text and it is not this beat's to make.**
-2. **Where the stop lives:** the recommendation (second staked short run, no player
-   verb, §7.2's opt-in clause traded), or alternative 3 (arming-and-triggering, one
-   verb, §7.2 kept whole, closest thing here to a second system). **The floor clause is
-   needed under both** and is a separate yes/no.
+1. **What `PRESS_COST` now threatens — RULED: CHANGE IT.** *"The larder covered it
+   once. It will not cover it twice."* stays literally true — the larder covers what
+   was staked, the press-on stakes nothing, the next staked shortfall is refused — but
+   on the parent it meant *the sitting ends cold* and here it means *the ending is gone
+   and you keep playing.* David: *"Same words, different promise, and the second is a
+   harder thing to have understood after the fact. Inherited passed text is protected
+   because it passed for a reason, but the reason was a meaning that no longer holds.
+   Change it, and record that the change is a repair of an inherited sentence whose
+   referent moved rather than an improvement."*
+
+   **So the implementer writes new words for the consist tile before the tap, and the
+   commit body records it as a REPAIR, not an improvement.** The draft called this "a
+   copy change to inherited, passed text and not this beat's to make." That reasoning
+   is superseded: the lineage lock protects bytes that still mean what they meant, and
+   this sentence's referent moved out from under it. **The old words are not preserved
+   by leaving them in place — they are quietly falsified.**
+
+2. **Where the stop lives — RULED: the second staked short run**, with the floor clause
+   ruled in beside it. Alternative 3 (arming-and-triggering, one player verb) is
+   refused; it was the closest thing here to a second system, and the ruling keeps the
+   card to one. See the ruling at the head of THE STOP.
 3. **Which tile carries a forgone `Collect.`** After a lost press-on the forgone thing
    is the ending at Mosswake; after banking the forgone thing is the press-on on the
    consist. Both places are posted once per run, so both are reachable — but the words
