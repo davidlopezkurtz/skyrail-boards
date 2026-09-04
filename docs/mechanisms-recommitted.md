@@ -883,7 +883,7 @@ the banked row from the pressed rows and **resolves none of the split**: it cann
 reach row 4, and it is silent on the only question row 2 actually turned on. A
 counter that halves a split has not resolved it.
 
-*(Two corrections, both landed 2026-09-02. The table read THREE rows from
+*(Two corrections, both landed 2026-09-03. The table read THREE rows from
 `6a55533` until `9618352` re-cut the beat, splitting the pressed-on outcome and
 letting David re-register the first two — that half was staleness. The other half
 was wrong on the day it was written: this section called them "three ways a fork
@@ -933,7 +933,7 @@ worth registering — and if it cannot, the counter is not the instrument.
 
 **The two examples above show the rule finding a real split. This one shows it
 throwing a fake one out, which is the half nobody had written down.** David,
-2026-09-02: *"The §7.5 third prohibition demoting two candidates out of the split is
+2026-09-04: *"The §7.5 third prohibition demoting two candidates out of the split is
 the best evidence the rule is working. Registering the dead screen would have spent a
 sitting on something `node --test` finds first."*
 

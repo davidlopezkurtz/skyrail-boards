@@ -118,7 +118,7 @@ cost line all arrive unchanged.
 
 **The road is still standing. You are the one who went the other way.** The name of
 the board is the property, not the sentence anyone is hoping to hear. David ruled that
-choice on 2026-09-02: *"the first names the property, the second names the sentence
+choice on 2026-09-03: *"the first names the property, the second names the sentence
 you're hoping for. Take the first. Naming the board after the read you want is the kind
 of thing that makes a sit report sound like the board asked for it."* `/still-standing/`
 is the slug and it does not change.
@@ -219,7 +219,7 @@ walk, not by the render, and it is the only exposure this board has.**
 
 ---
 
-## THE STOP — RULED, David, 2026-09-02
+## THE STOP — RULED, David, 2026-09-04
 
 > *"Take the second staked run as the stop, and don't try to fix the 36%."*
 
@@ -261,7 +261,7 @@ be honest, and that the quick path be real. **C13's stop *was* the fork.** Remov
 and the stop has no home. There is no version of the one new system that leaves the
 question open, so the answer is part of the same system rather than a second one.
 
-David's ruling 1 of 2026-09-02 anticipates this and settles the category in advance:
+David's ruling 1 of 2026-09-03 anticipates this and settles the category in advance:
 
 > "The one new system has to be that branches don't end the sitting, and nothing else.
 > That's a big enough change on its own, and it's the first board in this lineage where
@@ -483,7 +483,7 @@ the §7.2 clause it buys back.
 
 ## ARGUE THESE, DO NOT GUESS
 
-**All four are RULED, 2026-09-02, and are kept here with their rulings rather than
+**All four are RULED, 2026-09-04, and are kept here with their rulings rather than
 moved out — a call that vanishes once answered leaves the next reader unable to see
 what was weighed.** The section is retained under its original heading because the
 arguments are the record; nothing here is still waiting on David.
@@ -917,7 +917,7 @@ places.** This beat argues for a *design* — where the stop goes — and it arg
 none of the outcomes below. If the section reads as leaning, it is wrong and should be
 recut before signature.
 
-**David registered outcome 2 himself, 2026-09-02, in these words**, and it is the one
+**David registered outcome 2 himself, 2026-09-03, in these words**, and it is the one
 this shape most invites:
 
 > "the player plays on and never mentions the unchosen branch because it stopped
@@ -1011,4 +1011,55 @@ is reporting on §7.2 whether or not he says so.
 
 ---
 
-**NOT SIGNED. Awaiting David.**
+## SIGNED — David, 2026-09-04
+
+His word: *"signed."*
+
+**PARENT RE-NAMED AT SIGNATURE, not carried from drafting.** §7.1 item 4 requires it,
+and the beat named `/two-ways-from-here/` provisionally on 2026-09-03. Re-checked at
+signature: **`/two-ways-from-here/` is still the last board to pass** — it passed
+2026-09-02 and nothing has passed since. **The parent stands.**
+
+**ALL TWELVE PINS RE-DERIVED AT SIGNATURE** with `git cat-file blob HEAD:<path> |
+sha256sum`, and every one is unchanged from the Seat table above — including
+`/dawnspur-heat/` (`292d6645` / `b5f7e14f`) and `/dawnspur-scale/` (`953368a1` /
+`5d2f452f`), the two outside the Seat that "any pin moves" still covers.
+
+**No open calls.** All four ARGUE items are ruled, and each ruling sits beside the
+argument it answered.
+
+### What this signature COVERS
+
+One new system: **the fork's branches do not end the sitting.** The stop moving to the
+second staked short run, and the floor clause that closes the dead screen, are the same
+system's other half — David ruled the category in advance: *"worth not calling that a
+second system when it does [need work]."* Both forgone branches stay on the tiles that
+offered them. Two endings, two sentences. `PRESS_COST` rewritten as a repair.
+
+### What it does NOT cover, and each of these stops the work
+
+A third live can-do. A second new system — a new verb, a new tile, a new number, a
+second counter the player has to read. A new route, currency, crew, Favor number,
+weather, or Rustfall as a send. Any pin moving. **A rendered refusal is an acceptable
+outcome**: if moving the stop turns out to need a second new system, the card says so
+and stops rather than shipping a board with two new things on it.
+
+### A provenance correction landed with this signature
+
+**The ruling dates in this document were wrong and are fixed.** This card was ruled
+across three days and the orchestrator stamped everything `2026-09-02` — the day C13
+passed — without re-deriving. Corrected against the commits that carry each ruling:
+
+| ruling | was | is |
+| --- | --- | --- |
+| the one new system, the slug, the pre-registered failure mode | 2026-09-02 | **2026-09-03** (`644bd06`) |
+| the stop, the 36%, `PRESS_COST`, §7.5 cutting both ways | 2026-09-02 | **2026-09-04** (`f8d3cf4`) |
+| the forgone tile, the two sentences | 2026-09-02 | **2026-09-04** (`e824349`) |
+
+**`/two-ways-from-here/` PASSED 2026-09-02 is correct and was not touched.** Eleven
+stamps across four files were wrong; the same error reached canon §7.5, the decisions
+ledger and `CLAUDE.md`, and all are corrected in the same pass. It is the scope rule's
+own failure in a smaller shape — a date correct for the thing it was first read off,
+carried to things it was never true of.
+
+**IMPLEMENTATION IS RELEASED.**
