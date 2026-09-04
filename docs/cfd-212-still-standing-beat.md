@@ -483,9 +483,10 @@ the §7.2 clause it buys back.
 
 ## ARGUE THESE, DO NOT GUESS
 
-**Two of the four are RULED, 2026-09-02, and are kept here with their rulings rather
-than moved out — a call that vanishes once answered leaves the next reader unable to
-see what was weighed.** Two remain open.
+**All four are RULED, 2026-09-02, and are kept here with their rulings rather than
+moved out — a call that vanishes once answered leaves the next reader unable to see
+what was weighed.** The section is retained under its original heading because the
+arguments are the record; nothing here is still waiting on David.
 
 1. **What `PRESS_COST` now threatens — RULED: CHANGE IT.** *"The larder covered it
    once. It will not cover it twice."* stays literally true — the larder covers what
@@ -508,14 +509,47 @@ see what was weighed.** Two remain open.
    ruled in beside it. Alternative 3 (arming-and-triggering, one player verb) is
    refused; it was the closest thing here to a second system, and the ruling keeps the
    card to one. See the ruling at the head of THE STOP.
-3. **Which tile carries a forgone `Collect.`** After a lost press-on the forgone thing
-   is the ending at Mosswake; after banking the forgone thing is the press-on on the
-   consist. Both places are posted once per run, so both are reachable — but the words
-   have to go somewhere and the two branches do not obviously want the same tile.
-4. **Whether the second staked short run's stop and the floor share a sentence.** They
-   share a fiction (the larder is empty) and they do not share a cause (a shortfall
-   versus an empty wallet). The Ends section requires that no two endings read the same;
-   these two are the closest pair on the board.
+3. **Which tile carries a forgone `Collect.` — RULED: EACH BRANCH STAYS WHERE IT WAS
+   OFFERED.** David set the constraint that decides it: *"it has to be a tile the player
+   passes in normal play rather than one they'd have to go look at. A forgone option on
+   a tile nobody revisits is the stopped-mattering outcome by construction, and you'd be
+   building the null in."*
+
+   **Measured on the shipped parent, driving a paying loop and recording every
+   `postNotice` the player is FORCED into:**
+
+   | tile | forced by normal play? | what is forgone there |
+   | --- | --- | --- |
+   | `mosswake` | **yes** — you tap it to SEND, every run | the ending, after a lost press-on |
+   | `consist` | **yes** — you tap it to bring her HOME, every run | the press-on, after banking |
+   | `halt` | **no** — never posted in play | — |
+   | `rustfall` | **no** — never posted in play | — |
+
+   **Both forgone branches are already on tiles the loop drags the player through, and
+   neither has to move.** The two branches wanting different tiles is not a problem to
+   solve; it is the answer. What the constraint RULES OUT is the tempting move — a
+   forgone marker on the Halt, the tile with the most room and the least traffic.
+   **Putting it there would build the null in**, which is why this was the item that
+   decides whether the card works rather than a placement detail.
+
+   *(An earlier cut said "both places are posted once per run, so both are reachable —
+   but the words have to go somewhere and the two branches do not obviously want the
+   same tile." Reachable was the wrong test. FORCED is the test, and it is measured
+   above.)*
+4. **Whether the stop and the floor share a sentence — RULED: SEPARATE SENTENCES.**
+   David: *"If they share one, the player can't tell whether the sitting ended because
+   the wallet emptied or because a rule fired, which is exactly what your new Kill line
+   forbids."*
+
+   They share a fiction — the larder is empty — and they do not share a cause: a second
+   staked shortfall against a wallet that cannot afford a send. **The Kill line above
+   requires the exhaustion ending to read as a consequence rather than as the board
+   giving up; an ending that could be either is one the player will report as the
+   second.** Two endings, two sentences, and the Ends section already forbids any two
+   endings reading the same.
+
+**No open calls remain.** All four are ruled, and the rulings are kept beside what they
+answered rather than replacing it.
 
 ---
 
