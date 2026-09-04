@@ -958,6 +958,63 @@ David's sitting on something `node --test` finds first.
 **A result that maps onto none of the four is a finding in itself**, and is worth more
 than a clean confirmation.
 
+### THE POPULATION SPLITS, AND ONE BRANCH DOES NOT EXERCISE THIS CARD AT ALL
+
+**Registered 2026-09-04, BEFORE the sit, because it changes what the sitting can
+conclude.** David, on being shown the measurement:
+
+> *"On the bank branch and the win branch you get frames past the fork and the
+> property is under test. On the lose branch you get none, and whatever the sit
+> reports about that line is a report about C13's shape. If the sitting happens to
+> land on the lose branch at the opening arm, the honest reading is not
+> 'still-standing failed' but 'the card wasn't exercised.' Register that, or a 36%
+> coin flip decides whether the sitting tested anything."*
+
+**And it corrects a justification in this beat's own ruling.** THE STOP was ruled
+acceptable on the reasoning that the wallet closes the sitting *"two decisions later,
+after the player has lived past the fork with the forgone road standing."* Measured
+after the build: on the lose-at-the-opening-arm line the floor fires inside the **same
+`commitHome`** that resolves the fork. **Zero decisions later.** David: *"My
+justification described a shape that doesn't occur on the path it was justifying."*
+
+**Measured on the shipped board, driven:**
+
+| line | frames past the fork | what Mosswake reads |
+| --- | --- | --- |
+| bank, then play on | many | the forgone press-on stays on the consist |
+| press on and WIN | many | back in the paying loop, nothing forgone |
+| press on and LOSE, after a paid run | many | *"Still a neighbor. Nothing to collect."* — the forgone ending |
+| **press on and LOSE at the OPENING arm** | **0** | *"There is nothing left to put up for a run."* — the **exhaustion** reason |
+
+**On that last line the road is never shown standing.** The ending's words replace the
+forgone marker, so the player does not merely lose the frames — the card's one new
+system is absent from the sitting entirely, and what they experience is C13's shape:
+you chose, and it ended.
+
+**Frequency, and both denominators, because one alone misleads.** The opening send
+comes home short 36% of the time; a press-on then comes home short 36% of the time.
+So **36% of sittings that press at the opening arm** land here, and **12.96% of all
+sittings** by a player who presses at the opening arm.
+
+**THE READING, fixed in advance.** If the sitting lands on that line, it is
+**NOT EXERCISED**, not a failure, and not evidence about forgone options carrying
+weight. It is a **RE-SIT CONDITION** — the same disposition the two demoted candidates
+got, and for the same reason: a card cannot be judged on a sitting that never ran it.
+**Do not read outcome 2 off that line.** "He played on and never mentioned the
+unchosen branch" cannot be true of a sitting with no frames to play on in.
+
+**Not fixed, and the check was run rather than assumed.** Deferring the floor by one
+frame — so the player would see the road standing with nothing affordable, then the
+ending — creates precisely `!stopped && liveCanDos().length === 0`, which is the state
+this card's own LANDING GATE forbids by name. It would require carving an exception
+into the gate the same board ships, and a gate with an exception for the case it was
+written for is not a gate. **Refused as a rules change.**
+
+**What remains cheaply available is copy, and it is NOT ruled.** On the lose line
+Mosswake could carry the forgone-ending marker beside the exhaustion reason, so the
+road is at least visible at the close. That does not make the property *tested* — it
+makes it *seen* in the terminal frame — and it is offered as a call rather than taken.
+
 ---
 
 ## What the sit must report
