@@ -1,0 +1,134 @@
+Still Standing CFD-212 - C14 - still standing 2026-09-04
+Spec: docs/cfd-212-still-standing-beat.md - SIGNED, David 2026-09-04,
+implementation released. Sibling /still-standing/. Not a recut of
+anything. Parent: /two-ways-from-here/ (CFD-210, PASSED 2026-09-02),
+re-named at signature per canon 7.1 item 4 and confirmed still the last
+board to pass.
+
+One NEW system: THE FORK'S BRANCHES DO NOT END THE SITTING. You choose,
+you keep playing, and the branch you did not take is still there on the
+board while you go on without it. The road is still standing. You are
+the one who went the other way.
+
+  BANK      Collect. at Mosswake. C12's ending inherited whole - +1
+            mark, remembered, the lamp and the glasshouse brighter -
+            and THE SITTING CONTINUES. The forgone press-on stays on
+            the consist, which is the tile that offered it.
+  PRESS ON  ROLL HER OUT. 64. on the consist. Mosswake's own chance and
+            pay, stakeOf() waived.
+            paid  +14, the arm clears, the ending out of reach, back in
+                  the paying loop. Inherited unchanged, and the one
+                  branch that forwent nothing.
+            short THE SITTING CONTINUES and the ending is visibly gone.
+                  No +1, no remembering, no brightening. The forgone
+                  Collect. stays at Mosswake. NOT endedCold.
+
+The branches stop ending the sitting, so something else has to. Both
+halves of the same system, per David's ruling of 2026-09-03 - "worth
+not calling that a second system when it does [need work]":
+
+  THE STOP  the SECOND STAKED short run. The larder covers one staked
+            shortfall per sitting; the second closes it. The press-on
+            is UNSTAKED - commitPress writes provisions 0 / toll 0 - so
+            nothing was put up and there is nothing for the larder to
+            cover. Measured: after an opening short send and a lost
+            press-on, marksLost is 2, not 4.
+  THE FLOOR the fork spent, the consist HOME, no run out, no affordable
+            send. Evaluated ONLY with nothing in the air: read eagerly
+            it fires mid-flight on the bank branch, because banking
+            leaves 2, the next SEND leaves 0, and the consist is away
+            with Home she comes. still to tap. Every bank-branch
+            sitting passes through that frame.
+
+Two endings, two sentences, and they do not share one - David,
+2026-09-04: "the player can't tell whether the sitting ended because
+the wallet emptied or because a rule fired." They share a fiction, the
+larder is empty, and not a cause. Both land on the consist, the tile
+the player tapped to get there. endSentence is never rendered.
+
+PRESS_COST is REPAIRED, not improved. The parent's "The larder covered
+it once. It will not cover it twice." stayed literally true while its
+PROMISE moved: there it meant the sitting ends cold, here a lost
+press-on ends nothing. Leaving it in place would not have preserved it,
+it would have quietly falsified it. Now: "The larder covered it once.
+Roll her out and there is nothing left to collect." - true on both
+outcomes and from the instant she is out.
+
+New state, none of it ever rendered - not as a pip, a dot, a number or
+a tooltip: larderSpent (the latch, one write), pressLost (a short
+press-on, NOT an ending), endedSpent (the floor). endedCold is
+inherited and re-bound to the second staked shortfall, whose fiction
+its words already carried. The larder is remembered by the board and
+said in words, never shown as a count.
+
+No new numbers - 64 / 14 / stake 2 are Mosswake's own, inherited
+unmoved. Four verbs and four places, the parent's. Two live can-dos at
+the fork and never more; one everywhere else; never two at the OPEN;
+and NEVER ZERO while the sitting runs - the dead screen is a landing
+gate, red-first, not a sit outcome. Every place button carries `lit`
+from notice().canDo. Opening marks 3 - the desk's float. Rustfall dark
+- Beat 8 dressing. Writing is the board.
+
+Refused: an always-available stop verb (a second live can-do in every
+post-fork state), arming-and-triggering (a new verb), a raised opening
+float (a new literal), gating the press-on on affordability, a forgone
+marker on the Halt (the tile with the most room and the least traffic -
+that builds the null in), the Halt as a send (it is home here),
+Rustfall as a send (CFD-200 owns it by name), a third live can-do, two
+lit at the OPEN, weather, a second new system, a new currency, crews,
+Sera, a Favor meter, a timer or decay on the forgone branch, Mara VO,
+`?`, tutorial mode, any pin moving.
+
+Canon (cite, do not recall as a second bible): Bible 5.8 Contracts.
+Supply - one contract, two ways to run it. Core Loop: earns Favor by
+helping neighbors and keeping promises; both branches are promises, and
+the card's content is that keeping one does not end the day. File:
+Skyrail-Reclamation-The-Core-Loop.md. R1 - marks are the only stock.
+R6 - stakes live in the run, never the secured home, and here the
+player keeps playing with that true. R2 / R3 / R4 - nothing moves with
+wall time; a timer on a road you did not take is a decay clock wearing
+a decision's clothes. 7.2 - the quick path is banking, kept; the
+opt-in clause is TRADED, recorded in the beat as an amendment rather
+than a cost absorbed. 7.3 - the two branches stay in different
+currencies; no number ranks them. 7.5 - the outcomes are
+pre-registered in the beat, and two candidates were demoted out of the
+split because a counter resolves them. Bible sha 9a305653.
+
+Lives at sit/still-standing/ with byte-copies at public/still-standing/,
+so the boards that already stand are untouched - the lineage lock.
+TWELVE board directories at HEAD, and "any pin moves" means all twelve:
+
+  live /two-ways-from-here/ sim 13bb2d43 / index d800c8de  (PASSED 2026-09-02 - the parent)
+  live /dice-at-the-places/ sim f64b4309 / index d97d9951  (PASSED 2026-09-01)
+  live /they-remember/      sim a3345903 / index acbf4304  (PASSED)
+  live /herbs-larder/       sim 76c886b9 / index 676587bc  (PASSED)
+  live /mosswake-loop/      sim f5407bca / index 6c30179c  (PASSED)
+  live /dawnspur-halt/      sim 6eb957e7 / index b5a56a14  (PASSED)
+  live /dawnspur-line/      sim 18b1324f / index b6f21db0  (PASSED)
+  live /dawnspur-dispatch/  sim 576ce2b6 / index 31aead60  (PASSED)
+  live /dawnspur-site/      sim e9f81b74 / index 070a4619  (failed sit)
+  live /dawnspur-storm/     sim f4f17008 / index 7711f979  (stopped at five recuts)
+  live /dawnspur-scale/     sim 953368a1 / index 5d2f452f  (PASSED)
+  live /dawnspur-heat/      sim 292d6645 / index b5f7e14f  (PASSED)
+  kill /dawnspur/           sim 395c18f2
+  live /convoy-stop/        sim 5ad814e6
+
+Two-ways-from-here is PASSED and is the parent. Do not recut it.
+Dice-at-the-places is PASSED. Do not recut it.
+Halt, Mosswake, herbs-larder, they-remember: PASSED. Do not recut them.
+Storm was stopped at five recuts, not passed. Site was sat and failed.
+Heat and scale sit outside this card's Seat and are pinned all the same.
+
+/still-standing/ is NOT self-pinned. A board joins its own pin list the
+day it PASSES, not before: while a board is being cut, pinning its own
+bytes is circular, and a sit-equals-public test cannot see a
+coordinated overwrite of both copies. Self-pinning is part of recording
+a pass, and four boards have now needed it on the day they passed.
+
+These hashes are graded by test/still-standing.test.js against the
+bytes on disk and against the blobs at HEAD, measured LF. Nothing was
+committed when this was written, so the two below are disk hashes of
+the authored copy; a manifest cannot carry its own.
+
+index.html      sha256:69ab4662c534ee16fa7dbb82d52bb6edd70ca9607be38ccfe761b2c2b9d4ae40
+sim.js          sha256:6b3b9267d4e43542c3a68c1dad8267db4ef1b97744fd614d49490bd1994d2ea8

@@ -37,7 +37,7 @@
 const DESK = ["dawnspur-heat", "dawnspur-scale", "dawnspur-dispatch", "dawnspur-line", "dawnspur-storm"];
 const CITY = [
   "dawnspur-site", "dawnspur-halt", "mosswake-loop", "herbs-larder", "they-remember",
-  "dice-at-the-places", "two-ways-from-here",
+  "dice-at-the-places", "two-ways-from-here", "still-standing",
 ];
 
 // Live boards under public/ with no sit/ source. This guard cannot load them
@@ -131,6 +131,7 @@ const ROWS = {
       "dice-at-the-places": { kind: "method", arity: 0, discardsArgument: true, pins: ["test/dice-at-the-places.test.js:341"] },
       "mosswake-loop": { kind: "method", arity: 0, discardsArgument: true, pins: ["test/mosswake-loop.test.js:469"] },
       "two-ways-from-here": { kind: "method", arity: 0, discardsArgument: true, pins: ["test/two-ways-from-here.test.js:471"] },
+      "still-standing": { kind: "method", arity: 0, discardsArgument: true, pins: [] },
     },
   },
 
@@ -149,6 +150,7 @@ const ROWS = {
       "dice-at-the-places": { kind: "method", arity: 0, discardsArgument: true, moves: "consistAt", pins: ["test/dice-at-the-places.test.js:85"] },
       "mosswake-loop": { kind: "method", arity: 0, discardsArgument: true, moves: "consistAt", pins: ["test/mosswake-loop.test.js:470"] },
       "two-ways-from-here": { kind: "method", arity: 0, discardsArgument: true, moves: "consistAt", pins: ["test/two-ways-from-here.test.js:150"] },
+      "still-standing": { kind: "method", arity: 0, discardsArgument: true, moves: "consistAt", pins: [] },
     },
   },
 
@@ -187,6 +189,7 @@ const ROWS = {
       "they-remember": { kind: "method", arity: 0, mutates: false, pins: ["test/they-remember.test.js:83"] },
       "dice-at-the-places": { kind: "method", arity: 0, mutates: false, pins: ["test/dice-at-the-places.test.js:89"] },
       "two-ways-from-here": { kind: "method", arity: 0, mutates: false, pins: ["test/two-ways-from-here.test.js:158"] },
+      "still-standing": { kind: "method", arity: 0, mutates: false, pins: [] },
     },
   },
 
@@ -216,6 +219,7 @@ const ROWS = {
       "they-remember": { kind: "getter", opening: 0, unit: "marks", pins: ["test/they-remember.test.js:311"] },
       "dice-at-the-places": { kind: "getter", opening: 3, unit: "marks", pins: ["test/dice-at-the-places.test.js:317", "test/dice-at-the-places.test.js:563#does not assign"] },
       "two-ways-from-here": { kind: "getter", opening: 3, unit: "marks", pins: ["test/two-ways-from-here.test.js:445", "test/two-ways-from-here.test.js:878#MUSEUM_MARKS"] },
+      "still-standing": { kind: "getter", opening: 3, unit: "marks", pins: [] },
     },
   },
 
@@ -317,6 +321,21 @@ const ROWS = {
         ],
         pins: ["test/two-ways-from-here.test.js:466"],
       },
+      // CFD-212's one new system, in this ledger's own terms: the parent's
+      // sourcePin above — `if (s.armed) s.stopped = true;` in commitCollect —
+      // is GONE here, and its absence is pinned. Banking, a paid press-on and
+      // a lost one all leave the sitting running; what stops it is the SECOND
+      // STAKED short run, and a floor for the state where nothing can be sent.
+      "still-standing": {
+        kind: "getter", opening: false,
+        sourcePin: /\} else if \(s\.larderSpent\) \{\s*\n\s*s\.stopped = true;/,
+        drives: [
+          { roll: 0.99, path: [["commitSend"], ["commitHome"], ["commitCollect"]], expect: [["stopped", false], ["endedCold", false], ["armed", false], ["collected", true], ["marks", 2], ["canSend()", true]] },
+          { roll: [0.99, 0.99, 0.99], path: [["commitSend"], ["commitHome"], ["commitCollect"], ["commitSend"], ["commitHome"]], expect: [["stopped", true], ["endedCold", true], ["endedSpent", false]] },
+          { roll: 0.99, path: [["commitSend"], ["commitHome"], ["commitPress"], ["commitHome"]], expect: [["stopped", true], ["endedSpent", true], ["endedCold", false], ["pressLost", true]] },
+        ],
+        pins: [],
+      },
     },
   },
   armed: {
@@ -375,6 +394,18 @@ const ROWS = {
         }],
         pins: ["test/two-ways-from-here.test.js:999#chartered && topped", "test/two-ways-from-here.test.js:780"],
       },
+      // Same arming condition, and the arm now CLEARS on every branch of the
+      // fork so play can continue. It is set at most once per sitting: the
+      // second staked short run stops instead of arming.
+      "still-standing": {
+        kind: "getter", opening: false, armedBy: "short-run",
+        drives: [{
+          roll: [0, 0.99],
+          path: [["commitSend"], ["commitHome"], ["commitSend"], ["commitHome"]],
+          expect: [["marks", 13], ["armed", true], ["stopped", false], ["canSend()", false], ["canCollect()", true], ["canPress()", true], ["larderSpent", true]],
+        }],
+        pins: [],
+      },
     },
   },
 
@@ -394,6 +425,7 @@ const ROWS = {
       "dawnspur-site": { kind: "getter", opening: null, pins: ["test/dawnspur-site.test.js:208"] },
       "dice-at-the-places": { kind: "getter", opening: null, pins: ["test/dice-at-the-places.test.js:532"] },
       "two-ways-from-here": { kind: "getter", opening: null, pins: ["test/two-ways-from-here.test.js:469"] },
+      "still-standing": { kind: "getter", opening: null, pins: [] },
     },
   },
 
@@ -412,6 +444,7 @@ const ROWS = {
       "dawnspur-site": { kind: "getter", opening: null, pins: ["test/dawnspur-site.test.js:207"] },
       "dice-at-the-places": { kind: "getter", opening: null, pins: ["test/dice-at-the-places.test.js:481"] },
       "two-ways-from-here": { kind: "getter", opening: null, pins: ["test/two-ways-from-here.test.js:788"] },
+      "still-standing": { kind: "getter", opening: null, pins: [] },
     },
   },
 
@@ -462,6 +495,12 @@ const ROWS = {
         marksLost: "provisions + toll, both marks; a press-on stakes 0 / 0 so a cold ending adds nothing", sourcePin: /s\.marksLost \+= run\.provisions \+ run\.toll;/,
         drives: [{ roll: 0.99, path: [["commitSend"], ["commitHome"]], expect: [["record.marksLost", 2], ["marks", 1]] }],
         pins: ["test/two-ways-from-here.test.js:480"],
+      },
+      "still-standing": {
+        kind: "getter", keys: ["cargoesBanked", "marksLost", "pressOns", "runsOut", "runsTurnedBack"],
+        marksLost: "provisions + toll, both marks; a press-on stakes 0 / 0, which is why the stop is the second STAKED short run and a lost press-on adds nothing", sourcePin: /s\.marksLost \+= run\.provisions \+ run\.toll;/,
+        drives: [{ roll: 0.99, path: [["commitSend"], ["commitHome"], ["commitPress"], ["commitHome"]], expect: [["record.marksLost", 2], ["record.pressOns", 1], ["marks", 1]] }],
+        pins: [],
       },
     },
   },
@@ -532,6 +571,12 @@ const ROWS = {
         drives: [{ roll: 0, path: [["commitSend"]], expect: [["marks", 1]] }],
         pins: ["test/two-ways-from-here.test.js:436"],
       },
+      "still-standing": {
+        kind: "getter", opening: 2, values: { pays: 14, provisions: 2, toll: 0 },
+        unit: "marks", debitTarget: "s.marks", sourcePin: /s\.marks -= stakeOf\(\);/,
+        drives: [{ roll: 0, path: [["commitSend"]], expect: [["marks", 1]] }],
+        pins: [],
+      },
     },
   },
 
@@ -567,6 +612,19 @@ const ROWS = {
           { roll: 0.99, path: [["commitSend"], ["commitHome"], ["commitPress"], ["commitHome"]], expect: [["stopped", true], ["endedCold", true], ["collected", false], ["record.marksLost", 2], ["record.pressOns", 1]] },
         ],
         pins: ["test/two-ways-from-here.test.js:770#endedCold"],
+      },
+      // The ending inverts once more. On still-standing commitHome stops on
+      // the SECOND STAKED short run (endedCold) and, through the floor it
+      // calls, on a lost press-on that leaves nothing to put up (endedSpent).
+      // A short press-on with marks to spare stops nothing at all.
+      "still-standing": {
+        kind: "method", arity: 0, stopsOnHome: "second staked short run, or the floor",
+        drives: [
+          { roll: 0.99, path: [["commitSend"], ["commitHome"]], expect: [["stopped", false], ["armed", true], ["endedCold", false], ["larderSpent", true]] },
+          { roll: [0, 0.99, 0.99], path: [["commitSend"], ["commitHome"], ["commitSend"], ["commitHome"], ["commitPress"], ["commitHome"]], expect: [["stopped", false], ["pressLost", true], ["endedCold", false], ["endedSpent", false], ["marks", 13], ["canSend()", true]] },
+          { roll: 0.99, path: [["commitSend"], ["commitHome"], ["commitPress"], ["commitHome"]], expect: [["stopped", true], ["endedSpent", true], ["endedCold", false], ["record.marksLost", 2], ["record.pressOns", 1]] },
+        ],
+        pins: [],
       },
     },
   },
@@ -623,6 +681,7 @@ const ROWS = {
       "they-remember": { kind: "method", arity: 0, aliasOfPlaces: true, pins: [] },
       "dice-at-the-places": { kind: "method", arity: 0, aliasOfPlaces: true, pins: [] },
       "two-ways-from-here": { kind: "method", arity: 0, aliasOfPlaces: true, pins: [] },
+      "still-standing": { kind: "method", arity: 0, aliasOfPlaces: true, pins: [] },
     },
   },
 
@@ -653,6 +712,7 @@ const ROWS = {
       "they-remember": { where: "places", id: "halt", index: 0, consistAt: true, pins: [] },
       "dice-at-the-places": { where: "places", id: "halt", index: 0, consistAt: true, pins: ["test/dice-at-the-places.test.js:331"] },
       "two-ways-from-here": { where: "places", id: "halt", index: 0, consistAt: true, pins: [] },
+      "still-standing": { where: "places", id: "halt", index: 0, consistAt: true, pins: [] },
       "dawnspur-halt": { where: "absent", pins: ["test/dawnspur-halt.test.js:218#consist"] },
     },
   },
@@ -677,6 +737,7 @@ const ROWS = {
       "they-remember": { where: "places", id: "consist", index: 2, pins: [] },
       "dice-at-the-places": { where: "places", id: "consist", index: 2, pins: [] },
       "two-ways-from-here": { where: "places", id: "consist", index: 2, pins: [] },
+      "still-standing": { where: "places", id: "consist", index: 2, pins: [] },
     },
   },
 };
@@ -698,11 +759,11 @@ const UNADJUDICATED = {
     "reserveFull", "roster", "rosterCap", "stores", "storesCap", "town", "upPrice",
   ],
   city: [
-    "bill", "billNeed", "billPosted", "canCast", "canCollect", "canHome", "canLand", "canSite",
-    "collected", "commitCast", "commitCollect", "commitLand", "commitPosted", "commitSite", "consistAt",
+    "bill", "billNeed", "billPosted", "canCast", "canCollect", "canHome", "canLand", "canPress", "canSite",
+    "collected", "commitCast", "commitCollect", "commitLand", "commitPosted", "commitPress", "commitSite", "consistAt",
     "foodInTown", "foodOnTerrace", "foundry", "gap", "haltHolds", "haulOnConsist", "heatStep",
     "herbsInLarder", "herbsOnConsist", "herbsOnMoss", "herbsWasting", "inbound", "lampLit", "landed",
-    "liveCanDo", "map", "mossDim", "mossQuiet", "neighborAgain", "notice", "openingMarks", "panes",
+    "endedCold", "liveCanDo", "liveCanDos", "map", "mossDim", "mossQuiet", "neighborAgain", "notice", "openingMarks", "panes",
     "panesLook", "pays", "places", "postNotice", "posted", "postedNotice", "promiseKept", "putUp",
     "remembered", "rim", "scaffold", "sitePrice", "sited", "toll",
   ],
@@ -760,6 +821,13 @@ const WALK_LEGENDS = {
     "S": "commitSend()", "+": "commitHome() [roll 0]", "-": "commitHome() [roll 1]", "C": "commitCollect()",
     "P": "commitPress()", ".": "wait() === false",
   },
+  // The parent's alphabet, letter for letter, and on purpose: C14 changes what
+  // the letters DO to the sitting, not what they mean. C is still Collect. and
+  // P is still the press-on; neither ends the sitting any more.
+  "still-standing.test.js": {
+    "S": "commitSend()", "+": "commitHome() [roll 0]", "-": "commitHome() [roll 1]", "C": "commitCollect()",
+    "P": "commitPress()", ".": "wait() === false",
+  },
 };
 
 // ---------------------------------------------------------------------------
@@ -779,6 +847,7 @@ const DOM_ROWS = {
         toggles: {
           "dawnspur-halt": "THE LAMP IS ON — world state (board.lampLit).",
           "two-ways-from-here": "this place has a live can-do right now — affordance (notice(place).canDo !== null).",
+          "still-standing": "this place has a live can-do right now — affordance (notice(place).canDo !== null). Inherited from two-ways, and it has to hold for the whole sitting rather than one frame: a RESOLVED branch stops being lit and keeps its WORDS.",
         },
       },
       unlit: {
@@ -808,6 +877,7 @@ const DOM_ROWS = {
           "they-remember": "the consist is at the halt from frame one — a position, constant.",
           "dice-at-the-places": "the consist is at the halt (consistAt !== \"mosswake\") — a position, from frame one.",
           "two-ways-from-here": "the consist is at the halt (consistAt !== \"mosswake\") — a position, from frame one.",
+          "still-standing": "the consist is at the halt (consistAt !== \"mosswake\") — a position, from frame one.",
         },
       },
       "at-halt": {
@@ -838,6 +908,7 @@ const DOM_ROWS = {
           "dawnspur-halt": "the consist element", "dice-at-the-places": "the consist element",
           "herbs-larder": "the consist element", "mosswake-loop": "the consist element",
           "they-remember": "the consist element", "two-ways-from-here": "the consist element",
+          "still-standing": "the consist element",
         },
       },
     },
