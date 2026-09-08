@@ -219,12 +219,29 @@ forbids it.
 > *"Two branches reaching an ending with byte-identical copy means the record can't
 > distinguish them, which is the same class as the counter that halves a split."*
 
-**This is fixed BEFORE the next card and NOT on this one.** `/still-standing/` has
-**PASSED** and its bytes are pinned; a passed board is not recut. The obligation lands
-on the next beat: **two branches must not reach an ending the sit report cannot tell
-apart.** It is the §7.5 counter rule one level up — a split a counter can resolve was
-not worth registering, and an ending the writing does not separate is a split the
-report cannot resolve either.
+**And the measurement NARROWED it, which changes what the obligation is.** The consist
+is byte-identical between banking and pressing-on-and-winning — but **Mosswake is
+not**: *"People remember who showed up."* against *"Mosswake. A neighbor again."*
+**The BOARD can distinguish the two branches. A sit report quoting ONE TILE cannot.**
+
+**So this is not "fix the writing".** David, 2026-09-04, on the correction: *"That
+converts carry-forward 3 from 'fix the writing' into an obligation on how the sit is
+read, which is cheaper and more likely to hold."*
+
+**The obligation, restated where it actually bites:** when a beat pre-registers
+outcomes that turn on WHICH BRANCH a player took, it must name **which tiles carry the
+discriminator** and require the sit reading to consult them — because a player narrates
+one tile, usually the one they last tapped, and the branch may be written on another.
+Nothing needs to change in a board's copy; what needs to change is that the reader
+knows where to look before the sitting rather than after it.
+
+**It remains the §7.5 counter rule one level up**, but pointed correctly: a split a
+counter can resolve was not worth registering, and **a split the sit report cannot
+resolve is one the beat must tell the reader how to resolve.** The failure mode was
+never the board's writing — it was an instrument aimed at one tile.
+
+`/still-standing/` has **PASSED** and its bytes are pinned regardless; a passed board is
+not recut, so nothing here is a change to this board.
 
 ### The board is PASSED and its bytes do not move
 
