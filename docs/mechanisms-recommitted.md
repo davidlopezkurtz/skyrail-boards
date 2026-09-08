@@ -957,3 +957,110 @@ that register everything.
 
 Related: §7.4 (the sit's question form, and the refused one), and CFD-203, CFD-210 and
 CFD-212, which carry the worked examples above.
+
+### 7.6 If the obstruction moves and the read still does not fire, the instrument is wrong — not the board. RULED, David, 2026-09-04
+
+**The rule.** When a sitting fails to produce a particular read, name **what blocked
+it**. If a later board removes that obstruction and the read still does not arrive,
+and this happens across cards whose obstructions were **different each time**, stop
+reaching for the read. **The question it was serving gets a different SHAPE, not
+another attempt at the same one.**
+
+**It is not a count, and phrasing it as a count would be the mistake.** David,
+2026-09-04: *"Not because three is a magic number, but because your own reasoning for
+it is the part that generalises… A rule phrased on the count invites arguing about
+four; a rule phrased on the obstruction moving says something a future instance can
+actually apply."*
+
+**The signal is the obstruction moving.** One board failing a read is a board. Three
+boards failing it for **one** reason is a fixable defect and the fix is obvious. Three
+boards failing it for **three different** reasons, each removed in turn, is evidence
+about the instrument.
+
+#### The worked example this rule was written from — the could-and-did read
+
+The read: *the player naming, unprompted, the branch they did not take.* Reached for
+by three cards and never once obtained.
+
+| card | what blocked it | removed by |
+| --- | --- | --- |
+| **CFD-209** `/dice-at-the-places/` | the corridor never forked — there was no unchosen branch to name | CFD-210 |
+| **CFD-210** `/two-ways-from-here/` | every branch ENDED the sitting, so a forgone branch could not be observed: choosing was what ended the observation | CFD-212 |
+| **CFD-212** `/still-standing/` | nothing. The fork could not be walked past, the player continued, and the choice still did not register | — |
+
+**Each obstruction was real, was measured, and was removed.** The third board gave the
+player frames past the choice with the road standing, and the sit named the loop, the
+larder, and the ending — and not the fork. **When the last obstruction is gone and the
+read still does not fire, the read is not being blocked. It is being asked wrongly, or
+it is not there to find.**
+
+#### What this obliges
+
+- **Name the obstruction in the beat**, not just the outcome. A sit that fails a read
+  without a named cause cannot feed this rule, and §7.5's routing column is where the
+  name belongs.
+- **When the obstruction moves and the read does not, say so in the record and stop.**
+  Do not cut a fourth board at the same question. §7.4 already forbids repeating the
+  KIND of a failed recut; this forbids repeating the QUESTION across cards.
+- **Route the underlying question to a different shape.** The read was an instrument
+  for something; that something survives the instrument's retirement.
+
+#### And the trap on the way out, which is the whole reason this section is not shorter
+
+**A question retired from one shape is easy to re-ask in a board that cannot answer it.**
+David, 2026-09-04, on the could-and-did retirement, and this is the sentence to carry:
+
+> *"we don't know whether the read never fires because forgone options are weightless,
+> or because this lineage's forgone options are one tap at 64%. Those want different
+> boards, and the temptation on the next card will be to answer the first question with
+> a board that can only answer the second."*
+
+**So the routing owes a scope, not just a question.** *Do forgone options carry weight?*
+is a general claim; *do THESE forgone options — one tap, 64%, inside a two-branch fork —
+carry weight?* is what any board in this lineage can actually put under test. **Write
+which one the next card is answering, before it is cut.** A board that measures the
+narrow thing and reports the general one is the failure §7.5 exists to prevent, arriving
+one level up: not a sit read against the wrong split, but a whole card read against the
+wrong question.
+
+Related: §7.4 (a recut may not repeat the kind), §7.5 (pre-register what each outcome
+means), and CFD-209, CFD-210 and CFD-212, which carry the worked example above.
+
+### 7.7 A frozen artifact records BYTES, never the state of the world around them. RULED, David, 2026-09-04
+
+**The rule.** A file that will be pinned may state what it **is** — its own bytes, and
+the shas of the boards left standing beside it. It may not state anything **about** its
+own status, because its status changes after it is written and the pin freezes the
+sentence, not the fact.
+
+**The category error, in David's words, 2026-09-04:**
+
+> *"A file that describes its own pin status is authored before the sit and frozen by
+> it, so it is guaranteed to be false the moment it becomes protected. That's not a
+> mistake anyone made, it's a category error in what belongs in a frozen artifact: a
+> manifest records bytes, not the state of the world around them."*
+
+**The worked instance.** `sit/still-standing/MANIFEST.txt` was written at cut time and
+says *"/still-standing/ is NOT self-pinned"* and *"four boards have now needed it on the
+day they passed."* Both were **true when authored**. The board passed on 2026-09-04, was
+self-pinned, and became the fifth — so both clauses are now false, **and the file is
+inside the pinned directory, so neither can ever be corrected.** A passed board is not
+recut, and that rule is exactly why the file is trustworthy about its bytes.
+
+**It is guaranteed, not unlucky.** Any sentence in a manifest describing that board's pin
+status is written *before* the pass and frozen *by* it. The pass is the event that makes
+it false and the same event makes it permanent.
+
+#### What this obliges
+
+- **A manifest records the three files' shas, and the live shas of the boards left
+  standing.** That is what it is for and it stays true forever.
+- **A manifest does NOT say whether its own board is pinned, sat, passed, or counted.**
+  Those belong in `test/<board>.test.js`, which is editable, and in the beat, which is
+  superseded in place.
+- **The same test applies to any artifact that will be frozen**: before writing a
+  sentence into one, ask whether a later event could falsify it. If yes, it belongs in a
+  file that can be edited.
+
+Related: the lineage lock in §7 (*never overwrite a passed or killed board*), which is
+what makes this a permanent error rather than a correctable one.
