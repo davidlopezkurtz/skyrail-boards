@@ -71,7 +71,14 @@
 // ---------------------------------------------------------------------------
 
 // ---------------------------------------------------------------------------
-// THE MAP. Twelve boards; eleven name their spec in their own sim.js header
+// THE MAP. Every board on the tree either names its spec in its own sim.js
+// header or is DECLARED below, and the map test names any board that does
+// neither and any that does both. (This line used to carry a count — "Twelve
+// boards; eleven name their spec" — that was wrong from the day C14 was built
+// until 2026-09-08. Its first replacement, "except dawnspur-heat", was shown by
+// a critic to be a proper noun no test grades either: strip one more Spec: line
+// and declare that board, and the guard stays green. What stands is the
+// sentence the UNKNOWN branch actually asserts.)
 // (`// Spec: docs/cfd-NNN-beat.md`, and dawnspur-scale's reads "the TOP section
 // of docs/cfd-183-beat.md" — the test parses the path out of the line, not the
 // line's shape). dawnspur-heat names no path, so it is DECLARED. A board with no
@@ -91,6 +98,20 @@ const BOARD_BEATS_DECLARED = {
   },
 };
 
+// A row here is for a SPEC WHOSE BOARD IS UNBUILT, and it names a file ON THE
+// TREE: unlike BOARD_BEATS_DECLARED, a key absent from the corpus is a red, because
+// a spec that is not there has no sentences to grade and a row for it is a rename
+// waiting to go stale — this register's one such key has moved once already,
+// cfd-211 -> cfd-212 at f8d3cf4. The day the board is built its sim.js Spec: line
+// derives the beat and the row is a declaration outliving its fact: the map test
+// names it and the fix is to delete it. cfd-212's row stood here from f8d3cf4
+// (2026-09-04) and was stale from 4b08539 that same afternoon until 2026-09-08,
+// saying "unbuilt and NOT SIGNED" about a beat that was built, signed and passed —
+// and nothing graded it, because still-standing and two-ways-from-here resolve
+// to the same lineage and the same provisions unit. A stale row does not move an
+// ungraded field: it moves .lineage and .provisionsUnit, which choose the shapes
+// that grade the beat, and a parent on the other side of the seam would have
+// re-graded it silently. Now the map test names the row whichever side it is on.
 const BEATS_WITHOUT_BOARD = {
   "cfd-200-beat.md": {
     parent: "dawnspur-storm",
@@ -99,21 +120,6 @@ const BEATS_WITHOUT_BOARD = {
       "numbers must answer to - audit §6: 'cfd-200 re-based onto /dawnspur-storm/ and kept pricing its " +
       "stake, its shortest path, its Kill line and its terminal registers in the dispatch board's marks " +
       "purse'. Four HIGH rows came out of exactly that.",
-  },
-  "cfd-212-still-standing-beat.md": {
-    parent: "two-ways-from-here",
-    why:
-      "/still-standing/ is unbuilt and the beat is NOT SIGNED. Its parent is named provisionally at " +
-      "drafting and is re-named at signature per canon §7.1 item 4, so this row is re-checked then. It " +
-      "declares two-ways-from-here because every number, tile and sentence in it is answerable to that " +
-      "board's mechanics - it prices the press-on as unstaked off commitPress's provisions 0 / toll 0, " +
-      "reads the stop out of the mosswake notice's branch order, and quotes that board's own writing. " +
-      "The number came from Linear ASSIGNING it, not from reading a ceiling: the issue was created " +
-      "and Linear returned CFD-212. An earlier cut of this row said 211, derived by taking the " +
-      "highest issue in the SKYRAIL PROJECT - but CFD numbering is TEAM-wide, and CFD-211 was " +
-      "already CFDBDevBot Minimum Useful Beta in another project. That is exactly the failure " +
-      "CLAUDE.md warns about: prefer null to a plausible number, and never read an issue ceiling " +
-      "out of a project when the sequence belongs to the team. Create the issue; let Linear answer.",
   },
 };
 

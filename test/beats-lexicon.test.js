@@ -61,9 +61,12 @@
 // WHICH TREE IT READS. The corpus directory is `SKYRAIL_BEATS_DIR` if set and
 // `<repo>/docs` otherwise — that is how the red-first run is done: the beats at a
 // past commit are extracted with `git show <sha>:docs/<file>` into a scratch
-// directory and the suite is pointed at it. `sit/` is always this tree's, and
-// `sit/` and `public/` are byte-identical across the trees graded here, so the
-// derived beat->board map is the same at each. The LINEAGE and the provisions
+// directory and the suite is pointed at it. `sit/` is always this tree's. (This
+// used to add that `sit/` and `public/` are byte-identical across the trees graded
+// and the derived map therefore the same at each — true at 6e95383, false since
+// 4b08539 built /still-standing/: the map at HEAD carries a beat the 796d9a2
+// corpus does not have. So the map test reads sit/ alone and is corpus-independent,
+// and CORPUS is the map intersected with what is on the tree.) The LINEAGE and the provisions
 // UNIT come from test/lexicon-ledger.js, which did NOT exist at 796d9a2 — so a
 // run against the pre-sweep corpus is a RETROSPECTIVE grading of the old beats
 // against today's declared membership, which is legitimate and is said in those
@@ -346,6 +349,9 @@ function beatMap() {
     out[beat] = { board, via: bm[board].how, lineage: lineageOf[board] || null, provisionsUnit: unitOf(board) };
   }
   for (const beat of Object.keys(B.BEATS_WITHOUT_BOARD)) {
+    // A board derives it: the derivation wins here, and the map test names the
+    // stale row. Until 2026-09-08 the row overwrote the entry with board: null.
+    if (out[beat]) continue;
     const parent = B.BEATS_WITHOUT_BOARD[beat].parent;
     out[beat] = {
       board: null, parent, via: "parent",
@@ -665,7 +671,42 @@ test("the map is DERIVED where it can be: every board's beat comes out of its ow
         `for ${m.declared}. The declaration has outlived the fact it stood in for — delete it.`);
     }
   }
-  assert.deepEqual(problems, [], fail(["Beat map (test/beats-lexicon-ledger.js BOARD_BEATS_DECLARED):", ...problems.map((p) => "  " + p)]));
+  // The sibling register has the same failure and, until 2026-09-08, no check.
+  // BEATS_WITHOUT_BOARD is for a spec whose board is UNBUILT. When the board is
+  // built its sim.js names the beat as its Spec, the derivation produces the
+  // entry, and beatMap() let the stale row overwrite it — not just .board, but
+  // .lineage and .provisionsUnit, which appliesTo() reads to choose the shapes
+  // that grade the beat. cfd-212's row sat there from the afternoon its board
+  // was built (4b08539) until 2026-09-08 and nothing went red only because
+  // still-standing and two-ways-from-here are both CITY and both marks: measured
+  // at d107078, the row as it stood, deleted, or re-pointed at dawnspur-line
+  // (DESK, food) was 11/11 every time — and under the desk parent the beat was
+  // being graded as a DESK beat. So a declared-unbuilt beat that a board derives
+  // is the declaration outliving its fact, and it is named. A key that names no
+  // file in the corpus is named too: the register is keyed on filenames, this one
+  // was renamed once (cfd-211 -> cfd-212, f8d3cf4), and a rename would otherwise
+  // leave the old row green forever.
+  for (const beat of Object.keys(B.BEATS_WITHOUT_BOARD)) {
+    if (!ON_TREE.includes(beat)) {
+      problems.push(
+        `${beat}: carries a BEATS_WITHOUT_BOARD entry and is not a file under ${BEATS_DIR}. A row ` +
+        `here names a spec on the tree; a key that names nothing grades nothing. Re-key or delete it.`);
+    }
+    // .beat is the derived OR the declared beat (see boardMap), so a beat declared
+    // for a board in BOARD_BEATS_DECLARED and declared boardless here is caught too;
+    // the message says which register named the board.
+    const builders = Object.keys(map).filter((board) => map[board].beat === beat);
+    if (builders.length) {
+      const named = builders.map((board) => map[board].how === "derived"
+        ? `sit/${board}/sim.js names it as its Spec`
+        : `BOARD_BEATS_DECLARED names it for ${board}`).join(" and ");
+      problems.push(
+        `${beat}: ${named} AND it carries a BEATS_WITHOUT_BOARD entry (parent ` +
+        `${B.BEATS_WITHOUT_BOARD[beat].parent || "(none)"}). The board is built or declared; the declaration ` +
+        `has outlived the fact it stood in for — delete it.`);
+    }
+  }
+  assert.deepEqual(problems, [], fail(["Beat map (test/beats-lexicon-ledger.js BOARD_BEATS_DECLARED / BEATS_WITHOUT_BOARD):", ...problems.map((p) => "  " + p)]));
 });
 
 test("every .md on the corpus tree is a beat that governs a board, a beat declared to govern none, or a declared non-beat — and never both", () => {
