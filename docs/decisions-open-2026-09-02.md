@@ -1,12 +1,13 @@
 # Open decisions — 2026-09-02
 
-**Forty-one decisions waiting on David — forty gathered from four records on 2026-09-02
-and ranked by what each one blocks, and one added 2026-09-08.** Assembled 2026-09-02 from 78 raw call-instances across ten lists: the
+**Forty-six decisions waiting on David — forty gathered from four records on 2026-09-02
+and ranked by what each one blocks, and six added 2026-09-08.** Assembled 2026-09-02 from 78 raw call-instances across ten lists: the
 name-collision ledger's §5 and §6 dispositions and its two do-not-average blocks; the
 canon sweep's and the CFD-176 sweep's David lists in `docs/sweep-2026-09-02.md`; and
 the `KILLS.md` pass proposal. Six calls were overtaken by commits on 2026-09-02 and are
 in their own section rather than the list. *(2026-09-08: entry 41 added — the next card's
-scope, which canon §7.6 says is owed before a cut. Forty-one entries, forty open.)*
+scope, which canon §7.6 says is owed before a cut; entries 42–46 added the same day from the DOM
+namespace sweep's David list. Forty-six entries, forty-five open.)*
 
 **This document is where a ruling attaches.** When David rules, the ruling is written
 into the entry in place, dated, with a pointer to the commit that carries it out — the
@@ -28,15 +29,15 @@ tree they were measured at.
 
 # Decisions waiting on David — Skyrail boards, measured at `97f3ecd`, re-verified at `c32ff52`; entry 41 at `c8c4546`
 
-**40 open, 1 closed.** *(Entry 41 added 2026-09-08. Entry 4 RULED and carried out 2026-09-03
+**45 open, 1 closed.** *(Entries 41–46 added 2026-09-08. Entry 4 RULED and carried out 2026-09-03
 at `20bf043`; it took the sweep's calls 12 and 13 with it.)* **Eight** block work — a cut, a signature, a built-and-held edit, or a
-landing that is drafted and ready. The rest split into eleven that publish something
-measurably wrong to whoever reads the file next, fifteen convention-and-register calls
+landing that is drafted and ready. The rest split into thirteen that publish something
+measurably wrong to whoever reads the file next, eighteen convention-and-register calls
 where measurement genuinely does not decide, and six record corrections that need no
 ruling at all.
 
 **78 raw call-instances** were collected from ten lists across four documents;
-deduplicated to **40 entries** *(41 with entry 41, added 2026-09-08)*. The heavy collisions were the ones expected — `armed`,
+deduplicated to **40 entries** *(46 with entries 41–46, added 2026-09-08)*. The heavy collisions were the ones expected — `armed`,
 the lineage membership, the KILLS completeness question, the canon-check retroactivity
 question and the `rim` alias — plus one that was not: the **discharged Seat gate**,
 raised once in the audit and once in the CFD-176 sweep, which measurement widens from
@@ -47,8 +48,8 @@ contingency clause has already fired, and it fires at a board that never passed.
 cannot be signed until that is answered, and the board's whole inherited economy hangs
 off the answer — which is also why #2 and #3 are the same board.
 
-**Line numbers.** Every citation below was re-derived at `97f3ecd` by me *(entry 41's at
-`c8c4546`, 2026-09-08)*. The underlying
+**Line numbers.** Every citation below was re-derived at `97f3ecd` by me *(entries 41–46's at
+`c8c4546` and `925d23a`, 2026-09-08)*. The underlying
 files moved hard on 2026-09-02: `docs/mechanisms-recommitted.md` went 749 to 902 lines
 at `b8d6da3`, `KILLS.md` went 67 to 119 at `b95a9c9`, and `docs/cfd-200-beat.md` is 1,352
 lines against the 1,275 the sweep measured. **Every line number in the sweep's own
@@ -499,7 +500,7 @@ is claimed.
 
 ---
 
-# Tier 2 — Publishes something measurably wrong to a reader (11)
+# Tier 2 — Publishes something measurably wrong to a reader (13; entries 42 and 46 added 2026-09-08)
 
 ## 9. The discharged Seat gates — six beats still forbid merging boards that are live and passed
 
@@ -821,7 +822,84 @@ consistent; the only question is register, and the reference is unambiguous.
 
 ---
 
-# Tier 3 — Convention and register; measurement does not decide these (15)
+## 42. `/dawnspur-line/` speaks "stake undefined" to screen-reader players — fix a passed, pinned board, or record it?
+
+*(Added 2026-09-08 from the DOM namespace sweep, call 1 — `docs/sweep-2026-09-02.md:1636`;
+finding 10 at `:1290`. Numbered by arrival, placed by tier: it publishes something measurably
+wrong to a reader.)*
+
+**Question.** `/dawnspur-line/` passed and is hash-pinned (hub card and descendants). Every
+sendable card's `aria-label` on it that is not *out* reads the literal word `undefined` where
+the stake should be — three of four cards at the opening, two of four with a send in the air;
+the *out* branch of the template says "No Wardens ride with nothing staked" instead
+(`index.html:413-420`, driven at review). Is a one-line fix to a passed board's `index.html` —
+re-hashing and recutting the pins — owed, or are the passed bytes left alone and the defect
+recorded?
+
+**What the document says.** The record, `docs/sweep-2026-09-02.md:1636-1641`: `index.html:419`
+reads `c.stake`; line's cards carry no `stake` key — its stake is food and the visible card
+uses `stakeText` — so the label is built from `undefined`. Reproduced by the synthesis and by
+the sweep's wiring pair. The ledger's standing rule is that a guard never forces a board edit;
+the record says in the same breath that this is not a guard, it is a shipped accessibility
+defect.
+
+**What source says.** `sit/dawnspur-line/index.html:419` (the `aria-label` template) and
+`sit/dawnspur-line/sim.js` (no `stake:` on a line card; `stakeText` is the rendered form).
+
+**Blocked.** Nothing. The board is live and passed; the defect reaches only players using a
+screen reader, and reaches all of them.
+
+**Orchestrator's read.** *Fix it, and treat the re-pin as the price of the fix rather than a
+reason not to.* A pinned board is pinned so a sit's evidence is not rewritten under it; a
+label no sighted sit ever saw is not evidence any sit rested on. But the pin census
+(`boards-pin-census`) says no board's bytes are "near-free" to move — the hub card and every
+descendant re-hash — and whether a11y text is inside or outside what a pass froze is a rule
+you have not made yet. Yours.
+
+**Cost of getting it wrong.** Left: a passed board says "undefined" to every screen-reader
+player, indefinitely, on the one lineage whose economy is the stake. Fixed carelessly: the
+first re-pin of a passed board without a written rule for when re-pins are allowed.
+
+---
+
+## 46. The rendered name of the Halt — a destination on the desk, home in the city, both on the storm — re-voice three passed card faces, or carry it as a declared row once a labels instrument exists?
+
+*(Added 2026-09-08 from the DOM namespace sweep, call 5 — `docs/sweep-2026-09-02.md:1667`;
+finding 1, the sweep's only agreed HIGH, at `:1129`. Placed in Tier 2: it publishes one name
+with two meanings to every reader of the pages.)*
+
+**Question.** `<title>Dawnspur Halt</title>` heads heat, scale and halt; `DAWNSPUR HALT` is a
+destination card face on dispatch, line and storm; *the Halt* is HOME in seven city
+`aria-label`s (still-standing included); the storm renders both senses in one line. This is
+the audit's #4 (`halt` as a route on the desk and home in the city) one layer out, in the
+words a player reads. Is the desk's card face to be re-voiced — a board edit on three passed
+boards — or is the split carried as a declared row once a `labels` / `sentences` deriver
+exists in the guard?
+
+**What the document says.** Finding 1 at `:1129`; the instrument-extensions bullet under
+*Dispositions* ranks a `labels` deriver sixth and says that until it lands "finding 1 is a
+record entry and nothing more." `ROWS.halt` (HIGH) grades ids only.
+
+**What source says.** The `<title>` elements, the desk boards' card-face text, and the city
+boards' `aria-label` attributes named above, all at `0ffd1aa`.
+
+**Blocked.** A guard row for the sweep's one HIGH: the test loop's set list is hard-coded to
+ids / toggles / classNames, so a `labels` row cannot go red today and is not built.
+
+**Orchestrator's read.** *Build the instrument before deciding the voice.* A re-voicing of
+three passed desk boards to remove a word that is correct on each of them, on its own board,
+is a large edit to settle a cross-lineage confusion; a `labels` deriver plus the hard-coded
+set list widened is test-only work and makes the split gradeable, after which the row carries
+the two meanings the way `home` does. Whether the desk's card face should ever say something
+other than the place's name is a design call, and yours.
+
+**Cost of getting it wrong.** The one HIGH the sweep found stays a paragraph in a record, and
+the next board that names the Halt in a label does so in whichever sense its author happens to
+hold.
+
+---
+
+# Tier 3 — Convention and register; measurement does not decide these (18; entries 43–45 added 2026-09-08)
 
 ## 20. The Canon check section — retroactive on the seven beats that lack one?
 
@@ -1183,6 +1261,110 @@ readers and none of the five changes a measured number.
 
 ---
 
+## 43. The desk voice in three passed city sims — pinned evidence to leave, or a re-voicing owed before a fourth board inherits it?
+
+*(Added 2026-09-08 from the DOM namespace sweep, call 2 — `docs/sweep-2026-09-02.md:1642`.
+Convention: no player sees it.)*
+
+**Question.** `"The train brought the Mosswake cargo home."` sits in `sit/dice-at-the-places/sim.js:322`,
+`sit/two-ways-from-here/sim.js:431` and `sit/still-standing/sim.js:601`, and `dawnspur-site`
+carries three unrendered `*_SENTENCE` constants — all desk-voiced, none rendered, quoted in no
+document, and pinned verbatim by one passed board's test
+(`test/two-ways-from-here.test.js:788`, `assert.equal(h.b.runSentence, "The train brought the
+Mosswake cargo home.")`). Is dead desk prose in a passed board's sim evidence to leave as
+pinned, or a re-voicing owed before the next city board inherits it a fourth time?
+
+**What the document says.** The record, `:1642-1650` *(its "unquoted everywhere" is superseded
+in place: unquoted in every document, and pinned by two-ways' test)*. `ROWS.runSentence` /
+`endSentence` are BENIGN on the *read* question because nothing renders them. A `doesNotMatch`
+guard against the sentence would be red on three passed boards today and could only go green by
+editing them — three sims and one test.
+
+**What source says.** The three `sim.js` lines above, `test/two-ways-from-here.test.js:788`, and
+`sit/dawnspur-site/sim.js`'s `*_SENTENCE` constants.
+
+**Blocked.** Nothing today. The next city board, if it is cut by copying the last passed one,
+inherits the line.
+
+**Orchestrator's read.** *Leave the three; forbid the fourth.* A guard that is red on passed
+bytes is the permanently-red gate CLAUDE.md warns of twice; a guard scoped to boards that
+pass after today is a ratchet. That scoping is a convention you would be setting, so it is
+listed rather than built.
+
+**Cost of getting it wrong.** A fourth city board ships the desk's sentence in its sim, and the
+first time a city board renders its run sentence it renders the wrong lineage's voice.
+
+---
+
+## 44. `quiet` / `holds` / `neighbor` / `dim` on the city boards — dead wiring, or unwritten art?
+
+*(Added 2026-09-08 from the DOM namespace sweep, call 3 — `docs/sweep-2026-09-02.md:1651`;
+finding 19 at `:1379`, finding 2 (`dim`) at the record's finding 2. Convention: opposite
+remedies, no measurement decides.)*
+
+**Question.** City boards toggle four classes on `#mosswake` and `#halt` that no page styles —
+`dim` on six, `quiet` on five, `holds` on five, `neighbor` on four — and on 23 of the 24
+board/flag pairs nothing ever writes the flag. The one writer, `herbs-larder`'s
+`neighborAgain` (`sim.js:132`), is on the one map board that does not toggle `neighbor` at
+all: the only flag that moves reaches no class on any page. `dice-at-the-places` carries
+art-direction comments naming the states. Delete the toggles (dead wiring), or write the rules
+(unwritten art)?
+
+**What the document says.** The record, `:1651-1660` and finding 19 at `:1379` *(its "six
+boards … 19 of 20 pairs" is superseded in place with the per-token counts above, measured at
+`0ffd1aa` by the review)*. The readers did not disagree; the sweeper declined to guess and the
+refuter supplied the discriminator — which, re-measured, is that the single moving flag never
+reaches a toggle.
+
+**What source says.** `classList.toggle("quiet" | "holds" | "neighbor" | "dim", …)` in
+`sit/*/index.html` per the counts above; no `.quiet` / `.holds` / `.neighbor` / `.dim` selector
+on any city page; `sit/herbs-larder/sim.js:132` and no `toggle("neighbor"` in
+`sit/herbs-larder/index.html`.
+
+**Blocked.** Nothing. `dim` is now a guard row (landed with the sweep) so the toggle's board
+list cannot drift silently either way.
+
+**Orchestrator's read.** *Closer to dead wiring than the record presented it.* The record's one
+piece of evidence for planned art was a flag that moves; measured, that flag is written on a
+board with no toggle for it and toggled on boards that never write it, so nothing in the tree
+connects the two halves. Against that, six boards' worth of toggles and dice's art-direction
+comments say someone meant them. The remedies are opposite and both touch passed boards; yours,
+and not urgent — nothing renders differently under either reading today.
+
+**Cost of getting it wrong.** Deleting art direction that was waiting for its rules; or
+carrying dead toggles into every future city board because they look like a convention.
+
+---
+
+## 45. `dawnspur-site`'s odd shape — a convention future city boards must avoid, or an accepted one-off?
+
+*(Added 2026-09-08 from the DOM namespace sweep, call 4 — `docs/sweep-2026-09-02.md:1661`.
+Convention.)*
+
+**Question.** `dawnspur-site` is the one CITY board whose scenery parts (`scaffold`, `works`,
+`hearth`, `bill`) are page-unique ids, where `dawnspur-halt` and every map board scope
+classes inside a named building; it is also the one city board carrying `train`, `hearth` and
+`platform` under the desk's ids. It passed (2026-08-30, recut 2) and is pinned. Is its shape
+an ancestor convention every future city board must not copy, or an accepted one-off?
+
+**What the document says.** The record, `:1661-1666`, and its *SCENERY PARTS* comment now
+above `DOM_ROWS` in `test/lexicon-ledger.js`. The answer decides whether that comment is a
+warning or a rule.
+
+**What source says.** `sit/dawnspur-site/index.html` (ids) against `sit/dawnspur-halt/index.html`
+and the six map boards (classes inside a building).
+
+**Blocked.** Nothing. The next city board's author reads the comment either way.
+
+**Orchestrator's read.** *One-off, and say so in the comment.* Site was the first city board
+and its shape predates the convention the map boards settled; nothing in a sit turned on it.
+But "the map boards' way is the rule" is a rule about future boards, and those are yours.
+
+**Cost of getting it wrong.** A future city board copies site because it is a passed ancestor,
+and the id-versus-class split that the `hearth` row now grades widens by one board.
+
+---
+
 # Tier 4 — Record corrections; nothing is blocked (6)
 
 ## 35. The sweep's fourteen canon line cites are all stale
@@ -1315,8 +1497,9 @@ already set in the tree, and five beats are on the other side of it.
 
 # Measurement provenance, and one thing that moved under me
 
-Every quotation and every line number above — entry 41's excepted, which were derived at
-`c8c4546` on 2026-09-08 with scratch under `C:\tmp\scope\` — was re-derived by me from the
+Every quotation and every line number above — entries 41–46's excepted, which were derived at
+`c8c4546` and `925d23a` on 2026-09-08 with scratch under `C:\tmp\scope\` and `C:\tmp\domsweep\`
+— was re-derived by me from the
 working tree, not copied from a record. Read-only throughout: `git show`, `git log`, `grep`, `awk` and
 `sha256sum` only; no write to either repository, no git write, no server, no browser, no
 deploy. Scratch under `C:\tmp\decisions\`.
