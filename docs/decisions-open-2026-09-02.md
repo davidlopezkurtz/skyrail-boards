@@ -1,11 +1,12 @@
 # Open decisions — 2026-09-02
 
-**Forty decisions waiting on David, gathered from four records and ranked by what each
-one blocks.** Assembled 2026-09-02 from 78 raw call-instances across ten lists: the
+**Forty-one decisions waiting on David — forty gathered from four records on 2026-09-02
+and ranked by what each one blocks, and one added 2026-09-08.** Assembled 2026-09-02 from 78 raw call-instances across ten lists: the
 name-collision ledger's §5 and §6 dispositions and its two do-not-average blocks; the
 canon sweep's and the CFD-176 sweep's David lists in `docs/sweep-2026-09-02.md`; and
 the `KILLS.md` pass proposal. Six calls were overtaken by commits on 2026-09-02 and are
-in their own section rather than the list.
+in their own section rather than the list. *(2026-09-08: entry 41 added — the next card's
+scope, which canon §7.6 says is owed before a cut. Forty-one entries, forty open.)*
 
 **This document is where a ruling attaches.** When David rules, the ruling is written
 into the entry in place, dated, with a pointer to the commit that carries it out — the
@@ -25,17 +26,17 @@ tree they were measured at.
 
 ---
 
-# Decisions waiting on David — Skyrail boards, measured at `97f3ecd`, re-verified at `c32ff52`
+# Decisions waiting on David — Skyrail boards, measured at `97f3ecd`, re-verified at `c32ff52`; entry 41 at `c8c4546`
 
-**39 open, 1 closed.** *(Entry 4 RULED and carried out 2026-09-03 at `20bf043`; it
-took the sweep's calls 12 and 13 with it.)* **Seven** block work — a cut, a signature, a built-and-held edit, or a
+**40 open, 1 closed.** *(Entry 41 added 2026-09-08. Entry 4 RULED and carried out 2026-09-03
+at `20bf043`; it took the sweep's calls 12 and 13 with it.)* **Eight** block work — a cut, a signature, a built-and-held edit, or a
 landing that is drafted and ready. The rest split into eleven that publish something
 measurably wrong to whoever reads the file next, fifteen convention-and-register calls
 where measurement genuinely does not decide, and six record corrections that need no
 ruling at all.
 
 **78 raw call-instances** were collected from ten lists across four documents;
-deduplicated to **40 entries**. The heavy collisions were the ones expected — `armed`,
+deduplicated to **40 entries** *(41 with entry 41, added 2026-09-08)*. The heavy collisions were the ones expected — `armed`,
 the lineage membership, the KILLS completeness question, the canon-check retroactivity
 question and the `rim` alias — plus one that was not: the **discharged Seat gate**,
 raised once in the audit and once in the CFD-176 sweep, which measurement widens from
@@ -46,20 +47,23 @@ contingency clause has already fired, and it fires at a board that never passed.
 cannot be signed until that is answered, and the board's whole inherited economy hangs
 off the answer — which is also why #2 and #3 are the same board.
 
-**Line numbers.** Every citation below was re-derived at `97f3ecd` by me. The underlying
+**Line numbers.** Every citation below was re-derived at `97f3ecd` by me *(entry 41's at
+`c8c4546`, 2026-09-08)*. The underlying
 files moved hard on 2026-09-02: `docs/mechanisms-recommitted.md` went 749 to 902 lines
 at `b8d6da3`, `KILLS.md` went 67 to 119 at `b95a9c9`, and `docs/cfd-200-beat.md` is 1,352
 lines against the 1,275 the sweep measured. **Every line number in the sweep's own
 "David's calls" list is stale** — thirteen of fourteen. The drift table is entry 39.
 
-**Context.** `/two-ways-from-here/` (CFD-210) is the one board the hub still marks
-*"live — new sitting, not yet sat"* (`public/index.html:31`) and the one that kept
-*"David sits first."* through `079b2bd`. A sit there is an action, not a decision, so it
-is not numbered below — but most of Tier 3 is waiting behind it.
+**Context.** `/two-ways-from-here/` (CFD-210) passed its sit on 2026-09-02 (`c1c41df`), and at
+`c8c4546` the hub marks it *"live — passed its sit 2026-09-02"* (`public/index.html:37`); no
+board is marked not-yet-sat *(superseded 2026-09-08 — this read "the one board the hub still
+marks 'live — new sitting, not yet sat' (`public/index.html:31`) and the one that kept 'David
+sits first.' through `079b2bd`", true at `97f3ecd`)*. The sit was an action, not a decision, so
+it was not numbered below — but most of Tier 3 was waiting behind it.
 
 ---
 
-# Tier 1 — Blocks a cut, a signature, or a built edit (8; **7 open**, entry 4 closed 2026-09-03)
+# Tier 1 — Blocks a cut, a signature, or a built edit (9; **8 open**, entry 4 closed 2026-09-03, entry 41 added 2026-09-08)
 
 ## 1. CFD-200's parent, after the storm stopped unpassed
 
@@ -324,6 +328,174 @@ does not decide it.
 
 **Cost of getting it wrong.** A signed canon commitment silently expires, or a future
 sitting inherits a stake nobody planned.
+
+---
+
+## 41. The next card's SCOPE — four questions, written before it is cut
+
+*(Added 2026-09-08 at `d107078`, citations re-derived at `c8c4546`. Numbered by arrival, placed
+by tier: it blocks a cut. Every cite names its file: beat is `docs/cfd-212-still-standing-beat.md`,
+canon is `docs/mechanisms-recommitted.md`, sim is `sit/still-standing/sim.js`.)*
+
+**Question.** Four parts, one ruling.
+
+1. **Scope.** Does the next card test **(a)** *whether forgone options carry weight at all*,
+   **(b)** *whether THIS lineage's forgone options — one tap at 64%, inside a two-branch fork —
+   carry weight*, or **(c)** *whether a branch priced 8.96 against banking's +1 does*?
+2. **Does your "fourth fork" carry geometry?** Canon §7.6 forbids repeating the QUESTION and
+   routes it to a different SHAPE; it says *"a fourth board"* (canon `:1003`), not a fork. Your
+   sentence at beat `:201-204` ends *"rather than a fourth fork."* Is that the same prohibition in
+   fewer words, or an added one on the board's geometry? Under the geometric reading a
+   keeps-costing shape would have to attach its cost to something other than a fork's forgone
+   branch, and whether such a shape exists is not something the record settles.
+3. **Where is the line between a branch that keeps costing and a decay clock?** The outcome
+   that fired was pre-registered to route to *"Whether a branch has to keep costing something
+   to stay real"* (beat `:1197`, whole below). The same beat refuses a timer, decay or expiry on
+   the forgone branch (beat `:1064`) and kills anything that moves with wall time (beat
+   `:1141-1142`). Is the line *wall time versus player action* — a cost the player's own sends
+   put up (R6) rather than one that arrives while they are away (R3) — and is it yours to draw
+   here or the beat's to argue?
+4. **Is a rendered refusal an acceptable outcome?** If no *keeps costing* shape clears R2, R3
+   and R7, may the next beat end by recording that (b) has no board in this lineage, rather
+   than by cutting one anyway? Asked, not taken.
+
+**What the document says.** Canon §7.6, canon `:1018-1024`, whole:
+
+> *"So the routing owes a scope, not just a question. Do forgone options carry weight? is a
+> general claim; do THESE forgone options — one tap, 64%, inside a two-branch fork — carry
+> weight? is what any board in this lineage can actually put under test. Write which one the
+> next card is answering, before it is cut. A board that measures the narrow thing and reports
+> the general one is the failure §7.5 exists to prevent, arriving one level up: not a sit read
+> against the wrong split, but a whole card read against the wrong question."*
+
+Its obligations, canon `:1002-1006`, whole:
+
+> *"When the obstruction moves and the read does not, say so in the record and stop. Do not
+> cut a fourth board at the same question. §7.4 already forbids repeating the KIND of a failed
+> recut; this forbids repeating the QUESTION across cards. Route the underlying question to a
+> different shape. The read was an instrument for something; that something survives the
+> instrument's retirement."*
+
+Canon `:969`: *"It is not a count, and phrasing it as a count would be the mistake."* The trap,
+your words at canon `:1013-1016`, whole: *"we don't know whether the read never fires because
+forgone options are weightless, or because this lineage's forgone options are one tap at 64%.
+Those want different boards, and the temptation on the next card will be to answer the first
+question with a board that can only answer the second."*
+
+The beat. Your three scopes, beat `:133-135`, whole:
+
+> *"it says forgone options didn't carry weight in this sitting. It doesn't yet say whether
+> that's a property of forgone options generally, or of this fork, or of a fork whose branches
+> were 8.96 against banking. One sit, one player, one fork."*
+
+Your stopping sentence, beat `:201-204`, whole: *"Three cards have now reached for could-and-did
+and none have gotten it. That's enough to stop reaching. The question it routes to, whether
+forgone options carry weight at all, is a different question and should get a different shape
+rather than a fourth fork."* Outcome 2's row, beat `:1197`, whole:
+
+> *"He plays on and never mentions it, because it stopped mattering. David's words above. |
+> Not the same as not noticing. A forgone option that is fully visible and simply irrelevant is
+> a finding about whether forgone options carry weight at all. | A different question, and
+> explicitly NOT a fourth attempt at this read. Whether a branch has to keep costing something
+> to stay real — a new card, not a recut."*
+
+So the row's own middle column reads outcome 2 as a finding about **(a)**, and its destination
+is a fourth thing — a design question about what would make a forgone branch weigh — not any of
+the three scopes. The refused row at beat `:1064` reads, as a row: **A timer, decay or expiry on
+the forgone branch** | **REFUSED** — a decay clock wearing a decision's clothes | R2 / R3 / R4.
+The kill line, beat `:1141-1142`, whole: *"Anything moves with wall time. A branch expires,
+decays, or times out. `wait()` returns anything but false."* The confound, under *What is not
+measured*, beat `:1324-1326`, whole: *"Whether the forgone branch's words land at all, since they
+are seen only on a tap of that place and the walk is what distributes them. No board in this
+lineage has tried to make a notice carry a past-tense fact for the length of a sitting."* And
+beat `:1268`: *"Do not read outcome 2 off that line."* — the lose-at-the-opening-arm line,
+registered NOT EXERCISED and a RE-SIT CONDITION at beat `:1264-1267`.
+
+On dates: the beat's `:199-213` landed at `685bf3f` (2026-09-04) and canon §7.6 at `5eadc7a`
+(2026-09-08), from the rulings of 2026-09-04. That canon is the later *text* is measured; that
+it is the later *ruling* is my inference from §7.6 quoting your reasoning about the count
+(canon `:969-973`).
+
+**What source says.** Driven at `c8c4546` — sim through `createBoard` with forced dice, the
+harness of `test/still-standing.test.js:165-201`; `S` send, `+` home paid, `-` home short, `C`
+bank, `P` press on. The last column is the forgone marker the board posts, `notice().blocked`,
+on the consist and on Mosswake:
+
+| line | `stopped` | `endedCold` | `pressLost` | `endedSpent` | marks | live | forgone marker |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `S-C` — bank | false | false | false | false | 2 | `mosswake:SEND. 64.` | consist: *She was not rolled out.* |
+| `S-CS+` — bank, then play on | false | false | false | false | 14 | `mosswake:SEND. 64.` | consist: *She was not rolled out.* |
+| `S-P+` — press on, paid | false | false | false | false | 15 | `mosswake:SEND. 64.` | none |
+| `S+S-P-` — press on, lost, after a paid run | false | false | true | false | 13 | `mosswake:SEND. 64.` | mosswake: *Still a neighbor. Nothing to collect.* |
+| `S+S-P-S+` — and play on | false | false | true | false | 25 | `mosswake:SEND. 64.` | mosswake: *Still a neighbor. Nothing to collect.* |
+| `S-P-` — press on, lost, at the OPENING arm | true | false | true | true | 1 | none | consist: *The runs took the stake. What is left will not cover another.* · mosswake: *There is nothing left to put up for a run.* |
+| `S-CS-` / `S-P+S-` — second staked short run | true | true | false | false | 0 / 13 | none | mosswake: *The larder could not cover it twice.* |
+
+So on C14 neither branch of the fork ends the sitting; the only stop at the fork is the
+opening-arm floor, `endedSpent`, which is why beat `:1264-1269` registers that line as not
+exercised. **Both costing branches leave a forgone marker standing through play** — the bank
+on the consist, the lost press-on on Mosswake (sim `:165`, `MOSS_NOTHING`) — and the paid
+press-on leaves none, because nothing was forgone (beat `:373-376`). The sim's own header says
+so, sim `:24-26`, whole: *"short -> THE SITTING CONTINUES, and the ending is visibly gone. No
++1, no remembering, no brightening. The forgone Collect. stays at Mosswake. NOT endedCold — that
+is bound to an ending."* The press-on is unstaked: `commitPress` writes `provisions: 0, toll: 0`
+at sim `:580-581` (beat `:978` cites `:410-411`, which is the `endedSpent` notice — the pointer
+is stale, the claim is not). A stake is 2 marks put up on every staked send (sim `:118-119`,
+`:184`), returned only by a paid run — recurring, and priced by the player's action, not by
+time. Exposure to a forgone branch is *"by the walk, not by the render"* (beat `:482-483`): its
+words are seen on a tap of that place and nowhere else (beat `:474-475`). On the parent, for
+contrast, `S-P-` ends cold and `S-C` stops — the obstruction §7.6's table records C14 removing
+(canon `:986-991`).
+
+The rules part 3 runs into. **R2**, canon `:25-28`: *"The antagonist is the sink. Upkeep is
+refused by name. "The usual invention is upkeep: fuel that burns, parts that wear, a base that
+decays, a standing bill the player logs in to pay… This game does not have to invent the sink,
+because the world already is one." (Economy)"* **R3**, canon `:30-34`: *"Holding is cheap to free.
+Tended ground does not decay. "Holding is cheap to free, because tended ground does not decay
+and an absent player loses nothing… A treadmill makes the player run to stay in place,
+refilling and repairing and re-paying to hold a line that erodes the moment they stop. This
+game refuses that." (Economy)"* **R6**, canon `:53`: *"Stakes live in the run and the in-progress,
+never the secured home."* **R7**, canon `:63`: *"Fuel is inflection, not a standing bill."*
+
+**Blocked.** The next card. The handoff,
+`C:\dev\skyrail\docs\handoff\2026-08-02-orchestrator-kickoff.md:275-276`: *"Nobody's until the
+scope above is written down. Do not cut a fourth fork."* — the handoff's *fourth fork* (there
+and at its `:188`) is the orchestrator restating beat `:204`, not a second ruling. *(The Linear
+MCP is unauthorised in the session that wrote this, so the card's issue number is asked for at
+cut time, never derived.)*
+
+**Orchestrator's read.** Mine, part by part, with the half that is yours named each time.
+
+- **(1).** (a) is not a scope any board *in this lineage* can test — canon `:1020` in those
+  words — so a card scoped to (a) is the *different shape* your `:201-204` routes to, not a
+  board in this line. That much the evidence decides; whether that shape is a board at all, or
+  the accumulation of cards, is yours. (c) is (b) with the price moved — a real variable, and a
+  second one before the first is measured; not first. (b) is what a board here can test. Beat
+  `:1197`'s destination is a design answer to *what would make (b) true*, and the confound at
+  beat `:1324-1326` says (b) has not yet been tested here at all — if the forgone branch's
+  words never landed, the next card owes exposure before it owes weight. I would write (b) as
+  the scope and the confound as the first thing the beat has to show. The evidence does not
+  decide that against *leave forgone options and test something else*; yours.
+- **(2).** Canon is the later text and says *board* where the beat says *fork*; I read your
+  sentence as the same prohibition in fewer words. That is a reading of your sentence, and it
+  is yours to confirm or deny.
+- **(3).** The record draws its line on wall time (beat `:1141-1142`, `:1064`) and on the home
+  (R6); the beat has never argued that boundary against R2, R3, R6 and R7 by name, and must,
+  before a tile is placed. Whether the line I have described is the one you meant is yours.
+- **(4).** Yours entirely. I would ask for it, because a card cut to avoid recording a refusal
+  is a card read against the wrong question.
+
+**Cost of getting it wrong.** A card that measures (b) and reports (a) is the failure canon
+names at `:1021-1024`, one level up. A *keeps costing* shape cut without the R2/R3/R6/R7
+argument is a decay clock with a new name, and the beat has refused one. Under the geometric
+reading of part 2 a fork is forbidden outright; under the other, only the question is. What
+the record makes binding on the next beat regardless: the obstruction named in the routing
+column (canon `:999-1001`); the null registered and what it would mean (canon `:910-912`);
+§7.4's positive form — ask what he did, and whether he can name what it bought (canon `:666`,
+beat `:1289-1290`); and a manifest that records bytes, not its own status (canon §7.7, handoff
+`:205-206`). Two things this beat adds and I would carry: a NOT-EXERCISED / re-sit registration
+of the kind at beat `:1264-1267`, and the confound at beat `:1324-1326` answered before weight
+is claimed.
 
 ---
 
@@ -1143,8 +1315,9 @@ already set in the tree, and five beats are on the other side of it.
 
 # Measurement provenance, and one thing that moved under me
 
-Every quotation and every line number above was re-derived by me from the working tree,
-not copied from a record. Read-only throughout: `git show`, `git log`, `grep`, `awk` and
+Every quotation and every line number above — entry 41's excepted, which were derived at
+`c8c4546` on 2026-09-08 with scratch under `C:\tmp\scope\` — was re-derived by me from the
+working tree, not copied from a record. Read-only throughout: `git show`, `git log`, `grep`, `awk` and
 `sha256sum` only; no write to either repository, no git write, no server, no browser, no
 deploy. Scratch under `C:\tmp\decisions\`.
 
