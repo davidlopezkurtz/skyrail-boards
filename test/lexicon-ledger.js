@@ -831,19 +831,68 @@ const WALK_LEGENDS = {
 };
 
 // ---------------------------------------------------------------------------
-// DOM ROWS. Bounded to the three the brief names. Each token declares, per
+// DOM ROWS. NO COUNT IS WRITTEN IN THIS COMMENT, deliberately: it read
+// "Bounded to the three the brief names" while fourteen rows sat under it,
+// one landing later. The loop reads Object.keys; nothing here needs a figure,
+// and a typed one goes stale the day it is typed. Each token declares, per
 // derived set (ids / toggles / classNames), exactly the boards that carry it
 // and what it means there; the test prints every board's derived sets on a
 // mismatch. The instrument sees `id="..."`, `classList.toggle("...")` and the
 // value literals of `.className = ...` — nothing else (see lexicon-derive).
 // ---------------------------------------------------------------------------
 
+// SCENERY PARTS ARE SPLIT BY SELECTOR SHAPE, and that is why three of the
+// rows below look narrower than the finding that produced them. For hearth,
+// stack, glass and haul the desk gives the part a page-unique id (#hearth)
+// and the city a class scoped inside a named building (#foundry .hearth), so
+// a rule copied either way matches nothing and reports nothing.
+//
+// THE SHAPE IS UNIFORM. THE MEANING IS NOT, and this comment used to say it
+// was: it read that all four *name the same world object on both lineages*,
+// which the rows directly under it refute on three of the four (adversarial
+// critic, 2026-09-08). Only `glass` fits — #glass in the desk's #town and
+// `.glass` inside the city's #halt / #mosswake are the one glasshouse.
+// `hearth` INVERTS: unconditional town scenery on the desk, a state indicator
+// hidden until #foundry.live on site. `stack`'s desk half is not a world
+// object at all, it is the whole control column. `haul` has THREE referents
+// and one of them is herbs. Read the row, not this comment, for what a token
+// means on a board; what this comment governs is the SHAPE, which is why the
+// four are one comment and not four rows.
+//
+// The exception is dawnspur-site, a CITY board that takes the DESK shape for
+// scaffold / works / hearth / bill — so halt and site, near line-for-line
+// mirrors inside ONE lineage, differ by a single `.` versus `#` under an
+// identical state-class half (#foundry.sited, #foundry.live), and no seam
+// warning can fire. `glass` is the same shape plus a residue: line and storm
+// carry a dead `#glass` rule byte-identical to dispatch's while declaring no
+// element (superseded by the graded #greenhouse), so re-adding id="glass"
+// there would silently reactivate the flat-box geometry. Only the id halves
+// can be rows; the class halves are UNGRADED comments inside them until
+// deriveDom grows an attrClasses set. (docs/sweep-2026-09-02.md, "The DOM
+// namespace sweep — 2026-09-08", finding 18 — classes CLS-5 + ids IDS-5 + the
+// classes refuter's M4, built as ONE comment rather than four rows, on that
+// refuter's correction that the danger is halt-vs-site and not the seam.)
 const DOM_ROWS = {
   lit: {
     adjudication: "MEDIUM",
     by: "C13 delta review (recorded under the heading Delta at 796d9a2 in docs/name-collisions-audit-2026-09-01.md) — the report's #6 shape: a world-state class on one board, an affordance class on another. A `lit` rule copied from two-ways onto halt would light the lamp for a can-do",
     tokens: {
       lit: {
+        // UNGRADED, recorded so the next sweep does not re-find it: the Halt's
+        // lamp is built from spans under THREE SIMULTANEOUS RENAMES between halt
+        // and two-ways — host #lamp -> #halt, parts .post / .arm -> .lamp-post /
+        // .lamp-arm, lighting class lit -> remembered. `.globe` alone keeps its
+        // name, so a copied `#lamp.lit .globe` looks half-right and matches
+        // nothing. Static classes; this instrument cannot see them.
+        // (docs/sweep-2026-09-02.md, "The DOM namespace sweep — 2026-09-08",
+        // finding 15, refuter-only.)
+        //
+        // DO NOT extend this row with the spoken word `dark` (finding 22 of the
+        // same record). The
+        // desk's primary `dark` is the Rustfall card's WORLD-STATE class
+        // (`!c.sendable`, a route constant on all three desk pages), which AGREES
+        // with the city's "Rustfall. Dark."; the affordance sense is two aria
+        // strings on storm alone, and storm-local is not the seam.
         toggles: {
           "dawnspur-halt": "THE LAMP IS ON — world state (board.lampLit).",
           "two-ways-from-here": "this place has a live can-do right now — affordance (notice(place).canDo !== null).",
@@ -882,7 +931,7 @@ const DOM_ROWS = {
       },
       "at-halt": {
         classNames: {
-          "mosswake-loop": "the consist at the halt BEFORE the send — the live pre-home class. (dice, herbs, they-remember and two-ways carry a dead `#consist.at-halt` CSS rule their scripts never assign; a rule is not in this instrument.)",
+          "mosswake-loop": "the consist at the halt BEFORE the send — the live pre-home class. (FIVE boards carry a dead `#consist.at-halt` CSS rule their scripts never assign, not four — dice:300, herbs-larder:271, still-standing:305, they-remember:278, two-ways:302, re-grepped 2026-09-08; still-standing:434 assigns only at-mosswake or home. A rule is not in this instrument, which is why five dead copies of it are prose here and not a row.)",
         },
       },
     },
@@ -904,6 +953,14 @@ const DOM_ROWS = {
         },
       },
       consist: {
+        // On six pages this id is inert scenery bound to nothing. On site it
+        // BECOMES A CONTROL, firing commitLand() only after commitSite, because
+        // asButton() replaces the <div> with a <button> inside paint(). It is the
+        // only id in the corpus whose node is swapped mid-sitting — replaceChild
+        // is observed on no other page — so a textual `bindings` set would record
+        // it as scenery and be wrong. Ungraded either way: deriveDom reads no
+        // handler. (docs/sweep-2026-09-02.md, "The DOM namespace sweep — 2026-09-08",
+        // wiring W3, agreed.)
         ids: {
           "dawnspur-halt": "the consist element", "dice-at-the-places": "the consist element",
           "herbs-larder": "the consist element", "mosswake-loop": "the consist element",
@@ -913,6 +970,267 @@ const DOM_ROWS = {
       },
     },
   },
+  // ---------------------------------------------------------------------
+  // THE 2026-09-08 DOM NAMESPACE SWEEP — eleven rows, two labelled sets.
+  // Recorded in docs/sweep-2026-09-02.md, under the section heading "The DOM
+  // namespace sweep — 2026-09-08" — four sweeper/refuter pairs (ids, classes,
+  // wiring, text) over all thirteen sit boards. Every board list is
+  // re-derived by the loop below and carried ZERO drift at landing; every
+  // meaning sentence was re-checked against the board's own index.html or
+  // DRIVEN from createBoard({fresh:true}) before landing, and the five that
+  // did not survive that check are amended in place and say so.
+  //
+  // Rows 1-7 are AGREED — the sweeper found it and a refuter confirmed both
+  // the fact and the disposition. Rows 8-11 (live, haul, stack, go) are
+  // REFUTER-ONLY: found by one reader, and second-read 2026-09-08 by the
+  // adversarial critic: board lists and meanings verified by driving; would
+  // land. The label stays REFUTER-ONLY — a second read is not a second
+  // finder.
+  //
+  // ONLY THE THREE DERIVED SETS ARE ROWS. deriveDom() reads id="...",
+  // classList.toggle("...") and .className = "..." literals and nothing else,
+  // and the loop iterates exactly ["ids", "toggles", "classNames"]. A row
+  // keyed on any other set — a static class= attribute, classList.add, a CSS
+  // selector, an aria-label, a data-* value — WAS silently skipped and passed
+  // green as decoration. That is now graded: the test beside the drift loop
+  // refuses any set key but those three, by row / token / key. It was proved
+  // red-first on the adversarial critic's own probe row, which declared
+  // `bindings` and `cssClasses` under a `data-route` token and passed the
+  // whole guard green. So where a finding's other half lives outside the
+  // instrument it is a comment marked UNGRADED inside the row, and findings
+  // living entirely outside it are in the record and not here: a row that
+  // cannot go red is not a guard.
+  // ---------------------------------------------------------------------
+  terrace: {
+    adjudication: "MEDIUM",
+    by: "docs/sweep-2026-09-02.md, \"The DOM namespace sweep — 2026-09-08\", finding 4 (ids IDS-1 + wiring W5) — AGREED on the fact; sweeper HIGH, refuter MEDIUM; MEDIUM carried because the discriminator is structural (.fill / .food / a <button>) and the city governing sentences about the terrace all read correctly in the city sense. A worker's read, not a ruling",
+    tokens: {
+      terrace: {
+        // Three element KINDS under one id across the seam, and on halt the
+        // element is a CONTROL: the only #terrace anything is bound to.
+        ids: {
+          "dawnspur-line": "a FIVE-STEP LEVEL GAUGE of board.reserve (opens 4; 0..4 all reachable by carrying) — a <div> wrapping <span class=\"fill\">, height from the rs0..rs4 ladder set by classList.toggle(\"rs\" + i, ...), a computed class this instrument cannot see. Not interactive.",
+          "dawnspur-storm": "the same five-step reserve gauge as line. Not interactive.",
+          "dawnspur-site": "a ONE-BIT food-present marker (board.foodOnTerrace, opens true) — a <div> wrapping <span class=\"food\">, shown by #terrace.has-food. Not interactive; board.postNotice does not exist here.",
+          "dawnspur-halt": "an INTERACTIVE PLACE — <button type=\"button\"> bound to postNotice(\"terrace\"), carrying the same has-food bit. The only board with this id where postNotice is a function; notice(\"terrace\").blocked reads \"Carry, tend, UP — a held island is not a fuel bill.\", refusing the desk's verbs by name.",
+        },
+      },
+    },
+  },
+
+  platform: {
+    adjudication: "MEDIUM",
+    by: "docs/sweep-2026-09-02.md, \"The DOM namespace sweep — 2026-09-08\", finding 7 (ids IDS-3) — sweeper and refuter agreed MEDIUM/SILENT; a worker's read, not a ruling",
+    tokens: {
+      platform: {
+        // px on the desk (a surface #stores is positioned against), percent
+        // and pointer-events:none on site and halt (scenery), ABSENT on the
+        // six map boards, which split the ground into platform-halt /
+        // platform-moss. site and halt also carry a distinct #ground (the
+        // soil block) the desk does not — four spellings of one fiction.
+        ids: {
+          "dawnspur-dispatch": "the desk's full-width ground strip inside #town, px (height 14px). Scenery here.",
+          "dawnspur-line": "the desk's full-width ground strip, px (height 30px) — LOAD-BEARING: #stores is its next sibling and sits on it (the comment at :159 says so).",
+          "dawnspur-storm": "as line — the surface #stores sits on.",
+          "dawnspur-site": "the HALT-END ground only — left:0; right:22%; height 14%; percent units; pointer-events:none; aria-hidden. Scenery, beside a separate #ground.",
+          "dawnspur-halt": "the HALT-END ground only — right:22%, height 12%; pointer-events:none; aria-hidden. Scenery, beside a separate #ground.",
+        },
+      },
+      "platform-halt": {
+        ids: {
+          "mosswake-loop": "the halt end of a TWO-ENDED ground; #platform is absent on this board.",
+          "herbs-larder": "as mosswake.", "they-remember": "as mosswake.",
+          "dice-at-the-places": "as mosswake.", "two-ways-from-here": "as mosswake.",
+          "still-standing": "as mosswake (inherited from two-ways; membership derived at c8c4546, meaning not swept).",
+        },
+      },
+      "platform-moss": {
+        ids: {
+          "mosswake-loop": "the mosswake end of the two-ended ground.",
+          "herbs-larder": "as mosswake.", "they-remember": "as mosswake.",
+          "dice-at-the-places": "as mosswake.", "two-ways-from-here": "as mosswake.",
+          "still-standing": "as mosswake (membership derived, meaning not swept).",
+        },
+      },
+    },
+  },
+
+  hearth: {
+    adjudication: "MEDIUM",
+    by: "docs/sweep-2026-09-02.md, \"The DOM namespace sweep — 2026-09-08\", finding 5 (ids IDS-4, with the refuter's two corrections) — agreed MEDIUM/SILENT; a worker's read, not a ruling",
+    tokens: {
+      hearth: {
+        // The id half, graded. UNGRADED, recorded so it is not re-found: the
+        // same word is a static CLASS on halt (`#foundry .hearth`, shown by
+        // `#foundry.live .hearth`) and on the six map boards including
+        // still-standing (`#halt .hearth`) — site is the ODD BOARD OUT, the
+        // only page whose foundry parts (scaffold, works, hearth, bill) are
+        // ids rather than classes. Also: dispatch/line/storm have the element
+        // and do NOT export the name (a frozen TOWN constant); heat (opens
+        // "off") and scale (opens "held") export it and have NO element.
+        ids: {
+          "dawnspur-dispatch": "unconditional town scenery — an always-visible <div> in #town, painted from frame one. board.hearth is undefined here.",
+          "dawnspur-line": "as dispatch.",
+          "dawnspur-storm": "as dispatch.",
+          "dawnspur-site": "A STATE INDICATOR, not scenery — a <span> INSIDE the #foundry button, display:none until #foundry.live, i.e. until board.foundry (opens false). Hidden at frame one, the opposite of the desk; its visibility IS the claim 'the foundry has been rebuilt'.",
+        },
+      },
+    },
+  },
+
+  step: {
+    adjudication: "MEDIUM",
+    by: "docs/sweep-2026-09-02.md, \"The DOM namespace sweep — 2026-09-08\", finding 3 (classes CLS-2, independently re-found by the ids refuter) — agreed MEDIUM/SILENT; the ledger's `home` shape a third time; a worker's read, not a ruling",
+    tokens: {
+      step: {
+        // An element on one lineage, a state class on the other, and the
+        // types invert the failure: board.step is a STRING whose opening
+        // "off" is truthy, board.heatStep a NUMBER opening 0, so a handler
+        // ported either way fails silently in the ON direction. The city's
+        // element for the same fiction is #heat-step, a different id.
+        ids: {
+          "dawnspur-heat": "the shuttle's STEP — a greenhouse sprite whose states are the classes `out` and `gone`, assigned wholesale (`stepEl.className = ...`) from board.step, a STRING: \"off\" -> (commitWarm) \"out\" -> (wait) \"gone\". DRIVEN 2026-09-08 from createBoard({fresh:true}): commitWarm() is REFUSED until phase is \"warm\", so the reachable path is commitGoods -> commitB -> commitHold -> commitWarm -> wait().",
+        },
+        toggles: {
+          "dawnspur-halt": "the heat-step HAS BEEN BUILT in town — board.heatStep >= 1, a NUMBER opening 0, set to 1 by commitCast(). Carried on #ground; reveals #heat-step.",
+          "dawnspur-site": "as halt — the built heat-step (commitCast() sets heatStep 1).",
+        },
+      },
+    },
+  },
+
+  dim: {
+    adjudication: "MEDIUM",
+    by: "docs/sweep-2026-09-02.md, \"The DOM namespace sweep — 2026-09-08\", finding 2 (classes CLS-1) — agreed MEDIUM/SILENT; the refuter moved the damage to the desk side (a live affordance lost) and showed mossDim has no writer on any city board; a worker's read, not a ruling",
+    tokens: {
+      dim: {
+        // STYLED on the desk (#ladder.dim dims #treach/#tarmed/#thumb),
+        // UNSTYLED on every city board that applies it — no `.dim` rule on
+        // any of the six, and mossDim is an immutable constant `true`, so the
+        // class is on at frame one, paints nothing, and never changes.
+        toggles: {
+          "dawnspur-dispatch": "the MUSTER ladder is OUT OF REACH (musterReach === 0; opens 1) — an affordance, styled.",
+          "dawnspur-line": "as dispatch — affordance, styled.",
+          "dawnspur-storm": "as dispatch — affordance, styled.",
+          "mosswake-loop": "the Mosswake glasshouse sits back as SCENERY (board.mossDim, constant true) — world dressing, no rule on this page; applied at frame one and paints nothing.",
+          "herbs-larder": "as mosswake — scenery, no rule, no writer.",
+          "they-remember": "as mosswake — scenery, no rule, no writer.",
+          "dice-at-the-places": "as mosswake — scenery, no rule, no writer.",
+          "two-ways-from-here": "as mosswake — scenery, no rule, no writer.",
+          "still-standing": "as mosswake — toggled at :427 from mossDim (opens true), no `.dim` rule, no writer. Verified at c8c4546 by this synthesis; the sweeps predate the board.",
+        },
+      },
+    },
+  },
+
+  gone: {
+    adjudication: "LOW",
+    by: "docs/sweep-2026-09-02.md, \"The DOM namespace sweep — 2026-09-08\", CLS-4 — agreed, and NOT a numbered finding: the record files it under 'NONE, recorded as results, not findings' (the record's finding 10 is /dawnspur-line/'s spoken 'stake undefined', another surface entirely). One meaning on both lineages; recorded because two of its six sites are UNREACHABLE and the obvious 'fix' to halt is wrong; the refuter enumerated both full state spaces and agreed. A worker's read, not a ruling",
+    tokens: {
+      gone: {
+        toggles: {
+          "dawnspur-dispatch": "the line train is AWAY (board.away) — #train.gone { display: none }. LIVE.",
+          "dawnspur-line": "as dispatch. LIVE.",
+          "dawnspur-storm": "as dispatch. LIVE.",
+        },
+        classNames: {
+          "dawnspur-heat": "the shuttle's step has gone — #step.gone { opacity: 0 }. LIVE.",
+          "dawnspur-site": "the train is neither inbound nor landed — UNREACHABLE: commitLand() is the sole writer of both fields and sets inbound=false, landed=true together (board strictly linear, 4 states), so the rule #train.gone is DEAD.",
+          "dawnspur-halt": "as site, UNREACHABLE — and this page carries NO .gone rule. RE-DERIVED 2026-09-08 by exhaustive drive from createBoard({fresh:true}) over postNotice(lamp|terrace|foundry|consist) + commitLight/Site/Land/Cast/Posted to depth 9: FIVE world states, strictly linear (that key excludes the posted notice; including it gives 25), and (inbound, landed) reaches only [true,false] and [false,true] — never the [false,false] the gone branch needs. Do not add one: the branch cannot fire; do not delete the branch without re-reading site's identically dead but styled twin.",
+        },
+      },
+    },
+  },
+
+  foundry: {
+    adjudication: "MEDIUM",
+    by: "docs/sweep-2026-09-02.md, \"The DOM namespace sweep — 2026-09-08\", finding 6 (wiring W4) — agreed MEDIUM/SILENT; intra-CITY (halt vs site), permitted the way the ledger permits ranked intra-lineage rows. A worker's read, not a ruling",
+    tokens: {
+      foundry: {
+        // Same id, same tag, same event, two verb CLASSES. UNGRADED half: the
+        // binding itself — deriveDom reads no handler. A site->halt copy runs
+        // (halt exports commitSite), returns false from the opening (the
+        // lamp gates it), mutates nothing, throws nothing: a dead button.
+        // halt->site throws (site exports no postNotice). NOT a double bind
+        // on site: asButton returns early because :232 is already a <button>.
+        ids: {
+          "dawnspur-site": "a COMMIT control — tap fires commitSite(\"foundry\") directly; one tap moves the world. Also the host of the id'd parts #scaffold / #works / #hearth (:233-235; the button closes at :236) — but NOT #bill, which sits at :238 inside <div id=\"frame\"> with the two class=\"pane\" spans. Re-read 2026-09-08; the row said #bill was inside the button and it never was.",
+          "dawnspur-halt": "a SELECT control — tap fires postNotice(\"foundry\") only; the commit is a second tap on #notice-do -> commitPosted(). Host of the class'd parts .stack / .hall / .mouth / .scaffold / .hearth / .bill (:307-312) AND of the two class=\"pane\" spans #pane-a / #pane-b (:313-314) — which on site are not the foundry's at all: they hang off #frame beside #bill. halt has no #frame.",
+        },
+      },
+    },
+  },
+  live: {
+    adjudication: "MEDIUM",
+    by: "docs/sweep-2026-09-02.md, \"The DOM namespace sweep — 2026-09-08\", finding 11, refuter-only (classes refuter; also flagged from the wiring refuter's side) — intra-CITY; two unrelated meanings eleven lines apart in one paint() on site, anti-correlated over its full 4-state space. Read by one refuter and second-read 2026-09-08 by the adversarial critic: board lists and meanings verified by driving; would land; a worker's read, not a ruling",
+    tokens: {
+      live: {
+        toggles: {
+          "dawnspur-halt": "WORLD STATE only — the foundry is working (board.foundry); rules #foundry.live .hall/.hearth/.mouth. No selection class on this page.",
+          "dawnspur-site": "TWO MEANINGS on one page: on #foundry, WORLD STATE (board.foundry, :294); on #frame, a SELECTION RING (livePlace() === \"frame\", :305) whose declaration is byte-identical to the `on` ring at :127. Opening: foundry selected and NOT working; after CAST: working and NOT selected.",
+        },
+        classNames: {
+          "dawnspur-site": "the same SELECTION RING on #train, appended as \" live\" to trainEl.className when livePlace() === \"train\" (:317-318).",
+        },
+      },
+    },
+  },
+
+  haul: {
+    adjudication: "MEDIUM",
+    by: "docs/sweep-2026-09-02.md, \"The DOM namespace sweep — 2026-09-08\", finding 12, refuter-only (ids refuter) — three meanings across the seam, the third a different cargo; the sim fields haul / haulOnConsist / herbsOnConsist are disjoint so the name guard sees three names and not the one shared DOM token. One reader, and second-read 2026-09-08 by the adversarial critic: board lists and meanings verified by driving; would land; a worker's read, not a ruling",
+    tokens: {
+      haul: {
+        // The id half, graded. UNGRADED: `.haul` is a static CLASS span inside
+        // #consist on the six map boards, shown by `#consist.hauled .haul` —
+        // toggled from haulOnConsist on dice and two-ways (THE VEHICLE CARRIES
+        // A HAUL) and from herbsOnConsist on mosswake, herbs-larder and
+        // they-remember (the element named haul denotes HERBS; herbs-larder
+        // ships `class="home hauled"` at frame one). still-standing:401 also
+        // carries the span; MEASURED 2026-09-08, its driver is haulOnConsist, as
+        // on dice and two-ways.
+        ids: {
+          "dawnspur-heat": "a <span> INSIDE the Mosswake-Loop DESTINATION button #destB, shown by #destB.has-haul (board.haul, a boolean opening false): A HAUL IS WAITING AT THAT DESTINATION.",
+          "dawnspur-scale": "as heat.",
+        },
+      },
+    },
+  },
+
+  stack: {
+    adjudication: "MEDIUM",
+    by: "docs/sweep-2026-09-02.md, \"The DOM namespace sweep — 2026-09-08\", finding 13, refuter-only (ids refuter) — a layout container on one lineage, a chimney on the other; MEDIUM on sentence risk (\"the stack\" is a natural beat noun), LOW on copied-rule consequence. Absent from ROWS / UNADJUDICATED / DOM_ROWS because it is not a sim name anywhere. One reader, and second-read 2026-09-08 by the adversarial critic: board lists and meanings verified by driving; would land; a worker's read, not a ruling",
+    tokens: {
+      stack: {
+        // UNGRADED half: `.stack` is a static CLASS — the foundry CHIMNEY,
+        // absolutely-positioned building art under `#foundry .stack` on halt
+        // and `#halt .stack` on the six map boards (still-standing:373 too).
+        ids: {
+          "dawnspur-dispatch": "the board's WHOLE CONTROL COLUMN — a flex column (display:flex; flex-direction:column) holding #ladder (itself #lrow1 -> #muster-word / #roster-read / #muster-price, plus the #track slider) AND #cards, the four route cards. UI, not world. The sweep's sentence enumerated only the ladder subtree and omitted #cards, the board's primary control; corrected here after reading dispatch:209-222.",
+          "dawnspur-line": "as dispatch, with a THE DESK grouplabel first and the CARRY / UP cards inside #cards.",
+          "dawnspur-storm": "as dispatch, with a THE DESK grouplabel, #muster-say inside #ladder, the #ranger card as a direct child of #stack, and CARRY / TEND / UP inside #cards.",
+        },
+      },
+    },
+  },
+
+  go: {
+    adjudication: "MEDIUM",
+    by: "docs/sweep-2026-09-02.md, \"The DOM namespace sweep — 2026-09-08\", finding 14, refuter-only (wiring refuter) — intra-DESK; one id, one event, two disjoint verb dispatchers, and a copied dispatcher chain animates the shuttle with the world unmoved (4 of 4 copy cells: guard passes, no commit, lerpTo entered) — the decorative motion CLAUDE.md forbids. One reader, and second-read 2026-09-08 by the adversarial critic: board lists and meanings verified by driving; would land; a worker's read, not a ruling",
+    tokens: {
+      go: {
+        // UNGRADED half: the dispatch chain and the pad->pick vocabulary that
+        // feeds it — #goodsA sets pick \"goods\" on heat and \"carry\" on scale;
+        // #destA picks by canWarm/canHold/canGoods on heat and canTend/canCarry
+        // on scale. Neither board exports the other's verbs.
+        ids: {
+          "dawnspur-heat": "the GO control — dispatches on the page-local `pick` in {goods, B, hold, warm} to commitGoods / commitB / commitHold / commitWarm.",
+          "dawnspur-scale": "the GO control — dispatches on `pick` in {carry, B, tend} to commitCarry / commitB / commitTend. Same id, same tag, same event, a different verb set; scale has no commitGoods / commitHold / commitWarm.",
+        },
+      },
+    },
+  },
+
 };
 
 module.exports = { DESK, CITY, PUBLIC_ONLY, ROWS, UNADJUDICATED, WALK_LEGENDS, DOM_ROWS };

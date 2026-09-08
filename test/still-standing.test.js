@@ -1617,6 +1617,66 @@ test("kill: places do not overlap; the span and the gap are scenery, not pads", 
   assert.doesNotMatch(SIT_HTML, /<button[^>]*id="span"|<button[^>]*id="gap"/);
 });
 
+// THE PARENT'S SEND KILL — carried here, but NOT for the reason it was asked
+// for, and the premise it was asked on is false.
+//
+// The 2026-09-08 DOM namespace sweep read this file as the one city test with
+// no id=send kill and concluded that a desk-shaped SEND pad here was the
+// corpus's single SILENT desk-to-city copy — its finding 8, and David's call 6
+// on the back of it. MEASURED 2026-09-08 by the adversarial critic and re-run
+// by the author: it is not silent. Inserting the verbatim desk control
+// <button type="button" class="pad primary" id="send" disabled>SEND</button>
+// into sit/still-standing/index.html and running THIS FILE AT HEAD, i.e.
+// without the test below, fails 4 of 66 —
+//
+//   ✖ KILL: any rendering of the larder latch or a short-run count …
+//     AssertionError: four places plus the notice can-do:
+//     ["consist","halt","mosswake","notice-do","rustfall","send"]
+//   ✖ MANIFEST.txt records the shipped hashes …   (+ two more hash pins:
+//   ✖ sit hashes === public hashes for this board   one cause, the moved bytes)
+//
+// The enumeration is the one that matters: 'KILL: any rendering of the larder
+// latch…' collects every <button> id in SIT_HTML and deepEquals the sorted
+// list to the four places plus the can-do, so ANY <button id="send"> — the
+// desk control verbatim, or a bare one — fails it by name. And 'the diorama
+// is the places' below already kills id="pads" and class="pad". Two of the
+// four tokens here were never open, and the fourth kind of copy was loud.
+//
+// SO WHAT THIS TEST ACTUALLY ADDS, which is smaller and still worth having:
+//   * a NON-button element carrying id="send" or id="home" — a <div>, a
+//     <span>, an aria-labelled block. The enumeration reads <button> tags
+//     only and cannot see one; the red-first below used exactly that shape;
+//   * the four-token regex the sibling city tests carry VERBATIM, so a
+//     corpus-wide grep for this kill finds this board rather than skipping it.
+// The assertion was extracted byte-for-byte from
+// test/two-ways-from-here.test.js:1344 rather than retyped, because a partial
+// copy of a kill is how the gap was read as one in the first place.
+//
+// AND IT IS FIVE SIBLINGS, NOT SEVEN. Measured: dice:820, herbs-larder:626,
+// mosswake-loop:602, they-remember:703 and two-ways:1344 carry THIS regex;
+// dawnspur-halt:532 and dawnspur-site:325 carry a different kill
+// (/id="send"|data-route|…/i). Seven city tests forbid a send control; five
+// forbid it in these four tokens.
+//
+// RED-FIRST, 2026-09-08: a <div id="send"> in sit/still-standing/index.html
+// reddens this test by name — that is the shape nothing else here catches.
+//
+// THE RECORD IS SUPERSEDED IN PLACE, in the commit after this one. The
+// "exactly ONE silent cell" sentence sits in finding 8 of the DOM namespace
+// sweep in docs/sweep-2026-09-02.md, and David's call 6 is posed on it; both
+// carry the correction beside the refuter's sentence, each parenthetical
+// naming what it replaced, and both cite this test's sha. The author of this
+// comment could not edit the record and said so; the orchestrator landed the
+// supersession where the claim is read, because a correction that lives only
+// in a test file nobody reads first is not a correction.
+test("kill: SEND is not a strip of pads away from the places", () => {
+  assert.doesNotMatch(SIT_HTML, /id="pads"|id="send"|id="home"|class="pad"/);
+  assert.doesNotMatch(cssOf(), /button\.pad|#pads\b/);
+  assert.match(SIT_HTML, /id="notice-do"/);
+  assert.match(SIM_CODE, /SEND\. /);
+  assert.match(SIM_CODE, /ROLL HER OUT\. /);
+});
+
 test("the diorama is the places — nodes read as places, not grey squares, and the desk does not survive", () => {
   assert.match(SIT_HTML, /id="halt"[^>]*>[\s\S]*class="globe"/);
   assert.match(SIT_HTML, /id="halt"[^>]*>[\s\S]*class="larder"/);

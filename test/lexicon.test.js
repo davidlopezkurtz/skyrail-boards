@@ -255,6 +255,34 @@ const AUDIT_FINDINGS = {
   "§2 the consist (ids)": ["ROWS", "consist"],
   "§2 the consist (DOM train/consist)": ["DOM_ROWS", "train/consist"],
   "C13 delta: lit": ["DOM_ROWS", "lit"],
+  // The 2026-09-08 DOM namespace sweep, recorded in docs/sweep-2026-09-02.md
+  // under the section heading "The DOM namespace sweep — 2026-09-08", in its
+  // "The findings, ranked". Numbered by THAT record, not by the proposal that
+  // carried the rows here: three of its `by:` strings cited a stale numbering
+  // and were corrected at landing — terrace was 1 and is 4, platform was 4 and
+  // is 7, and `gone` cited a finding 10 that belongs to a different surface
+  // entirely (/dawnspur-line/'s spoken "stake undefined"). Findings 1, 8, 9,
+  // 16-26 produced no row on purpose: each lives wholly outside the three sets
+  // deriveDom can read, and a row that cannot go red is not a guard.
+  "DOM sweep 2026-09-08 finding 2: dim": ["DOM_ROWS", "dim"],
+  "DOM sweep 2026-09-08 finding 3: step": ["DOM_ROWS", "step"],
+  "DOM sweep 2026-09-08 finding 4: terrace": ["DOM_ROWS", "terrace"],
+  "DOM sweep 2026-09-08 finding 5: hearth": ["DOM_ROWS", "hearth"],
+  "DOM sweep 2026-09-08 finding 6: foundry": ["DOM_ROWS", "foundry"],
+  "DOM sweep 2026-09-08 finding 7: platform": ["DOM_ROWS", "platform"],
+  // `gone` has NO finding number and is not given a plausible one. The record
+  // files it under "NONE, recorded as results, not findings" — the meaning is
+  // uniform across the seam, and the row exists only for the reachability note
+  // (two of its six sites are dead, and the obvious "fix" to halt is wrong).
+  "DOM sweep 2026-09-08 result CLS-4 (not a numbered finding): gone": ["DOM_ROWS", "gone"],
+  // Refuter-only: found by one reader, and second-read 2026-09-08 by the
+  // adversarial critic, which drove the board lists and the meanings and would
+  // land all four. The label stays refuter-only — a second read is not a
+  // second finder — and it is the `by:` strings that carry the second read.
+  "DOM sweep 2026-09-08 finding 11 (refuter-only): live": ["DOM_ROWS", "live"],
+  "DOM sweep 2026-09-08 finding 12 (refuter-only): haul": ["DOM_ROWS", "haul"],
+  "DOM sweep 2026-09-08 finding 13 (refuter-only): stack": ["DOM_ROWS", "stack"],
+  "DOM sweep 2026-09-08 finding 14 (refuter-only): go": ["DOM_ROWS", "go"],
 };
 
 test("the audit's findings each keep a row — the ledger cannot quietly drop one", () => {
@@ -515,7 +543,7 @@ test("walk DSL: every test file's walk() legend is derived and equals the declar
   assert.deepEqual(drift, [], fail([`walk legend drift over ${Object.keys(derived).length} files with a walk() (test/lexicon-ledger.js WALK_LEGENDS):`, ...drift.map((d) => "  " + d)]));
 });
 
-test("DOM: lit / home / train-consist — each token's boards per derived set (ids, toggles, className values) equal the declared ones", () => {
+test("DOM rows — each token's boards per derived set (ids, toggles, className values) equal the declared ones", () => {
   const dom = D.domInventory();
   const drift = [];
   for (const rowName of Object.keys(L.DOM_ROWS)) {
@@ -542,6 +570,68 @@ test("DOM: lit / home / train-consist — each token's boards per derived set (i
       ...drift.map((d) => "  " + d),
     ]),
   );
+});
+
+// A DOM ROW THAT CANNOT GO RED. The loop above iterates a hard-coded
+// ["ids", "toggles", "classNames"] and reads `decl[set] || {}`, so a row keyed
+// on any other set is not refused — it is SKIPPED, and skipped silently. The
+// adversarial critic of 2026-09-08 measured it by putting this row into
+// DOM_ROWS:
+//
+//   CRITIC_PROBE: { adjudication: "HIGH", by: "critic probe",
+//     tokens: { "data-route": { bindings: { "dawnspur-line": "x", "no-such-board": "x" },
+//                               cssClasses: { "not-a-board-either": "x" } } } }
+//
+// and the guard stayed 23 pass / 0 fail. Two boards that do not exist, two
+// sets nothing derives, a rank nothing reads: a decoration row landing green.
+// Reproduced here before this test was written, and red-first after it.
+//
+// THREE THINGS ARE ASSERTED, and two are wider than the probe that prompted it.
+//   * The set keys, which is the hole above.
+//   * The adjudication vocabulary — extended to ROWS as well as DOM_ROWS,
+//     because the ROWS side is where a misspelling disables a LIVE gate:
+//     "HIGH means measured" above reads `row.adjudication !== "HIGH"` and
+//     CONTINUES, so `HGH` quietly exempts a row from the only measured-ness
+//     check the ledger has. Nothing before this line graded that string on
+//     either table. MEASURED, not argued: ROWS.halt's rank misspelt to "HGH"
+//     leaves "HIGH means measured" GREEN and reddens only this test.
+//   * That every declared token is carried by SOME board in SOME derived set.
+//     The set-key check alone does not catch the emptier decoration: a token
+//     no board carries, declared with an empty `ids: {}`, derives [] and
+//     compares equal to [] in the loop above. Same failure, one layer in.
+// The measured-ness half of "HIGH means measured" is deliberately NOT extended
+// to DOM rows. A DOM row's membership is re-derived from the boards on every
+// run, which IS the measurement, and this table has no drives / sourcePin
+// column to demand — the demand would be theatre.
+test("DOM rows can go red: only derived set keys, a token some board carries, and a rank in the ledger's vocabulary", () => {
+  const SETS = ["ids", "toggles", "classNames"];
+  const RANKS = ["BENIGN", "LOW", "MEDIUM", "HIGH", "CONTESTED"];
+  const dom = D.domInventory();
+  const bad = [];
+  for (const rowName of Object.keys(L.DOM_ROWS)) {
+    const row = L.DOM_ROWS[rowName];
+    if (!RANKS.includes(row.adjudication)) {
+      bad.push(`DOM_ROWS["${rowName}"]: adjudication ${JSON.stringify(row.adjudication)} is not one of ${RANKS.join(" / ")}`);
+    }
+    for (const token of Object.keys(row.tokens || {})) {
+      const decl = row.tokens[token];
+      for (const set of Object.keys(decl)) {
+        if (!SETS.includes(set)) {
+          bad.push(`DOM_ROWS["${rowName}"] token "${token}": set "${set}" is not one the derivation produces (${SETS.join(" / ")}) — the drift loop skips it in silence, so this half of the row grades nothing`);
+        }
+      }
+      const carried = SETS.filter((set) => Object.keys(dom).some((b) => dom[b] && dom[b][set].includes(token)));
+      if (carried.length === 0) {
+        bad.push(`DOM_ROWS["${rowName}"] token "${token}": no board carries it in any derived set — declared and underived, it can only ever compare [] to [] and pass`);
+      }
+    }
+  }
+  for (const name of Object.keys(L.ROWS)) {
+    if (!RANKS.includes(L.ROWS[name].adjudication)) {
+      bad.push(`ROWS.${name}: adjudication ${JSON.stringify(L.ROWS[name].adjudication)} is not one of ${RANKS.join(" / ")} — "HIGH means measured" skips a rank it does not recognise, so a misspelt one exempts the row instead of failing it`);
+    }
+  }
+  assert.deepEqual(bad, [], fail(["Rows that cannot go red (test/lexicon-ledger.js):", ...bad.map((b) => "  " + b)]));
 });
 
 test("pins: every cited test line exists and mentions the token — a locator, not a semantic pin; the meaning is graded by the drives and source pins", () => {
