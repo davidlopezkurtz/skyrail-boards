@@ -27,6 +27,43 @@ tree they were measured at.
 
 ---
 
+## Read this first — the open decisions in plain terms (2026-09-09)
+
+Every open entry below now opens with an **In plain terms** block: the question in one
+sentence, the options with what each costs, the orchestrator's read marked as such, what
+stays blocked if it is not decided, and how much deciding costs. Each block was written
+from the entry and checked twice against it by independent reviewers; where an entry itself
+does not say enough, the block says so under *What the entry does not say*.
+
+- Nine of the forty-five actually hold up work: the next card cannot be cut (41), CFD-200
+  cannot be signed or cut (1, 2, 3), the next recut is held by your own signing promise (6),
+  this wave's rulebook edits are unratified (5), and two landings wait on a word (7 with 33,
+  and 21).
+- Seventeen more are documents saying something false right now — the rulebook grades the
+  heat board two opposite ways (12), a live board says "undefined" to screen-reader players
+  (42), six beats forbid merging boards that already passed (9). Nothing is blocked by them,
+  but each is a wrong sentence a future board can inherit.
+- The remaining nineteen are labels, conventions and record corrections; nothing happens if
+  they wait, and most are a one-word yes.
+- If you decide nothing: no new board gets cut, CFD-200 stays unsigned, the next recut runs
+  under a gate nobody honoured, and every later board takes whichever reading of the
+  heat-vs-air rule its author opens first.
+- Start with 41 and 1 — the two design calls the rest hang off — then 5, 6 and 7, which are
+  three yes/no's and unblock the rulebook edits, the next recut and five ledger entries in
+  about a minute.
+- Several numbers are one question: 7 and 33 (passes in the kills ledger), 16 and 29
+  (heat-beat sentences), 24 and 25 (halt-walk beat labels), 36 to 38 (the name audit).
+- Card 20 must not be answered before 12 — adding a citation to the heat beat would
+  silently pick a side of the contradiction for you.
+- The orchestrator offers a read on most cards and the card marks it as such; on 5, 12 and
+  the last part of 41 it offers none — those are yours alone.
+
+**Decide first** (deciding it unblocks work): 41, 1, 3, 2, 6, 5, 7, 33, 21.
+**Publishing something wrong today** (a document says something false until it is decided): 12, 42, 15, 9, 46, 8, 13, 18, 16, 29, 10, 11, 17, 24, 25, 26, 40.
+**Can wait** (convention, register, record): 35, 20, 22, 23, 43, 44, 45, 31, 14, 30, 19, 27, 28, 34, 32, 36, 37, 38, 39.
+**One decision wearing several numbers:** 7 and 33; 16 and 29; 24 and 25; 36 and 37 and 38.
+
+---
 # Decisions waiting on David — Skyrail boards, measured at `97f3ecd`, re-verified at `c32ff52`; entry 41 at `c8c4546`
 
 **45 open, 1 closed.** *(Entries 41–46 added 2026-09-08. Entry 4 RULED and carried out 2026-09-03
@@ -43,9 +80,10 @@ question and the `rim` alias — plus one that was not: the **discharged Seat ga
 raised once in the audit and once in the CFD-176 sweep, which measurement widens from
 one beat to six.
 
-**The single most consequential is #1: what CFD-200's parent is now.** Canon's own
-contingency clause has already fired, and it fires at a board that never passed. CFD-200
-cannot be signed until that is answered, and the board's whole inherited economy hangs
+**The single most consequential is #1: what CFD-200's parent is now.** CFD-200's own
+re-base trigger has fired — canon's, which fires only on a kill, has not *(corrected 2026-09-09
+from entry 1's own body; this read "Canon's own contingency clause has already fired")* — and it
+fires at a board that never passed. CFD-200 cannot be signed until that is answered, and the board's whole inherited economy hangs
 off the answer — which is also why #2 and #3 are the same board.
 
 **Line numbers.** Every citation below was re-derived at `97f3ecd` by me *(entries 41–46's at
@@ -67,6 +105,58 @@ it was not numbered below — but most of Tier 3 was waiting behind it.
 # Tier 1 — Blocks a cut, a signature, or a built edit (9; **8 open**, entry 4 closed 2026-09-03, entry 41 added 2026-09-08)
 
 ## 1. CFD-200's parent, after the storm stopped unpassed
+
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: pick one of two or three.)*
+Is CFD-200's parent (a) the storm board, as its beat already says, (b) the last board
+anywhere that actually passed its sit — Dice at the Places when this question was written,
+a city board — or (c) Dawnspur Line, the join board the rulebook names as its fallback —
+and may "the last passed board" be a board from the other lineage at all?
+
+- *Why:* The rulebook says a board's parent is the last passed board, named when the beat
+  is signed, and CFD-200 was written to sign after the storm board passed; but the storm was
+  sat five times and stopped, neither passed nor killed. CFD-200's own beat says to re-base
+  if the storm does not pass (which has happened), while the rulebook says to re-base only if
+  the storm is killed (which has not), so the two texts point different ways and the parent
+  cannot be named.
+- *Options:*
+  a. **(a) The storm board, as written** — CFD-200 keeps inheriting the storm's five sittings
+     — its weather, its economy — exactly as its beat assumes. *Costs:* Its parent is a board
+     that never passed, so the rulebook's own "last passed board" rule needs an explicit
+     exception written down.
+  b. **(b) The last board that actually passed — Dice at the Places when this was written** —
+     The parent is the most recent board anywhere that truly passed its sit. That was Dice at
+     the Places when the entry was measured; two more city boards (Two Ways from Here, Still
+     Standing) have passed since, so under this reading the parent is whichever city board
+     passed last. *Costs:* That board is in the city lineage; a desk board would inherit an
+     economy and interface the desk does not share, and the rule would be read as crossing the
+     desk/city seam.
+  c. **(c) Dawnspur Line, the join board** — Take the rulebook's own fallback: both the
+     rulebook and the beat say CFD-200 re-bases onto "whatever did pass", and the rulebook adds
+     that this would be the join board. Dawnspur Line is the last desk board that passed
+     (2026-08-28), so this is the fallback read within the desk rather than across the seam.
+     *Costs:* The rulebook's fallback fires on a kill, and the storm was stopped, not killed;
+     only CFD-200's beat's looser trigger — "if the storm does not pass" — has fired. Choosing
+     (c) means letting the beat's wording rather than the rulebook's govern, or ruling that a
+     stop counts as a kill.
+- *The orchestrator's read, not a ruling:* The orchestrator's read is (a) with an explicit
+  exception recorded: the storm's five sittings are what CFD-200 actually inherits, and
+  re-basing onto a city board would import a lineage the desk does not share. *Yours:*
+  Whether a board that never passed may be a parent under the rulebook's own rule, and
+  whether "the last passed board" reaches across the desk/city seam at all.
+- *If undecided:* CFD-200 cannot be signed. If the wrong parent is chosen it inherits the
+  wrong board's economy — the same class of defect the 2026-09-01 sweep already found four
+  serious cases of in this beat.
+- *What the entry does not say:* Three things the entry does not settle. The ledger's own
+  summary says the rulebook's fallback clause "has already fired", while this entry's body
+  says only the beat's trigger (not passed) has fired and the rulebook's (killed) has not;
+  the card follows the entry's body. The entry names Dice at the Places as "the last board
+  that actually passed", which was true when it was measured but is not now — the ledger's
+  context records Two Ways from Here passing 2026-09-02 and the hub marks Still Standing
+  passed 2026-09-04, both city — so option (b) is really a rule ("whichever board passed
+  last") rather than a named board. And both texts send the fallback to "whatever did pass"
+  without saying whether that is counted across both lineages or within the desk — which is
+  why (b) and (c) are the same fallback read two ways, and the seam half of the question
+  decides between them.
 
 **Question.** Pick one: is CFD-200's parent (a) `/dawnspur-storm/` as written, (b)
 `/dice-at-the-places/` — the last board that actually passed, in the other lineage, or
@@ -105,6 +195,31 @@ defect class the 2026-09-01 sweep found four HIGH rows of in this beat already.
 
 ## 2. CFD-200's first-sitting sky trace, and the Engineer argument resting on it
 
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: a yes/no.)*
+Yes or no: rewrite the turn-by-turn sky trace in CFD-200's beat to the sequence the game
+actually produces, and re-argue the three design paragraphs that price the Engineer on it?
+
+- *Why:* The beat's trace has the player send to Rustfall on turn 5 under a clear sky, with
+  two of the three pushes landing under a storm, and the Engineer — the board's one genuinely
+  new job — is priced at 6 marks as repair, on the argument that repair can only earn its
+  price under the storm, so the job stands on the storm meeting the convoy in the yard. When
+  the same path is driven on the parent board, the send falls on turn 8 under the storm and
+  the pushes on turns 10 to 12 are clear, so the argument is upside down.
+- *Options:*
+  a. **Yes — rewrite the trace, then re-argue** — The table is replaced with the measured
+     sequence and the Engineer paragraphs are argued again from it. *Costs:* The Engineer's
+     "warning first" framing may change, and the cut waits until that work is done.
+  b. **No — leave it as written** — The beat keeps its trace and the argument standing on it.
+     *Costs:* The board ships with its central new job priced against a weather sequence the
+     game does not produce.
+- *The orchestrator's read, not a ruling:* The orchestrator's read is rewrite, then
+  re-argue — nobody disputes the measurement, and if the corrected trace puts the storm
+  before the yard opens, that is worth knowing before the cut rather than after. *Yours:* The
+  trace is yours to rewrite because design paragraphs stand on it; what is protected is your
+  right to change that argument, not the number.
+- *If undecided:* CFD-200's cut stays blocked. Left as is, a board ships whose central new
+  job was priced against weather the game does not produce.
+
 **Question.** Yes or no: rewrite the trace table at `docs/cfd-200-beat.md:1139-1149` to the
 measured sequence, and re-argue the three design paragraphs that rest on it?
 
@@ -136,6 +251,33 @@ weather sequence the engine does not produce.
 ---
 
 ## 3. CFD-200's two stops, unreconciled on one board
+
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: pick one of two or three.)*
+Does CFD-200 carry, narrow, or refuse the storm parent's own ending — the one that arms
+once the terrace is topped and fires when a chartered cargo comes home out of a storm?
+
+- *Why:* CFD-200's beat says it carries the whole storm board, and its own end-sentences
+  are all about the yard and the Engineer; it never mentions the terrace, topping, or the
+  storm board's ending. That ending is reachable in play and would close the sitting before
+  the player ever sends to Rustfall, so the board has two live endings and no ruling on which
+  governs.
+- *Options:*
+  a. **Carry** — The storm's topping ending stays live on CFD-200 exactly as inherited.
+     *Costs:* A player can end the sitting before the board's own subject ever appears.
+  b. **Narrow** — The inherited ending is kept but confined so it cannot fire before the yard
+     is in play. *Costs:* A design edit to an inherited ending the beat never mentions, and the
+     entry does not say what the narrowed form is.
+  c. **Refuse** — CFD-200 drops the parent's ending and keeps only its own. *Costs:* The
+     board no longer carries the storm board whole, as its beat currently claims.
+- *The orchestrator's read, not a ruling:* The orchestrator's read is narrow it — the
+  topping ending has nothing to do with the yard, and carrying it whole hands the player a
+  way out before Rustfall — but narrow-versus-refuse is a design call, not a measurement.
+  *Yours:* Which of narrow or refuse is right.
+- *If undecided:* The cut stays blocked — a board with two live endings and no ruling on
+  which governs is not implementable. If wrong, a player ends the first sitting before
+  reaching Rustfall and the board is never sat on its own subject.
+- *What the entry does not say:* The entry frames "narrow" as an option but does not
+  describe what the narrowed ending would be.
 
 **Question.** Pick one: does CFD-200 **carry**, **narrow**, or **refuse** the storm
 parent's own arming stop?
@@ -221,6 +363,26 @@ flagged as strikeable. **CLOSED.**
 
 ## 5. §7.4's status word — RULED or WRITTEN DOWN?
 
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: a yes/no.)*
+Yes or no: did you rule canon §7.4 — a recut may not be the same kind as the one that just
+failed — on 2026-08-31?
+
+- *Why:* The rulebook's own heading calls §7.4 "written down 2026-08-31, in use since
+  2026-08-29", while the storm beat, landed a day later, says "ruled 2026-08-31"; twelve
+  other places cite it with no status word at all. Which is true is a fact about what you
+  did, and only you hold it.
+- *Options:*
+  a. **Yes, I ruled it** — The rulebook heading is the stale text, and every change to §7.4
+     that this wave's sweep landed becomes yours to accept. *Costs:* A batch of already-landed
+     rulebook edits needs your ratification.
+  b. **No, it was only written down** — The storm beat's line is the thing to edit. *Costs:*
+     Until it is edited, a beat publishes a ruling that was never made.
+- *The orchestrator's read, not a ruling:* The orchestrator has no strong read — the
+  repository holds one witness on each side, and neither is better evidence than your memory.
+  *Yours:* All of it: whether you ruled it that day.
+- *If undecided:* Acceptance of the §7.4 changes landed this wave stays open — either those
+  rulebook edits sit unratified, or a beat keeps claiming a ruling that was never made.
+
 **Question.** Yes or no: did you rule §7.4 on 2026-08-31?
 
 **What the document says.** `docs/mechanisms-recommitted.md:666`: *"### 7.4 A recut may not
@@ -246,6 +408,27 @@ beat publishes a ruling that was never made.
 
 ## 6. Canon `:12`'s doc-wide signing undertaking
 
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: pick one of two or three.)*
+Is the rulebook's opening promise — "David signs this doc before any recut implements it" —
+discharged by your signature on §5 plus the ruled §7 sections, or do sections 1 to 4 still
+need signing before the next recut?
+
+- *Why:* Section 5 was signed on 2026-08-25 and §§7.1, 7.2, 7.3 and 7.5 carry rulings in
+  their headings, but sections 1 to 4 have no signature. The recuts that sentence was meant
+  to gate have already shipped — the halt entries of 2026-08-30 — so the promise has been
+  partly kept and partly bypassed.
+- *Options:*
+  a. **Discharged** — Your signature on §5 plus the rulings already in the §7 headings count
+     as having kept that sentence's promise. *Costs:* Sections 1 to 4 are never signed as such.
+  b. **Still owed** — Sections 1 to 4 get read and signed before the next recut. *Costs:* The
+     next recut waits on that reading and signature.
+- *The orchestrator's read, not a ruling:* The orchestrator's read is rule it discharged in
+  a dated note and do not rewrite the sentence — rewriting it to match events would turn a
+  promise you made into a description of a promise partly kept. *Yours:* Whether the promise
+  as you made it is met by what has been signed so far.
+- *If undecided:* The next recut proceeds under a gate nobody honoured, or the promise gets
+  quietly edited into a description of events.
+
 **Question.** Pick one: is the undertaking discharged by §5's signature plus the ruled §7
 sections, or do §§1–4 still need signing before the next recut?
 
@@ -270,6 +453,30 @@ or a promise is quietly edited into a description.
 ---
 
 ## 7. `KILLS.md`'s scope — kills only, or the ledger of sittings?
+
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: a yes/no.)*
+Yes or no: do the five boards that passed their sits — Dice at the Places, They Remember
+cut 1, Herbs Larder, Mosswake Loop, and the Dawnspur Halt walk — get entries in the kills
+ledger?
+
+- *Why:* The ledger's header says it records kills; the passes live scattered across beats,
+  commit memos and the rulebook, with no single place to look them up, and three rulebook
+  sentences claim or lean on the ledger being complete, which it is not. The two missing
+  kills and the storm's stop have since been added; the five pass entries are drafted,
+  measured and ready, but deliberately left out until you say.
+- *Options:*
+  a. **Yes** — The five passes are added to the ledger alongside the kills (where in the file
+     they go is a separate question, #33), and the file becomes the ledger of sittings. *Costs:*
+     The file stops being one document with one job — it records sittings, not just kills.
+  b. **No** — The ledger keeps one job — kills only. *Costs:* The five passes stay findable
+     only on Linear, and the three rulebook sentences stay untrue.
+- *The orchestrator's read, not a ruling:* The orchestrator's read is yes, and rename the
+  heading — four pre-hosting entries already carry recut decisions with no build hash, so the
+  file already fails its own header, and if it is becoming the ledger of sittings the heading
+  should say so. *Yours:* The scope call itself: one document with one job, or one place
+  where every sitting can be looked up.
+- *If undecided:* The five drafted entries stay unlanded; the passes remain findable only
+  on Linear and three rulebook sentences stay untrue.
 
 **Question.** Yes or no: do the five passes get ledger entries?
 
@@ -306,6 +513,32 @@ sentences stay untrue.
 
 ## 8. Canon §5's SIGNED stake (b), unmet on the board convened to meet it
 
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: pick one of two or three.)*
+Is §5's stake (b) — an UP purchase that takes a run to deliver and can suffer before it
+lands — still owed by a later sitting, discharged by the storm's stop, or superseded?
+
+- *Why:* You signed §5 on 2026-08-25, and it says both the haul stake and the in-progress
+  stake arrive inside the storm sitting. The storm arrived and carried only the haul: UP on
+  that board is instant, the board holds no in-progress state at all, and the mechanic that
+  would have housed stake (b) — UP going dark in a storm — was cut before signature by a
+  paragraph that names stake (b) as what it was cutting.
+- *Options:*
+  a. **Owed** — A later sitting still has to carry an in-progress stake. *Costs:* An
+     obligation lands on a sitting nobody has scoped.
+  b. **Discharged** — The deliberate cut settles the commitment, and that is written down.
+     *Costs:* A signed commitment is closed without ever having been met.
+  c. **Superseded** — Something later replaces the §5 commitment rather than meeting or
+     closing it. *Costs:* The signed section needs a forward pointer to whatever replaces it —
+     and the entry does not say what that would be.
+- *The orchestrator's read, not a ruling:* The orchestrator's read is discharged and
+  recorded as such — the cut was deliberate and named what it was cutting, and carrying (b)
+  forward as a debt would put an obligation on a sitting nobody has scoped. *Yours:* It is
+  your signature, and the evidence does not decide what a signed commitment half-met becomes.
+- *If undecided:* Nothing is blocked mechanically, but a signed rulebook commitment either
+  silently expires or a future sitting inherits a stake nobody planned.
+- *What the entry does not say:* The entry lists "superseded" as a third option but does
+  not say what would supersede the commitment.
+
 **Question.** Pick one: is §5's in-progress stake (b) still **owed** by a later sitting,
 **discharged** by the storm's stop, or **superseded**?
 
@@ -333,6 +566,75 @@ sitting inherits a stake nobody planned.
 ---
 
 ## 41. The next card's SCOPE — four questions, written before it is cut
+
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: a design call.)*
+Before the next card is cut, four things: which scope it tests — (a) whether forgone
+options carry weight at all, (b) whether this lineage's forgone options (one tap at 64%,
+inside a two-branch fork) carry weight, or (c) whether a branch priced 8.96 against
+banking's +1 does; whether your "rather than a fourth fork" forbids only repeating the
+question or also the fork shape itself; where the line sits between a branch that keeps
+costing and a decay clock, and whether that line is yours to draw now or the beat's to
+argue; and whether the next beat may end by recording that (b) has no board in this
+lineage, rather than cutting one anyway.
+
+- *Why:* Three cards have reached for the could-and-did read and none got it; the Still
+  Standing sit found forgone options carried no weight in that sitting, and the rulebook's
+  new §7.6 forbids a fourth board at the same question and says the next card must write down
+  which question it answers before it is cut. The outcome the beat had written down in
+  advance routed to a new question — whether a branch has to keep costing something to stay
+  real — while the same beat refuses any timer, decay or expiry on a forgone branch and kills
+  anything that moves with wall time, so what shape the next card may take is not settled.
+- *Options:*
+  a. **1(a) — do forgone options carry weight at all** — The card tests the general claim.
+     *Costs:* The rulebook's own text says the narrow question — these forgone options, one tap,
+     64%, in a two-branch fork — is what any board in this lineage can actually put under test.
+     The orchestrator reads that as making (a) the "different shape" your own sentence routes
+     to, not a board here.
+  b. **1(b) — do THIS lineage's forgone options carry weight** — The card tests this fork:
+     one tap at 64%, two branches. *Costs:* The beat lists, under what it did not measure,
+     whether the forgone branch's words ever landed at all — they are seen only on a tap of that
+     place. The orchestrator reads that as exposure owed before weight can be claimed.
+  c. **1(c) — does a branch priced 8.96 against +1 carry weight** — The card tests the price.
+     *Costs:* In the orchestrator's read, this is (b) with the price moved — a second variable
+     introduced before the first is measured.
+  d. **2 — "fourth fork" is the same prohibition in fewer words** — Your sentence and the
+     rulebook's "fourth board" forbid the same thing: repeating the question. *Costs:* A fork
+     shape stays available if it asks a different question.
+  e. **2 — "fourth fork" adds a ban on the geometry** — Forks themselves are forbidden on the
+     next card. *Costs:* A keeps-costing shape would have to attach its cost to something other
+     than a fork's forgone branch, and whether such a shape exists is not something the record
+     settles.
+  f. **3 — the line is wall time versus player action** — A cost the player's own sends put
+     up (stakes live in the run) is allowed; one that arrives while they are away (tended ground
+     does not decay) is not. *Costs:* The beat has never argued that boundary against the four
+     rules — no upkeep, no decay, stakes live in the run, fuel is not a standing bill — by name.
+     A keeps-costing shape cut without that argument is a decay clock under a new name, which
+     the beat has already refused.
+  g. **3 — the line is somewhere else** — You draw a different boundary. *Costs:* The entry
+     describes no other line; you would be drawing one the record has not marked.
+  h. **3 — yours to draw now, or the beat's to argue** — Either you rule the boundary here,
+     or the next beat must make the argument itself. *Costs:* Ruling now decides a design
+     boundary before the beat exists; leaving it to the beat makes the cut wait on that
+     argument.
+  i. **4 — yes, a rendered refusal is acceptable** — If no keeps-costing shape clears the
+     rules, the next beat may end by recording that (b) has no board in this lineage. *Costs:*
+     No card is cut for that question here.
+  j. **4 — no, cut a card regardless** — The next beat must produce a board. *Costs:* In the
+     orchestrator's read, a card cut to avoid recording a refusal is read against the wrong
+     question.
+- *The orchestrator's read, not a ruling:* The orchestrator's read: scope (b), with the
+  confound — did the forgone branch's words ever land — as the first thing the beat must
+  show; your "fourth fork" is the same prohibition in fewer words; the line is wall time
+  versus player action, but the beat must argue it against the four rules by name before a
+  tile is placed; and ask for the refusal, because a card cut to avoid recording one is read
+  against the wrong question. *Yours:* Whether the general question (a) is a board at all or
+  only the accumulation of cards; whether (b) is the scope, or whether to leave forgone
+  options and test something else; whether your sentence meant the question or the geometry;
+  whether the line described is the one you meant; and the refusal question entirely.
+- *If undecided:* The next card cannot be cut — it is nobody's until the scope is written
+  down. If wrong: a card that measures the narrow thing and reports the general one, or a
+  keeps-costing shape that is a decay clock under a new name, which the beat has already
+  refused.
 
 *(Added 2026-09-08 at `d107078`, citations re-derived at `c8c4546`. Numbered by arrival, placed
 by tier: it blocks a cut. Every cite names its file: beat is `docs/cfd-212-still-standing-beat.md`,
@@ -504,6 +806,38 @@ is claimed.
 
 ## 9. The discharged Seat gates — six beats still forbid merging boards that are live and passed
 
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: a yes/no.)*
+Do you want the "Draft. Do not merge. Do not deploy. David sits first." lines retired on
+all six beats whose boards are already live and passed, in the same form the heat beat's
+line was retired in on 2 September?
+
+- *Why:* Each of these beats was written with a hold line telling the worker not to ship
+  until you had sat the board. Six of those boards (the halt, and the boards for CFD-183,
+  196, 206, 207 and 208) have since shipped and passed, but their beats still carry the hold
+  as if it were live; three other beats already had theirs retired by earlier sweeps, and the
+  heat beat's was retired on 2 September, so the tree now does it one way in some files and
+  another way in others.
+- *Options:*
+  a. **Yes — retire all six, in the heat beat's form** — Each hold line is rewritten to say
+     what is true now, and the old words are kept beside it in a short note marked as true on
+     the day of signature and now record only. The one hold that is still real — the CFD-200
+     beat, which has no board cut at all yet — is left alone. *Costs:* Docs-only and free: no
+     test reads any of these lines. Six small edits.
+  b. **No — leave them; status lives in the next Seat** — The hold lines stay as written.
+     This is the reading the 1 September audit left open as your call for the halt beat, with
+     the note "leave; status lives in the next Seat"; the heat beat's line was retired the other
+     way before you ruled. *Costs:* A worker who opens the CFD-206 beat today is told not to
+     merge a board that merged eight days ago, and which convention applies depends on which
+     beat they happen to open.
+- *The orchestrator's read, not a ruling:* The orchestrator's read: retire all six in the
+  heat beat's form, because one is already done and leaving five means the rule depends on
+  which file a worker opens. *Yours:* Whether a hold line that has been overtaken should be
+  retired in place, or whether a beat's hold is permanent text and its discharge belongs only
+  in the next Seat.
+- *If undecided:* Nothing is mechanically blocked. But a worker either refuses a landing
+  they were supposed to make, or learns to treat every hold line as decorative — including
+  the CFD-200 beat's, which is the one that is still real.
+
 **Question.** Yes or no: supersede the discharged Seat prohibitions on every beat that
 carries them, in the form already landed on `cfd-176:11`?
 
@@ -538,6 +872,32 @@ treats every Seat block as decorative — including `cfd-200:68`, the one that i
 
 ## 10. `kills/README.md`'s fetch-verify caveat is unconditional and measurably false
 
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: a yes/no.)*
+Do you want the kills README's fetch-verify note corrected to say the beacon is only
+injected when the fetch asks for HTML, and to record the fetch that does hash-match?
+
+- *Why:* The README currently says the live host always injects a small analytics beacon
+  into HTML pages, so a live fetch of an archived board's index page will never match the
+  stored hash, and tells verifiers to use the deployment's own preview address instead. That
+  was measured on 25 August, but a later measurement (reproduced by two readers and the
+  orchestrator) found the injection only happens when the request carries an Accept:
+  text/html header — a plain fetch returns the exact stored bytes and hash.
+- *Options:*
+  a. **Yes — correct the note and record the working method** — The README says the injection
+     is conditional on the Accept header, and tells the next verifier to fetch without Accept:
+     text/html to hash-match archived HTML directly at the live host. *Costs:* One docs edit.
+     The measured fact replaces a measured-but-superseded one.
+  b. **No — leave the note as written** — The README keeps its unconditional claim and its
+     workaround. *Costs:* The claim is measurably false today, and the workaround is more work
+     than the method that actually matches.
+- *The orchestrator's read, not a ruling:* The orchestrator's read: correct it — this is
+  not a judgement call, the README states something false and the true version is measured,
+  reproduced twice, and cheaper. *Yours:* Only the yes; the entry does not name a design
+  half.
+- *If undecided:* Nothing is blocked, but this note is why the sweep that re-verified the
+  heat board's archive stopped after checking only the sim file and skipped the HTML half,
+  and it will stop the next one for the same false reason.
+
 **Question.** Yes or no: correct the caveat to say the beacon injection is Accept-header
 conditional, and record the working method?
 
@@ -567,6 +927,38 @@ false premise.
 ---
 
 ## 11. The stale heat index pin `cedf765c` still ships, in four places
+
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: pick one of two or three.)*
+Do you want the out-of-date heat-index hash fixed everywhere it appears — including inside
+the shipped manifest of the passed scale board — or only in the two beat copies?
+
+- *Why:* The scale board's manifest records the live heat board's index hash, but the value
+  it holds is the heat index as it stood between the two greenhouse commits — the second one
+  changed the index page again and this line was never updated; the heat board's own manifest
+  has the correct current value. The same stale value sits in two places in the scale beat
+  with no note, while two other mentions in that same beat already carry a note saying it was
+  replaced; the audit only noticed one of the four sites.
+- *Options:*
+  a. **Yes — fix all four** — Re-pin the hash in the scale board's manifest (both the
+     archived and the served copy) and add notes to the two unmarked beat mentions. *Costs:* The
+     manifest is part of a passed board's bytes; editing it breaks the lineage rule that a
+     passed board's bytes are frozen.
+  b. **The orchestrator's split — fix the two beat copies now, leave the manifest and record
+     why** — The two beat mentions get the same note their neighbours already have; the scale
+     manifest keeps its stale line, with a note elsewhere explaining that it is known wrong and
+     left because the board passed as those bytes. *Costs:* A shipped manifest keeps
+     misdescribing what it pins, which the orchestrator's own read admits is worse than a beat
+     typo.
+  c. **No — leave all four** — Nothing changes. *Costs:* Two free docs fixes go unmade and
+     the manifest stays wrong.
+- *The orchestrator's read, not a ruling:* The orchestrator's read: fix the two beat copies
+  now and leave the manifest bytes with a recorded reason, because editing a passed board's
+  shipped bytes to fix a comment is exactly the trade the lineage rule exists to refuse.
+  *Yours:* Whether the frozen-bytes rule for a passed board covers its manifest's comment
+  lines, when the comment is known to be wrong.
+- *If undecided:* Nothing is blocked. But a future check of the live heat board against the
+  scale manifest will fail against a value that was already out of date before the scale beat
+  was signed, and be read as the heat board having drifted.
 
 **Question.** Yes or no: re-pin the heat index in the shipped MANIFEST of a passed board,
 and supersede the two remaining stale copies in `cfd-183`?
@@ -602,6 +994,38 @@ pin that was never right, and is read as the board having drifted.
 
 ## 12. Canon grades `/dawnspur-heat/`'s WARM two ways, eleven lines apart
 
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: a design call.)*
+Is the heat board's WARM a true breach of the rule that heat and air must be separate
+systems (as your own collapse table in canon says), or does it survive that rule (as
+canon's judgement of the board, a few lines later, says)?
+
+- *Why:* Canon carries your 25 August collapse table, verified, and one row convicts "WARM
+  as a ground step that is also a destination job" as a true collapse of rule R9 (heat that
+  warms ground already reached must not also be the thing that opens new ground). Canon's
+  judgement of the same board, in the next section, says its bank-in-the-stone and
+  step-onto-ground survive R8/R9; the heat beat sides with the second reading while its own
+  description has one WARM doing both things R9 forbids, so the same bytes are graded both
+  ways in one file.
+- *Options:*
+  a. **A true R9 collapse** — The collapse-table row stands; canon's later sentence about
+     surviving R8/R9 is corrected. The board still stands as played and passed — this is about
+     what the precedent means, not about recutting. *Costs:* Every later board reads R9 the
+     strict way: one act may not both warm reached ground and put a step on new ground.
+  b. **Survives R8/R9** — The judgement sentence stands; the collapse-table row is corrected
+     or qualified. The heat beat's own reading is confirmed. *Costs:* Every later board reads R9
+     the looser way, with the heat board as the precedent for what is allowed.
+- *The orchestrator's read, not a ruling:* The orchestrator's read: none — both readings
+  describe the same bytes, measurement cannot choose between them, and this is a judgement
+  about what R9 means. *Yours:* All of it: what R9 forbids, adjudicated on the one board it
+  has been applied to.
+- *If undecided:* Every later board inherits whichever reading of R9 its author happens to
+  open first, and the heat board is the precedent either way. It also holds up the question
+  of adding canon-check sections to older beats: writing "Heat vs Air — R9" as a citation on
+  the heat beat would silently pick the survives reading over the collapse row.
+- *What the entry does not say:* The entry says this blocks "#25"; the ledger's canon-check
+  retroactivity question is entry 20, and entry 25 is about a different beat. The description
+  matches entry 20.
+
 **Question.** Pick one: is the heat board's WARM a **TRUE R9 collapse** (`:105`), or does
 it **survive R8/R9** (`:117-118`)?
 
@@ -615,7 +1039,7 @@ averaged.**"* R9 itself is at `:84-85` at HEAD (the sweep cited `:78-81`): *"**R
 Air ≠ Growth (directive 1.19).** 'Heat that warms the ground already reached against Air
 that opens new ground …'"*
 
-**Blocked.** The canon-check retroactivity call (#25) — the sweep flags that adding *"Heat
+**Blocked.** The canon-check retroactivity call (#20 *— corrected 2026-09-09; this read "#25", which is a different beat*) — the sweep flags that adding *"Heat
 vs Air — R9"* as a citation on `cfd-176` would silently pick `:118` over `:105`.
 
 **Orchestrator's read.** *No read.* This is a canon self-contradiction on a board that has
@@ -628,6 +1052,29 @@ one board it was adjudicated on is the precedent.
 ---
 
 ## 13. Canon `:106`'s phase-lock order is not the order the board enforces
+
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: a yes/no.)*
+Do you want canon's phase-lock order corrected from GOODS / HOLD / B / WARM to GOODS, then
+B, then HOLD, then WARM, which is what the heat board actually enforces?
+
+- *Why:* Canon's collapse table writes the heat board's phase lock in one order; the
+  board's own source states and enforces a different one, and driving all 24 possible
+  orderings of the four commits reaches the banked state in exactly one — the board's. Both
+  readers agreed the slip is canon's, not the beat's, and it was outside the sweep's scope to
+  fix.
+- *Options:*
+  a. **Yes — correct canon's order** — Two letters swap in the canon table so it matches the
+     enforced order. *Costs:* One docs edit; nothing else moves.
+  b. **No — leave it** — Canon keeps the wrong order; any beat citing that row must quote
+     canon's order as canon's and flag it, or cite the neighbouring judgement (which says only
+     "a phase lock") and leave the row out. *Costs:* Every future citation carries a flag, and
+     the heat beat's own row on the four-button phase lock stays routed to you instead of being
+     closed.
+- *The orchestrator's read, not a ruling:* The orchestrator's read: correct it — two
+  letters, uncontested by both readers, checked over the full ordering space. *Yours:* Only
+  the yes; the entry does not name a design half.
+- *If undecided:* Nothing directly, but the heat beat's phase-lock row stays open on your
+  desk, and the risk is that a beat gets rewritten to match canon's typo.
 
 **Question.** Yes or no: correct canon `:106` to the enforced order?
 
@@ -651,6 +1098,33 @@ over the full ordering space.
 ---
 
 ## 14. `armed` — REAL_COLLISION / MEDIUM, or BENIGN_SHARED_NAME / LOW?
+
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: a design call.)*
+Is the shared export name "armed" a real collision that should be treated as MEDIUM, or a
+benign shared name that is LOW?
+
+- *Why:* All four boards that carry "armed" use it to answer the same question — is the
+  ending one act from stopping — and on all four a stopped board is always an armed one. But
+  on the desk boards (line, storm) it is a success the player paid for (three paid UPs),
+  while on the city boards (dice, two-ways) it is a failure suffered (one short run) and it
+  gates a different set of verbs. The audit holds it at MEDIUM, its reviewer ruled LOW, a
+  third reader called the split a matter of definition rather than fact, and the name ledger
+  carries it as contested with both readings until you rule.
+- *Options:*
+  a. **REAL_COLLISION / MEDIUM** — One name for two different world-causes is a collision
+     that must be resolved by renaming. *Costs:* A rename campaign across four boards whose
+     bytes are frozen by hash.
+  b. **BENIGN_SHARED_NAME / LOW** — The same abstraction ("ending is armed") with a different
+     cause per lineage is fine to share; it is recorded, not renamed. *Costs:* The line side
+     keeps a real meaning inversion with nothing defending it.
+- *The orchestrator's read, not a ruling:* The orchestrator's read: LOW, because the export
+  answers one question on all four boards and a differing world-cause is what a shared
+  abstraction looks like — but the split is definitional and a MEDIUM ruling is equally
+  defensible. *Yours:* Whether "same question, different cause" counts as one name or two in
+  this game's vocabulary.
+- *If undecided:* Nothing downstream may cite a single severity for "armed" — the ledger
+  says so in terms — so every document that touches it must carry both readings until you
+  rule.
 
 **Question.** Pick one severity.
 
@@ -685,6 +1159,34 @@ bytes are hash-pinned; LOW leaves a real inversion undefended on the line side.
 
 ## 15. §7.2's "honest" test — not EV-dominated, or free-and-always-lit?
 
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: pick one of two or three.)*
+Your rule says every board must offer a quick path that is honest — does "honest" mean the
+quick path is free, always available and never locks you out, or does it mean the quick
+path is not a worse deal in marks than the long one?
+
+- *Why:* Your own rule gives the dispatch board's free, always-lit floor send as the
+  example of an honest quick path, but the line board's beat passes its quick path on a
+  different test — average marks per send — and a fresh measurement on that test puts the
+  free Halt send behind Mosswake at every roster size. The section of canon right after this
+  one says two options that differ in both marks and food cannot be reduced to one number, so
+  the marks-comparison reading makes two of your rulings contradict each other.
+- *Options:*
+  a. **Free, always available, never locking** — "Honest" is about access: the short route
+     costs nothing, is always lit, and never traps the player. A board passes if such a route
+     exists, regardless of whether it pays less. *Costs:* The line board's beat, which passed
+     its quick path on the marks comparison, is then graded on the wrong test and its self-check
+     has to be re-read.
+  b. **Not a worse deal in marks** — "Honest" is about payoff: the short route must not lose
+     to the long route on average marks per send. *Costs:* On this reading the free Halt send
+     already fails on every roster, and the reading needs a single-number comparison that your
+     next ruling forbids — so two ruled sections would disagree.
+- *The orchestrator's read, not a ruling:* The orchestrator reads it as free, always
+  available, never locking, because the neighbouring ruling forbids the single-number netting
+  the marks-comparison needs. *Yours:* The rule is yours, and which of the two things
+  "honest" was meant to test is a reading only its author can give.
+- *If undecided:* Two beats keep applying two different tests, and every future board's
+  quick-path check is graded by whichever one its author happened to read.
+
 **Question.** Pick one: what does *"honest"* test?
 
 **What the document says.** `docs/mechanisms-recommitted.md:591-594`, under §7.2 (**RULED**,
@@ -712,6 +1214,37 @@ its author happened to read.
 ---
 
 ## 16. The CFD-176 beat's Sees and Does describe a board that does not exist — four sentences
+
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: pick one of two or three.)*
+For each of four sentences in the heat board's beat — "A stays held", "After return, wait",
+"The outward step is what could die", and "One dispatch" — do you rewrite the sentence to
+match the board as it plays, or accept it as your own shorthand and leave it?
+
+- *Why:* Driving the shipped board shows each sentence is off: A is thin, not held, in two
+  of the six states the board can reach, and both of those sit on the only path to WARM (the
+  beat itself keeps thinning on and calls it visible, so it is on purpose); there is no
+  control that waits — the wait fires from a timer after a pause; the step is set to "gone"
+  every time without exception, so it can never survive; and reaching WARM takes four
+  out-and-back trips, not one. The board passed and stands as played, so this is about
+  whether its record tells the truth.
+- *Options:*
+  a. **Rewrite as measured** — Each sentence gets a dated correction stating what the board
+     actually does; the beat then matches the board you sat. *Costs:* The record admits that a
+     stake the beat promised — the step that could die — was never modelled. When the entry was
+     written no test read this beat; since then a guard that checks beat sentences for words
+     borrowed from the other lineage has started reading it, so a correction has to be run
+     through the suite rather than assumed to leave it green.
+  b. **Accept as shorthand** — The sentences stay, read as compressed authorial phrasing that
+     the surrounding sentences are enough to decode. *Costs:* The beat keeps saying a player
+     sees a held slab and a step that can die, when neither is so.
+- *The orchestrator's read, not a ruling:* The orchestrator would rewrite "A stays held"
+  and "The outward step is what could die", which are plainly false about what a player sees
+  and what can die, and leave "After return, wait" and "One dispatch" as shorthand
+  recoverable from their neighbours. *Yours:* Whether your own compressed phrasing counts as
+  shorthand or as a wrong claim is an author's call; one ruling shape can settle all four.
+- *If undecided:* The record of a passed board goes on describing a stake it never carried
+  — and this is the only passed board with no kill-ledger line and none of your own sit words
+  in this repository, so here the beat is all there is.
 
 **Question.** For each of four sentences: supersede as measured, or accept as authorial
 ellipsis? One ruling shape covers all four.
@@ -744,6 +1277,29 @@ this repository.
 
 ## 17. `cfd-206:60` cites World Bible §12 as canon, and a test pins the citation
 
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: a yes/no.)*
+The Mosswake Loop beat tells readers to cite World Bible §12 as canon; that bible was ruled
+legacy 33 minutes after the beat merged, and a test fails if the citation is removed — do
+you append a dated note saying §12 is retired, or leave the line as it is?
+
+- *Why:* Two later beats carry the opposite instruction, "Do not cite World Bible §12", and
+  each of those is pinned by its own test, so the three beats now disagree about what is
+  canon. Deleting the citation from the Mosswake beat turns its test red; adding a note after
+  it keeps all three tests green.
+- *Options:*
+  a. **Append a dated note** — The citation stays in place with a bracketed, dated line after
+     it recording that §12 was ruled legacy and is superseded. *Costs:* A docs edit and nothing
+     else; the three tests stay green.
+  b. **Leave it** — The beat keeps instructing readers to cite §12 as canon. *Costs:* A
+     reader of that beat is sent to a bible you retired, and it contradicts the two later beats.
+- *The orchestrator's read, not a ruling:* The orchestrator would append the note — it is
+  the only edit that fixes the reader's problem without touching a test. *Yours:* The entry
+  names nothing as yours beyond the choice itself: whether a beat's canon list may carry a
+  dated correction after the fact, or stays exactly as it was when the beat merged, is a
+  convention only you set.
+- *If undecided:* Either a beat keeps citing a superseded bible as canon, or someone
+  deletes the line and the test suite goes red for a documentation edit.
+
 **Question.** Pick one: append a dated parenthetical, or leave it?
 
 **What the document says.** `docs/cfd-206-beat.md:60`: *"World Bible §12 Mosswake Loop. Core
@@ -768,6 +1324,35 @@ suite goes red for a docs edit.
 ---
 
 ## 18. Canon `:752`'s confabulated mechanism — which question produced it?
+
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: pick one of two or three.)*
+Canon quotes one player answer — "I noticed it degrade and started to see a connection
+between fully tended land and success rates" — as a made-up mechanism and the reason to
+refuse asking players what they intended; did that answer come from the TEND question or
+from the trim question?
+
+- *Why:* The sit that produced the answer is recorded only in Linear, not in this
+  repository. The closest thing on file, from the storm board's second sit, is a different
+  sentence with the same content, and it too is you explaining why you tended, while the trim
+  question got a plain factual answer. If the TEND question produced the quoted answer, then
+  the very question shape canon holds up as the one that works is the one that produced the
+  answer canon cites against intent questions — and the later pre-registration ruling rests
+  on that reading.
+- *Options:*
+  a. **The TEND question** — Canon's blessed question produced its own counter-example; the
+     argument in that section rests on the very question it praises, and so does the
+     pre-registration ruling built on it. *Costs:* Two canon sections rest on that answer — the
+     one that quotes it and the pre-registration ruling built on it — and the uncomfortable fact
+     goes into the record.
+  b. **The trim question** — The refused question produced the made-up answer, as canon
+     currently implies; the sections stand as written. *Costs:* None to the text, but it has to
+     be true — the repo's own trace points the other way.
+- *The orchestrator's read, not a ruling:* The orchestrator gives no read: this is a lookup
+  of what actually happened in a sit the repository does not hold, and the in-repo trace
+  pointing at TEND is not a substitute for that record. *Yours:* Only you sat that board and
+  only Linear holds the transcript, so which question you were answering is yours to state.
+- *If undecided:* Canon's central case for refusing intent questions may be built on an
+  answer produced by the question it blesses, and nobody can say either way.
 
 **Question.** Pick one: did the **TEND** question or the **trim** question produce the
 confabulated answer §7.4 cites?
@@ -800,6 +1385,30 @@ built on an answer produced by the question it blesses.
 
 ## 19. `cfd-183` does not state the mark gate
 
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: a yes/no.)*
+The scale board's beat describes the Mosswake carry — pays +1, +2, +3 by level — but never
+states the marks condition under which that send is allowed (on the heat board's rule, the
+send lights only with a mark in hand), saying only that the gate is "carried from the
+played board's cadence", which both people who checked it read as the heat board's rule; do
+you want the gate written out in the beat, or does specifying it by reference stand?
+
+- *Why:* Both people who checked it agree the beat and the board are consistent — the gate
+  exists in the code and the beat's reference to it is unambiguous. The only question is
+  whether a beat may specify a rule by reference rather than in words.
+- *Options:*
+  a. **State it explicitly** — The beat gains a sentence spelling out when the Mosswake carry
+     may be sent. *Costs:* An edit to a passed board's beat for a rule that is already
+     unambiguous by reference.
+  b. **Leave the reference** — "Gate carried from the played board's cadence" stands as the
+     specification. *Costs:* A future reader has to open the heat board's code to learn the
+     gate.
+- *The orchestrator's read, not a ruling:* The orchestrator would leave it — both readers
+  measured the beat and board as consistent, and the reference points at exactly one place.
+  *Yours:* Whether beats in this project may specify by reference is a register rule only you
+  set.
+- *If undecided:* A future reader of the beat re-derives a gate that was already specified
+  — nothing is blocked and the board passed.
+
 **Question.** Yes or no: does the beat state the mark gate explicitly, or does
 specification-by-reference stand?
 
@@ -823,6 +1432,34 @@ consistent; the only question is register, and the reference is unambiguous.
 ---
 
 ## 42. `/dawnspur-line/` speaks "stake undefined" to screen-reader players — fix a passed, pinned board, or record it?
+
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: a design call.)*
+The line board passed and its bytes are frozen by a pin, but every sendable card that is
+not already out has a spoken label reading the literal word "undefined" where the stake
+should be — three of four cards at the opening, two of four with a send out (a card whose
+send is away says "No Wardens ride with nothing staked" instead) — so do you fix the one
+line and re-pin the board, or leave the passed bytes alone and record the defect?
+
+- *Why:* The label is built from a field the line board's cards do not have — their stake
+  is food, and the visible card uses a different field for it — so screen-reader players hear
+  "undefined" while sighted players see the right text. Fixing it means editing a passed
+  board and re-hashing its hub card and everything under it, and you have not yet made a rule
+  for when a passed board's bytes may be moved.
+- *Options:*
+  a. **Fix it and re-pin** — One line in the board's page is corrected, and the hub card and
+     every descendant pin are re-hashed and recut. *Costs:* The first re-pin of a passed board,
+     done before any written rule says when re-pins are allowed; nothing about a pin is cheap —
+     every hash under the hub card moves.
+  b. **Leave the bytes, record the defect** — The passed board is untouched; the defect goes
+     into the record as known and shipped. *Costs:* A passed board says "undefined" to every
+     screen-reader player, indefinitely, on the one lineage whose whole economy is the stake.
+- *The orchestrator's read, not a ruling:* The orchestrator would fix it and treat the
+  re-pin as the price of the fix, since a label no sighted sit ever saw is not evidence any
+  pass rested on. *Yours:* Whether spoken accessibility text is inside or outside what a pass
+  froze is a rule you have not yet made, and it is yours to make.
+- *If undecided:* Nothing is blocked — the board is live and passed — but every
+  screen-reader player keeps hearing "undefined" on the sendable cards, and the project still
+  has no rule for when a pinned board's bytes may be touched.
 
 *(Added 2026-09-08 from the DOM namespace sweep, call 1 — `docs/sweep-2026-09-02.md:1636`;
 finding 10 at `:1290`. Numbered by arrival, placed by tier: it publishes something measurably
@@ -864,6 +1501,37 @@ first re-pin of a passed board without a written rule for when re-pins are allow
 
 ## 46. The rendered name of the Halt — a destination on the desk, home in the city, both on the storm — re-voice three passed card faces, or carry it as a declared row once a labels instrument exists?
 
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: a design call.)*
+On the desk boards "DAWNSPUR HALT" is a destination card you send a train to; on the city
+boards "the Halt" is home — seven boards' spoken labels name it so, and it is the place
+every send leaves from; three boards' pages (heat, scale and halt) are even titled
+"Dawnspur Halt"; and the storm board shows both senses in one line — do you re-voice the
+three passed desk boards' card faces so the name stops meaning two things, or leave the
+name and carry the split as a declared row once the test guard can grade rendered words?
+
+- *Why:* Every word is correct on its own board, so the confusion only appears to someone
+  who reads across the two lineages. The guard that catches name collisions reads only
+  element ids, toggles and class names today; a reader-facing label like this cannot be
+  graded until a labels-and-sentences instrument is built, which is why the finding sits as a
+  paragraph in a record rather than as a test.
+- *Options:*
+  a. **Re-voice the desk card faces** — The three passed desk boards are edited so the
+     destination card no longer reads as the same place the city calls home. *Costs:* A large
+     edit — three passed boards changed — to remove a word that is correct on each of them on
+     its own board.
+  b. **Carry it as a declared row once a labels instrument exists** — The name stays; the
+     split is recorded as a known two-meaning row, gradeable only after the guard learns to read
+     rendered labels and sentences. *Costs:* Until that instrument lands, the finding is a
+     record entry and nothing more, and no test goes red for it.
+- *The orchestrator's read, not a ruling:* The orchestrator would build the labels
+  instrument first — test-only work that makes the split gradeable — and decide the voice
+  afterwards, rather than editing three passed boards now. *Yours:* Whether a desk card face
+  should ever say anything other than the place's real name is a design call about how the
+  world speaks, and it is yours.
+- *If undecided:* The one finding both reviewers rated most serious stays a paragraph in a
+  record, and the next board that names the Halt in a label picks whichever sense its author
+  happens to hold.
+
 *(Added 2026-09-08 from the DOM namespace sweep, call 5 — `docs/sweep-2026-09-02.md:1667`;
 finding 1, the sweep's only agreed HIGH, at `:1129`. Placed in Tier 2: it publishes one name
 with two meanings to every reader of the pages.)*
@@ -903,6 +1571,38 @@ hold.
 
 ## 20. The Canon check section — retroactive on the seven beats that lack one?
 
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: a yes/no.)*
+Do the seven beats that have no Canon check section get one added after the fact, or does
+the rule that every beat cites the rulebook bind only beats written from now on?
+
+- *Why:* The rulebook says every beat must carry a Canon check section citing which of its
+  ten rules, or which source line, each mechanism rests on, and a beat with an uncited
+  mechanism is refused at review before you see it. Seven beats have no such section (the
+  heat board's beat, the halt board's Come-home beat, the Mosswake, Herbs-in-the-larder and
+  They-remember beats, the dice beat and the Two-ways-from-here beat); six do, so today the
+  corpus obeys the rule about half the time.
+- *Options:*
+  a. **Retroactive** — Someone writes a Canon check section into each of the seven beats,
+     citing rules for mechanisms that were designed and played without those citations. *Costs:*
+     Seven files of invented provenance on boards that already passed, and one trap: adding a
+     heat citation to the heat board's beat silently picks one side of a rulebook contradiction
+     about how that board grades WARM (open decision 12), which you have not ruled on yet.
+  b. **Not retroactive** — The seven beats stay as they are; the citation rule binds only
+     beats written from here forward. *Costs:* A canon-check discipline that only half the
+     corpus obeys, so a reader cannot rely on finding one.
+- *The orchestrator's read, not a ruling:* The orchestrator reads it as not retroactive:
+  back-filling citations nobody used at the time is archaeology, and the value is the
+  convention going forward. *Yours:* Whether the rulebook rule is a going-forward convention
+  or a corpus-wide requirement is yours; the heat-board sweep lists it as an action for you.
+- *If undecided:* Nothing is blocked. The seven beats simply stay uncited, and if anyone
+  adds a citation to the heat board's beat before you rule on decision 12, they pick a side
+  of that contradiction for you.
+- *What the entry does not say:* The entry frames these as beats written before the
+  citation rule, but by first-commit date only the heat board's beat is as old as the rule
+  (both 2026-08-25); the other six were first committed 2026-08-30 to 2026-09-01, after it,
+  and the entry does not say why they were written without the section. The repo today also
+  holds a newer beat (Still standing, cfd-212) with none, which the entry predates.
+
 **Question.** Yes or no: do beats written before the convention get a Canon check section
 added retroactively?
 
@@ -931,6 +1631,30 @@ discipline that only half the corpus obeys.
 
 ## 21. The `rim` alias note — 206 alone, or all three?
 
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: pick one of two or three.)*
+Does the note explaining that the rim is the halt board's own constant and is not read on
+the three sibling boards go on the Herbs-in-the-larder (Put them up) and They-remember
+(Collect) beats too, or stay only on the Mosswake (Send) beat?
+
+- *Why:* The word rim means two things across the seam between the halt board and its three
+  sibling boards. The Mosswake beat already carries a note disambiguating it, while the other
+  two beats still say only that the rim/gap is a constant the action does not write, with no
+  note.
+- *Options:*
+  a. **All three** — Carry the same disambiguation note on the Herbs-in-the-larder and
+     They-remember beats as well; those two edits are already written and waiting. *Costs:*
+     Landing the two edits that are already built; the entry names nothing beyond that.
+  b. **Mosswake beat only** — Leave the note where it is; the other two beats keep their
+     one-line constant statement. *Costs:* Two beats keep an ambiguous constant that the third
+     beat explicitly disambiguates, and a reader of either is left wrong.
+- *The orchestrator's read, not a ruling:* The orchestrator reads it as all three: the note
+  exists because the word is ambiguous across the seam, and fixing one of three sites is the
+  half-fix that leaves two readers wrong. *Yours:* Whether the two sibling beats need the
+  note at all, or whether the Mosswake beat's is enough, is the register call the entry
+  leaves to you.
+- *If undecided:* Two built edits stay on hold, as they have since the start of September,
+  and the two beats stay ambiguous.
+
 **Question.** Pick one: does the `rim` disambiguation note go on `cfd-207` and `cfd-208`
 too, or stay on `cfd-206` only?
 
@@ -957,6 +1681,36 @@ explicitly disambiguates.
 
 ## 22. `cfd-205`'s INHERITED-as-scenery rows — hearth and greenhouse
 
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: pick one of two or three.)*
+On the stopped site beat, is the keel-fire hearth inherited as scenery or lit together with
+the Foundry, and is the greenhouse inherited as scenery or refused outright?
+
+- *Why:* The site beat's inheritance table lists the hearth as inherited scenery from the
+  heat board and the greenhouse as inherited scenery from the scale board, explicitly not a
+  second greenhouse and not a build-up. The site board was sat and stopped rather than recut,
+  so nothing is waiting on these rows today.
+- *Options:*
+  a. **Hearth as scenery** — The hearth stays an inert inherited fixture, as the row reads
+     now. *Costs:* The entry names one cost for the whole pair of picks, not one per side: a
+     later board inherits a row it should have refused, or refuses one it could have kept.
+  b. **Hearth lit with the Foundry** — The hearth becomes part of the live work when the
+     Foundry starts, not decoration. *Costs:* The entry names one cost for the whole pair of
+     picks, not one per side: a later board inherits a row it should have refused, or refuses
+     one it could have kept.
+  c. **Greenhouse inherited as scenery** — The greenhouse stays a standing terrace job that
+     is present but not played and not built up, as the row reads now. *Costs:* If this is the
+     wrong call, a later board inherits a row it should have refused.
+  d. **Greenhouse refused** — The row is struck as refused, so no later board can carry it
+     from here. *Costs:* If this is the wrong call, a later board refuses a row it could have
+     kept.
+- *The orchestrator's read, not a ruling:* The orchestrator reads it as leave both as
+  inherited scenery: inert-versus-refused is a register call on a stopped board, and the
+  present wording is at least consistent with what the heat and scale beats say. *Yours:* The
+  entry says the distinction is a register call on a stopped board, and what a later board
+  should be allowed to inherit is yours.
+- *If undecided:* Nothing is blocked; the site board was stopped, not recut. The risk is a
+  later board inheriting a row it should have refused, or refusing one it could have kept.
+
 **Question.** Two picks: is the hearth **"as scenery"** or **lit-with-the-Foundry**, and is
 the greenhouse **INHERITED as scenery** or **REFUSED**?
 
@@ -978,6 +1732,36 @@ refuses one it could have kept.
 
 ## 23. `cfd-205`'s two R-citations
 
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: read one table first.)*
+In the site beat's Canon check table, is the reason given for Foundry-is-work-one the right
+basis, and is the loads-are-one-of-three-claims rule the right rule to cite for the
+bill-is-addressed-hauls row?
+
+- *Why:* The site beat's Canon check maps each mechanism to a rulebook rule. The Foundry
+  row rests on a prose reason (buildings exist because they do jobs; the Foundry is Heat put
+  into ground already reached) rather than a numbered rule, and the bill row cites the rule
+  that every load is profit, tending, or buildout.
+- *Options:*
+  a. **Foundry citation right** — The Foundry row stands on its prose reason as written.
+     *Costs:* If it is in fact wrong and left standing, it propagates into every beat that
+     inherits the row.
+  b. **Foundry citation wrong** — You name the rule or source the row should rest on instead,
+     and the row is rewritten to it. *Costs:* None named by the entry.
+  c. **Bill row: the three-claims rule is right** — The bill-as-addressed-hauls row keeps its
+     citation. *Costs:* If it is in fact wrong and left standing, it propagates into every beat
+     that inherits the row.
+  d. **Bill row: a different rule** — You name which rule the bill actually rests on, and the
+     row is rewritten to it. *Costs:* None named by the entry.
+- *The orchestrator's read, not a ruling:* The orchestrator has no strong read: both are
+  rule-mapping judgements inside a table on a stopped board, and the underlying mechanics are
+  not in dispute. *Yours:* Which rulebook rule a mechanism rests on is a design judgement;
+  the entry offers no strong read and leaves both picks to you.
+- *If undecided:* Nothing is blocked. A wrong rule citation propagates into every beat that
+  inherits the row.
+- *What the entry does not say:* The entry asks whether the Foundry row's rule citation is
+  right, but that row cites no numbered rule at all, only a prose reason; the entry does not
+  say whether the question is 'is the prose reason sound' or 'which rule should be cited'.
+
 **Question.** Two picks: is the R-citation for *"Foundry is work one"* right, and is R10
 the right rule for the bill?
 
@@ -998,6 +1782,27 @@ inherits the row.
 ---
 
 ## 24. `cfd-205-halt`'s "inherited" cells for systems that never passed
+
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: a yes/no.)*
+In the halt-walk beat's systems table, do the rows for Works, SITE, LAND and CAST get
+relabelled from inherited to kept by signature?
+
+- *Why:* Those systems came from the site board, which was sat and stopped and never
+  passed. In this corpus inherited means carried from a passed board, so the label claims a
+  lineage the site board never earned; what actually happened is that you signed to keep them
+  over a board that failed.
+- *Options:*
+  a. **Yes, rename** — The cells read kept by signature, recording that these systems survive
+     because you kept them, not because a board passed. *Costs:* A small edit to the halt-walk
+     beat's table.
+  b. **No, keep inherited** — The cells stay as written. *Costs:* The corpus loses the
+     distinction between what passed and what was kept anyway.
+- *The orchestrator's read, not a ruling:* The orchestrator reads it as rename them:
+  kept-by-signature is a different and more interesting fact than inherited, and the current
+  word claims a pass that did not happen. *Yours:* Whether your signature over a failed board
+  counts as inheritance is a naming call only you can make, since the signature was yours.
+- *If undecided:* Nothing is blocked; the halt-walk beat keeps a label that says a lineage
+  came from a board that never passed.
 
 **Question.** Yes or no: rename the cell from *"inherited"* to *"kept by signature"* for
 Works/SITE/LAND/CAST?
@@ -1026,6 +1831,28 @@ was kept anyway.
 
 ## 25. `cfd-205-halt:65-66` — a sit finding, or a ruling?
 
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: a yes/no.)*
+Does the sentence in the halt board's Come-home beat saying that buildings, feed, lamp,
+Foundry and Home writing landed but the walk did not get relabelled as your ruling rather
+than presented as something the sit found?
+
+- *Why:* Your verbatim report from that sit was that you lit the lamp and started the
+  foundry; it says nothing about the walk. The record's own review reads the
+  walk-did-not-land sentence as a ruling, not a finding, but the beat presents it in the same
+  breath as the sit's findings.
+- *Options:*
+  a. **Yes, label it a ruling** — The beat says plainly that the walk-did-not-land sentence
+     is your conclusion, separate from what you did in the sit. *Costs:* None named by the
+     entry.
+  b. **No, leave it** — The sentence stays reading as a sit finding. *Costs:* A ruling reads
+     as an observation and gets re-litigated.
+- *The orchestrator's read, not a ruling:* The orchestrator reads it as say so: separating
+  what the player did from what you concluded is the distinction this project keeps losing,
+  and your verbatim is right there to separate them. *Yours:* Whether that sentence is your
+  ruling is something only you can confirm, since you are the one who concluded it.
+- *If undecided:* Nothing is blocked; the sentence stays open to being reargued as if it
+  were an observation.
+
 **Question.** Yes or no: relabel it as a ruling?
 
 **What the document says.** `docs/cfd-205-halt-beat.md:65-66`: *"Buildings-as-buildings,
@@ -1048,6 +1875,33 @@ separate them.
 ---
 
 ## 26. `cfd-209`'s appended pre-registration note — does it read as yours?
+
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: a yes/no.)*
+Does the dated note appended under the dice beat's pre-registered null sentence stand as
+written, or do you strike it?
+
+- *Why:* Before the sit, the beat pre-registered a null outcome — if you send once from the
+  free Halt and stop, the places are still scenery and the desk was doing the work all along
+  — but the free Halt is the line board's route, and on the dice board the Halt is Home, so
+  the null as written describes a send the board cannot make. After the sit the write-up
+  wanted to reword that sentence; the orchestrator refused, on the reading that the
+  rulebook's pre-registration rule exists so that sentence is never rewritten after the sit
+  it predicted, left it verbatim, and appended a dated note beneath it explaining the naming
+  collision (which the Two-ways-from-here board found one beat downstream) and recording that
+  the sit met a failed run, so the null did not fire. The note is in the beat in your voice,
+  and you did not write it.
+- *Options:*
+  a. **Leave the note** — The pre-registered sentence stays verbatim and the dated note
+     beneath it carries the correction. *Costs:* A note in your voice that you did not write
+     sits under a ruled pre-registration.
+  b. **Strike the note** — The note is removed; the pre-registered sentence stays verbatim
+     with no explanation of the collision beside it. *Costs:* None named by the entry.
+- *The orchestrator's read, not a ruling:* The orchestrator reads it as leave it: refusing
+  to rewrite the pre-registration was right, and the note carries the correction without
+  touching the sentence. *Yours:* Whether a note in your voice that you did not write may
+  stand is yours; the record explicitly reserves that you may strike it.
+- *If undecided:* Nothing is blocked; the note is already landed. It stays in your voice
+  until you say otherwise.
 
 **Question.** Yes or no: does the note stand as written, or do you strike it?
 
@@ -1077,6 +1931,31 @@ pre-registration.
 
 ## 27. The desk PASSED markers in the inherited-board tables
 
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: a yes/no.)*
+In the inherited-board tables of the dice beat and the Two-ways-from-here beat, do the two
+desk boards (the line board and the dispatch board) keep their PASSED markers, or are both
+struck?
+
+- *Why:* Earlier cuts of those tables marked only the four city passes; the current cuts
+  also mark the two desk boards as PASSED, each with a note beneath explaining that the
+  passes were real and dated. The record's own instruction is that the two tables must match:
+  strike the desk markers from both or keep them in both.
+- *Options:*
+  a. **Keep both** — Both beats continue to list the line and dispatch boards as passed
+     inheritances, with the explanatory notes. *Costs:* If the desk passes do not in fact
+     support the rows, two city beats claim a desk inheritance they cannot support.
+  b. **Strike both** — Both beats drop the desk PASSED markers and list only the four city
+     passes. *Costs:* If the desk passes do support the rows, two city beats drop an inheritance
+     they can support.
+- *The orchestrator's read, not a ruling:* The orchestrator reads it as keep both: the
+  tables claim to list what the board inherits, the rows these beats inherit under the
+  rulebook's cumulative-board rule genuinely require those two desk passes, and the notes
+  beneath already say so. *Yours:* Strike-or-keep is yours; the entry gives its read and
+  stops there, and the underlying call is whether two city beats should show a desk
+  inheritance on their face.
+- *If undecided:* Nothing is blocked. The risk is two city beats claiming a desk
+  inheritance they cannot support, or dropping one they can.
+
 **Question.** Yes or no: strike them from both tables, or keep both?
 
 **What the document says.** `docs/cfd-209-beat.md:104-105` and `docs/cfd-210-beat.md:85-86`
@@ -1102,6 +1981,39 @@ or drop one they can.
 
 ## 28. `cfd-196`'s three register deviations
 
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: a yes/no.)*
+Do you accept, as the settled record of the dispatch board, the three places where its
+end-of-run sentences departed from the example sentences you signed: (1) neither closing
+sentence blames the weather ("lost on the way" rather than "lost to the weather on the
+way"), because on this board only one route's failures are weather; (2) the paid closing
+sentence carries a fourth number, the turned-back count, beside runs out, cargoes banked
+and stakes lost; (3) the turned-back sentence names whoever actually rode, never "the
+crew"?
+
+- *Why:* When the board was built its closing sentences came out different from the signed
+  examples, and the beat records the three differences openly rather than hiding them. The
+  board passed on 2026-08-26 with those sentences, so the question is whether the beat's
+  record of the departures is accepted as the passed board's settled wording.
+- *Options:*
+  a. **Accept** — The beat's record of the three departures becomes the passed board's
+     register; the signed example stays as the history it departed from. *Costs:* Nothing
+     further to build; the board passed with these sentences.
+  b. **Reverse** — The departures are not accepted; the beat says they are yours to accept or
+     reverse, and reversing means the board's sentences go back to the signed wording. *Costs:*
+     The entry does not price a reversal. Its one stated cost, either way, is a passed board
+     whose record disagrees with the board.
+- *The orchestrator's read, not a ruling:* Orchestrator's read: accept them — the board
+  passed with those sentences, and a record that lists its departures against the signed
+  example is the right shape for a passed board. *Yours:* Whether the departures are accepted
+  or reversed: the beat itself says these are David's to accept or reverse at the sit.
+- *If undecided:* Nothing is blocked. What stays wrong is that a passed board's record
+  disagrees with the board.
+- *What the entry does not say:* The entry names the third departure as "the registers now
+  key on cost rather than the implementer's first test", but the beat at HEAD counts its own
+  three as items 1, 2 and 4 — weather, the fourth figure, and the turned-back sentence naming
+  whoever rode — with the cost keying folded into item 2 as its cause. This card carries the
+  beat's three.
+
 **Question.** Yes or no: are the three deviations accepted as the passed record's register?
 
 **What the document says.** `docs/cfd-196-beat.md:23-42` records them itself: *"1. **Neither
@@ -1125,6 +2037,36 @@ correct shape for a passed record.
 
 ## 29. `cfd-176:19` and `:41` — the two ellipsis readings
 
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: pick one of two or three.)*
+Two picks on the heat board's beat: should the sentence "GOODS / B / HOLD are not on the
+same row" be corrected, and should "dest A's core does not die unless fed" be given a
+qualifier saying when it holds?
+
+- *Why:* Both are readings of a short sentence, not measured errors — the board's facts are
+  confirmed either way. The one measured caution is that the button row on the board actually
+  holds four buttons (LEAVE is on it too), so a correction that names only GOODS / B / HOLD
+  would itself need correcting the first time someone counted the row.
+- *Options:*
+  a. **Sentence 1 — correct it** — Rewrite the row sentence to match the board. *Costs:* A
+     rewrite naming only GOODS / B / HOLD would need correcting again the first time someone
+     counted the row, because LEAVE is on it too.
+  b. **Sentence 1 — leave it** — Keep the sentence as it stands, read as the author's
+     shorthand. *Costs:* None named by the entry; the board's facts are confirmed on either
+     reading.
+  c. **Sentence 2 — scope it** — Add a qualifier saying under what conditions the core does
+     not die unless fed. *Costs:* An edit to a passed board's beat; the entry does not say what
+     the qualifier would be, and its one priced risk is a correction that itself needs
+     correcting.
+  d. **Sentence 2 — leave it** — Keep the sentence unscoped, read as the author's shorthand.
+     *Costs:* None named by the entry; the board's facts are confirmed on either reading.
+- *The orchestrator's read, not a ruling:* Orchestrator's read: leave both — the board
+  facts hold on either reading, the sweep's own caution shows the fix introduces a new error,
+  and this is the same kind of shorthand-reading question you already ruled once was yours to
+  make. *Yours:* Both readings — the sweep marked both as David's to decide, not the sweep's
+  to assume.
+- *If undecided:* Nothing is blocked. The risk is a correction that itself needs
+  correcting.
+
 **Question.** Two picks: does *"GOODS / B / HOLD are not on the same row"* get corrected,
 and does *"does not die unless fed"* get scoped?
 
@@ -1147,6 +2089,30 @@ already ruled DAVID once.
 
 ## 30. `wait` — MEDIUM or HIGH?
 
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: pick one of two or three.)*
+Every board has a function called wait; on eleven boards it does nothing, on the heat board
+it marks the greenhouse step gone and fires by itself 1.5 seconds after the train is home —
+is that a MEDIUM problem or a HIGH one?
+
+- *Why:* The audit first called it HIGH, partly on the claim that it ends the sitting; the
+  reviewer found that claim wrong (the WARM step already ends the sitting, and the timer's
+  only visible effect is the greenhouse sprite fading, which the board documents as its
+  design). The reviewer still allowed HIGH is defensible because heat's bytes are frozen by
+  twelve test files, so the difference can never be brought into line, only renamed on the
+  other eleven.
+- *Options:*
+  a. **MEDIUM** — It does not end the sitting and the timer's effect is the documented
+     design. *Costs:* The label understates how hard it is to ever fix — twelve frozen files.
+  b. **HIGH** — The freeze count dominates: the divergence can never be conformed, only
+     renamed elsewhere. *Costs:* The label rests on how hard it is to fix, not on how much harm
+     it does.
+- *The orchestrator's read, not a ruling:* Orchestrator's read: MEDIUM — the sentence HIGH
+  rested on was shown wrong, and the freeze-count argument is about difficulty, not harm.
+  *Yours:* The label only. The entry says the guard pins the behaviour regardless of which
+  word is chosen.
+- *If undecided:* Nothing — explicitly. The guard already pins the mechanism either way;
+  the entry calls this the cheapest call on the list.
+
 **Question.** Pick one severity.
 
 **What the document says.** `docs/name-collisions-audit-2026-09-01.md:838-843` *(an earlier cut cited `:806-810`, which is the guard’s own description and never held these words)*: *"The reviewer
@@ -1168,6 +2134,32 @@ mechanism's origin is now measured: `/dawnspur-heat/` is the board the timer com
 ---
 
 ## 31. The lineage membership declaration
+
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: a yes/no.)*
+Yes or no: confirm the orchestrator's 2026-09-01 ruling that dawnspur-site and
+dawnspur-halt belong to the city lineage, not the desk, for the purpose of the
+name-crossing check?
+
+- *Why:* The check counts names shared between the two lineages, and which boards belong to
+  which lineage changed that count from 5 to 22 to 31 across three attempts to infer it from
+  the boards' own headers — so the membership is now written down as a ruling rather than
+  guessed. Halt is the ancestor every city board copies its interface from, and site shares
+  most of its names with halt, so putting either on the desk side would turn their harmless
+  look-alike names into "crossings" and bury the real ones.
+- *Options:*
+  a. **Yes — city side** — Site and halt stay declared as city boards. *Costs:* One name,
+     litJobs, counts as a crossing, only because site carries it alongside four desk boards
+     (heat, scale, line and storm).
+  b. **No — desk side** — One or both move to the desk list. *Costs:* Their look-alike names
+     with the city boards (sited, scaffold, bill, panes, rim and more) read as crossings and
+     bury the real ones.
+- *The orchestrator's read, not a ruling:* Orchestrator's read: confirm it — the count
+  moving 5/22/31 with the choice is exactly why it must be declared, and one crossing name is
+  the smallest cost of the placements tried. *Yours:* The confirmation. The ruling was the
+  orchestrator's; the audit carries it as declared, not blocked.
+- *If undecided:* Nothing is blocked and the check is green today. If the placement is
+  wrong, the crossing count grades the wrong surface and real crossings hide among harmless
+  twins.
 
 **Question.** Yes or no: confirm the orchestrator's 2026-09-01 ruling that `dawnspur-site`
 and `dawnspur-halt` sit on the **city** side?
@@ -1195,6 +2187,27 @@ surface, and real crossings get buried among benign twins.
 
 ## 32. Canon §5's `(d)` gloss (optional)
 
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: pick one of two or three.)*
+In the signed section 5 of the rulebook, the answer reads "(d) now, (c) next" but the
+question above it letters only three choices — (a) the run, (b) the in-progress purchase,
+(c) the reserve-and-storm — and then adds "or none this sitting" without a letter; does
+"(d)" mean "none of the three stakes" or "the reserve without the storm"?
+
+- *Why:* A reader cannot resolve "(d)" from the file, because no choice carries that
+  letter; the nearest candidate, the unlettered "none this sitting", conflicts with the scale
+  recut that shipped, which carries the reserve. The section is signed, so adding the
+  one-line gloss is yours; the sweep marked the item optional.
+- *Options:*
+  a. **"None of the three stakes"** — The scale sitting carries no stake at all — the
+     question's unlettered fourth choice. *Costs:* One line added to a signed section, and it
+     contradicts the shipped scale recut, which carries the reserve.
+  b. **"The reserve without the storm"** — The scale sitting carries the visible reserve,
+     with the storm deferred to the next sitting. *Costs:* One line added to a signed section.
+- *The orchestrator's read, not a ruling:* Orchestrator's read: "the reserve without the
+  storm" — the shipped recut carries the reserve, which rules out "none"; but the section is
+  signed and the gloss is David's. *Yours:* The gloss itself, because section 5 is signed.
+- *If undecided:* Nothing is blocked. One line of a signed section stays unreadable.
+
 **Question.** Pick one: does *"(d)"* mean *"none of the three stakes"*, or *"the reserve
 without the storm"*?
 
@@ -1219,6 +2232,25 @@ reserve, which rules out "none"; but it is a signed section and the gloss is you
 
 ## 33. `KILLS.md` ordering (conditional on #7)
 
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: pick one of two or three.)*
+If, under decision 7, the five passed sittings get entries in the kills ledger, should they
+run newest-first or be appended oldest-last?
+
+- *Why:* The ledger's two sections disagree with each other: the pre-host section runs
+  oldest-first and the hosted era runs newest-first. The three new kill entries have since
+  landed newest-first, so for kills the order is settled by events and only the passes' order
+  is still open.
+- *Options:*
+  a. **Newest first** — The pass entries follow the hosted era's existing order. *Costs:*
+     None named; matches what the file already does.
+  b. **Oldest last** — The pass entries are appended in date order. *Costs:* The anchors
+     change, not the text.
+- *The orchestrator's read, not a ruling:* Orchestrator's read: newest first — already the
+  hosted era's observed order, and now reinforced by a landing. *Yours:* The order — and only
+  if you answer yes to decision 7.
+- *If undecided:* Only the pass entries' anchors, and only if decision 7 is yes. Getting it
+  wrong means re-cutting anchors; no substantive loss.
+
 **Question.** If the passes land: descending (newest first), or appended oldest-last?
 
 **What the document says.** `C:\tmp\kills-proposal\KILLS-proposal.md:49-53`: *"`KILLS.md`'s
@@ -1241,6 +2273,38 @@ reinforced by a landing.
 
 ## 34. Five note-only calls, each with a default already proposed
 
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: read one table first.)*
+Do you take the record's proposed default on each of five one-line wording points in passed
+beats, or does any of them need a different answer?
+
+- *Why:* Each is a wording call that two readers have already looked at, none changes a
+  measured number, and none blocks anything, so they are grouped to be cleared in one pass.
+  The beats they sit in are already passed and frozen.
+- *Options:*
+  a. **Herbs beat: "Put them up. Consist is already home with the herbs"** — Treat
+     "inherited, not replayed" as a note only — no rewrite. *Costs:* Note only; nothing measured
+     changes.
+  b. **Herbs beat: "Player action: tap to collect."** — The sentence stands; the later
+     they-remember beat records the split. *Costs:* Note only; nothing measured changes.
+  c. **They-remember beat: "Mosswake is where the light is"** — Read as figurative; the
+     board's actual bytes govern what is lit. *Costs:* Note only; nothing measured changes.
+  d. **Two-ways beat: "64 for 14, stake 0"** — Leave it. It appears twice in the beat, not
+     once. *Costs:* Note only; nothing measured changes.
+  e. **Storm beat: "Canon §7 forbids it by name"** — The record lists this citation itself as
+     the point for you and proposes no default for it — the entry's words are "the citation
+     itself is the question". *Costs:* Note only; but see below — no default is stated for this
+     row.
+- *The orchestrator's read, not a ruling:* Orchestrator's read: take the record's default
+  on all five — each was reached by two readers and none changes a measured number. *Yours:*
+  Each of the five wording calls, since the beats are passed and the words are yours.
+- *If undecided:* Nothing is blocked for any of the five. What stays wrong is wording drift
+  in beats that are already passed and frozen.
+- *What the entry does not say:* The entry says each of the five has a default already
+  proposed, but for the fifth ("Canon §7 forbids it by name") the record's proposal reads
+  "the citation itself is the question", which is a question rather than a default, and the
+  entry does not say what about the citation is in question. The card cannot say what taking
+  "the default" means for that row.
+
 Grouped because each is a one-line register call, the record already states the
 recommendation, and none blocks anything. All five line numbers re-derived at HEAD.
 
@@ -1262,6 +2326,35 @@ readers and none of the five changes a measured number.
 ---
 
 ## 43. The desk voice in three passed city sims — pinned evidence to leave, or a re-voicing owed before a fourth board inherits it?
+
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: pick one of two or three.)*
+Three passed city boards carry the sentence "The train brought the Mosswake cargo home." —
+desk voice, never shown to a player, quoted in no document — and one board's test freezes
+it word for word; is that dead prose to leave alone as passed evidence, or is a re-voicing
+owed before a fourth city board copies it?
+
+- *Why:* Nothing renders the sentence and no document quotes it; the next city board, if it
+  is cut by copying the last passed one, would inherit it a fourth time, and the site board
+  carries three more unrendered desk-voiced sentences of its own. A rule forbidding the
+  sentence would be red on three passed boards today and could only go green by editing three
+  boards and one test.
+- *Options:*
+  a. **Leave it as pinned evidence** — The three boards and the test stay as they are.
+     *Costs:* The next city board inherits the sentence a fourth time, and the first city board
+     to actually show its run sentence shows the desk's voice.
+  b. **Re-voice before the fourth board** — Rewrite the sentence in the city's voice on the
+     three boards and update the test that freezes it. *Costs:* Edits to three passed, frozen
+     boards plus the one test that freezes the sentence.
+  c. **Middle path (the orchestrator's): leave the three, forbid the fourth** — The three
+     passed boards keep the sentence; a rule forbids it only on boards that pass after today.
+     *Costs:* That scoping is a convention David would be setting, which is why it is listed
+     rather than built.
+- *The orchestrator's read, not a ruling:* Orchestrator's read: leave the three and forbid
+  the fourth — a rule that is red on passed bytes is the permanently-red gate the project
+  warns of, while a rule scoped to boards passing after today ratchets. *Yours:* The scoping
+  convention — whether a rule may apply only to boards that pass from now on.
+- *If undecided:* Nothing today. The next city board, if cut by copying the last passed
+  one, inherits the line.
 
 *(Added 2026-09-08 from the DOM namespace sweep, call 2 — `docs/sweep-2026-09-02.md:1642`.
 Convention: no player sees it.)*
@@ -1297,6 +2390,33 @@ first time a city board renders its run sentence it renders the wrong lineage's 
 ---
 
 ## 44. `quiet` / `holds` / `neighbor` / `dim` on the city boards — dead wiring, or unwritten art?
+
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: a design call.)*
+City boards switch four visual states — dim, quiet, holds, neighbor — on the Mosswake and
+Halt buildings, no page has a drawing rule for any of the four, and on 23 of the 24
+board-and-state pairs nothing ever turns the state on; do you delete the switches as dead
+wiring, or write the missing art rules?
+
+- *Why:* The one state that does get set (the herbs board's "neighbor again") lives on the
+  one map board that does not switch neighbor at all, so nothing in the tree connects a state
+  that moves to a switch that shows it. Against that, six boards carry the switches and the
+  dice board has art-direction comments naming the states, which says someone meant them.
+- *Options:*
+  a. **Delete the switches (dead wiring)** — Remove the four state toggles from the city
+     boards. *Costs:* Touches passed boards; if the states were art waiting for its rules, this
+     deletes that art direction.
+  b. **Write the rules (unwritten art)** — Write the drawing rules for the four states so the
+     switches show something. *Costs:* Touches passed boards; if the switches were dead wiring,
+     they are kept and every future city board copies them because they look like a convention.
+- *The orchestrator's read, not a ruling:* Orchestrator's read: closer to dead wiring than
+  the record presented it — the only evidence for planned art was a state that moves, and
+  measured, that state never reaches a switch — but six boards' worth of switches and the
+  dice comments say someone meant them. *Yours:* The remedy; the two are opposite and both
+  touch passed boards. Not urgent — nothing renders differently under either reading today.
+- *If undecided:* Nothing is blocked; the dim state is already guarded so its board list
+  cannot drift silently. Getting it wrong means either deleting art direction that was
+  waiting for its rules, or carrying dead switches into every future city board because they
+  look like a convention.
 
 *(Added 2026-09-08 from the DOM namespace sweep, call 3 — `docs/sweep-2026-09-02.md:1651`;
 finding 19 at `:1379`, finding 2 (`dim`) at the record's finding 2. Convention: opposite
@@ -1338,6 +2458,30 @@ carrying dead toggles into every future city board because they look like a conv
 
 ## 45. `dawnspur-site`'s odd shape — a convention future city boards must avoid, or an accepted one-off?
 
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: pick one of two or three.)*
+The site board builds its scenery (scaffold, works, hearth, bill) as page-wide unique ids
+and uses three of the desk's ids (train, hearth, platform), where the halt board and every
+map board use classes inside a named building — is site's shape a convention future city
+boards must not copy, or an accepted one-off?
+
+- *Why:* Site was the first city board and its shape predates the pattern the map boards
+  later settled on; it passed on 2026-08-30 and is frozen, so a future author may copy it
+  because it is the passed ancestor. A comment now sits above the DOM rows in the name check,
+  and the answer decides whether that comment is a warning or a rule.
+- *Options:*
+  a. **Convention to avoid (a rule)** — Future city boards must use the map boards' way —
+     classes inside a named building — and not copy site. *Costs:* None named by the entry.
+  b. **Accepted one-off** — Site's shape is accepted as its own, and the comment says so.
+     *Costs:* If not said plainly, a future board copies site as the passed ancestor and the
+     id-versus-class split widens by one board.
+- *The orchestrator's read, not a ruling:* Orchestrator's read: a one-off, and say so in
+  the comment — site's shape predates the map boards' pattern and nothing in a sit turned on
+  it; but "the map boards' way is the rule" is a rule about future boards, and those are
+  David's. *Yours:* Rules about future boards.
+- *If undecided:* Nothing today; the next city board's author reads the comment either way.
+  The risk is a future board copying site and the id-versus-class split widening by one
+  board.
+
 *(Added 2026-09-08 from the DOM namespace sweep, call 4 — `docs/sweep-2026-09-02.md:1661`.
 Convention.)*
 
@@ -1369,6 +2513,29 @@ and the id-versus-class split that the `hearth` row now grades widens by one boa
 
 ## 35. The sweep's fourteen canon line cites are all stale
 
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: a yes/no.)*
+The review record that lists fourteen rulebook questions for you cites each by a line
+number, and all but one now point at the wrong sentence — may the record get a dated
+correction block underneath, re-pointing the list to where each sentence sits now?
+
+- *Why:* The same review that listed the questions also agreed an edit set that, once
+  landed, grew the rulebook from 749 to 902 lines, so every line number but one now lands on
+  the wrong sentence. The review had already caught this exact trap for the kills ledger
+  earlier in the same record and called it a rule the second time, then published fourteen
+  line cites into a file its own edit set was about to grow.
+- *Options:*
+  a. **Re-point them in place** — Add a dated correction block beneath the list in the review
+     record, mapping each old line number to where the sentence sits now; the original list
+     stays, because the record is append-only. *Costs:* A mechanical edit to one document;
+     nothing else moves.
+- *The orchestrator's read, not a ruling:* Orchestrator's read: re-point them in place with
+  a dated correction block beneath the list, since the fix is mechanical and the record is
+  append-only. *Yours:* The entry does not assign you a half — the ledger's own heading says
+  these six corrections need no ruling; at most it wants your yes to the form.
+- *If undecided:* Nothing is blocked, but the fourteen decisions get ruled from a list in
+  which thirteen of the fourteen lines are wrong, whenever someone works from the review
+  record rather than this ledger, which carries the corrected mapping.
+
 **Nothing is blocked; this is a record correction.** `docs/sweep-2026-09-02.md:523-600` asks
 you to rule on canon lines that moved when its own agreed edit set landed at `b8d6da3`
 (749 to 902 lines). The mapping, re-derived at HEAD:
@@ -1398,6 +2565,29 @@ the form.
 
 ## 36. The audit's beat cites have drifted too
 
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: a yes/no.)*
+The entry records that eleven line references in the name-collision audit (into the beats
+for CFD-200, 205, 205-halt, 208, 209, 210 and 201, and into the kills ledger) pointed at
+different lines when the ledger was measured, and states the corrected numbers — but it
+asks you nothing and does not say whether the audit itself should be edited.
+
+- *Why:* The beats and the kills ledger grew after the audit was written, so the audit's
+  line references no longer landed where they did. One of them, the CFD-200 reference, was
+  wrong even on the day it was written, not merely stale.
+- *Options:*
+  a. **None framed by the entry** — The entry carries the corrected line numbers inside this
+     ledger and proposes no action on the audit. *Costs:* None named.
+- *The orchestrator's read, not a ruling:* The entry gives no orchestrator's read; it is a
+  note that the corrected numbers are already carried in this ledger. *Yours:* Nothing — the
+  entry assigns you no half, and the ledger's heading says these corrections need no ruling.
+- *If undecided:* Nothing is blocked and the entry names no cost.
+- *What the entry does not say:* The entry lists corrections without a question, so I could
+  not tell whether it wants the audit edited or only wants you to know. Checker's own
+  observation, not the entry's: opening the audit at the current tree, its citations were
+  re-derived and re-pointed later on the day the ledger was measured, and these references
+  now show the corrected numbers there — so this entry may already be overtaken; the entry
+  does not say so.
+
 **Nothing is blocked; this is a record correction.** Corrections carried inline above:
 `cfd-200:1076-1093` → `:1139-1156` **and wrong at its own tree**; `cfd-205:207/:208` →
 `:214/:215`; `cfd-205:268/:271` → `:275/:278`; `cfd-205-halt:203-206` → `:207/:209/:210`;
@@ -1408,6 +2598,27 @@ the form.
 ---
 
 ## 37. The audit's §5 says the `cfd-201` halt bridge was superseded. It was not.
+
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: a yes/no.)*
+May the earlier section of the name-collision audit be corrected to agree with its later
+section, which measured that the two 'home halt' lines in the CFD-201 desk beat were never
+rewritten?
+
+- *Why:* The audit's earlier section says the CFD-201 beat's two halt-bridge lines (the
+  desk lineage describing its counterparty as the 'home halt', the place the city lineage
+  calls home) and the CFD-209 beat's one were all rewritten in place by the review; measured
+  at the current tree, only the CFD-209 line was. The audit's later section already says the
+  CFD-201 ones were 'not built', with the checking reviewer and the orchestrator agreeing —
+  so one document states one fact two ways.
+- *Options:*
+  a. **Correct the earlier section to match the later one** — Edit the audit's earlier claim
+     so it says the CFD-209 line was rewritten and the CFD-201 lines were not, matching the
+     section that measured it. *Costs:* A one-sentence edit to a record; nothing else moves.
+- *The orchestrator's read, not a ruling:* Orchestrator's read: correct the earlier section
+  to match the later one, because the later one is the measured half. *Yours:* The entry does
+  not assign you a half; the ledger's heading says record corrections need no ruling.
+- *If undecided:* Nothing is blocked; the audit keeps saying in one place that the desk
+  board's halt lines were rewritten and in another that they were not.
 
 **Nothing is blocked; this is a record correction.**
 `docs/name-collisions-audit-2026-09-01.md:833-834` reads: *"**`docs/cfd-201-beat.md:1017` and
@@ -1424,6 +2635,26 @@ document disagree about one fact.
 
 ## 38. The audit still records `/dawnspur-heat/` as never swept
 
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: a yes/no.)*
+Should the name-collision audit's sentence saying the heat board 'was not swept' be
+corrected now that it has been, while keeping the still-true half that the board's code
+names no beat?
+
+- *Why:* The audit was written before the CFD-176 review ran against the heat board, so
+  'was not swept' was true then and has been false since that review landed. The other half
+  of the sentence — the heat board's code carries no line pointing at a beat — is still true,
+  so only that half survives as written.
+- *Options:*
+  a. **Correct the 'was not swept' half** — Change the audit's sentence so it records that
+     the heat board has now been reviewed, leaving the 'names no beat' half as it is. *Costs:* A
+     one-line edit; the CFD-176 review filed this correction but did not make it, because the
+     audit was outside the files it was allowed to touch.
+- *The orchestrator's read, not a ruling:* The entry gives no orchestrator's read beyond
+  the measurement; the correction is filed and unbuilt. *Yours:* Nothing is assigned to you;
+  the ledger's heading says these need no ruling.
+- *If undecided:* Nothing is blocked; the audit keeps recording the heat board as never
+  reviewed, which has been false since the review landed.
+
 **Nothing is blocked; this is a record correction.**
 `docs/name-collisions-audit-2026-09-01.md:872-873`: *"**`/dawnspur-heat/` cites no beat** —
 its spec is not in this repository — and was not swept."* The "was not swept" half is false
@@ -1434,6 +2665,31 @@ and did not build it, as out of glob.
 ---
 
 ## 39. The CFD-176 record promises a David list it does not contain
+
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: a yes/no.)*
+May the missing list — the nine calls for you that the CFD-176 review record says it lists
+'separately, one line each' — be appended to that record from the review's saved results
+file?
+
+- *Why:* The record states 'David's calls: nine on the beat, two filings out of glob.
+  Listed separately, one line each', and there is no such list anywhere in the landed
+  document or in the scratch draft it came from. The nine survive only in the review's
+  results file, and the orchestrator has already rebuilt them as entries 12, 13, 16, 20 and
+  29 of this ledger, plus one folded into entry 9.
+- *Options:*
+  a. **Append the list to the record from the results file** — Add the nine calls, one line
+     each, to the CFD-176 review record so its count and its enumeration agree. *Costs:* A
+     docs-only append; the calls themselves are already in front of you as other entries.
+- *The orchestrator's read, not a ruling:* Orchestrator's read: append the list from the
+  results file, because a record that names a count and omits the enumeration is the drift
+  mechanism this project already documents. *Yours:* The entry assigns you no half to rule
+  here — it asks you to read it because the calls behind it are the ones you are ruling on in
+  entries 9, 12, 13, 16, 20 and 29.
+- *If undecided:* Nothing is blocked; the record keeps promising a list it does not
+  contain, and anyone reading it instead of this ledger cannot find the nine calls.
+- *What the entry does not say:* The entry says 'ten calls are sitting behind it' while the
+  promised list is nine on the beat plus two filings; the entry does not reconcile the two
+  counts.
 
 **Nothing is blocked; this is a record correction — but read it, because ten calls are
 sitting behind it.** `docs/sweep-2026-09-02.md:916-917`: *"**David's calls: nine on the
@@ -1451,6 +2707,51 @@ documents.
 ---
 
 ## 40. Two low-severity canon figures, and one upstream filing
+
+**In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: pick one of two or three.)*
+Three small corrections: should the rulebook's 'one case out of six' be marked
+unreproducible or the six cases named; should 'three sits running' narrow to two of three
+unless your Linear sit note for the storm's fourth sit shows a copy request; and should the
+origin of the halt bridge (the desk beat calling its destination 'the home halt', the place
+the city lineage calls home) be filed against the game's own code rather than patched with
+a note in a beat?
+
+- *Why:* Two sentences in the rulebook rest on figures the review could not reproduce: the
+  recut-cap sentence counts 'one case out of six' from six sequences written down nowhere,
+  and the copy-recut sentence says you asked for copy 'three sits running' when, of your own
+  words the storm board's file quotes from the three sits behind those copy recuts — the
+  third, fourth and fifth — only the third and fifth ask for copy (the fourth is you naming
+  copy that worked). Separately, the desk beat's 'home halt' wording turns out to come from
+  the game's own content file, which files the home halt as a route — so the desk lineage
+  inherited a route to the place the city lineage calls home, and the seed of that is
+  upstream, not in the boards.
+- *Options:*
+  a. **Name the six sequences** — Someone enumerates the six recut sequences the rulebook
+     counted, so 'one case out of six' becomes checkable. *Costs:* The review says the six
+     cannot be reconstructed and warns not to let a reconstruction stand in, so this may not be
+     doable honestly.
+  b. **Mark 'one case out of six' unreproducible** — Leave the sentence but mark the figure
+     as one nobody can re-derive. *Costs:* The rulebook carries a figure flagged as unverifiable
+     rather than a number.
+  c. **Keep 'three sits running' if Linear shows a copy request** — You check the storm's
+     fourth sit's Linear note; if it asks for copy, the sentence stands as written. *Costs:* A
+     Linear lookup by you; nothing changes.
+  d. **Narrow to 'two of three' if Linear does not** — The rulebook sentence narrows to what
+     the in-repo sit record supports. *Costs:* A one-phrase edit to the rulebook.
+  e. **File the halt-bridge seed on the PWA side and leave the boards alone** — Record the
+     issue against the game's content file, where the home halt is filed as a route, and change
+     no board or beat. *Costs:* An issue filed in the game's repo; the boards keep the inherited
+     wording.
+  f. **Add a note in one beat** — Explain the halt-bridge wording inside a single beat.
+     *Costs:* Fixes the symptom in one file only; the seed stays upstream.
+- *The orchestrator's read, not a ruling:* Orchestrator's read: mark the figure
+  unreproducible (prefer a null to a plausible number), narrow to two of three unless Linear
+  says otherwise, and file the halt-bridge seed on the PWA side. *Yours:* The Linear lookup
+  is yours — the entry calls the copy-request question a Linear lookup, not a judgement, and
+  only your sit notes can settle it; the other two the entry does not assign to you
+  explicitly.
+- *If undecided:* Nothing is blocked; the rulebook keeps a figure nobody can reproduce and
+  a 'three sits' that may be two, and the halt-bridge origin stays unfiled in the game repo.
 
 **Nothing is blocked; these are record corrections.**
 
