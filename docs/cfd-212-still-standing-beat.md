@@ -620,7 +620,7 @@ choose, so length is opt-in by construction and no state can strand them.
 
 **Refused, and the refusal is measurable.** A stop that is *always* available is a
 second live can-do in **every** post-fork state. `/dawnspur-halt/` pre-walk offered two
-and failed — *"Two opening can-dos; he stopped"* (`KILLS.md:42`) — and every board that
+and failed — *"Two opening can-dos; he stopped"* (`KILLS.md`'s 2026-08-30 Dawnspur Halt Home-sit entry) — and every board that
 has passed since offers one, two only at the fork. A permanent two is a bigger
 structural change than the one this card is for.
 
@@ -1058,7 +1058,7 @@ while a run is out, and that no two of those endings read the same on screen.
 | **Two lit at the OPEN** | **REFUSED** — the measured failure | CFD-205 kill |
 | **The Halt as a send, or the Halt carrying a can-do** | **REFUSED** — it is home on this board, not a destination | CFD-210, measured |
 | **Rustfall as a send** | **REFUSED** — CFD-200 owns it, by name | CFD-200 |
-| **An always-available stop verb** | **REFUSED, argued** — a second live can-do in every post-fork state | `KILLS.md:42`; see the open call |
+| **An always-available stop verb** | **REFUSED, argued** — a second live can-do in every post-fork state | `KILLS.md`'s 2026-08-30 Dawnspur Halt Home-sit entry; see the open call |
 | **Arming-and-triggering the ending (one verb, armed only)** | **OPEN CALL — for David.** Corridor stays at one; §7.2 kept whole; costs a verb | canon §7.2's companion, `:595-599` |
 | **A raised opening float** | **REFUSED, argued** — a new literal, and the float is load-bearing in the parent's signature | see the open call |
 | **A timer, decay or expiry on the forgone branch** | **REFUSED** — a decay clock wearing a decision's clothes | R2 / R3 / R4 |
@@ -1132,7 +1132,7 @@ allowed to be green.
   `docs/cfd-210-beat.md:664`, read "the Halt becomes tappable." **That is false at HEAD
   and the parent's own suite requires the opposite**: `index.html:458` binds
   `board.postNotice("halt")`, `test:919` asserts `postNotice("halt")` returns true, and
-  `test:1184` asserts the handler is present in the HTML. `KILLS.md:44` makes it a
+  `test:1184` asserts the handler is present in the HTML. `KILLS.md`'s 2026-08-30 Dawnspur Halt Home-sit entry makes it a
   standing recut — "Dead jobs stay buttons and still post notices." The Halt is a button
   and posts a notice; what it must never carry is a can-do.)*
 - A state field is left `undefined` rather than initialised — `make()` aliases the state

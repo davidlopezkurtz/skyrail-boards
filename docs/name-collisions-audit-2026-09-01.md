@@ -1309,7 +1309,8 @@ the sit it pre-registered (canon §7.5's whole point); David may strike the note
   regexes on previews (39 / 15 / 14, all green): cfd-208:481 (the Favor-meter refusal
   sourced to a "Beat 7 kill list" that does not exist), cfd-209:200 (the stated chance is
   CFD-196's rule, not Bible §5.8's), cfd-210:314 and :331 ("did both and stopped" was set
-  in quotation marks as if quoted from a ledger; `KILLS.md:42` reads "Two opening can-dos;
+  in quotation marks as if quoted from a ledger; KILLS.md's 2026-08-30 Dawnspur Halt
+  Home-sit entry reads "Two opening can-dos;
   he stopped"), cfd-210:408 (the page also renders the `canDo` face). Dropped: the optional
   note at cfd-208:431 — a true note on a true, dated line inside the superseded cut-0
   record. Suite 694 / 694; docs-only. **The sweep's edit sets are closed: 86 supersessions

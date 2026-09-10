@@ -32,8 +32,25 @@ this archive remains the provenance record.
 | sim.js | 3673 | 395c18f28d5e04b524b6e70fd9c8445802a0d038bf9f8d2694e28c8ccc2d320c |
 | build-info.json | 165 | d0eca4ab49d61875b7c737d83ff8beffdc71f1b89490faaae44faee4d7992a0f |
 
-Fetch-verify caveat, measured 2026-08-25: the durable host injects the
-Cloudflare Insights beacon into HTML (+359 bytes on /dawnspur/ — 12024 live vs
-11665 deployed), so a live fetch of index.html will NOT hash-match these
-captures. Verify HTML against the deployment's own *.skyrail-boards.pages.dev
-URL; sim.js and build-info.json are served uninjected on both hosts.
+Fetch-verify caveat *(measured-then, 2026-08-25 — corrected below,
+2026-09-09)*: the durable host injects the Cloudflare Insights beacon into
+HTML (+359 bytes on /dawnspur/ — 12024 live vs 11665 deployed), so a live
+fetch of index.html will NOT hash-match these captures. Verify HTML against
+the deployment's own *.skyrail-boards.pages.dev URL; sim.js and
+build-info.json are served uninjected on both hosts.
+
+*(SUPERSEDED, ruled by counsel on David's instruction, 2026-09-09 — council
+entry 10: the injection above is not unconditional. It fires on a request
+carrying an `Accept: text/html` header — measured 2026-09-02 (the sweep's
+"Refuted at review — do not re-find" section in `docs/sweep-2026-09-02.md`,
+found by text rather than by line) and re-measured by four independent
+fetches on 2026-09-09, all agreeing. A PLAIN fetch (no `Accept: text/html`)
+returns the archived bytes and hash-matches this file's `index.html` row
+above exactly — 11,665 bytes, sha256 `bdde9b50…97ac59` — and THAT plain
+fetch, not the pages.dev workaround, is the verification method for this
+archive. The *.skyrail-boards.pages.dev route above remains valid as a
+second route, for the day Cloudflare changes its trigger. The injected size
+is NOT stable — it read one value on 2026-08-25 and 2026-09-02 and a larger
+one on 2026-09-09 — and every reading came from ONE machine on ONE network
+path, so no injected byte count and no delta is published in this correction,
+including a re-statement of the +359 above. Prefer null to a plausible number.)*

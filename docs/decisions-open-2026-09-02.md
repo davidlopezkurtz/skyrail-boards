@@ -171,7 +171,7 @@ board."* And `:547`: *"board is killed rather than passed, CFD-200 re-bases onto
 did pass —"* continuing at `:548` to *"which would then be the join board."*
 
 **What source says.** The storm was sat five times and **stopped without a pass and
-without a kill** — `KILLS.md:68-69` (*"five sits, five recuts, stopped without a pass"*),
+without a kill** — KILLS.md's 2026-08-28/29 Dawnspur Storm entry (*"five sits, five recuts, stopped without a pass"*),
 canon `:590` in the sweep's numbering. The beat's own trigger is different from canon's:
 `docs/cfd-200-beat.md:121-123` fires on *"If CFD-201 does not pass its sit"* — which has
 happened — while canon's fires only on *killed rather than passed*, which has not.
@@ -492,7 +492,8 @@ single place they can be looked up**."*
 not exist — the sweep's `s7.4-M6` charged that canon's *"`KILLS.md`, where every recut
 decision and its shas are recorded"* over-claims
 (`docs/sweep-2026-09-02.md:469-475`). **Partially overtaken:** the two missing kills and
-the storm stop landed at `b95a9c9` and are in the file now (`KILLS.md:26`, `:55`, `:68`).
+the storm stop landed at `b95a9c9` and are in the file now (KILLS.md's
+they-remember cut 0, dawnspur-site and dawnspur-storm entries, by date and board rather than by line).
 What remains is the five passes, drafted, measured and ready at
 `C:\tmp\kills-proposal\KILLS-proposal.md:180-211` — dice, they-remember cut 1, herbs,
 mosswake, and the halt walk.
@@ -1815,7 +1816,7 @@ audit cited `:203-206`, which at HEAD is the table header and the first two rows
 Corrected here: the rows are `:207`, `:209`, `:210`.
 
 **What source says.** Those systems came from `/dawnspur-site/`, which was **sat and not
-passed** (`KILLS.md:55-66`; hub `public/index.html:67`, *"live — sat 2026-08-30, not
+passed** (KILLS.md's 2026-08-30 Dawnspur Site entry; hub `public/index.html:67`, *"live — sat 2026-08-30, not
 passed"*), so "inherited" claims a lineage from a board that never earned one.
 
 **Blocked.** Nothing.
@@ -1861,7 +1862,7 @@ only one action is live at a"*.
 
 **What source says.** The audit's disposition, `docs/name-collisions-audit-2026-09-01.md:1264-1265`:
 *"'Home writing landed. The walk did not.' as a sit finding (it is a ruling; say so)"*.
-`KILLS.md:41-45` records the sit verbatim as *"Lit the lamp and started the foundry."* —
+KILLS.md's 2026-08-30 Dawnspur Halt Home-sit entry records the sit verbatim as *"Lit the lamp and started the foundry."* —
 the walk sentence is not in it.
 
 **Blocked.** Nothing.
@@ -2593,7 +2594,7 @@ asks you nothing and does not say whether the audit itself should be edited.
 `:214/:215`; `cfd-205:268/:271` → `:275/:278`; `cfd-205-halt:203-206` → `:207/:209/:210`;
 `cfd-208:452` → `:464`; `cfd-209:396` → `:423`; `cfd-210:80-81` → `:85-86`; `cfd-210:168` →
 `:177` and `:274`; `cfd-208:278` (rim) → `:288`; `cfd-201:1017/:1386` (halt bridge) →
-`:1052/:1442`; `KILLS.md:63` → `:114`.
+`:1052/:1442`; the KILLS.md cite formerly published as `:63` and then as `:114` names the 2026-08-24 starve-or-feed entry — de-lined 2026-09-09 per entry 33, and not to be republished as a line number.
 
 ---
 
@@ -2784,7 +2785,7 @@ the source lists were ruled, landed, or made moot by them.
 | **The hub tags.** *"`public/index.html:37-61` five PASSED boards tagged 'not yet sat' (a hub commit)"* | audit `:1264` | **Ruled and landed at `079b2bd`.** Measured at HEAD: `:37`, `:43`, `:49`, `:55`, `:61` all read *"live — passed its sit"*; `:67` reads *"sat 2026-08-30, not passed"*; `:73` *"sat five times, stopped without a pass"*. Only `:31` (`/two-ways-from-here/`) still says *"not yet sat"*, correctly. |
 | **`public/index.html:79`'s "not yet sat" on a passed board** — half of the desk half's "shipped-bytes pair" | audit `:1054-1055` | Same commit. `:79` now reads *"live — passed its sit 2026-08-28"*. **The other half of that pair — the stale MANIFEST pin — is still open as entry #11.** |
 | **The two missing kills and the storm stop** — *"`KILLS.md`'s five missing passes, two missing kills and the storm stop"* | audit `:1262-1263`, sweep `:602-605`, KILLS proposal | **Landed at `b95a9c9`.** `KILLS.md` at HEAD carries they-remember cut 0 (`:26`), the site fail (`:55`) and the storm's five (`:68`), 119 lines and ten `Recut:` lines. **The five passes are still open as entry #7.** |
-| **`KILLS.md:63` cites a beat that did not exist on main** | audit `:832-836` | **Resolved at `758a249`** — the beat merged from PR #3 with a provenance header at `f3f6222`; the cite resolves and now sits at `KILLS.md:114`. The audit already carries the supersession. |
+| **`KILLS.md:63` cites a beat that did not exist on main** | audit `:832-836` | **Resolved at `758a249`** — the beat merged from PR #3 with a provenance header at `f3f6222`; the cite resolves and now names the ledger's 2026-08-24 starve-or-feed entry — de-lined 2026-09-09 per entry 33, since that entry's own line number moves with every hosted-era insert. The audit already carries the supersession. |
 | **Canon `s7.4-M6`** — the *"where every recut decision and its shas are recorded"* over-claim | sweep `:469-475` | **Withdrawn at review** by the sweep itself, because `b95a9c9` discharged most of it mid-run. The residual (four pre-host entries with no shas) folds into entry #7. |
 | **Canon §7.4's `:604` vs `:623-635` self-inconsistency** — *"two intent questions"* vs the blessed TEND text | audit `:1026-1028`, recorded as out of scope | **Resolved at `b8d6da3`.** At HEAD `:745-751` names the trim question as signed at `30ff642`, identifies the second as the CFD-203 TEND question, and records that the trim question was recut into that shape at `16ac8e5` — *"so at HEAD that card asks none in the intent form."* |
 

@@ -466,7 +466,7 @@ board would guarantee the null.**
 On a board without dice, two lit things are **two taps**. Taking both costs
 nothing, so a player takes both — which is precisely the pre-walk Halt result — he
 did both and stopped *(this beat's gloss; an earlier cut set it in quotation
-marks as if quoted, and the ledger's words at `KILLS.md:28` are "Two opening
+marks as if quoted, and the ledger's words at `KILLS.md`'s 2026-08-30 Dawnspur Halt Home-sit entry are "Two opening
 can-dos; he stopped")*. A small board would reproduce that failure by
 construction and teach nothing about choice.
 
