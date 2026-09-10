@@ -299,7 +299,7 @@ HEAD**, and the two not listed above are `/dawnspur-heat/` (sim `292d6645`, inde
 `b5f7e14f`) and `/dawnspur-scale/` (sim `953368a1`, index `5d2f452f`), both re-derived
 here and both **already pinned**, `sit/` and `public/`, in
 `test/dawnspur-dispatch.test.js:182-192`. They are passed boards
-(`docs/mechanisms-recommitted.md:277`) and they sit outside this card's Seat only
+(`docs/mechanisms-recommitted.md:318`) and they sit outside this card's Seat only
 because nothing here inherits from them. The Kill line's *"any pin moves"* means all
 twelve, not the ten in the table. *(The nine-row inheritance of this table from
 `docs/cfd-210-beat.md:228-238` is where the omission came from; it is corrected here
@@ -521,7 +521,7 @@ this card cannot afford to have its sitting spent on. The words go in
 
 ### Why this was an open call, and what §7.2 required of it
 
-§7.2 (`docs/mechanisms-recommitted.md:578`) requires that the stop exist and
+§7.2 (`docs/mechanisms-recommitted.md:636`) requires that the stop exist and
 be honest, and that the quick path be real. **C13's stop *was* the fork.** Remove that
 and the stop has no home. There is no version of the one new system that leaves the
 question open, so the answer is part of the same system rather than a second one.
@@ -636,7 +636,7 @@ a player there** — the next section, and it is a separate call from where the 
 
 **Alternative 3 — arming-and-triggering: the second staked short run ARMS the ending,
 and one can-do closes it.** *This is the shape canon itself names, and an earlier cut of
-this beat did not consider it.* §7.2's companion, `docs/mechanisms-recommitted.md:595-599`:
+this beat did not consider it.* §7.2's companion, `docs/mechanisms-recommitted.md:662-666`:
 *"Arming-and-triggering ... topping the terrace arms the ending, the qualifying cargo
 triggers it — is the shape that gives a builder their payoff without ending the sitting
 under a player who came for the run."*
@@ -661,7 +661,7 @@ that state with the press branch latched off.
   the next section.
 
 **§7.2 is TRADED, not satisfied, and that is the ruling David is being asked for.**
-§7.2 has two testable clauses (`:591-599`): *a quick path must exist and be honest*, and
+§7.2 has two testable clauses (`:649-666`): *a quick path must exist and be honest*, and
 *the stop is what makes length opt-in*. The recommendation keeps the first — banking is
 the quick path, honest, `Collect.` the instant the board arms — and **voids the second**:
 under it, nothing the player taps ends the sitting. Alternative 3 keeps both. **So
@@ -849,31 +849,31 @@ lost press-on costs this sitting's ending and never the home, the lamp, the lard
 Favor already earned. Under this card the player has to *keep playing* with that
 distinction true, which is a stronger test of it than the parent could run.
 
-**§7** (`:263`) — one NEW system, on a board that keeps what passed. The fork is
+**§7** (`:304`) — one NEW system, on a board that keeps what passed. The fork is
 inherited because it passed; the stop's relocation, the rewritten mosswake branch and
 the larder latch are that system's other half and not a second system, per David's
 ruling 1.
 
-**§7.2** (`:578`) — **TRADED, not satisfied, and the trade is the open call.** The quick
+**§7.2** (`:636`) — **TRADED, not satisfied, and the trade is the open call.** The quick
 path clause is kept (banking, honest, available the instant the board arms). The
-*"the stop is what makes length opt-in"* clause (`:595-596`) is **voided** by the
+*"the stop is what makes length opt-in"* clause (`:662-663`) is **voided** by the
 recommendation and **kept whole** by alternative 3. Ruling for the recommendation
 amends §7.2; ruling for alternative 3 spends a verb to keep it. **This beat does not
 claim to have satisfied §7.2 and does not want the trade recorded as a cost absorbed
 under it.**
 
-**§7.3** (`:604`) — publish the columns, never a synthesised total. The two branches
+**§7.3** (`:671`) — publish the columns, never a synthesised total. The two branches
 remain in different currencies: a mark and an ending against a chance at fourteen and a
 chance at nothing. **No single number ranks them, and this card adds no arithmetic that
 would pretend to.**
 
-**§7.4** (`:666`) — the recut kinds. This is a new board, not a recut, so the rule binds
+**§7.4** (`:733`) — the recut kinds. This is a new board, not a recut, so the rule binds
 on what comes after: **this card's change is structural**, so a failing sit routes to
 writing or act, and a second structural cut here would be the same kind again.
 
-**§7.5** (`:820`) — the outcomes are pre-registered below, before the sit, with what
+**§7.5** (`:901`) — the outcomes are pre-registered below, before the sit, with what
 each means and where it routes. David registered one of them himself. Two candidates
-were **demoted out of the split** because a counter resolves them, per `:929`.
+were **demoted out of the split** because a counter resolves them, per `:1010`.
 
 ---
 
@@ -1200,13 +1200,13 @@ this shape most invites:
 
 **Note what none of these is: a completion count.** All four log as *"the sitting
 ended."* They mean four different things and route to four different places. Per §7.5
-(`docs/mechanisms-recommitted.md:929`), if a split can be resolved by a counter it was
+(`docs/mechanisms-recommitted.md:1010`), if a split can be resolved by a counter it was
 not worth registering — and `pressOns`, `runsTurnedBack` and `record` separate none of
 these, for the reason CFD-210 already recorded about its own counter.
 
 ### Two candidates DEMOTED out of the split, and why
 
-Per §7.5 `:929`. **An earlier cut of this beat registered both as outcomes.** Both are
+Per §7.5 `:1010`. **An earlier cut of this beat registered both as outcomes.** Both are
 resolvable by a counter the board already exposes, which means registering them spends
 David's sitting on something `node --test` finds first.
 
@@ -1286,7 +1286,7 @@ makes it *seen* in the terminal frame — and it is offered as a call rather tha
 
 David sits first. **Ask: What happened.**
 
-Per canon §7.4 (`docs/mechanisms-recommitted.md:666`): **ask what he did, and whether he
+Per canon §7.4 (`docs/mechanisms-recommitted.md:733`): **ask what he did, and whether he
 can name what it bought. Never ask what he was trying to do** — refused on this project
 with its evidence recorded, and the one intent answer on record was a confabulated
 mechanism.

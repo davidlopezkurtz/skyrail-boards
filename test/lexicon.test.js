@@ -312,6 +312,24 @@ test("HIGH means measured: every HIGH / CONTESTED row carries a driven or source
   assert.deepEqual(unmeasured, [], fail(["Rows ranked HIGH or CONTESTED with no measured column:", ...unmeasured.map((u) => "  " + u)]));
 });
 
+// The armed row moved CONTESTED -> LOW at entry 14 (ruled by counsel on
+// David's instruction, 2026-09-09). The sweep above only checks HIGH /
+// CONTESTED rows, so the downgrade would silently drop armed out of it —
+// this is the load-bearing companion the ruling required: a named,
+// rank-independent obligation, so lowering another row's rank does not
+// silently inherit the same exemption.
+test("armed stays measured at LOW: a driven or source-pinned column is required on every board it names, independent of adjudication rank", () => {
+  const row = L.ROWS.armed;
+  const unmeasured = [];
+  for (const b of Object.keys(row.boards)) {
+    const e = row.boards[b];
+    const measured = Array.isArray(e.drives) || e.sourcePin instanceof RegExp || typeof e.discardsArgument === "boolean" ||
+      typeof e.mutates === "boolean" || typeof e.where === "string";
+    if (!measured) unmeasured.push(`ROWS.armed.boards["${b}"] is only read — add drives / sourcePin / discardsArgument / mutates`);
+  }
+  assert.deepEqual(unmeasured, [], fail(["The armed row (LOW, entry 14) must carry a driven or source-pinned column on every board it names:", ...unmeasured.map((u) => "  " + u)]));
+});
+
 test("signatures: every export row names exactly the boards that export the token, with the derived kind / arity / opening / keys, and every source pin still matches the sim", () => {
   const drift = [];
   for (const name of rowsOn("export")) {

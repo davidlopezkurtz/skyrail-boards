@@ -9,7 +9,7 @@ nine parallel readers extracted verbatim-quoted doctrine from Fuel-Heresy,
 Laying-Up, Venturing-Gameplay-Preliminary-Lock, Venturing-and-Building,
 Geology-and-Weather, The-Two-Games, Pushing-the-Cold-Back, the Master Design
 Bible, and World-Bible-v0.1 (all under the PWA repo's `docs/lore/`). Every rule
-below carries its quote. David signs this doc before any recut implements it.
+below carries its quote. David signs this doc before any recut implements it. *(Discharged as to the recuts it gated — 2026-09-09 addendum at foot; by counsel, not a signature.)*
 
 ## 1. The rules, cited
 
@@ -109,7 +109,48 @@ Every row of his 2026-08-25 reading checks out against the sources:
 | Fuel: inflection/heresy → what 176 wanted as leak/refill | TRUE, and the leak/refill was killed for exactly this | R7 |
 | Ground field (CFD-163): parked; dest square did the sentence | TRUE | R8 |
 | Heat vs Air: WARM as ground step that is also a dest job | TRUE collapse | R9 |
-| Profit/tend/buildout → GOODS/HOLD/B/WARM phase lock | TRUE — the deepest one | R10 |
+| Profit/tend/buildout → GOODS/B/HOLD/WARM phase lock | TRUE — the deepest one | R10 |
+
+*(Superseded 2026-09-09, by counsel on David's instruction: an earlier cut read
+GOODS/HOLD/B/WARM. The board enforces GOODS → B → HOLD → WARM
+(`sit/dawnspur-heat/sim.js:4`; the phase writes themselves at `:40-61` —
+`commitGoods` sets `phase = "b"`, `commitB` sets `phase = "hold"`, `commitHold`
+sets `phase = "warm"`), measured over all 24 orderings of the four commits, of
+which exactly one reaches banked. B, not GOODS, is the profit leg:
+`docs/cfd-183-beat.md:238` ("profit leg on off-board ground (R10)"); `sim.js:47-53`
+nets +2 marks on `commitB`. Verdict and rule cells are David's and are
+unchanged.)*
+
+*(Qualified 2026-09-09, by counsel on David's instruction, pending his own
+answer; the row above is unchanged, verdict cell included. Which WARM this row
+grades is not recoverable here: the phrase appears in git only in `a8a54f05`
+and the documents downstream of it, and David's verbatim is on Linear. Both
+candidates are live — the 24 August cuts, where one dest square did the ground
+sentence (see the row above, and `public/dawnspur/index.html:205`, which
+toggles `destA` on hold, warm and goods, with no step or ground element on
+that board), and the passed recut, where one WARM banks in dest A's stone and
+puts a step out in the same commit (`sit/dawnspur-heat/sim.js:63-71`). This
+note takes no position on which.
+
+R9 forbids one BUILD doing Heat AND Air, and the line it draws is reach. Air
+opens new ground by extending the warm currents across the cold gaps
+(The-Reach-Mechanic:9; :109, "Warmth cannot cross a gap"; MDB 1.19 at :57),
+while "warmth holds and pushes the ground a player can already reach"
+(Pushing-the-Cold-Back:43; the same split at :103). The passed board's step
+goes onto unsecured ground already on the island, gated on `heldA`, with Air
+refused off the hull (`docs/cfd-176-beat.md:19`, `:35`, `:43`). That is Heat's
+push, so section 3 at `:168` grades it correctly and the board survives under
+EITHER reading of this row. Read the same way by `docs/cfd-183-beat.md:258`,
+`docs/cfd-205-beat.md:283`, `docs/cfd-205-halt-beat.md:244` and the passed
+bytes at `public/dawnspur-halt/sim.js:25-27`.
+
+This is not a licence for one act to warm and open. A future board whose step
+crosses a gap, leaves the rim, or reaches another island is Air by name and
+must be argued as such under R9.
+
+`sit/dawnspur-heat/sim.js:5` says WARM "puts one step on open ground"; those
+bytes are frozen and "open" there is not a claim of reach — the beat's
+"unsecured ground already on the island" (`docs/cfd-176-beat.md:19`) governs.)*
 
 ## 3. The boards, judged
 
@@ -322,10 +363,10 @@ On the dispatch board, 2026-08-26:
   only `commitMeet()` throws the die and pays
   (`sit/dawnspur-dispatch/sim.js:376-396`), so every banked run is a SEND and a
   MEET and the count here can only mean levers chosen between — leaving MUSTER as
-  the second. `docs/cfd-196-beat.md:871-872` says "Three sittings failed to find
+  the second. `docs/cfd-196-beat.md:877-878` says "Three sittings failed to find
   a 34px control in the header slot; the fourth used it to a full roster." Which
   lever it was is not recorded here. Sitting 3 (`2a3e9dd`,
-  `docs/cfd-196-beat.md:730`) is not listed.)*
+  `docs/cfd-196-beat.md:736`) is not listed.)*
 - **Sitting 4**, all levers, real losses: *"I think this worked well overall"* —
   the pass.
 
@@ -334,7 +375,7 @@ in play**. *(Superseded 2026-09-02: same day and same player; not the same board
 Sittings 1–2 were on `ed7f49d`, sitting 3 on `2a3e9dd` (Amendment 1: the
 3-mark float, the charter condition, the muster ladder), sitting 4 on `663d4fa`
 (Amendment 2: the control moved into the card stack).
-`docs/cfd-196-beat.md:871-874` attributes the muster being found to Amendment 2's
+`docs/cfd-196-beat.md:877-880` attributes the muster being found to Amendment 2's
 placement, so lever-count was not the only variable. The direction of the evidence
 stands; its strength is overstated here.)* That is the clearest measurement this project has that lever-count is
 the thing, and it argues against the rule as written.
@@ -495,6 +536,23 @@ without a pass, canon §7.4. "Held" describes 2026-08-27, not now.)*
    defers a signed commitment. §5 is not overturned — the storm still carries
    the haul and in-progress stakes when it arrives — but "next sitting" now
    means the sitting after the join.
+   *(By counsel on David's instruction, 2026-09-09: the storm arrived and
+   carried (a) as the desk's stake made to bite. The UP-form of (b) was
+   refused by name and given the reserve in its place, inside the beat David
+   signed 2026-08-28 — `docs/cfd-201-beat.md:295-299` — and the UP-form
+   itself was cut at `:1500-1508`, carrying its own re-entry condition at
+   `:1507-1508`. No sit finding in this repository records that condition as
+   fired — the five storm sits are verbatim on Linear only, `KILLS.md`'s 2026-08-28/29 Dawnspur Storm entry
+   — which is no record here, not a measured negative. The board then
+   pressed the reserve under weather (`sit/dawnspur-storm/sim.js:381-385`,
+   "Three-way min in a storm"; `:506-508`, "the storm's only writer of the
+   reserve"), and weather is not inheritable after an unpassed sit
+   (`docs/cfd-209-beat.md:265-267`), so (b) is due on no scheduled sitting.
+   Conditional on the scope question held for David — ledger entry 8: if the
+   re-reading is the lineage's, this supersedes (b) outright; if it is only
+   that board's, (b) is owed by the first sitting that both carries weather
+   and holds an in-progress object with duration. §5's SIGNED bytes are not
+   touched by this note.)*
 2. **`/dawnspur-scale/`'s terminal sentence promises weather** — *"The reserve
    left here is the next sitting's weather bill."* That promise now waits a
    second sitting. It is not broken, only outstanding, and the join board must
@@ -592,6 +650,15 @@ Two things follow, and both are testable:
   a worse deal than the long one, the player did not opt in; they were priced
   in. The floor send being free and always lit is the shape this already takes
   on the dispatch board.
+  *(Ruled by counsel on David's instruction, 2026-09-09: "honest" tests
+  ACCESS, in three prongs — the short route costs nothing to take, is always
+  lit (no reachable state in which it goes dark), and never locks the player
+  out of the long one. It does not test payoff. This bullet's own closing
+  sentence (`:650-652`) names two of the three — free, and always lit — in
+  the same breath as the sentence read elsewhere as payoff language; and §7.3
+  (RULED, `:671`) forbids ranking options that differ in both currencies, which a
+  marks-EV reading of "honest" would require. A board's §7.2 self-check is
+  graded by driving the three prongs, not by comparing marks.)*
 - **The stop is what makes length opt-in.** A sitting the player can end when
   they choose is one they chose the length of. Arming-and-triggering (§7.2's
   companion in CFD-201 ruling 5 — topping the terrace *arms* the ending, the
@@ -709,7 +776,7 @@ its two paths:
 and listed all three sits under `/dawnspur-halt/`. The rule above names four kinds;
 the two this board tried are **writing** (the Home-sit entry's *"Recut: writing on the
 existing work notices"*) and **act** (the
-`923002d` recut named below). The first sit was the site's — `docs/cfd-205-halt-beat.md:217`,
+`923002d` recut named below). The first sit was the site's — `docs/cfd-205-halt-beat.md:246`,
 "recut-2 fail; grey-square UI stays on `/dawnspur-site/`", and the halt's own
 manifest, `sit/dawnspur-halt/MANIFEST.txt:9`, reads "Not a recut of
 /dawnspur-site/". The argument is unchanged: the two kinds tried in sequence on
@@ -740,6 +807,13 @@ place.**
   **one case out of six**, permits `/dawnspur-halt/` with zero margin, and on the
   one board where it would have bound the named cause was the missing city, which
   no cap can fix. Near-vacuous. Refused.
+  *(Unreproducible, 2026-09-09, by counsel on David's instruction: the
+  review found the six sequences "enumerated nowhere" and "cannot be
+  reconstructed," and said "Do not let a reconstruction stand in" —
+  `docs/sweep-2026-09-02.md:586-587`. The two claims beside it reproduce and
+  are not affected: the bind-in and the missing-city cause. Marked
+  unreproducible, per the ambient contract's own rule — an unavailable
+  measurement is reported as unavailable, never a plausible number.)*
 - **Not "ask the player what they were trying to do."** Also proposed, also
   refused, and this one is actively dangerous: it was **already tried** on
   `docs/cfd-201-beat.md`, whose *"What the sit must report"* asked, as signed at
@@ -766,7 +840,7 @@ place.**
   reads as insight.
 
   **The shape that DOES work is already in the corpus, and it is the near-miss
-  worth studying.** `docs/cfd-203-beat.md:1386` asks:
+  worth studying.** `docs/cfd-203-beat.md:1418` asks:
 
   > *"Ask the sitting to report **whether anyone tended at all, and why.** If
   > nobody touches it, that's the answer. If they tend and can't say what it
@@ -775,7 +849,7 @@ place.**
   > Rustfall."*
 
   *(An earlier cut stopped the quotation at "exists." and set "can't say what it
-  bought them" in bold; the source at `docs/cfd-203-beat.md:1386-1390` has
+  bought them" in bold; the source at `docs/cfd-203-beat.md:1418-1422` has
   neither, and §7.5's third outcome — "cut it, or merge it into the food line" —
   routes on the clause that was cut. §7.5's worked example 1 calls this
   quotation "in full"; with this correction it is.)*
@@ -795,6 +869,13 @@ place.**
   **because David asked for copy, verbatim, three sits running**. A copy recut
   answering a copy complaint is the rule working. The failure is a copy recut
   answering a complaint the copy cannot reach.
+  *(Narrowed to two of three, 2026-09-09, by counsel on David's
+  instruction, pending David's Linear lookup for the storm board's fourth
+  sit (`docs/decisions-open-2026-09-02.md`, entry 40): the in-repo sit
+  verbatims behind the storm's copy recuts support a request for copy at
+  the third and fifth sits; the fourth is David naming copy that worked,
+  not asking for it. If his Linear note for the fourth sit shows a copy
+  request, this widens back to three in one line.)*
 
 #### The trap this rule is aimed at, named so it is recognisable
 
@@ -844,7 +925,7 @@ about — which is before the sitting, when nobody is defending anything.
 
 #### Worked example 1 — CFD-203, the TEND question
 
-Quoted in full at **§7.4** and at `docs/cfd-203-beat.md:1386`. Not re-quoted here:
+Quoted in full at **§7.4** and at `docs/cfd-203-beat.md:1418`. Not re-quoted here:
 it is one passage, and a second copy in an adjacent section is how a document
 starts disagreeing with itself. Its three outcomes, written before the sit:
 
@@ -1064,3 +1145,41 @@ it false and the same event makes it permanent.
 
 Related: the lineage lock in §7 (*never overwrite a passed or killed board*), which is
 what makes this a permanent error rather than a correctable one.
+
+---
+
+## Addendum, 2026-09-09 — the preamble’s signing undertaking
+
+*(By counsel on David’s instruction of 2026-09-09 — not David’s words, and not a
+signature. Recorded under §6.4 (`:299-300`): "Supersession stays by edit: when a rule
+here is refined, this file changes in place with the date and the reason, never a second
+file." Placed at the foot rather than inserted at `:12` because an insertion there moves
+every line below it and silently invalidates the 28 line-citations into this file across
+six documents; the sentence at `:12` is preserved verbatim and carries a trailing pointer
+to here. Narrowed by counsel, same date: this addendum lands in a commit whose sibling
+edits — entries 8, 12/13, 15 and 40 of the same ledger — do insert lines above this point.
+The placement above holds for this addendum's own two pieces, which move nothing; every
+citation the sibling edits moved is re-pointed in the same commit, and the old-to-new table
+is in the landing record.)*
+
+The undertaking in the preamble — *"David signs this doc before any recut implements
+it."* (`:12`) — is recorded **DISCHARGED as to the recuts it gated, and as to nothing
+else.**
+
+**What the record shows.** The sentence was written 2026-08-25 17:18:02 in `a8a54f0`,
+whose own commit body names the act that closes it: *"One open question to David closes
+the recut: which canon stake first…"* David answered it at 17:34:58 — `7081028`,
+*"section 5 is signed."* — and the recut it gated shipped 41 minutes later at 18:16:07
+(`1aea540`). For the recut this sentence was written about, the gate was honoured.
+
+**Every recut that has shipped since carries David’s signature on its own beat**, not on
+this document: the 2026-08-30 halt recuts under `docs/cfd-205-beat.md:7` (*"SIGNED —
+David, 2026-08-30, word ‘Signed.’"*) and `docs/cfd-205-halt-beat.md:6`. **No doc-wide
+signature was ever given for any of them, and none is claimed here.**
+
+**What is NOT discharged.** §§1–4 carry no section signature. They are also no longer the
+text of 2026-08-25: the 2026-09-02 sweep `b8d6da3` landed 24 supersessions across this
+file, three of them inside §§1–4 — R8’s misquoted World Bible source in §1, §3’s
+scale-sitting row, and §4’s dated gloss. Canon stays first-read under §6.3.
+
+**Re-arm.** One line from David — *"§§1–4 still owed"* — restores this gate in full.

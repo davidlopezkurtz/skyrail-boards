@@ -429,7 +429,7 @@ shipped parent already rolls.
 
 **The Dawnspur Halt row is dead here.** Its numbers are real but they belong to
 `sit/dawnspur-line/sim.js:88`, where the Halt is a destination. `/dawnspur-line/`
-passed its sit on 2026-08-28 (`docs/cfd-201-beat.md:92`, `docs/cfd-203-beat.md:1527`,
+passed its sit on 2026-08-28 (`docs/cfd-201-beat.md:92`, `docs/cfd-203-beat.md:1581`,
 canon §7.1 item 4), so the route is a passed system — and it is still dead here for
 the reason above: the word does not mean the same thing on this board. *(An earlier
 cut said the line board was "not marked PASSED in the Seat table above" and called

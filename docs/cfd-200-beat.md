@@ -166,9 +166,11 @@ anything against its alternative — "roll the dice at Cloud Basin, or go and
 play Rustfall" is the ruling's EXCEPT clause rendered, and with the dice routes
 removed the exception has nothing to be an exception to. Everything inherited
 is carried **unchanged and Kill-listed as unchanged**. One system is added: the
-yard.
+yard. *(Amended in place, 2026-09-09, by counsel on David's instruction, carrying entry 3 of the open decisions ledger. There is exactly one exception and this is it: the inherited stop's **trigger** is carried unchanged — topping ARMS, a Chartered cargo banked out of a storm FIRES — while its **terminal register is re-authored for this board**, because the parent's own closing clause reads "the line past the basin is the next sitting's" and the line past the basin is this board. See :619-620 and the On this sitting row at :658. Recorded here so the claim above stays true rather than becoming the thing this beat's own Kill row at :816 — "Any inherited number or rule differs from the beat that passed it" — fires on.)*
 
 David sits first. Ask: What happened.
+
+**Dated note, 2026-09-09 — by counsel on David's instruction, ruling on the open decisions ledger's entry 1.** `/dawnspur-storm/` was sat five times and stopped without a pass (`KILLS.md`'s 2026-08-28/29 Dawnspur Storm entry). The premise the ruling above gives at :105-106 for naming the storm as parent — that the storm is the last passed board at this beat's signature (canon `docs/mechanisms-recommitted.md:586-589`) — has failed on that measurement. Canon's other two reasons at `docs/mechanisms-recommitted.md:590-599` survive intact and still refuse `/dawnspur-line/` on their own terms, so the naming above **stands, untouched, as a drafting assumption** — per `docs/mechanisms-recommitted.md:583-584` ("Its Seat still names `/dawnspur-storm/` and should") — and counsel confirms no parent and moves none. Under canon §7 (RULED, `docs/mechanisms-recommitted.md:414`, "A system is 'inherited' only if it **passed a sit**. A killed system does not travel."), the storm's systems are not inheritable as things stand, and **FIVE** `On this sitting` rows cite a beat that passed nothing — :653, :654, :655, :657 and :658 — against this beat's own rule at :112 that each inherited row cites the beat that passed it. Measured 2026-09-09 at this worktree: the `INHERITED` marker paired with `CFD-201` occurs **five** times in the `On this sitting` table — at :653, :654, :655, :657 and :658 — and occurs five times on the tree before this note and on the tree after it alike. :656 pairs that marker with `CFD-196`, which passed, and is excluded. The marker with any citation occurs eleven times in that table, so the five counts the literal `INHERITED — CFD-201` marker, not every row citing CFD-201 (three refusal rows at :674, :679 and :686 also do) and not the table's inherited rows. This beat as written cannot sign onto `/dawnspur-line/` either — canon `docs/mechanisms-recommitted.md:594-599` and this section's own :142-144 both hold. Three questions are therefore with David at signature and answered by none of the above: whether an unpassed board may be named parent, where the storm happens next, and whether "the last passed board" (7.1 item 4) counts across the desk/city seam or within this beat's own lineage.
 
 ---
 
@@ -614,10 +616,10 @@ learned to: a run with no crew aboard promises no crew home.
 
 **The stop is the first Rustfall run off the yard road**, loaded or empty. The
 system this sitting exists to sit has then been played once, end to end, and
-David has an answer to *what happened* either way. *(The parent carries its own
-stop — topping ARMS, a Chartered cargo banked out of a storm FIRES, storm
-`sim.js:626`; whether it survives beside this one is the flagged row under On
-this sitting. An earlier cut was silent on it.)*
+David has an answer to *what happened* either way. *(Supersession in place, 2026-09-09, by counsel on David's instruction, carrying entry 3 of the open decisions ledger. What it replaces: a cut that DID name the parent's own stop, and left whether it survives beside this one as a flagged, unresolved row under On this sitting — that cut in turn recorded a still-earlier cut which had been silent on the parent's stop entirely, and it is that second-order note, not this supersession's subject, that the word "silent" belonged to. Resolved here: the board carries two stops, and whichever fires first governs the sitting. The parent's trigger is carried unchanged — topping ARMS, a Chartered cargo banked out of a storm FIRES, storm
+`sim.js:626` — but its terminal register cannot travel unchanged, because the parent's own closing clause reads "The record keeps what came home; the line past the basin is the next sitting's" (storm `sim.js:364-365`), and the line past the basin is this board. So when the parent's stop fires, THIS beat prints its own terminal, keyed the same way as the two registers below — clean or paid — naming whatever the desk actually banked and whatever crew actually rode, never the parent's "next sitting's" line. Measured on the PARENT sim at e226a9f (exhaustive search, roll forced to 0), the parent's stop fires no earlier than the ninth committed action — CARRY, UP, CARRY, SEND halt, MEET, UP, UP, SEND Cloud Basin, MEET — at 12 marks of ladder. On that board `rustfall-yard` is `sendable: false` (storm `sim.js:159`), so the yard is never lit there and the two stops cannot be raced on the parent at all. How they race on THIS board is unmeasured: no child sim exists yet. This beat's own fastest yard line (below, :1150-1158) is a plan, not a measurement, and finishes push 3 at turn 9 — the same length by a different road. See On this sitting :658.)*
+
+**Pre-registered under canon §7.5, before the sit.** A sitting that ends on the inherited stop with no Rustfall send is a NULL on the yard's mechanism — it says nothing about whether the yard works. The converse holds too: a sitting that reaches the yard says nothing about whether the terrace ending is reachable in play. What the child sim can answer, and what the cut's first obligation is: re-run the earliest-fire search on the child sim and record on this beat's :658 row whether either stop can pre-empt the other.
 
 At the stop the board reads its own ledger, in two registers keyed on whether
 anything was lost:
@@ -653,7 +655,7 @@ not re-argued, per §7.
 | The terrace, its reserve, `min(level, reserve)`, the stormy draw | INHERITED — CFD-201 | **ON, unchanged** — the yard neither reads nor writes it |
 | Rail Warden at 3, cap 4 total, permanent, never spent | INHERITED — CFD-196 (passed) | **ON, unchanged** |
 | Ranger at 2, cap 1, the weather unit; TRIM on the rolling routes | INHERITED — CFD-201 | **ON, unchanged** — and it gains a yard job |
-| The inherited stop — topping ARMS, a Chartered cargo banked out of a storm FIRES (CFD-203, narrowed by CFD-201) | INHERITED — CFD-201 | **UNRESOLVED — decide at signature.** This beat's stop is the first Rustfall run off the yard road (Ends). Carried unchanged, the parent's stop ends the sitting on a stormy Cloud Basin cargo after UP ×3, before any Rustfall send, and a stopped desk has no lit send. Carry, narrow to Rustfall, or refuse — David's call, flagged here rather than assumed |
+| The inherited stop — topping ARMS, a Chartered cargo banked out of a storm FIRES (CFD-203, narrowed by CFD-201) | INHERITED — CFD-201 | **CARRIED — by counsel on David's instruction, 2026-09-09, pending signature.** The parent's trigger is carried unchanged; its terminal register is re-authored here (the parent's closes "the line past the basin is the next sitting's", which is this board). Narrow to Rustfall **REFUSED** as vacuous — the board's own stop is the first Rustfall run off the yard road loaded or empty, so a Rustfall-keyed inherited stop can never fire first; re-read this row if Open Question 3 changes the board's stop. Refuse is the argued alternative and is David's: canon §7.1 item 3 carries two readings the council could not choose between — the signature question is question **4** under Open questions for David. *(An earlier cut read "UNRESOLVED — decide at signature"; the ruling is by counsel on David's instruction, 2026-09-09, and the row is prepared, not closed.)* |
 | Rustfall takes a send | NEW | **ON** — the ruling's EXCEPT clause, delivered |
 | Rustfall quotes odds; any die in the yard | NEW | **REFUSED** — placement decides it |
 | Rustfall's pay rises in a storm | NEW | **REFUSED, argued** — the one inherited rule this board declines, and the reason is measured |
@@ -799,12 +801,19 @@ Every line expressible as a test.
   home damaged.
 - The board says a raider was killed, or that any person died.
 
+**The stop**
+
+- The sitting stops on anything but (a) the first Rustfall run off the yard road, loaded or empty, or (b) a Chartered cargo banked out of a storm with the terrace topped.
+- The parent's stop prints the parent's closing clause instead of this board's.
+
+*(Both clauses land 2026-09-09, by counsel on David's instruction, carrying entry 3 of the open decisions ledger — the On this sitting row is :658. The kill TEST for these belongs in a new `test/dawnspur-rustfall.test.js`, written at cut time against a child sim that does not exist yet, landed red-first and mutation-verified then; it is not available today.)*
+
 **The lineage**
 
 - Live shas are overwritten: dispatch `576ce2b6`, scale `953368a1`, heat
   `292d6645`, kill `395c18f2`, convoy-stop `5ad814e6`, and whatever
   `/dawnspur-storm/` ships at. Any existing board is touched.
-- Any inherited number or rule differs from the beat that passed it.
+- Any inherited number or rule differs from the beat that passed it. *(One declared exception, by counsel on David's instruction, 2026-09-09: the parent's terminal register is re-authored here — recorded in the lineage paragraph's dated note and in the stop row under On this sitting.)*
 - The HUD grows past the one marks line.
 
 ---
@@ -1317,7 +1326,7 @@ weather covers, not stopping what it does — is the same idea at the right pric
 
 ## Open questions for David
 
-Three, each answerable in a sentence. **The Engineer's role is no longer among
+Four, each answerable in a sentence — the fourth added 2026-09-09 by counsel on David's instruction, carrying entry 3 of the open decisions ledger *(an earlier cut read "Three", before the inherited stop became a signature question)*. **The Engineer's role is no longer among
 them** — repair is ratified, and where its downside lives is answered above by
 measurement rather than by asking.
 
@@ -1350,3 +1359,28 @@ measurement rather than by asking.
    than rewritten here. Pushes are counted as that trace counts them: MEET opens
    the yard the turn after the SEND and each push is a turn.)* Or should
    an empty run let you try again before the sitting ends?
+
+4. **The inherited stop — carry it, or refuse it?** *(Added 2026-09-09 by
+   counsel on David's instruction, carrying entry 3 of the open decisions
+   ledger. The council ruled CARRIED and escalated rather than settled it: 3
+   for carry, 2 for refuse, with the cost lens sampled twice and refusing both
+   times. Only you sign the beat, so the row at :658 is prepared, not closed.)*
+   Does ruling 5's arming stop travel to the yard board with the storm, as
+   canon §7.1 item 3 says it does — or was it the storm sitting's stop alone?
+   Item 3 is RULED by you on 2026-08-27, one day before the storm board
+   shipped; it sits in the list of what DEFERRING weather costs; and its own
+   parenthetical records it being honoured on that board — so "not re-opened
+   when weather returns" reads both as the storm sitting and as any later
+   board with weather. **Carried**, your stop stays live here with its trigger
+   unchanged and its terminal register re-authored for this board (:619-620).
+   Measured on the storm sim, your ending cannot fire before the ninth
+   committed action and costs 12 marks of ladder; this beat's own published
+   yard line reaches push 3 at turn 9 as well — the same length by different
+   roads, and which road a first sitting takes is not measurable until the
+   yard board is cut. **Refused**, CFD-200 drops your ruling-5 shape on the
+   first board that inherits the weather it travels with, and the topped
+   terrace pays off with nothing. Narrow-to-Rustfall is not a third answer:
+   this board's own stop, the first Rustfall run loaded or empty, always
+   pre-empts it — unless you answer question 3 above with the bird variant or
+   the retry variant, in which case narrow becomes live and the row at :658
+   must be re-read. Carry or refuse?

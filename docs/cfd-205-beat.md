@@ -223,6 +223,8 @@ Ask: What happened.
 | PWA town, LoopBeat, help, tutorial, plaques, citizens | **REFUSED** | signed |
 | Reading or writing another board's persisted state | **REFUSED** | lineage lock |
 
+*(Recorded by counsel on David's instruction, 2026-09-09, on the "Keel-fire / hearth as scenery" row above: on the shipped board the hearth is a span inside the Foundry button — `sit/dawnspur-site/index.html:235`, styled `display:none; pointer-events:none` at `:147-152`, revealed by `#foundry.live #hearth { display: block; }` at `:153` — so it is drawn when the Foundry goes live and has no state; `sit/dawnspur-site/sim.js` carries no hearth token at all. "As scenery" means no system, not never drawn. It is the Foundry's own glow as look, not the keel-fire lighting. Canon: R4 `docs/mechanisms-recommitted.md:36-44`, R5 `:46-51`; `docs/cfd-183-beat.md:243` files the same row under R8 and R4.)*
+
 ---
 
 ## Kill
@@ -272,7 +274,7 @@ Every line testable, red-first.
 | Row | State | Rests on |
 | --- | --- | --- |
 | Works as the one new system | ON | §7 KEPT — one new system; SIGNED David 2026-08-30 |
-| Foundry is work one | ON | buildings exist because they do jobs; Foundry is Heat (food into already-reached ground) |
+| Foundry is work one | ON | R9 — Foundry does Heat on ground already reached; "work one" is the signed call — SIGNED David 2026-08-30 (beat header). *Interim — rested on R9 by counsel on David's instruction, 2026-09-09; pending David's naming under decision 23(b).* |
 | One live place, not three peer clickables | ON | signed recut 2 — Superheavy; David 2026-08-30 |
 | Marks open SITE only | ON | R1 — marks pay for buildout, they are not heat and they are not the bill |
 | Bill = addressed hauls | ON | R10 — a load can be buildout; the loop as sat is how the haul exists |
@@ -283,6 +285,8 @@ Every line testable, red-first.
 | No Halt send | ON as a refusal | a city board that sends is a sixth loop |
 | Food already on the terrace | ON as a fixture | CARRY is a loop verb; this sitting receives |
 | Lineage lock | ON | §7 — sibling path; pins unmoved |
+
+*(Gloss on the "Foundry is work one" row above, not a citation. An earlier cut of that cell read "buildings exist because they do jobs; Foundry is Heat (food into already-reached ground)"; superseded 2026-09-09. The phrase "buildings exist because they do jobs" has no source line in the corpus — zero hits across `C:/dev/skyrail/docs/lore`, and in this repository only the ledger's two quotations of it and this gloss — and it entered at `d51b081`, 2026-08-30. Recorded by counsel on David's instruction, 2026-09-09.)*
 
 ---
 

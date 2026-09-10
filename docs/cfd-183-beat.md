@@ -29,7 +29,7 @@ clear weather and §5.1 reopens. A record, not a blocker; David rules.
 
 ## Seat
 
-Beat only. No implement. No deploy. No merge. Do not recut the lights or the
+This recut has since shipped at `/dawnspur-scale/` (`1aea540`, 2026-08-25) and passed its sit — recorded at canon §3 (`docs/mechanisms-recommitted.md:160-161`, "since `1aea540` that path has served the recut, which passed its sit") and at the hub (`public/index.html:97`, "live — passed its sit 2026-08-25"). It stands as played: not recut, and not to be. *(An earlier cut read "Beat only. No implement. No deploy. No merge."; true on the day of signature, record now.)* The do-not-touch list still binds. Do not recut the lights or the
 heat sitting. Do not touch `public/dawnspur`, `public/dawnspur-heat`,
 `public/dawnspur-scale`, `public/convoy-stop`, or live board bytes. Do not
 `workflow_dispatch`.
@@ -324,9 +324,9 @@ The nearest kill line is **"WARM spends a mark"** (killed 2026-08-24). This beat
 
 ## Seat
 
-Beat only. No implement. No deploy. No merge. 176 stays Done. Do not recut the lights. Do not touch `public/dawnspur`, `public/dawnspur-heat`, `public/convoy-stop`, or live board bytes. Do not `workflow_dispatch`.
+This first cut was convicted the same day it was signed — David's sit broke on it, and canon (`docs/mechanisms-recommitted.md:157-163`) names why: the cut violates R3/R4/R6 and R8-as-session-meter — decay-on-idle at a held greenhouse is the refused treadmill, and DOWN-as-the-world's-hand on held ground is anti-canon. It was superseded in place by the recut above, which shipped at `/dawnspur-scale/` (`1aea540`, 2026-08-25) and passed its sit — recorded inside that same canon bullet (`:160-161`, "which passed its sit") and at the hub (`public/index.html:97`, "live — passed its sit 2026-08-25"). It stands as record, not as spec. *(An earlier cut read "Beat only. No implement. No deploy. No merge."; true on the day of signature, record now.)* The do-not-touch list still binds. 176 stays Done. Do not recut the lights. Do not touch `public/dawnspur`, `public/dawnspur-heat`, `public/convoy-stop`, or live board bytes. Do not `workflow_dispatch`.
 
-Live (do not overwrite): https://boards.skyrailreclamation.com/dawnspur-heat/ build `c887359` / index `cedf765c` / sim `292d6645` / greenhouse `7fdf7468`. The preserved kill at `/dawnspur/` stays index `bdde9b50` / sim `395c18f2`. (Pins re-quoted at orchestrator review 2026-08-25 — the draft's author measured before the nouns and greenhouse landings; sim unchanged across both.)
+Live (do not overwrite): https://boards.skyrailreclamation.com/dawnspur-heat/ index `b5f7e14f` / sim `292d6645` / greenhouse `7fdf7468`. *(An earlier cut read "build `c887359` / index `cedf765c` / sim `292d6645` / greenhouse `7fdf7468`"; `cedf765c` was the heat index before CFD-175's `efbed23`, superseded before this beat was signed. The build field is dropped rather than re-pinned, following `docs/cfd-183-beat.md:41-43`: `build-info.json` is site-wide (`check-current.js:46`), so no commit sha pins one board, and the heat board's own last landing is `7b3ddb6`, after `efbed23` (measured at `e226a9f`).)* The preserved kill at `/dawnspur/` stays index `bdde9b50` / sim `395c18f2`. (Pins re-quoted at orchestrator review 2026-08-25 — the draft's author measured before the nouns and greenhouse landings; sim unchanged across both.) `sit/dawnspur-scale/MANIFEST.txt:25` and its byte-copy at `public/dawnspur-scale/MANIFEST.txt:25` still carry the stale `cedf765c` value — left as passed bytes under the handed-down freeze, INTERIM pending David's re-pin ruling (`docs/decisions-open-2026-09-02.md`, entry 11). The authority for the live heat index is `sit/dawnspur-heat/MANIFEST.txt` and `test/dawnspur-scale.test.js:80`.
 
 David sits first. Ask: What happened.
 
@@ -382,7 +382,7 @@ They scaled the terrace. Levels were bought and could always be lost. A wrecked 
 - The HUD grows past one asset line.
 - Furnace word, radius, CFD-163 field, Air, or an attacker appear.
 - 173 lights are recut.
-- Live shas are overwritten (`c887359` / `cedf765c` / `292d6645`; kill `bdde9b50` / `395c18f2`).
+- Live shas are overwritten (index `b5f7e14f` / sim `292d6645`; kill `bdde9b50` / `395c18f2`). *(An earlier cut read "`c887359` / `cedf765c` / `292d6645`"; `cedf765c` was the heat index before CFD-175's `efbed23`, superseded before this beat was signed.)*
 
 ## The numbers, and where each one comes from
 

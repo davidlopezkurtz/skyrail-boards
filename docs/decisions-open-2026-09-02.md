@@ -163,12 +163,12 @@ and may "the last passed board" be a board from the other lineage at all?
 (c) `/dawnspur-line/`, the join board canon's contingency names? And does "the last passed
 board" reach across the desk/city seam at all?
 
-**What the document says.** `docs/mechanisms-recommitted.md:530`: *"passed board at its
-signature is the storm board. Re-basing it today is"* — the full clause at `:527-531`
+**What the document says.** `docs/mechanisms-recommitted.md:588`: *"passed board at its
+signature is the storm board. Re-basing it today is"* — the full clause at `:585-589`
 reads *"CFD-200 is unsigned and third in a three-board queue — line, storm, rustfall. It
 signs after the storm sitting, so the last passed board at its signature is the storm
-board."* And `:547`: *"board is killed rather than passed, CFD-200 re-bases onto whatever
-did pass —"* continuing at `:548` to *"which would then be the join board."*
+board."* And `:605`: *"board is killed rather than passed, CFD-200 re-bases onto whatever
+did pass —"* continuing at `:606` to *"which would then be the join board."*
 
 **What source says.** The storm was sat five times and **stopped without a pass and
 without a kill** — KILLS.md's 2026-08-28/29 Dawnspur Storm entry (*"five sits, five recuts, stopped without a pass"*),
@@ -178,7 +178,7 @@ happened — while canon's fires only on *killed rather than passed*, which has 
 `test/lexicon-ledger.js:37-41` puts `/dice-at-the-places/` in the **city** list and the
 storm in the **desk** list, so (b) crosses the seam.
 
-**Blocked.** CFD-200's signature. Canon's own §7.1.4 rule at `:516-517` is *"the parent is
+**Blocked.** CFD-200's signature. Canon's own §7.1.4 rule at `:574-575` is *"the parent is
 the last passed board, named at signature rather than assumed at drafting"* — the naming
 cannot happen.
 
@@ -220,19 +220,19 @@ actually produces, and re-argue the three design paragraphs that price the Engin
 - *If undecided:* CFD-200's cut stays blocked. Left as is, a board ships whose central new
   job was priced against weather the game does not produce.
 
-**Question.** Yes or no: rewrite the trace table at `docs/cfd-200-beat.md:1139-1149` to the
+**Question.** Yes or no: rewrite the trace table at `docs/cfd-200-beat.md:1148-1158` to the
 measured sequence, and re-argue the three design paragraphs that rest on it?
 
-**What the document says.** `docs/cfd-200-beat.md:1145-1149` traces turn 5 SEND under
+**What the document says.** `docs/cfd-200-beat.md:1154-1158` traces turn 5 SEND under
 clear, pushes at turns 7, 8, 9 with `| 8 | **STORM** |` and `| 9 | **STORM** |`, then
-`:1151-1152` concludes: *"Two of the three pushes land under a storm, and the bird is on
+`:1160-1161` concludes: *"Two of the three pushes land under a storm, and the bird is on
 the board for two turns before the first of them."*
 
 **What source says.** `docs/name-collisions-audit-2026-09-01.md:943-945`: *"the
 first-sitting sky trace is the dispatch path, and the inference on it is inverted: driven
 on the parent, the send falls at t8 under STORM and the pushes at t10–t12 clear. Design
 paragraphs (`:263-292`) rest on it — **David's call**, not built."* Those paragraphs are
-`docs/cfd-200-beat.md:246-295` at HEAD, where the Engineer is priced at 6 and justified as
+`docs/cfd-200-beat.md:248-297` at HEAD, where the Engineer is priced at 6 and justified as
 *"Prevention"* against exactly this storm exposure. **The audit's cite `:1076-1093` is
 stale — that range is the CFD-145 consolation/gradient passage, and was already the wrong
 range at `44a456a`, the tree the disposition was written on.** Corrected here.
@@ -282,9 +282,9 @@ once the terrace is topped and fires when a chartered cargo comes home out of a 
 **Question.** Pick one: does CFD-200 **carry**, **narrow**, or **refuse** the storm
 parent's own arming stop?
 
-**What the document says.** `docs/cfd-200-beat.md:592-594` gives the Engineer terminal
+**What the document says.** `docs/cfd-200-beat.md:594-596` gives the Engineer terminal
 register (*"The Engineer got the parts car's coupling back under it. Two cars aboard,
-worth 21."*) and `:625-630` the clean and paid registers — the beat's terminal vocabulary,
+worth 21."*) and `:627-632` the clean and paid registers — the beat's terminal vocabulary,
 none of which mentions UP or topping.
 
 **What source says.** `docs/name-collisions-audit-2026-09-01.md:953-956`, graded **HIGH**:
@@ -308,33 +308,33 @@ Rustfall, and the board never gets sat on its own subject.
 
 ## 4. Canon §7.5's worked example 2 — three nulls, and two lines wrong on day one
 
-**Question.** Three parts, one bundle: (a) does the ruled table at `:865-869` become
-**four** outcomes to match the beat, (b) is `:863`'s *"no decision"* framing struck, and
-(c) is `:871`'s *"All three would be logged"* replaced with the beat's *"All four log as
+**Question.** Three parts, one bundle: (a) does the ruled table at `:946-950` become
+**four** outcomes to match the beat, (b) is `:970-971`'s *"no decision"* framing struck, and
+(c) is `:972-973`'s *"All three would be logged"* replaced with the beat's *"All four log as
 'the sitting ended.'"*?
 
-**What the document says.** `docs/mechanisms-recommitted.md:861` *"#### Worked example 2 —
-CFD-210, the three nulls"*; `:863` *"The same insight in a different shape. Three ways a
-fork can produce no decision:"*; `:871` *"**All three would be logged as \"the player used
+**What the document says.** `docs/mechanisms-recommitted.md:942` *"#### Worked example 2 —
+CFD-210, the three nulls"*; `:970-971` *"The same insight in a different shape. Three ways a
+fork can produce no decision:"*; `:972-973` *"**All three would be logged as \"the player used
 the fork.\"**"*
 
 **What source says.** `docs/cfd-210-beat.md:548-578` registers **four** outcomes, the
 first two in your own words, since `9618352`. And the shipped board separates them with a
-counter: `docs/sweep-2026-09-02.md:588-594` — *"driven from `createBoard()`, banking gives
+counter: `docs/sweep-2026-09-02.md:618-624` — *"driven from `createBoard()`, banking gives
 `pressOns: 0` and either press-on gives `1`, and the suite asserts it at
 `test/two-ways-from-here.test.js:1019` and `:976`"* — so **§7.5's own third prohibition —
-`docs/mechanisms-recommitted.md:897-899` at HEAD, which the sweep cited as `:744-746`**
+`docs/mechanisms-recommitted.md:1009-1011` at HEAD, which the sweep cited as `:744-746`**
 (*"If a split can be resolved by a counter, it was not a split worth registering — and if
 it cannot, the counter is not the instrument."*) — convicts the section's own worked
 example.
 
 **Blocked.** `C:\tmp\sweep\edits-city\mechanisms-recommitted.cfd-210-M4.DAVID.json` — built
-and dry-run clean, held since 2026-09-01. `docs/sweep-2026-09-02.md:666-669` rules out its
+and dry-run clean, held since 2026-09-01. `docs/sweep-2026-09-02.md:736-739` rules out its
 minimal alternative: *"They are David's calls 12 and 13 above and must travel in the same
 bundle."*
 
 **Orchestrator's read.** *All three, as one edit* — and take the two corrections the sweep
-recorded with it (`docs/sweep-2026-09-02.md:658-664`): the held file's *"no completion
+recorded with it (`docs/sweep-2026-09-02.md:728-734`): the held file's *"no completion
 count separates"* opening is **false on the shipped board** and must be replaced by the
 beat's own line, or you land a new false statement while fixing a stale one.
 
@@ -385,16 +385,16 @@ failed — on 2026-08-31?
 
 **Question.** Yes or no: did you rule §7.4 on 2026-08-31?
 
-**What the document says.** `docs/mechanisms-recommitted.md:666`: *"### 7.4 A recut may not
+**What the document says.** `docs/mechanisms-recommitted.md:733`: *"### 7.4 A recut may not
 be the same KIND as the one that just failed — **WRITTEN DOWN 2026-08-31**, in use since
 2026-08-29"*.
 
 **What source says.** `docs/cfd-201-beat.md:750`, landed 2026-09-01, says **RULED
 2026-08-31**. Twelve other cites give §7.4 no status word at all
-(`docs/sweep-2026-09-02.md:562-565`).
+(`docs/sweep-2026-09-02.md:581-584`).
 
 **Blocked.** Acceptance of the §7.4 supersessions this wave landed. Per the sweep at
-`:564-565`: *"If yes the heading is the stale thing and every §7.4 supersession in this
+`:580-581`: *"If yes the heading is the stale thing and every §7.4 supersession in this
 sweep becomes his to accept; if no, the beat line is the edit."*
 
 **Orchestrator's read.** *No strong read.* This is a fact about what you did, not a
@@ -436,9 +436,9 @@ sections, or do §§1–4 still need signing before the next recut?
 David signs this doc before any recut implements it."* (This is the one canon cite in the
 sweep's David list whose line number did **not** move.)
 
-**What source says.** §5 was signed at `:161` (*"SIGNED — David, 2026-08-25: 'section 5 is
-signed.'"*) and §§7.1/7.2/7.3/7.5 are ruled in their headings (`:450`, `:578`, `:604`,
-`:820`). §§1–4 carry no signature — and the recuts the sentence gated have already shipped
+**What source says.** §5 was signed at `:202` (*"SIGNED — David, 2026-08-25: 'section 5 is
+signed.'"*) and §§7.1/7.2/7.3/7.5 are ruled in their headings (`:491`, `:636`, `:671`,
+`:901`). §§1–4 carry no signature — and the recuts the sentence gated have already shipped
 (`KILLS.md`'s 2026-08-30 halt entries).
 
 **Blocked.** The next recut, under this document's own gate.
@@ -480,7 +480,7 @@ ledger?
 
 **Question.** Yes or no: do the five passes get ledger entries?
 
-**What the document says.** `KILLS.md:1-3`: *"# Kills ledger — append-only / Every kill
+**What the document says.** *(Quoted 2026-09-02; the heading was superseded 2026-09-09 under counsel's ruling on this entry — read the header of `KILLS.md` as it now stands.)* `KILLS.md`'s header (its first three lines at `e226a9f`): *"# Kills ledger — append-only / Every kill
 records: date, board, build sha (from /build-info.json at the time of the sit), what the
 player did, the recut decision."* And `C:\tmp\kills-proposal\KILLS-proposal.md:173-176`:
 *"`KILLS.md` holds kills and standing rules. Passes live in the beats, the commit memos
@@ -543,7 +543,7 @@ lands — still owed by a later sitting, discharged by the storm's stop, or supe
 **Question.** Pick one: is §5's in-progress stake (b) still **owed** by a later sitting,
 **discharged** by the storm's stop, or **superseded**?
 
-**What the document says.** `docs/mechanisms-recommitted.md:495-496`: *"defers a signed
+**What the document says.** `docs/mechanisms-recommitted.md:536-537`: *"defers a signed
 commitment. §5 is not overturned — the storm still carries the haul and in-progress stakes
 when it arrives"*. (Sweep cited this as `:401`; corrected here.)
 
@@ -647,7 +647,7 @@ canon is `docs/mechanisms-recommitted.md`, sim is `sit/still-standing/sim.js`.)*
    **(b)** *whether THIS lineage's forgone options — one tap at 64%, inside a two-branch fork —
    carry weight*, or **(c)** *whether a branch priced 8.96 against banking's +1 does*?
 2. **Does your "fourth fork" carry geometry?** Canon §7.6 forbids repeating the QUESTION and
-   routes it to a different SHAPE; it says *"a fourth board"* (canon `:1003`), not a fork. Your
+   routes it to a different SHAPE; it says *"a fourth board"* (canon `:1084`), not a fork. Your
    sentence at beat `:201-204` ends *"rather than a fourth fork."* Is that the same prohibition in
    fewer words, or an added one on the board's geometry? Under the geometric reading a
    keeps-costing shape would have to attach its cost to something other than a fork's forgone
@@ -663,7 +663,7 @@ canon is `docs/mechanisms-recommitted.md`, sim is `sit/still-standing/sim.js`.)*
    and R7, may the next beat end by recording that (b) has no board in this lineage, rather
    than by cutting one anyway? Asked, not taken.
 
-**What the document says.** Canon §7.6, canon `:1018-1024`, whole:
+**What the document says.** Canon §7.6, canon `:1099-1105`, whole:
 
 > *"So the routing owes a scope, not just a question. Do forgone options carry weight? is a
 > general claim; do THESE forgone options — one tap, 64%, inside a two-branch fork — carry
@@ -672,7 +672,7 @@ canon is `docs/mechanisms-recommitted.md`, sim is `sit/still-standing/sim.js`.)*
 > the general one is the failure §7.5 exists to prevent, arriving one level up: not a sit read
 > against the wrong split, but a whole card read against the wrong question."*
 
-Its obligations, canon `:1002-1006`, whole:
+Its obligations, canon `:1083-1087`, whole:
 
 > *"When the obstruction moves and the read does not, say so in the record and stop. Do not
 > cut a fourth board at the same question. §7.4 already forbids repeating the KIND of a failed
@@ -680,8 +680,8 @@ Its obligations, canon `:1002-1006`, whole:
 > different shape. The read was an instrument for something; that something survives the
 > instrument's retirement."*
 
-Canon `:969`: *"It is not a count, and phrasing it as a count would be the mistake."* The trap,
-your words at canon `:1013-1016`, whole: *"we don't know whether the read never fires because
+Canon `:1050`: *"It is not a count, and phrasing it as a count would be the mistake."* The trap,
+your words at canon `:1094-1097`, whole: *"we don't know whether the read never fires because
 forgone options are weightless, or because this lineage's forgone options are one tap at 64%.
 Those want different boards, and the temptation on the next card will be to answer the first
 question with a board that can only answer the second."*
@@ -718,7 +718,7 @@ registered NOT EXERCISED and a RE-SIT CONDITION at beat `:1264-1267`.
 On dates: the beat's `:199-213` landed at `685bf3f` (2026-09-04) and canon §7.6 at `5eadc7a`
 (2026-09-08), from the rulings of 2026-09-04. That canon is the later *text* is measured; that
 it is the later *ruling* is my inference from §7.6 quoting your reasoning about the count
-(canon `:969-973`).
+(canon `:1050-1054`).
 
 **What source says.** Driven at `c8c4546` — sim through `createBoard` with forced dice, the
 harness of `test/still-standing.test.js:165-201`; `S` send, `+` home paid, `-` home short, `C`
@@ -749,7 +749,7 @@ is stale, the claim is not). A stake is 2 marks put up on every staked send (sim
 time. Exposure to a forgone branch is *"by the walk, not by the render"* (beat `:482-483`): its
 words are seen on a tap of that place and nowhere else (beat `:474-475`). On the parent, for
 contrast, `S-P-` ends cold and `S-C` stops — the obstruction §7.6's table records C14 removing
-(canon `:986-991`).
+(canon `:1067-1072`).
 
 The rules part 3 runs into. **R2**, canon `:25-28`: *"The antagonist is the sink. Upkeep is
 refused by name. "The usual invention is upkeep: fuel that burns, parts that wear, a base that
@@ -770,7 +770,7 @@ cut time, never derived.)*
 
 **Orchestrator's read.** Mine, part by part, with the half that is yours named each time.
 
-- **(1).** (a) is not a scope any board *in this lineage* can test — canon `:1020` in those
+- **(1).** (a) is not a scope any board *in this lineage* can test — canon `:1101` in those
   words — so a card scoped to (a) is the *different shape* your `:201-204` routes to, not a
   board in this line. That much the evidence decides; whether that shape is a board at all, or
   the accumulation of cards, is yours. (c) is (b) with the price moved — a real variable, and a
@@ -790,12 +790,12 @@ cut time, never derived.)*
   is a card read against the wrong question.
 
 **Cost of getting it wrong.** A card that measures (b) and reports (a) is the failure canon
-names at `:1021-1024`, one level up. A *keeps costing* shape cut without the R2/R3/R6/R7
+names at `:1102-1105`, one level up. A *keeps costing* shape cut without the R2/R3/R6/R7
 argument is a decay clock with a new name, and the beat has refused one. Under the geometric
 reading of part 2 a fork is forbidden outright; under the other, only the question is. What
 the record makes binding on the next beat regardless: the obstruction named in the routing
-column (canon `:999-1001`); the null registered and what it would mean (canon `:910-912`);
-§7.4's positive form — ask what he did, and whether he can name what it bought (canon `:666`,
+column (canon `:1080-1082`); the null registered and what it would mean (canon `:991-993`);
+§7.4's positive form — ask what he did, and whether he can name what it bought (canon `:733`,
 beat `:1289-1290`); and a manifest that records bytes, not its own status (canon §7.7, handoff
 `:205-206`). Two things this beat adds and I would carry: a NOT-EXERCISED / re-sit registration
 of the kind at beat `:1264-1267`, and the confound at beat `:1324-1326` answered before weight
@@ -842,13 +842,13 @@ line was retired in on 2 September?
 **Question.** Yes or no: supersede the discharged Seat prohibitions on every beat that
 carries them, in the form already landed on `cfd-176:11`?
 
-**What the document says.** `docs/cfd-205-halt-beat.md:33-34`: *"Draft. Do not merge. Do not
+**What the document says.** `docs/cfd-205-halt-beat.md:47-61`: *"Draft. Do not merge. Do not
 deploy. Do not `workflow_dispatch`. David sits first."* — governing `/dawnspur-halt/`,
 which the hub marks *"live — passed its sit"* (`public/index.html:61`).
 
 **What source says.** Measured across `docs/` at HEAD, **six beat files** carry live
 prohibitions on boards that shipped and passed:
-`cfd-183:32` and `:327`, `cfd-196:125`, `cfd-205-halt:9` and `:33-34`, `cfd-206:9` and
+`cfd-183:32` and `:327`, `cfd-196:125`, `cfd-205-halt:9` and `:47-61`, `cfd-206:9` and
 `:34`, `cfd-207:13` and `:43`, `cfd-208:14` and `:50`. Three others were already
 superseded by the sweeps (`cfd-201:80`, `cfd-203:153`, `cfd-205:10`/`:31`), one landed on
 2026-09-02 (`cfd-176:11`, at `b232440`), and `cfd-200:68` is legitimately still beat-only.
@@ -856,7 +856,7 @@ superseded by the sweeps (`cfd-201:80`, `cfd-203:153`, `cfd-205:10`/`:31`), one 
 implement|Beat only" test/` returns nothing — so the fix is docs-only and free.
 
 **Raised as.** `docs/name-collisions-audit-2026-09-01.md:1261-1262` (one beat) and
-`docs/sweep-2026-09-02.md:866-874` (one beat, flagged as a precedent split and *"held
+`docs/sweep-2026-09-02.md:936-944` (one beat, flagged as a precedent split and *"held
 behind his word"*). **The hold did not hold** — `cfd-176:11` landed at `b232440` anyway,
 so the split is now live in the tree with one side superseded and five not.
 
@@ -902,12 +902,12 @@ injected when the fetch asks for HTML, and to record the fetch that does hash-ma
 **Question.** Yes or no: correct the caveat to say the beacon injection is Accept-header
 conditional, and record the working method?
 
-**What the document says.** `kills/README.md:35-39`: *"Fetch-verify caveat, measured
+**What the document says.** `kills/README.md:35-56`: *"Fetch-verify caveat, measured
 2026-08-25: the durable host injects the Cloudflare Insights beacon into HTML (+359 bytes
 on /dawnspur/ — 12024 live vs 11665 deployed), so a live fetch of index.html will NOT
 hash-match these captures."*
 
-**What source says.** `docs/sweep-2026-09-02.md:790-799`, reproduced by both readers and by
+**What source says.** `docs/sweep-2026-09-02.md:860-869`, reproduced by both readers and by
 the orchestrator: *"a plain fetch of `https://boards.skyrailreclamation.com/dawnspur/`
 returns **200, 11,665 bytes, sha256 `bdde9b50331ac89d…97ac59`** — exactly beat `:13`, the
 HEAD blob, `test:40` and `kills/README.md:31`. With `Accept: text/html` it returns
@@ -972,7 +972,7 @@ build c887359 / index cedf765c / sim 292d6645 / greenhouse 7fdf7468"*.
 `cedf765c` was the heat index at `c887359` and was superseded by `efbed23`. **The stale
 value survives in four files**, not the one the audit named:
 `sit/dawnspur-scale/MANIFEST.txt:25`, `public/dawnspur-scale/MANIFEST.txt:25` (so it is
-served), and `docs/cfd-183-beat.md:329` and `:385` — both **unsuperseded**, while the same
+served), and `docs/cfd-183-beat.md:329` and `:385` — both **unsuperseded** *(measured 2026-09-02; on 2026-09-09 both received the note, carried out under counsel's ruling on entry 9 — see the ruling below)*, while the same
 pin at `:45` and `:182` in the same file *does* carry supersession notes from the
 2026-09-01 sweep.
 
@@ -1028,13 +1028,13 @@ canon's judgement of the board, a few lines later, says)?
   matches entry 20.
 
 **Question.** Pick one: is the heat board's WARM a **TRUE R9 collapse** (`:105`), or does
-it **survive R8/R9** (`:117-118`)?
+it **survive R8/R9** (`:167-168`)?
 
 **What the document says.** Two lines in one file. `docs/mechanisms-recommitted.md:105`:
 *"| Heat vs Air: WARM as ground step that is also a dest job | TRUE collapse | R9 |"*.
-`:117-118`: *"Its bank-in-the-stone and step-onto-ground survive R8/R9 readings."*
+`:167-168`: *"Its bank-in-the-stone and step-onto-ground survive R8/R9 readings."*
 
-**What source says.** `docs/sweep-2026-09-02.md:875-881`: *"the beat's own `:19` has one
+**What source says.** `docs/sweep-2026-09-02.md:945-951`: *"the beat's own `:19` has one
 WARM doing both things R9 forbids. **This is not resolvable by measurement and must not be
 averaged.**"* R9 itself is at `:84-85` at HEAD (the sweep cited `:78-81`): *"**R9 — Heat ≠
 Air ≠ Growth (directive 1.19).** 'Heat that warms the ground already reached against Air
@@ -1084,8 +1084,8 @@ B, then HOLD, then WARM, which is what the heat board actually enforces?
 
 **What source says.** The board enforces `GOODS → B → HOLD → WARM`
 (`sit/dawnspur-heat/sim.js:4`), and BFS over all 24 orderings of the four commits reaches
-`banked` in **exactly 1** — that one (`docs/sweep-2026-09-02.md:745-746`). The sweep's
-ruling at `:882-886`: *"**The slip is canon's, not the beat's**, and out of this sweep's
+`banked` in **exactly 1** — that one (`docs/sweep-2026-09-02.md:815-816`). The sweep's
+ruling at `:952-956`: *"**The slip is canon's, not the beat's**, and out of this sweep's
 glob."*
 
 **Blocked.** Nothing directly, but it is the reason `cfd-176:39` was routed to you rather
@@ -1134,7 +1134,7 @@ reviewer adjudicates BENIGN_SHARED_NAME / LOW … The report holds REAL_COLLISIO
 The guard's ledger carries the row as CONTESTED with both readings and every measured
 site; **nothing downstream may cite a single severity for it until David rules.**"*
 
-**What source says.** `test/lexicon-ledger.js:322-328` carries it CONTESTED at HEAD, with
+**What source says.** *(As measured 2026-09-02; on 2026-09-09 the row moved to LOW under counsel's ruling on this entry, both readings kept, and the quoted note phrase is gone — see the ruling below.)* `test/lexicon-ledger.js:322-328` carries it CONTESTED at HEAD, with
 both readings verbatim and the note *"the ruling is David's"*. What is measured and
 uncontested (`:325`): *"both sides drive from the opening, and `stopped => armed` holds on
 every board that carries it"*. (**This row moved from `:260` to `:322` at `919b6be`,
@@ -1144,7 +1144,7 @@ failure-armed (dice, two-ways) — `docs/name-collisions-audit-2026-09-01.md:469
 **Raised in.** Audit §1.10 (`:431-474`), §5 do-not-average (`:799-805`), and the guard's
 ledger (`test/lexicon-ledger.js:322-328`). One call, three places.
 
-**Blocked.** Any downstream citation of a single severity — the ledger says so in terms.
+**Blocked.** Any downstream citation of a single severity — the ledger says so in terms *(said so until 2026-09-09; the clause was superseded under counsel's ruling on this entry, and the row is LOW)*.
 The completeness critic calls the split *definitional, not factual*
 (`docs/name-collisions-audit-2026-09-01.md:806-807`).
 
@@ -1190,16 +1190,16 @@ path is not a worse deal in marks than the long one?
 
 **Question.** Pick one: what does *"honest"* test?
 
-**What the document says.** `docs/mechanisms-recommitted.md:591-594`, under §7.2 (**RULED**,
-`:578`): *"**A quick path must exist and must be honest.** If the board's short route is a
+**What the document says.** `docs/mechanisms-recommitted.md:649-652`, under §7.2 (**RULED**,
+`:636`): *"**A quick path must exist and must be honest.** If the board's short route is a
 worse deal than the long one, the player did not opt in; they were priced in. The floor
 send being free and always lit is the shape this already takes on the dispatch board."*
 
-**What source says.** `docs/sweep-2026-09-02.md:555-561`: free-and-always-lit is confirmed
+**What source says.** `docs/sweep-2026-09-02.md:571-577`: free-and-always-lit is confirmed
 by driving, *"but net marks per send put the free halt behind Mosswake at every roster (0W
-6.800 vs 6.960 … 4W 8.240 vs 8.976), while `cfd-203:1238` applies §7.2's test **as EV** and
+6.800 vs 6.960 … 4W 8.240 vs 8.976), while `cfd-203:1270` applies §7.2's test **as EV** and
 passes the line board on it."* And: *"(§7.3 four lines later forbids the single-number
-netting an EV-only test performs.)"* — §7.3 is at `:604`.
+netting an EV-only test performs.)"* — §7.3 is at `:671`.
 
 **Blocked.** Any future board's §7.2 self-check; two beats currently apply two different
 tests.
@@ -1272,7 +1272,7 @@ audit already routed to you at its `:1258`.
 
 **Cost of getting it wrong.** The record of a passed board describes a stake it never
 carried — and it is the only board whose pass has no `KILLS.md` line and no verbatim in
-this repository.
+this repository *(as of 2026-09-02; a `KILLS.md` record was entered 2026-09-09 under counsel's ruling on entry 7)*.
 
 ---
 
@@ -1303,7 +1303,7 @@ you append a dated note saying §12 is retired, or leave the line as it is?
 
 **Question.** Pick one: append a dated parenthetical, or leave it?
 
-**What the document says.** `docs/cfd-206-beat.md:60`: *"World Bible §12 Mosswake Loop. Core
+**What the document says.** *(Quoted before the 2026-09-09 note was appended to that line under counsel's ruling on this entry; the line number holds, the quoted run no longer does.)* `docs/cfd-206-beat.md:60`: *"World Bible §12 Mosswake Loop. Core
 Loop: nodes and lines. Geology:"*.
 
 **What source says.** Measured at HEAD: `test/mosswake-loop.test.js:226` asserts
@@ -1324,7 +1324,7 @@ suite goes red for a docs edit.
 
 ---
 
-## 18. Canon `:752`'s confabulated mechanism — which question produced it?
+## 18. Canon `:826`'s confabulated mechanism — which question produced it?
 
 **In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: pick one of two or three.)*
 Canon quotes one player answer — "I noticed it degrade and started to see a connection
@@ -1358,19 +1358,19 @@ from the trim question?
 **Question.** Pick one: did the **TEND** question or the **trim** question produce the
 confabulated answer §7.4 cites?
 
-**What the document says.** `docs/mechanisms-recommitted.md:751-754`: *"The one intent
+**What the document says.** `docs/mechanisms-recommitted.md:825-828`: *"The one intent
 answer on record is a **confabulated mechanism** — 'I noticed it degrade and started to see
 a connection between fully tended land and success rates' — a link that does not exist on
 that board."*
 
-**What source says.** `docs/sweep-2026-09-02.md:569-575`: Linear-only; *"the closest in-repo
+**What source says.** `docs/sweep-2026-09-02.md:585-591`: Linear-only; *"the closest in-repo
 record (`sit/dawnspur-storm/sim.js:52-53`, second sit) is a **different** sentence with the
 same content, and it too is an answer about **why he tended** — while the intent trim
 question got a clean factual answer (`sim.js:49-50`, 'TRIM landed (considered at each storm
 send and left)')."* And the stake: *"If the TEND question did, then the shape §7.4 calls
 'the one that DOES work' produced the one confabulated answer it cites as the reason to
 refuse intent questions — and §7.5 (RULED) rests on that reading at `:681-686`."* That
-§7.5 passage is `docs/mechanisms-recommitted.md:834` at HEAD — *"**§7.4 got here first and
+§7.5 passage is `docs/mechanisms-recommitted.md:915` at HEAD — *"**§7.4 got here first and
 filed it as a detail.** It cites the TEND question as"* — the sweep's `:681-686` is stale.
 
 **Blocked.** Nothing mechanically, but two ruled sections rest on the answer.
@@ -1462,8 +1462,8 @@ line and re-pin the board, or leave the passed bytes alone and record the defect
   screen-reader player keeps hearing "undefined" on the sendable cards, and the project still
   has no rule for when a pinned board's bytes may be touched.
 
-*(Added 2026-09-08 from the DOM namespace sweep, call 1 — `docs/sweep-2026-09-02.md:1636`;
-finding 10 at `:1290`. Numbered by arrival, placed by tier: it publishes something measurably
+*(Added 2026-09-08 from the DOM namespace sweep, call 1 — `docs/sweep-2026-09-02.md:1901`;
+finding 10 at `:1501`. Numbered by arrival, placed by tier: it publishes something measurably
 wrong to a reader.)*
 
 **Question.** `/dawnspur-line/` passed and is hash-pinned (hub card and descendants). Every
@@ -1474,7 +1474,7 @@ the *out* branch of the template says "No Wardens ride with nothing staked" inst
 re-hashing and recutting the pins — owed, or are the passed bytes left alone and the defect
 recorded?
 
-**What the document says.** The record, `docs/sweep-2026-09-02.md:1636-1641`: `index.html:419`
+**What the document says.** The record, `docs/sweep-2026-09-02.md:1901-1906`: `index.html:419`
 reads `c.stake`; line's cards carry no `stake` key — its stake is food and the visible card
 uses `stakeText` — so the label is built from `undefined`. Reproduced by the synthesis and by
 the sweep's wiring pair. The ledger's standing rule is that a guard never forces a board edit;
@@ -1533,8 +1533,8 @@ name and carry the split as a declared row once the test guard can grade rendere
   record, and the next board that names the Halt in a label picks whichever sense its author
   happens to hold.
 
-*(Added 2026-09-08 from the DOM namespace sweep, call 5 — `docs/sweep-2026-09-02.md:1667`;
-finding 1, the sweep's only agreed HIGH, at `:1129`. Placed in Tier 2: it publishes one name
+*(Added 2026-09-08 from the DOM namespace sweep, call 5 — `docs/sweep-2026-09-02.md:2005`;
+finding 1, the sweep's only agreed HIGH, at `:1277`. Placed in Tier 2: it publishes one name
 with two meanings to every reader of the pages.)*
 
 **Question.** `<title>Dawnspur Halt</title>` heads heat, scale and halt; `DAWNSPUR HALT` is a
@@ -1545,7 +1545,7 @@ words a player reads. Is the desk's card face to be re-voiced — a board edit o
 boards — or is the split carried as a declared row once a `labels` / `sentences` deriver
 exists in the guard?
 
-**What the document says.** Finding 1 at `:1129`; the instrument-extensions bullet under
+**What the document says.** Finding 1 at `:1277`; the instrument-extensions bullet under
 *Dispositions* ranks a `labels` deriver sixth and says that until it lands "finding 1 is a
 record entry and nothing more." `ROWS.halt` (HIGH) grades ids only.
 
@@ -1659,11 +1659,11 @@ the three sibling boards go on the Herbs-in-the-larder (Put them up) and They-re
 **Question.** Pick one: does the `rim` disambiguation note go on `cfd-207` and `cfd-208`
 too, or stay on `cfd-206` only?
 
-**What the document says.** `docs/cfd-206-beat.md:224-226` carries it: *"rim — `rim` is
+**What the document says.** `docs/cfd-206-beat.md:223` carries it: *"rim — `rim` is
 `/dawnspur-halt/`'s own constant and is not read here. SEND does … constant"; the rim is
 halt's, and this board carries only the gap.)*"
 
-**What source says.** Measured at HEAD: `cfd-207:251` reads *"**Rim / gap is a constant.**
+**What source says.** Measured at HEAD *(e226a9f; both bullets were replaced on 2026-09-09 under counsel's ruling on this entry — see the ruling below)*: `cfd-207:251` reads *"**Rim / gap is a constant.**
 Put them up does not write it."* and `cfd-208:288` reads *"**Rim / gap is a constant.**
 Collect does not write it."* — **neither carries the note.** The audit's cite
 `cfd-208:278` has drifted to `:288`; corrected here. Both edits are built and held:
@@ -1766,9 +1766,9 @@ bill-is-addressed-hauls row?
 **Question.** Two picks: is the R-citation for *"Foundry is work one"* right, and is R10
 the right rule for the bill?
 
-**What the document says.** `docs/cfd-205-beat.md:275`: *"| Foundry is work one | ON |
+**What the document says.** `docs/cfd-205-beat.md:277`: *"| Foundry is work one | ON |
 buildings exist because they do jobs; Foundry is Heat (food into already-reached ground)
-|"*. `:278`: *"| Bill = addressed hauls | ON | R10 — a load can be buildout; the loop as
+|"*. `:280`: *"| Bill = addressed hauls | ON | R10 — a load can be buildout; the loop as
 sat is how the haul exists |"*. **The audit cited these as `:268` and `:271`; both have
 drifted by seven lines.** Corrected here.
 
@@ -1808,12 +1808,12 @@ relabelled from inherited to kept by signature?
 **Question.** Yes or no: rename the cell from *"inherited"* to *"kept by signature"* for
 Works/SITE/LAND/CAST?
 
-**What the document says.** `docs/cfd-205-halt-beat.md:207` *"| **Works — SITE, address,
-bill** | **ON** — Foundry is work one | inherited; SITE/LAND/CAST sim kept |"*, `:209`
-*"| **LAND as arrival, not SEND** | **ON** | inherited |"*, `:210` *"| **CAST = OPEN: bill
+**What the document says.** `docs/cfd-205-halt-beat.md:236` *"| **Works — SITE, address,
+bill** | **ON** — Foundry is work one | inherited; SITE/LAND/CAST sim kept |"*, `:238`
+*"| **LAND as arrival, not SEND** | **ON** | inherited |"*, `:239` *"| **CAST = OPEN: bill
 full + terrace food → Foundry, food in, Heat step** | **ON** | inherited Works |"*. **The
 audit cited `:203-206`, which at HEAD is the table header and the first two rows.**
-Corrected here: the rows are `:207`, `:209`, `:210`.
+Corrected here: the rows are `:236`, `:238`, `:239`.
 
 **What source says.** Those systems came from `/dawnspur-site/`, which was **sat and not
 passed** (KILLS.md's 2026-08-30 Dawnspur Site entry; hub `public/index.html:67`, *"live — sat 2026-08-30, not
@@ -1830,7 +1830,7 @@ was kept anyway.
 
 ---
 
-## 25. `cfd-205-halt:65-66` — a sit finding, or a ruling?
+## 25. `cfd-205-halt:92-93` — a sit finding, or a ruling?
 
 **In plain terms.** *(2026-09-09, from a plain-language pass checked twice against this entry; effort: a yes/no.)*
 Does the sentence in the halt board's Come-home beat saying that buildings, feed, lamp,
@@ -1856,7 +1856,7 @@ than presented as something the sit found?
 
 **Question.** Yes or no: relabel it as a ruling?
 
-**What the document says.** `docs/cfd-205-halt-beat.md:65-66`: *"Buildings-as-buildings,
+**What the document says.** `docs/cfd-205-halt-beat.md:92-93`: *"Buildings-as-buildings,
 feed, lamp and Foundry as actions, and Home writing landed. The walk did not. Recut so
 only one action is live at a"*.
 
@@ -2071,7 +2071,7 @@ qualifier saying when it holds?
 **Question.** Two picks: does *"GOODS / B / HOLD are not on the same row"* get corrected,
 and does *"does not die unless fed"* get scoped?
 
-**What source says.** `docs/sweep-2026-09-02.md:887-894`: *"Sweeper SUPERSEDE, refuter DAVID
+**What source says.** `docs/sweep-2026-09-02.md:957-964`: *"Sweeper SUPERSEDE, refuter DAVID
 on both. Both are ellipsis/scope readings, not measured errors: the board facts are
 confirmed either way … **Not built.**"* With one measured caution: *"`#pads` holds **four**
 buttons, not three — `index.html:157` `id=\"go\"` / LEAVE is on the civic row too … so a
@@ -2212,10 +2212,10 @@ question above it letters only three choices — (a) the run, (b) the in-progres
 **Question.** Pick one: does *"(d)"* mean *"none of the three stakes"*, or *"the reserve
 without the storm"*?
 
-**What the document says.** `docs/mechanisms-recommitted.md:170` (the sweep cited `:158`;
+**What the document says.** `docs/mechanisms-recommitted.md:211` (the sweep cited `:158`;
 **drifted by 12 lines**): *"**Proposed answer: (d) now, (c) next — and (a) and (b) arrive
 INSIDE the storm sitting as what a storm does, never as standalone mechanics.**"* The
-question above it at `:167-168` letters only three options.
+question above it at `:208-209` letters only three options.
 
 **What source says.** `docs/sweep-2026-09-02.md:534-537`: *"the question at `:155-156`
 letters only three options and '(d)' has no antecedent in the file; the shipped recut
@@ -2357,7 +2357,7 @@ owed before a fourth city board copies it?
 - *If undecided:* Nothing today. The next city board, if cut by copying the last passed
   one, inherits the line.
 
-*(Added 2026-09-08 from the DOM namespace sweep, call 2 — `docs/sweep-2026-09-02.md:1642`.
+*(Added 2026-09-08 from the DOM namespace sweep, call 2 — `docs/sweep-2026-09-02.md:1920`.
 Convention: no player sees it.)*
 
 **Question.** `"The train brought the Mosswake cargo home."` sits in `sit/dice-at-the-places/sim.js:322`,
@@ -2368,7 +2368,7 @@ document, and pinned verbatim by one passed board's test
 Mosswake cargo home.")`). Is dead desk prose in a passed board's sim evidence to leave as
 pinned, or a re-voicing owed before the next city board inherits it a fourth time?
 
-**What the document says.** The record, `:1642-1650` *(its "unquoted everywhere" is superseded
+**What the document says.** The record, `:1920-1928` *(its "unquoted everywhere" is superseded
 in place: unquoted in every document, and pinned by two-ways' test)*. `ROWS.runSentence` /
 `endSentence` are BENIGN on the *read* question because nothing renders them. A `doesNotMatch`
 guard against the sentence would be red on three passed boards today and could only go green by
@@ -2419,8 +2419,8 @@ wiring, or write the missing art rules?
   waiting for its rules, or carrying dead switches into every future city board because they
   look like a convention.
 
-*(Added 2026-09-08 from the DOM namespace sweep, call 3 — `docs/sweep-2026-09-02.md:1651`;
-finding 19 at `:1379`, finding 2 (`dim`) at the record's finding 2. Convention: opposite
+*(Added 2026-09-08 from the DOM namespace sweep, call 3 — `docs/sweep-2026-09-02.md:1945`;
+finding 19 at `:1644`, finding 2 (`dim`) at the record's finding 2. Convention: opposite
 remedies, no measurement decides.)*
 
 **Question.** City boards toggle four classes on `#mosswake` and `#halt` that no page styles —
@@ -2431,7 +2431,7 @@ all: the only flag that moves reaches no class on any page. `dice-at-the-places`
 art-direction comments naming the states. Delete the toggles (dead wiring), or write the rules
 (unwritten art)?
 
-**What the document says.** The record, `:1651-1660` and finding 19 at `:1379` *(its "six
+**What the document says.** The record, `:1945-1954` and finding 19 at `:1644` *(its "six
 boards … 19 of 20 pairs" is superseded in place with the per-token counts above, measured at
 `0ffd1aa` by the review)*. The readers did not disagree; the sweeper declined to guess and the
 refuter supplied the discriminator — which, re-measured, is that the single moving flag never
@@ -2483,7 +2483,7 @@ boards must not copy, or an accepted one-off?
   The risk is a future board copying site and the id-versus-class split widening by one
   board.
 
-*(Added 2026-09-08 from the DOM namespace sweep, call 4 — `docs/sweep-2026-09-02.md:1661`.
+*(Added 2026-09-08 from the DOM namespace sweep, call 4 — `docs/sweep-2026-09-02.md:1980`.
 Convention.)*
 
 **Question.** `dawnspur-site` is the one CITY board whose scenery parts (`scaffold`, `works`,
@@ -2492,7 +2492,7 @@ classes inside a named building; it is also the one city board carrying `train`,
 `platform` under the desk's ids. It passed (2026-08-30, recut 2) and is pinned. Is its shape
 an ancestor convention every future city board must not copy, or an accepted one-off?
 
-**What the document says.** The record, `:1661-1666`, and its *SCENERY PARTS* comment now
+**What the document says.** The record, `:1980-1985`, and its *SCENERY PARTS* comment now
 above `DOM_ROWS` in `test/lexicon-ledger.js`. The answer decides whether that comment is a
 warning or a rule.
 
@@ -2537,7 +2537,7 @@ correction block underneath, re-pointing the list to where each sentence sits no
   which thirteen of the fourteen lines are wrong, whenever someone works from the review
   record rather than this ledger, which carries the corrected mapping.
 
-**Nothing is blocked; this is a record correction.** `docs/sweep-2026-09-02.md:523-600` asks
+**Nothing is blocked; this is a record correction.** `docs/sweep-2026-09-02.md:523-616` asks
 you to rule on canon lines that moved when its own agreed edit set landed at `b8d6da3`
 (749 to 902 lines). The mapping, re-derived at HEAD:
 
@@ -2590,7 +2590,7 @@ asks you nothing and does not say whether the audit itself should be edited.
   does not say so.
 
 **Nothing is blocked; this is a record correction.** Corrections carried inline above:
-`cfd-200:1076-1093` → `:1139-1156` **and wrong at its own tree**; `cfd-205:207/:208` →
+`cfd-200:1076-1093` → `:1148-1165` **and wrong at its own tree**; `cfd-205:207/:208` →
 `:214/:215`; `cfd-205:268/:271` → `:275/:278`; `cfd-205-halt:203-206` → `:207/:209/:210`;
 `cfd-208:452` → `:464`; `cfd-209:396` → `:423`; `cfd-210:80-81` → `:85-86`; `cfd-210:168` →
 `:177` and `:274`; `cfd-208:278` (rim) → `:288`; `cfd-201:1017/:1386` (halt bridge) →
@@ -2660,7 +2660,7 @@ names no beat?
 `docs/name-collisions-audit-2026-09-01.md:872-873`: *"**`/dawnspur-heat/` cites no beat** —
 its spec is not in this repository — and was not swept."* The "was not swept" half is false
 since `97f3ecd`. The "cites no beat" half is still true — `sit/dawnspur-heat/sim.js` has no
-`Spec:` line, verified. The CFD-176 sweep filed this itself (`docs/sweep-2026-09-02.md:920-923`)
+`Spec:` line, verified. The CFD-176 sweep filed this itself (`docs/docs/sweep-2026-09-02.md:1080-1085`)
 and did not build it, as out of glob.
 
 ---
@@ -2693,7 +2693,7 @@ file?
   counts.
 
 **Nothing is blocked; this is a record correction — but read it, because ten calls are
-sitting behind it.** `docs/sweep-2026-09-02.md:916-917`: *"**David's calls: nine on the
+sitting behind it.** `docs/docs/sweep-2026-09-02.md:1078-1079`: *"**David's calls: nine on the
 beat, two filings out of glob.** Listed separately, one line each."* **There is no such
 list** — not in the landed document (923 lines, checked end to end) and not in the session
 scratch it came from (`C:\tmp\sweep176\record.md`, 243 lines, same sentence, same absence).
@@ -2756,12 +2756,12 @@ a note in a beat?
 
 **Nothing is blocked; these are record corrections.**
 
-- **`docs/mechanisms-recommitted.md:740`** (sweep cited `:598`) — *"**one case out of six**,
+- **`docs/mechanisms-recommitted.md:807`** (sweep cited `:598`) — *"**one case out of six**,
   permits `/dawnspur-halt/` with zero margin"*. The sweep: *"the six sequences are
   enumerated nowhere and cannot be reconstructed; the two claims beside it reproduce · Name
   the six, or mark the figure unreproducible. **Do not let a reconstruction stand in.**"*
   My read: *mark it unreproducible* — prefer null to a plausible number.
-- **`docs/mechanisms-recommitted.md:795`** (sweep cited `:641`) — *"**because David asked for
+- **`docs/mechanisms-recommitted.md:869`** (sweep cited `:641`) — *"**because David asked for
   copy, verbatim, three sits running**"*. The sweep: two of three in-repo verbatims support
   it; the fourth sit's is you naming copy that worked. A Linear lookup, not a judgement.
   My read: *narrow to two of three unless Linear says otherwise.*
@@ -2785,13 +2785,13 @@ the source lists were ruled, landed, or made moot by them.
 | **The hub tags.** *"`public/index.html:37-61` five PASSED boards tagged 'not yet sat' (a hub commit)"* | audit `:1264` | **Ruled and landed at `079b2bd`.** Measured at HEAD: `:37`, `:43`, `:49`, `:55`, `:61` all read *"live — passed its sit"*; `:67` reads *"sat 2026-08-30, not passed"*; `:73` *"sat five times, stopped without a pass"*. Only `:31` (`/two-ways-from-here/`) still says *"not yet sat"*, correctly. |
 | **`public/index.html:79`'s "not yet sat" on a passed board** — half of the desk half's "shipped-bytes pair" | audit `:1054-1055` | Same commit. `:79` now reads *"live — passed its sit 2026-08-28"*. **The other half of that pair — the stale MANIFEST pin — is still open as entry #11.** |
 | **The two missing kills and the storm stop** — *"`KILLS.md`'s five missing passes, two missing kills and the storm stop"* | audit `:1262-1263`, sweep `:602-605`, KILLS proposal | **Landed at `b95a9c9`.** `KILLS.md` at HEAD carries they-remember cut 0 (`:26`), the site fail (`:55`) and the storm's five (`:68`), 119 lines and ten `Recut:` lines. **The five passes are still open as entry #7.** |
-| **`KILLS.md:63` cites a beat that did not exist on main** | audit `:832-836` | **Resolved at `758a249`** — the beat merged from PR #3 with a provenance header at `f3f6222`; the cite resolves and now names the ledger's 2026-08-24 starve-or-feed entry — de-lined 2026-09-09 per entry 33, since that entry's own line number moves with every hosted-era insert. The audit already carries the supersession. |
+| **`KILLS.md`'s 2026-08-24 starve-or-feed entry cites a beat that did not exist on main** | audit `:832-836` | **Resolved at `758a249`** — the beat merged from PR #3 with a provenance header at `f3f6222`; the cite resolves and now names the ledger's 2026-08-24 starve-or-feed entry — de-lined 2026-09-09 per entry 33, since that entry's own line number moves with every hosted-era insert. The audit already carries the supersession. |
 | **Canon `s7.4-M6`** — the *"where every recut decision and its shas are recorded"* over-claim | sweep `:469-475` | **Withdrawn at review** by the sweep itself, because `b95a9c9` discharged most of it mid-run. The residual (four pre-host entries with no shas) folds into entry #7. |
-| **Canon §7.4's `:604` vs `:623-635` self-inconsistency** — *"two intent questions"* vs the blessed TEND text | audit `:1026-1028`, recorded as out of scope | **Resolved at `b8d6da3`.** At HEAD `:745-751` names the trim question as signed at `30ff642`, identifies the second as the CFD-203 TEND question, and records that the trim question was recut into that shape at `16ac8e5` — *"so at HEAD that card asks none in the intent form."* |
+| **Canon §7.4's `:604` vs `:623-635` self-inconsistency** — *"two intent questions"* vs the blessed TEND text | audit `:1080-1082`, recorded as out of scope | **Resolved at `b8d6da3`.** At HEAD `:819-825` names the trim question as signed at `30ff642`, identifies the second as the CFD-203 TEND question, and records that the trim question was recut into that shape at `16ac8e5` — *"so at HEAD that card asks none in the intent form."* |
 
 **One partial reversal worth knowing.** The CFD-176 sweep asked you to hold the
 `cfd-176:11` Seat supersession *"behind his word if he wants the convention uniform"*
-(`docs/sweep-2026-09-02.md:873-874`). It landed anyway at `b232440`. That is why entry #9
+(`docs/docs/sweep-2026-09-02.md:943-944`). It landed anyway at `b232440`. That is why entry #9
 is now *"make it uniform"* rather than *"should the first one land"* — the precedent is
 already set in the tree, and five beats are on the other side of it.
 

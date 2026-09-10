@@ -210,6 +210,38 @@ the long one, the player did not opt in, they were priced in. Measured in The
 numbers, and it passes in the strongest direction — the short route is the
 *better* deal.
 
+*(The clause above — "it passes in the strongest direction — the short route
+is the better deal" — is superseded in place, 2026-09-09, ruled by counsel on
+David's instruction. §7.2's "honest" quick path tests **access**, not payoff, in
+three prongs: the short route costs nothing to take; it is always lit, with no
+reachable state in which it goes dark; and it never locks the player out of the
+long one. Canon glosses two of the three itself — "The floor send being free and
+always lit is the shape this already takes on the dispatch board"
+(`docs/mechanisms-recommitted.md:651-652`) — free, and always lit; the third
+prong is the council's reading, not canon's. The marks-per-turn table under the
+heading "§7.2's honesty test, measured" is a measurement and stays in the record;
+it is surplus to the §7.2 test, not the test. The board passes because the free
+Halt costs nothing, is always lit and never locks out the long route — not
+because it out-earns it, which on `docs/sweep-2026-09-02.md:574-580`'s
+marks-per-send instrument it does not: that reading puts the free halt behind
+Mosswake at every roster. §7.3 (`docs/mechanisms-recommitted.md:671`), RULED
+2026-08-28 and therefore the later text, is why the payoff reading is refused:
+it forbids netting two options that differ in both currencies, which is exactly
+the comparison that reading would need.)*
+
+**§7.2's self-check, carried forward — 2026-09-09, ruled by counsel on David's
+instruction.** From this ruling forward a beat's §7.2 self-check is driven, not
+netted: (1) does the short route cost nothing to take; (2) is it always lit,
+with no reachable state in which it goes dark; (3) does it never lock the player
+out of the long route. A beat written after 2026-09-09 also pre-registers the
+residual the access test cannot see — a sitting in which nobody took the quick
+path — alongside whatever else it pre-registers under §7.5. **This board is
+passed and is not the carrier for that rule**: the ruling puts its authoritative
+home in canon's own §7.2 gloss and the pre-registration lists future beats write
+under §7.5, neither of which this record can edit. It is written down here
+because this section is where named rulings travel, and so the obligation is not
+lost while canon is unamended.
+
 **Crew names.** Rail Warden / Ranger / Marksman / Engineer on the face, pack ids in
 the provenance. Only the Rail Warden musters this sitting.
 
@@ -1235,7 +1267,7 @@ rests on. Inherited rows cite the beat that passed them, per §7.
 | Two vehicles | ON, argued, and the MOSSWAKE cut rests on it | `buildings[switchyard].description` — "Dispatches trains, **adds scheduling capacity**, and keeps cargo moving". R10's three claims stay on the shuttle where CFD-183 put them |
 | MOSSWAKE +3 cut | REFUSED | RULED — David 2026-08-27, "cutting redundant is cheaper than renaming colliding"; precondition verified in Does |
 | Topping arms, the cargo fires | ON | RULED — David 2026-08-27, ruling 5, minus its storm clause; §7.2 — "Arming-and-triggering … is the shape that gives a builder their payoff without ending the sitting under a player who came for the run" |
-| The free halt as the honest quick path | INHERITED | CFD-196, passed; §7.2 — "The floor send being free and always lit is the shape this already takes." Measured: the quick path is the *better* deal to level 3 |
+| The free halt as the honest quick path | INHERITED | CFD-196, passed; §7.2 — "The floor send being free and always lit is the shape this already takes." Measured: the quick path is the *better* deal to level 3 *(Annotated 2026-09-09, ruled by counsel on David's instruction: §7.2's test is the access test — costs nothing to take, always lit, never locks out the long route — and this row's INHERITED disposition already grades that correctly. "Measured... better deal" is surplus to the test, not the test; on the opposite-sign marks-per-send instrument at `docs/sweep-2026-09-02.md:574-580` the free halt sits behind Mosswake at every roster.)* |
 | Weather, whole | REFUSED | §7.1 — swapped out for the join. §7.1.1 records the cost: §5 is not overturned, and "next sitting" now means the sitting after this one. `docs/cfd-201-beat.md` is held, not discarded |
 | The Ranger | REFUSED | §7.1.3 — the Ranger's trim is one of the three rulings that travel with the storm, "ruled, recorded, and not re-opened when weather returns" |
 | Marksman / Engineer / the yard | REFUSED | `docs/cfd-200-beat.md` holds them; `missions[*].preferred` puts fire and repair off this board; a hire with no job is dead UI |

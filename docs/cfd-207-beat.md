@@ -11,7 +11,7 @@ already gone. Tap: herbs leave the consist and enter Halt. Mosswake
 writing: a neighbor again. No SEND. No Favor number. No Marks as the
 sit. Writing is the board. Mara shows, not lectures. Tutorial is the
 same system. GameDesigner is off this job. Draft PR. Do not merge
-until SuperheavyReview PASS. David sits first.
+until SuperheavyReview PASS. David sits first. *(The board has since shipped and passed its sit: merge `6e606e5`, live at `/herbs-larder/` — index `676587bc…`, sim `76c886b9…` (`public/index.html`, "live — passed its sit"). The do-not-touch list in `## Seat` still binds. Do not `workflow_dispatch`. Noted 2026-09-09.)*
 **Ask: What happened.**
 
 ---
@@ -40,9 +40,9 @@ Do not recut `/dawnspur-site/` (failed sit; live `c59dc101`, index
 sitting is not their recut. The new sitting is the larder (the run
 feeds the place), on a sibling path.
 
-Do not merge. Do not deploy. Do not `workflow_dispatch`. David sits first.
+The drafting seat was Superheavy beat only — no implement, no deploy, no merge. The board has since shipped and passed its sit: merge `6e606e5`, live at `/herbs-larder/` — index `676587bc…`, sim `76c886b9…` (`public/index.html`, "live — passed its sit"). *(An earlier cut read "Do not merge. Do not deploy. Do not `workflow_dispatch`. David sits first.
 Superheavy reviews the PR. Superheavy does not implement. Superheavy
-does not merge.
+does not merge."; true on the day of signature, record now.)* The do-not-touch list above still binds. Do not `workflow_dispatch`.
 
 Pins are the live boards, never `main`. Re-measured at authoring against
 `510a392` (Mosswake live merge, PASSED) and `66b5507` (halt live merge,
@@ -248,7 +248,7 @@ Every line testable, red-first.
 - **Put them up costs nothing.** No marks, no food stake, no fuel, no Favor.
 - **Opening marks 0.** Marks are not the sit. Put them up does not bump them.
 - **One Put them up. No SEND. No second can-do.**
-- **Rim / gap is a constant.** Put them up does not write it.
+- **The gap is a constant.** `GAP` is `{ left: 42, width: 16 }`. This board has no rim — `rim` is a Dawnspur-side constant (`sit/dawnspur-halt/sim.js:39` and `sit/dawnspur-site/sim.js:27`, both `{ left: 78, width: 18 }`) and is not read here. Put them up does not write it. *(An earlier cut read "Rim / gap is a constant"; the rim is the Dawnspur side's, and this board carries only the gap. Provenance clause corrected 2026-09-09: the rim is declared on two Dawnspur boards, not one.)*
 
 ---
 

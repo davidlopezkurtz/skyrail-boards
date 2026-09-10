@@ -750,9 +750,9 @@ behind it, so this is the sitting that can ask it.
 and whether they can name what it bought (canon §7.4). `runsTrimmed` records the
 sends that were trimmed; the sitting supplies whether the price was legible.
 *(An earlier cut asked "At which storm send did you consider the trim and not
-take it?" — the intent form canon §7.4, RULED 2026-08-31, refuses, naming this
+take it?" — the intent form canon §7.4 refuses, naming this
 section as where it was tried; its one intent answer on record was a
-confabulated mechanism.)*
+confabulated mechanism.)* *(This clause read "the intent form canon §7.4, RULED 2026-08-31, refuses" until 2026-09-09: the status word entered at 16ac8e5 (2026-09-01) out of that sweep's own finding row, with no source behind it. `docs/mechanisms-recommitted.md:733` is where §7.4's status is declared, and it reads "WRITTEN DOWN", not "RULED" — struck here to a bare cite. Interim, by counsel on David's instruction, 2026-09-09, pending his yes/no on canon §7.4: `docs/decisions-open-2026-09-02.md` entry 5.)*
 
 **THE CAVEAT, WRITTEN HERE BECAUSE THIS IS WHERE THE READING IS TAKEN.** David,
 2026-08-28, ruling on the counter:
@@ -848,11 +848,11 @@ list is the mitigation.
   floor at 0.
 - **A carry draws anything but exactly one step of ground.** *(The storm turn's
   step is pinned in the line above and the tend's in the tend line below; the
-  carry's own step is pinned nowhere. `docs/cfd-203-beat.md:906`.)*
+  carry's own step is pinned nowhere. `docs/cfd-203-beat.md:972`.)*
 - **The reserve is written by anything but a carry, a storm turn, or a tend** —
   exactly three writers, −1, −1 and +1, one step each, and no fourth.
   *(Re-worded rather than copied, and the re-wording is forced.
-  `docs/cfd-203-beat.md:914` reads "written by anything but a carry" and was true
+  `docs/cfd-203-beat.md:980` reads "written by anything but a carry" and was true
   **by construction** there: the reserve is derived, `Math.max(0, RESERVE_FULL -
   s.carries)`, with no field to write, which is what
   `test/dawnspur-line.test.js:508-516` asserts. Reinstating TEND forces a stored
@@ -869,7 +869,7 @@ list is the mitigation.
   the record, the hearth, or the bank.
 - **A level is lost — any level, by any hand, ever, this sitting. The greenhouse
   shrinks, dies, or shows a dead state.** *(Carried whole from
-  `docs/cfd-183-beat.md:157-158` and `docs/cfd-203-beat.md:911`. The line above
+  `docs/cfd-183-beat.md:157-158` and `docs/cfd-203-beat.md:977`. The line above
   guards the **storm** as the agent and says nothing about any other hand; the
   range line under *Inherited* allows 1..4 and cannot see a level going 3 to 2.
   R6's home is never the stake, and this is the board that introduces the first
@@ -886,7 +886,7 @@ list is the mitigation.
   **This is the condition David's MOSSWAKE cut was granted on** — ruling 1,
   2026-08-27, whose recorded condition reads *"Conditioned on the terrace having
   work while the train is out"*; David's own words there are *"Cutting redundant
-  is cheaper than renaming colliding."* `docs/cfd-203-beat.md`:942 verified the
+  is cheaper than renaming colliding."* `docs/cfd-203-beat.md`:1008 verified the
   condition rather than assuming it (`test/dawnspur-line.test.js`:644, whose
   source-shape assertion is that neither `canCarry` nor `canUp` contains
   `s.away` — TEND has no parent test because `/dawnspur-line/` has no TEND, so
@@ -894,7 +894,7 @@ list is the mitigation.
   with it and MOSSWAKE +3 comes back.
 - *(interaction)* A line verb goes dark because the terrace is busy, in any sky.
   There is no terrace-busy state to read, and no send predicate reads one.
-  (`docs/cfd-203-beat.md`:944; `test/dawnspur-line.test.js`:677.)
+  (`docs/cfd-203-beat.md`:1010; `test/dawnspur-line.test.js`:677.)
 - *(interaction)* **A terrace verb taken while a run is away does not advance the
   sky, or advances it by anything but one step.** *(This clause has no parent —
   on `/dawnspur-line/` there was no sky. The two vehicles are independent in what
@@ -906,7 +906,7 @@ list is the mitigation.
 - `3 / 2 / 3+1 / 10 / 14 / 18 / 0.036 / 0.08 / 0.12 / 0.25` move.
 - `UP 3 / 4 / 5`, `TEND 1`, `+1..+4`, reserve depth 4, roster cap 4 move.
 - **UP rides a train.** *(The two-vehicle clause of `docs/cfd-183-beat.md`:167 and
-  `docs/cfd-203-beat.md`:922. **Only this clause is restored, deliberately**: an UP
+  `docs/cfd-203-beat.md`:988. **Only this clause is restored, deliberately**: an UP
   whose published price is 0, or does not climb, already moves the figures pinned on
   the line above. This one does not, because the price can stay 3 / 4 / 5 while the
   delivery quietly waits on the line train — a vehicle question, not a price
@@ -930,7 +930,7 @@ list is the mitigation.
 - A stake, toll, muster, tend, or level refunds — any branch, any direction.
 - **Any crew member fails to come home, on either branch, ever, this sitting —
   Wardens and the Ranger alike, in any sky, on a trimmed run as on a straight
-  one.** *(Carried from `docs/cfd-196-beat.md`:297 and `docs/cfd-203-beat.md`:933,
+  one.** *(Carried from `docs/cfd-196-beat.md`:317 and `docs/cfd-203-beat.md`:999,
   where it covers the whole roster. This beat's draft guards the Ranger alone,
   at the Ranger line above, on the board that raises the Chartered turned-back
   rate from 34.6% to 44.6% at four Wardens — the beat's own figure at line 208.
@@ -947,8 +947,8 @@ list is the mitigation.
 **States and sentences**
 
 - **A reachable home state has no lit send, or an away state has MEET dark — in
-  any sky.** *(Carried from `docs/cfd-196-beat.md`:307 through
-  `docs/cfd-203-beat.md`:951, where it was restored after being dropped once in
+  any sky.** *(Carried from `docs/cfd-196-beat.md`:327 through
+  `docs/cfd-203-beat.md`:1017, where it was restored after being dropped once in
   transcription. **This is its second loss.** This beat's draft replaced it with
   the broad line below, and the broad line cannot see the bug this one names.
   Measured on the passed parent by exhaustive replay from the real opening —

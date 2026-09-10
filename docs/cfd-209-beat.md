@@ -105,9 +105,9 @@ HEAD.** The enumeration is a courtesy; the catch-all is the rule.
 | `/dawnspur-dispatch/` **PASSED** | `576ce2b6` | `31aead60` |
 
 *(Earlier cuts of this table marked only the four city passes. `/dawnspur-line/`
-PASSED 2026-08-28 at host `3588bb4` — `docs/cfd-203-beat.md:1511`, `:1549` — and
+PASSED 2026-08-28 at host `3588bb4` — `docs/cfd-203-beat.md:1581`, `:1583` — and
 `/dawnspur-dispatch/` PASSED 2026-08-26 at host `663d4fa` —
-`docs/cfd-196-beat.md:835-838`; `git show <host>:sit/<b>/sim.js | sha256sum` gives
+`docs/cfd-196-beat.md:858`; `git show <host>:sit/<b>/sim.js | sha256sum` gives
 `18b1324f` and `576ce2b6`, the pins above, unchanged at HEAD. The rows this beat
 inherits from them under §7 require those passes.)*
 

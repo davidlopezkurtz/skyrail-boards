@@ -148,9 +148,9 @@ pointer, never a deletion.
   deployment id not in repo. David's sit: (verbatim on Linear CFD-205; not in
   repo). Sat 2026-08-30, not passed. Canon §7.4's evidence table records the
   sit as "grey-square random clicks — **fail**"
-  (`docs/mechanisms-recommitted.md:698`). No recut: the board was stopped
+  (`docs/mechanisms-recommitted.md:765`). No recut: the board was stopped
   rather than recut, on "no further grey-square recut"
-  (`docs/mechanisms-recommitted.md:730`; `docs/cfd-205-beat.md:9-11` and
+  (`docs/mechanisms-recommitted.md:797`; `docs/cfd-205-beat.md:9-11` and
   `:28-33`) — a finding routed to the Halt, not a failure of the board. That
   stop phrase is quoted in both places and attributed to no speaker. Do not
   recut this path; the pins stand and five later beats carry it as a failed
@@ -175,9 +175,9 @@ pointer, never a deletion.
   2026-08-29: "Mechanically it all worked nicely… It's definitely time for the
   city. I think we have a good loop buildout and need the spine to attach it
   to." (`docs/cfd-209-beat.md:121-124`; from "It's" on also at
-  `docs/mechanisms-recommitted.md:733`). No recut: stopped at five on "do
+  `docs/mechanisms-recommitted.md:800`). No recut: stopped at five on "do
   not recut `/dawnspur-storm/` for 'why more glass' — that is the city
-  sitting" (`docs/mechanisms-recommitted.md:731`, attributed to no
+  sitting" (`docs/mechanisms-recommitted.md:798`, attributed to no
   speaker) — a finding routed to the city, not a failure of the board (canon
   §7.4). Record: Linear CFD-201.
 

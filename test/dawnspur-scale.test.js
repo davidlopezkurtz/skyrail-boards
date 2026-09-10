@@ -659,3 +659,63 @@ test("banned tokens: the REFUSED table and the standing bans hold", () => {
     assert.equal(re.test(src), false, "banned token " + re);
   }
 });
+
+// ------------------------------------------- decision 11 (interim pin)
+
+test("INTERIM (decision 11): MANIFEST.txt:25 still carries the stale heat index — self-cancelling", () => {
+  // Ruled by counsel on David's instruction, 2026-09-09 (decision 11).
+  //
+  // sit/dawnspur-scale/MANIFEST.txt:25 and its byte-copy at
+  // public/dawnspur-scale/MANIFEST.txt:25 record "index cedf765c" for the
+  // live /dawnspur-heat/ build. That value was already wrong on the day the
+  // scale beat was signed — cedf765c was the heat index BEFORE CFD-175's
+  // efbed23 — and the correct, current value is "index b5f7e14f"
+  // (sit/dawnspur-heat/MANIFEST.txt:19; the same sha is pinned above at :80,
+  // under the :79 title "guard: heat sitting blobs at HEAD are unchanged (do
+  // not recut 176's lights)", where
+  // sha256(sit/dawnspur-heat/index.html) is
+  // b5f7e14f4ed82a81e8b5bbc8b07c1e808698ca3a90f0fd9664db2f0d5dbba995).
+  //
+  // Both MANIFEST.txt copies are passed bytes under the ambient contract's
+  // freeze, so the correction is not this batch's to make. The question is
+  // David's, and the ledger asks it in these words at
+  // docs/decisions-open-2026-09-02.md, entry 11's **Question** (one sentence, wrapped there):
+  //
+  //   "Yes or no: re-pin the heat index in the shipped MANIFEST of a passed
+  //   board, and supersede the two remaining stale copies in `cfd-183`?"
+  //
+  // That is the only quotation in this comment. Entry 11 runs from its `## 11.` heading to the
+  // next entry's; no line range is published here because the ledger grows with every ruling.
+  //
+  // FORWARD REFERENCE, not a claim about the tree: ruling 11's record action
+  // marks the entry REQUIRES DAVID and this pin INTERIM, and that action
+  // belongs to the decisions-ledger batch, not to this one. At the commit
+  // this guard was authored against (e226a9f),
+  // `grep -c "REQUIRES DAVID" docs/decisions-open-2026-09-02.md` answers 0
+  // and `grep -c INTERIM` on the same file answers 0. Read both markers as
+  // owed by that batch.
+  //
+  // This guard is GREEN on the passed bytes as they stand and goes RED only
+  // on a change to them — a pin against an unruled edit, not the "guard red
+  // on passed bytes" the ambient contract refuses.
+  //
+  // Both copies are asserted, though ruling 11's test action names only the
+  // sit/ line. :92 already pins sit/public byte-identity across MANIFEST.txt,
+  // so the public line is implied — but a half-landed re-pin would then fail
+  // as "sit/public drift: MANIFEST.txt", which names no owner and no
+  // decision. This guard fails naming decision 11, at the person who can act
+  // on it.
+  //
+  // CLEANUP: if David rules the line may be re-pinned, this test goes red the
+  // moment that edit lands — delete it in the same commit that makes the
+  // edit; do not widen or loosen the assertion to make it pass instead.
+  // A re-pin of both copies also reddens the 8 lineage locks (818/809/9,
+  // measured 2026-09-09 at e226a9f) because they read `git status --porcelain`;
+  // they clear once the re-pin is committed.
+  const sitLines = fs.readFileSync(path.join(ROOT, "sit/dawnspur-scale/MANIFEST.txt"), "utf8").split("\n");
+  const pubLines = fs.readFileSync(path.join(ROOT, "public/dawnspur-scale/MANIFEST.txt"), "utf8").split("\n");
+  assert.match(sitLines[24], /index cedf765c/,
+    "sit/dawnspur-scale/MANIFEST.txt:25 no longer reads the stale heat index — decision 11 may have been ruled and landed; delete this guard (see docs/decisions-open-2026-09-02.md, entry 11)");
+  assert.match(pubLines[24], /index cedf765c/,
+    "public/dawnspur-scale/MANIFEST.txt:25 no longer reads the stale heat index — decision 11 may have been ruled and landed; delete this guard (see docs/decisions-open-2026-09-02.md, entry 11)");
+});

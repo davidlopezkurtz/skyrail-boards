@@ -156,8 +156,8 @@ const ROWS = {
 
   wait: {
     surface: "export",
-    adjudication: "HIGH",
-    by: "audit §1.3",
+    adjudication: "MEDIUM",
+    by: "RULED BY COUNSEL ON DAVID'S INSTRUCTION, 2026-09-09 — MEDIUM. audit §1.3 shipped this row HIGH, sourced to itself, but this row's own desk sentence below states the refutation HIGH rested on: WARM is what ends the sitting, not wait — banked darkens every job the instant commitWarm() returns, litJobs() is [] before any wait. The audit's own disposition (docs/name-collisions-audit-2026-09-01.md:838-842) records MEDIUM on the report's own grounds and records HIGH as \"defensible if the pin count dominates\" (:840, the audit's own words); counsel's reading, not the audit's, is that pin count prices REMEDY DIFFICULTY, and no sentence in the audit defines severity that way (\"severity\" occurs at :459, :836 and :997 only). This settles one row's label, not a severity taxonomy; heat's mutates:true and its drives block are untouched",
     meaning: {
       desk: "The world's turn. Inert on scale, dispatch, line and storm (takes nothing, returns false). On dawnspur-heat ALONE it is a mutator, latent behind `banked`, so it reads false at the opening like the others. WARM is what ends the sitting: `banked` darkens every job the instant commitWarm() returns (litJobs() is [] before any wait). After GOODS > B > HOLD > WARM, wait() moves the step out->gone and the phase sent->sat, returns true, and returns true again on every later call; the page fires it from a 1500 ms idle timer once the shuttle is home (index.html:218-220).",
       city: "The world's turn, inert on every city board: takes nothing, returns false, published in each header and walked as `.` in each test.",
@@ -340,8 +340,8 @@ const ROWS = {
   },
   armed: {
     surface: "export",
-    adjudication: "CONTESTED",
-    by: "audit §1.10 says REAL_COLLISION / MEDIUM; the armed reviewer (recorded under §1.10 of docs/name-collisions-audit-2026-09-01.md) says BENIGN_SHARED_NAME / LOW. Both readings are recorded below and NOT averaged; the ruling is David's. What is measured, not contested: both sides drive from the opening, and `stopped => armed` holds on every board that carries it",
+    adjudication: "LOW",
+    by: "RULED BY COUNSEL ON DAVID'S INSTRUCTION, 2026-09-09 — BENIGN_SHARED_NAME / LOW (audit §1.10 said REAL_COLLISION / MEDIUM; the armed reviewer, recorded under §1.10 of docs/name-collisions-audit-2026-09-01.md, said BENIGN_SHARED_NAME / LOW; both readings are recorded below and NOT averaged). Canon's arm/fire grammar (docs/mechanisms-recommitted.md:662-665, RULED) ties `armed` to a relation, not a valence, and the city boards use that grammar in their own source (public/dice-at-the-places/sim.js:341-343). What is measured, not contested: both sides drive from the opening, and `stopped => armed` holds on every board that carries it. RE-OPEN TRIGGER: a board that carries armed from both lineages, or any page that reads the getter, makes the collision real, and the row returns to MEDIUM on that board",
     readings: {
       audit: "REAL_COLLISION / MEDIUM — on line/storm `armed` is a paid success (three UPs, the terrace topped); on dice/two-ways it is a failure suffered (a short run), written on the losing branch, and it gates canSend OFF and canCollect ON. The LINE side carries no reciprocal pin.",
       reviewer: "BENIGN_SHARED_NAME / LOW — the export answers one question on all four boards (\"is the ending armed, one act from stopped?\"); the world-cause differs, no index.html reads the getter, the line-side meaning is property-pinned (line test :953, storm test :1222), and a cross-lineage carry-over is refuted on the first probe.",
@@ -429,6 +429,22 @@ const ROWS = {
     },
   },
 
+  // COUNSEL NOTE, 2026-09-09 (by counsel on David's instruction, entry 43 —
+  // FACT, not a rule; no guard is authored here). The composed run sentence
+  // "The train brought " + MOSSWAKE.cargo + " home." (cargo: "the Mosswake
+  // cargo", sit/two-ways-from-here/sim.js:73) is composed at RUNTIME. The
+  // FRAGMENT "The train brought " IS a raw source literal, at
+  // sit/dice-at-the-places/sim.js:322, sit/two-ways-from-here/sim.js:431 and
+  // sit/still-standing/sim.js:601 (and their byte-identical public/ mirrors);
+  // the FINISHED sentence is source text in no sim. So a doesNotMatch guard
+  // written against the fragment is RED on those three boards today, and only
+  // one matching the composed sentence is green — the two must not be spoken
+  // of as one guard. No page renders it — zero "sentence" matches in all three
+  // index.html. The literal is pinned only by
+  // test/two-ways-from-here.test.js:788 (a literal in that test, not in any
+  // sim), as a value DERIVED through this getter — see the endSentence row above for the
+  // sibling export it accompanies. Whether a rule may forbid this sentence
+  // on city boards that pass after today is David's to set; none exists yet.
   runSentence: {
     surface: "export",
     adjudication: "BENIGN",
@@ -696,9 +712,10 @@ const ROWS = {
     adjudication: "HIGH",
     by: "audit §1.4",
     meaning: {
-      desk: "\"dawnspur-halt\" is a ROUTE id — the free Core Line hop, baseRisk 0.08, pays 10 — a destination the train is sent TO.",
+      desk: "dawnspur-halt is a ROUTE id on the desk boards, the free Core Line hop (pays 10, provisions 0, toll 0, graded; baseRisk 0.08 READ, NOT DERIVED) — the destination a send is addressed to.",
       city: "\"halt\" is the HOME position: PLACES[0], the consistAt opening, the place every send leaves FROM and every home returns to. On dawnspur-halt itself no id contains the word: BUILDINGS are lamp / terrace / foundry / consist.",
     },
+    note: "ONE NAME, TWO MODELS. docs/cfd-210-beat.md:382-384 (SIGNED, PASSED) — \"Two boards, one word, two meanings: home in one model, a place you send to in the other\" — and the world files the place itself as home base (C:/dev/skyrail/docs/lore/weekend-worldbuilding-2026-06-29/source/Skyrail-Reclamation-World-Bible-v0.1.md:353; the same directory's Skyrail-Reclamation-Master-Design-Bible.md:92). The pack's own gloss \"The home halt\" (C:/dev/skyrail/src/content.js:381) is the recorded bridge, not this row's wording. The desk cell above was reworded on this ruling and SUPERSEDES the 2026-09-01 wording, which read \"a ROUTE id — the free Core Line hop, baseRisk 0.08, pays 10 — a destination the train is sent TO\" and did not carry the READ, NOT DERIVED caveat in the cell itself, which the comment three lines below already stated. RULED BY COUNSEL ON DAVID'S INSTRUCTION, 2026-09-09; this field is ungraded prose (test/lexicon.test.js:38-41) and does not settle the world.",
     // `index` and `values` make the sentences above assertions rather than
     // prose: PLACES[0] and the card's pays / provisions / toll are checked by
     // the ids test. READ, NOT DERIVED: "baseRisk 0.08" — `baseRisk` is not a
@@ -872,6 +889,18 @@ const WALK_LEGENDS = {
 // namespace sweep — 2026-09-08", finding 18 — classes CLS-5 + ids IDS-5 + the
 // classes refuter's M4, built as ONE comment rather than four rows, on that
 // refuter's correction that the danger is halt-vs-site and not the seam.)
+//
+// COUNSEL NOTE, 2026-09-09 (by counsel on David's instruction, entry 45 —
+// FACT, not a rule). dawnspur-site was sat 2026-08-30 and NOT passed
+// (public/index.html:73, "live — sat 2026-08-30, not passed"; KILLS.md's
+// 2026-08-30 entry, "Sat 2026-08-30, not passed ... Do not recut this path;
+// the pins stand"). Its page-unique scenery ids (scaffold, works, hearth,
+// bill, platform, train — sit/dawnspur-site/index.html:233-244) are the
+// PRE-PATTERN shape of the first city board, not the pattern to copy. Halt
+// and the six map boards scope classes inside a named building (`#foundry .hearth`), and
+// that is what a new city board reads. Whether this becomes a rule binding
+// boards not yet cut is David's; the question is open at
+// docs/decisions-open-2026-09-02.md, entry 45.
 const DOM_ROWS = {
   lit: {
     adjudication: "MEDIUM",
@@ -1108,6 +1137,27 @@ const DOM_ROWS = {
         // UNSTYLED on every city board that applies it — no `.dim` rule on
         // any of the six, and mossDim is an immutable constant `true`, so the
         // class is on at frame one, paints nothing, and never changes.
+        // COUNSEL NOTE, 2026-09-09 (by counsel on David's instruction, entry
+        // 44; FACT, not a rule). Re-measured 2026-09-09 at this tree, and the
+        // exception matters: mossDim, mossQuiet, haltHolds and neighborAgain
+        // are initialised TRUE at the opening on every one of the six map
+        // boards that carries them, WITH ONE EXCEPTION — herbs-larder opens
+        // neighborAgain FALSE (sit/herbs-larder/sim.js:215). Per board:
+        // sit/dice-at-the-places/sim.js:444-454 (:444, :449, :450, :454),
+        // sit/they-remember/sim.js:206-217, sit/two-ways-from-here/
+        // sim.js:590-600, sit/still-standing/sim.js:795-805 — all four true;
+        // sit/herbs-larder/sim.js:204-215 — three true, neighborAgain FALSE;
+        // sit/mosswake-loop/sim.js:229-234 — carries only haltHolds and
+        // mossDim, both true. Across all thirteen sit/*/sim.js AND all fifteen
+        // public/*/sim.js, exactly ONE line assigns any of the four:
+        // sit/herbs-larder/sim.js:132 and its public mirror, `s.neighborAgain
+        // = true` INSIDE commitPutUp — a runtime write after a player act, not
+        // a second opening value.
+        // No city page carries a `.dim` / `.quiet` / `.holds` / `.neighbor`
+        // rule. Whether drawing rules get written or the toggles dropped is
+        // David's; the question is open at
+        // docs/decisions-open-2026-09-02.md, entry 44. No forward rule binding
+        // a future city board is written here.
         toggles: {
           "dawnspur-dispatch": "the MUSTER ladder is OUT OF REACH (musterReach === 0; opens 1) — an affordance, styled.",
           "dawnspur-line": "as dispatch — affordance, styled.",

@@ -382,7 +382,7 @@ citations and the census do not:
   storm's surcharge; a cross-board reader cannot recover that 2 = trim rather than
   2 = provisions.
 - **The split is a documented design decision, pinned in both directions.**
-  `docs/cfd-203-beat.md:761-777`, `:862`, `:925`, `:1438` state it and name the parent's
+  `docs/cfd-203-beat.md:793-809`, `:894`, `:957`, `:1470` state it and name the parent's
   `stake` semantic they depart from; within every board `marksLost` equals the marks
   actually debited on the turned-back run. Reword: *the STAKE's currency splits across
   boards; `marksLost` tracks marks honestly in each.*
@@ -806,7 +806,7 @@ DOM surface of `id=`, `classList.toggle(` and `.className =` tokens), one declar
 (lineage membership DECLARED — the orchestrator's ruling: halt and site on the city side;
 one row per name that crosses the seam and per adjudicated intra-lineage finding, meaning
 per side, unit and debit target where numeric, source pins, driven paths from the opening
-with every step asserted true; `armed` CONTESTED with both readings verbatim), and the
+with every step asserted true; `armed` CONTESTED with both readings verbatim *(as ruled 2026-09-01; the row moved to LOW on 2026-09-09 under counsel's ruling on ledger entry 14, both readings kept in the row)*), and the
 test that diffs them and prints both sides. **23 tests after a second fix pass** (`919b6be`),
 **and a docs half at `6e95383`** — `test/beats-lexicon.test.js` with its own ledger, 11 tests,
 which reads the beats for a token used in the other lineage's meaning and is proved against
@@ -834,7 +834,7 @@ reads. The rulings it carries as declared, not blocked: `armed`; the membership.
   world-cause and the gated verb set invert. The completeness critic calls the split
   definitional, not factual. The guard's ledger carries the row as CONTESTED with both
   readings and every measured site; nothing downstream may cite a single severity for it
-  until David rules.
+  until David rules. *(Superseded 2026-09-09: RULED BENIGN_SHARED_NAME / LOW, by counsel on David's instruction of 2026-09-09. Canon §7.2's arm/fire grammar (`docs/mechanisms-recommitted.md:662-665`, RULED) ties `armed` to the ending being one act from firing rather than to a success, and the boards' own source uses that grammar (`public/dice-at-the-places/sim.js:341-343`: "a turned-back run arms; Collect at Mosswake fires"). The MEDIUM reading above is kept, not averaged, per this bullet's own rule. **The instrument is owed, not present.** The same ruling's other actions move the ledger row from CONTESTED to LOW in `test/lexicon-ledger.js` and add a named assertion to `test/lexicon.test.js` requiring a driven or source-pinned column on every board this row NAMES, independent of rank; measured at `e226a9f` neither has landed, and the existing "HIGH means measured" guard (`test/lexicon.test.js:300-313` at that tree) skips any row not ranked HIGH or CONTESTED — so until the new assertion lands beside the rank change, nothing requires this row to keep a measured column: the drives it already declares keep executing (`test/lexicon.test.js:470-477` at that tree runs them regardless of rank), but deleting one would no longer go red. The closing clause above is superseded by this note, not deleted. Re-opens to MEDIUM the moment a board carries `armed` from both lineages, or any page reads the getter.)*
 - **`wait` (§1.3).** The reviewer reads MEDIUM on the report's own grounds (it does not
   end the sitting; the timer's effect is the documented design) and says HIGH is
   defensible if the pin count dominates (twelve test files freeze heat's bytes, so the
@@ -855,13 +855,13 @@ design call for its beat, not a cleanup.
 ### Defects filed out of this audit, for the record
 
 - **`docs/cfd-201-beat.md:1052` and `:1442`, and `docs/cfd-209-beat.md:419`** carry the
-  halt bridge in the design record (§1.4). Superseded in place by the sweep — §6.
+  halt bridge in the design record (§1.4). Superseded in place by the sweep — §6. *(Corrected to match §6, 2026-09-09: `docs/cfd-209-beat.md`'s halt-bridge line IS superseded in place — the pre-registered null at `:419` carries the dated parenthetical at `:423`. `docs/cfd-201-beat.md:1052` and `:1442` are NOT superseded — no marker at HEAD — and §6 at `:1045-1050` records both rows "not built", the refuter ruling NONE and the orchestrator concurring that the seed is upstream (§5); the remedy is the lexicon guard plus the upstream filing (entry 40(e) of `docs/decisions-open-2026-09-02.md`), and the question is not closed. By counsel on David's instruction of 2026-09-09.)*
 - **The bridge's seed is upstream.** `skyrail` `src/content.js:381` (identical at `ea22c43`
   and `7bdddc5`) files the home under `ROUTES` with `id: "dawnspur-halt"`, `baseRisk 0.08`
   and the description "The home halt, …". The boards' desk lineage inherited a *route* to
   the place the city lineage calls home. Recorded here for the PWA repo; not a boards
   change.
-- **`KILLS.md:115` cites `docs/cfd-176-beat.md`, which did not exist on main** — it lived only
+- **`KILLS.md`'s 2026-08-24 starve-or-feed entry cites `docs/cfd-176-beat.md`, which did not exist on main** — it lived only
   on pull request #3's branch since 2026-08-24, beside three implementation PRs marked
   do-not-merge. *(Superseded 2026-09-02: the beat was merged onto main from #3 with a
   provenance header; the cite now resolves. The line itself was `KILLS.md:63` when this was
@@ -869,7 +869,7 @@ design call for its beat, not a cleanup.
   beat is no longer the one unswept beat: `b232440` swept it against `/dawnspur-heat/` on
   2026-09-02, superseding its Seat and one REFUSED row.)* And **no storm sitting is
   in `KILLS.md` at all** although the storm board was sat five times without a pass
-  (`docs/mechanisms-recommitted.md:730-731`, `docs/cfd-209-beat.md:121`). Both are ledger
+  (`docs/mechanisms-recommitted.md:797-798`, `docs/cfd-209-beat.md:121`). Both are ledger
   gaps, not beat lines; disposition in §6.
 - **`test/boards-index.test.js` is the pin the handoff forgot** (§3's verification block).
   Any "not yet pinned" claim about a shipped board is false by construction while the hub
@@ -901,14 +901,14 @@ line they now sit inside the italic parenthetical rather than in the sentence ab
   `/dawnspur-line/`; 205 → `/dawnspur-site/`; 205-halt → `/dawnspur-halt/`; 206 →
   `/mosswake-loop/`; 207 → `/herbs-larder/`; 208 → `/they-remember/`; 209 →
   `/dice-at-the-places/`; 210 → `/two-ways-from-here/`. **`/dawnspur-heat/` cites no
-  beat** — its spec is not in this repository — and was not swept.
+  beat** — its spec is not in this repository — and was not swept. *(Corrected 2026-09-09: it was swept. `b232440` — "the CFD-176 beat is swept against `/dawnspur-heat/` — the last unswept beat" — swept the CFD-176 beat against this board on 2026-09-02, superseding its Seat and one REFUSED row, as this document already records above (§5, `:869`). Its DOM surface was swept separately, in the 2026-09-08 DOM namespace sweep of `sit/` (§3 item 2, `:590`); `test/dawnspur-heat.test.js:76-83` pins `#step.out` / `#step.gone` in that sweep. The "cites no beat" half stands, re-verified: `sit/dawnspur-heat/sim.js` carries no `Spec:` line. By counsel on David's instruction of 2026-09-09.)*
 - Seven tests regex-read a beat and so phrase-protect it: `dawnspur-halt:182` (13
   regexes on cfd-205-halt), `dawnspur-site:178` (8 on cfd-205), `dice-at-the-places:295`
   (15 on cfd-209), `herbs-larder:244` (21 on cfd-207), `mosswake-loop:210` (20 on
   cfd-206), `they-remember:277` and `:836` (39 on cfd-208), `two-ways-from-here:399` (14
   on cfd-210). **No test reads cfd-183, 196, 200, 201 or 203.** The canon file
   `docs/mechanisms-recommitted.md` is read by no test, but it cites cfd-203 **by line
-  number** at `:769` and `:847`.
+  number** at `:843` and `:928`.
 - `KILLS.md` holds kills and standing rules only; passes live in the beats, the commit
   memos and canon §7:276-292. The brief's "kills and passes: KILLS.md" was false for
   passes, and two boards that were sat and did not pass — storm (five sits) and site
@@ -980,7 +980,7 @@ its shortest path, its Kill line and its terminal registers in the dispatch boar
 marks purse — `provisions` and `marksLost` carried across the token with the wrong
 board's unit, exactly §1.1 and §1.7 predicted. Four HIGH rows:
 
-- `:357` "It stakes 3 provisions and the Chartered toll of 1 — **4 marks**" — the parent
+- `:359` "It stakes 3 provisions and the Chartered toll of 1 — **4 marks**" — the parent
   debits provisions from `s.stores` and the toll alone from `s.marks`
   (`sit/dawnspur-storm/sim.js:427`, `:588-589`).
 - `:1098-1110` the five-row shortest path ends "SEND RUSTFALL, stake 4 | 4" — the parent
@@ -996,14 +996,14 @@ board's unit, exactly §1.1 and §1.7 predicted. Four HIGH rows:
 
 The rest of the desk half, by severity:
 
-- **HIGH** `cfd-200:615` — the beat "carries the whole storm board" and never mentions
+- **HIGH** `cfd-200:617` — the beat "carries the whole storm board" and never mentions
   UP, topping, or the parent's own arming stop (`sim.js:626`), reachable by play and
   ending the sitting before any Rustfall send. Two stops on one board, unreconciled.
   **David's call**; a refuter-only edit flags it.
 - **HIGH** `cfd-203:176-180` — "CFD-200's parent moves a third time … re-bases onto
   `/dawnspur-line/`": the sentence canon §7.1.4 withdrew on 2026-08-28 and flagged as
   "still live in CFD-203's Linear description". Live in the beat too, unmarked. Built.
-- **HIGH** `cfd-205:9`, `:27-28`, `:291` — "Draft. Do not merge … David sits first." on a
+- **HIGH** `cfd-205:9`, `:27-28`, `:295` — "Draft. Do not merge … David sits first." on a
   board merged at `c59dc101` (PR #13), live, and sat 2026-08-30 (stopped, not passed).
   Built across all three lines; the site test's eight regexes match on the result.
 - **MEDIUM** `cfd-201:68-89`, `:117` — the Seat still read "Beat only. No implement."
@@ -1021,11 +1021,11 @@ The rest of the desk half, by severity:
   charges `TRIM_MARKS` 2 by David's 2026-08-28 ruling (`:1043`, `:1309`); the `[WB]`
   "opt-in interception" bullet is Frontier's, not Chartered's (`:1186`); three `[TEETH]`
   attributions are MDB 1.21's (`:1191-1203`). All built.
-- **MEDIUM** `cfd-203:780-785` — the example terminal quoted a record the sim cannot
+- **MEDIUM** `cfd-203:812-817` — the example terminal quoted a record the sim cannot
   produce (3 marks lost forces ≥ 9 food lost). Replaced by the shipped terminal, driven
   from the real opening by `h+CCm-CCm-CCCc-CCm+CCm+h+h+h+h+UUUCc+` and re-driven by the
   orchestrator before landing (record `{runsOut 11, cargoesBanked 8, runsTurnedBack 3,
-  marksLost 1, foodLost 7}`, sentence byte-identical). `:812-818` the shortest-commit
+  marksLost 1, foodLost 7}`, sentence byte-identical). `:844-850` the shortest-commit
   table was one short on every row (BFS: 8 / 9 / 10 / 11). `:27` "NOT SIGNED" under a
   SIGNED block and a PASSED sit. Built.
 - **LOW**, built where agreed: cfd-196's third register deviation and the roster write's
@@ -1076,11 +1076,11 @@ verbatims.
 agree the beat and the board are consistent); cfd-200 M3 (the sky trace — measurement
 uncontested, the right to rewrite a trace design paragraphs rest on is); cfd-200 M8 (Seat
 pins — line only, or line and the unpassed storm); cfd-201 M9 (the halt bridge — NONE
-stands); cfd-205 M2 "failed sit" (cfd-206:28 says failed; canon `:734` says a finding
-routed to the right place — the built text states both); canon §7.4 `:745` vs `:769-788`
+stands); cfd-205 M2 "failed sit" (cfd-206:28 says failed; canon `:801` says a finding
+routed to the right place — the built text states both); canon §7.4 `:819` vs `:843-862`
 ("two intent questions" vs the blessed TEND text — an inconsistency inside the canon
 file, out of scope, recorded). *(Superseded 2026-09-02: that canon inconsistency is closed.
-`b8d6da3` superseded `:745` in place — it now records that the CFD-201 card *asked*, as signed
+`b8d6da3` superseded `:819` in place — it now records that the CFD-201 card *asked*, as signed
 at `30ff642`, the trim question; that the second of the "two" is the CFD-203 TEND question the
 same section holds up as the shape that is **not** an intent question; and that the trim
 question was recut into that shape at `16ac8e5`, so at HEAD the card asks none in the intent
@@ -1089,7 +1089,7 @@ form. Recorded here as closed, not as open.)*
 ### Dispositions — desk half
 
 - **Landed `16ac8e5`** — 43 supersessions in six beats (cfd-183 ×2, 196 ×3, 200 ×16,
-  201 ×12, 203 ×7, 205 ×3) plus `docs/mechanisms-recommitted.md:769` and `:847`
+  201 ×12, 203 ×7, 205 ×3) plus `docs/mechanisms-recommitted.md:843` and `:928`
   re-pointed `:1352` → `:1379`, because cfd-203's seven edits above that line moved the
   quoted sit-question; the quote was read back at the new line before the commit.
   Measured: 694 / 694 after; site test 50 / 50 (eight beat regexes); zero NUL, zero CR;
@@ -1097,7 +1097,7 @@ form. Recorded here as closed, not as open.)*
 - **Refuter-only edits (13) — landed `5d1fdde`** after a second reader reproduced every
   anchor at both trees and re-drove every behavioural claim from the boards' openings:
   seven landed as written, six amended by the reader (cfd-183:59 the unpaid +4 rung;
-  cfd-200:768 the Kill numbers re-derived against the parent; cfd-200:1338 open question
+  cfd-200:770 the Kill numbers re-derived against the parent; cfd-200:1347 open question
   3 re-based on the storm parent's measured trace; cfd-200:75 the narrower Seat pin;
   cfd-201:838 the "warns" Kill line against recut 1's `carryBill`; cfd-201:1361 a path
   that reaches the storm with 13 marks), none dropped. cfd-203's two edits moved the
@@ -1105,11 +1105,11 @@ form. Recorded here as closed, not as open.)*
   commit. Suite 694 / 694; zero NUL, zero CR; docs-only.
 - **David's calls (10):** cfd-183:67 whether the beat states the mark gate; cfd-196
   whether the three register deviations are accepted as the passed record's register;
-  cfd-200:1139-1156 the sky trace and the Engineer argument on it; cfd-200:615/:655 carry,
+  cfd-200:1148-1165 the sky trace and the Engineer argument on it; cfd-200:617/:658 *(re-pointed 2026-09-09 by counsel on David's instruction; the old :655 was itself off by one at e226a9f — the Ranger row, not the stop row)* carry,
   narrow or refuse the parent's stop; cfd-201:37 the "canon §7 forbids it by name"
   citation; cfd-205:214 hearth "as scenery" vs lit-with-the-Foundry; cfd-205:215
-  greenhouse INHERITED-as-scenery vs REFUSED; cfd-205:275 the R-citation for "Foundry is
-  work one"; cfd-205:278 the R10 citation for the bill; and the shipped-bytes pair —
+  greenhouse INHERITED-as-scenery vs REFUSED; cfd-205:277 the R-citation for "Foundry is
+  work one"; cfd-205:280 the R10 citation for the bill; and the shipped-bytes pair —
   `sit/dawnspur-scale/MANIFEST.txt:25`'s stale heat pin and `public/index.html:79`'s
   "not yet sat" on a passed board — plus whether stopped-not-passed sits and passes
   belong in `KILLS.md`. *(Superseded 2026-09-02: `079b2bd` fixed the hub.
@@ -1164,7 +1164,7 @@ correction changes how the next reader reads the null, not the pass.
   earlier. Built, dated to the signature.
 - **MEDIUM** `cfd-210:278-282` — "`/dawnspur-line/` is not marked PASSED in the Seat
   table … the route could not have been inherited": the pass is recorded at
-  `cfd-201:106`, `cfd-203:1565` and canon §7.1 item 4, and the beat's own `:258` says
+  `cfd-201:106`, `cfd-203:1597` and canon §7.1 item 4, and the beat's own `:258` says
   "the passed line board". The blank Seat cell was the stale thing, inherited from
   `cfd-209:104` — and the `9618352` memo reasoned from that blank to "could not have been
   inherited" (refuted here; the name collision was always the whole reason). Built; both
@@ -1174,7 +1174,7 @@ correction changes how the next reader reads the null, not the pass.
   own `:576` says "All four"; `9618352` added the fourth and left the heading. Built,
   with the half-mechanism note at `:31` (rule B's cold ending *and* the arm clear split
   the pressed-on outcome).
-- **MEDIUM** `cfd-210:581` cites canon §7.5 as its rule; **canon §7.5 `:861-873` cites
+- **MEDIUM** `cfd-210:581` cites canon §7.5 as its rule; **canon §7.5 `:942-954` cites
   the beat as its worked example, and the two register different splits** — canon's
   three-null table vs the beat's four; canon's row 1 is the opposite of the beat's
   `:562-566`. Timing measured: `6a55533` (canon 7.5) 12:43:57, `6abe720` 12:46:28,
@@ -1201,17 +1201,17 @@ correction changes how the next reader reads the null, not the pass.
   with no second stock, so §7.3's unrankable pair cannot exist here. The refuter reads it
   LOW, a clarification — nothing at `:253` is false against the shipped board — and
   accepts it as bridge-removal. Built.
-- **MEDIUM, David's** `cfd-205-halt:33-34` — "Draft. Do not merge … David sits first."
+- **MEDIUM, David's** `cfd-205-halt:47-61` — "Draft. Do not merge … David sits first."
   on a board merged at `66b5507` and recorded PASSED by five later Seat tables, **with no
   primary record** — no pass commit, no verbatim in either repo, no `KILLS.md` line;
   first mention `f797300`, 2 h 24 m after the merge. The refuter shows the identical
   discharged gate at `cfd-206:34`, `cfd-207:43`, `cfd-208:50`, all for PASSED boards: the
   corpus convention is that a beat keeps its pre-sit gate and the NEXT beat's Seat
-  carries status. Not built; a convention decision across four beats.
+  carries status. Not built; a convention decision across four beats. *(Superseded 2026-09-09: built, in the rewrite form, under counsel's ruling on ledger entry 9 — see `docs/decisions-open-2026-09-02.md`, entry 9; and the pass now has a `KILLS.md` record, entered the same day under the ruling on entry 7.)*
 - **MEDIUM, David's** — `cfd-206` carries no Canon check section and zero R-rule
   citations on a beat signed five days after §6.1 landed; none of cfd-205-halt, 206, 207,
   208 has one (209 and 210 carry "Canon this sitting"). Whether §6.1 applies
-  retroactively is a record decision, not a measurement.
+  retroactively is a record decision, not a measurement. *(Forward, 2026-09-09: re-measured at `e226a9f`. `grep -c -i "canon check"` returns 0 for cfd-176, cfd-205-halt, 206, 207, 208, 209, 210 and cfd-212-still-standing, and 1-3 for 183, 196, 200, 201, 203 and 205; cfd-209 and cfd-210 carry "## Canon this sitting" instead (`:196`, `:499`); R1-R10 token counts are 0 for cfd-206, cfd-207 and cfd-208. The row stands as written — some beats do, some don't. By counsel on David's instruction of 2026-09-09; §6.1's retroactive reach is still David's to decide.)*
 - **MEDIUM, David's** — `KILLS.md` carries nothing for the five city passes (halt
   `66b5507`, mosswake `510a392`, herbs `6e606e5`, they-remember `a525218`, dice
   `12ccd3d`), the they-remember cut-0 kill (`7bcc315`, "I collected herbs." Not a pass),
@@ -1221,7 +1221,7 @@ correction changes how the next reader reads the null, not the pass.
   player-facing bytes in a contended file. *(Superseded 2026-09-02: fixed at `079b2bd`. The
   five line numbers are unchanged and all five now read "passed its sit", three of them dated;
   the quoted "live — new sitting, not yet sat" is no longer in the file.)*
-- **LOW**, built where agreed: `cfd-205-halt:113` (a "Blocked:" line that was only ever
+- **LOW**, built where agreed: `cfd-205-halt:142` (a "Blocked:" line that was only ever
   a CSS comment, in all three cuts); `cfd-206:223` ("Rim / gap is a constant" pairs halt's
   `RIM` with this board's `GAP` — built without halt's numbers, which the refuter refused
   as the sweep's own defect class); `cfd-208:509` ("All eight" over a list of seven) and
@@ -1260,7 +1260,7 @@ one commit); they-remember **not measured** (two Kill lists, neither reader coun
 them; the test *implements* the lines rather than transcribing them); dice 16 of 16;
 two-ways 27 of 27.
 
-**Refuted at review — do not re-find:** `cfd-205-halt:290` "David sits first. Ask: What
+**Refuted at review — do not re-find:** `cfd-205-halt:319` "David sits first. Ask: What
 happened." as stale — it is the sit-protocol closer of every beat in `docs/`, PASSED
 boards included; every cfd-205-halt Kill-row line reference (substance holds, lines were
 off); "nothing enumerates `sit/` or `public/`" (`boards-index.test.js:78-80` does); the
@@ -1315,11 +1315,11 @@ the sit it pre-registered (canon §7.5's whole point); David may strike the note
   note at cfd-208:431 — a true note on a true, dated line inside the superseded cut-0
   record. Suite 694 / 694; docs-only. **The sweep's edit sets are closed: 86 supersessions
   across eleven beat files and the canon file, every one refuter-agreed or second-read.**
-- **David's calls (15), in the synthesis's order:** cfd-205-halt:33-34 the discharged gate
-  (leave; status lives in the next Seat); cfd-205-halt:207-210 "inherited" for
-  Works/SITE/LAND/CAST that never passed (rename the cell "kept by signature");
-  cfd-205-halt:65-66 "Home writing landed. The walk did not." as a sit finding (it is a
-  ruling; say so); cfd-207:92 "inherited, not replayed" (note only); cfd-207:75 "tap to
+- **David's calls (15), in the synthesis's order:** cfd-205-halt:47-61 the discharged gate
+  (leave; status lives in the next Seat) *(rewritten 2026-09-09 under counsel's ruling on entry 9)*; cfd-205-halt:236-239 "inherited" for
+  Works/SITE/LAND/CAST that never passed (rename the cell "kept by signature") *(renamed 2026-09-09 under counsel's ruling on entry 24)*;
+  cfd-205-halt:92-93 "Home writing landed. The walk did not." as a sit finding (it is a
+  ruling; say so) *(said 2026-09-09 under counsel's ruling on entry 25)*; cfd-207:92 "inherited, not replayed" (note only); cfd-207:75 "tap to
   collect" (stands; cfd-208 records the split); cfd-208:464 "Mosswake is where the light
   is" (bytes govern; figurative); **cfd-209:419 the appended note — confirm it reads as
   his**; cfd-209:104-105 / cfd-210:85-86 the desk PASSED markers (landed in both tables;

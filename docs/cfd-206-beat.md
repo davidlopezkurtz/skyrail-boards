@@ -7,7 +7,7 @@ or `/dawnspur-dispatch/`. Card: CFD-206.
 system: **a promise.** One SEND on THIS board. One run to Mosswake. Then
 home she comes. Writing is the board. Mara shows, not lectures. Tutorial
 is the same system. GameDesigner is off this job. Draft PR. Do not merge
-until SuperheavyReview PASS. David sits first.
+until SuperheavyReview PASS. David sits first. *(The board has since shipped and passed its sit: merge `510a392`, live at `/mosswake-loop/` — index `6c30179c…`, sim `f5407bca…` (`public/index.html`, "live — passed its sit"). The do-not-touch list in `## Seat` still binds. Do not `workflow_dispatch`. Noted 2026-09-09.)*
 **Ask: What happened.**
 
 ---
@@ -31,8 +31,8 @@ Do not recut `/dawnspur-site/` (failed sit; live `c59dc101`, index
 sitting is not their recut. The new sitting is the promise (leave + home
 she comes), on a sibling path.
 
-Do not merge. Do not deploy. Do not `workflow_dispatch`. David sits first.
-Superheavy reviews the PR. Superheavy does not implement.
+The drafting seat was Superheavy beat only — no implement, no deploy, no merge. The board has since shipped and passed its sit: merge `510a392`, live at `/mosswake-loop/` — index `6c30179c…`, sim `f5407bca…` (`public/index.html`, "live — passed its sit"). *(An earlier cut read "Do not merge. Do not deploy. Do not `workflow_dispatch`. David sits first.
+Superheavy reviews the PR. Superheavy does not implement."; true on the day of signature, record now.)* The do-not-touch list above still binds. Do not `workflow_dispatch`.
 
 Pins are the live boards, never `main`. Re-measured at authoring against
 `66b5507` (halt live merge, PASSED). Do not recut any pin.
@@ -57,7 +57,7 @@ merge is `555ba9a9`. Do not recut them.
 ## The signed beat — Mosswake — the line
 
 Canon this sitting (cite, do not recall as a second bible): Tutorial Beat 5–7.
-World Bible §12 Mosswake Loop. Core Loop: nodes and lines. Geology:
+World Bible §12 Mosswake Loop. *(World Bible v0.1 is recorded as LEGACY except §8 in two later beats of this lineage, and §12 is not to be cited as live canon — quoting cfd-207:86-87, "World Bible v0.1 is LEGACY except §8 (sections 2, 4, 6). Do not cite World Bible §12 as live canon."; see also cfd-208:106. Noted 2026-09-09.)* Core Loop: nodes and lines. Geology:
 a train, a glasshouse, and an island riding high are the same act. Bible
 sha `9a305653`. Beat 5: the reason it matters is the line. Beat 7: home
 she comes.
@@ -220,10 +220,7 @@ Every line testable, red-first.
 - **SEND costs nothing.** No marks, no food stake, no fuel, no Favor.
 - **Opening marks 0.** The Halt already spent the float.
 - **One SEND. One run. One home.**
-- **The gap is a constant.** `GAP` is `{ left: 42, width: 16 }`. This board has no
-  rim — `rim` is `/dawnspur-halt/`'s own constant and is not read here. SEND does
-  not write it. Home does not write it. *(An earlier cut read "Rim / gap is a
-  constant"; the rim is halt's, and this board carries only the gap.)*
+- **The gap is a constant.** `GAP` is `{ left: 42, width: 16 }`. This board has no rim — `rim` is a Dawnspur-side constant (`sit/dawnspur-halt/sim.js:39` and `sit/dawnspur-site/sim.js:27`, both `{ left: 78, width: 18 }`) and is not read here. SEND does not write it. Home does not write it. *(An earlier cut read "Rim / gap is a constant"; the rim is the Dawnspur side's, and this board carries only the gap. Provenance clause corrected 2026-09-09: the rim is declared on two Dawnspur boards, not one.)*
 
 ---
 

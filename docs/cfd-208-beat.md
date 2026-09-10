@@ -12,7 +12,7 @@ showed up. No SEND. No Put them up. No Favor number. No Favor bar. No
 tooltip lecture. Marks may land on the museum HUD (opening 0); they are
 not the sit. Writing is the board. Mara shows, not lectures. Tutorial is
 the same system. GameDesigner is off this job. Draft PR. Do not merge
-until SuperheavyReview PASS. David sits first.
+until SuperheavyReview PASS. David sits first. *(The board has since shipped cut 1 and passed its sit: merge `7b58a18`, PASSED `a525218`, 2026-08-31, live at `/they-remember/` — index `acbf4304…`, sim `a3345903…` (`public/index.html`, "live — passed its sit 2026-08-31"). The do-not-touch list in `## Seat` still binds. Do not `workflow_dispatch`. Noted 2026-09-09.)*
 **Ask: What happened.**
 
 ---
@@ -47,9 +47,9 @@ Do not recut `/dawnspur-site/` (failed sit; live `c59dc101`, index
 sitting is not their recut. The new sitting is Favor as the act, on a
 sibling path.
 
-Do not merge. Do not deploy. Do not `workflow_dispatch`. David sits first.
+The drafting seat was Superheavy beat only — no implement, no deploy, no merge. The board has since shipped cut 1 and passed its sit: merge `7b58a18`, PASSED `a525218`, 2026-08-31, live at `/they-remember/` — index `acbf4304…`, sim `a3345903…` (`public/index.html`, "live — passed its sit 2026-08-31"). *(An earlier cut read "Do not merge. Do not deploy. Do not `workflow_dispatch`. David sits first.
 Superheavy reviews the PR. Superheavy does not implement. Superheavy
-does not merge.
+does not merge."; true on the day of signature, record now.)* The do-not-touch list above still binds. Do not `workflow_dispatch`.
 
 Pins are the live boards, never `main`. Re-measured at authoring against
 `6e606e5` (herbs-larder live merge, PASSED), `510a392` (Mosswake live
@@ -285,7 +285,7 @@ Every line testable, red-first.
 - **Collect costs nothing.** No food stake, no fuel, no Favor number.
 - **Opening marks 0.** Marks may land on the museum HUD. They are not the sit.
 - **One Collect. No SEND. No Put them up. No second can-do.**
-- **Rim / gap is a constant.** Collect does not write it.
+- **The gap is a constant.** `GAP` is `{ left: 42, width: 16 }`. This board has no rim — `rim` is a Dawnspur-side constant (`sit/dawnspur-halt/sim.js:39` and `sit/dawnspur-site/sim.js:27`, both `{ left: 78, width: 18 }`) and is not read here. Collect does not write it. *(An earlier cut read "Rim / gap is a constant"; the rim is the Dawnspur side's, and this board carries only the gap. Provenance clause corrected 2026-09-09: the rim is declared on two Dawnspur boards, not one.)*
 - **No cited §5.8 Supply basket.** The file body was not reachable. Do not invent one. Museum marks are museum.
 
 ---

@@ -122,9 +122,15 @@ the line itself, and the stake on them stands.
 
 ## Seat
 
-Beat only. No implement. No deploy. No merge. Do not touch `public/dawnspur`,
-`public/dawnspur-heat`, `public/dawnspur-scale`, `public/convoy-stop`, or live
-board bytes. Do not `workflow_dispatch`.
+The drafting seat was beat only — no implement, no deploy, no merge. The
+board has since shipped at `/dawnspur-dispatch/`: it passed its sit
+2026-08-26, live at host `663d4fa` (index `31aead60`, sim `576ce2b6`, both in
+`sit/dawnspur-dispatch/MANIFEST.txt`), and the hub records it live
+(`public/index.html:91`, "live — passed its sit 2026-08-26"). *(An earlier
+cut read "Beat only. No implement. No deploy. No merge."; true on the day of
+signature, record now.)* The do-not-touch list still binds. Do not touch
+`public/dawnspur`, `public/dawnspur-heat`, `public/dawnspur-scale`,
+`public/convoy-stop`, or live board bytes. Do not `workflow_dispatch`.
 
 Pins, re-measured at authoring: boards `main` at `1aea540`. Live shas to
 leave standing: `/dawnspur-scale/` sim `953368a1`, `/dawnspur-heat/` sim

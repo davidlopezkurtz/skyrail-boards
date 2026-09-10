@@ -10,6 +10,20 @@ Not louder Home copy. GameDesigner is off this job. Draft PR. Do not merge
 until SuperheavyReview PASS. David sits first.
 **Ask: What happened.**
 
+*(Retired 2026-09-09, ruled by counsel on David's instruction: the pre-sit
+hold above — "Draft PR. Do not merge until SuperheavyReview PASS." — bound
+the drafting seat before the sit, and is discharged. The closer stands.
+`/dawnspur-halt/` shipped in `923002d` — the beat, the board bytes under
+both `sit/dawnspur-halt/` and `public/dawnspur-halt/`, and
+`test/dawnspur-halt.test.js`, in the one commit — merged to main by
+`66b5507` (PR #16), and it passed its sit: sim `6eb957e7`, index
+`b5a56a14`, `public/index.html:66-67` "live — passed its sit". The
+do-not-touch list still binds — **the `sit/` copy of any board that has
+one, and every other board directory present at HEAD**, which
+`git ls-tree -d --name-only HEAD public/` enumerates; in cfd-201:85-86's
+words, the enumeration is a courtesy and the catch-all is the rule. Do not
+`workflow_dispatch`.)*
+
 ---
 
 ## Seat
@@ -30,8 +44,21 @@ one-live-place-as-unclickable-scenery. Not a lecture. Not a help overlay.
 Not a tutorial mode. No Mara VO. No `?`. Writing is the board. Home
 writing that shipped stays.
 
-Draft. Do not merge. Do not deploy. Do not `workflow_dispatch`. David
-sits first.
+The drafting seat was a draft — not to merge, not to deploy, David to sit
+first. The board has since been implemented, merged and deployed: the recut
+landed in `923002d` (sim, index and MANIFEST under both `sit/dawnspur-halt/`
+and `public/dawnspur-halt/`, plus `test/dawnspur-halt.test.js`), merged to
+main by `66b5507` (PR #16), and it passed its sit — sim `6eb957e7`, index
+`b5a56a14` (`public/index.html:66-67`, "live — passed its sit"; the ledger row is
+`KILLS.md`'s Dawnspur Halt entry, added 2026-09-09 under counsel's ruling on ledger entry 7). *(An
+earlier cut read "Draft. Do not merge. Do not deploy. Do not
+`workflow_dispatch`. David sits first."; true on the day of signature,
+record now. Retired 2026-09-09, ruled by counsel on David's instruction.)*
+The do-not-touch list still binds — **the `sit/` copy of any board that has
+one, and every other board directory present at HEAD**, which
+`git ls-tree -d --name-only HEAD public/` enumerates; in cfd-201:85-86's
+words, the enumeration is a courtesy and the catch-all is the rule. Do not
+`workflow_dispatch`.
 
 Pins are the live boards, never `main`. Re-measured at authoring against
 `c59dc101` (site live merge) and `555ba9a9` (storm live merge). Do not
@@ -67,6 +94,8 @@ writing landed. The walk did not. Recut so only one action is live at a
 time. Dead jobs remain tappable buttons that post blocked / in-process
 notices. Do not recut buildings-and-feed away. Do not recut into louder
 Home slogans.
+
+*(Recorded 2026-09-09: a ruling, not the sit's words. The sit's verbatim is the line above — "Lit the lamp and started the foundry." Everything in the paragraph above, "Home writing landed" included, is the recut's reading, named by Superheavy and carried by the 2026-08-30 signature at the head of this beat; the walk was not on the board that was sat, it is this recut's one NEW system.)*
 
 ---
 
@@ -203,11 +232,11 @@ Ask: What happened.
 | System | This sitting | From |
 | --- | --- | --- |
 | **The walk — one live can-do at a time** | **ON** — the single new system | new; SIGNED Come home |
-| **Work notices** | **ON** — stay; dead jobs still post | inherited Home |
-| **Works — SITE, address, bill** | **ON** — Foundry is work one | inherited; SITE/LAND/CAST sim kept |
-| **Foundry as work one** | **ON** | inherited |
-| **LAND as arrival, not SEND** | **ON** | inherited |
-| **CAST = OPEN: bill full + terrace food → Foundry, food in, Heat step** | **ON** | inherited Works |
+| **Work notices** | **ON** — stay; dead jobs still post | kept by signature — SIGNED David 2026-08-30 (header, :6); from the Halt's Home sit, closed, not a pass |
+| **Works — SITE, address, bill** | **ON** — Foundry is work one | kept by signature — SIGNED David 2026-08-30 (header, :6); from `/dawnspur-site/`, sat 2026-08-30, not passed; SITE/LAND/CAST sim kept |
+| **Foundry as work one** | **ON** | kept by signature — SIGNED David 2026-08-30 (header, :6); from `/dawnspur-site/`, sat 2026-08-30, not passed |
+| **LAND as arrival, not SEND** | **ON** | kept by signature — SIGNED David 2026-08-30 (header, :6); from `/dawnspur-site/`, sat 2026-08-30, not passed |
+| **CAST = OPEN: bill full + terrace food → Foundry, food in, Heat step** | **ON** | kept by signature — SIGNED David 2026-08-30 (header, :6); from `/dawnspur-site/`, sat 2026-08-30, not passed |
 | **Home writing that shipped** | **ON** | SIGNED Home; kept |
 | Marks, one HUD line | INHERITED | CFD-196 / every later board |
 | Opening float of 3 | INHERITED as the SITE price | CFD-196 Amendment 1 |

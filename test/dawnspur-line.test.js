@@ -1367,3 +1367,133 @@ function spin120ms() {
   const end = Date.now() + 120;
   while (Date.now() < end) { /* a real, blocking 120ms of wall time */ }
 }
+
+// ------------------------------------------- decision 42 (interim guard)
+
+const STAKE_PARITY_PATCH =
+  'index.html:419 must become (in BOTH sit/ and public/ dawnspur-line/): ' +
+  'c.name + ", pays " + c.pays + ", " + (c.condition === null ? stakeText(c) : c.condition) + ", " + c.percent + " percent home" ' +
+  '— the parity form, mirroring the board\'s own visible face at index.html:404. ' +
+  'NOT storm\'s bare stakeText(c) — that restores the stake and still speaks the ' +
+  'wrong thing on a sendable-but-unlit card, per decision 42\'s holding.';
+
+const STAKE_RE_PIN_CENSUS = [
+  'hub card: public/index.html:87 (short form)',
+  'sit+public dawnspur-line/MANIFEST.txt:102 (2 lines)',
+  '16 full-sha pin lines across 8 descendant test files: dawnspur-halt.test.js:85-86, dawnspur-site.test.js:88-89, dice-at-the-places.test.js:149-150, herbs-larder.test.js:106-107, mosswake-loop.test.js:93-94, still-standing.test.js:335-336, they-remember.test.js:125-126, two-ways-from-here.test.js:243-244',
+  '6 short-sha list entries in 6 of those 8: dice, herbs, mosswake, still-standing, they-remember, two-ways (halt and site carry full shas only)',
+  "18 lineage lines across 9 OTHER boards' sit+public MANIFESTs: halt, site, storm, dice, herbs, mosswake, still-standing, they-remember, two-ways (in sit/ and public/ each)",
+  'ten lines across 9 David-signed beat documents: cfd-201:99, cfd-205:40, cfd-205-halt:70, cfd-206:45, cfd-207:57, cfd-208:66 and :508, cfd-209:104, cfd-210:238, cfd-212-still-standing:292',
+  '1 non-beat hit: docs/decisions-open-2026-09-02.md, entry 27 (its quotation of the /dawnspur-line/ PASSED row)',
+  "54 lines in all (the ruling's 53 re-pin lines, plus the one quoted hit in the ledger, which is a quotation of a beat table row, not a pin) — do not reuse the first consensus's wrong figures (20 lineage lines / 10 beat documents / 5 passed descendants / 16 hub cards); every one of those was wrong at e226a9f",
+].join('\n  - ');
+
+// THE MEASURED RED SET. Ruling 42's test action ends by requiring the actual
+// red set from the run to be recorded rather than the ruling's prediction, and
+// says that if the new guard is not among the reds it is decoration and must
+// not land. Measured 2026-09-09 in a disposable clone of the repo at e226a9f
+// (never in a worktree holding passed bytes), by applying STAKE_PARITY_PATCH
+// to BOTH copies of index.html and running `node --test test/*.test.js`:
+//
+//   baseline  818 tests / 818 pass / 0 fail
+//   patched   818 tests / 807 pass / 11 fail
+//
+// Those totals count BOTH guards this batch lands — this one and the
+// decision-11 pin in test/dawnspur-scale.test.js. Measured with only this
+// guard present they read 817 / 806 / 11; the eleven reds are the same
+// either way, and the difference is one passing test, not a different result.
+//
+// ELEVEN reds, not the ruling's predicted three. The guard below IS among
+// them, so it is load-bearing, not decoration. The breakdown, 3 + 8:
+//
+//   test/dawnspur-line.test.js   this guard
+//   test/dawnspur-line.test.js   "MANIFEST.txt records the shipped hashes,
+//                                 and names the five boards left standing"
+//   test/boards-index.test.js    "every hash the index publishes is the hash
+//                                 of the bytes that ship"
+//   8 lineage locks, one per file, in dawnspur-halt, dawnspur-site,
+//   dice-at-the-places, herbs-larder, mosswake-loop, still-standing,
+//   they-remember and two-ways-from-here — titled "this sitting writes no
+//   bytes under any other board directory" (x2), "...under any pinned board
+//   directory" (x4), and "...under any pinned board directory — the parent
+//   included" (x2).
+//
+// The 16 full-sha descendant pins named in the census above stayed GREEN
+// under the mutation: they read `git cat-file blob HEAD:...`, not the disk,
+// so they only move once the fix is committed. Do not read their silence as
+// "no re-pin needed". The 8 lineage locks are the converse: they read
+// `git status --porcelain`, so they go green the moment the fix is committed —
+// the commit itself carries 3 durable reds, and the 16 HEAD-reading pins are
+// the ones that turn red at that point instead.
+const STAKE_MEASURED_RED_SET = [
+  '11 of 818 tests go red when the parity patch is applied to both copies',
+  '(measured 2026-09-09 at e226a9f in a disposable clone; the ruling predicted 3):',
+  'this guard; dawnspur-line "MANIFEST.txt records the shipped hashes...";',
+  'boards-index "every hash the index publishes...";',
+  'and 8 lineage locks, one each in dawnspur-halt, dawnspur-site,',
+  'dice-at-the-places, herbs-larder, mosswake-loop, still-standing,',
+  'they-remember, two-ways-from-here.',
+  'The 16 full-sha descendant pins stay green until the fix is committed —',
+  'they read git cat-file blob HEAD, not the disk. Re-pin them anyway.',
+  'The 8 lineage locks are working-tree signal: they read git status --porcelain and',
+  'go green once the fix is committed, so the commit itself carries 3 durable reds.',
+].join('\n  ');
+
+function stakeGuardMessage(what) {
+  return [
+    what + ' — decision 42 (docs/decisions-open-2026-09-02.md, entry 42) may have been ruled and landed.',
+    'Delete this guard in the same commit, and re-pin every line named below.',
+    '',
+    'THE FIX (parity form; NOT storm\'s bare stakeText(c)):',
+    '  ' + STAKE_PARITY_PATCH,
+    '',
+    'THE RE-PIN CENSUS (54 lines, corrected 2026-09-09):',
+    '  - ' + STAKE_RE_PIN_CENSUS,
+    '',
+    'WHAT ELSE GOES RED WITH YOU (measured, not predicted):',
+    '  ' + STAKE_MEASURED_RED_SET,
+  ].join('\n');
+}
+
+test("INTERIM (decision 42): the aria-label still speaks a stray c.stake — self-cancelling, green on the passed bytes as they stand", () => {
+  // Ruled by counsel on David's instruction, 2026-09-09 (decision 42).
+  //
+  // sit/dawnspur-line/index.html:419 and its byte-identical copy under
+  // public/ interpolate c.stake into the spoken aria-label, but sim.js's
+  // cards() (sim.js:347-373, both the sendable and the non-sendable branch)
+  // never produces a "stake" key — so every sendable, not-out card is
+  // announced with "stake undefined".
+  //
+  // Counsel refused to open the pin (option (a)) and ruled (b): leave the
+  // passed bytes, record the defect, and put the rule question — does a pass
+  // freeze spoken accessibility text? — back to David. Entry 42 runs
+  // docs/decisions-open-2026-09-02.md, entry 42 (from its `## 42.` heading to the next entry's).
+  //
+  // FORWARD REFERENCE, not a claim about the tree: ruling 42's record action
+  // marks that ledger entry REQUIRES DAVID, and that action belongs to the
+  // decisions-ledger batch, not to this one. At the commit this guard was
+  // authored against (e226a9f),
+  // `grep -c "REQUIRES DAVID" docs/decisions-open-2026-09-02.md` answers 0.
+  // Read the marker as owed by that batch.
+  //
+  // This guard is GREEN on the passed bytes as they stand — it is not the
+  // "guard red on passed bytes" the ambient contract refuses — and goes RED
+  // the moment the defect is fixed, per the ambient contract's
+  // self-cancelling-guard rule (C:/dev/skyrail/CLAUDE.md: "pin it with a test
+  // that goes red the moment it is fixed and prints the cleanup list"). Its
+  // failure message carries the parity patch, the full re-pin census, and the
+  // measured red set above, so the commit that lands the fix is told what to
+  // re-pin and what else will be red beside it.
+  const sit = fs.readFileSync(path.join(ROOT, "sit/dawnspur-line/index.html"), "utf8");
+  const pub = fs.readFileSync(path.join(ROOT, "public/dawnspur-line/index.html"), "utf8");
+  const NEEDLE = '", stake " + c.stake';
+  assert.ok(sit.includes(NEEDLE),
+    stakeGuardMessage('sit/dawnspur-line/index.html no longer reads ' + JSON.stringify(NEEDLE)));
+  assert.ok(pub.includes(NEEDLE),
+    stakeGuardMessage('public/dawnspur-line/index.html no longer reads ' + JSON.stringify(NEEDLE)));
+  const cards = Line.createBoard({ fresh: true }).cards();
+  for (const c of cards) {
+    assert.ok(!Object.prototype.hasOwnProperty.call(c, "stake"),
+      stakeGuardMessage('sim.js now produces a "stake" key on card ' + JSON.stringify(c.id) + ' — the sim changed under this guard; re-check the fix against sim.js:347-373 before deleting this test'));
+  }
+});

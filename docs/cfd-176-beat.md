@@ -1,14 +1,14 @@
 # CFD-176 — first-cut beat
 
 *Provenance, added 2026-09-02 when this file was merged onto main from
-skyrail-boards#3 (branch head `90af963`, opened 2026-08-24). `KILLS.md:63` has cited
+skyrail-boards#3 (branch head `90af963`, opened 2026-08-24). `KILLS.md`'s 2026-08-24 starve-or-feed entry (`:63` when this was written) has cited
 it as the recut behind the preserved kill since 2026-08-25. The file carries no
 signature line of its own; the signature's record is Linear CFD-176. The shipped
 board's header (`sit/dawnspur-heat/sim.js:3-6`) restates the Does below line for
 line. This is the one beat the 2026-09-01 sweep did not read against its board —
 open work, recorded in `docs/name-collisions-audit-2026-09-01.md` §6.*
 
-Seat: The drafting seat was Superheavy beat only — no implement, no deploy, no merge. The board has since shipped at `/dawnspur-heat/`: the Grok base cut `a030c55` is on no main ancestry (branch `grok/cfd-176-keel-fire-outward-step`) and was brought onto main by `4c5e9ec`, 2026-08-25 16:25:22Z; the board at HEAD is that cut plus `db1a9ad` (CFD-174 nouns), `c887359` / `efbed23` (CFD-175 greenhouse) and `7b3ddb6` (the recorded hashes) — sim `292d6645`, index `b5f7e14f`, greenhouse `7fdf7468`, all in `sit/dawnspur-heat/MANIFEST.txt`. CI deploys the byte-copy at `public/dawnspur-heat/` and the live host serves it: `/dawnspur-heat/sim.js`, fetched 2026-09-02, is 3050 bytes hashing `292d6645…`, byte-identical to the blob. David sat it and it passed — recorded at canon §3 (`docs/mechanisms-recommitted.md:116-118`), canon §7's passed-board table (`:240-246`) and the hub (`public/index.html:97`, "live — passed its sit"). The pass has no `KILLS.md` line and no verbatim in this repository; its record is Linear CFD-176, date null. It stands as played: not recut, and not to be. *(An earlier cut read "Superheavy beat only. No implement. No deploy. No merge."; true on the day of signature, record now.)* 173 stays Done. Do not recut the lights. [skyrail-boards#2](https://github.com/davidlopezkurtz/skyrail-boards/pull/2) stays draft and unused — `30e92ee` is on no main ancestry, and `test/dawnspur-heat.test.js:224-233` refuses its API by name. Do not touch `public/dawnspur`, `public/convoy-stop`, or live board bytes. Do not `workflow_dispatch`.
+Seat: The drafting seat was Superheavy beat only — no implement, no deploy, no merge. The board has since shipped at `/dawnspur-heat/`: the Grok base cut `a030c55` is on no main ancestry (branch `grok/cfd-176-keel-fire-outward-step`) and was brought onto main by `4c5e9ec`, 2026-08-25 16:25:22Z; the board at HEAD is that cut plus `db1a9ad` (CFD-174 nouns), `c887359` / `efbed23` (CFD-175 greenhouse) and `7b3ddb6` (the recorded hashes) — sim `292d6645`, index `b5f7e14f`, greenhouse `7fdf7468`, all in `sit/dawnspur-heat/MANIFEST.txt`. CI deploys the byte-copy at `public/dawnspur-heat/` and the live host serves it: `/dawnspur-heat/sim.js`, fetched 2026-09-02, is 3050 bytes hashing `292d6645…`, byte-identical to the blob. David sat it and it passed — recorded at canon §3 (`docs/mechanisms-recommitted.md:166-168`), canon §7's passed-board table (`:329-333`) and the hub (`public/index.html:97`, "live — passed its sit"). The pass has no `KILLS.md` line and no verbatim in this repository; its record is Linear CFD-176, date null. *(As written 2026-08-25; on 2026-09-09 a `KILLS.md` record for the pass was entered under counsel's ruling on ledger entry 7 — the date is null there too.)* It stands as played: not recut, and not to be. *(An earlier cut read "Superheavy beat only. No implement. No deploy. No merge."; true on the day of signature, record now.)* 173 stays Done. Do not recut the lights. [skyrail-boards#2](https://github.com/davidlopezkurtz/skyrail-boards/pull/2) stays draft and unused — `30e92ee` is on no main ancestry, and `test/dawnspur-heat.test.js:224-233` refuses its API by name. Do not touch `public/dawnspur`, `public/convoy-stop`, or live board bytes. Do not `workflow_dispatch`.
 
 Live kill (do not overwrite): https://boards.skyrailreclamation.com/dawnspur/ index `bdde9b50` / sim `395c18f2`.
 
@@ -20,11 +20,11 @@ One dispatch. The haul is heat. It banks in the stone at dest A (keel-fire — n
 
 ## Sees
 
-A stays held. The stone keeps a banked mass (same hue family; not dest-quad glow; not pad-thin). A step sits on ground off A. On the home wait the hearth does not dim. The step can go. No leftover GOODS lit. WARM is not the only job.
+A stays held. *(Scoping note, 2026-09-09: Sees describes the banked scene, in which heldA is true in every reachable state — sit/dawnspur-heat/sim.js:65, :76. On the way to WARM, A is thin in exactly two states: after GOODS (sim.js:42) and after B (sim.js:50), rendered thin at index.html:201 — the beat's own :37 row declares that thinning intended and visible. Ruled by counsel on David's instruction, 2026-09-09; entry 16.)* The stone keeps a banked mass (same hue family; not dest-quad glow; not pad-thin). A step sits on ground off A. On the home wait the hearth does not dim. The step can go. No leftover GOODS lit. WARM is not the only job.
 
 ## Ends
 
-They sent the heat. The ground at A held without a feed. The outward step is what could die. Sitting stops. Leftover GOODS is dead.
+They sent the heat. The ground at A held without a feed. The outward step is what could die. *(Measured, 2026-09-09: as shipped, wait() sets the outward step to gone unconditionally — sit/dawnspur-heat/sim.js:72-79, fired by the 1500 ms idle timer at sit/dawnspur-heat/index.html:218-220 — so across every reachable banked state the step never survives; the stake was asserted, not modelled. The board passed and stands as played; only the record moves. Ruled by counsel on David's instruction, 2026-09-09; entry 16.)* Sitting stops. Leftover GOODS is dead.
 
 ## On this sitting
 
